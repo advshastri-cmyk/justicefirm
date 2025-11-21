@@ -46,18 +46,19 @@
         margin: 0 15px;
     }
         /* --- SERVICES GRID LAYOUT --- */
+    /* --- SERVICES GRID LAYOUT (FIXED FOR SCATTERED LOOK) --- */
     .services-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        text-align: left;
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center; /* <-- Ab yeh beech mein center karega */
+        text-align: left; 
         max-width: 900px;
         margin: 0 auto;
-        gap: 30px; /* <-- Is naye code ko jodein */
+        gap: 30px; 
     }
     .services-grid h3 {
-        width: 45%; /* Har service ko lagbhag aadhi screen milegi */
-        min-width: 300px; /* Mobile par kam se kam itni chaudai */
+        width: 40%; /* <-- Har item ko 40% screen width milegi */
+        min-width: 300px; 
         border-bottom: 1px dashed #ccc;
         padding-bottom: 5px;
         margin-top: 30px;
