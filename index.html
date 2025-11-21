@@ -45,6 +45,22 @@
         font-weight: bold; 
         margin: 0 15px;
     }
+        /* --- SERVICES GRID LAYOUT --- */
+    .services-grid {
+        display: flex; /* Flexbox ON kiya */
+        flex-wrap: wrap; /* Jab zarurat ho, elements neeche aa jayenge */
+        justify-content: space-around; /* Elements ko beech mein spacing dega */
+        text-align: left; /* Text left-aligned ho jayega */
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .services-grid h3 {
+        width: 45%; /* Har service ko lagbhag aadhi screen milegi */
+        min-width: 300px; /* Mobile par kam se kam itni chaudai */
+        border-bottom: 1px dashed #ccc;
+        padding-bottom: 5px;
+        margin-top: 30px;
+    }
 /* --- MOBILE RESPONSIVENESS (Max Width: 600px) --- */
     @media (max-width: 600px) {
         body {
@@ -61,6 +77,9 @@
         h3 {
             font-size: 18px; /* Headings chhota karein */
         }
+        .services-grid h3 {
+        width: 95%; /* Mobile par poori chaudai */
+    }
         p {
             font-size: 16px; /* Font size chhota karein */
         }
