@@ -1,16 +1,15 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Justice Firm — Advocates & Legal Consultants (India)</title>
   <meta name="description" content="The Justice Firm — Family, Criminal & Civil law; Mediation. Based in Allahabad (Prayagraj), Uttar Pradesh." />
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
 
-  <!-- JSON-LD Structured Data -->
+  <!-- Structured data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -21,7 +20,7 @@
         "name":"The Justice Firm",
         "url":"https://your-domain.example/",
         "logo":"https://your-domain.example/logo.png",
-        "contactPoint":[{"@type":"ContactPoint","telephone":"+91-9454183793","contactType":"customer service","areaServed":"IN"}]
+        "contactPoint":[{"@type":"ContactPoint","telephone":"+91-9876543210","contactType":"customer service","areaServed":"IN"}]
       },
       {
         "@type":"LegalService",
@@ -29,202 +28,126 @@
         "name":"The Justice Firm",
         "provider":{"@id":"https://your-domain.example/#org"},
         "areaServed":"IN",
-        "address":{
-          "@type":"PostalAddress",
-          "streetAddress":"Rajrooppur",
-          "addressLocality":"Allahabad (Prayagraj)",
-          "addressRegion":"Uttar Pradesh",
-          "postalCode":"211004",
-          "addressCountry":"IN"
-        },
-        "telephone":"+91-9454183793"
+        "address":{"@type":"PostalAddress","streetAddress":"Rajrooppur","addressLocality":"Allahabad (Prayagraj)","addressRegion":"Uttar Pradesh","postalCode":"211004","addressCountry":"IN"},
+        "telephone":"+91-9876543210"
       },
-      {
-        "@type":"Person",
-        "name":"Adv. Ganga Shankar Shastri",
-        "jobTitle":"Founder & Lead Counsel",
-        "worksFor":{"@id":"https://your-domain.example/#org"}
-      }
+      {"@type":"Person","name":"Adv. Ganga Shankar Shastri","jobTitle":"Founder & Lead Counsel","worksFor":{"@id":"https://your-domain.example/#org"}}
     ]
   }
   </script>
 
-  <!-- FULL CSS (Design + Animations + Mobile Responsive) -->
+  <!-- Main Styles (Design + Animations + Calendar) -->
   <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --ink:#0f1724;
+      --muted:#6b7280;
+      --accent:#0b5cff;
+      --gold:#d4af37;
+      --radius:14px;
+      --container:1100px;
+      --easing:cubic-bezier(.16,.84,.32,1);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; -webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--container);margin:0 auto;padding:20px}
 
-/* -------------- Theme Vars -------------- */
-:root{
-  --bg:#f5f7fb;
-  --card:#ffffff;
-  --ink:#0f1724;
-  --muted:#6b7280;
-  --accent:#0b5cff;
-  --gold:#d4af37;
-  --radius:14px;
-  --container:1100px;
-  --easing: cubic-bezier(.16,.84,.32,1);
-}
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);padding:14px;border-radius:12px;box-shadow:0 6px 30px rgba(12,18,35,0.06);margin:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#2e6df6);display:grid;place-items:center;color:#fff;font-weight:700;font-size:1.1rem;transition:transform 420ms var(--easing)}
+    .brand:hover .logo{transform:scale(1.05) rotate(-6deg)}
+    .brand h1{margin:0;font-size:1.1rem;font-family:Merriweather,serif}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .nav-links a{color:var(--muted);font-weight:600;text-decoration:none;padding:8px 10px;border-radius:8px}
+    .nav-links a.cta{background:var(--accent);color:#fff}
+    .nav-toggle{display:none;border:0;font-size:22px;background:none;color:var(--ink)}
 
-/* -------------- Base Styles -------------- */
-*{box-sizing:border-box}
-html,body{
-  margin:0; padding:0;
-  background:var(--bg); color:var(--ink);
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
-  -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:var(--container);margin:0 auto;padding:20px}
+    /* nav clock small */
+    #clock{color:var(--gold);font-weight:700;font-size:.95rem}
 
-/* -------- NAV -------- */
-.nav{
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(255,255,255,0.8);
-  backdrop-filter:blur(6px);
-  padding:14px;border-radius:12px;
-  box-shadow:0 6px 30px rgba(12,18,35,0.06);
-  margin:18px;
-}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{
-  width:46px;height:46px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),#2e6df6);
-  display:grid;place-items:center;
-  color:#fff;font-weight:700;font-size:1.1rem;
-  transition:transform 420ms var(--easing);
-}
-.brand:hover .logo{transform:scale(1.05) rotate(-6deg)}
-.brand h1{margin:0;font-size:1.1rem;font-family:Merriweather,serif}
-.nav-links{display:flex;gap:16px;align-items:center}
-.nav-links a{color:var(--muted);font-weight:600;text-decoration:none;padding:8px 10px;border-radius:8px}
-.nav-links a.cta{background:var(--accent);color:#fff;}
-.nav-toggle{display:none;border:0;font-size:22px;background:none;color:var(--ink)}
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin:18px;margin-top:6px;position:relative}
+    .hero::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.10))}
+    .hero-card{background:#fff;padding:34px;border-radius:16px;box-shadow:0 24px 80px rgba(12,18,35,0.06);position:relative;z-index:1}
+    .eyebrow{background:linear-gradient(90deg,var(--accent),#2e6df6);color:#fff;padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700}
+    .headline{font-family:Merriweather,serif;font-size:28px;margin:14px 0}
+    .lead{color:var(--muted);margin-bottom:20px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
 
-/* -------- HERO -------- */
-.hero{
-  display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;
-  margin:18px;margin-top:6px;
-  position:relative;
-}
-.hero::before{
-  content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.10));
-}
-.hero-card{
-  background:#fff;padding:34px;border-radius:16px;
-  box-shadow:0 24px 80px rgba(12,18,35,0.06);
-  position:relative;z-index:1;
-}
-.eyebrow{
-  background:linear-gradient(90deg,var(--accent),#2e6df6);
-  color:#fff; padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700;
-}
-.headline{font-family:Merriweather,serif;font-size:28px;margin:14px 0}
-.lead{color:var(--muted);margin-bottom:20px}
+    /* PANEL (clock + calendar) */
+    .panel{background:#fff;padding:18px;border-radius:12px;box-shadow:0 12px 36px rgba(12,18,35,0.04);z-index:1}
+    #clock-nav{font-weight:700;color:var(--gold);font-size:.95rem;text-align:right}
+    #calendar-section{background:linear-gradient(180deg,#fff,#fbfdff);border-radius:10px;padding:12px;margin-top:12px;box-shadow:0 12px 36px rgba(12,18,35,0.04)}
+    #calendar{width:100%;overflow-x:auto}
+    #calendar table{width:100%;border-collapse:collapse;font-size:.95rem}
+    #calendar th,#calendar td{padding:8px;text-align:center;border-radius:6px}
+    #calendar th{color:var(--muted);font-weight:700;font-size:.9rem}
+    #calendar td{height:40px}
+    #calendar td.today{background:var(--gold);color:#000;font-weight:700;border-radius:50%}
 
-.btn{
-  background:var(--accent);color:#fff;
-  border:0;padding:10px 14px;border-radius:10px;cursor:pointer;
-  font-weight:700;transition:transform 220ms var(--easing), box-shadow 220ms var(--easing);
-}
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 30px rgba(11,92,255,0.12);
-}
-.btn:active{transform:translateY(1px) scale(.99)}
-.btn.ghost{
-  background:#fff;color:var(--ink);border:1px solid #e0e6f0;
-}
+    /* Sections & cards */
+    section{margin:36px 18px}
+    h2{font-family:Merriweather,serif;font-size:1.25rem;margin:0 0 10px;position:relative}
+    h2::after{content:"";display:block;width:48px;height:4px;background:var(--gold);border-radius:4px;margin-top:8px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 14px 40px rgba(12,18,35,0.04);transition:transform 320ms var(--easing),box-shadow 320ms var(--easing)}
+    .card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(12,18,35,0.10)}
+    .card img{width:100%;height:240px;object-fit:cover;border-radius:10px;transition:transform 420ms var(--easing)}
+    .card:hover img{transform:scale(1.04)}
 
-/* CTA Shine effect */
-.btn.primary-shine{position:relative;overflow:hidden}
-.btn.primary-shine::after{
-  content:"";position:absolute;inset:0;left:-60%;width:60%;
-  background:linear-gradient(120deg,rgba(255,255,255,0.10),rgba(255,255,255,0.25),rgba(255,255,255,0.10));
-  transform:skewX(-18deg);
-  transition:left 650ms var(--easing);
-  border-radius:10px;
-}
-.btn.primary-shine:hover::after{left:120%}
+    /* Team */
+    .member{background:#fff;border-radius:12px;box-shadow:0 14px 40px rgba(12,18,35,0.04);overflow:hidden;transition:transform 320ms var(--easing)}
+    .member:hover{transform:translateY(-8px)}
+    .member .photo{height:260px;background-size:cover;background-position:center 24%;transition:transform 420ms var(--easing)}
+    .member:hover .photo{transform:scale(1.04)}
+    .member .bio{padding:14px}
 
-/* Small Panel */
-.panel{
-  background:#fff;padding:18px;border-radius:12px;
-  box-shadow:0 12px 36px rgba(12,18,35,0.04);
-  z-index:1;
-}
+    /* Payment */
+    .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .pay-box{background:#fff;padding:18px;text-align:center;border-radius:12px;box-shadow:0 14px 40px rgba(12,18,35,0.04)}
+    .pay-box img{width:140px;height:140px;border-radius:10px;border:2px solid var(--gold);object-fit:cover}
 
-/* -------- Sections -------- */
-section{margin:36px 18px}
-h2{
-  font-family:Merriweather,serif;font-size:1.25rem;margin:0 0 10px;
-  position:relative;
-}
-h2::after{
-  content:"";display:block;width:48px;height:4px;background:var(--gold);
-  border-radius:4px;margin-top:8px;
-}
+    /* Contact */
+    form input,form textarea,form select{width:100%;padding:10px;border-radius:10px;border:1px solid #d8dce3;font-size:1rem;font-family:Inter}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    /* Footer */
+    footer{background:linear-gradient(180deg,#02102a,#041733);padding:22px;border-radius:14px;margin:28px 18px;margin-bottom:40px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    footer a{color:var(--gold)}
 
-.card{
-  background:#fff;padding:18px;border-radius:12px;
-  box-shadow:0 14px 40px rgba(12,18,35,0.04);
-  transition:transform 320ms var(--easing), box-shadow 320ms var(--easing);
-}
-.card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(12,18,35,0.10)}
+    /* Animations & micro-interactions */
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+    }
+    .btn{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700;transition:transform 220ms var(--easing),box-shadow 220ms var(--easing)}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(11,92,255,0.12)}
+    .btn:active{transform:translateY(1px) scale(.99)}
+    .btn.ghost{background:#fff;color:var(--ink);border:1px solid #e0e6f0}
+    .btn.primary-shine{position:relative;overflow:hidden}
+    .btn.primary-shine::after{content:"";position:absolute;inset:0;left:-60%;width:60%;background:linear-gradient(120deg,rgba(255,255,255,0.10),rgba(255,255,255,0.25),rgba(255,255,255,0.10));transform:skewX(-18deg);transition:left 650ms var(--easing);border-radius:10px}
+    .btn.primary-shine:hover::after{left:120%}
+    a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(11,92,255,0.12);outline-offset:3px;border-radius:8px}
 
-.card img{width:100%;height:240px;object-fit:cover;border-radius:10px;transition:transform 420ms var(--easing)}
-.card:hover img{transform:scale(1.04)}
+    /* Scroll reveal default */
+    [data-reveal]{opacity:0;transform:translateY(10px);transition:opacity 520ms var(--easing),transform 520ms var(--easing)}
+    [data-reveal].is-revealed{opacity:1;transform:none}
 
-/* ---- Team (Background Image Crop Fix) ---- */
-.member{
-  background:#fff;border-radius:12px;box-shadow:0 14px 40px rgba(12,18,35,0.04);
-  overflow:hidden;transition:transform 320ms var(--easing);
-}
-.member:hover{transform:translateY(-8px)}
-.member .photo{
-  height:260px;background-size:cover;background-position:center 24%;
-  transition:transform 420ms var(--easing);
-}
-.member:hover .photo{transform:scale(1.04)}
-.member .bio{padding:14px}
+    /* Calendar tweaks */
+    #calendar th,#calendar td{padding:6px}
+    #calendar td{min-width:28px}
 
-/* ---- Payment ---- */
-.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.pay-box{
-  background:#fff;padding:18px;text-align:center;border-radius:12px;
-  box-shadow:0 14px 40px rgba(12,18,35,0.04);
-}
-.pay-box img{width:140px;height:140px;border-radius:10px;border:2px solid var(--gold);object-fit:cover}
-
-/* ---- Contact ---- */
-form input, form textarea, form select{
-  width:100%;padding:10px;border-radius:10px;
-  border:1px solid #d8dce3;font-size:1rem;font-family:Inter;
-}
-
-/* ---- Footer ---- */
-footer{
-  background:linear-gradient(180deg,#02102a,#041733);
-  padding:22px;border-radius:14px;margin:28px 18px;margin-bottom:40px;
-  color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px;
-}
-footer a{color:var(--gold)}
-
-/* ===== Scroll Reveal ===== */
-[data-reveal]{opacity:0;transform:translateY(10px);transition:opacity 520ms var(--easing), transform 520ms var(--easing)}
-[data-reveal].is-revealed{opacity:1;transform:none}
-
-/* ===== Mobile ===== */
-@media(max-width:720px){
-  .nav-links{display:none}
-  .nav-toggle{display:block}
-  .hero{grid-template-columns:1fr;gap:14px}
-  .pay-grid{grid-template-columns:1fr}
-  section{margin:26px 12px}
-  footer{flex-direction:column;align-items:flex-start}
-}
+    /* Responsive */
+    @media(max-width:1024px){.hero{grid-template-columns:1fr 320px}.panel{padding:14px}}
+    @media(max-width:720px){
+      .nav-links{display:none}
+      .nav-toggle{display:block}
+      .hero{grid-template-columns:1fr;gap:14px}
+      .pay-grid{grid-template-columns:1fr}
+      section{margin:26px 12px}
+      footer{flex-direction:column;align-items:flex-start}
+      .member .photo{height:220px}
+    }
   </style>
 </head>
 
@@ -232,31 +155,31 @@ footer a{color:var(--gold)}
   <div class="wrap">
 
     <!-- NAV -->
-    <header class="nav">
+    <header class="nav" role="banner">
       <div class="brand">
-        <div class="logo">TJ</div>
+        <div class="logo" aria-hidden="true">TJ</div>
         <div>
           <h1>The Justice Firm</h1>
           <div class="muted" style="font-size:.85rem">Advocates & Legal Consultants (India)</div>
         </div>
       </div>
 
-      <nav class="nav-links">
+      <nav class="nav-links" role="navigation" aria-label="Main">
         <a href="#practice">Practice</a>
         <a href="#about">About</a>
         <a href="#team">Team</a>
         <a href="#articles">Articles</a>
         <a href="#payment">Payment</a>
         <a href="contact.html" class="cta">Contact</a>
+        <span id="clock" aria-live="polite" style="margin-left:8px"></span>
       </nav>
 
-      <button class="nav-toggle" id="navToggle">☰</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </header>
-
 
     <!-- HERO -->
     <section class="hero" data-reveal>
-      <div class="hero-card">
+      <div class="hero-card" data-reveal>
         <span class="eyebrow">Trusted in Indian Courts</span>
         <h2 class="headline">Practical counsel for Family, Criminal & Civil disputes.</h2>
         <p class="lead">Confidential, strategic and results-focused representation across Allahabad and Uttar Pradesh.</p>
@@ -264,16 +187,30 @@ footer a{color:var(--gold)}
           <a class="btn primary-shine" href="contact.html">Book Consultation</a>
           <a class="btn ghost" href="#practice">Explore Practice</a>
         </div>
-        <p class="muted" style="margin-top:12px;font-size:.92rem"><strong>+91 98765 43210</strong> &nbsp;·&nbsp; adv.shastri@gmail.com</p>
+        <p class="muted" style="margin-top:12px;font-size:.92rem"><strong>+91 98765 43210</strong> · adv.shastri@gmail.com</p>
       </div>
 
+      <!-- panel with next slot + clock + calendar -->
       <aside class="panel" data-reveal>
-        <h4 style="margin:0">Next Available Slot</h4>
-        <p class="muted" id="nextSlot" style="margin:6px 0 12px 0">Loading…</p>
-        <button class="btn" onclick="openBooking()">Request Slot</button>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+          <div>
+            <h4 style="margin:0">Next Available Slot</h4>
+            <div class="muted" id="nextSlot" style="margin-top:6px">Loading…</div>
+          </div>
+          <div id="clock-nav">--:--:-- IST</div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button class="btn" onclick="openBooking()">Request Slot</button>
+          <a class="btn ghost" href="#contact">Contact</a>
+        </div>
+
+        <div id="calendar-section" aria-label="Court calendar">
+          <h4 style="margin:8px 0 6px 0">Court Calendar</h4>
+          <div id="calendar"></div>
+        </div>
       </aside>
     </section>
-
 
     <!-- PRACTICE -->
     <section id="practice">
@@ -285,6 +222,7 @@ footer a{color:var(--gold)}
         <div class="card" data-reveal><h3>Civil & Property</h3><p>Partition, recovery, injunctions, property litigation.</p></div>
       </div>
     </section>
+
     <!-- ABOUT -->
     <section id="about">
       <h2>About Adv. Ganga Shankar Shastri</h2>
@@ -332,7 +270,7 @@ footer a{color:var(--gold)}
       </div>
     </section>
 
-    <!-- PAYMENTS -->
+    <!-- PAYMENT -->
     <section id="payment">
       <h2>Secure Payment</h2>
       <p class="muted">All payments in INR. UPI preferred. Receipts available on request.</p>
@@ -347,7 +285,7 @@ footer a{color:var(--gold)}
 
         <div class="pay-box" data-reveal>
           <h4>Bank Transfer</h4>
-          <p class="muted">The Justice Firm · Canara Bank Rajrooppur<br>A/c 5328127000035 · IFSC CNRB0005131</p>
+          <p class="muted">The Justice Firm · SBI Rajrooppur<br>A/c XXXXXXXX1234 · IFSC SBIN000XXXX</p>
         </div>
       </div>
     </section>
@@ -355,14 +293,12 @@ footer a{color:var(--gold)}
     <!-- CONTACT -->
     <section id="contact">
       <h2>Contact & Consultation</h2>
-
       <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px">
         <form onsubmit="return onContact(event)" style="background:#fff;padding:16px;border-radius:12px;box-shadow:0 14px 40px rgba(12,18,35,0.04)" data-reveal>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
             <input name="name" placeholder="Full Name" required>
             <input name="phone" placeholder="Phone (+91)" required>
           </div>
-
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
             <input name="email" type="email" placeholder="Email" required>
             <select name="matter">
@@ -373,9 +309,7 @@ footer a{color:var(--gold)}
               <option>Other</option>
             </select>
           </div>
-
           <textarea name="message" rows="4" placeholder="Brief description…" style="margin-top:10px" required></textarea>
-
           <div style="display:flex;gap:8px;margin-top:12px">
             <button class="btn" type="submit">Send Request</button>
             <button class="btn ghost" type="button" onclick="openBooking()">Schedule Call</button>
@@ -387,7 +321,7 @@ footer a{color:var(--gold)}
           <p class="muted">Rajrooppur, Allahabad (Prayagraj), Uttar Pradesh</p>
           <h4 style="margin-top:16px">Timings</h4>
           <p class="muted">Mon–Sat · 10:00 AM – 6:00 PM</p>
-          <p style="font-weight:700">+91 9454183793</p>
+          <p style="font-weight:700">+91 98765 43210</p>
         </aside>
       </div>
     </section>
@@ -401,7 +335,7 @@ footer a{color:var(--gold)}
       <div><a href="disclaimer.html">Disclaimer & Privacy</a> • <a href="terms.html">Terms</a></div>
     </footer>
 
-  </div> <!-- end wrap -->
+  </div> <!-- /.wrap -->
 
   <!-- BOOKING MODAL -->
   <div id="bookingModal" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:1200;padding:18px">
@@ -420,77 +354,119 @@ footer a{color:var(--gold)}
     </div>
   </div>
 
-  <!-- JS -->
+  <!-- Scripts: clock, calendar, nav, reveal, parallax, handlers -->
   <script>
-    // Nav toggle
-    const navToggle=document.getElementById('navToggle');
-    const navLinks=document.querySelector('.nav-links');
-    navToggle?.addEventListener('click',()=>{
-      if(navLinks.style.display==='flex'){navLinks.style.display='none';return;}
-      navLinks.style.display='flex';
-      navLinks.style.flexDirection='column';
-      navLinks.style.background='#fff';
-      navLinks.style.padding='12px';
-      navLinks.style.borderRadius='10px';
+    /* Nav toggle */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+    navToggle?.addEventListener('click', () => {
+      if (!navLinks) return;
+      if (navLinks.style.display === 'flex') { navLinks.style.display = 'none'; return; }
+      navLinks.style.display = 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.background = '#fff';
+      navLinks.style.padding = '12px';
+      navLinks.style.borderRadius = '10px';
     });
 
-    // Clock slot
-    (function(){
-      const el=document.getElementById('nextSlot');
-      const d=new Date();
-      if(d.getHours()>=16) d.setDate(d.getDate()+1);
-      d.setHours(11,0,0,0);
-      const opt={weekday:'short',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kolkata'};
-      el.textContent=d.toLocaleString('en-IN',opt)+' IST';
-      document.getElementById('year').textContent=new Date().getFullYear();
+    /* Clock (Asia/Kolkata) */
+    function updateClock(){
+      try {
+        const opt = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+        const now = new Date();
+        const t = now.toLocaleTimeString('en-IN', opt) + ' IST';
+        const el = document.getElementById('clock-nav');
+        if (el) el.textContent = t;
+        const navClock = document.getElementById('clock');
+        if (navClock) navClock.textContent = t;
+      } catch(e) {}
+    }
+    setInterval(updateClock, 1000); updateClock();
+
+    /* Next available slot (simple logic) */
+    (function setNextSlot(){
+      const el = document.getElementById('nextSlot');
+      const next = new Date();
+      if (next.getHours() >= 16) next.setDate(next.getDate() + 1);
+      next.setHours(11,0,0,0);
+      const opt = { weekday:'short', hour:'2-digit', minute:'2-digit', timeZone:'Asia/Kolkata' };
+      if (el) el.textContent = next.toLocaleString('en-IN', opt) + ' IST';
     })();
 
-    // Contact handler
+    /* Calendar generator */
+    function generateCalendar(containerId='calendar'){
+      const el = document.getElementById(containerId);
+      if(!el) return;
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const today = now.getDate();
+      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month +1, 0).getDate();
+      let html = `<table aria-label="${months[month]} ${year}"><caption style="text-align:left;padding:8px 0;font-weight:700">${months[month]} ${year}</caption><thead><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody>`;
+      let d = 1;
+      for(let r=0; r<6 && d<=daysInMonth; r++){
+        html += '<tr>';
+        for(let c=0;c<7;c++){
+          if(r===0 && c<firstDay){ html += '<td></td>'; }
+          else if(d>daysInMonth){ html += '<td></td>'; }
+          else {
+            const isToday = (d === today);
+            html += `<td class="${isToday ? 'today' : ''}">${d}</td>`;
+            d++;
+          }
+        }
+        html += '</tr>';
+      }
+      html += '</tbody></table>';
+      el.innerHTML = html;
+    }
+    generateCalendar();
+
+    // Regenerate at shortly after midnight to update today
+    (function scheduleMidnightRefresh(){
+      const now = new Date();
+      const ms = (new Date(now.getFullYear(), now.getMonth(), now.getDate()+1) - now) + 2000;
+      setTimeout(()=>{ generateCalendar(); scheduleMidnightRefresh(); }, ms);
+    })();
+
+    /* Contact and booking handlers */
     function onContact(e){
       e.preventDefault();
-      alert('Thank you. Your request has been received.');
+      alert('Thank you. Your request has been received. We will contact you within 24 hours.');
       e.target.reset();
       return false;
     }
+    const bookingModal = document.getElementById('bookingModal');
+    function openBooking(){ bookingModal.style.display = 'flex'; }
+    function closeBooking(){ bookingModal.style.display = 'none'; }
+    function submitBooking(e){ e.preventDefault(); alert('Request received. We will confirm by email.'); closeBooking(); }
 
-    // Booking Modal
-    const bookingModal=document.getElementById('bookingModal');
-    function openBooking(){bookingModal.style.display='flex'}
-    function closeBooking(){bookingModal.style.display='none'}
-    function submitBooking(e){
-      e.preventDefault();
-      alert('Your consultation request is received.');
-      closeBooking();
+    /* UPI copy */
+    function copyUPI(){ const t = document.getElementById('upi-id').textContent; navigator.clipboard?.writeText(t).then(()=>alert('UPI Copied: '+t)).catch(()=>prompt('Copy UPI ID', t)); }
+
+    /* Scroll reveal */
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const obs = new IntersectionObserver((entries, o) => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-revealed'); o.unobserve(en.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-revealed'));
     }
 
-    // UPI Copy
-    function copyUPI(){
-      const t=document.getElementById('upi-id').textContent;
-      navigator.clipboard.writeText(t).then(()=>alert("UPI Copied: "+t));
-    }
-
-    // Scroll Reveal
-    if("IntersectionObserver"in window){
-      const obs=new IntersectionObserver((ents,o)=>{
-        ents.forEach(e=>{
-          if(e.isIntersecting){e.target.classList.add("is-revealed");o.unobserve(e.target);}
-        });
-      },{threshold:0.12});
-      document.querySelectorAll("[data-reveal]").forEach(el=>obs.observe(el));
-    }
-
-    // Hero Parallax (desktop only)
-    (function(){
-      const hero=document.querySelector('.hero');
-      if(!hero) return;
-      if(window.matchMedia('(pointer: coarse)').matches) return;
-      hero.addEventListener('mousemove',(e)=>{
-        const r=hero.getBoundingClientRect();
-        const x=(e.clientX-(r.left+r.width/2))/r.width;
-        const y=(e.clientY-(r.top+r.height/2))/r.height;
-        hero.style.transform=`translate3d(${x*8}px,${y*4}px,0)`;
+    /* Hero parallax subtle on desktop */
+    (function(){ const hero = document.querySelector('.hero'); if(!hero) return; if(window.matchMedia('(pointer: coarse)').matches) return;
+      let raf=null;
+      hero.addEventListener('mousemove', e => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - (rect.left + rect.width/2))/rect.width;
+        const y = (e.clientY - (rect.top + rect.height/2))/rect.height;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(()=> hero.style.transform = `translate3d(${x*8}px,${y*4}px,0)`);
       });
-      hero.addEventListener('mouseleave',()=>hero.style.transform='translate3d(0,0,0)');
+      hero.addEventListener('mouseleave', ()=> hero.style.transform = 'translate3d(0,0,0)');
     })();
   </script>
 
