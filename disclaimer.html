@@ -1,60 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <title>⚖️ The Justice Firm - Disclaimer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disclaimer | The Justice Firm</title>
     <style>
+        /* CSS from index.html copied here for consistency */
         body { 
             font-family: 'Times New Roman', Times, serif; 
             text-align: center; 
             padding: 50px; 
-            background: linear-gradient(to bottom, #eceff1, #cfd8dc); 
-            color: #36454F;
+            background: linear-gradient(to bottom, #eceff1, #cfd8dc);
+        }
+        h1, h2, h3 { 
+            color: #36454F; 
+            font-family: Arial, sans-serif;
+        }
+        p { 
+            font-size: 18px; 
+            color: #444; 
         }
         .nav-bar { 
-            display: flex; 
-            justify-content: center; 
-            gap: 40px; 
             margin-bottom: 50px; 
-            padding-bottom: 10px; 
+            padding: 10px; 
             border-bottom: 2px solid #36454F; 
+            display: flex;
+            justify-content: center;
         }
-        .nav-bar a { 
+        .nav-bar a {
             color: #36454F; 
             text-decoration: none; 
             font-weight: bold; 
-            font-size: 18px; 
+            margin: 0 15px;
         }
         .content-box {
-            max-width: 800px;
+            max-width: 900px;
             margin: 50px auto;
             padding: 40px;
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             text-align: left;
+        }
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 600px) {
+            body { padding: 20px; }
+            .content-box { padding: 20px; }
         }
     </style>
 </head>
 <body>
-
+    
     <div class="nav-bar">
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="index.html#contact-section">Contact</a>
+        <a href="index.html"> Home</a>
+        <a href="blog.html"> Blog</a>
+        <a href="payment.html"> Payment</a>  
+        <a href="#contact-form"> Contact</a>
     </div>
 
     <div class="content-box">
-        <h1 style="text-align: center;">Legal Disclaimer</h1>
+        <h1 style="text-align: center;">📜 Legal Disclaimer</h1>
+        <p style="text-align: center; color: #777;">Please read this disclaimer carefully before using our website or services.</p>
         
-        <p>This website is for **informational purposes only** and does not constitute legal advice. By accessing this site, you acknowledge that there has been no advertisement, solicitation, personal communication, invitation, or inducement of any sort whatsoever from us or any of our members to solicit any work through this website.</p>
-        
-        <p>The information provided on this website is provided "as is" without any representations or warranties, express or implied. We do not guarantee the information is accurate, complete, or current.</p>
+        <div style="margin-top: 30px;">
+            
+            <h3 style="color: #36454F;">1. No Attorney-Client Relationship</h3>
+            <p>The information provided on this website (thejusticefirm.in) is for general informational purposes only. It does not constitute legal advice and does not create an attorney-client relationship between you and Adv. Ganga Shankar Shastri or The Justice Firm. Contacting us through this website, email, or WhatsApp does not establish an attorney-client relationship until a formal engagement agreement is signed.</p>
 
-        <h3 style="margin-top: 30px;">Advocates Act, 1961 Compliance</h3>
-        <p>We strictly comply with the rules of the Bar Council of India, which prohibit us from soliciting work or advertising in any manner.</p>
-        
+            <h3 style="color: #36454F;">2. Accuracy of Information</h3>
+            <p>While we strive to keep the information up-to-date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.</p>
+
+            <h3 style="color: #36454F;">3. Not a Substitute for Legal Advice</h3>
+            <p>The content on this website is not a substitute for professional legal advice, counsel, or representation by a licensed attorney. You should not act or rely upon information on this website without seeking the advice of a qualified attorney.</p>
+
+            <h3 style="color: #36454F;">4. Jurisdiction</h3>
+            <p>The Justice Firm primarily practices law in India, with primary jurisdiction in Allahabad/Prayagraj, Uttar Pradesh. Laws vary by jurisdiction, and the information provided may not be applicable to your specific legal situation.</p>
+
+            <p style="margin-top: 40px; font-weight: bold; color: #444;">By using this website, you acknowledge that you have read and understood this disclaimer.</p>
+        </div>
     </div>
+    
+    <footer style="max-width: 900px; margin: 80px auto 0 auto; padding: 20px 0; background-color: #36454F; color: white; font-size: 14px; text-align: center;">
+        <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
+        <p style="margin-top: 5px;">Committed to Ethical Practice and Legal Excellence in India.</p>
+        <p style="margin-top: 5px;"><a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Legal Disclaimer</a></p>
+    </footer>
+
 </body>
 </html>
