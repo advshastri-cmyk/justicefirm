@@ -1,0 +1,370 @@
+# ---------------------------
+# FILE: package.json
+# ---------------------------
+{
+  "name": "justicefirm-admin-blog",
+  "version": "1.0.0",
+  "description": "Admin blog server for The Justice Firm - publish articles and upload images",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.1",
+    "multer": "^1.4.5-lts.1",
+    "sanitize-filename": "^1.6.3"
+  },
+  "engines": { "node": ">=16" }
+}
+
+# ---------------------------
+# FILE: server/index.js
+# ---------------------------
+/*
+  Server for Admin Blog System
+  - Serves public/ as static files
+  - POST /api/upload  -> upload images (saves to public/uploads/)
+  - POST /api/article -> publish article HTML to public/articles/<slug>.html
+  - GET  /api/articles -> list published article filenames (basic)
+  
+  HOW TO RUN:
+  1) npm install
+  2) npm start
+  3) open http://localhost:3000/admin.html
+*/
+
+const express = require('express');
+const path = require('path');
+const fs = require('fs-extra');
+const multer = require('multer');
+const sanitize = require('sanitize-filename');
+const cors = require('cors');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Ensure public directories exist
+const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+const UPLOADS_DIR = path.join(PUBLIC_DIR, 'uploads');
+const ARTICLES_DIR = path.join(PUBLIC_DIR, 'articles');
+fs.ensureDirSync(UPLOADS_DIR);
+fs.ensureDirSync(ARTICLES_DIR);
+
+// Middlewares
+app.use(cors());
+app.use(express.json({ limit: '5mb' }));
+app.use(express.urlencoded({ extended: true, limit: '5mb' }));
+app.use(express.static(PUBLIC_DIR, { extensions: ['html'] }));
+
+// Multer for file uploads (images)
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, UPLOADS_DIR),
+  filename: (req, file, cb) => {
+    // sanitize and make unique
+    const ext = path.extname(file.originalname);
+    const base = sanitize(path.basename(file.originalname, ext)).replace(/\s+/g, '-').toLowerCase();
+    const final = `${base}-${Date.now()}${ext}`;
+    cb(null, final);
+  }
+});
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
+  fileFilter: (req, file, cb) => {
+    if (!file.mimetype.startsWith('image/')) {
+      return cb(new Error('Only image uploads allowed'), false);
+    }
+    cb(null, true);
+  }
+});
+
+// POST /api/upload -> accepts "file" (image)
+app.post('/api/upload', upload.single('file'), (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ success: false, message: 'No file uploaded' });
+    const rel = `/uploads/${req.file.filename}`;
+    return res.json({ success: true, url: rel, filename: req.file.filename });
+  } catch (err) {
+    console.error('Upload error', err);
+    return res.status(500).json({ success: false, message: err.message || 'Upload failed' });
+  }
+});
+
+// Helper: escape minimal HTML for title/meta
+function escapeHtml(s) {
+  return (s || '').toString()
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// POST /api/article -> { title, slug (optional), meta, content, author(optional) }
+app.post('/api/article', async (req, res) => {
+  try {
+    const { title, slug, meta, content, author } = req.body || {};
+    if (!title || !content) return res.status(400).json({ success: false, message: 'title and content are required' });
+
+    // create safe slug
+    let s = (slug && slug.toString().trim()) || title;
+    s = s.toLowerCase().replace(/[^a-z0-9\- ]+/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/(^-|-$)/g, '');
+    if (!s) s = `article-${Date.now()}`;
+    const filename = sanitize(s).slice(0, 120) + '.html';
+    const filePath = path.join(ARTICLES_DIR, filename);
+
+    // Build article HTML using a clean template
+    const html = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>${escapeHtml(title)} — The Justice Firm</title>
+  <meta name="description" content="${escapeHtml(meta || title)}"/>
+  <link href="/styles.css" rel="stylesheet">
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;background:#f7f8fb;color:#0f1724;line-height:1.7}
+    .wrap{max-width:900px;margin:28px auto;padding:18px}
+    .card{background:white;padding:20px;border-radius:10px;box-shadow:0 16px 40px rgba(2,6,23,0.06)}
+    h1{font-family:Merriweather,serif}
+    .meta{color:#6b7280;font-size:0.95rem}
+    .content{margin-top:18px}
+    .content img{max-width:100%;height:auto;border-radius:8px}
+    footer{margin-top:24px;color:#6b7280;font-size:0.95rem;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="/index.html">← Home</a>
+    <div class="card">
+      <h1>${escapeHtml(title)}</h1>
+      <div class="meta">By ${escapeHtml(author || 'The Justice Firm')} • ${new Date().toLocaleDateString('en-IN')}</div>
+      ${ meta ? `<p class="meta">${escapeHtml(meta)}</p>` : '' }
+      <article class="content">
+        ${content}
+      </article>
+      <div style="margin-top:20px;color:#6b7280">© ${new Date().getFullYear()} The Justice Firm</div>
+    </div>
+  </div>
+</body>
+</html>`;
+
+    await fs.writeFile(filePath, html, 'utf8');
+    const publicUrl = `/articles/${encodeURIComponent(filename)}`;
+    return res.json({ success: true, url: publicUrl, filename });
+  } catch (err) {
+    console.error('Article save error', err);
+    return res.status(500).json({ success: false, message: err.message || 'Server error' });
+  }
+});
+
+// GET /api/articles -> list article files (basic)
+app.get('/api/articles', async (req, res) => {
+  try {
+    const files = await fs.readdir(ARTICLES_DIR);
+    const htmlFiles = files.filter(f => f.endsWith('.html'));
+    return res.json({ success: true, files: htmlFiles });
+  } catch (err) {
+    console.error('List articles error', err);
+    return res.status(500).json({ success: false, message: 'Failed to list' });
+  }
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}  — serving ${PUBLIC_DIR}`);
+});
+
+# ---------------------------
+# FILE: public/admin.html
+# ---------------------------
+<!--
+  Admin Editor (save as public/admin.html)
+  - TinyMCE editor for composing/pasting articles
+  - Upload images to /api/upload -> returned URL can be inserted into editor
+  - Publish posts to /api/article
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Admin — Publish Article | The Justice Firm</title>
+
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+  <style>
+    body{font-family:Inter,system-ui;margin:0;background:#f6f8fb;color:#0f1724}
+    .wrap{max-width:980px;margin:20px auto;padding:16px}
+    label{display:block;margin-top:12px;font-weight:600}
+    input[type=text],input[type=file],textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e2e6ee}
+    .row{display:flex;gap:8px;margin-top:12px}
+    .btn{background:#0b5cff;color:white;padding:10px 12px;border-radius:8px;border:none;cursor:pointer}
+    .btn.ghost{background:#fff;border:1px solid #d7dbe6;color:#0f1724}
+    .note{color:#6b7280;font-size:0.95rem;margin-top:8px}
+    .status{margin-left:10px;color:#6b7280}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h2>Publish Article — The Justice Firm</h2>
+    <p class="note">Write or paste your article. Use the "Upload image" button to add images to /public/uploads/ and then insert the returned image URL into the editor (<em>Insert -> Image</em>).</p>
+
+    <label>Title</label>
+    <input id="title" type="text" placeholder="Article title (required)">
+
+    <label>Slug (optional)</label>
+    <input id="slug" type="text" placeholder="leave blank to auto-generate">
+
+    <label>Meta description (optional)</label>
+    <input id="meta" type="text" placeholder="Short description for SEO">
+
+    <label>Hero image (optional) — upload image</label>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input id="imageFile" type="file" accept="image/*">
+      <button id="uploadBtn" class="btn">Upload image</button>
+      <div id="uploadStatus" class="status"></div>
+    </div>
+
+    <label>Article Content</label>
+    <textarea id="editor"> <h2>Start typing or paste your article...</h2> </textarea>
+
+    <div class="row" style="margin-top:14px">
+      <button id="publish" class="btn">Publish</button>
+      <button id="preview" class="btn ghost">Preview</button>
+      <div id="status" class="status"></div>
+    </div>
+
+    <p class="note" style="margin-top:14px">After publishing, the server will create a file in <code>/public/articles/</code>. Open the returned URL to view the article.</p>
+  </div>
+
+<script>
+  // Initialize TinyMCE
+  tinymce.init({
+    selector:'#editor',
+    height:560,
+    menubar:true,
+    plugins:'link image lists table paste code',
+    toolbar:'undo redo | bold italic underline | fontsizeselect | alignleft aligncenter alignright | bullist numlist | link image | code',
+    content_style:'body{font-family:Inter,system-ui;font-size:16px;}'
+  });
+
+  // Upload image to server
+  document.getElementById('uploadBtn').addEventListener('click', async () => {
+    const input = document.getElementById('imageFile');
+    const file = input.files && input.files[0];
+    const status = document.getElementById('uploadStatus');
+    if(!file){ status.textContent='Select an image first'; return; }
+    status.textContent = 'Uploading...';
+    const fd = new FormData();
+    fd.append('file', file);
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: fd });
+      const j = await res.json();
+      if(res.ok && j.success){
+        status.innerHTML = 'Uploaded: <code>'+j.url+'</code>';
+        // insert image into editor
+        const url = j.url;
+        tinymce.activeEditor.insertContent(`<p><img src="${url}" alt=""></p>`);
+      } else {
+        status.textContent = 'Upload failed: ' + (j.message || res.statusText);
+      }
+    } catch(err){
+      status.textContent = 'Network error';
+    }
+  });
+
+  // Preview
+  document.getElementById('preview').addEventListener('click', ()=>{
+    const html = tinymce.get('editor').getContent();
+    const w = window.open('', '_blank');
+    w.document.write(html);
+    w.document.close();
+  });
+
+  // Publish
+  document.getElementById('publish').addEventListener('click', async ()=>{
+    const title = document.getElementById('title').value.trim();
+    let slug = document.getElementById('slug').value.trim();
+    const meta = document.getElementById('meta').value.trim();
+    const content = tinymce.get('editor').getContent({ format: 'html' });
+    const status = document.getElementById('status');
+    if(!title || !content){ status.textContent = 'Title and content are required.'; return; }
+    if(!slug) slug = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').slice(0,80);
+    status.textContent = 'Publishing...';
+    try {
+      const res = await fetch('/api/article', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ title, slug, meta, content, author: 'Adv. Ganga S. Shastri' })
+      });
+      const j = await res.json();
+      if(res.ok && j.success){
+        status.innerHTML = 'Published: <a href="'+j.url+'" target="_blank">'+j.url+'</a>';
+        window.open(j.url, '_blank');
+      } else {
+        status.textContent = 'Publish error: ' + (j.message || res.statusText);
+      }
+    } catch(err){
+      status.textContent = 'Network error';
+    }
+  });
+</script>
+</body>
+</html>
+
+# ---------------------------
+# OPTIONAL FILE: public/styles.css
+# ---------------------------
+/* Basic site styles used by article template (optional) */
+body{font-family:Inter,system-ui;margin:0;background:#f7f8fb;color:#0f1724}
+.wrap{max-width:920px;margin:28px auto;padding:18px}
+.card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 16px 40px rgba(2,6,23,0.06)}
+a{color:#0b5cff}
+
+# ---------------------------
+# README (how to install & use)
+# ---------------------------
+
+/*
+1) Save files:
+   - package.json
+   - server/index.js
+   - public/admin.html
+   - public/styles.css (optional)
+   Ensure folder structure:
+     project-root/
+       package.json
+       server/
+         index.js
+       public/
+         admin.html
+         styles.css
+         index.html (your site)
+         uploads/   (auto-created)
+         articles/  (auto-created)
+
+2) Install:
+   npm install
+
+3) Start server:
+   npm start
+   or for development:
+   npm run dev   (if you have nodemon)
+
+4) Open admin:
+   http://localhost:3000/admin.html
+
+5) Use:
+   - Compose article in TinyMCE.
+   - Upload images (Upload button) — adds image to /public/uploads/ and inserts into editor.
+   - Click Publish — server saves HTML file to /public/articles/<slug>.html and returns URL.
+
+6) To manually view articles:
+   Open http://localhost:3000/articles/<slug>.html
+
+Security & notes:
+ - Only basic validation is included. For production, protect admin.html with authentication (basic auth, password, or proper admin panel).
+ - Limit uploads & sanitize further for public deployments.
+*/
