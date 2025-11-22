@@ -1,218 +1,190 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact Us | The Justice Firm</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — The Justice Firm | Advocates & Legal Consultants</title>
+  <meta name="description" content="Contact The Justice Firm for legal consultation in Family, Criminal, Civil and Mediation matters. Allahabad based law firm." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-      /* ==== GLOBAL LAW FIRM THEME ==== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    :root{
+      --bg:#f7f8fa; --card:#ffffff; --ink:#0f1724; --muted:#6b7280;
+      --accent:#0b5cff; --gold:#d4af37; --radius:12px; --shadow:0 14px 50px rgba(15,23,36,0.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui;background:linear-gradient(180deg,var(--bg),#eef3fb);color:var(--ink);line-height:1.6}
 
-:root {
-  --charcoal: #1f2a33;   /* Darker charcoal for headings/nav/footer */
-  --gold: #d4af37;       /* Elegant gold accent */
-  --light: #f6f7f8;      /* Softer white background */
-  --text: #111111;       /* Deep near-black text */
-}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-/* General text and body setup */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--light);
-  color: var(--text);
-  line-height: 1.7;
-  margin: 0;
-}
+    /* nav */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;margin:18px;border-radius:999px;background:#fff;box-shadow:var(--shadow);}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#2e6df6);display:grid;place-items:center;color:white;font-weight:700}
+    .nav-links{display:flex;gap:12px}
+    .nav-links a{color:var(--muted);font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--accent),#2e6df6);color:white;padding:10px 14px;border-radius:10px;font-weight:700}
 
-/* Headings */
-h1, h2, h3, h4 {
-  color: var(--charcoal);
-  font-weight: 600;
-}
+    .wrap{max-width:1100px;margin:22px auto;padding:0 18px}
 
-/* Links */
-a {
-  color: var(--gold);
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-a:hover {
-  color: var(--charcoal);
-}
+    /* hero */
+    .hero{background:linear-gradient(180deg,#fff,#f9faff);padding:26px;border-radius:14px;box-shadow:var(--shadow);margin-bottom:22px}
+    .eyebrow{display:inline-block;background:var(--accent);color:white;padding:6px 10px;border-radius:999px;font-size:.82rem;font-weight:700}
+    h1{font-family:Merriweather,serif;margin:12px 0}
 
-/* Navigation bar */
-nav {
-  background: var(--charcoal);
-  color: white;
-  padding: 0.7rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-nav ul {
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-nav a {
-  color: var(--gold);
-}
-nav a:hover {
-  color: white;
-}
+    /* grid */
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .card{background:#fff;padding:20px;border-radius:12px;box-shadow:var(--shadow)}
 
-/* Main content boxes */
-main {
-  max-width: 1000px;
-  margin: 3rem auto;
-  background: #fff;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+    /* contact details */
+    .detail{margin-bottom:16px}
+    .detail strong{display:block;font-size:1rem}
+    .muted{color:var(--muted)}
 
-/* Paragraph text */
-p {
-  color: var(--text);
-  font-size: 1rem;
-}
+    /* form */
+    .form-group{margin-bottom:14px}
+    input,select,textarea{
+      width:100%;padding:12px;border-radius:10px;border:1px solid #d0d7df;
+      font-size:1rem;background:white;
+    }
+    button{cursor:pointer;border:none}
 
-/* Buttons */
-button, .btn {
-  background: var(--gold);
-  color: black;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  padding: 0.7rem 1.2rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-button:hover, .btn:hover {
-  background: var(--charcoal);
-  color: white;
-}
+    .btn{background:var(--accent);color:white;padding:12px 18px;border-radius:10px;font-weight:700;width:100%}
+    .btn:hover{opacity:.9}
 
-/* Input fields and textareas */
-input, textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  color: var(--text);
-  background: white;
-  font-family: 'Poppins', sans-serif;
-}
-input::placeholder, textarea::placeholder {
-  color: #666;
-}
+    /* hours */
+    .hours{margin-top:14px;padding:14px;background:#f3f6ff;border-radius:10px}
 
-/* Cards / Boxes (for team, articles, etc.) */
-.card, .team-member, .payment-box {
-  background: #fafafa;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.3s;
-}
-.card:hover, .team-member:hover, .payment-box:hover {
-  transform: translateY(-4px);
-}
+    footer{margin-top:22px;padding:22px;background:linear-gradient(180deg,#02112b,#041735);color:white;border-radius:12px}
 
-/* Footer */
-footer {
-  background: var(--charcoal);
-  color: white;
-  text-align: center;
-  padding: 2rem;
-  border-top: 4px solid var(--gold);
-}
-footer a {
-  color: var(--gold);
-}
-footer a:hover {
-  color: white;
-}
-
-/* Responsive layout for mobile */
-@media (max-width: 768px) {
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  main {
-    margin: 2rem 1rem;
-    padding: 1.5rem;
-  }
-  h1 {
-    font-size: 1.6rem;
-  }
-}
-     
+    /* responsive */
+    @media(max-width:780px){.grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.nav-links{display:none}}
   </style>
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <ul><li><strong>⚖️ The Justice Firm</strong></li></ul>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="payment.html">Payment</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="disclaimer.html">Disclaimer</a></li>
-      <li><a href="privacy.html">Privacy</a></li>
-    </ul>
+  <!-- nav -->
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-logo">TJ</div>
+      <div>
+        <div style="font-weight:700">The Justice Firm</div>
+        <small style="color:var(--muted)">Advocates & Legal Consultants</small>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html" style="font-weight:800;color:var(--ink)">Contact</a>
+    </div>
+
+    <div><a class="cta" href="#contactForm">Book Consultation</a></div>
   </nav>
 
-  <main>
-    <h1>Contact The Justice Firm</h1>
+  <main class="wrap">
 
-    <p style="text-align:center;">Have a question or need legal assistance? Fill out the form below and we’ll respond within 24 hours.</p>
+    <!-- hero -->
+    <header class="hero">
+      <span class="eyebrow">Get in touch with us</span>
+      <h1>Contact & Consultation</h1>
+      <p class="muted">We respond within 24 business hours. For urgent matters (bail, injunction, DV, etc.), please call directly.</p>
+    </header>
 
-    <!-- Contact Form -->
-    <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="Name" placeholder="Your Full Name" required>
-      <input type="email" name="Email" placeholder="Your Email Address" required>
-      <input type="tel" name="Phone" placeholder="Your Contact Number">
-      <textarea name="Message" rows="5" placeholder="Describe your legal query..." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <div class="grid">
 
-    <!-- Contact Info -->
-    <div class="contact-info">
-      <h3>📍 Office Address</h3>
-      <p>HIG–41, Rajrooppur, Allahabad, Uttar Pradesh, India</p>
+      <!-- contact info -->
+      <div class="card">
+        <h2>Office Information</h2>
 
-      <h3>📞 Contact</h3>
-      <p>
-        Phone / WhatsApp: <a href="https://wa.me/919454183793" target="_blank">+91 94541 83793</a><br>
-        Email: <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
-      </p>
+        <div class="detail">
+          <strong>📞 Phone</strong>
+          <div class="muted">+91 98765 43210</div>
+        </div>
 
-      <h3>🕒 Office Hours</h3>
-      <p>Monday – Saturday: 10:00 AM to 6:00 PM<br>Sunday: Closed</p>
+        <div class="detail">
+          <strong>✉️ Email</strong>
+          <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
+        </div>
 
-      <h3>📌 Find Us on Map</h3>
-      <iframe 
-        src="https://www.google.com/maps?q=Rajrooppur,+Allahabad,+Uttar+Pradesh,+India&output=embed"
-        allowfullscreen="" loading="lazy"></iframe>
+        <div class="detail">
+          <strong>📍 Office Address</strong>
+          <div class="muted">Rajrooppur, Allahabad, Uttar Pradesh<br>India — 211004</div>
+          <a href="https://maps.app.goo.gl/" target="_blank">Open in Google Maps →</a>
+        </div>
+
+        <div class="detail hours">
+          <strong>⏱ Working Hours</strong>
+          <div class="muted">Mon–Sat: 10 AM – 6 PM<br>Sunday: Closed</div>
+        </div>
+
+        <div class="detail" style="margin-top:16px">
+          <strong>💳 UPI Payment (optional)</strong>
+          <img src="upi_qr.jpg" alt="UPI QR" style="width:140px;border-radius:8px;margin:10px 0">
+          <div class="muted">UPI ID: <strong>adv.shastri@oksbi</strong></div>
+        </div>
+      </div>
+
+      <!-- form -->
+      <div class="card" id="contactForm">
+        <h2>Send Your Query</h2>
+
+        <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain">
+
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" name="Client Name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" name="Client Email" required>
+          </div>
+
+          <div class="form-group">
+            <label>Phone *</label>
+            <input type="text" name="Client Phone" required>
+          </div>
+
+          <div class="form-group">
+            <label>Type of Matter</label>
+            <select name="Matter Type">
+              <option>Family / Matrimonial</option>
+              <option>Criminal</option>
+              <option>Civil / Property</option>
+              <option>Mediation</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Your Message *</label>
+            <textarea name="Query Details" rows="5" required></textarea>
+          </div>
+
+          <button class="btn" type="submit">Send Request</button>
+
+        </form>
+      </div>
+
     </div>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
-    <p><a href="index.html">← Back to Home</a></p>
-  </footer>
+    <footer>
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:700">The Justice Firm</div>
+          <div class="muted">Advocates & Legal Consultants — Based in India</div>
+        </div>
+        <div class="muted">© 2025 The Justice Firm</div>
+      </div>
+    </footer>
+
+  </main>
 
 </body>
 </html>
