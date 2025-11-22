@@ -11,23 +11,88 @@
       --gold: #d4af37;
       --light: #f8f9fa;
     }
+
     body {
       background: var(--light);
       color: #222;
       line-height: 1.6;
     }
+
+    /* Navbar */
     nav {
-      background-color: white;
+      background: white;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
     }
-    nav ul li a {
+
+    nav ul {
+      margin: 0;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav a {
       color: var(--charcoal);
       font-weight: 600;
+      text-decoration: none;
       transition: 0.3s;
     }
-    nav ul li a:hover {
+
+    nav a:hover {
       color: var(--gold);
     }
+
+    #clock {
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    /* Animated Scales Glow */
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 5px var(--gold); }
+      50% { text-shadow: 0 0 15px var(--gold); }
+    }
+
+    nav strong {
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    /* Latest Judgments Ticker */
+    #ticker {
+      background: var(--gold);
+      color: var(--charcoal);
+      font-weight: 600;
+      padding: 0.4rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    #ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: slide 40s linear infinite;
+    }
+
+    #ticker:hover #ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-50%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Hero */
     .hero {
       background: url('BANNER_IMAGE_URL_HERE') center/cover no-repeat;
       text-align: center;
@@ -37,145 +102,91 @@
       background-color: rgba(0,0,0,0.4);
       background-blend-mode: multiply;
     }
+
     .hero h1 {
       font-size: 2.8rem;
-      margin-bottom: 0.3rem;
       font-family: "Georgia", serif;
     }
+
     .hero h3 {
       color: var(--gold);
-      font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
+
+    .hero p.quote {
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
     .hero a {
       background: var(--gold);
-      color: #000;
+      color: black;
       border-radius: 50px;
       padding: 0.6rem 1.2rem;
       text-decoration: none;
       font-weight: 600;
-      transition: 0.3s;
     }
+
     .hero a:hover {
       background: white;
       color: var(--charcoal);
     }
-    section {
+
+    /* Calendar Section */
+    #calendar-section {
       margin: 4rem auto;
-      max-width: 1000px;
-    }
-    .service-item {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--charcoal);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
-    .service-item:hover {
-      transform: translateY(-5px);
-    }
-    .about-section {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      padding: 2rem;
-    }
-    .about-section img {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--gold);
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-    }
-    .team-card {
-      background: white;
+      max-width: 600px;
       text-align: center;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-    .team-card:hover {
-      transform: translateY(-5px);
-    }
-    .team-card img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 3px solid var(--gold);
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    .team-card a {
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .testimonial-box {
       background: white;
-      border-left: 4px solid var(--charcoal);
-      border-radius: 8px;
       padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .blog-card {
-      background: white;
       border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .blog-card:hover {
-      transform: translateY(-5px);
+
+    #calendar {
+      margin-top: 1rem;
     }
-    .blog-card img {
+
+    #calendar table {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
+      border-collapse: collapse;
     }
-    .blog-card-content {
-      padding: 1.2rem;
+
+    #calendar th, #calendar td {
+      padding: 0.5rem;
+      text-align: center;
     }
-    .blog-card-content h3 {
+
+    #calendar th {
       color: var(--charcoal);
     }
-    .blog-card-content a {
-      color: var(--gold);
-      font-weight: 600;
-      text-decoration: none;
+
+    #calendar td.today {
+      background: var(--gold);
+      color: black;
+      border-radius: 50%;
     }
-    form button {
-      background: var(--charcoal);
-      color: white;
-    }
+
+    /* Footer */
     footer {
       background: var(--charcoal);
       color: white;
-      padding: 2rem;
       text-align: center;
+      padding: 2rem;
       border-top: 4px solid var(--gold);
     }
+
     footer a {
       color: var(--gold);
       text-decoration: none;
     }
+
     footer a:hover {
       color: white;
     }
+
+    /* Back-to-top Button */
     #topBtn {
       position: fixed;
       bottom: 25px;
@@ -191,145 +202,117 @@
     }
   </style>
 </head>
-
 <body>
 
-<nav class="container-fluid">
-  <ul>
-    <li><strong>⚖️ The Justice Firm</strong></li>
-  </ul>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#practice">Practice</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#articles">Blog</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
-    <li><a href="#contact" role="button">Contact</a></li>
-    <li><a href="disclaimer.html">Disclaimer</a></li>
-  </ul>
-</nav>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><strong>⚖️ The Justice Firm</strong></li>
+    </ul>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#articles">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li id="clock"></li>
+    </ul>
+  </nav>
 
-<header class="hero">
-  <h1>The Justice Firm</h1>
-  <h3>Advocates & Legal Consultants</h3>
-  <p>Dedicated to Your Legal Success</p>
-  <a href="#contact">Book Consultation</a>
-</header>
-
-<main class="container">
-  <section id="practice">
-    <h2>⚖️ Practice Areas</h2>
-    <div class="grid">
-      <div class="service-item"><h3>Family & Matrimonial Law</h3><p>Divorce, Maintenance, Custody, Mediation, and more.</p></div>
-      <div class="service-item"><h3>Civil Disputes</h3><p>Property, Contract Disputes, Partition, Injunctions, Recovery Suits.</p></div>
-      <div class="service-item"><h3>Criminal Law</h3><p>Bail, FIR Quashing, Trial Matters, Criminal Appeals.</p></div>
-      <div class="service-item"><h3>Constitutional Matters</h3><p>Writ Petitions, Service Matters, Fundamental Rights.</p></div>
+  <!-- Judgments Ticker -->
+  <div id="ticker">
+    <div id="ticker-content">
+      ⚖️ Latest Judgments: 
+      Kesavananda Bharati v. State of Kerala (1973) •
+      Maneka Gandhi v. Union of India (1978) •
+      Vishaka v. State of Rajasthan (1997) •
+      Navtej Singh Johar v. Union of India (2018) •
+      Shayara Bano v. Union of India (2017) •
+      Joseph Shine v. Union of India (2018) •
+      Indra Sawhney v. Union of India (1992) •
+      K.S. Puttaswamy v. Union of India (2017) •
+      Olga Tellis v. Bombay Municipal Corporation (1985) •
+      Common Cause v. Union of India (2018) •
+      View All Judgments →
     </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>The Justice Firm</h1>
+    <h3>Advocates & Legal Consultants</h3>
+    <p class="quote">“Justice is truth in action — delivering integrity, excellence, and trust in every case.”</p>
+    <a href="#contact">Book Consultation</a>
+  </header>
+
+  <!-- Calendar Section -->
+  <section id="calendar-section">
+    <h2>📅 Court Calendar</h2>
+    <div id="calendar"></div>
+    <br>
+    <a href="#" class="contrast" style="background: var(--gold); color: black; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none;">📅 Download Court Calendar (PDF)</a>
   </section>
 
-  <section id="about">
-    <h2>About Adv. Ganga Shankar Shastri</h2>
-    <div class="about-section">
-      <img src="YOUR_PHOTO_URL_HERE" alt="Adv. Ganga Shankar Shastri">
-      <div>
-        <p>Adv. Ganga Shankar Shastri is a dedicated and result-driven attorney with over 15 years of professional experience in litigation and legal consultancy.</p>
-        <p>He specializes in Family Law, Civil Litigation, Criminal Matters, and Constitutional Remedies, ensuring clarity, ethics, and justice for every client.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
+    <p><a href="disclaimer.html">Legal Disclaimer</a> • <a href="#">Privacy Policy</a></p>
+  </footer>
 
-  <section id="team">
-    <h2>Our Team of Advocates</h2>
-    <div class="team-grid">
-      <div class="team-card">
-        <img src="YOUR_PHOTO_URL_HERE" alt="Adv. Ganga Shankar Shastri">
-        <h3>Adv. Ganga Shankar Shastri</h3>
-        <p>Founder & Head Counsel</p>
-        <a href="#">LinkedIn</a>
-      </div>
-      <div class="team-card">
-        <img src="MINAKSHI_PHOTO_URL_HERE" alt="Adv. Minakshi Shastri">
-        <h3>Adv. Minakshi Shastri</h3>
-        <p>Family Law Specialist</p>
-        <a href="#">LinkedIn</a>
-      </div>
-      <div class="team-card">
-        <img src="SHIVANI_PHOTO_URL_HERE" alt="Dr. Shivani Shastri">
-        <h3>Dr. Shivani Shastri</h3>
-        <p>Criminal Law Expert</p>
-        <a href="#">LinkedIn</a>
-      </div>
-      <div class="team-card">
-        <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6" alt="Adv. Sanjay Kumar">
-        <h3>Adv. Sanjay Kumar</h3>
-        <p>Civil & Property Law Specialist</p>
-        <a href="#">LinkedIn</a>
-      </div>
-    </div>
-  </section>
+  <button id="topBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
 
-  <section id="articles">
-    <h2>📰 Legal Insights & Articles</h2>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" alt="Article">
-        <div class="blog-card-content">
-          <h3>Understanding Bail in India</h3>
-          <p>Know your rights and the process behind securing bail under Indian criminal law.</p>
-          <a href="#">Read More →</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0" alt="Article">
-        <div class="blog-card-content">
-          <h3>Property Disputes: Key Legal Remedies</h3>
-          <p>A short guide on property conflicts and how courts handle them efficiently.</p>
-          <a href="#">Read More →</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img src="https://images.unsplash.com/photo-1555375771-14b2cc82cd72" alt="Article">
-        <div class="blog-card-content">
-          <h3>Women’s Rights Under Indian Law</h3>
-          <p>An overview of important provisions protecting women against harassment and violence.</p>
-          <a href="#">Read More →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <script>
+    // Live Clock (IST)
+    function updateClock() {
+      let options = {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+      };
+      document.getElementById('clock').textContent =
+        new Date().toLocaleString('en-IN', options) + ' IST';
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-  <section id="testimonials">
-    <h2>💬 Client Testimonials</h2>
-    <div class="grid">
-      <div class="testimonial-box">
-        <blockquote>“Adv. Shastri handled my case with utmost professionalism. Highly recommended for family matters.”</blockquote>
-        <p><strong>— Rajan K.</strong></p>
-      </div>
-      <div class="testimonial-box">
-        <blockquote>“Excellent communication and fast resolution. I felt confident throughout the entire process.”</blockquote>
-        <p><strong>— Sangeeta V.</strong></p>
-      </div>
-    </div>
-  </section>
+    // Generate Calendar
+    function generateCalendar() {
+      const now = new Date();
+      const month = now.getMonth();
+      const year = now.getFullYear();
+      const today = now.getDate();
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
 
-  <section id="contact">
-    <h2>✉️ Book Consultation</h2>
-    <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain" onsubmit="alert('Your consultation request has been sent successfully!');">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="query" rows="4" placeholder="Your Query" required></textarea>
-      <button type="submit">Send Consultation Request</button>
-    </form>
-  </section>
-</main>
-
-<footer>
-  <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
-  <p><a href="disclaimer.html">Legal Disclaimer</a> • <a href="#">Privacy Policy</a></p>
-</footer>
-
-<button id="topBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+      let table = `<table>
+        <tr><th colspan="7">${months[month]} ${year}</th></tr>
+        <tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr><tr>`;
+      let day = 1;
+      for (let i = 0; i < firstDay; i++) table += "<td></td>";
+      for (let i = firstDay; i < 7; i++) {
+        table += `<td${day === today ? ' class="today"' : ''}>${day}</td>`;
+        day++;
+      }
+      table += "</tr>";
+      while (day <= daysInMonth) {
+        table += "<tr>";
+        for (let i = 0; i < 7 && day <= daysInMonth; i++) {
+          table += `<td${day === today ? ' class="today"' : ''}>${day}</td>`;
+          day++;
+        }
+        table += "</tr>";
+      }
+      table += "</table>";
+      document.getElementById("calendar").innerHTML = table;
+    }
+    generateCalendar();
+  </script>
 
 </body>
 </html>
