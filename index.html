@@ -1,495 +1,351 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Justice Firm — Advocates & Legal Consultants (India)</title>
-  <meta name="description" content="The Justice Firm — Family, Criminal & Civil disputes and Mediation. Book consultation." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
-  <style>
-    /* ===== GLOBAL ===== */
-    :root{
-      --bg:#f7f8fb; --card:#ffffff; --ink:#0f1724; --muted:#6b7280;
-      --accent:#0b5cff; --gold:#d4af37; --radius:12px; --shadow:0 18px 60px rgba(15,23,36,0.08);
-      --gap:16px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>⚖️ The Justice Firm | Advocates & Legal Consultants</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Pico CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+<!-- ========================================================= -->
+<!--           SNIPPET A — JSON-LD STRUCTURED DATA (SEO)       -->
+<!-- ========================================================= -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Organization",
+      "@id":"https://your-domain.example/#org",
+      "name":"The Justice Firm",
+      "url":"https://your-domain.example/",
+      "logo":"https://your-domain.example/logo.png",
+      "contactPoint":[
+        {
+          "@type":"ContactPoint",
+          "telephone":"+91-9876543210",
+          "contactType":"customer service",
+          "areaServed":"IN"
+        }
+      ]
+    },
+    {
+      "@type":"LegalService",
+      "@id":"https://your-domain.example/#legalservice",
+      "name":"The Justice Firm",
+      "provider":{"@id":"https://your-domain.example/#org"},
+      "areaServed":"IN",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Rajrooppur",
+        "addressLocality":"Allahabad (Prayagraj)",
+        "addressRegion":"Uttar Pradesh",
+        "postalCode":"211004",
+        "addressCountry":"IN"
+      },
+      "telephone":"+91-9876543210"
+    },
+    {
+      "@type":"Person",
+      "name":"Adv. Ganga Shankar Shastri",
+      "jobTitle":"Founder & Lead Counsel",
+      "worksFor":{"@id":"https://your-domain.example/#org"}
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;background:linear-gradient(180deg,var(--bg),#eef3fb);color:var(--ink);-webkit-font-smoothing:antialiased}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    img{max-width:100%;height:auto;display:block}
+  ]
+}
+</script>
 
-    /* ===== NAV (responsive with hamburger) ===== */
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;padding:12px 14px;margin:12px;border-radius:999px;background:#fff;box-shadow:var(--shadow);
-    }
-    .brand{display:flex;align-items:center;gap:12px;min-width:0}
-    .brand-logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#2e6df6);display:grid;place-items:center;color:white;font-weight:700;flex:0 0 auto}
-    .brand h1{font-size:1rem;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .nav-right{display:flex;align-items:center;gap:12px}
-    .nav-links{display:flex;gap:8px;align-items:center}
-    .nav-links a{font-weight:600;color:var(--muted);padding:8px 10px;border-radius:8px}
-    .nav-toggle{display:none;background:transparent;border:0;font-size:22px;padding:6px;border-radius:8px}
-    .cta{background:linear-gradient(90deg,var(--accent),#2e6df6);color:white;padding:10px 12px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
+<!-- ========================================================= -->
+<!--                       MAIN STYLES                         -->
+<!-- ========================================================= -->
+<style>
+:root{
+  --charcoal:#1e272e;
+  --gold:#d4af37;
+  --cream:#f5f5f4;
+  --text:#111;
+}
 
-    /* ===== LAYOUT & HERO ===== */
-    .wrap{max-width:1100px;margin:12px auto;padding:0 12px}
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
-    .hero-card{background:linear-gradient(180deg,#fff,#fbfdff);padding:20px;border-radius:12px;box-shadow:var(--shadow)}
-    .eyebrow{display:inline-block;background:linear-gradient(90deg,var(--accent),#2e6df6);color:white;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.82rem}
-    .headline{font-family:Merriweather,serif;font-size:22px;margin:12px 0}
-    .lead{color:var(--muted);margin-bottom:12px}
+body{
+  font-family:'Poppins',sans-serif;
+  margin:0;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.7;
+}
 
-    .panel{background:linear-gradient(180deg,rgba(11,92,255,0.04),rgba(11,92,255,0.02));padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(11,92,255,0.04)}
+/* NAVBAR */
+nav{
+  background:#fff;
+  padding:.9rem 1.4rem;
+  position:sticky;top:0;z-index:999;
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+nav a{
+  font-weight:600;color:var(--charcoal);text-decoration:none;
+}
+nav a:hover{color:var(--gold);}
+nav ul{display:flex;gap:1rem;margin:0;padding:0;list-style:none;}
+#clock{color:var(--gold);font-size:.9rem}
 
-    /* ===== GRIDS ===== */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
-    .card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 12px 30px rgba(2,6,23,0.06)}
-    h2{margin:0 0 10px}
+/* HERO */
+.hero{
+  background:url('https://images.unsplash.com/photo-1528747045269-390fe33c19d4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  background-color:rgba(0,0,0,0.6);
+  background-blend-mode:multiply;
+  text-align:center;
+  padding:5rem 1.5rem;
+  border-radius:0 0 24px 24px;
+  color:#fff;
+}
+.hero h1{font-size:2.6rem;}
+.hero h3{color:var(--gold);}
+.hero a{
+  background:var(--gold);
+  color:#000;
+  padding:.6rem 1.2rem;
+  border-radius:30px;
+  font-weight:600;
+  text-decoration:none;
+}
+.hero a:hover{background:#fff;color:#000;}
 
-    /* ===== TEAM (background-image framing) ===== */
-    .team{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
-    .member{background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .28s}
-    .member .photo{width:100%;aspect-ratio:4/3;border-radius:8px;background-color:#eef4ff;background-size:cover;background-repeat:no-repeat;background-position:center 28%;transition:transform .28s}
-    .member h3{margin:10px 0 4px;font-size:1rem}
-    .member p{margin:0;color:var(--muted);font-size:.92rem}
-    .badge{position:absolute;top:10px;left:10px;background:var(--accent);color:white;padding:6px 8px;border-radius:8px;font-weight:700;font-size:.78rem}
+/* SECTIONS */
+section{max-width:1000px;margin:3.5rem auto;padding:0 1rem;}
+h2{
+  border-bottom:3px solid var(--gold);
+  display:inline-block;
+  padding-bottom:4px;
+}
 
-    /* ===== PAYMENT ===== */
-    .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-    .pay-box{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 12px 30px rgba(2,6,23,0.04);text-align:center}
-    .pay-box img{width:140px;border-radius:8px;margin:8px auto}
+/* GRID CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:1.3rem;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+.card img{
+  width:100%;height:260px;
+  object-fit:cover;
+  object-position:center 28%;
+  border-radius:10px;
+}
 
-    /* ===== FORMS ===== */
-    input,textarea,select,button{font-family:Inter,system-ui}
-    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e1e6ee}
-    form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    form .full{grid-column:1/-1}
+/* CALENDAR */
+#calendar-section{
+  background:#fff;
+  padding:1.5rem;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+#calendar table{width:100%;border-collapse:collapse;}
+#calendar td.today{
+  background:var(--gold);
+  border-radius:50%;
+  color:#000;
+}
 
-    /* ===== CALENDAR ===== */
-    #calendar{background:#fff;padding:12px;border-radius:8px;box-shadow:0 8px 24px rgba(2,6,23,0.04)}
-    #calendar table{width:100%;border-collapse:collapse}
-    #calendar th,#calendar td{padding:6px;text-align:center}
-    #calendar td.today{background:var(--gold);color:black;border-radius:50%}
+/* FOOTER */
+footer{
+  background:var(--charcoal);
+  padding:1.8rem 1rem;
+  text-align:center;
+  color:#fff;
+  margin-top:3rem;
+}
+footer a{color:var(--gold);text-decoration:none;}
+footer a:hover{color:#fff;}
 
-    /* ===== MODALS ===== */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;align-items:center;justify-content:center;z-index:400;padding:12px}
-    .modal{background:var(--card);width:100%;max-width:720px;border-radius:12px;padding:16px;box-shadow:0 28px 100px rgba(2,6,23,0.45)}
-    .meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+#topBtn{
+  position:fixed;right:22px;bottom:22px;
+  background:var(--gold);
+  color:#000;font-size:20px;
+  border:none;border-radius:50%;
+  width:48px;height:48px;
+  cursor:pointer;
+}
 
-    /* ===== FOOTER ===== */
-    footer{margin-top:18px;padding:18px;background:linear-gradient(180deg,#02112b,#041735);color:white;border-radius:10px}
-    footer a{color:var(--gold)}
-
-    /* ===== RESPONSIVE IMPROVEMENTS ===== */
-    @media (max-width:1024px){
-      .hero{grid-template-columns:1fr 300px}
-      .team{grid-template-columns:repeat(3,1fr)}
-      .grid{grid-template-columns:repeat(2,1fr)}
-    }
-
-    @media (max-width:720px){
-      /* nav => compact with toggle; show/hide nav-links via JS */
-      .nav{padding:10px 12px;margin:10px}
-      .nav-links{display:none}
-      .nav-toggle{display:inline-block}
-      .nav-right{gap:8px}
-      /* hero stacks */
-      .hero{grid-template-columns:1fr;gap:12px}
-      .hero-card{padding:16px}
-      .panel{padding:12px}
-      /* grids collapse for readability */
-      .grid,.team,.pay-grid{grid-template-columns:1fr}
-      .member .photo{aspect-ratio:3/2;max-height:320px}
-      /* forms stack */
-      form .row{grid-template-columns:1fr}
-      /* modals full-screen */
-      .modal{max-width:100%;height:100%;border-radius:0;padding:14px;overflow:auto}
-      .modal .meta{flex-direction:column}
-      /* enlarge buttons for touch */
-      .cta, .btn{padding:12px 14px;font-size:1rem}
-    }
-
-    /* prevent content overlap with large fixed elements (if any) */
-    @media (max-width:420px){
-      body{font-size:15px}
-      .headline{font-size:18px}
-      .brand h1{font-size:0.95rem}
-    }
-  </style>
+/* MOBILE FIXES */
+@media(max-width:768px){
+  nav ul{flex-wrap:wrap;}
+  .hero h1{font-size:2rem;}
+  .card img{height:220px;}
+}
+</style>
 </head>
+
 <body>
-  <!-- NAV -->
-  <nav class="nav" role="navigation" aria-label="Main">
-    <div class="brand">
-      <div class="brand-logo" aria-hidden="true">TJ</div>
-      <h1 style="margin:0">The Justice Firm</h1>
-    </div>
 
-    <div class="nav-right">
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
-      <div class="nav-links" id="navLinks" role="navigation" aria-label="Site links">
-        <a href="#practice">Practice</a>
-        <a href="#about">About</a>
-        <a href="#team">Team</a>
-        <a href="#articles">Articles</a>
-        <a href="#payment">Payment</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <a class="cta" href="#contact">Book</a>
-    </div>
-  </nav>
+<!-- ======================= NAV ======================= -->
+<nav>
+  <ul><li><strong style="color:var(--gold)">⚖️ The Justice Firm</strong></li></ul>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <header class="hero" role="banner">
-      <div class="hero-card">
-        <span class="eyebrow">Trusted in Indian Courts</span>
-        <h2 class="headline">Practical counsel for Family, Criminal & Civil disputes — trusted representation in district courts and the High Court.</h2>
-        <p class="lead">We handle matrimonial disputes, custody, criminal defence, civil litigation and mediation. Confidential, strategic and result-focused advocacy.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="cta" href="#contact">Book Consultation</a>
-          <a class="btn" href="#practice" style="background:#fff;border:1px solid rgba(2,6,23,0.06);color:var(--ink)">Our Practice</a>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
-          <div style="font-weight:700">+91 94541 83793</div>
-          <div class="muted">· adv.shastri@gmail.com</div>
-        </div>
-      </div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#practice">Practice</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#articles">Blog</a></li>
+    <li><a href="#payment">Payment</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li id="clock"></li>
+  </ul>
+</nav>
 
-      <aside class="panel" aria-label="Quick info">
-        <h4 style="margin:0">Next Available Slot</h4>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
-          <div><small class="muted">Next slot (IST)</small><div id="nextSlot" style="font-weight:700">Mon, 11:00 AM</div></div>
-          <div style="text-align:right"><small class="muted">Office</small><div class="muted">Allahabad, UP</div></div>
-        </div>
-        <div style="margin-top:12px">
-          <button class="cta" onclick="openBooking()">Book a Consultation</button>
-        </div>
-      </aside>
-    </header>
+<!-- ======================= HERO ======================= -->
+<header class="hero">
+  <h1>The Justice Firm</h1>
+  <h3>Advocates & Legal Consultants</h3>
+  <p>“Justice and strategy with integrity, clarity & excellence.”</p>
+  <a href="contact.html">Book Consultation</a>
+</header>
 
-    <!-- PRACTICE -->
-    <section id="practice" style="margin-top:18px">
-      <h2>Practice Areas</h2>
-      <p class="muted">Family, Criminal, Civil disputes and Mediation — focused advocacy across Indian courts.</p>
-      <div class="grid">
-        <div class="card"><h3>Family & Matrimonial</h3><p class="muted">Divorce, custody, maintenance, DV and mediated settlements.</p></div>
-        <div class="card"><h3>Criminal Law</h3><p class="muted">Bail, anticipatory bail, trial defence and appeals.</p></div>
-        <div class="card"><h3>Civil & Property</h3><p class="muted">Partition, injunctions, recovery and civil litigation.</p></div>
-      </div>
-    </section>
+<main>
 
-    <!-- ABOUT -->
-    <section id="about" style="margin-top:18px">
-  <h2>About the Firm</h2>
+<!-- ======================= PRACTICE AREAS ======================= -->
+<section id="practice">
+  <h2>Our Practice Areas</h2>
+  <p>Family Law, Civil Disputes, Criminal Defence & Mediation</p>
 
-  <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;margin-top:12px">
-    <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri"
-         style="width:200px;border-radius:12px;object-fit:cover">
+  <div class="grid">
+    <div class="card"><h3>👨‍👩‍👧 Family Law</h3><p>Divorce, custody, maintenance, 125 CrPC, domestic violence & mediation.</p></div>
+    <div class="card"><h3>⚖️ Criminal Defence</h3><p>Bail, anticipatory bail, criminal trials, appeals.</p></div>
+    <div class="card"><h3>🏛 Civil Litigation</h3><p>Property disputes, injunctions, partition suits, recovery.</p></div>
+    <div class="card"><h3>🤝 Mediation</h3><p>Family/Property settlements, pre-litigation resolution.</p></div>
+  </div>
+</section>
 
-    <div style="flex:1;min-width:220px">
-      <p style="font-size:1rem">
-        Founded by <strong>Adv. Ganga Shankar Shastri</strong>, The Justice Firm provides 
-        focused representation in <strong>Family, Criminal and Civil disputes</strong> across Uttar Pradesh.
-        With 15+ years of courtroom experience, the firm is known for clear strategy,
-        ethical practice and practical solutions.
-      </p>
-
-      <p class="muted" style="margin-top:8px">
-        Our approach is simple — clarity, preparation and results. Every matter is handled
-        with confidentiality and client-centric planning.
-      </p>
-
-      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-        <a href="#contact" class="cta">Book Consultation</a>
-        <a href="#team" class="btn" style="background:#fff;border:1px solid #d0d4dd;color:#0f1724">Meet the Team</a>
-      </div>
+<!-- ======================= ABOUT ======================= -->
+<section id="about">
+  <h2>About Adv. Ganga Shankar Shastri</h2>
+  <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:1rem">
+    <img src="ganga.jpg" style="width:240px;border-radius:10px;object-fit:cover;">
+    <div style="flex:1;min-width:220px;">
+      <p>Adv. Ganga Shankar Shastri has over 15 years of experience before the Allahabad High Court, known for clear strategy, courtroom excellence & ethical advocacy.</p>
+      <p class="muted">Focused on Family, Civil, Criminal & Mediation matters.</p>
+      <a href="contact.html" class="button">Book Consultation</a>
     </div>
   </div>
 </section>
 
-    <!-- TEAM -->
-    <section id="team" style="margin-top:18px">
-      <h2>Our Team</h2>
-      <p class="muted">Experienced advocates delivering practical solutions.</p>
+<!-- ======================= TEAM ======================= -->
+<section id="team">
+  <h2>Our Team</h2>
+  <div class="grid">
 
-      <div class="team" style="margin-top:12px">
-        <div class="member">
-          <div class="badge">Founder</div>
-          <div class="photo" style="background-image:url('ganga.jpg');background-position:50% 32%"></div>
-          <h3>Adv. Ganga S. Shastri</h3>
-          <p class="muted">Founder • Family & Criminal</p>
-        </div>
+    <div class="card">
+      <img src="ganga.jpg" alt="Adv. Ganga S. Shastri">
+      <h3>Adv. Ganga Shankar Shastri</h3>
+      <p>Founder & Lead Counsel</p>
+    </div>
 
-        <div class="member">
-          <div class="badge">Senior</div>
-          <div class="photo" style="background-image:url('minakshi.jpg');background-position:50% 28%"></div>
-          <h3>Adv. Minakshi Shastri</h3>
-          <p class="muted">Senior Associate • Civil & Property</p>
-        </div>
+    <div class="card">
+      <img src="minakshi.jpg" alt="Adv. Minakshi Shastri">
+      <h3>Adv. Minakshi Shastri</h3>
+      <p>Senior Associate – Civil & Corporate</p>
+    </div>
 
-        <div class="member">
-          <div class="badge">Consultant</div>
-          <div class="photo" style="background-image:url('shivani.jpg');background-position:50% 26%"></div>
-          <h3>Dr. Shivani Shastri</h3>
-          <p class="muted">Consultant • Constitutional & Mediation</p>
-        </div>
+    <div class="card">
+      <img src="shivani.jpg" alt="Dr. Shivani Shastri">
+      <h3>Dr. Shivani Shastri</h3>
+      <p>Consulting Advocate – Constitutional Affairs</p>
+    </div>
 
-        <div class="member">
-          <div class="badge">Associate</div>
-          <div class="photo" style="background-image:url('sanjay.jpg');background-position:50% 30%"></div>
-          <h3>Adv. Sanjay Kumar</h3>
-          <p class="muted">Associate • Criminal Defence</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ARTICLES -->
-    <section id="articles" style="margin-top:18px">
-      <h2>Articles & Insights</h2>
-      <p class="muted">Short notes and guidance for clients.</p>
-      <div class="grid" style="margin-top:10px">
-        <div class="card"><h3>Understanding Maintenance Rights</h3><p class="muted">Guide on maintenance claims and procedure in India.</p><p style="margin-top:10px"><a href="/articles/maintenance-section-125.html">Read →</a></p></div>
-        <div class="card"><h3>Anticipatory Bail Checklist</h3><p class="muted">When to file anticipatory bail — practical tips.</p><p style="margin-top:10px"><a href="/articles/anticipatory-bail-guide.html">Read →</a></p></div>
-        <div class="card"><h3>Digital Evidence Basics</h3><p class="muted">Admissibility & collection of electronic evidence.</p><p style="margin-top:10px"><a href="/articles/digital-evidence.html">Read →</a></p></div>
-      </div>
-    </section>
-
-    <!-- PAYMENT -->
-    <section id="payment" style="margin-top:18px">
-      <h2>Secure Payments</h2>
-      <p class="muted">Pay consultation fees via UPI or bank transfer (INR only).</p>
-      <div class="pay-grid">
-        <div class="pay-box">
-          <h4>UPI</h4>
-          <img src="upi_qr.jpg" alt="UPI QR">
-          <div class="muted">UPI ID: <strong id="upi-id">adv.shastri@oksbi</strong></div>
-          <div style="margin-top:10px">
-            <button class="cta" onclick="openUPI()">Pay Securely</button>
-            <button class="btn" onclick="copyUPI()" style="background:#fff;border:1px solid rgba(2,6,23,0.06);color:var(--ink)">Copy UPI</button>
-          </div>
-          <small class="muted" style="display:block;margin-top:8px">After payment, click Confirm to receive a receipt.</small>
-        </div>
-
-        <div class="pay-box">
-          <h4>Bank Transfer</h4>
-          <p class="muted">Account: The Justice Firm · Canara Bank · A/c 5328127000035 · IFSC CNRB0005131</p>
-          <div style="margin-top:12px"><a class="btn" href="#contact" style="background:#fff;border:1px solid rgba(2,6,23,0.06);color:var(--ink)">Request Invoice</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CALENDAR -->
-    <section id="calendar-section" style="margin-top:18px">
-      <h2>Court Calendar</h2>
-      <div id="calendar" style="margin-top:10px"></div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" style="margin-top:18px">
-      <h2>Contact & Bookings</h2>
-      <p class="muted">We respond within 24 business hours. For urgent matters (bail/DV) call the office.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 320px;gap:12px;margin-top:10px">
-        <form id="contactForm" class="card" onsubmit="return onContact(event)">
-          <div class="row">
-            <input name="name" placeholder="Your full name" required>
-            <input name="phone" placeholder="Phone (+91)" required>
-          </div>
-          <div class="row" style="margin-top:10px">
-            <input name="email" placeholder="Email" type="email" required>
-            <select name="matter">
-              <option>Family / Matrimonial</option>
-              <option>Criminal</option>
-              <option>Civil / Property</option>
-              <option>Mediation</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div style="margin-top:10px">
-            <textarea name="message" rows="4" placeholder="Short description of your matter" required></textarea>
-          </div>
-          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-            <button class="cta" type="submit">Send Request</button>
-            <button class="btn" type="button" onclick="openBooking()" style="background:#fff;border:1px solid rgba(2,6,23,0.06);color:var(--ink)">Schedule Call</button>
-          </div>
-        </form>
-
-        <aside class="panel">
-          <h4 style="margin-top:0">Office (India)</h4>
-          <div style="margin-top:8px">
-            <strong>Address</strong>
-            <p class="muted">Rajrooppur, Allahabad, Uttar Pradesh</p>
-            <strong>Hours</strong>
-            <p class="muted">Mon–Sat: 10:00 – 18:00 IST</p>
-            <strong>Phone</strong>
-            <p style="font-weight:700">+91 94541 83793</p>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <footer style="margin-top:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <div>
-          <div style="font-weight:700">The Justice Firm</div>
-          <div class="muted" style="margin-top:6px">Advocates & Legal Consultants — Based in India</div>
-        </div>
-        <div style="text-align:right">
-          <div class="muted">© 2025 The Justice Firm</div>
-          <div style="margin-top:8px"><a href="disclaimer.html">Disclaimer</a> • <a href="privacy.html">Privacy Policy</a></div>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Booking Modal -->
-  <div id="bookingModal" class="modal-backdrop" aria-hidden="true" style="display:none">
-    <div class="modal">
-      <h3 style="margin:0">Request a Consultation</h3>
-      <p class="muted" style="margin-top:6px">Choose preferred date — we will confirm availability.</p>
-      <form style="margin-top:12px" onsubmit="submitBooking(event)">
-        <input name="client" placeholder="Full name" required style="margin-bottom:8px">
-        <input name="bemail" placeholder="Email" type="email" required style="margin-bottom:8px">
-        <input name="date" type="date" required style="margin-bottom:8px">
-        <div style="display:flex;gap:8px">
-          <button class="cta" type="submit">Request</button>
-          <button type="button" class="btn" onclick="closeBooking()" style="background:#fff;border:1px solid rgba(2,6,23,0.06);color:var(--ink)">Cancel</button>
-        </div>
-      </form>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80">
+      <h3>Adv. Sanjay Kumar</h3>
+      <p>Associate Counsel – Criminal Defence</p>
     </div>
   </div>
+</section>
 
-  <!-- Payment confirmation modal -->
-  <div id="payBackdrop" class="modal-backdrop" aria-hidden="true" style="display:none">
-    <div class="modal">
-      <h3 style="margin:0">Confirm Your Payment</h3>
-      <p class="muted" style="margin-top:6px">After completing payment in your UPI app, submit details to receive a receipt.</p>
-      <form id="payConfirmForm" style="margin-top:12px">
-        <div style="margin-bottom:8px">
-          <label style="font-weight:700">Payer Name</label>
-          <input name="payerName" required>
-        </div>
-        <div style="margin-bottom:8px">
-          <label style="font-weight:700">Payer Email</label>
-          <input name="payerEmail" type="email" required>
-        </div>
-        <div style="margin-bottom:8px">
-          <label style="font-weight:700">Amount (INR)</label>
-          <input name="amount" type="number" min="1" required>
-        </div>
-        <div style="margin-bottom:8px">
-          <label style="font-weight:700">Txn / Reference (optional)</label>
-          <input name="txn" placeholder="UPI transaction id or bank reference">
-        </div>
-        <div style="margin-bottom:8px">
-          <label style="font-weight:700">Upload Screenshot (optional)</label>
-          <input name="screenshot" type="file" accept="image/*">
-        </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <button class="cta" type="submit">Submit for Receipt</button>
-          <button type="button" class="btn" onclick="closePayModal()" style="background:#fff;border:1px solid rgba(2,6,23,0.06);color:var(--ink)">Cancel</button>
-          <div id="payStatus" class="muted" style="margin-left:8px"></div>
-        </div>
-      </form>
-    </div>
+<!-- ======================= BLOG ======================= -->
+<section id="articles">
+  <h2>Legal Insights</h2>
+  <div class="grid">
+    <div class="card"><h3>Understanding Section 125 CrPC</h3><p>Maintenance rights & legal process explained.</p></div>
+    <div class="card"><h3>Bail vs Anticipatory Bail</h3><p>When to apply and how courts evaluate.</p></div>
+    <div class="card"><h3>Property Partition Suits</h3><p>Legal structure & steps involved.</p></div>
   </div>
+</section>
+
+<!-- ======================= PAYMENT ======================= -->
+<section id="payment">
+  <h2>Secure Payment Options</h2>
+
+  <div class="grid">
+
+    <div class="card" style="text-align:center">
+      <h3>UPI Payment</h3>
+      <img src="upi_qr.jpg" style="width:160px;height:160px;border-radius:10px;border:2px solid var(--gold);object-fit:cover;">
+      <p><strong>UPI ID:</strong> thejusticefirm@upi</p>
+      <button onclick="copyUPI()">Copy UPI ID</button>
+    </div>
+
+    <div class="card" style="text-align:center">
+      <h3>Bank Transfer</h3>
+      <p><strong>Account:</strong> The Justice Firm<br>
+         <strong>Bank:</strong> SBI Rajrooppur<br>
+         <strong>Acc No.:</strong> XXXXXXXX1234<br>
+         <strong>IFSC:</strong> SBIN000XXXX</p>
+    </div>
+
+    <div class="card" style="text-align:center">
+      <h3>Payment Receipt</h3>
+      <p>After payment, send screenshot & details via contact page.</p>
+      <a href="contact.html" class="button">Send Details</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section id="contact">
+  <h2>Book a Consultation</h2>
+  <form action="mailto:adv.shastri@gmail.com" method="post" class="grid">
+    <input type="text" name="Client Name" placeholder="Your Name" required>
+    <input type="email" name="Client Email" placeholder="Your Email" required>
+    <textarea name="Query" rows="4" placeholder="Your Query" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer>
+  © 2025 The Justice Firm · All Rights Reserved<br>
+  <a href="disclaimer.html">Disclaimer & Privacy</a> • 
+  <a href="terms.html">Terms of Service</a>
+</footer>
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'});">↑</button>
 
 <script>
-/* ===== NAV TOGGLE ===== */
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-navToggle && navToggle.addEventListener('click', ()=>{
-  if(!navLinks) return;
-  const shown = navLinks.style.display === 'flex';
-  navLinks.style.display = shown ? 'none' : 'flex';
-  navLinks.style.flexDirection = 'column';
-  navLinks.style.background = '#fff';
-  navLinks.style.padding = '8px';
-  navLinks.style.borderRadius = '8px';
-});
-
-/* ===== Clock / Next slot ===== */
-(function updateSlotAndClock(){
-  const next = new Date();
-  if(next.getHours() >= 16) next.setDate(next.getDate()+1);
-  next.setHours(11,0,0,0);
-  const el = document.getElementById('nextSlot');
-  const opt={weekday:'short',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kolkata'};
-  if(el) el.textContent = next.toLocaleString('en-GB',opt) + ' IST';
-})();
-
-/* ===== Calendar ===== */
-function generateCalendar(){
-  const now=new Date(),m=now.getMonth(),y=now.getFullYear(),today=now.getDate();
-  const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
-  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  let t=`<table><tr><th colspan="7">${months[m]} ${y}</th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr><tr>`;
-  let d=1;for(let i=0;i<first;i++)t+='<td></td>';
-  for(let i=first;i<7;i++){t+=`<td${d===today?' style="background:var(--gold);border-radius:50%;"':''}>${d}</td>`;d++;}
-  t+='</tr>';while(d<=days){t+='<tr>';for(let i=0;i<7&&d<=days;i++){t+=`<td${d===today?' style="background:var(--gold);border-radius:50%;"':''}>${d}</td>`;d++;}t+='</tr>';}
-  document.getElementById('calendar').innerHTML=t+'</table>';
+function updateClock(){
+  const o={timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit'};
+  document.getElementById('clock').textContent =
+    new Date().toLocaleTimeString('en-IN',o)+' IST';
 }
-generateCalendar();
+setInterval(updateClock,1000);updateClock();
 
-/* ===== Booking modal handlers ===== */
-const bookingModal = document.getElementById('bookingModal');
-function openBooking(){ bookingModal.style.display='flex'; bookingModal.setAttribute('aria-hidden','false'); }
-function closeBooking(){ bookingModal.style.display='none'; bookingModal.setAttribute('aria-hidden','true'); }
-function submitBooking(e){ e.preventDefault(); closeBooking(); alert('✅ Request received. We will confirm by email.'); }
-
-/* ===== Contact form fallback ===== */
-function onContact(e){ e.preventDefault(); alert('Thanks — we received your request. We will contact you within 24 hours.'); e.target.reset(); return false; }
-
-/* ===== UPI helpers ===== */
 function copyUPI(){
-  const t = document.getElementById('upi-id').textContent;
-  if(navigator.clipboard?.writeText){ navigator.clipboard.writeText(t).then(()=>alert('✅ UPI copied: '+t), ()=>prompt('Copy UPI ID', t)); } else prompt('Copy UPI ID', t);
+  const t="thejusticefirm@upi";
+  navigator.clipboard.writeText(t);
+  alert("UPI ID copied: " + t);
 }
-function openUPI(){
-  const pa = encodeURIComponent(document.getElementById('upi-id').textContent);
-  const upi = `upi://pay?pa=${pa}&pn=${encodeURIComponent('Adv. Ganga Shankar Shastri')}&cu=INR`;
-  // attempt deep link
-  window.location.href = upi;
-  // fallback: open confirm modal
-  setTimeout(()=>{ openPayModal(); }, 800);
-}
-
-/* ===== Payment confirmation submission (calls /api/receipt if available) ===== */
-const payBackdrop = document.getElementById('payBackdrop');
-const payForm = document.getElementById('payConfirmForm');
-function openPayModal(){ payBackdrop.style.display='flex'; payBackdrop.setAttribute('aria-hidden','false'); }
-function closePayModal(){ payBackdrop.style.display='none'; payBackdrop.setAttribute('aria-hidden','true'); document.getElementById('payStatus').textContent=''; }
-
-payForm.addEventListener('submit', async function(evt){
-  evt.preventDefault();
-  const status = document.getElementById('payStatus'); status.textContent='Submitting...';
-  const fd = new FormData(payForm);
-  fd.append('payeeUpi', document.getElementById('upi-id').textContent);
-  try{
-    const res = await fetch('/api/receipt', { method:'POST', body: fd });
-    const json = await res.json();
-    if(res.ok && json.success){
-      status.style.color='green'; status.textContent='✅ Receipt sent to your email.';
-      payForm.reset();
-      setTimeout(()=>{ closePayModal(); }, 1400);
-    } else {
-      status.style.color='crimson'; status.textContent = json?.message || 'Submission failed.';
-    }
-  } catch(err){
-    status.style.color='crimson'; status.textContent = 'Network error (server unavailable).';
-  }
-});
-
-/* ===== Team photo quick contact (no overlap) ===== */
-document.querySelectorAll('.member .photo').forEach((p, idx)=>{
-  p.addEventListener('click', ()=>{ const names=['Adv. Ganga S. Shastri','Adv. Minakshi Shastri','Dr. Shivani Shastri','Adv. Sanjay Kumar']; const subject = encodeURIComponent('Consultation request: '+names[idx]); window.location.href = `mailto:adv.shastri@gmail.com?subject=${subject}`; });
-});
-
-/* ===== keyboard close for modals ===== */
-document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeBooking(); closePayModal(); } });
-
 </script>
+
 </body>
 </html>
