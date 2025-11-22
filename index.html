@@ -1,278 +1,273 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>⚖️ The Justice Firm</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html { scroll-behavior: smooth; }
-
-        /* Charcoal Grey Theme - Updated Styles */
-        body { 
-            font-family: 'Times New Roman', Times, serif; 
-            text-align: center; 
-            padding: 50px; 
-            background: linear-gradient(to bottom, #eceff1, #cfd8dc);
-        }
-        h1, h2, h3 { 
-            color: #36454F; 
-            font-family: Arial, sans-serif;
-        }
-        p { 
-            font-size: 18px; 
-            color: #444; 
-        }
-        .contact { 
-            margin-top: 30px; 
-            padding: 20px; 
-            background-color: white; 
-            border: 1px solid #ddd; 
-            display: inline-block; 
-        }
-        /* Sections spacing */
-        .section-separator { 
-            margin-top: 50px; 
-            padding: 0 50px; 
-        }
-        /* --- NAVIGATION BAR STYLES --- */
-        .nav-bar { 
-            margin-bottom: 50px; 
-            padding: 10px; 
-            border-bottom: 2px solid #36454F; 
-            display: flex;
-            justify-content: center;
-        }
-        .nav-bar a {
-            color: #36454F; 
-            text-decoration: none; 
-            font-weight: bold; 
-            margin: 0 15px;
-        }
-        /* --- SERVICES GRID LAYOUT --- */
-        .services-grid {
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center;
-            text-align: left; 
-            max-width: 900px;
-            margin: 0 auto;
-            gap: 30px; 
-        }
-        .services-grid h3 {
-            width: 40%;
-            min-width: 300px; 
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        /* --- NEW SERVICE ITEM STYLE --- */
-        .service-item {
-            width: 45%; 
-            min-width: 300px; 
-            margin-top: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        /* --- MOBILE RESPONSIVENESS (Max Width: 600px) --- */
-        @media (max-width: 600px) {
-            body { padding: 20px; }
-            .contact { 
-                display: block; 
-                width: 90%; 
-                margin: 20px auto;
-            }
-            .section-separator { padding: 0 10px; }
-            h3 { font-size: 18px; }
-            .services-grid h3 { width: 95%; }
-            p { font-size: 16px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>⚖️ The Justice Firm | Advocates & Legal Consultants</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    :root {
+      --charcoal: #36454F;
+      --gold: #d4af37;
+      --light: #f8f9fa;
+    }
+    body {
+      background: var(--light);
+      color: #222;
+      line-height: 1.6;
+    }
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    nav ul li a {
+      color: var(--charcoal);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav ul li a:hover {
+      color: var(--gold);
+    }
+    .hero {
+      background: url('BANNER_IMAGE_URL_HERE') center/cover no-repeat;
+      text-align: center;
+      color: white;
+      padding: 6rem 1rem;
+      border-radius: 0 0 30px 30px;
+      background-color: rgba(0,0,0,0.4);
+      background-blend-mode: multiply;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.3rem;
+      font-family: "Georgia", serif;
+    }
+    .hero h3 {
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .hero a {
+      background: var(--gold);
+      color: #000;
+      border-radius: 50px;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .hero a:hover {
+      background: white;
+      color: var(--charcoal);
+    }
+    section {
+      margin: 4rem auto;
+      max-width: 1000px;
+    }
+    .service-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--charcoal);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+    .service-item:hover {
+      transform: translateY(-5px);
+    }
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      padding: 2rem;
+    }
+    .about-section img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--gold);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .team-card {
+      background: white;
+      text-align: center;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+    }
+    .team-card img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .team-card a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .testimonial-box {
+      background: white;
+      border-left: 4px solid var(--charcoal);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    form button {
+      background: var(--charcoal);
+      color: white;
+    }
+    footer {
+      background: var(--charcoal);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-top: 4px solid var(--gold);
+    }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: white;
+    }
+    #topBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--gold);
+      color: black;
+      border: none;
+      border-radius: 50%;
+      padding: 12px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
+
 <body>
-    
-    <div class="nav-bar">
-        <a href="index.html"> Home</a>
-        <a href="blog.html"> Blog</a>
-        <a href="payment.html"> Payment</a>  
-        <a href="#contact-form"> Contact</a>
+
+<nav class="container-fluid">
+  <ul>
+    <li><strong>⚖️ The Justice Firm</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#practice">Practice</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact" role="button">Contact</a></li>
+    <li><a href="disclaimer.html">Disclaimer</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <h1>The Justice Firm</h1>
+  <h3>Advocates & Legal Consultants</h3>
+  <p>Dedicated to Your Legal Success</p>
+  <a href="#contact">Book Consultation</a>
+</header>
+
+<main class="container">
+  <section id="practice">
+    <h2>⚖️ Practice Areas</h2>
+    <div class="grid">
+      <div class="service-item"><h3>Family & Matrimonial Law</h3><p>Divorce, Maintenance, Custody, Mediation, and more.</p></div>
+      <div class="service-item"><h3>Civil Disputes</h3><p>Property, Contract Disputes, Partition, Injunctions, Recovery Suits.</p></div>
+      <div class="service-item"><h3>Criminal Law</h3><p>Bail, FIR Quashing, Trial Matters, Criminal Appeals.</p></div>
+      <div class="service-item"><h3>Constitutional Matters</h3><p>Writ Petitions, Service Matters, Fundamental Rights.</p></div>
     </div>
+  </section>
 
-    <h1>⚖️ The Justice Firm</h1>
-    <img id="main-logo" src="logo.png" alt="The Justice Firm Logo" style="max-width: 250px; display: block; margin: 20px auto;">
-    <p>Expert Legal Services & Consultation</p>
-    <p>Dedicated to your legal success.</p>
-    
-    <div class="contact">
-        <h3>📞 Contact Us</h3>
-        <p>
-            <a href="https://wa.me/919454183793" target="_blank" style="color: #36454F; text-decoration: none; font-weight: bold;">
-                📱 WhatsApp: +91 94541 83793
-            </a>
-        </p>
-        <p>Email: adv.shastri@gmail.com </p>
-        <p>Office: HIG-41 Rajrooppur, Allahabad</p>
+  <section id="about">
+    <h2>About Adv. Ganga Shankar Shastri</h2>
+    <div class="about-section">
+      <img src="YOUR_PHOTO_URL_HERE" alt="Adv. Ganga Shankar Shastri">
+      <div>
+        <p>Adv. Ganga Shankar Shastri is a dedicated and result-driven attorney with over 15 years of professional experience in litigation and legal consultancy. He regularly practices before the Allahabad High Court, Family Courts, and various tribunals across India.</p>
+        <p>He specializes in Family Law, Civil Litigation, Criminal Matters, and Constitutional Remedies, ensuring clarity, ethics, and justice for every client.</p>
+      </div>
     </div>
-    
-    <section class="section-separator">
-        <h2>⚖️ Our Practice Areas</h2>
-        <p>Expert Legal Support You Can Trust</p>
-        
-        <div class="services-grid">
-            
-            <div class="service-item">
-                <h3> Family Law & Matrimonial Matters</h3>
-                <p style="font-size: 16px; color: #777;">Divorce, Maintenance, Custody, Domestic Violence, Mediation & Settlement</p>
-            </div>
+  </section>
 
-            <div class="service-item">
-                <h3> Civil Disputes</h3>
-                <p style="font-size: 16px; color: #777;">Property, Contract Disputes, Partition, Injunctions, Recovery Suits</p>
-            </div>
-
-            <div class="service-item">
-                <h3> Criminal Law</h3>
-                <p style="font-size: 16px; color: #777;">Bail, Anticipatory Bail, FIR Quashing, Trial Matters & Criminal Appeals</p>
-            </div>
-
-            <div class="service-item">
-                <h3> Constitutional Matters</h3>
-                <p style="font-size: 16px; color: #777;">Writ Petitions, Fundamental Rights Violations, Service Matters</p>
-            </div>
-
-            <div class="service-item">
-                <h3> Documentation & Advisory</h3>
-                <p style="font-size: 16px; color: #777;">Agreements, Notices, Legal Opinions & Drafting</p>
-            </div>
-            
-        </div>
-    </section>
-
-    <section class="section-separator" style="max-width: 900px; margin: 50px auto; padding: 30px; background-color: white; border: 1px solid #ddd; border-radius: 5px;">
-    <h2> Legal Resources & Connectivity</h2>
-    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 20px;">
-        
-        <div style="width: 45%; min-width: 250px; padding: 10px;">
-            <h3 style="color: #444;"> Institutional Links</h3>
-            <ul style="list-style-type: none; padding: 0;">
-                <li>
-                    <img src="sci-logo.png" alt="Supreme Court Logo" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
-                    <a href="https://www.sci.gov.in/" target="_blank" style="color: #36454F; text-decoration: none;">Supreme Court of India</a>
-                </li>
-                <li>
-                    <img src="ahc-logo.png" alt="High Court Logo" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
-                    <a href="https://www.allahabadhighcourt.in/" target="_blank" style="color: #36454F; text-decoration: none;">Allahabad High Court</a>
-                </li>
-                <li>
-                    <img src="doj-logo.png" alt="DOJ Logo" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
-                    <a href="https://doj.gov.in/" target="_blank" style="color: #36454F; text-decoration: none;">Department of Justice (India)</a>
-                </li>
-            </ul>
-        </div>
-        
+  <section id="team">
+    <h2>Our Team of Advocates</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="YOUR_PHOTO_URL_HERE" alt="Adv. Ganga Shankar Shastri">
+        <h3>Adv. Ganga Shankar Shastri</h3>
+        <p>Founder & Head Counsel</p>
+        <a href="#">LinkedIn</a>
+      </div>
+      <div class="team-card">
+        <img src="MINAKSHI_PHOTO_URL_HERE" alt="Adv. Minakshi Shastri">
+        <h3>Adv. Minakshi Shastri</h3>
+        <p>Family Law Specialist</p>
+        <a href="#">LinkedIn</a>
+      </div>
+      <div class="team-card">
+        <img src="SHIVANI_PHOTO_URL_HERE" alt="Dr. Shivani Shastri">
+        <h3>Dr. Shivani Shastri</h3>
+        <p>Criminal Law Expert</p>
+        <a href="#">LinkedIn</a>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6" alt="Adv. Sanjay Kumar">
+        <h3>Adv. Sanjay Kumar</h3>
+        <p>Civil & Property Law Specialist</p>
+        <a href="#">LinkedIn</a>
+      </div>
     </div>
-</section>
-    <section class="section-separator" style="max-width: 900px; margin: 50px auto; padding: 20px 30px; background-color: #36454F; color: white; border-radius: 5px;">
-        
-        <h2 style="text-align: center; color: white; margin-bottom: 10px;"> Landmark Judgements in Focus</h2>
+  </section>
 
-        <marquee direction="left" scrollamount="6" style="font-size: 18px;"> <span style="margin-right: 50px;">⚖️ Kesavananda Bharati v. State of Kerala (Basic Structure)</span> <span style="margin-right: 50px;">⚖️ Maneka Gandhi v. Union of India (Right to Life)</span> <span style="margin-right: 50px;">⚖️ Vishaka v. State of Rajasthan (Sexual Harassment)</span> <span style="margin-right: 50px;">⚖️ Navtej Singh Johar v. Union of India (Decriminalization of Sec 377)</span> </marquee>
-    
-    </section>
-    
-    <section style="max-width: 800px; margin: 50px auto; text-align: left; padding: 20px; border-top: 1px solid #ddd;">
-        <h2 style="text-align: center;"> About Adv. Ganga Shankar Shastri</h2>
-        
-        <p>Adv. Ganga Shankar Shastri is a dedicated and result-driven attorney with over 15 years of professional experience in litigation and legal consultancy. He regularly practices before the Allahabad High Court, various district courts across Uttar Pradesh, Family Courts, Consumer Forums, and other judicial & quasi-judicial authorities.</p>
-        
-        <p>Over the years, he has built a strong reputation for handling Family Law, Civil Litigation, Criminal Matters, and Constitutional Remedies with clarity, strategy, and precision. His commitment to ethical practice and client-centric solutions makes him a trusted advocate for individuals, businesses, and institutions.</p>
-        
-        <h3>Areas of Expertise</h3>
-        <ul>
-            <li>Family & Matrimonial Law – Divorce, maintenance, custody, domestic violence & mediation</li>
-            <li>Civil Litigation – Property disputes, contracts, recovery suits & injunctions</li>
-            <li>Criminal Defense – Bail, anticipatory bail, quashing, trial matters</li>
-            <li>Constitutional Law – Writ petitions & service-related disputes</li>
-            <li>Legal Drafting & Advisory – Notices, agreements & opinions</li>
-        </ul>
-        
-        <h3>Professional Approach</h3>
-        <p>Adv. Shastri believes in combining deep legal understanding, strategic planning, and clear communication to deliver effective results. He is known for his calm courtroom presence, strong drafting skills, and commitment to securing justice for his clients.</p>
-        
-    </section>
+  <section id="testimonials">
+    <h2>💬 Client Testimonials</h2>
+    <div class="grid">
+      <div class="testimonial-box">
+        <blockquote>“Adv. Shastri handled my case with utmost professionalism. Highly recommended for family matters.”</blockquote>
+        <p><strong>— Rajan K.</strong></p>
+      </div>
+      <div class="testimonial-box">
+        <blockquote>“Excellent communication and fast resolution. I felt confident throughout the entire process.”</blockquote>
+        <p><strong>— Sangeeta V.</strong></p>
+      </div>
+    </div>
+  </section>
 
-    <section class="section-separator" style="max-width: 900px; margin: 50px auto; padding: 30px; background-color: #f7f7f7; border-radius: 8px;">
-        <h2>💬 Client Testimonials</h2>
-        <p>Building trust through honest feedback.</p>
+  <section id="contact">
+    <h2>✉️ Book Consultation</h2>
+    <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain" onsubmit="alert('Your consultation request has been sent successfully!');">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="query" rows="4" placeholder="Your Query" required></textarea>
+      <button type="submit">Send Consultation Request</button>
+    </form>
+  </section>
+</main>
 
-        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px;">
-            
-            <div class="testimonial-box" style="width: 45%; min-width: 350px; margin-bottom: 20px; padding: 20px; background-color: white; border-left: 5px solid #36454F; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: left;">
-                <p style="font-size: 20px; margin-bottom: 10px; color: #FFD700;">★★★★★</p>
-                <blockquote style="margin: 0; font-style: italic; color: #555;">"Advocate Shastri ji provided clear and compassionate advice during a difficult divorce proceeding. His professionalism is unmatched."</blockquote>
-                <p style="margin-top: 15px; font-weight: bold; color: #36454F;">— Rajan K.</p>
-            </div>
+<footer>
+  <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
+  <p><a href="disclaimer.html">Legal Disclaimer</a> • <a href="#">Privacy Policy</a></p>
+</footer>
 
-            <div class="testimonial-box" style="width: 45%; min-width: 350px; margin-bottom: 20px; padding: 20px; background-color: white; border-left: 5px solid #36454F; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: left;">
-                <p style="font-size: 20px; margin-bottom: 10px; color: #FFD700;">★★★★★</p>
-                <blockquote style="margin: 0; font-style: italic; color: #555;">"My property dispute was handled efficiently and expertly. The firm achieved a positive outcome much faster than I expected."</blockquote>
-                <p style="margin-top: 15px; font-weight: bold; color: #36454F;">— Sangeeta V.</p>
-            </div>
-            
-        </div>
-    </section>
-
-
-    <section id="faq-section" class="section-separator" style="max-width: 900px; margin: 50px auto; padding: 30px; background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <h2>Frequently Asked Questions (FAQs)</h2>
-        <div style="text-align: left;">
-
-            <div class="faq-item" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
-                <h3>1. Divorce cases mein kitna samay lagta hai?</h3>
-                <p>समय केस की प्रकृति (nature), पति-पत्नी के सहयोग, और कोर्ट के workload पर निर्भर करता है। Mutual Consent Divorce (आपसी सहमति) में आमतौर पर 6 से 18 महीने लग sakte hain, jabki Contested Divorce (विवादित) mein इससे ज़्यादा समय lag sakta hai।</p>
-            </div>
-
-            <div class="faq-item" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
-                <h3>2. Bail (जमानत) process kya hai?</h3>
-                <p>Bail application Magistrate या Higher Court mein lagayi jaati hai. Ismein FIR, case ki prakriti (offence ki gravity), aur aaropi ke background ko dekha jaata hai. Hamein Court mein case ki mazbooti dikhani padti hai aur Surety bond bharna hota hai।</p>
-            </div>
-
-            <div class="faq-item" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
-                <h3>3. Fees structure ka general idea kya hai?</h3>
-                <p>Hamari fees case ki complexity, required Court appearances, aur case mein lagne wale samay par nirbhar karti hai. Initial consultation fees fix hoti hai, jiske baad hum poore case ke liye ek detailed quote dete hain. Transparency hamari priority hai।</p>
-            </div>
-
-            <div class="faq-item" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
-                <h3>4. Court procedures kaise kaam karte hain?</h3>
-                <p>Court procedure mein filing, summoning (समन भेजना), arguments, cross-examination, aur final judgement shamil hota hai. Har case ka apna ek timeline aur process hota hai. Hamari team aapko har step par guide karegi।</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="contact-form" class="section-separator" style="max-width: 600px; margin: 50px auto; padding: 30px; border: 2px solid #36454F; border-radius: 5px; text-align: left;">
-        <h2 style="text-align: center;">✉️ Book a Consultation</h2>
-        <p style="text-align: center; color: #444; font-size: 16px;">Fill out the form below and we will contact you within 24 hours.</p>
-        
-        <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain">
-            <label for="name" style="display: block; margin-top: 15px; font-weight: bold;">Your Name:</label>
-            <input type="text" id="name" name="Client Name" required style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 3px;">
-            
-            <label for="email" style="display: block; margin-top: 15px; font-weight: bold;">Your Email:</label>
-            <input type="email" id="email" name="Client Email" required style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 3px;">
-            
-            <label for="query" style="display: block; margin-top: 15px; font-weight: bold;">Your Query:</label>
-            <textarea id="query" name="Query Details" rows="4" required style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 3px;"></textarea>
-            
-            <button type="submit" style="background-color: #36454F; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px; width: 100%; font-size: 18px;">Send Consultation Request</button>
-        </form>
-    </section>
-    
-    <footer style="max-width: 900px; margin: 80px auto 0 auto; padding: 20px 0; background-color: #36454F; color: white; font-size: 14px; text-align: center;">
-        <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
-        <p style="margin-top: 5px;">Committed to Ethical Practice and Legal Excellence in India.</p>
-        <p style="margin-top: 5px;"><a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Legal Disclaimer</a></p>
-    </footer>
+<button id="topBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
 
 </body>
 </html>
