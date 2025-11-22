@@ -127,6 +127,37 @@
       padding: 1.5rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .blog-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+    .blog-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .blog-card-content {
+      padding: 1.2rem;
+    }
+    .blog-card-content h3 {
+      color: var(--charcoal);
+    }
+    .blog-card-content a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+    }
     form button {
       background: var(--charcoal);
       color: white;
@@ -172,6 +203,7 @@
     <li><a href="#practice">Practice</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#team">Team</a></li>
+    <li><a href="#articles">Blog</a></li>
     <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#contact" role="button">Contact</a></li>
     <li><a href="disclaimer.html">Disclaimer</a></li>
@@ -201,7 +233,7 @@
     <div class="about-section">
       <img src="YOUR_PHOTO_URL_HERE" alt="Adv. Ganga Shankar Shastri">
       <div>
-        <p>Adv. Ganga Shankar Shastri is a dedicated and result-driven attorney with over 15 years of professional experience in litigation and legal consultancy. He regularly practices before the Allahabad High Court, Family Courts, and various tribunals across India.</p>
+        <p>Adv. Ganga Shankar Shastri is a dedicated and result-driven attorney with over 15 years of professional experience in litigation and legal consultancy.</p>
         <p>He specializes in Family Law, Civil Litigation, Criminal Matters, and Constitutional Remedies, ensuring clarity, ethics, and justice for every client.</p>
       </div>
     </div>
@@ -233,6 +265,36 @@
         <h3>Adv. Sanjay Kumar</h3>
         <p>Civil & Property Law Specialist</p>
         <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="articles">
+    <h2>📰 Legal Insights & Articles</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" alt="Article">
+        <div class="blog-card-content">
+          <h3>Understanding Bail in India</h3>
+          <p>Know your rights and the process behind securing bail under Indian criminal law.</p>
+          <a href="#">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0" alt="Article">
+        <div class="blog-card-content">
+          <h3>Property Disputes: Key Legal Remedies</h3>
+          <p>A short guide on property conflicts and how courts handle them efficiently.</p>
+          <a href="#">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1555375771-14b2cc82cd72" alt="Article">
+        <div class="blog-card-content">
+          <h3>Women’s Rights Under Indian Law</h3>
+          <p>An overview of important provisions protecting women against harassment and violence.</p>
+          <a href="#">Read More →</a>
+        </div>
       </div>
     </div>
   </section>
