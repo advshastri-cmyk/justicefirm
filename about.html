@@ -1,185 +1,296 @@
-<!DOCTYPE html>
+ 
+  <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About | The Justice Firm</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — The Justice Firm | Advocates & Legal Consultants</title>
+  <meta name="description" content="About The Justice Firm — Advocates & Legal Consultants. Family, Criminal, Civil law and Mediation. Based in Allahabad, Uttar Pradesh." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
   <style>
-/* ==== GLOBAL LAW FIRM THEME ==== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    :root{
+      --bg:#f7f8fa; --card:#ffffff; --ink:#0f1724; --muted:#6b7280;
+      --accent:#0b5cff; --gold:#d4af37; --radius:12px; --shadow:0 12px 40px rgba(15,23,36,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg),#eef3fb);color:var(--ink);-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-:root {
-  --charcoal: #1f2a33;   /* Darker charcoal for headings/nav/footer */
-  --gold: #d4af37;       /* Elegant gold accent */
-  --light: #f6f7f8;      /* Softer white background */
-  --text: #111111;       /* Deep near-black text */
-}
+    /* top nav (consistent with index look) */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;margin:18px;border-radius:999px;background:linear-gradient(180deg,#fff,#f6f9ff);box-shadow:var(--shadow)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#2e6df6);display:grid;place-items:center;color:white;font-weight:700}
+    .nav-links{display:flex;gap:12px;align-items:center}
+    .nav-links a{font-weight:600;color:var(--muted);padding:8px 12px;border-radius:10px}
+    .cta{background:linear-gradient(90deg,var(--accent),#2e6df6);color:white;padding:10px 14px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
 
-/* General text and body setup */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--light);
-  color: var(--text);
-  line-height: 1.7;
-  margin: 0;
-}
+    /* page layout */
+    .wrap{max-width:1100px;margin:26px auto;padding:0 18px}
+    .hero{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:center;margin-bottom:22px}
+    .hero-card{background:var(--card);padding:28px;border-radius:14px;box-shadow:var(--shadow)}
+    .eyebrow{display:inline-block;background:linear-gradient(90deg,var(--accent),#2e6df6);color:white;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.82rem}
+    .headline{font-family:Merriweather,serif;font-size:1.7rem;margin:14px 0 8px}
+    .lead{color:var(--muted);margin-bottom:12px}
 
-/* Headings */
-h1, h2, h3, h4 {
-  color: var(--charcoal);
-  font-weight: 600;
-}
+    /* right info panel */
+    .info-panel{background:linear-gradient(180deg,rgba(11,92,255,0.04),rgba(11,92,255,0.02));padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(11,92,255,0.04)}
+    .info-row{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;background:#fff;margin-top:10px}
 
-/* Links */
-a {
-  color: var(--gold);
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-a:hover {
-  color: var(--charcoal);
-}
+    /* mission + approach */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
 
-/* Navigation bar */
-nav {
-  background: var(--charcoal);
-  color: white;
-  padding: 0.7rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-nav ul {
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-nav a {
-  color: var(--gold);
-}
-nav a:hover {
-  color: white;
-}
+    /* timeline */
+    .timeline{margin-top:18px}
+    .timeline-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:6px}
+    .timeline-content{background:#fbfdff;padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(11,92,255,0.03)}
 
-/* Main content boxes */
-main {
-  max-width: 1000px;
-  margin: 3rem auto;
-  background: #fff;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+    /* practice cards */
+    .services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+    .service{background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:10px;box-shadow:0 8px 24px rgba(15,23,36,0.04)}
 
-/* Paragraph text */
-p {
-  color: var(--text);
-  font-size: 1rem;
-}
+    /* team */
+    .team{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .person{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden;transition:transform .28s}
+    .person img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+    .person:hover{transform:translateY(-8px)}
+    .role{color:var(--muted);font-size:.95rem;margin-top:6px}
 
-/* Buttons */
-button, .btn {
-  background: var(--gold);
-  color: black;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  padding: 0.7rem 1.2rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-button:hover, .btn:hover {
-  background: var(--charcoal);
-  color: white;
-}
+    /* CTA strip */
+    .cta-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;background:linear-gradient(180deg,#fff,#f7fbff);padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(11,92,255,0.03)}
+    .btn-outline{background:transparent;border:1px solid rgba(11,92,255,0.08);padding:10px 12px;border-radius:10px}
 
-/* Input fields and textareas */
-input, textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  color: var(--text);
-  background: white;
-  font-family: 'Poppins', sans-serif;
-}
-input::placeholder, textarea::placeholder {
-  color: #666;
-}
+    footer{margin-top:28px;padding:24px;background:linear-gradient(180deg,#02112b,#041735);color:white;border-radius:12px;max-width:1100px;margin-left:auto;margin-right:auto}
+    .foot-grid{display:flex;justify-content:space-between;gap:12px;align-items:center}
 
-/* Cards / Boxes (for team, articles, etc.) */
-.card, .team-member, .payment-box {
-  background: #fafafa;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.3s;
-}
-.card:hover, .team-member:hover, .payment-box:hover {
-  transform: translateY(-4px);
-}
-
-/* Footer */
-footer {
-  background: var(--charcoal);
-  color: white;
-  text-align: center;
-  padding: 2rem;
-  border-top: 4px solid var(--gold);
-}
-footer a {
-  color: var(--gold);
-}
-footer a:hover {
-  color: white;
-}
-
-/* Responsive layout for mobile */
-@media (max-width: 768px) {
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  main {
-    margin: 2rem 1rem;
-    padding: 1.5rem;
-  }
-  h1 {
-    font-size: 1.6rem;
-  }
-}
+    /* responsive */
+    @media(max-width:920px){
+      .hero{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr}
+      .team{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:560px){
+      .team{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
   </style>
 </head>
 <body>
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main">
+    <div class="brand" aria-hidden="false">
+      <div class="brand-logo" aria-hidden="true">TJ</div>
+      <div>
+        <div style="font-weight:700">The Justice Firm</div>
+        <small style="color:var(--muted)">Advocates & Legal Consultants</small>
+      </div>
+    </div>
 
-<nav>
-  <ul><li><strong>⚖️ The Justice Firm</strong></li></ul>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="team.html">Team</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="payment.html">Payment</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="disclaimer.html">Disclaimer</a></li>
-  </ul>
-</nav>
+    <div class="nav-links" role="navigation" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page" style="font-weight:800;color:var(--ink)">About</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </div>
 
-<main>
-  <h1>About The Justice Firm</h1>
-  <p>The Justice Firm is a full-service law office led by <strong>Adv. Ganga Shankar Shastri</strong>, providing exceptional legal representation across Uttar Pradesh and India.</p>
-  <p>We focus on family, civil, criminal, and constitutional law — combining traditional advocacy with modern legal strategy.</p>
-  <p>Our mission is to uphold justice with integrity, transparency, and professionalism.</p>
-</main>
+    <div>
+      <a class="cta" href="#contact-cta">Book Consultation</a>
+    </div>
+  </nav>
 
-<footer>
-  &copy; 2025 The Justice Firm. All Rights Reserved.
-</footer>
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="hero" role="banner" aria-labelledby="about-heading">
+      <div class="hero-card">
+        <span class="eyebrow">Founded in Allahabad • Serving clients across UP</span>
+        <h1 id="about-heading" class="headline">About The Justice Firm</h1>
+        <p class="lead">We provide trusted legal representation in Family, Criminal and Civil matters, and offer mediation to achieve amicable resolutions wherever possible.</p>
+        <p class="muted">Led by <strong>Adv. Ganga Shankar Shastri</strong>, our approach is strategic, discreet and result-oriented — focused on protecting your rights and reputation.</p>
 
+        <!-- quick facts -->
+        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+          <div class="card" style="min-width:160px">
+            <strong>15+ Years</strong><div class="muted">Court experience</div>
+          </div>
+          <div class="card" style="min-width:160px">
+            <strong>Practices</strong><div class="muted">Family • Criminal • Civil • Mediation</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="info-panel" aria-label="Contact summary">
+        <div style="font-weight:700">Contact Office</div>
+        <div class="info-row" style="margin-top:8px">
+          <div><small class="muted">Phone</small><div style="font-weight:700">+91 98765 43210</div></div>
+          <div style="text-align:right"><small class="muted">Email</small><div style="font-weight:700"><a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a></div></div>
+        </div>
+
+        <div style="margin-top:12px">
+          <small class="muted">Office</small>
+          <div style="font-weight:700">Rajrooppur, Allahabad, Uttar Pradesh</div>
+        </div>
+
+        <div style="margin-top:14px">
+          <button class="cta" onclick="document.getElementById('contact-cta').scrollIntoView({behavior:'smooth'})">Book Consultation</button>
+        </div>
+      </aside>
+    </header>
+
+    <!-- MISSION & APPROACH -->
+    <section class="grid-2" aria-labelledby="mission">
+      <div class="card" id="mission">
+        <h2 style="margin-top:0">Our Mission</h2>
+        <p class="muted">To protect clients' legal rights with integrity and pragmatic advice, while delivering clear, timely representation across all stages of litigation and alternate dispute resolution.</p>
+
+        <h3 style="margin-top:12px">How we work</h3>
+        <ul class="muted" style="margin-top:8px;padding-left:18px">
+          <li>Client-first confidentiality and communication</li>
+          <li>Evidence-led strategy and meticulous drafting</li>
+          <li>Cost-aware advice with measurable timelines</li>
+          <li>Emphasis on mediation where suitable</li>
+        </ul>
+      </div>
+
+      <div class="card" aria-labelledby="values">
+        <h2 id="values" style="margin-top:0">Core Values</h2>
+        <p class="muted">Integrity — Professionalism — Client focus — Practical results.</p>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:8px;align-items:center"><strong style="color:var(--accent)">●</strong> <span class="muted">Transparent fees & clear engagement letters</span></div>
+          <div style="display:flex;gap:8px;align-items:center"><strong style="color:var(--accent)">●</strong> <span class="muted">Ethical advocacy in all courts</span></div>
+          <div style="display:flex;gap:8px;align-items:center"><strong style="color:var(--accent)">●</strong> <span class="muted">Local presence with High Court access</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline" aria-labelledby="history">
+      <h2 id="history">Our Story</h2>
+      <p class="muted">Milestones and growth since establishment.</p>
+
+      <div style="margin-top:14px">
+        <div class="timeline-item">
+          <div class="dot" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <strong>2008</strong> — Firm established in Rajrooppur, starting with family and civil matters.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <strong>2012</strong> — Expanded practice to criminal defence and appellate work at the High Court.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <strong>2018</strong> — Introduced mediation & ADR services for faster, amicable resolutions.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <strong>2024</strong> — Strengthened team with senior associates and consultants for multi-disciplinary matters.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICE FOCUS -->
+    <section style="margin-top:18px" aria-labelledby="practice">
+      <h2 id="practice">Practice Focus</h2>
+      <div class="services" role="list">
+        <div class="service" role="listitem">
+          <h3 style="margin:0 0 8px">Family & Matrimonial</h3>
+          <p class="muted">Divorce, maintenance, custody, DV matters and mediated settlements.</p>
+        </div>
+        <div class="service" role="listitem">
+          <h3 style="margin:0 0 8px">Criminal Defence</h3>
+          <p class="muted">Bail/anticipatory bail, trial defence, investigations and appeals.</p>
+        </div>
+        <div class="service" role="listitem">
+          <h3 style="margin:0 0 8px">Civil & Property</h3>
+          <p class="muted">Suit filing, injunctions, partition, recovery and property disputes.</p>
+        </div>
+        <div class="service" role="listitem">
+          <h3 style="margin:0 0 8px">Mediation & ADR</h3>
+          <p class="muted">Court-annexed mediation and private ADR to reduce time and costs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section aria-labelledby="leadership" style="margin-top:18px">
+      <h2 id="leadership">Leadership & Counsel</h2>
+      <p class="muted">Key members leading our practice groups.</p>
+
+      <div class="team">
+        <div class="person" role="article" aria-label="Adv Ganga Shankar Shastri">
+          <img src="ganga.jpg" alt="Adv Ganga Shankar Shastri">
+          <h3 style="margin:6px 0 4px">Adv. Ganga S. Shastri</h3>
+          <div class="role">Founder • Allahabad High Court — Family & Criminal</div>
+        </div>
+
+        <div class="person" role="article" aria-label="Adv Minakshi Shastri">
+          <img src="minakshi.jpg" alt="Adv Minakshi Shastri">
+          <h3 style="margin:6px 0 4px">Adv. Minakshi Shastri</h3>
+          <div class="role">Senior Associate • Civil & Property</div>
+        </div>
+
+        <div class="person" role="article" aria-label="Dr Shivani Shastri">
+          <img src="shivani.jpg" alt="Dr Shivani Shastri">
+          <h3 style="margin:6px 0 4px">Dr. Shivani Shastri</h3>
+          <div class="role">Consultant • Constitutional & Public Interest</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA strip -->
+    <div class="cta-strip" id="contact-cta" style="margin-top:22px">
+      <div>
+        <h3 style="margin:0">Need Advice on a Matter?</h3>
+        <div class="muted" style="margin-top:6px">Book a consultation or request an initial case review. We respond within 24 business hours.</div>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="cta" href="index.html#contact">Book Consultation</a>
+        <a class="btn-outline" href="assets/TheJusticeFirm_Brochure.pdf" download>Download Brochure</a>
+      </div>
+    </div>
+
+    <footer style="margin-top:22px">
+      <div class="foot-grid">
+        <div>
+          <div style="font-weight:700">The Justice Firm</div>
+          <div class="muted" style="margin-top:6px">Advocates & Legal Consultants · Based in India</div>
+        </div>
+        <div style="text-align:right">
+          <div class="muted">© 2025 The Justice Firm</div>
+          <div style="margin-top:8px"><a href="disclaimer.html" style="color:var(--gold)">Legal Disclaimer</a> • <a href="privacy.html" style="color:var(--gold)">Privacy Policy</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // smooth scroll for internal CTAs
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = this.getAttribute('href');
+        if(target && target.startsWith('#')){
+          e.preventDefault();
+          document.querySelector(target).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+    
