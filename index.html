@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>⚖️ The Justice Firm | Advocates & Legal Consultants</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <style>
@@ -16,16 +16,20 @@
       background: var(--light);
       color: #222;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     /* Navbar */
     nav {
       background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     nav ul {
@@ -43,7 +47,6 @@
       color: var(--charcoal);
       font-weight: 600;
       text-decoration: none;
-      transition: 0.3s;
     }
 
     nav a:hover {
@@ -55,7 +58,6 @@
       font-size: 0.9rem;
     }
 
-    /* Animated Scales Glow */
     @keyframes glow {
       0%, 100% { text-shadow: 0 0 5px var(--gold); }
       50% { text-shadow: 0 0 15px var(--gold); }
@@ -65,7 +67,7 @@
       animation: glow 3s ease-in-out infinite;
     }
 
-    /* Latest Judgments Ticker */
+    /* Ticker */
     #ticker {
       background: var(--gold);
       color: var(--charcoal);
@@ -94,7 +96,7 @@
 
     /* Hero */
     .hero {
-      background: url('BANNER_IMAGE_URL_HERE') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1528747045269-390fe33c19d4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       text-align: center;
       color: white;
       padding: 6rem 1rem;
@@ -133,7 +135,20 @@
       color: var(--charcoal);
     }
 
-    /* Calendar Section */
+    section {
+      margin: 4rem auto;
+      max-width: 1000px;
+    }
+
+    /* Practice */
+    .grid article {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Calendar */
     #calendar-section {
       margin: 4rem auto;
       max-width: 600px;
@@ -144,10 +159,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    #calendar {
-      margin-top: 1rem;
-    }
-
     #calendar table {
       width: 100%;
       border-collapse: collapse;
@@ -156,10 +167,6 @@
     #calendar th, #calendar td {
       padding: 0.5rem;
       text-align: center;
-    }
-
-    #calendar th {
-      color: var(--charcoal);
     }
 
     #calendar td.today {
@@ -186,7 +193,6 @@
       color: white;
     }
 
-    /* Back-to-top Button */
     #topBtn {
       position: fixed;
       bottom: 25px;
@@ -204,42 +210,27 @@
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav>
-    <ul>
-      <li><strong>⚖️ The Justice Firm</strong></li>
-    </ul>
+    <ul><li><strong>⚖️ The Justice Firm</strong></li></ul>
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#practice">Practice</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#articles">Blog</a></li>
+      <li><a href="#payment">Payment</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="disclaimer.html">Disclaimer</a></li>
       <li id="clock"></li>
     </ul>
   </nav>
 
-  <!-- Judgments Ticker -->
   <div id="ticker">
     <div id="ticker-content">
-      ⚖️ Latest Judgments: 
-      Kesavananda Bharati v. State of Kerala (1973) •
-      Maneka Gandhi v. Union of India (1978) •
-      Vishaka v. State of Rajasthan (1997) •
-      Navtej Singh Johar v. Union of India (2018) •
-      Shayara Bano v. Union of India (2017) •
-      Joseph Shine v. Union of India (2018) •
-      Indra Sawhney v. Union of India (1992) •
-      K.S. Puttaswamy v. Union of India (2017) •
-      Olga Tellis v. Bombay Municipal Corporation (1985) •
-      Common Cause v. Union of India (2018) •
-      View All Judgments →
+      ⚖️ Latest Judgments: Kesavananda Bharati v. State of Kerala (1973) • Maneka Gandhi v. Union of India (1978) • Vishaka v. State of Rajasthan (1997) • Navtej Singh Johar v. Union of India (2018) • Shayara Bano v. Union of India (2017) • Joseph Shine v. Union of India (2018) • Indra Sawhney v. Union of India (1992) • Puttaswamy v. Union of India (2017) • Olga Tellis v. Bombay Municipal Corporation (1985) • Common Cause v. Union of India (2018)
     </div>
   </div>
 
-  <!-- Hero -->
   <header class="hero">
     <h1>The Justice Firm</h1>
     <h3>Advocates & Legal Consultants</h3>
@@ -247,72 +238,210 @@
     <a href="#contact">Book Consultation</a>
   </header>
 
-  <!-- Calendar Section -->
-  <section id="calendar-section">
-    <h2>📅 Court Calendar</h2>
-    <div id="calendar"></div>
-    <br>
-    <a href="#" class="contrast" style="background: var(--gold); color: black; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none;">📅 Download Court Calendar (PDF)</a>
-  </section>
+  <main class="container">
+    <!-- PRACTICE AREAS -->
+    <section id="practice">
+      <h2>⚖️ Our Practice Areas</h2>
+      <p>Providing comprehensive legal services across multiple domains with expertise and integrity.</p>
 
-  <!-- Footer -->
+      <div class="grid">
+        <article>
+          <h3>👨‍👩‍👧 Family & Matrimonial Law</h3>
+          <p>Divorce, custody, alimony, domestic violence, and mediation handled with compassion and professionalism.</p>
+        </article>
+        <article>
+          <h3>🏠 Civil Litigation</h3>
+          <p>Property disputes, partition suits, injunctions, recovery, and contract enforcement.</p>
+        </article>
+        <article>
+          <h3>⚖️ Criminal Law</h3>
+          <p>Bail, anticipatory bail, trial defence, appeals, and FIR quashing under CrPC and IPC provisions.</p>
+        </article>
+        <article>
+          <h3>🏢 Corporate & Business Law</h3>
+          <p>Company formation, partnership disputes, compliance, and drafting of legal agreements.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>👤 About Adv. Ganga Shankar Shastri</h2>
+      <img src="YOUR_PHOTO_URL_HERE" alt="Advocate Ganga Shankar Shastri" style="max-width:250px; border-radius:10px; margin-top:1rem;">
+      <p>Adv. Ganga Shankar Shastri is a highly respected advocate with over 15 years of experience in litigation and legal consultancy. Practicing primarily before the Allahabad High Court and various subordinate courts across Uttar Pradesh, he is known for his clear legal strategy and commitment to justice.</p>
+      <p>His professional expertise spans across Family, Civil, and Criminal law, with a proven track record of success in complex and sensitive cases. His leadership at The Justice Firm has established a standard of excellence and ethical advocacy.</p>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team">
+      <h2>👥 Our Team of Advocates</h2>
+      <p>Our dedicated team brings together experience, precision, and commitment to every case.</p>
+
+      <div class="grid">
+        <article>
+          <img src="YOUR_PHOTO_URL_HERE" alt="Adv. Ganga Shankar Shastri" style="width:100%;border-radius:8px;">
+          <h3>Adv. Ganga Shankar Shastri</h3>
+          <p>Founder & Lead Counsel — Specialist in Family & Constitutional Law.</p>
+          <a href="#" target="_blank">LinkedIn →</a>
+        </article>
+
+        <article>
+          <img src="PHOTO_MINAKSHI_URL" alt="Adv. Minakshi Shastri" style="width:100%;border-radius:8px;">
+          <h3>Adv. Minakshi Shastri</h3>
+          <p>Senior Associate — Civil & Corporate Litigation Expert.</p>
+          <a href="#" target="_blank">LinkedIn →</a>
+        </article>
+
+        <article>
+          <img src="PHOTO_SHIVANI_URL" alt="Dr. Shivani Shastri" style="width:100%;border-radius:8px;">
+          <h3>Dr. Shivani Shastri</h3>
+          <p>Consulting Advocate — Research & Constitutional Affairs Specialist.</p>
+          <a href="#" target="_blank">LinkedIn →</a>
+        </article>
+
+        <article>
+          <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80" alt="Adv. Sanjay Kumar" style="width:100%;border-radius:8px;">
+          <h3>Adv. Sanjay Kumar</h3>
+          <p>Associate Counsel — Criminal Defence and Trial Matters Expert.</p>
+          <a href="#" target="_blank">LinkedIn →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section id="articles">
+      <h2>📰 Latest Articles & Insights</h2>
+      <div class="grid">
+        <article>
+          <h3>Understanding Your Rights Under Article 21 of the Constitution</h3>
+          <p>Learn how the Supreme Court has expanded the meaning of ‘Right to Life’ to include dignity, privacy and personal liberty.</p>
+          <a href="#">Read More →</a>
+        </article>
+        <article>
+          <h3>When to File a Writ Petition in High Court</h3>
+          <p>A practical guide for citizens seeking constitutional remedies under Articles 32 and 226 of the Indian Constitution.</p>
+          <a href="#">Read More →</a>
+        </article>
+        <article>
+          <h3>Digital Evidence in Criminal Trials — Admissibility and Precautions</h3>
+          <p>Understand the legal framework for electronic records under the Indian Evidence Act and IT Act 2000.</p>
+          <a href="#">Read More →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <h2>💬 Client Testimonials</h2>
+      <div class="grid">
+        <article>
+          <p style="color:#d4af37;font-size:20px;">★★★★★</p>
+          <blockquote>“Exceptional service and guidance through my property dispute. Highly recommended for civil matters.”</blockquote>
+          <p><strong>— Anand T.</strong></p>
+        </article>
+        <article>
+          <p style="color:#d4af37;font-size:20px;">★★★★★</p>
+          <blockquote>“Shastri Sir’s strategic approach in our family case helped us reach a peaceful settlement.”</blockquote>
+          <p><strong>— Priya K.</strong></p>
+        </article>
+        <article>
+          <p style="color:#d4af37;font-size:20px;">★★★★★</p>
+          <blockquote>“Professional, ethical and efficient. The Justice Firm handled my bail application with remarkable expertise.”</blockquote>
+          <p><strong>— Rohit S.</strong></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PAYMENT -->
+    <section id="payment">
+      <h2>💳 Secure Online Payment</h2>
+      <p>Pay consultation or service fees safely using the options below.</p>
+      <div class="grid">
+        <article style="text-align:center;">
+          <h3>📱 UPI Payment</h3>
+          <img src="YOUR_UPI_QR_IMAGE_URL_HERE" alt="UPI QR Code" style="width:180px;border:2px solid #d4af37;border-radius:10px;margin:1rem auto;">
+          <p><strong>UPI ID:</strong> <span id="upi-id">thejusticefirm@upi</span></p>
+          <button onclick="copyUPI()" style="background:#d4af37;color:black;border:none;border-radius:5px;padding:10px 20px;cursor:pointer;">Copy UPI ID</button>
+        </article>
+        <article style="text-align:center;">
+          <h3>💼 Pay via Razorpay</h3>
+          <p>Use your card or UPI through our Razorpay portal.</p>
+          <a href="YOUR_RAZORPAY_PAYMENT_LINK_HERE" target="_blank" style="background:#d4af37;color:black;padding:10px 20px;border-radius:5px;text-decoration:none;">Pay Now</a>
+        </article>
+        <article style="text-align:center;">
+          <h3>🌍 Pay via PayPal</h3>
+          <p>For international clients using PayPal accounts.</p>
+          <a href="YOUR_PAYPAL_PAYMENT_LINK_HERE" target="_blank" style="background:#d4af37;color:black;padding:10px 20px;border-radius:5px;text-decoration:none;">Pay Now</a>
+        </article>
+      </div>
+
+      <article style="margin-top:2rem;background:#f9f9f9;border:1px solid #ddd;padding:1.5rem;border-radius:8px;">
+        <h3>🏦 Bank Transfer Details</h3>
+        <p><strong>Account Name:</strong> The Justice Firm</p>
+        <p><strong>Bank:</strong> State Bank of India</p>
+        <p><strong>Account No.:</strong> XXXXXXXX1234</p>
+        <p><strong>IFSC Code:</strong> SBIN000XXXX</p>
+        <p><strong>Branch:</strong> Rajrooppur, Allahabad</p>
+      </article>
+    </section>
+
+    <!-- CALENDAR -->
+    <section id="calendar-section">
+      <h2>📅 Court Calendar</h2>
+      <div id="calendar"></div><br>
+      <a href="#" class="contrast" style="background:#d4af37;color:black;padding:0.5rem 1rem;border-radius:6px;text-decoration:none;">📅 Download Court Calendar (PDF)</a>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>✉️ Book a Consultation</h2>
+      <p>Fill out the form below and our team will contact you within 24 hours.</p>
+      <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain" class="grid">
+        <input type="text" name="Client Name" placeholder="Your Name" required>
+        <input type="email" name="Client Email" placeholder="Your Email" required>
+        <textarea name="Query Details" rows="4" placeholder="Your Query" required></textarea>
+        <button type="submit" style="background:#36454F;color:white;">Send Request</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
-    <p><a href="disclaimer.html">Legal Disclaimer</a> • <a href="#">Privacy Policy</a></p>
+    <p><a href="disclaimer.html">Legal Disclaimer</a> • <a href="privacy.html">Privacy Policy</a></p>
   </footer>
 
-  <button id="topBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+  <button id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'});">↑</button>
 
   <script>
-    // Live Clock (IST)
+    // Live Clock
     function updateClock() {
-      let options = {
-        timeZone: 'Asia/Kolkata',
-        hour: '2-digit', minute: '2-digit', second: '2-digit',
-        weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
-      };
-      document.getElementById('clock').textContent =
-        new Date().toLocaleString('en-IN', options) + ' IST';
+      const opt = {timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit',weekday:'short',day:'2-digit',month:'short',year:'numeric'};
+      document.getElementById('clock').textContent = new Date().toLocaleString('en-IN', opt) + ' IST';
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+    setInterval(updateClock, 1000); updateClock();
 
-    // Generate Calendar
-    function generateCalendar() {
-      const now = new Date();
-      const month = now.getMonth();
-      const year = now.getFullYear();
-      const today = now.getDate();
-      const firstDay = new Date(year, month, 1).getDay();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-      const months = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-      ];
-
-      let table = `<table>
-        <tr><th colspan="7">${months[month]} ${year}</th></tr>
-        <tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr><tr>`;
-      let day = 1;
-      for (let i = 0; i < firstDay; i++) table += "<td></td>";
-      for (let i = firstDay; i < 7; i++) {
-        table += `<td${day === today ? ' class="today"' : ''}>${day}</td>`;
-        day++;
-      }
-      table += "</tr>";
-      while (day <= daysInMonth) {
-        table += "<tr>";
-        for (let i = 0; i < 7 && day <= daysInMonth; i++) {
-          table += `<td${day === today ? ' class="today"' : ''}>${day}</td>`;
-          day++;
-        }
-        table += "</tr>";
-      }
-      table += "</table>";
-      document.getElementById("calendar").innerHTML = table;
+    // Calendar
+    function generateCalendar(){
+      const now=new Date(),m=now.getMonth(),y=now.getFullYear(),today=now.getDate();
+      const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
+      const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+      let t=`<table><tr><th colspan="7">${months[m]} ${y}</th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr><tr>`;
+      let d=1;
+      for(let i=0;i<first;i++)t+='<td></td>';
+      for(let i=first;i<7;i++){t+=`<td${d===today?' class="today"':''}>${d}</td>`;d++;}
+      t+='</tr>';
+      while(d<=days){t+='<tr>';for(let i=0;i<7&&d<=days;i++){t+=`<td${d===today?' class="today"':''}>${d}</td>`;d++;}t+='</tr>';}
+      document.getElementById('calendar').innerHTML=t+'</table>';
     }
     generateCalendar();
-  </script>
 
+    // Copy UPI
+    function copyUPI(){
+      const text=document.getElementById('upi-id').textContent;
+      navigator.clipboard.writeText(text);
+      alert('✅ UPI ID copied: '+text);
+    }
+  </script>
 </body>
 </html>
