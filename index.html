@@ -5,238 +5,203 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>⚖️ The Justice Firm | Advocates & Legal Consultants</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ==== GLOBAL THEME ==== */
+/* ==== GLOBAL THEME & ENHANCED COLORS ==== */
 :root {
-  --charcoal:#1e272e;
-  --gold:#d4af37;
-  --cream:#f5f5f4;
-  --text:#111;
+  --charcoal:#1e272e;
+  --navy:#0b132b; /* Added for depth */
+  --gold:#c8aa40; /* Slightly darker gold for elegance */
+  --cream:#fcfcfc;
+  --text:#111;
 }
 body{
-  font-family:'Poppins',sans-serif;
-  margin:0;
-  background:var(--cream);
-  color:var(--text);
-  line-height:1.7;
-  scroll-behavior:smooth;
+  font-family:'Poppins',sans-serif;
+  margin:0;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.7;
+  scroll-behavior:smooth;
 }
 
-/* ==== NAVBAR ==== */
+/* ==== NAVBAR ENHANCED ==== */
 nav{
-  background:white;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
-  position:sticky;top:0;z-index:999;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:.8rem 1rem;
+  background:var(--navy); /* Darker background */
+  box-shadow:0 2px 10px rgba(0,0,0,0.2);
+  position:sticky;top:0;z-index:999;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.8rem 1rem;
 }
-nav ul{display:flex;gap:1rem;margin:0;padding:0;list-style:none;}
-nav a{color:var(--charcoal);font-weight:600;text-decoration:none;}
+nav ul{display:flex;gap:1.5rem;margin:0;padding:0;list-style:none;}
+nav a{color:white;font-weight:600;text-decoration:none;transition:color 0.3s;}
 nav a:hover{color:var(--gold);}
-nav strong{color:var(--gold);}
+nav strong a{color:var(--gold);font-size:1.2rem;}
 #clock{color:var(--gold);font-size:.9rem;}
 
-/* ==== HERO ==== */
+/* ==== HERO ENHANCED ==== */
 .hero{
-  background:url('https://images.unsplash.com/photo-1528747045269-390fe33c19d4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-  text-align:center;color:white;
-  background-color:rgba(0,0,0,0.6);background-blend-mode:multiply;
-  padding:6rem 1.5rem;border-radius:0 0 30px 30px;
+  background:url('https://images.unsplash.com/photo-1528747045269-390fe33c19d4?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+  text-align:center;color:white;
+  background-color:rgba(0,0,0,0.75); /* Darker overlay */
+  background-blend-mode:multiply;
+  padding:8rem 1.5rem; /* Increased padding */
+  border-radius:0 0 30px 30px;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.hero h1{font-size:2.6rem;margin-bottom:.3rem;}
-.hero h3{color:var(--gold);font-size:1.2rem;}
-.hero p.quote{font-style:italic;font-size:1.1rem;margin-bottom:1.5rem;}
-.hero a{background:var(--gold);color:black;border-radius:30px;
-  padding:.6rem 1.3rem;text-decoration:none;font-weight:600;}
-.hero a:hover{background:white;color:var(--charcoal);}
+.hero h1{font-size:3.5rem;margin-bottom:.5rem;font-weight:700;}
+.hero h3{color:var(--gold);font-size:1.6rem;margin-bottom:1rem;}
+.hero p.quote{font-style:italic;font-size:1.2rem;max-width:800px;margin: 0 auto 2.5rem;}
+.hero a.btn{
+  background:var(--gold);color:var(--navy);border-radius:35px;
+  padding:1rem 2.5rem;text-decoration:none;font-weight:700;font-size:1.2rem;
+  transition:all 0.3s ease;
+  box-shadow:0 6px 15px rgba(200, 170, 64, 0.4); /* Added Shadow */
+}
+.hero a.btn:hover{background:white;color:var(--charcoal);box-shadow:0 8px 20px rgba(255, 255, 255, 0.5);}
 
-/* ==== GENERAL ==== */
+/* ==== NEW HOME SECTION (WHAT WE DO) ==== */
+.home-summary-section {
+  max-width:1000px;margin:4rem auto;padding:0 1rem;
+  text-align: center;
+}
+.home-summary-section h2 {
+  color:var(--navy);
+  font-weight:700;
+  border-bottom:4px solid var(--gold);
+  display:inline-block;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+.home-summary-section .grid article {
+  background:white;
+  border-left: 4px solid var(--gold); /* Highlight */
+  transition: box-shadow 0.3s;
+}
+.home-summary-section .grid article:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.home-summary-section .grid article h3 {
+  color: var(--navy);
+}
+
+/* ==== GENERAL STYLES ==== */
 section{max-width:1000px;margin:4rem auto;padding:0 1rem;}
-h2{color:var(--charcoal);border-bottom:3px solid var(--gold);
-   display:inline-block;margin-bottom:1rem;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
 article{background:white;border-radius:10px;padding:1.5rem;
-  box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);}
 article h3{color:var(--charcoal);margin-top:0;}
 article p{font-size:.95rem;}
-a.btn,button.btn{background:var(--gold);color:black;padding:.6rem 1.2rem;
-  border:none;border-radius:6px;text-decoration:none;font-weight:600;}
-a.btn:hover,button.btn:hover{background:var(--charcoal);color:white;}
 
-/* ==== CALENDAR ==== */
-#calendar-section{text-align:center;background:white;padding:1.5rem;
-  border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-#calendar table{width:100%;border-collapse:collapse;}
-#calendar th,#calendar td{padding:.5rem;text-align:center;}
-#calendar td.today{background:var(--gold);color:black;border-radius:50%;}
-
-/* ==== FOOTER ==== */
-footer{background:var(--charcoal);color:white;text-align:center;
-  padding:2rem 1rem;border-top:4px solid var(--gold);}
+/* ==== FOOTER ENHANCED ==== */
+footer{background:var(--navy);color:white;text-align:center;
+  padding:2.5rem 1rem;border-top:4px solid var(--gold);}
+footer .footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+}
+footer .contact-info p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+footer .legal-links {
+  text-align: right;
+}
 footer a{color:var(--gold);text-decoration:none;}
 footer a:hover{color:white;}
-#topBtn{position:fixed;bottom:25px;right:25px;background:var(--gold);
-  color:black;border:none;border-radius:50%;padding:12px;font-size:20px;
-  cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.25);}
+footer .copyright {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+#topBtn{background:var(--gold);color:var(--navy);}
 
 /* ==== RESPONSIVE ==== */
 @media(max-width:768px){
-  nav ul{flex-direction:column;align-items:flex-start;gap:.4rem;}
-  .hero{padding:4rem 1rem;}
-  .hero h1{font-size:1.9rem;}
-  .hero h3{font-size:1rem;}
-  .grid{grid-template-columns:1fr;}
-  section{margin:2.5rem auto;}
-  p{font-size:.95rem;}
+  nav ul{flex-direction:column;align-items:flex-start;gap:.4rem;}
+  .hero{padding:5rem 1rem;height: auto;}
+  .hero h1{font-size:2.5rem;}
+  .hero h3{font-size:1.2rem;}
+  footer .footer-content {flex-direction: column; text-align: center;}
+  footer .legal-links {margin-top: 1rem; text-align: center;}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <ul><li><strong>⚖️ The Justice Firm</strong></li></ul>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#practice">Practice</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#articles">Blog</a></li>
-    <li><a href="#payment">Payment</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li id="clock"></li>
-  </ul>
+  <ul><li><a href="index.html"><strong>⚖️ The Justice Firm</strong></a></li></ul>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="practice.html">Practice</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="payment.html">Payment</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li id="clock"></li>
+  </ul>
 </nav>
 
 <header class="hero">
-  <h1>The Justice Firm</h1>
-  <h3>Advocates & Legal Consultants</h3>
-  <p class="quote">“Justice is truth in action — integrity, excellence, and trust in every case.”</p>
-  <a href="#contact" class="btn">Book Consultation</a>
+  <h1>The Justice Firm</h1>
+  <h3>Ethical Counsel | Result-Driven Advocacy</h3>
+  <p class="quote">“Providing decisive legal representation in Allahabad High Court for over 15 years. We stand for integrity and clarity.”</p>
+  <a href="contact.html" class="btn">Book Confidential Consultation</a>
 </header>
 
 <main class="container">
 
-<section id="practice">
-  <h2>⚖️ Our Practice Areas</h2>
-  <p>Comprehensive legal services across Family, Civil, Criminal and Corporate domains.</p>
-  <div class="grid">
-    <article><h3>👨‍👩‍👧 Family & Matrimonial Law</h3><p>Divorce, custody, alimony, domestic violence and mediation.</p></article>
-    <article><h3>🏠 Civil Litigation</h3><p>Property disputes, partition suits, injunctions and recovery.</p></article>
-    <article><h3>⚖️ Criminal Law</h3><p>Bail, anticipatory bail, trial defence and criminal appeals.</p></article>
-    <article><h3>🏢 Corporate & Business Law</h3><p>Company formation, partnership disputes, compliance and drafting.</p></article>
-  </div>
-</section>
-
-<section id="about">
-  <h2>👤 About Adv. Ganga Shankar Shastri</h2>
-  <img src="YOUR_PHOTO_URL_HERE" alt="Adv. Ganga Shankar Shastri"
-       style="max-width:250px;border-radius:10px;margin-top:1rem;">
-  <p>Adv. Ganga Shankar Shastri, practising before the Allahabad High Court for over 15 years, is known for clear strategy, ethical practice and result-driven representation. His leadership has set a benchmark for professional excellence.</p>
-</section>
-
-<section id="team">
-  <h2>👥 Our Team of Advocates</h2>
-  <p>Experienced professionals combining dedication and precision.</p>
-  <div class="grid">
-    <article><img src="YOUR_PHOTO_URL_HERE" alt="Adv. Ganga Shankar Shastri"
-      style="width:100%;border-radius:8px;"><h3>Adv. Ganga Shankar Shastri</h3><p>Founder & Lead Counsel</p></article>
-    <article><img src="PHOTO_MINAKSHI_URL" alt="Adv. Minakshi Shastri"
-      style="width:100%;border-radius:8px;"><h3>Adv. Minakshi Shastri</h3><p>Senior Associate – Civil & Corporate</p></article>
-    <article><img src="PHOTO_SHIVANI_URL" alt="Dr. Shivani Shastri"
-      style="width:100%;border-radius:8px;"><h3>Dr. Shivani Shastri</h3><p>Consulting Advocate – Constitutional Affairs</p></article>
-    <article><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80"
-      alt="Adv. Sanjay Kumar" style="width:100%;border-radius:8px;"><h3>Adv. Sanjay Kumar</h3><p>Associate Counsel – Criminal Defence</p></article>
-  </div>
-</section>
-
-<section id="articles">
-  <h2>📰 Latest Articles & Insights</h2>
-  <div class="grid">
-    <article><h3>Understanding Article 21 – Right to Life</h3><p>The Supreme Court’s interpretation extends to dignity and privacy.</p></article>
-    <article><h3>When to File a Writ Petition</h3><p>Guide to remedies under Articles 32 & 226 of the Constitution.</p></article>
-    <article><h3>Digital Evidence in Criminal Trials</h3><p>Electronic records under the Evidence Act and IT Act 2000.</p></article>
-  </div>
-</section>
-
-<section id="payment">
-  <h2>💳 Secure Online Payment</h2>
-  <p>Pay consultation or service fees safely.</p>
-  <div class="grid">
-    <article style="text-align:center;"><h3>📱 UPI Payment</h3>
-      <img src="YOUR_UPI_QR_IMAGE_URL_HERE" alt="UPI QR" style="width:160px;border:2px solid var(--gold);border-radius:8px;margin:1rem auto;">
-      <p><strong>UPI ID:</strong> <span id="upi-id">thejusticefirm@upi</span></p>
-      <button class="btn" onclick="copyUPI()">Copy UPI ID</button>
-    </article>
-    <article style="text-align:center;"><h3>💼 Razorpay</h3>
-      <p>Use card or UPI via secure Razorpay link.</p>
-      <a href="YOUR_RAZORPAY_PAYMENT_LINK_HERE" target="_blank" class="btn">Pay Now</a>
-    </article>
-    <article style="text-align:center;"><h3>🌍 PayPal</h3>
-      <p>For international clients.</p>
-      <a href="YOUR_PAYPAL_PAYMENT_LINK_HERE" target="_blank" class="btn">Pay Now</a>
-    </article>
-  </div>
-  <article style="margin-top:2rem;background:#f9f9f9;border:1px solid #ddd;padding:1.2rem;border-radius:8px;">
-    <h3>🏦 Bank Transfer Details</h3>
-    <p><strong>Account:</strong> The Justice Firm<br>
-       <strong>Bank:</strong> State Bank of India<br>
-       <strong>Account No.:</strong> XXXXXXXX1234<br>
-       <strong>IFSC:</strong> SBIN000XXXX<br>
-       <strong>Branch:</strong> Rajrooppur, Allahabad</p>
-  </article>
-</section>
-
-<section id="calendar-section">
-  <h2>📅 Court Calendar</h2>
-  <div id="calendar"></div><br>
-  <a href="#" class="btn">📅 Download Court Calendar (PDF)</a>
-</section>
-
-<section id="contact">
-  <h2>✉️ Book a Consultation</h2>
-  <p>We respond within 24 hours.</p>
-  <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain" class="grid">
-    <input type="text" name="Client Name" placeholder="Your Name" required>
-    <input type="email" name="Client Email" placeholder="Your Email" required>
-    <textarea name="Query Details" rows="4" placeholder="Your Query" required></textarea>
-    <button type="submit" class="btn">Send Request</button>
-  </form>
+<section class="home-summary-section">
+  <h2>Our Core Legal Expertise</h2>
+  <p style="font-size:1.1rem; max-width: 700px; margin: 0 auto 3rem;">We offer comprehensive legal services tailored to meet individual and business needs with precision and dedication.</p>
+  <div class="grid">
+    <article><h3>👨‍👩‍👧 Family Law</h3><p>Handling delicate matters including divorce, custody, and alimony with sensitivity and strong advocacy.</p></article>
+    <article><h3>🏠 Civil Disputes</h3><p>Expertise in property, contracts, recovery suits, and complex civil litigation.</p></article>
+    <article><h3>⚖️ Criminal Defence</h3><p>Vigorous representation in bail matters, anticipatory bail, and trial defence.</p></article>
+    <article><h3>🏢 Corporate Law</h3><p>Advising businesses on formation, compliance, and partnership agreements.</p></article>
+  </div>
+  <div style="margin-top: 3rem;">
+    <a href="practice.html" class="btn" style="background:var(--charcoal); color:white; padding:0.8rem 2rem;">View All Practice Areas →</a>
+  </div>
 </section>
 
 </main>
 
 <footer>
-  <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
-  <p><a href="disclaimer.html">Legal Disclaimer</a> • <a href="privacy.html">Privacy Policy</a></p>
+  <div class="footer-content">
+    <div class="contact-info">
+      <h3>Contact Us</h3>
+      <p>📍 K-2, Swaroop Square, Civil Lines,<br> Prayagraj, UP - 211001</p>
+      <p>📞 +91 9876 543 210</p>
+      <p>📧 <a href="mailto:info@justicefirm.com">info@justicefirm.com</a></p>
+    </div>
+    <div class="legal-links">
+      <h3>Important Links</h3>
+      <p><a href="disclaimer.html">Legal Disclaimer</a></p>
+      <p><a href="privacy.html">Privacy Policy</a></p>
+      <p><a href="sitemap.html">Sitemap</a></p>
+    </div>
+  </div>
+  <p class="copyright">&copy; 2025 The Justice Firm. All Rights Reserved.</p>
 </footer>
 
 <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'});">↑</button>
 
 <script>
 function updateClock(){
-  const opt={timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit'};
-  document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-IN',opt)+' IST';
+  const opt={timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',second:'2-digit'};
+  document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-IN',opt)+' IST';
 }
 setInterval(updateClock,1000);updateClock();
-
-function generateCalendar(){
-  const now=new Date(),m=now.getMonth(),y=now.getFullYear(),today=now.getDate();
-  const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
-  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  let t=`<table><tr><th colspan="7">${months[m]} ${y}</th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr><tr>`;
-  let d=1;for(let i=0;i<first;i++)t+='<td></td>';
-  for(let i=first;i<7;i++){t+=`<td${d===today?' class="today"':''}>${d}</td>`;d++;}
-  t+='</tr>';while(d<=days){t+='<tr>';for(let i=0;i<7&&d<=days;i++){t+=`<td${d===today?' class="today"':''}>${d}</td>`;d++;}t+='</tr>';}
-  document.getElementById('calendar').innerHTML=t+'</table>';
-}
-generateCalendar();
-
-function copyUPI(){
-  const text=document.getElementById('upi-id').textContent;
-  navigator.clipboard.writeText(text);
-  alert('✅ UPI ID copied: '+text);
-}
 </script>
 
 </body>
