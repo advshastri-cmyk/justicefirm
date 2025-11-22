@@ -1,52 +1,180 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>The Justice Firm | Blog</title>
-    <style>
-        body { 
-            font-family: 'Times New Roman', Times, serif;
-            text-align: center; 
-            padding: 50px; 
-            background-color: #f4f4f4; 
-        }
-        h1, h2, h3 { 
-            color: #36454F; /* Charcoal Grey */
-            font-family: Arial, sans-serif;
-        }
-        p { 
-            font-size: 18px; 
-            color: #444;
-        }
-        .nav-bar { /* Navigation ke liye naya style */
-            margin-bottom: 50px; 
-            padding: 10px; 
-            border-bottom: 2px solid #36454F; 
-        }
-        .nav-bar a {
-            color: #36454F; 
-            text-decoration: none; 
-            font-weight: bold; 
-            margin: 0 15px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legal Articles & Insights | The Justice Firm</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    :root {
+      --charcoal: #36454F;
+      --gold: #d4af37;
+      --light: #f8f9fa;
+    }
+
+    body {
+      background: var(--light);
+      color: #222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    nav ul {
+      margin: 0;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--charcoal);
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 4rem auto;
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: var(--charcoal);
+      border-bottom: 3px solid var(--gold);
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    article {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    article h2 {
+      color: var(--charcoal);
+    }
+
+    article small {
+      color: #777;
+    }
+
+    article a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    article a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--charcoal);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      border-top: 4px solid var(--gold);
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
-    
-    <div class="nav-bar">
-        <a href="index.html">🏡 Home</a>
-        <a href="blog.html">📝 Blog</a>
-    </div>
 
-    <h1>The Justice Firm Blog</h1>
-    <p>Legal Insights and Industry Updates.</p>
+  <!-- Navigation -->
+  <nav>
+    <ul><li><strong>⚖️ The Justice Firm</strong></li></ul>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="payment.html">Payment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </nav>
 
-    <section style="margin-top: 50px; padding: 20px; border: 1px dashed #ccc; display: inline-block;">
-        <h2>✍️ First Article Title Here</h2>
-        <p style="font-size: 14px; color: #777;">Published: November 22, 2025</p>
-        <p style="max-width: 600px; text-align: justify; margin-top: 20px;">
-            This is where your legal articles will be written. Clients often look for short, informative articles about recent legal changes or common disputes.
-        </p>
-    </section>
+  <main>
+    <h1>Legal Articles & Insights</h1>
+
+    <article>
+      <h2>1. The Expanding Scope of the Right to Life — Article 21 Explained</h2>
+      <small>Published on November 20, 2025 | By Adv. Ganga Shankar Shastri</small>
+      <p>
+        Over the years, the Supreme Court has interpreted Article 21 to encompass a wide range of fundamental rights — 
+        from the right to privacy and dignity to clean air and legal aid. This article examines key judgments shaping modern constitutional interpretation.
+      </p>
+      <a href="#">Read More →</a>
+    </article>
+
+    <article>
+      <h2>2. Digital Evidence and Its Admissibility in Indian Courts</h2>
+      <small>Published on November 15, 2025 | By Dr. Shivani Shastri</small>
+      <p>
+        With the growing use of electronic devices, understanding Sections 65A and 65B of the Indian Evidence Act is crucial. 
+        Learn the process of certifying and submitting digital records during litigation.
+      </p>
+      <a href="#">Read More →</a>
+    </article>
+
+    <article>
+      <h2>3. Understanding the Concept of Bail — Rights of the Accused</h2>
+      <small>Published on November 10, 2025 | By Adv. Sanjay Kumar</small>
+      <p>
+        Bail is a legal right, not a privilege. This article explores the principles under the CrPC and key judgments that define 
+        the balance between individual liberty and societal interest.
+      </p>
+      <a href="#">Read More →</a>
+    </article>
+
+    <article>
+      <h2>4. Family Mediation — A Path Toward Peaceful Resolution</h2>
+      <small>Published on November 5, 2025 | By Adv. Minakshi Shastri</small>
+      <p>
+        Family mediation helps resolve matrimonial disputes with dignity and confidentiality. 
+        Learn how professional mediation promotes mutual respect and faster settlements.
+      </p>
+      <a href="#">Read More →</a>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
+    <p><a href="index.html">← Back to Home</a></p>
+  </footer>
 
 </body>
 </html>
