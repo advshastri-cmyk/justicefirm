@@ -1,97 +1,208 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>💳 Online Payment Options</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            padding: 50px; 
-            background: linear-gradient(to bottom, #eceff1, #cfd8dc);
-            color: #36454F;
-        }
-        .nav-bar { 
-            margin-bottom: 50px; 
-            padding: 10px; 
-            border-bottom: 2px solid #36454F; 
-            display: flex;
-            justify-content: center;
-        }
-        .nav-bar a {
-            color: #36454F; 
-            text-decoration: none; 
-            font-weight: bold; 
-            margin: 0 15px;
-        }
-        .content-box {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 40px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
-        .bank-details, .upi-details {
-            margin-top: 30px;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
-            background-color: #f7f7f7;
-        }
-        h3 { color: #36454F; border-bottom: 2px solid #36454F; padding-bottom: 5px; }
-        .detail-row { margin-bottom: 10px; }
-        .detail-row span { font-weight: bold; display: inline-block; width: 150px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment | The Justice Firm</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    :root {
+      --charcoal: #36454F;
+      --gold: #d4af37;
+      --light: #f8f9fa;
+    }
 
-        footer {
-            max-width: 900px; 
-            margin: 80px auto 0 auto; 
-            padding: 20px 0; 
-            background-color: #36454F; 
-            color: white; 
-            font-size: 14px; 
-            text-align: center;
-        }
-        footer a { color: #ccc; text-decoration: none; }
-    </style>
+    body {
+      background: var(--light);
+      color: #222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    nav ul {
+      margin: 0;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--charcoal);
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 4rem auto;
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: var(--charcoal);
+      border-bottom: 3px solid var(--gold);
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .payment-box {
+      background: var(--light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .payment-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .payment-box img {
+      width: 180px;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      margin: 1rem auto;
+    }
+
+    .payment-button {
+      display: inline-block;
+      background: var(--gold);
+      color: black;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    .payment-button:hover {
+      background: var(--charcoal);
+      color: white;
+    }
+
+    .bank-box {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    footer {
+      background: var(--charcoal);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      border-top: 4px solid var(--gold);
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="nav-bar">
-        <a href="index.html"> Home</a>
-        <a href="blog.html"> Blog</a>
-        <a href="disclaimer.html"> Disclaimer</a>
+
+  <!-- Navigation -->
+  <nav>
+    <ul><li><strong>⚖️ The Justice Firm</strong></li></ul>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="payment.html">Payment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>💳 Secure Online Payment</h1>
+    <p style="text-align:center;">
+      Pay your consultation or legal service fees safely and conveniently using any of the following options.
+    </p>
+
+    <div class="grid">
+      <div class="payment-box">
+        <h3>📱 UPI Payment</h3>
+        <img src="YOUR_UPI_QR_IMAGE_URL_HERE" alt="UPI QR Code">
+        <p><strong>UPI ID:</strong> <span id="upi-id">thejusticefirm@upi</span></p>
+        <button onclick="copyUPI()" class="payment-button">Copy UPI ID</button>
+      </div>
+
+      <div class="payment-box">
+        <h3>💼 Razorpay Payment</h3>
+        <p>Use your credit/debit card or UPI through our secure Razorpay link.</p>
+        <a href="YOUR_RAZORPAY_PAYMENT_LINK_HERE" target="_blank" class="payment-button">Pay with Razorpay</a>
+      </div>
+
+      <div class="payment-box">
+        <h3>🌍 PayPal (International)</h3>
+        <p>For clients outside India, pay securely using PayPal.</p>
+        <a href="YOUR_PAYPAL_PAYMENT_LINK_HERE" target="_blank" class="payment-button">Pay with PayPal</a>
+      </div>
     </div>
 
-    <div class="content-box">
-        <h1 style="text-align: center;">💳 Secure Payment Options</h1>
-        <p style="text-align: center; color: #444;">You can securely make payments for consultation fees, retainers, or services using the options below.</p>
-        
-        <div class="bank-details">
-            <h3>🏦 Bank Transfer (NEFT / RTGS)</h3>
-            <div class="detail-row"><span>Account Name:</span> The Justice Firm</div>
-            <div class="detail-row"><span>Account No:</span> 123456789012</div>
-            <div class="detail-row"><span>IFSC Code:</span> SBIN0001234</div>
-            <div class="detail-row"><span>Bank Name:</span> State Bank of India</div>
-        </div>
-
-        <div class="upi-details">
-            <h3>📱 UPI / QR Code</h3>
-            <p style="text-align: center;">Scan the QR code from any UPI app (Google Pay, PhonePe, Paytm, etc.)</p>
-            <div style="text-align: center; margin: 20px 0;">
-                <img src="qr_code.png" alt="UPI QR Code" style="max-width: 200px; border: 1px solid #ccc;">
-            </div>
-            <div class="detail-row" style="text-align: center;"><span>UPI ID:</span> thejusticefirm@sbi</div>
-        </div>
-
-        <p style="margin-top: 40px; font-style: italic; color: #777;">**Note:** Please send a payment confirmation screenshot to our WhatsApp number (+91 94541 83793) after successful transaction.</p>
-        
+    <div class="bank-box">
+      <h3>🏦 Bank Transfer Details</h3>
+      <p><strong>Account Name:</strong> The Justice Firm</p>
+      <p><strong>Bank:</strong> State Bank of India</p>
+      <p><strong>Account Number:</strong> XXXXXXXX1234</p>
+      <p><strong>IFSC Code:</strong> SBIN000XXXX</p>
+      <p><strong>Branch:</strong> Rajrooppur, Allahabad</p>
     </div>
+  </main>
 
-    <footer>
-        <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
-        <p style="margin-top: 5px;">Committed to Ethical Practice and Legal Excellence in India.</p>
-        <p style="margin-top: 5px;"><a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Legal Disclaimer</a></p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
+    <p><a href="index.html">← Back to Home</a></p>
+  </footer>
+
+  <script>
+    // Copy UPI ID Function
+    function copyUPI() {
+      const upiText = document.getElementById("upi-id").textContent;
+      navigator.clipboard.writeText(upiText);
+      alert("✅ UPI ID copied: " + upiText);
+    }
+  </script>
+
 </body>
 </html>
