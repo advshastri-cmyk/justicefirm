@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | The Justice Firm</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    :root {
+      --charcoal: #36454F;
+      --gold: #d4af37;
+      --light: #f8f9fa;
+    }
+
+    body {
+      background: var(--light);
+      color: #222;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    nav ul {
+      margin: 0;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--charcoal);
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 4rem auto;
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: var(--charcoal);
+      border-bottom: 3px solid var(--gold);
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: var(--charcoal);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: var(--gold);
+      color: black;
+    }
+
+    .contact-info {
+      margin-top: 3rem;
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid #ddd;
+    }
+
+    .contact-info h3 {
+      color: var(--charcoal);
+    }
+
+    .contact-info a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      color: var(--charcoal);
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background: var(--charcoal);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      border-top: 4px solid var(--gold);
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul><li><strong>⚖️ The Justice Firm</strong></li></ul>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="payment.html">Payment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Contact The Justice Firm</h1>
+
+    <p style="text-align:center;">Have a question or need legal assistance? Fill out the form below and we’ll respond within 24 hours.</p>
+
+    <!-- Contact Form -->
+    <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="Name" placeholder="Your Full Name" required>
+      <input type="email" name="Email" placeholder="Your Email Address" required>
+      <input type="tel" name="Phone" placeholder="Your Contact Number">
+      <textarea name="Message" rows="5" placeholder="Describe your legal query..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <h3>📍 Office Address</h3>
+      <p>HIG–41, Rajrooppur, Allahabad, Uttar Pradesh, India</p>
+
+      <h3>📞 Contact</h3>
+      <p>
+        Phone / WhatsApp: <a href="https://wa.me/919454183793" target="_blank">+91 94541 83793</a><br>
+        Email: <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
+      </p>
+
+      <h3>🕒 Office Hours</h3>
+      <p>Monday – Saturday: 10:00 AM to 6:00 PM<br>Sunday: Closed</p>
+
+      <h3>📌 Find Us on Map</h3>
+      <iframe 
+        src="https://www.google.com/maps?q=Rajrooppur,+Allahabad,+Uttar+Pradesh,+India&output=embed"
+        allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
+    <p><a href="index.html">← Back to Home</a></p>
+  </footer>
+
+</body>
+</html>
