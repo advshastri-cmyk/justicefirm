@@ -6,135 +6,153 @@
   <title>Our Team | The Justice Firm</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <style>
-    :root {
-      --charcoal: #36454F;
-      --gold: #d4af37;
-      --light: #f8f9fa;
-    }
+    /* ==== GLOBAL LAW FIRM THEME ==== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-    body {
-      background: var(--light);
-      color: #222;
-      line-height: 1.6;
-    }
+:root {
+  --charcoal: #1f2a33;   /* Darker charcoal for headings/nav/footer */
+  --gold: #d4af37;       /* Elegant gold accent */
+  --light: #f6f7f8;      /* Softer white background */
+  --text: #111111;       /* Deep near-black text */
+}
 
-    nav {
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 1rem;
-    }
+/* General text and body setup */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
+}
 
-    nav ul {
-      margin: 0;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
+/* Headings */
+h1, h2, h3, h4 {
+  color: var(--charcoal);
+  font-weight: 600;
+}
 
-    nav ul li {
-      list-style: none;
-    }
+/* Links */
+a {
+  color: var(--gold);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--charcoal);
+}
 
-    nav a {
-      color: var(--charcoal);
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+/* Navigation bar */
+nav {
+  background: var(--charcoal);
+  color: white;
+  padding: 0.7rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+nav ul {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav a {
+  color: var(--gold);
+}
+nav a:hover {
+  color: white;
+}
 
-    nav a:hover {
-      color: var(--gold);
-    }
+/* Main content boxes */
+main {
+  max-width: 1000px;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-    main {
-      max-width: 1000px;
-      margin: 4rem auto;
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+/* Paragraph text */
+p {
+  color: var(--text);
+  font-size: 1rem;
+}
 
-    h1 {
-      color: var(--charcoal);
-      border-bottom: 3px solid var(--gold);
-      padding-bottom: 0.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+/* Buttons */
+button, .btn {
+  background: var(--gold);
+  color: black;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+button:hover, .btn:hover {
+  background: var(--charcoal);
+  color: white;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      text-align: center;
-    }
+/* Input fields and textareas */
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: var(--text);
+  background: white;
+  font-family: 'Poppins', sans-serif;
+}
+input::placeholder, textarea::placeholder {
+  color: #666;
+}
 
-    .team-member {
-      background: var(--light);
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
+/* Cards / Boxes (for team, articles, etc.) */
+.card, .team-member, .payment-box {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+.card:hover, .team-member:hover, .payment-box:hover {
+  transform: translateY(-4px);
+}
 
-    .team-member:hover {
-      transform: translateY(-5px);
-    }
+/* Footer */
+footer {
+  background: var(--charcoal);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  border-top: 4px solid var(--gold);
+}
+footer a {
+  color: var(--gold);
+}
+footer a:hover {
+  color: white;
+}
 
-    .team-member img {
-      width: 100%;
-      max-width: 220px;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .team-member h3 {
-      color: var(--charcoal);
-      margin-bottom: 0.3rem;
-    }
-
-    .team-member p {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    .linkedin {
-      display: inline-block;
-      margin-top: 0.6rem;
-      background: var(--gold);
-      color: black;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .linkedin:hover {
-      background: var(--charcoal);
-      color: white;
-    }
-
-    footer {
-      background: var(--charcoal);
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      border-top: 4px solid var(--gold);
-      margin-top: 4rem;
-    }
-
-    footer a {
-      color: var(--gold);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: white;
-    }
+/* Responsive layout for mobile */
+@media (max-width: 768px) {
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  main {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+}      
   </style>
 </head>
 
