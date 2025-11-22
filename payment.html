@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>💳 Online Payment Options</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px; 
+            background: linear-gradient(to bottom, #eceff1, #cfd8dc);
+            color: #36454F;
+        }
+        .nav-bar { 
+            margin-bottom: 50px; 
+            padding: 10px; 
+            border-bottom: 2px solid #36454F; 
+            display: flex;
+            justify-content: center;
+        }
+        .nav-bar a {
+            color: #36454F; 
+            text-decoration: none; 
+            font-weight: bold; 
+            margin: 0 15px;
+        }
+        .content-box {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .bank-details, .upi-details {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+        }
+        h3 { color: #36454F; border-bottom: 2px solid #36454F; padding-bottom: 5px; }
+        .detail-row { margin-bottom: 10px; }
+        .detail-row span { font-weight: bold; display: inline-block; width: 150px; }
+
+        footer {
+            max-width: 900px; 
+            margin: 80px auto 0 auto; 
+            padding: 20px 0; 
+            background-color: #36454F; 
+            color: white; 
+            font-size: 14px; 
+            text-align: center;
+        }
+        footer a { color: #ccc; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="index.html"> Home</a>
+        <a href="blog.html"> Blog</a>
+        <a href="disclaimer.html"> Disclaimer</a>
+    </div>
+
+    <div class="content-box">
+        <h1 style="text-align: center;">💳 Secure Payment Options</h1>
+        <p style="text-align: center; color: #444;">You can securely make payments for consultation fees, retainers, or services using the options below.</p>
+        
+        <div class="bank-details">
+            <h3>🏦 Bank Transfer (NEFT / RTGS)</h3>
+            <div class="detail-row"><span>Account Name:</span> The Justice Firm</div>
+            <div class="detail-row"><span>Account No:</span> 123456789012</div>
+            <div class="detail-row"><span>IFSC Code:</span> SBIN0001234</div>
+            <div class="detail-row"><span>Bank Name:</span> State Bank of India</div>
+        </div>
+
+        <div class="upi-details">
+            <h3>📱 UPI / QR Code</h3>
+            <p style="text-align: center;">Scan the QR code from any UPI app (Google Pay, PhonePe, Paytm, etc.)</p>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="qr_code.png" alt="UPI QR Code" style="max-width: 200px; border: 1px solid #ccc;">
+            </div>
+            <div class="detail-row" style="text-align: center;"><span>UPI ID:</span> thejusticefirm@sbi</div>
+        </div>
+
+        <p style="margin-top: 40px; font-style: italic; color: #777;">**Note:** Please send a payment confirmation screenshot to our WhatsApp number (+91 94541 83793) after successful transaction.</p>
+        
+    </div>
+
+    <footer>
+        <p>&copy; 2025 The Justice Firm. All Rights Reserved.</p>
+        <p style="margin-top: 5px;">Committed to Ethical Practice and Legal Excellence in India.</p>
+        <p style="margin-top: 5px;"><a href="disclaimer.html" style="color: #ccc; text-decoration: none;">Legal Disclaimer</a></p>
+    </footer>
+</body>
+</html>
