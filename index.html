@@ -136,7 +136,11 @@
     /* Calendar tweaks */
     #calendar th,#calendar td{padding:6px}
     #calendar td{min-width:28px}
-
+    
+.is-hidden {
+    visibility: hidden !important; 
+    /* यह इमेज को छिपा देगा, लेकिन उसकी जगह लेआउट में बनी रहेगी। */
+}
     /* Responsive */
     @media(max-width:1024px){.hero{grid-template-columns:1fr 320px}.panel{padding:14px}}
     @media(max-width:720px){
