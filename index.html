@@ -190,30 +190,113 @@
           </div>
         </div>
       </section>
+<!-- ====== Copy/paste this ENTIRE block and replace your existing <section id="team"> ====== -->
+<style>
+  /* Team-specific image fixes (merge into your main <style> if you prefer) */
+  /* Wrapper */
+  .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; align-items:start; }
 
-      <section id="team">
-        <h2>Our Team</h2>
-        <p class="muted">Experienced advocates & legal consultants.</p>
-        <div class="grid" style="margin-top:12px">
-          <div class="member" data-reveal>
-            <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri, Founder & Lead Counsel" class="photo" loading="lazy">
-            <div class="bio"><h3>Adv. Ganga Shankar Shastri</h3><p class="muted">Founder & Lead Counsel</p></div>
-          </div>
-          <div class="member" data-reveal>
-            <img src="minakshi.jpg" alt="Adv. Minakshi Shastri, Senior Associate – Civil & Corporate" class="photo" loading="lazy">
-            <div class="bio"><h3>Adv. Minakshi Shastri</h3><p class="muted">Senior Associate – Civil & Corporate</p></div>
-          </div>
-          <div class="member" data-reveal>
-            <img src="new_shivani.jpg" alt="Adv. Shivani Shastri, Consulting Advocate – Constitutional Affairs" class="photo" loading="lazy">
-            <div class="bio"><h3>Adv. Shivani Shastri</h3><p class="muted">Consulting Advocate – Constitutional Affairs</p></div>
-          </div>
-          <div class="member" data-reveal>
-            <img src="sanjay.jpg" alt="Adv. Sanjay Kumar, Associate Counsel – Criminal Defence" class="photo" loading="lazy" onerror="this.style.display='none'">
-            <div class="bio"><h3>Adv. Sanjay Kumar</h3><p class="muted">Associate Counsel – Criminal Defence</p></div>
-          </div>
-        </div>
-      </section>
+  .member {
+    background:var(--card);
+    border-radius:12px;
+    box-shadow:var(--shadow-2);
+    overflow:hidden;               /* important so images don't overflow rounded corners */
+    transition:transform 320ms var(--easing);
+  }
+  .member:focus-within,
+  .member:hover { transform: translateY(-6px); }
 
+  /* Base photo rules */
+  .member img.photo,
+  .member img.ganga-photo,
+  .member img.shivani-photo,
+  .member .placeholder-photo {
+    display:block;
+    width:100%;
+    height:260px;                /* desktop height */
+    object-fit:cover;            /* fill container while preserving aspect */
+    border:0;
+    transition:transform 420ms var(--easing);
+    background:#f0f3f8;
+  }
+
+  /* Person-specific object-position tweaks to avoid head-crop */
+  .member img.ganga-photo { object-position: center 8%; }    /* moves crop up so head shows */
+  .member img.shivani-photo { object-position: center 14%; } /* slightly less shift */
+
+  /* hover zoom */
+  .member:hover img.photo,
+  .member:hover img.ganga-photo,
+  .member:hover img.shivani-photo { transform: scale(1.03); }
+
+  /* placeholder styling */
+  .member .placeholder-photo {
+    display:grid;
+    place-items:center;
+    color:var(--muted);
+    font-size:.95rem;
+    border-bottom:2px solid #e6ebf5;
+  }
+
+  .member .bio { padding:14px; }
+
+  /* Responsive */
+  @media (max-width:720px) {
+    .member img.photo,
+    .member img.ganga-photo,
+    .member img.shivani-photo,
+    .member .placeholder-photo { height:220px; }
+    .member img.ganga-photo { object-position: center 5%; }
+    .member img.shivani-photo { object-position: center 10%; }
+  }
+</style>
+
+<section id="team" aria-labelledby="teamHeading">
+  <h2 id="teamHeading">Our Team</h2>
+  <p class="muted">Experienced advocates & legal consultants.</p>
+
+  <div class="team-grid" role="list">
+    <!-- Ganga (explicit class to adjust crop) -->
+    <article class="member" role="listitem" aria-label="Adv. Ganga Shankar Shastri — Founder & Lead Counsel">
+      <!-- use ganga-photo class so CSS moves crop up -->
+      <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri, Founder and Lead Counsel" class="ganga-photo" loading="lazy" decoding="async">
+      <div class="bio">
+        <h3>Adv. Ganga Shankar Shastri</h3>
+        <p class="muted">Founder & Lead Counsel</p>
+      </div>
+    </article>
+
+    <!-- Minakshi (normal photo) -->
+    <article class="member" role="listitem" aria-label="Adv. Minakshi Shastri — Senior Associate">
+      <img src="minakshi.jpg" alt="Adv. Minakshi Shastri, Senior Associate – Civil & Corporate" class="photo" loading="lazy" decoding="async" onerror="this.style.display='none'">
+      <div class="bio">
+        <h3>Adv. Minakshi Shastri</h3>
+        <p class="muted">Senior Associate – Civil & Corporate</p>
+      </div>
+    </article>
+
+    <!-- Shivani (explicit class to slightly change crop) -->
+    <article class="member" role="listitem" aria-label="Adv. Shivani Shastri — Consulting Advocate">
+      <img src="new_shivani.jpg" alt="Adv. Shivani Shastri, Consulting Advocate – Constitutional Affairs" class="shivani-photo" loading="lazy" decoding="async" onerror="this.style.display='none'">
+      <div class="bio">
+        <h3>Adv. Shivani Shastri</h3>
+        <p class="muted">Consulting Advocate – Constitutional Affairs</p>
+      </div>
+    </article>
+
+    <!-- Sanjay (use placeholder if photo missing) -->
+    <article class="member" role="listitem" aria-label="Adv. Sanjay Kumar — Associate Counsel">
+      <!-- if you have a photo, replace the div below with <img src="sanjay.jpg" ...> -->
+      <div class="placeholder-photo" aria-hidden="true">Photo coming soon</div>
+      <div class="bio">
+        <h3>Adv. Sanjay Kumar</h3>
+        <p class="muted">Associate Counsel – Criminal Defence</p>
+      </div>
+    </article>
+  </div>
+</section>
+<!-- ====== END corrected TEAM section ====== -->
+      
       <section id="articles">
         <h2>Articles & Insights</h2>
         <div class="grid" style="margin-top:12px">
