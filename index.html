@@ -1,3 +1,4 @@
+<!-- === START PART 1/3 === -->
 <!doctype html>
 <html lang="en-IN">
 <head>
@@ -8,51 +9,9 @@
   <meta name="author" content="The Justice Firm">
   <link rel="canonical" href="https://justicefirms.com/">
   <meta name="robots" content="index,follow">
-
-  <!-- Open Graph -->
-  <meta property="og:site_name" content="The Justice Firm">
-  <meta property="og:title" content="The Justice Firm — Advocates & Legal Consultants">
-  <meta property="og:description" content="Practical counsel for Family, Criminal & Civil disputes. Based in Allahabad (Prayagraj), India.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://justicefirms.com/">
-  <meta property="og:image" content="https://justicefirms.com/og-image.jpg">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@thejusticefirm">
-
-  <link rel="alternate" href="https://justicefirms.com/" hreflang="en-in" />
-
-  <!-- Fonts perf -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"Organization",
-        "@id":"https://justicefirms.com/#org",
-        "name":"The Justice Firm",
-        "url":"https://justicefirms.com/",
-        "logo":"https://justicefirms.com/logo.png",
-        "contactPoint":[{"@type":"ContactPoint","telephone":"+91-9454183793","contactType":"customer service","areaServed":"IN"}]
-      },
-      {
-        "@type":"LegalService",
-        "@id":"https://justicefirms.com/#legalservice",
-        "name":"The Justice Firm",
-        "provider":{"@id":"https://justicefirms.com/#org"},
-        "areaServed":"IN",
-        "address":{"@type":"PostalAddress","streetAddress":"Rajrooppur","addressLocality":"Allahabad (Prayagraj)","addressRegion":"Uttar Pradesh","postalCode":"211004","addressCountry":"IN"},
-        "telephone":"+91-9454183793"
-      },
-      {"@type":"Person","name":"Adv. Ganga Shankar Shastri","jobTitle":"Founder & Lead Counsel","worksFor":{"@id":"https://justicefirms.com/#org"}}
-    ]
-  }
-  </script>
 
   <style>
     :root{
@@ -60,17 +19,15 @@
       --radius:14px;--container:1100px;--easing:cubic-bezier(.16,.84,.32,1);
       --shadow-1: 0 6px 30px rgba(12,18,35,0.06);
       --shadow-2: 0 14px 40px rgba(12,18,35,0.04);
+      --success:#1f7a3a;--danger:#b42318;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; -webkit-font-smoothing:antialiased;line-height:1.45}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--container);margin:0 auto;padding:20px}
-
-    /* Skip link */
     .skip-link{position:fixed;left:8px;top:8px;background:#000;color:#fff;padding:8px 10px;border-radius:6px;z-index:2000;transform:translateY(-200%);transition:transform .2s}
     .skip-link:focus{transform:translateY(0%)}
 
-    /* NAV */
     .nav{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);padding:14px;border-radius:12px;box-shadow:var(--shadow-1);margin:18px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#2e6df6);display:grid;place-items:center;color:#fff;font-weight:700;font-size:1.1rem;transition:transform 420ms var(--easing)}
@@ -80,19 +37,15 @@
     .nav-links a{color:var(--muted);font-weight:600;padding:8px 10px;border-radius:8px}
     .nav-links a.cta{background:var(--accent);color:#fff}
     .nav-toggle{display:none;border:0;font-size:22px;background:none;color:var(--ink)}
-
     #clock{color:var(--gold);font-weight:700;font-size:.95rem}
 
-    /* HERO */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin:18px;margin-top:6px;position:relative}
-    .hero::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.03))}
     .hero-card{background:var(--card);padding:34px;border-radius:16px;box-shadow:0 24px 80px rgba(12,18,35,0.06);position:relative;z-index:1}
     .eyebrow{background:linear-gradient(90deg,var(--accent),#2e6df6);color:#fff;padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700;display:inline-block}
     .headline{font-family:Merriweather,serif;font-size:28px;margin:14px 0}
     .lead{color:var(--muted);margin-bottom:20px}
     .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
 
-    /* PANEL (clock + calendar) */
     .panel{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow-2);z-index:1}
     #clock-nav{font-weight:700;color:var(--gold);font-size:.95rem;text-align:right}
     #calendar-section{background:linear-gradient(180deg,#fff,#fbfdff);border-radius:10px;padding:12px;margin-top:12px;box-shadow:0 12px 36px rgba(12,18,35,0.04)}
@@ -103,37 +56,32 @@
     #calendar td{height:40px}
     #calendar td.today{background:var(--gold);color:#000;font-weight:700;border-radius:50%}
 
-    /* Sections & cards */
     section{margin:36px 18px}
     h2{font-family:Merriweather,serif;font-size:1.25rem;margin:0 0 10px;position:relative}
     h2::after{content:"";display:block;width:48px;height:4px;background:var(--gold);border-radius:4px;margin-top:8px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
     .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow-2);transition:transform 320ms var(--easing),box-shadow 320ms var(--easing)}
     .card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(12,18,35,0.10)}
-    .card img{width:100%;height:240px;object-fit:cover;border-radius:10px;transition:transform 420ms var(--easing)}
-    .card:hover img{transform:scale(1.04)}
-
-    /* Team */
     .member{background:var(--card);border-radius:12px;box-shadow:var(--shadow-2);overflow:hidden;transition:transform 320ms var(--easing)}
-    .member:hover{transform:translateY(-8px)}
-    .member img.photo{height:260px;width:100%;object-fit:cover;object-position:center 24%;transition:transform 420ms var(--easing)}
+    .member img.photo{height:260px;width:100%;object-fit:cover;border-radius:6px}
     .member:hover img.photo{transform:scale(1.04)}
     .member .bio{padding:14px}
 
-    /* Payment */
     .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .pay-box{background:var(--card);padding:18px;text-align:center;border-radius:12px;box-shadow:var(--shadow-2)}
     .pay-box img{width:140px;height:140px;border-radius:10px;border:2px solid var(--gold);object-fit:cover}
 
-    /* Contact */
     form input,form textarea,form select{width:100%;padding:10px;border-radius:10px;border:1px solid #d8dce3;font-size:1rem;font-family:Inter}
     label{font-size:.9rem;color:var(--muted);display:block;margin-bottom:6px}
 
-    /* Footer */
+    /* inline message box */
+    .form-message{margin-top:12px;padding:12px;border-radius:10px;font-weight:600;display:none}
+    .form-message.success{background:rgba(31,122,58,0.12);color:var(--success);display:block;border:1px solid rgba(31,122,58,0.18)}
+    .form-message.error{background:rgba(180,35,24,0.08);color:var(--danger);display:block;border:1px solid rgba(180,35,24,0.12)}
+
     footer{background:linear-gradient(180deg,#02102a,#041733);padding:22px;border-radius:14px;margin:28px 18px;margin-bottom:40px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px}
     footer a{color:var(--gold)}
 
-    /* Buttons */
     .btn{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700;transition:transform 220ms var(--easing),box-shadow 220ms var(--easing)}
     .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(11,92,255,0.12)}
     .btn:active{transform:translateY(1px) scale(.99)}
@@ -143,40 +91,16 @@
     .btn.primary-shine:hover::after{left:120%}
     a:focus,button:focus,input:focus,textarea:focus,select:focus{outline:3px solid rgba(11,92,255,0.12);outline-offset:3px;border-radius:8px}
 
-    /* Reveal */
     [data-reveal]{opacity:0;transform:translateY(10px);transition:opacity 520ms var(--easing),transform 520ms var(--easing)}
     [data-reveal].is-revealed{opacity:1;transform:none}
 
-    /* Calendar tweaks */
     #calendar th,#calendar td{padding:6px}
     #calendar td{min-width:28px}
 
-    /* Small utility */
     .muted{color:var(--muted)}
 
-    /* Responsive */
     @media(max-width:1024px){.hero{grid-template-columns:1fr 320px}.panel{padding:14px}}
-    @media(max-width:720px){
-      .nav-links{display:none}
-      .nav-toggle{display:block}
-      .nav-links.is-open{
-          display:flex !important;
-          flex-direction:column;
-          position:absolute;
-          top: calc(100% + 8px); 
-          right: 18px;
-          background:var(--card);
-          padding:12px;
-          border-radius:10px;
-          box-shadow:var(--shadow-2);
-          min-width: 200px;
-      }
-      .hero{grid-template-columns:1fr;gap:14px}
-      .pay-grid{grid-template-columns:1fr}
-      section{margin:26px 12px}
-      footer{flex-direction:column;align-items:flex-start}
-      .member img.photo{height:220px}
-    }
+    @media(max-width:720px){.nav-links{display:none}.nav-toggle{display:block}.nav-links.is-open{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);right:18px;background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow-2);min-width:200px}.hero{grid-template-columns:1fr;gap:14px}.pay-grid{grid-template-columns:1fr}section{margin:26px 12px}footer{flex-direction:column;align-items:flex-start}.member img.photo{height:220px}}
     @media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
   </style>
 </head>
@@ -240,7 +164,8 @@
           </div>
         </aside>
       </section>
-      <!-- PRACTICE -->
+<!-- === END PART 1/3 === -->
+      <!-- === START PART 2/3 === -->
       <section id="practice">
         <h2>Practice Areas</h2>
         <p class="muted">Family, Criminal, Civil Litigation & Mediation.</p>
@@ -251,11 +176,13 @@
         </div>
       </section>
 
-      <!-- ABOUT -->
       <section id="about">
         <h2>About Adv. Ganga Shankar Shastri</h2>
         <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;align-items:flex-start">
-          <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri portrait" style="width:240px;border-radius:12px;object-fit:cover;object-position:center 20%" loading="lazy" data-reveal>
+          <div class="placeholder-card" data-reveal>
+            <div>[Image for Ganga Shastri]<br>240px x 240px</div>
+          </div>
+
           <div style="flex:1;min-width:220px" data-reveal>
             <p>With over 15 years of practice before the Allahabad High Court and district courts, Adv. Ganga Shankar Shastri is known for his clarity, courtroom preparation and practical client-focused representation.</p>
             <p class="muted">We emphasise confidentiality, balanced negotiation and strong litigation strategy.</p>
@@ -264,7 +191,6 @@
         </div>
       </section>
 
-      <!-- TEAM -->
       <section id="team">
         <h2>Our Team</h2>
         <p class="muted">Experienced advocates & legal consultants.</p>
@@ -282,13 +208,12 @@
             <div class="bio"><h3>Adv. Shivani Shastri</h3><p class="muted">Consulting Advocate – Constitutional Affairs</p></div>
           </div>
           <div class="member" data-reveal>
-            <img src="sanjay.jpg" alt="Adv. Sanjay Kumar, Associate Counsel – Criminal Defence" class="photo" loading="lazy">
+            <img src="sanjay.jpg" alt="Adv. Sanjay Kumar, Associate Counsel – Criminal Defence" class="photo" loading="lazy" onerror="this.style.display='none'">
             <div class="bio"><h3>Adv. Sanjay Kumar</h3><p class="muted">Associate Counsel – Criminal Defence</p></div>
           </div>
         </div>
       </section>
 
-      <!-- ARTICLES -->
       <section id="articles">
         <h2>Articles & Insights</h2>
         <div class="grid" style="margin-top:12px">
@@ -298,7 +223,6 @@
         </div>
       </section>
 
-      <!-- PAYMENT -->
       <section id="payment">
         <h2>Secure Payment</h2>
         <p class="muted">All payments in INR. UPI preferred. Receipts available on request.</p>
@@ -318,11 +242,11 @@
         </div>
       </section>
 
-      <!-- CONTACT -->
       <section id="contact">
         <h2>Contact & Consultation</h2>
         <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px">
-          <form id="contactForm" style="background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2)" data-reveal>
+          <!-- Contact form — action set to your Formspree contact endpoint -->
+          <form id="contactForm" action="https://formspree.io/f/mjkqwgje" method="POST" style="background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2)" data-reveal>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
               <label for="name">Full Name</label>
               <input id="name" name="name" placeholder="Full Name" required>
@@ -343,12 +267,20 @@
             </div>
             <label for="message" style="margin-top:10px">Brief description</label>
             <textarea id="message" name="message" rows="4" placeholder="Brief description…" required></textarea>
+
+            <!-- Honeypot -->
+            <input type="text" name="_gotcha" style="display:none" aria-hidden="true" tabindex="-1">
+
+            <!-- Inline message placeholder (accessible) -->
+            <div id="contactMessage" class="form-message" role="status" aria-live="polite" aria-atomic="true"></div>
+
             <div style="display:flex;gap:8px;margin-top:12px">
               <button class="btn" type="submit">Send Request</button>
               <button class="btn ghost" id="scheduleCallBtn" type="button">Schedule Call</button>
             </div>
           </form>
-
+<!-- === END PART 2/3 === -->
+          <!-- === START PART 3/3 === -->
           <aside class="panel" data-reveal>
             <h4>Office Address</h4>
             <p class="muted">Rajrooppur, Allahabad (Prayagraj), Uttar Pradesh</p>
@@ -360,12 +292,10 @@
               </a>
             </p>
           </aside>
-
         </div>
       </section>
-      </main>
+    </main>
 
-    <!-- FOOTER -->
     <footer>
       <div>
         <div style="font-weight:700">The Justice Firm</div>
@@ -373,20 +303,27 @@
       </div>
       <div><a href="disclaimer.html">Disclaimer & Privacy</a> • <a href="terms.html">Terms</a></div>
     </footer>
-  </div> <!-- /.wrap -->
+  </div>
 
-  <!-- BOOKING MODAL -->
+  <!-- Booking Modal -->
   <div id="bookingModal" aria-hidden="true" aria-labelledby="modalTitle" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:1200;padding:18px">
     <div role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="background:var(--card);padding:20px;border-radius:12px;max-width:420px;width:100%">
       <h3 id="modalTitle">Request Consultation</h3>
       <p class="muted">Choose a date — we will confirm via email.</p>
-      <form id="bookingForm">
+      <!-- Booking form — action set to your Formspree booking endpoint -->
+      <form id="bookingForm" action="https://formspree.io/f/myzqwkvv" method="POST">
         <label for="bk-client">Full name</label>
         <input id="bk-client" name="client" placeholder="Full name" required style="margin-top:10px">
         <label for="bk-email">Email</label>
         <input id="bk-email" name="email" type="email" placeholder="Email" required style="margin-top:10px">
         <label for="bk-date">Date</label>
         <input id="bk-date" name="date" type="date" required style="margin-top:10px">
+        <!-- Honeypot -->
+        <input type="text" name="_gotcha" style="display:none" aria-hidden="true" tabindex="-1">
+
+        <!-- Inline message placeholder -->
+        <div id="bookingMessage" class="form-message" role="status" aria-live="polite" aria-atomic="true"></div>
+
         <div style="display:flex;gap:8px;margin-top:14px">
           <button class="btn" type="submit">Request</button>
           <button class="btn ghost" type="button" id="cancelBookingBtn">Cancel</button>
@@ -395,7 +332,6 @@
     </div>
   </div>
 
-  <!-- Scripts: clock, calendar, nav, reveal, parallax, handlers -->
   <script>
     /* Utility */
     const $ = s => document.querySelector(s);
@@ -502,12 +438,6 @@
     requestSlotBtn?.addEventListener('click', openBooking);
     scheduleCallBtn?.addEventListener('click', openBooking);
     cancelBookingBtn?.addEventListener('click', closeBooking);
-    bookingForm?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Request received. We will confirm by email.');
-      bookingForm.reset();
-      closeBooking();
-    });
 
     /* Copy UPI */
     const copyUpiBtn = document.getElementById('copyUpiBtn');
@@ -517,7 +447,7 @@
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           await navigator.clipboard.writeText(upi);
-          alert('UPI Copied: ' + upi);
+          showInlineTemp(`UPI Copied: ${upi}`);
         } else {
           window.prompt('Copy UPI ID', upi);
         }
@@ -526,7 +456,107 @@
       }
     });
 
-    /* Scroll reveal */
+    /* Small ephemeral message (bottom-left) for UPI copy */
+    function showInlineTemp(msg, ms=2500){
+      let el = document.getElementById('tempMessage');
+      if(!el){
+        el = document.createElement('div');
+        el.id = 'tempMessage';
+        el.style.position = 'fixed';
+        el.style.left = '14px';
+        el.style.bottom = '18px';
+        el.style.background = '#02102a';
+        el.style.color = '#fff';
+        el.style.padding = '10px 12px';
+        el.style.borderRadius = '8px';
+        el.style.boxShadow = '0 8px 30px rgba(0,0,0,0.18)';
+        el.style.zIndex = 9999;
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.style.opacity = '1';
+      setTimeout(()=>{ if(el) el.style.opacity = '0'; }, ms);
+    }
+
+    /* showMessage: places inline success/error into form message container */
+    function showMessage(formId, type, text, autoHide=true, ms=6000){
+      const map = { contactForm: 'contactMessage', bookingForm: 'bookingMessage' };
+      const mid = map[formId];
+      if(!mid) return;
+      const el = document.getElementById(mid);
+      if(!el) return;
+      el.className = 'form-message ' + (type === 'success' ? 'success' : 'error');
+      el.textContent = text;
+      el.style.display = 'block';
+      el.focus();
+      if(autoHide){
+        clearTimeout(el._hideTimer);
+        el._hideTimer = setTimeout(()=>{ el.style.display = 'none'; }, ms);
+      }
+    }
+
+    /* ---- Formspree AJAX Handler (for both forms) ---- */
+    function attachFormspreeHandler(formId){
+      const form = document.getElementById(formId);
+      if(!form) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn ? submitBtn.textContent : '';
+
+        try {
+          if (submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+          const formData = new FormData(form);
+
+          // add subject for easier inbox sorting
+          if (formId === 'bookingForm') {
+              formData.append('_subject', 'Booking Slot Request from justicefirms.com');
+          } else if (formId === 'contactForm') {
+              formData.append('_subject', 'New Contact Request from justicefirms.com');
+          }
+
+          const action = form.getAttribute('action');
+          if (!action || action.indexOf('formspree.io') === -1) {
+            showMessage(formId, 'error', 'Form endpoint not set. Please create a form on formspree.io and paste the endpoint into form action.');
+            return;
+          }
+
+          const resp = await fetch(action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          const data = await resp.json().catch(() => ({}));
+
+          if (resp.ok) {
+            showMessage(formId, 'success', 'Your request has been received. We will contact you soon.');
+            form.reset();
+            if(formId === 'bookingForm') closeBooking();
+          } else {
+            let msg = 'Unable to send request. Please try again later.';
+            if (data && data.errors && Array.isArray(data.errors)) {
+              msg = data.errors.map(i => i.message || i).join('; ');
+            } else if (data && data.message) {
+              msg = data.message;
+            }
+            showMessage(formId, 'error', msg);
+          }
+        } catch (err) {
+          console.error('Form submit error', err);
+          showMessage(formId, 'error', 'Network error. Please check your connection and try again.');
+        } finally {
+          if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = originalText; }
+        }
+      });
+    }
+    attachFormspreeHandler('contactForm');
+    attachFormspreeHandler('bookingForm');
+
+    /* Scroll reveal, hero parallax, calendar etc. (kept same behavior) */
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const obs = new IntersectionObserver((entries, o) => {
         entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-revealed'); o.unobserve(en.target); } });
@@ -536,7 +566,6 @@
       document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-revealed'));
     }
 
-    /* Hero parallax */
     (function(){ const hero = document.querySelector('.hero'); if(!hero) return; if(window.matchMedia('(pointer: coarse)').matches) return;
       let raf=null;
       hero.addEventListener('mousemove', e => {
@@ -549,53 +578,13 @@
       hero.addEventListener('mouseleave', ()=> hero.style.transform = 'translate3d(0,0,0)');
     })();
 
-    /* Footer year */
+    /* Footer year + ESC close */
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    /* Close modal on ESC */
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && bookingModal && bookingModal.style.display === 'flex') closeBooking();
     });
 
-    /* ------------------ NEW: Contact form submit to backend /api/contact ------------------ */
-    (function registerContactHandler(){
-      const form = document.getElementById('contactForm');
-      if(!form) return;
-      form.addEventListener('submit', async function(e){
-        e.preventDefault();
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn ? submitBtn.textContent : 'Send Request';
-        try {
-          if (submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-          const payload = {
-            name: document.getElementById('name').value || '',
-            phone: document.getElementById('phone').value || '',
-            email: document.getElementById('email').value || '',
-            matter: document.getElementById('matter').value || '',
-            message: document.getElementById('message').value || ''
-          };
-          // If your API is at a different origin, change the URL to full origin.
-          const resp = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          const data = await resp.json().catch(()=>({}));
-          if (resp.ok && data.success) {
-            alert(data.message || 'Thank you — we will contact you soon.');
-            form.reset();
-          } else {
-            const msg = (data && (data.errors || data.message)) || 'Unable to send request. Please try again later.';
-            if (Array.isArray(msg)) alert(msg.join('\n')); else alert(msg);
-          }
-        } catch (err) {
-          console.error('Submit error', err);
-          alert('Network error. Please try again later.');
-        } finally {
-          if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = originalText; }
-        }
-      });
-    })();
   </script>
 </body>
 </html>
+<!-- === END PART 3/3 === -->
