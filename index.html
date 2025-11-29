@@ -433,9 +433,9 @@
     navToggle?.addEventListener('click', () => {
       const expanded = navToggle.getAttribute('aria-expanded') === 'true';
       navToggle.setAttribute('aria-expanded', String(!expanded));
-      if (navLinks && window.innerWidth < 720) {
-        navLinks.classList.toggle('is-open');
-      }
+   if (navLinks) {
+  navLinks.classList.toggle('is-open');
+}
     });
 
     /* Clock (Asia/Kolkata) */
