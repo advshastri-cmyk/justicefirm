@@ -381,66 +381,137 @@
           </div>
         </div>
       </section>
+<section id="contact">
+  <style>
+    /* Scoped styles to fix mobile overflow & make aside buttons responsive */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(220px, 360px); /* flexible right column */
+      gap: 18px;
+      margin-top: 12px;
+      align-items: start;
+    }
 
-      <section id="contact">
-        <h2>Contact & Consultation</h2>
-        <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px">
-          <form id="contactForm" action="https://formspree.io/f/mjkqwgje" method="POST" style="background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2)" data-reveal>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-              <div>
-                <label for="name">Full Name</label>
-                <input id="name" name="name" placeholder="Full Name" required>
-              </div>
-              <div>
-                <label for="phone">Phone (+91)</label>
-                <input id="phone" name="phone" type="tel" placeholder="Phone (+91)" required>
-              </div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="Email" required>
-              </div>
-              <div>
-                <label for="matter">Matter</label>
-                <select id="matter" name="matter">
-                  <option>Family Matter</option>
-                  <option>Criminal</option>
-                  <option>Civil / Property</option>
-                  <option>Mediation</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            <label for="message" style="margin-top:10px">Brief description</label>
-            <textarea id="message" name="message" rows="4" placeholder="Brief description…" required></textarea>
+    /* Make form & aside visually consistent with rest of site */
+    .contact-form {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-2);
+    }
 
-            <input type="text" name="_gotcha" style="display:none" aria-hidden="true" tabindex="-1">
+    .contact-aside {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-2);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0; /* important to prevent overflow inside grid */
+    }
 
-            <div id="contactMessage" class="form-message" role="status" aria-live="polite" aria-atomic="true"></div>
+    /* Ensure long content inside aside doesn't force overflow */
+    .contact-aside .panel-content { overflow: hidden; }
 
-            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-              <button class="btn btn--primary" type="submit">Send Request</button>
-              <button class="btn btn--ghost" id="scheduleCallBtn" type="button">Schedule Call</button>
-            </div>
-          </form>
+    /* Make action buttons full width on small screens and nicely spaced on larger screens */
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    @media (min-width: 720px) {
+      .contact-actions { flex-direction: column; }
+      .contact-actions a.btn { width: 100%; box-sizing: border-box; }
+    }
+    @media (max-width: 720px) {
+      /* Stack columns on small screens so nothing is cut off */
+      .contact-grid { grid-template-columns: 1fr; gap: 12px; }
+      /* Put the aside below the form on mobile (so user fills the form first) */
+      .contact-form { order: 1; }
+      .contact-aside { order: 2; }
+      .contact-aside .contact-actions { flex-direction: row; gap: 8px; flex-wrap: wrap; }
+      .contact-aside .contact-actions a.btn { flex: 1 1 calc(50% - 8px); min-width: 120px; }
+    }
 
-          <aside class="panel" data-reveal>
-            <h4>Office Address</h4>
-            <p class="muted">Rajrooppur, Allahabad (Prayagraj), Uttar Pradesh</p>
-            <h4 style="margin-top:16px">Timings</h4>
-            <p class="muted">Mon–Sun · 9:00 AM – 9:00 PM</p>
-            <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
-              <a href="https://wa.me/919454183793" class="btn btn--accent" target="_blank" rel="noopener" aria-label="WhatsApp chat">
-                💬 WhatsApp — Chat Now
-              </a>
-              <a href="tel:+918433438419" class="btn btn--primary" aria-label="Call">
-                📞 Call — Immediate Response
-              </a>
-            </div>
-          </aside>
+    /* Small tweak to textarea so it shrinks nicely on mobile */
+    .contact-form textarea { min-height: 110px; }
+
+    /* Accessibility: focus outlines for keyboard users */
+    .contact-aside a.btn:focus, .contact-form button:focus { outline: 3px solid rgba(8,59,155,0.12); outline-offset: 3px; }
+  </style>
+
+  <h2>Contact & Consultation</h2>
+
+  <div class="contact-grid">
+    <!-- Form -->
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mjkqwgje" method="POST" data-reveal>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <label for="name">Full Name</label>
+          <input id="name" name="name" placeholder="Full Name" required>
         </div>
-      </section>
+        <div>
+          <label for="phone">Phone (+91)</label>
+          <input id="phone" name="phone" type="tel" placeholder="Phone (+91)" required>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Email" required>
+        </div>
+        <div>
+          <label for="matter">Matter</label>
+          <select id="matter" name="matter">
+            <option>Family Matter</option>
+            <option>Criminal</option>
+            <option>Civil / Property</option>
+            <option>Mediation</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="message" style="margin-top:10px">Brief description</label>
+      <textarea id="message" name="message" rows="4" placeholder="Brief description…" required></textarea>
+
+      <input type="text" name="_gotcha" style="display:none" aria-hidden="true" tabindex="-1">
+
+      <div id="contactMessage" class="form-message" role="status" aria-live="polite" aria-atomic="true"></div>
+
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <button class="btn btn--primary" type="submit">Send Request</button>
+        <button class="btn btn--ghost" id="scheduleCallBtn" type="button">Schedule Call</button>
+      </div>
+    </form>
+
+    <!-- Aside -->
+    <aside class="contact-aside panel" data-reveal aria-label="Contact information">
+      <div class="panel-content">
+        <h4>Office Address</h4>
+        <p class="muted">Rajrooppur, Allahabad (Prayagraj), Uttar Pradesh</p>
+
+        <h4 style="margin-top:12px">Timings</h4>
+        <p class="muted">Mon–Sun · 9:00 AM – 9:00 PM</p>
+      </div>
+
+      <div class="contact-actions" aria-hidden="false">
+        <!-- Buttons are full width on small screens because of CSS above -->
+        <a href="https://wa.me/919454183793" class="btn btn--accent" target="_blank" rel="noopener" aria-label="WhatsApp chat">
+          💬 WhatsApp — Chat Now
+        </a>
+
+        <a href="tel:+918433438419" class="btn btn--primary" aria-label="Call">
+          📞 Call — Immediate Response
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
+      
     </main>
 
     <footer>
