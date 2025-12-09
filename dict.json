@@ -1,0 +1,42 @@
+[
+  {
+    "term": "Anticipatory Bail",
+    "abbr": "",
+    "pos": "noun",
+    "definition": "A direction to release a person on bail, issued even before the person is arrested, under Section 438 CrPC.",
+    "example": "Apply for anticipatory bail if you reasonably expect arrest.",
+    "date": "2024-07-05",
+    "tags": ["Criminal","Bail"],
+    "source": "Criminal Practice"
+  },
+  {
+    "term": "Maintenance (Section 125 CrPC)",
+    "abbr": "",
+    "pos": "noun",
+    "definition": "A legal obligation to provide money for basic living expenses to a spouse or dependent under Section 125 of CrPC.",
+    "example": "Apply for maintenance if spouse refuses financial support.",
+    "date": "2024-09-12",
+    "tags": ["Family","Maintenance"],
+    "source": "Family Practice"
+  },
+  {
+    "term": "Injunction",
+    "abbr": "",
+    "pos": "noun",
+    "definition": "A court order restraining a party from doing a specific act, often used in property or commercial disputes.",
+    "example": "An injunction prevented the sale of disputed land pending trial.",
+    "date": "2024-03-22",
+    "tags": ["Civil","Property"],
+    "source": "Civil Practice"
+  },
+  {
+    "term": "Cognizable Offence",
+    "abbr": "",
+    "pos": "noun",
+    "definition": "An offence in which the police may arrest without warrant and start investigation without court permission.",
+    "example": "Murder and theft are examples of cognizable offences.",
+    "date": "2024-01-15",
+    "tags": ["Criminal"],
+    "source": "Criminal Practice"
+  }
+]
