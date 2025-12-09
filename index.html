@@ -493,29 +493,286 @@
         </div>
       </section>
       <!-- ===== End Articles section ===== -->
+<section id="payment">
+  <style>
+    /* ===== PREMIUM ULTRA — iPhone STYLE QR CARD (SVG-first) ===== */
+    #payment { margin-top: 28px; }
+    .premium-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 18px;
+      align-items: stretch;
+    }
 
-      <section id="payment">
-        <h2>Secure Payment</h2>
-        <p class="muted">All payments in INR. UPI preferred. Receipts available on request.</p>
+    .iphone-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(245,247,252,0.58));
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 20px 50px rgba(5,10,30,0.16), inset 0 1px 0 rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px) saturate(120%);
+      -webkit-backdrop-filter: blur(8px) saturate(120%);
+      border: 1px solid rgba(255,255,255,0.45);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      min-height: 320px;
+      transition:transform .28s cubic-bezier(.16,.84,.32,1), box-shadow .28s;
+      overflow:visible;
+    }
+    .iphone-card:hover { transform: translateY(-6px); box-shadow: 0 34px 90px rgba(5,10,30,0.18); }
 
-        <div class="pay-grid" style="margin-top:12px">
-          <div class="pay-box" data-reveal>
-            <h4>UPI Payment</h4>
-            <img src="upi_qr.jpg" alt="UPI QR for The Justice Firm" loading="lazy" width="140" height="140">
-            <p class="muted">UPI ID: <strong id="upi-id">adv.shastri@oksbi</strong></p>
-            <button class="btn btn--accent" id="copyUpiBtn" type="button">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-              Copy UPI
-            </button>
-          </div>
+    .top-accent { display:flex; align-items:center; gap:10px; }
+    .dot { width:10px; height:10px; border-radius:999px; background: linear-gradient(180deg,var(--gold), #b88612); box-shadow: 0 4px 12px rgba(184,134,18,0.18); flex:0 0 10px; }
+    .iphone-card h4{ margin:0; font-size:1.05rem; font-family:Merriweather, serif; }
 
-          <div class="pay-box" data-reveal>
-            <h4>Bank Transfer</h4>
-            <p class="muted">The Justice Firm · Canara Bank<br>A/c 5328127000035 · IFSC CNRB0005131</p>
-            <a class="btn btn--ghost btn--small" href="#" role="button">Download Receipt</a>
-          </div>
+    /* QR module (SVG-first) */
+    .qr-wrap {
+      display:flex; gap:14px; align-items:center; justify-content:center; flex-direction:column; margin-top:6px;
+      padding:12px; border-radius:18px;
+      background: linear-gradient(180deg, rgba(8,15,40,0.02), rgba(8,15,40,0.01));
+      border: 1px solid rgba(5,20,60,0.04);
+      box-shadow: 0 8px 30px rgba(7,12,25,0.04);
+      margin-left:auto; margin-right:auto;
+    }
+
+    /* Vector-friendly frame */
+    .qr-frame {
+      width: 192px; height:192px; border-radius:18px;
+      display:grid;place-items:center;
+      background: linear-gradient(180deg,#fff,#fbfcff);
+      box-shadow: 0 24px 60px rgba(7,12,25,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 8px solid rgba(255,255,255,0.85);
+    }
+
+    .qr-frame svg, .qr-frame img {
+      width: calc(100% - 18px); height: calc(100% - 18px); /* inner padding */
+      display:block; object-fit:contain;
+      border-radius:6px;
+    }
+
+    .upi-pill {
+      background:linear-gradient(90deg, rgba(8,59,155,0.08), rgba(8,59,155,0.04));
+      padding:8px 12px; border-radius:999px; font-weight:700; color:var(--accent-2);
+      border:1px solid rgba(8,59,155,0.06); font-size:.95rem;
+    }
+
+    .pay-info { display:flex; flex-direction:column; gap:6px; align-items:center; text-align:center; color:var(--muted); font-size:.95rem; }
+    .pay-info strong { color:var(--ink); font-weight:800; }
+
+    .pay-actions { display:flex; gap:12px; justify-content:center; margin-top:auto; flex-wrap:wrap; }
+    .pay-actions .btn { min-width: 140px; padding:10px 12px; border-radius:12px; box-shadow: 0 10px 30px rgba(5,44,120,0.08); transition: transform .14s; }
+    .btn-copy { background: linear-gradient(90deg,#17c964,#0ba35a); color:#fff; border:0; }
+    .btn-download { background: transparent; color:var(--accent-2); border:1px solid rgba(5,44,120,0.08); }
+
+    .copy-toast { display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:999px; background: rgba(31,122,58,0.10); color:var(--success); font-weight:700; border:1px solid rgba(31,122,58,0.14); }
+    .tick-svg { width:18px;height:18px; flex:0 0 18px; }
+
+    /* Bank card (dark premium) */
+    .bank-card {
+      position: relative; background: linear-gradient(180deg, rgba(2,8,28,0.98), rgba(3,20,45,0.96));
+      color:#fff; border-radius:28px; padding:18px; box-shadow: 0 20px 60px rgba(2,6,20,0.5); display:flex; flex-direction:column; gap:12px; min-height: 320px;
+    }
+    .bank-card h4 { margin:0; color:#fff; font-family:Merriweather, serif; }
+    .bank-card .bank-info { color: rgba(255,255,255,0.88); font-weight:600; text-align:center; line-height:1.5; }
+    .bank-actions { display:flex; gap:12px; justify-content:center; margin-top:auto; }
+
+    /* responsive */
+    @media(max-width:820px){
+      .qr-frame { width:160px; height:160px; }
+      .iphone-card, .bank-card { min-height: 300px; padding:14px; border-radius:22px; }
+    }
+    @media(max-width:480px){
+      .qr-frame { width:140px; height:140px; }
+      .btn { min-width: 120px; }
+      .iphone-card, .bank-card { padding:12px; border-radius:18px; }
+    }
+  </style>
+
+  <h2>Secure Payment — Premium</h2>
+  <p class="muted">Fast, trusted UPI payments or bank transfer — receipts issued on request.</p>
+
+  <div class="premium-grid">
+    <!-- iPhone-style UPI card (SVG preferred) -->
+    <div class="iphone-card" data-reveal aria-labelledby="upiTitle">
+      <div class="top-accent" id="upiTitle">
+        <div class="dot" aria-hidden="true"></div>
+        <div><h4>UPI — Instant Payment</h4></div>
+      </div>
+
+      <div class="qr-wrap" role="region" aria-label="UPI QR code">
+        <div class="qr-frame" id="qrFrame" aria-hidden="false">
+          <!-- SVG-first: if you have an SVG file at 'upi_qr.svg' it will be inlined -->
+          <!-- Fallback to PNG if SVG not available -->
+          <object id="qrObject" type="image/svg+xml" data="upi_qr.svg" aria-label="UPI QR code (vector)"></object>
+          <img id="qrFallback" src="upi_qr.png" alt="UPI QR (fallback)" style="display:none" loading="lazy">
         </div>
-      </section>
+
+        <div class="upi-line"><div class="upi-pill">Scan with any UPI app</div></div>
+      </div>
+
+      <div class="pay-info" role="status" aria-live="polite">
+        <div>UPI ID: <strong id="upi-id">adv.shastri@oksbi</strong></div>
+        <div class="muted" style="font-size:.88rem">Transaction safe & encrypted</div>
+      </div>
+
+      <div class="pay-actions" role="group" aria-label="Payment actions">
+        <button class="btn btn-copy" id="copyUpiBtn" type="button" aria-live="polite" aria-label="Copy UPI ID">Copy UPI</button>
+        <button class="btn btn-download" id="downloadSvgBtn" type="button" aria-label="Download QR (SVG/PNG)">Download QR</button>
+        <div id="copyToast" style="display:none" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Bank transfer card (dark, premium) -->
+    <div class="bank-card" data-reveal aria-labelledby="bankTitle">
+      <div style="display:flex;align-items:center;gap:10px;justify-content:center">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <h4 id="bankTitle">Bank Transfer</h4>
+      </div>
+
+      <div class="bank-info">
+        <div style="font-size:1rem">The Justice Firm — Canara Bank</div>
+        <div style="margin-top:6px;font-size:.98rem">A/c: <strong>5328127000035</strong></div>
+        <div>IFSC: <strong>CNRB0005131</strong></div>
+      </div>
+
+      <div class="bank-actions">
+        <a class="btn btn-download" id="downloadReceipt" href="#" role="button" aria-label="Download receipt sample">Download Receipt</a>
+        <a class="btn" href="https://wa.me/919454183793" target="_blank" rel="noopener" aria-label="WhatsApp for payment help" style="background:linear-gradient(90deg,#083b9a,#052c78); color:#fff">Need Help</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const copyBtn = document.getElementById('copyUpiBtn');
+      const upiEl = document.getElementById('upi-id');
+      const toast = document.getElementById('copyToast');
+      const qrObject = document.getElementById('qrObject');
+      const qrFallback = document.getElementById('qrFallback');
+      const downloadBtn = document.getElementById('downloadSvgBtn');
+
+      function showToast(msg){
+        toast.innerHTML = `<span class="copy-toast" role="status" aria-live="polite">
+          <svg class="tick-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="tick-path" d="M6.5 12.3l3.2 3.2 7.8-8.1" stroke="#1f7a3a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="48" stroke-dashoffset="48"></path></svg>
+          <span>${msg}</span>
+        </span>`;
+        toast.style.display = 'inline-block';
+        toast.setAttribute('aria-hidden','false');
+        const path = toast.querySelector('.tick-path');
+        if(path){ setTimeout(()=> path.style.strokeDashoffset = '0', 20); }
+        setTimeout(()=> { toast.style.display = 'none'; toast.setAttribute('aria-hidden','true'); if(path) path.style.strokeDashoffset = '48'; }, 2600);
+      }
+
+      copyBtn?.addEventListener('click', async ()=> {
+        const upi = (upiEl?.textContent || '').trim();
+        if(!upi){ showToast('UPI not available'); return; }
+        try {
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            await navigator.clipboard.writeText(upi);
+            showToast('UPI copied');
+          } else {
+            window.prompt('Copy UPI ID', upi);
+            showToast('Copy manually');
+          }
+        } catch(e){
+          try { window.prompt('Copy UPI ID', upi); showToast('Copy manually'); } catch(err){ showToast('Unable to copy'); }
+        }
+      });
+
+      // If <object> fails to load (SVG missing) show fallback png
+      qrObject?.addEventListener('error', ()=> {
+        if(qrFallback){ qrFallback.style.display = 'block'; qrObject.style.display = 'none'; }
+      });
+      // if object loads but is empty, also try show fallback after small timeout
+      setTimeout(()=> {
+        try {
+          const objDoc = qrObject && qrObject.contentDocument;
+          if(qrObject && (!objDoc || !objDoc.documentElement || objDoc.documentElement.childElementCount === 0)){
+            if(qrFallback){ qrFallback.style.display = 'block'; qrObject.style.display = 'none'; }
+          }
+        } catch(e){}
+      }, 600);
+
+      // Download SVG if available, otherwise download PNG fallback
+      downloadBtn?.addEventListener('click', async ()=> {
+        // Prefer file 'upi_qr.svg' — try fetch
+        const svgURL = 'upi_qr.svg';
+        try {
+          const res = await fetch(svgURL, {cache: "no-store"});
+          if(res.ok){
+            const blob = await res.blob();
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'justicefirms_upi_qr.svg';
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(()=> URL.revokeObjectURL(a.href), 2000);
+            return;
+          }
+        } catch(e){}
+        // fallback: if PNG exists
+        const pngURL = qrFallback?.getAttribute('src') || 'upi_qr.png';
+        try {
+          const res2 = await fetch(pngURL, {cache: "no-store"});
+          if(res2.ok){
+            const blob2 = await res2.blob();
+            const a2 = document.createElement('a');
+            a2.href = URL.createObjectURL(blob2);
+            a2.download = 'justicefirms_upi_qr.png';
+            document.body.appendChild(a2); a2.click(); a2.remove();
+            setTimeout(()=> URL.revokeObjectURL(a2.href), 2000);
+            return;
+          }
+        } catch(e){}
+        // last resort: render object to canvas (if inline svg available)
+        try {
+          const objDoc = qrObject && qrObject.contentDocument;
+          if(objDoc){
+            const svgEl = objDoc.querySelector('svg');
+            if(svgEl){
+              const svgString = new XMLSerializer().serializeToString(svgEl);
+              const svgBlob = new Blob([svgString], {type: 'image/svg+xml;charset=utf-8'});
+              const url = URL.createObjectURL(svgBlob);
+              const img = new Image();
+              img.onload = function(){
+                const c = document.createElement('canvas');
+                c.width = img.width * 2; c.height = img.height * 2; // hi-dpi
+                const ctx = c.getContext('2d');
+                ctx.fillStyle = '#fff'; ctx.fillRect(0,0,c.width,c.height);
+                ctx.drawImage(img, 0, 0, c.width, c.height);
+                c.toBlob(function(blob){
+                  const a = document.createElement('a');
+                  a.href = URL.createObjectURL(blob);
+                  a.download = 'justicefirms_upi_qr.png';
+                  document.body.appendChild(a); a.click(); a.remove();
+                  setTimeout(()=> URL.revokeObjectURL(a.href), 2000);
+                }, 'image/png', 0.95);
+                URL.revokeObjectURL(url);
+              };
+              img.src = url;
+              return;
+            }
+          }
+        } catch(e){}
+        showToast('Unable to download QR');
+      });
+
+      // Sample receipt download behavior (same as before)
+      const receipt = document.getElementById('downloadReceipt');
+      receipt?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const txt = `Receipt — The Justice Firm\nDate: ${new Date().toLocaleDateString('en-IN')}\nPaid to: The Justice Firm\nUPI ID: ${upiEl?.textContent || ''}\nReference: (enter transaction id)\n\nThank you.`;
+        const blob = new Blob([txt], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'receipt.txt'; document.body.appendChild(a); a.click();
+        setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },1500);
+      });
+    })();
+  </script>
+</section>
+
 <section id="contact">
   <style>
     /* Scoped styles to fix mobile overflow & make aside buttons responsive */
