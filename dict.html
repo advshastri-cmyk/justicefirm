@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no" />
+  <title>Legal Dictionary — The Justice Firm</title>
+  <meta name="description" content="Legal dictionary and quick definitions — The Justice Firm." />
+  <link rel="canonical" href="https://justicefirms.com/dict.html">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f4f6fb; --card:#ffffff; --ink:#071225; --muted:#556173;
+      --accent:#083b9a; --accent-2:#052c78; --gold:#c89b1e;
+      --radius:12px; --container:1100px; --easing:cubic-bezier(.16,.84,.32,1);
+      --shadow-1: 0 6px 30px rgba(7,12,25,0.06); --shadow-2: 0 14px 40px rgba(7,12,25,0.05);
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;line-height:1.45}
+    .wrap{max-width:var(--container);margin:0 auto;padding:20px}
+    a{color:inherit;text-decoration:none}
+    header.site-header{display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(255,255,255,0.96);border-radius:12px;box-shadow:var(--shadow-1);margin:12px 0}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-weight:800}
+    .site-title{font-family:Merriweather,serif;font-weight:700}
+    nav.simple-nav{margin-left:auto;display:flex;gap:10px;align-items:center}
+    nav.simple-nav a{color:var(--muted);padding:8px 10px;border-radius:8px;font-weight:700}
+    nav.simple-nav a.home{background:transparent;border:1px solid rgba(8,70,198,0.08);color:var(--accent-2)}
+    main{margin-top:18px}
+    .hero{background:linear-gradient(180deg,#0b1220 0%, #071223 100%); color:#e7f2ff; padding:24px;border-radius:14px;display:flex;gap:18px;align-items:center}
+    .hero img{width:120px;height:72px;object-fit:cover;border-radius:8px}
+    .hero h1{margin:0;font-family:Merriweather,serif;font-size:20px}
+    .controls{display:flex;gap:12px;align-items:center;margin:18px 0;flex-wrap:wrap}
+    .search {flex:1; min-width:220px; display:flex; gap:8px; align-items:center}
+    .search input{flex:1;padding:10px;border-radius:10px;border:1px solid #e6ebf5}
+    .alpha {display:flex;gap:6px;flex-wrap:wrap}
+    .alpha button{padding:6px 8px;border-radius:8px;border:1px solid rgba(5,44,120,0.06);background:#fff;cursor:pointer;font-weight:700}
+    .alpha button.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:0}
+    .dict-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-top:12px}
+    .term-card{background:var(--card);border-radius:12px;padding:14px;box-shadow:var(--shadow-2);display:flex;flex-direction:column;gap:8px}
+    .term-head{display:flex;align-items:center;gap:12px}
+    .term-letter{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#f1f3f8,#e6eefc);display:grid;place-items:center;font-weight:800;color:var(--accent-2)}
+    .term-title{font-weight:800;font-family:Merriweather,serif}
+    .term-meta{margin-left:auto;color:var(--muted);font-size:.88rem}
+    .definition{color:var(--muted);padding-top:6px}
+    .more {margin-top:8px;display:flex;gap:8px;align-items:center}
+    .btn{padding:8px 12px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;cursor:pointer;font-weight:700}
+    .ghost{background:transparent;border:1px solid rgba(5,44,120,0.08);color:var(--ink)}
+    .tools{display:flex;gap:8px;align-items:center}
+    .empty{color:var(--muted);padding:18px;border-radius:12px;background:#fff}
+    footer{margin:28px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    @media(max-width:720px){ .dict-grid{grid-template-columns:1fr} .controls{flex-direction:column;align-items:stretch} .search input{width:100%} nav.simple-nav{display:none} }
+    /* print */
+    @media print{ .controls, nav.simple-nav, footer, .hero { display:none } body{background:#fff} .wrap{padding:0} .term-card{box-shadow:none;border:1px solid #eee} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header" role="banner">
+      <div class="logo" aria-hidden="true">TJ</div>
+      <div>
+        <div class="site-title">The Justice Firm</div>
+        <div style="font-size:.86rem;color:var(--muted)">Legal Dictionary</div>
+      </div>
+
+      <nav class="simple-nav" role="navigation" aria-label="Top">
+        <a class="home" href="/">Home</a>
+        <a href="/articles.html">Articles</a>
+        <a href="/dict.html" aria-current="page">Dictionary</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="dictionary hero">
+        <div style="flex:1">
+          <h1>Legal Dictionary — quick, plain-language definitions</h1>
+          <div style="margin-top:6px;color:#bcd3f0">Search legal terms used on this site. Practical definitions for clients in India.</div>
+        </div>
+        <img src="hero_bg.jpg" alt="" aria-hidden="true">
+      </section>
+
+      <div class="controls" role="region" aria-label="Dictionary controls">
+        <div class="search" role="search">
+          <input id="termSearch" placeholder="Search term or phrase (e.g. 'bail', 'maintenance')" aria-label="Search dictionary">
+          <div class="tools">
+            <button id="downloadJSON" class="btn ghost" title="Download JSON">Download</button>
+            <button id="printBtn" class="btn ghost" title="Print">Print</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="font-weight:700;color:var(--muted);font-size:.95rem">Jump to</div>
+          <div class="alpha" id="alphaBar" role="tablist" aria-label="A to Z filter"></div>
+        </div>
+      </div>
+
+      <div id="resultsInfo" style="margin-top:8px;color:var(--muted)">Showing <strong id="count">0</strong> terms</div>
+
+      <div id="dictGrid" class="dict-grid" aria-live="polite"></div>
+
+      <div id="empty" class="empty" style="display:none;margin-top:12px">No results found. Try different keywords or clear filters.</div>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> The Justice Firm — Legal Dictionary</div>
+      <div><a href="/disclaimer.html">Disclaimer</a> • <a href="/terms.html">Terms</a></div>
+    </footer>
+  </div>
+
+  <script>
+    // fetch dict.json first; fallback to embedded data if fetch fails
+    const JSON_PATH = 'dict.json'; // place dict.json next to dict.html
+    const grid = document.getElementById('dictGrid');
+    const search = document.getElementById('termSearch');
+    const alphaBar = document.getElementById('alphaBar');
+    const countEl = document.getElementById('count');
+    const empty = document.getElementById('empty');
+
+    // basic sample fallback data (will be replaced by dict.json when present)
+    const fallback = [
+      {"term":"Anticipatory Bail","abbr":"","pos":"noun","definition":"A direction to release a person on bail, issued even before the person is arrested, under Section 438 CrPC.","example":"Apply for anticipatory bail if you reasonably expect arrest."},
+      {"term":"Maintenance (Section 125 CrPC)","abbr":"","pos":"noun","definition":"A legal obligation to provide money for basic living expenses to a spouse or dependent under Section 125 of CrPC.","example":"Apply for maintenance if spouse refuses financial support."},
+      {"term":"Injunction","abbr":"","pos":"noun","definition":"A court order restraining a party from doing a specific act, often used in property or commercial disputes.","example":"An injunction prevented the sale of disputed land pending trial."},
+      {"term":"Cognizable Offence","abbr":"","pos":"noun","definition":"An offence in which the police may arrest without warrant and start investigation without court permission.","example":"Murder and theft are examples of cognizable offences."}
+    ];
+
+    let DICT = [];
+
+    // build A-Z bar
+    function buildAlpha(){
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      alphaBar.innerHTML = '';
+      const allBtn = document.createElement('button'); allBtn.textContent='All'; allBtn.className='active'; allBtn.dataset.letter=''; alphaBar.appendChild(allBtn);
+      letters.forEach(l=>{
+        const b = document.createElement('button'); b.textContent = l; b.dataset.letter = l; alphaBar.appendChild(b);
+      });
+      alphaBar.addEventListener('click', (e)=>{
+        const b = e.target.closest('button');
+        if(!b) return;
+        alphaBar.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        applyFilters();
+      });
+    }
+
+    function render(list){
+      grid.innerHTML = '';
+      if(!list || list.length === 0){
+        empty.style.display = 'block';
+        countEl.textContent = 0;
+        return;
+      }
+      empty.style.display = 'none';
+      countEl.textContent = list.length;
+      list.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'term-card';
+        card.innerHTML = `
+          <div class="term-head">
+            <div class="term-letter" aria-hidden="true">${(item.term || '?').trim().charAt(0).toUpperCase()}</div>
+            <div>
+              <div class="term-title">${escapeHtml(item.term)}</div>
+              <div style="color:var(--muted);font-size:.9rem">${escapeHtml(item.pos || '')} ${item.abbr ? '• '+escapeHtml(item.abbr) : ''}</div>
+            </div>
+            <div class="term-meta">${item.source || ''}</div>
+          </div>
+          <div class="definition" data-full>${escapeHtml(item.definition || '')}</div>
+          <div class="more">
+            <button class="btn ghost expand">Read more</button>
+            <div style="margin-left:auto;color:var(--muted);font-size:.88rem">${item.date || ''}</div>
+          </div>
+        `;
+        // attach expandable preview (if example exists)
+        const expandBtn = card.querySelector('.expand');
+        if(item.example){
+          expandBtn.addEventListener('click', ()=>{
+            const def = card.querySelector('[data-full]');
+            if(expandBtn.dataset.open === '1'){
+              def.innerHTML = escapeHtml(item.definition || '');
+              expandBtn.textContent = 'Read more';
+              expandBtn.dataset.open = '0';
+            } else {
+              def.innerHTML = `${escapeHtml(item.definition || '')}<hr style="border:none;border-top:1px solid #eef3fb;margin:8px 0"><strong>Example:</strong> <div style="color:var(--muted);margin-top:6px">${escapeHtml(item.example)}</div>`;
+              expandBtn.textContent = 'Collapse';
+              expandBtn.dataset.open = '1';
+            }
+          });
+        } else {
+          expandBtn.style.display = 'none';
+        }
+        grid.appendChild(card);
+      });
+    }
+
+    function escapeHtml(s){ return String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+    function applyFilters(){
+      const q = (search.value || '').trim().toLowerCase();
+      const active = alphaBar.querySelector('button.active');
+      const letter = active ? (active.dataset.letter || '') : '';
+      let filtered = DICT.filter(item => {
+        if(letter){
+          if(!item.term || item.term.trim().charAt(0).toUpperCase() !== letter) return false;
+        }
+        if(!q) return true;
+        const hay = ((item.term||'') + ' ' + (item.definition||'') + ' ' + (item.example||'') + ' ' + (item.tags||'')).toLowerCase();
+        return hay.indexOf(q) !== -1;
+      });
+      render(filtered);
+    }
+
+    // fetch JSON and init
+    async function init(){
+      buildAlpha();
+      try {
+        const r = await fetch(JSON_PATH, {cache:'no-cache'});
+        if(!r.ok) throw new Error('no json');
+        const data = await r.json();
+        if(Array.isArray(data) && data.length) DICT = data;
+        else DICT = fallback;
+      } catch(e){
+        DICT = fallback;
+      }
+      render(DICT);
+    }
+    init();
+
+    // interactions
+    search.addEventListener('input', ()=> applyFilters());
+    document.getElementById('downloadJSON').addEventListener('click', ()=> {
+      const blob = new Blob([JSON.stringify(DICT, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'dict.json'; document.body.appendChild(a); a.click(); a.remove();
+    });
+    document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+    // keyboard: focus search on '/'
+    window.addEventListener('keydown', (e)=> { if(e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'){ e.preventDefault(); search.focus(); } });
+
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
