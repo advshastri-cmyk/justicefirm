@@ -1,2060 +1,430 @@
 [
-  {
-    "term": "Abatement",
-    "pos": "noun",
-    "definition": "Ending of legal proceedings because a party has died or the cause no longer survives.",
-    "example": "The appeal abated as no legal heirs continued it.",
-    "tags": ["Civil","Procedure"]
-  },
-  {
-    "term": "Absconding",
-    "pos": "noun",
-    "definition": "When an accused hides to avoid arrest or trial.",
-    "example": "The accused was marked as absconding during investigation.",
-    "tags": ["Criminal"]
-  },
-  {
-    "term": "Acquittal",
-    "pos": "noun",
-    "definition": "A court judgment that the accused is not guilty.",
-    "example": "He was granted acquittal due to weak evidence.",
-    "tags": ["Criminal","Court"]
-  },
-  {
-    "term": "Ad Interim Order",
-    "pos": "noun",
-    "definition": "Temporary order passed until a detailed hearing is held.",
-    "example": "The court issued an ad interim stay on demolition.",
-    "tags": ["Civil","Court"]
-  },
-  {
-    "term": "Adjudication",
-    "pos": "noun",
-    "definition": "Formal decision-making by a court or authority.",
-    "example": "The matter is pending adjudication before the tribunal.",
-    "tags": ["Court","Procedure"]
-  },
-  {
-    "term": "Admission",
-    "pos": "noun",
-    "definition": "A statement accepting a fact, used as evidence.",
-    "example": "His admission supported the prosecution case.",
-    "tags": ["Evidence"]
-  },
-  {
-    "term": "Adultery",
-    "pos": "noun",
-    "definition": "Volens no longer a crime but still a divorce ground.",
-    "example": "She sought divorce on grounds of adultery.",
-    "tags": ["Family"]
-  },
-  {
-    "term": "Affidavit",
-    "pos": "noun",
-    "definition": "A sworn written statement used as evidence.",
-    "example": "He filed an affidavit of evidence.",
-    "tags": ["Evidence","Procedure"]
-  },
-  {
-    "term": "Aggravated Offence",
-    "pos": "noun",
-    "definition": "A more serious form of an offence due to cruelty, weapon use or repeated conduct.",
-    "example": "The assault became aggravated due to knife use.",
-    "tags": ["Criminal"]
-  },
-  {
-    "term": "Alibi",
-    "pos": "noun",
-    "definition": "Proof accused was somewhere else during the offence.",
-    "example": "CCTV footage confirmed his alibi.",
-    "tags": ["Criminal","Evidence"]
-  },
-
-  {
-    "term": "Alimony",
-    "pos": "noun",
-    "definition": "Financial support paid to spouse after divorce or separation.",
-    "example": "The court granted interim alimony.",
-    "tags": ["Family"]
-  },
-  {
-    "term": "Amendment of Pleadings",
-    "pos": "noun",
-    "definition": "Correction of written pleadings with court permission.",
-    "example": "Plaintiff sought amendment to add new facts.",
-    "tags": ["Civil","Procedure"]
-  },
-  {
-    "term": "Amicus Curiae",
-    "pos": "noun",
-    "definition": "A neutral legal expert appointed to assist the court.",
-    "example": "High Court appointed an amicus in the PIL.",
-    "tags": ["Court"]
-  },
-  {
-    "term": "Anticipatory Bail",
-    "pos": "noun",
-    "definition": "Bail granted before arrest under Section 438 CrPC.",
-    "example": "He applied for anticipatory bail fearing arrest.",
-    "tags": ["Criminal","Bail"]
-  },
-  {
-    "term": "Appeal",
-    "pos": "noun",
-    "definition": "Request to a higher court to review a lower court’s decision.",
-    "example": "He filed an appeal challenging conviction.",
-    "tags": ["Court","Procedure"]
-  },
-  {
-    "term": "Arbitration",
-    "pos": "noun",
-    "definition": "Private dispute resolution with a binding decision.",
-    "example": "The contract required disputes to go to arbitration.",
-    "tags": ["Commercial","Civil"]
-  },
-  {
-    "term": "Arraignment",
-    "pos": "noun",
-    "definition": "Stage where charges are formally read to the accused.",
-    "example": "He entered a not-guilty plea at arraignment.",
-    "tags": ["Criminal","Procedure"]
-  },
-  {
-    "term": "Arrest",
-    "pos": "noun",
-    "definition": "Taking a person into custody under authority of law.",
-    "example": "Police made an arrest based on CCTV evidence.",
-    "tags": ["Criminal"]
-  },
-  {
-    "term": "Asset Attachment",
-    "pos": "noun",
-    "definition": "Court-ordered seizure of property to secure claims.",
-    "example": "Court ordered attachment of his bank account.",
-    "tags": ["Civil","Property"]
-  },
-  {
-    "term": "Assignment Deed",
-    "pos": "noun",
-    "definition": "Document transferring rights from one party to another.",
-    "example": "He executed an assignment deed for lease rights.",
-    "tags": ["Property","Commercial"]
-  },
-
-  {
-    "term": "Attestation",
-    "pos": "noun",
-    "definition": "Witness confirming a document was signed.",
-    "example": "Sale deed requires attestation by two witnesses.",
-    "tags": ["Evidence","Property"]
-  },
-  {
-    "term": "Bailable Offence",
-    "pos": "noun",
-    "definition": "Offence where bail must be granted as a right.",
-    "example": "Theft below certain value is bailable.",
-    "tags": ["Criminal","Bail"]
-  },
-  {
-    "term": "Bail Bond",
-    "pos": "noun",
-    "definition": "Written promise ensuring the accused will appear in court.",
-    "example": "He signed a bail bond of ₹30,000.",
-    "tags": ["Criminal","Bail"]
-  },
-  {
-    "term": "Bar of Limitation",
-    "pos": "noun",
-    "definition": "Expiry of legal time for filing a case.",
-    "example": "The claim was dismissed as barred by limitation.",
-    "tags": ["Procedure","Civil"]
-  },
-  {
-    "term": "Beneficiary",
-    "pos": "noun",
-    "definition": "Person receiving benefit under a will or policy.",
-    "example": "She is the beneficiary of the trust.",
-    "tags": ["Family","Property"]
-  },
-  {
-    "term": "Beyond Reasonable Doubt",
-    "pos": "phrase",
-    "definition": "Highest standard of proof required in criminal cases.",
-    "example": "Guilt must be proven beyond reasonable doubt.",
-    "tags": ["Criminal","Evidence"]
-  },
-  {
-    "term": "Cause of Action",
-    "pos": "noun",
-    "definition": "Facts giving rise to the right to sue.",
-    "example": "Non-payment created cause of action.",
-    "tags": ["Civil","Procedure"]
-  },
-  {
-    "term": "Caveat",
-    "pos": "noun",
-    "definition": "Request to court to hear a person before issuing orders.",
-    "example": "He filed a caveat to prevent ex parte order.",
-    "tags": ["Civil","Procedure"]
-  },
-  {
-    "term": "Charge Sheet",
-    "pos": "noun",
-    "definition": "Final police report detailing evidence against accused.",
-    "example": "Charge sheet filed within 90 days.",
-    "tags": ["Criminal","Procedure"]
-  },
-  {
-    "term": "Child Custody",
-    "pos": "noun",
-    "definition": "Court-decided guardianship of a minor child.",
-    "example": "Mother received interim custody.",
-    "tags": ["Family"]
-  },
-
-  {
-    "term": "Cognizable Offence",
-    "pos": "noun",
-    "definition": "Offence where police may arrest without warrant.",
-    "example": "Murder is cognizable.",
-    "tags": ["Criminal"]
-  },
-  {
-    "term": "Commission",
-    "pos": "noun",
-    "definition": "Appointment of a person to inspect property or record evidence.",
-    "example": "Local commissioner inspected disputed land.",
-    "tags": ["Civil","Procedure"]
-  },
-  {
-    "term": "Compensation",
-    "pos": "noun",
-    "definition": "Money awarded for loss or injury.",
-    "example": "Victim received compensation for negligence.",
-    "tags": ["Civil"]
-  },
-  {
-    "term": "Compromise Decree",
-    "pos": "noun",
-    "definition": "Court decree based on mutual settlement.",
-    "example": "Parties settled and received compromise decree.",
-    "tags": ["Civil"]
-  },
-  {
-    "term": "Confession",
-    "pos": "noun",
-    "definition": "Voluntary admission of guilt.",
-    "example": "Extrajudicial confession must be corroborated.",
-    "tags": ["Criminal","Evidence"]
-  },
-  {
-    "term": "Contempt of Court",
-    "pos": "noun",
-    "definition": "Disobedience of court orders or disrespect toward court.",
-    "example": "He was fined for contempt.",
-    "tags": ["Court"]
-  },
-  {
-    "term": "Contract",
-    "pos": "noun",
-    "definition": "Legally enforceable agreement between parties.",
-    "example": "The contract required timely delivery.",
-    "tags": ["Civil","Commercial"]
-  },
-  {
-    "term": "Counter Claim",
-    "pos": "noun",
-    "definition": "Claim filed by defendant against plaintiff in same suit.",
-    "example": "He filed counter claim for damages.",
-    "tags": ["Civil"]
-  },
-  {
-    "term": "Cross Examination",
-    "pos": "noun",
-    "definition": "Questioning a witness by the opposite party.",
-    "example": "Cross examination exposed contradictions.",
-    "tags": ["Evidence","Court"]
-  },
-
-  {
-    "term": "Decree",
-    "pos": "noun",
-    "definition": "Formal expression of final court decision in civil case.",
-    "example": "Decree passed in favour of plaintiff.",
-    "tags": ["Civil","Court"]
-  },
-  {
-    "term": "Defamation",
-    "pos": "noun",
-    "definition": "Harming someone's reputation by false statements.",
-    "example": "He filed criminal defamation complaint.",
-    "tags": ["Civil","Criminal"]
-  },
-  {
-    "term": "Domestic Violence",
-    "pos": "noun",
-    "definition": "Abuse within domestic relationships under DV Act.",
-    "example": "She sought protection order.",
-    "tags": ["Family","Criminal"]
-  },
-  {
-    "term": "Dowry Harassment",
-    "pos": "noun",
-    "definition": "Harassment relating to illegal dowry demands.",
-    "example": "FIR registered for dowry harassment.",
-    "tags": ["Family","Criminal"]
-  },
-  {
-    "term": "Easement",
-    "pos": "noun",
-    "definition": "Right to use another's land for specific purpose.",
-    "example": "He had easement of way over neighbour's land.",
-    "tags": ["Property"]
-  },
-  {
-    "term": "Ex Parte Order",
-    "pos": "noun",
-    "definition": "Order passed when opposite party is absent.",
-    "example": "Court granted ex parte injunction.",
-    "tags": ["Civil","Court"]
-  },
-  {
-    "term": "Evidence",
-    "pos": "noun",
-    "definition": "Material used to prove or disprove facts.",
-    "example": "Electronic evidence requires Section 65B certificate.",
-    "tags": ["Evidence"]
-  },
-  {
-    "term": "FIR",
-    "pos": "noun",
-    "definition": "First Information Report given to police.",
-    "example": "Police lodged FIR after complaint.",
-    "tags": ["Criminal","Procedure"]
-  },
-  {
-    "term": "Fraud",
-    "pos": "noun",
-    "definition": "Intentional deception causing loss.",
-    "example": "Sale deed cancelled due to fraud.",
-    "tags": ["Civil","Criminal"]
-  }
+  {"term":"Abatement","pos":"noun","definition":"Ending of legal proceedings because a party died or the cause no longer survives.","example":"The appeal abated when the appellant died.","tags":["Civil","Procedure"]},
+  {"term":"Abatement of Suit","pos":"noun","definition":"Ending of a suit due to non-prosecution or death without substitution.","example":"The suit abated due to non-substitution of heirs.","tags":["Civil"]},
+  {"term":"Absolute Ownership","pos":"noun","definition":"Complete legal rights over property without restriction.","example":"He held absolute ownership of the land.","tags":["Property"]},
+  {"term":"Acceptance","pos":"noun","definition":"Unconditional assent to the terms of an offer forming a contract.","example":"Acceptance was communicated by email.","tags":["Contract"]},
+  {"term":"Adjournment","pos":"noun","definition":"Postponement of proceedings to another date.","example":"The court granted adjournment till next month.","tags":["Court","Procedure"]},
+  {"term":"Adjournment Sine Die","pos":"noun","definition":"Adjournment without specifying the next date.","example":"The hearing was adjourned sine die.","tags":["Court"]},
+  {"term":"Ad Interim Order","pos":"noun","definition":"Temporary order passed until a detailed hearing is held.","example":"An ad interim injunction was issued.","tags":["Civil","Court"]},
+  {"term":"Adjudication","pos":"noun","definition":"Formal decision-making by a court or tribunal.","example":"The tribunal completed adjudication of the dispute.","tags":["Court","Procedure"]},
+  {"term":"Admission","pos":"noun","definition":"Statement accepting a fact used as evidence.","example":"His admission was recorded in court.","tags":["Evidence"]},
+  {"term":"Admissible Evidence","pos":"noun","definition":"Evidence that a court will accept under law.","example":"The document was ruled admissible evidence.","tags":["Evidence"]},
+  {"term":"Admiralty","pos":"noun","definition":"Law relating to shipping and maritime matters.","example":"The claim was filed in admiralty court.","tags":["Commercial","Maritime"]},
+  {"term":"Adverse Possession","pos":"noun","definition":"Acquiring title to property by long, continuous possession.","example":"He claimed the land by adverse possession after 12 years.","tags":["Property"]},
+  {"term":"Affidavit","pos":"noun","definition":"A sworn written statement used as evidence.","example":"She filed an affidavit in support of application.","tags":["Evidence","Procedure"]},
+  {"term":"Affidavit of Evidence","pos":"noun","definition":"Written witness evidence filed instead of oral testimony.","example":"Plaintiff filed an affidavit of evidence before trial.","tags":["Evidence"]},
+  {"term":"Agency","pos":"noun","definition":"Relationship where one acts for or on behalf of another.","example":"The agent signed the contract on behalf of the principal.","tags":["Commercial"]},
+  {"term":"Agreement","pos":"noun","definition":"Mutual understanding between parties about rights and duties.","example":"They entered a written agreement for sale.","tags":["Contract"]},
+  {"term":"Aiding and Abetting","pos":"verb","definition":"Assisting in the commission of an offence.","example":"He was charged with aiding and abetting the theft.","tags":["Criminal"]},
+  {"term":"Alibi","pos":"noun","definition":"Proof a person was elsewhere when an offence occurred.","example":"CCTV supported the accused's alibi.","tags":["Criminal","Evidence"]},
+  {"term":"Alienation","pos":"noun","definition":"Transfer of property rights to another.","example":"The alienation of the plot was contested.","tags":["Property"]},
+  {"term":"Alimony","pos":"noun","definition":"Financial support paid to spouse after separation or divorce.","example":"Court awarded alimony to the petitioner.","tags":["Family"]},
+  {"term":"Amendment of Pleadings","pos":"noun","definition":"Correction or change of written pleadings with permission.","example":"Plaintiff sought amendment to add new facts.","tags":["Civil","Procedure"]},
+  {"term":"Amicus Curiae","pos":"noun","definition":"A neutral adviser to assist the court in complex matters.","example":"Court appointed an amicus curiae in the PIL.","tags":["Court"]},
+  {"term":"Amount Claused","pos":"adjective","definition":"Describes documents showing monetary sums (e.g., cheques).","example":"The receipt is amount claused with the sum shown.","tags":["Commercial"]},
+  {"term":"Antecedents","pos":"noun","definition":"Past record of a person, often criminal history.","example":"Court considered antecedents before sentencing.","tags":["Criminal"]},
+  {"term":"Anticipatory Bail","pos":"noun","definition":"Bail granted in anticipation of arrest under Section 438 CrPC.","example":"He applied for anticipatory bail fearing arrest.","tags":["Criminal","Bail"]},
+  {"term":"Appeal","pos":"noun","definition":"Application to a higher court to review a lower court's decision.","example":"They filed an appeal against the judgment.","tags":["Court","Procedure"]},
+  {"term":"Appeal in Limine","pos":"noun","definition":"Dismissal of appeal at a preliminary stage for want of merit.","example":"The appeal was dismissed in limine.","tags":["Court"]},
+  {"term":"Appealability","pos":"noun","definition":"Whether an order or judgment can be appealed.","example":"The court examined appealability before proceeding.","tags":["Court","Procedure"]},
+  {"term":"Appellant","pos":"noun","definition":"Person who files an appeal.","example":"The appellant sought a stay of execution.","tags":["Court"]},
+  {"term":"Appellee","pos":"noun","definition":"Person who defends an appeal (respondent in appeal).","example":"The appellee opposed the appeal.","tags":["Court"]},
+  {"term":"Appreciable Evidence","pos":"noun","definition":"Evidence substantial enough to be considered by the court.","example":"There was appreciable evidence for trial.","tags":["Evidence"]},
+  {"term":"Appointment","pos":"noun","definition":"Designation of a person to a post or role by authority.","example":"He received appointment as company director.","tags":["Administrative"]},
+  {"term":"Arbitration","pos":"noun","definition":"Private dispute resolution with binding award by arbitrator.","example":"Parties agreed to arbitration under their contract.","tags":["Commercial","Civil"]},
+  {"term":"Arbitration Award","pos":"noun","definition":"Decision issued by arbitrator resolving dispute.","example":"The arbitration award was enforced by court.","tags":["Commercial","Arbitration"]},
+  {"term":"Arraignment","pos":"noun","definition":"Court hearing where accused is formally charged and asked to plead.","example":"At arraignment he pleaded not guilty.","tags":["Criminal","Procedure"]},
+  {"term":"Arrest","pos":"noun","definition":"Taking a person into custody by legal authority.","example":"Police effected his arrest after registering the FIR.","tags":["Criminal"]},
+  {"term":"Arrest Warrants","pos":"noun","definition":"Court order authorizing arrest of a person.","example":"Magistrate issued an arrest warrant.","tags":["Criminal","Procedure"]},
+  {"term":"Arson","pos":"noun","definition":"Willful and malicious burning of property.","example":"He was charged with arson for setting the warehouse alight.","tags":["Criminal"]},
+  {"term":"Arrears","pos":"noun","definition":"Overdue payments not yet paid.","example":"Tenant owed rent arrears for six months.","tags":["Civil","Property"]},
+  {"term":"Articulation of Rights","pos":"noun","definition":"Clear expression of legal rights in documents or orders.","example":"The deed contained an articulation of rights.","tags":["Contract","Property"]},
+  {"term":"Ascertained Loss","pos":"noun","definition":"Loss that can be measured in money terms.","example":"The claimant proved the ascertained loss due to breach.","tags":["Commercial"]},
+  {"term":"Assault","pos":"noun","definition":"Act causing apprehension of imminent harm or unlawful force.","example":"He was charged with assault after the fight.","tags":["Criminal"]},
+  {"term":"Assignment","pos":"noun","definition":"Transfer of contractual or property rights to another.","example":"He executed an assignment of his lease rights.","tags":["Commercial","Property"]},
+  {"term":"Attachment Before Judgment","pos":"noun","definition":"Seizure of property to prevent disposal before judgment.","example":"Court ordered attachment before judgment of assets.","tags":["Civil"]},
+  {"term":"Attachment of Property","pos":"noun","definition":"Court-directed seizure of assets to satisfy claims.","example":"The court ordered attachment of the defendant's property.","tags":["Civil","Property"]},
+  {"term":"Attorney","pos":"noun","definition":"Person authorized to act on behalf of another in legal matters.","example":"He appointed an attorney by power of attorney.","tags":["Professional"]},
+  {"term":"Auditor","pos":"noun","definition":"Expert who examines financial accounts for correctness.","example":"The court appointed an auditor to examine the accounts.","tags":["Commercial","Procedure"]},
+  {"term":"Authority Letter","pos":"noun","definition":"Written authorization allowing representation or action.","example":"Bank accepted the authority letter for transaction.","tags":["Civil","Administrative"]},
+  {"term":"Award","pos":"noun","definition":"Decision given by arbitrator or tribunal.","example":"The arbitration award was in favour of the claimant.","tags":["Arbitration","Commercial"]},
+  {"term":"Bailable Offence","pos":"noun","definition":"Offence where bail is a matter of right.","example":"Theft under a threshold is usually a bailable offence.","tags":["Criminal","Bail"]},
+  {"term":"Bail","pos":"noun","definition":"Security or surety to secure release pending trial.","example":"He applied for bail and was released on surety.","tags":["Criminal","Bail"]},
+  {"term":"Bail Bond","pos":"noun","definition":"Written agreement ensuring the accused's presence in court.","example":"He signed a bail bond for ₹50,000.","tags":["Criminal","Bail"]},
+  {"term":"Bankruptcy","pos":"noun","definition":"Legal procedure for insolvent persons or businesses to resolve debts.","example":"The company filed for bankruptcy protection.","tags":["Commercial","Insolvency"]},
+  {"term":"Bar","pos":"noun","definition":"Collective term for the legal profession or prohibition of remedy.","example":"He was called to the bar in 2005.","tags":["Professional","Procedure"]},
+  {"term":"Bar of Limitation","pos":"noun","definition":"Expiry of legal time limit to file a claim.","example":"Claim was dismissed as barred by limitation.","tags":["Civil","Procedure"]},
+  {"term":"Bench","pos":"noun","definition":"Judge(s) or the court itself hearing matters.","example":"A division bench heard the petition.","tags":["Court"]},
+  {"term":"Beneficiary","pos":"noun","definition":"Person receiving benefit under a will, trust or policy.","example":"She was named beneficiary in the will.","tags":["Property","Family"]},
+  {"term":"Best Evidence Rule","pos":"noun","definition":"Principle that primary evidence should be produced where available.","example":"Court rejected a photocopy under the best evidence rule.","tags":["Evidence"]},
+  {"term":"Bequest","pos":"noun","definition":"Gift of personal property by will.","example":"He made a bequest of his watch to his nephew.","tags":["Family","Property"]},
+  {"term":"Bequeath","pos":"verb","definition":"To give personal property by will.","example":"She bequeathed her jewellery to her daughter.","tags":["Family"]},
+  {"term":"Bonafide","pos":"adjective","definition":"In good faith, without intent to deceive.","example":"He made a bonafide purchase of the property.","tags":["Contract","Commercial"]},
+  {"term":"Borrower","pos":"noun","definition":"Person who takes money or property on loan.","example":"The borrower defaulted on EMI payments.","tags":["Commercial"]},
+  {"term":"Breach","pos":"noun","definition":"Failure to perform contractual or legal duty.","example":"The vendor was sued for breach of contract.","tags":["Contract"]},
+  {"term":"Burden of Proof","pos":"noun","definition":"Obligation to prove allegations in court.","example":"Prosecution bears the burden of proof in criminal trials.","tags":["Evidence"]},
+  {"term":"Cabinet Minister Immunity","pos":"noun","definition":"Limited immunity for certain acts of high office (jurisdictional nuances).","example":"The claim examined scope of ministerial immunity.","tags":["Constitutional"]},
+  {"term":"Calumny","pos":"noun","definition":"False statements intended to damage reputation.","example":"The article amounted to calumny against the businessman.","tags":["Defamation"]},
+  {"term":"Cancellation","pos":"noun","definition":"Annulment of agreements or registrations.","example":"The registration faced cancellation for fraud.","tags":["Civil","Procedure"]},
+  {"term":"Capacity","pos":"noun","definition":"Legal ability to enter into transactions or proceedings.","example":"Minor lacks capacity to contract in most cases.","tags":["Contract","Family"]},
+  {"term":"Case Diary","pos":"noun","definition":"Police record documenting the course of an investigation.","example":"Defence requested access to the case diary.","tags":["Criminal"]},
+  {"term":"Cause of Action","pos":"noun","definition":"Facts giving rise to a right to sue.","example":"Delay destroyed the cause of action in the plaintiff's claim.","tags":["Civil","Procedure"]},
+  {"term":"Caveat","pos":"noun","definition":"Notice to the court to be heard before an order is passed.","example":"He filed a caveat against ex parte orders.","tags":["Civil","Procedure"]},
+  {"term":"Charge Sheet","pos":"noun","definition":"Police report setting out charges and evidence against accused.","example":"Charge sheet was filed within statutory time.","tags":["Criminal","Procedure"]},
+  {"term":"Charitable Trust","pos":"noun","definition":"Trust created for public charitable purposes.","example":"The property was placed under a charitable trust.","tags":["Trusts","Property"]},
+  {"term":"Cheating","pos":"noun","definition":"Dishonest inducement to cause loss to another.","example":"He was accused of cheating in the sale.","tags":["Criminal"]},
+  {"term":"Chattel","pos":"noun","definition":"Movable personal property.","example":"Furniture is classified as chattel.","tags":["Property"]},
+  {"term":"Circuit Bench","pos":"noun","definition":"Bench of court sitting at a place other than its principal seat.","example":"A circuit bench visited the district for hearings.","tags":["Court"]},
+  {"term":"Civil Revision","pos":"noun","definition":"High Court review of lower civil court orders.","example":"He filed civil revision against the trial court order.","tags":["Civil"]},
+  {"term":"Claimant","pos":"noun","definition":"Person who brings a claim or suit.","example":"The claimant filed for damages.","tags":["Civil"]},
+  {"term":"Closing Statement","pos":"noun","definition":"Final arguments presented before judgment.","example":"Counsel delivered closing statement after evidence.","tags":["Court"]},
+  {"term":"Codicil","pos":"noun","definition":"Supplement or amendment to a will.","example":"He added a codicil to include a new beneficiary.","tags":["Family","Property"]},
+  {"term":"Collusion","pos":"noun","definition":"Secret agreement to deceive or defraud.","example":"The settlement was set aside due to collusion between parties.","tags":["Civil","Fraud"]},
+  {"term":"Collateral","pos":"noun","definition":"Property pledged as security for a loan.","example":"The land was offered as collateral for the loan.","tags":["Commercial","Property"]},
+  {"term":"Collateral Evidence","pos":"noun","definition":"Evidence not directly on the point but supportive of facts.","example":"Court considered collateral evidence to corroborate testimony.","tags":["Evidence"]},
+  {"term":"Commission","pos":"noun","definition":"Appointment of a person to investigate, inspect or record evidence.","example":"The court issued a commission to inspect the land.","tags":["Procedure","Civil"]},
+  {"term":"Common Intention","pos":"noun","definition":"Shared intent among persons making all liable for the act.","example":"Section 34 IPC applies for common intention.","tags":["Criminal"]},
+  {"term":"Common Law","pos":"noun","definition":"Law developed by judicial decisions rather than statutes.","example":"Common law principles guided the court's reasoning.","tags":["Court","Interpretation"]},
+  {"term":"Company","pos":"noun","definition":"Legal entity formed for business with separate legal personality.","example":"The company sued for breach of contract.","tags":["Commercial"]},
+  {"term":"Comparative Negligence","pos":"noun","definition":"Rule apportioning fault among parties in tort cases.","example":"Damages reduced due to comparative negligence of claimant.","tags":["Tort","Civil"]},
+  {"term":"Compensation","pos":"noun","definition":"Money awarded for loss or injury.","example":"Victim received compensation for medical expenses.","tags":["Civil"]},
+  {"term":"Complaint","pos":"noun","definition":"Formal allegation made to initiate criminal proceedings.","example":"He filed a complaint in the police station.","tags":["Criminal","Procedure"]},
+  {"term":"Compromise Decree","pos":"noun","definition":"Decree issued after mutual settlement between parties.","example":"The parties received a compromise decree after settlement.","tags":["Civil"]},
+  {"term":"Concealment","pos":"noun","definition":"Willful hiding of material facts, often in insurance or contract law.","example":"Insurance claim rejected due to concealment.","tags":["Commercial","Criminal"]},
+  {"term":"Concurrent Findings","pos":"noun","definition":"Similar findings reached by two lower courts, typically appellate considerations.","example":"Supreme Court generally defers to concurrent findings of fact.","tags":["Court"]},
+  {"term":"Condonation of Delay","pos":"noun","definition":"Court allowing filing after limitation due to sufficient cause.","example":"Court condoned delay on medical grounds.","tags":["Procedure"]},
+  {"term":"Conduct Money","pos":"noun","definition":"Payment to witnesses for attending court.","example":"Witness refused to come despite conduct money being offered.","tags":["Procedure","Court"]},
+  {"term":"Confession","pos":"noun","definition":"Voluntary admission of guilt by an accused.","example":"The confession was recorded before a magistrate.","tags":["Criminal","Evidence"]},
+  {"term":"Confirmation","pos":"noun","definition":"Court endorsement making an order final or effective.","example":"High Court gave confirmation to the tribunal's award.","tags":["Court","Procedure"]},
+  {"term":"Confiscation","pos":"noun","definition":"Seizure of property by the state as penalty.","example":"Illegal goods faced confiscation by customs.","tags":["Criminal","Administrative"]},
+  {"term":"Conflict of Interest","pos":"noun","definition":"Situation where personal interest may bias official duties.","example":"Counsel withdrew due to conflict of interest.","tags":["Ethics"]},
+  {"term":"Confrontation Clause","pos":"noun","definition":"Right of accused to confront witnesses (constitutional concept; jurisdictional application varies).","example":"Defence invoked confrontation rights during trial.","tags":["Criminal","Constitutional"]},
+  {"term":"Conservatorship","pos":"noun","definition":"Court appointment to manage affairs of incapacitated person or estate.","example":"Court appointed conservatorship for the elderly party.","tags":["Family","Property"]},
+  {"term":"Consideration","pos":"noun","definition":"Something of value exchanged between parties in a contract.","example":"Money paid constituted consideration for the contract.","tags":["Contract"]},
+  {"term":"Consignee","pos":"noun","definition":"Person to whom goods are consigned under contract of carriage.","example":"Goods delivered to the consignee at destination.","tags":["Commercial"]},
+  {"term":"Consignment","pos":"noun","definition":"Delivery of goods for sale by another.","example":"The shop accepted the consignment of garments.","tags":["Commercial"]},
+  {"term":"Conspiracy","pos":"noun","definition":"Agreement between two or more persons to commit an illegal act.","example":"They were charged with conspiracy to defraud.","tags":["Criminal"]},
+  {"term":"Constitutional Remedy","pos":"noun","definition":"Relief available under constitutional law for infringement of fundamental rights.","example":"He filed a writ petition as a constitutional remedy.","tags":["Constitutional"]},
+  {"term":"Constructive Notice","pos":"noun","definition":"Legal presumption that a person has notice of facts that are public record.","example":"Buyer had constructive notice of the encumbrance from registry records.","tags":["Property"]},
+  {"term":"Contempt of Court","pos":"noun","definition":"Disobedience or disrespect to court leading to punishment.","example":"He was held in contempt for breaching the court order.","tags":["Court"]},
+  {"term":"Continuation","pos":"noun","definition":"To carry forward proceedings or rights from earlier stage (context-specific).","example":"The judge ordered continuation of the hearing to next week.","tags":["Procedure"]},
+  {"term":"Continuance","pos":"noun","definition":"Adjournment or postponement of proceedings to allow further action.","example":"Defence sought continuance to obtain evidence.","tags":["Court","Procedure"]},
+  {"term":"Contract","pos":"noun","definition":"Legally enforceable agreement between parties.","example":"The contract required delivery within 30 days.","tags":["Civil","Commercial"]},
+  {"term":"Contract of Sale","pos":"noun","definition":"Agreement transferring ownership of goods for price.","example":"They signed a contract of sale for the vehicle.","tags":["Commercial"]},
+  {"term":"Contingent Liabilities","pos":"noun","definition":"Possible obligations depending on future events.","example":"Balance sheet disclosed contingent liabilities.","tags":["Commercial","Accounting"]},
+  {"term":"Contingent Trust","pos":"noun","definition":"Trust that depends on occurrence of a specified event.","example":"A contingent trust was created to take effect on marriage of beneficiary.","tags":["Trusts"]},
+  {"term":"Contingent Work Orders","pos":"noun","definition":"Service orders conditional on future events (contractual concept).","example":"The contractor's payment depended on contingent work orders being approved.","tags":["Commercial"]},
+  {"term":"Continuing Mandamus","pos":"noun","definition":"Writ directing public authority to perform continuing duty until compliance.","example":"Court issued continuing mandamus for pollution control.","tags":["Constitutional","Administrative"]},
+  {"term":"Contributory Negligence","pos":"noun","definition":"Plaintiff's own negligence contributing to injury reducing recovery.","example":"Damages reduced due to contributory negligence of claimant.","tags":["Tort","Civil"]},
+  {"term":"Conversion","pos":"noun","definition":"Unauthorized assumption of ownership over another's goods.","example":"He was sued for conversion of the vehicle.","tags":["Tort","Civil"]},
+  {"term":"Counter Claim","pos":"noun","definition":"Claim by defendant against plaintiff within the same suit.","example":"Defendant filed a counter claim for damages.","tags":["Civil"]},
+  {"term":"Counterfeit","pos":"noun","definition":"Fake imitation of genuine articles or documents.","example":"Police seized counterfeit currency during raid.","tags":["Criminal"]},
+  {"term":"Courts of Record","pos":"noun","definition":"Courts where proceedings are permanently recorded and can be referred to.","example":"High Courts are courts of record under the Constitution.","tags":["Court","Constitutional"]},
+  {"term":"Covenant","pos":"noun","definition":"Promise or agreement in deeds or contracts, often relating to property.","example":"Lease contained a covenant restricting subletting.","tags":["Property","Contract"]},
+  {"term":"Criminal Liability","pos":"noun","definition":"Responsibility for committing an offence punishable by law.","example":"He faced criminal liability for fraud.","tags":["Criminal"]},
+  {"term":"Custody","pos":"noun","definition":"Detention or guardianship of a person, physical or legal control.","example":"Child custody awarded to mother.","tags":["Family","Criminal"]},
+  {"term":"Custodial Interrogation","pos":"noun","definition":"Questioning of a person while in police custody.","example":"Court scrutinized admissibility of custodial interrogation statements.","tags":["Criminal","Evidence"]},
+  {"term":"Damages","pos":"noun","definition":"Monetary award for loss or injury.","example":"Plaintiff awarded damages for breach of contract.","tags":["Civil","Remedies"]},
+  {"term":"Death Certificate","pos":"noun","definition":"Official document certifying death of a person.","example":"Legal heirs produced death certificate for succession proceedings.","tags":["Procedure","Family"]},
+  {"term":"Debarment","pos":"noun","definition":"Disallowing a person from exercising rights or profession.","example":"The lawyer faced debarment for misconduct.","tags":["Professional","Service"]},
+  {"term":"Debt Recovery","pos":"noun","definition":"Legal process for enforcing repayment of debts.","example":"Bank initiated debt recovery proceedings under SARFAESI.","tags":["Commercial"]},
+  {"term":"Decedent","pos":"noun","definition":"Person who has died.","example":"Administrator acted for the decedent's estate.","tags":["Family","Property"]},
+  {"term":"Decree","pos":"noun","definition":"Formal expression of a court's decision in a civil suit.","example":"Court passed decree in favor of plaintiff.","tags":["Civil","Court"]},
+  {"term":"Decree Holder","pos":"noun","definition":"Person in whose favor a decree has been passed.","example":"Decree holder filed execution petition to enforce decree.","tags":["Civil"]},
+  {"term":"Default","pos":"noun","definition":"Failure to perform a legal duty, such as appearance or payment.","example":"Default judgment entered when defendant failed to appear.","tags":["Civil","Procedure"]},
+  {"term":"Default Bail","pos":"noun","definition":"Bail granted where statutory time to file charge-sheet lapses.","example":"Accused obtained default bail after delay in filing charge-sheet.","tags":["Criminal","Bail"]},
+  {"term":"Default Judgment","pos":"noun","definition":"Judgment given when a party fails to contest or appear.","example":"Plaintiff got default judgment for unpaid debt.","tags":["Civil"]},
+  {"term":"Defamation","pos":"noun","definition":"Publication harming a person's reputation by false statements.","example":"He sued the newspaper for defamation.","tags":["Civil","Criminal"]},
+  {"term":"Defense","pos":"noun","definition":"Argument and evidence presented by accused or defendant to oppose claim.","example":"Defense produced witnesses to contradict the complainant's version.","tags":["Criminal","Civil"]},
+  {"term":"Deferment","pos":"noun","definition":"Postponement of obligation or action to a later time.","example":"Court granted deferment of compliance for 30 days.","tags":["Procedure"]},
+  {"term":"Delay (Laches)","pos":"noun","definition":"Unreasonable delay in asserting a right, possibly barring relief.","example":"Relief denied due to laches in prosecution of claim.","tags":["Civil"]},
+  {"term":"Delivery","pos":"noun","definition":"Transfer of possession of goods or documents as required by contract.","example":"Delivery of goods made as per contract terms.","tags":["Commercial"]},
+  {"term":"Demand Notice","pos":"noun","definition":"Formal notice demanding performance or payment before commencing proceedings.","example":"Lawyer sent a demand notice before filing suit.","tags":["Procedure","Commercial"]},
+  {"term":"Demurrer","pos":"noun","definition":"Objection that a pleading is insufficient even if facts are true (procedural instrument).","example":"Defendant filed a demurrer to plaintiffs' plaint.","tags":["Civil","Procedure"]},
+  {"term":"Deposition","pos":"noun","definition":"Sworn out-of-court testimony recorded for use in court.","example":"Deposition of the witness was used at trial.","tags":["Evidence"]},
+  {"term":"Derivative Action","pos":"noun","definition":"Action brought by shareholder on behalf of company against wrongdoers.","example":"Shareholder filed derivative action against directors for mismanagement.","tags":["Company","Commercial"]},
+  {"term":"Desist Order","pos":"noun","definition":"Order directing a party to stop certain activities.","example":"Court issued a desist order against construction.","tags":["Civil","Injunction"]},
+  {"term":"Destroying Evidence","pos":"verb","definition":"Act of destroying documents or material to obstruct justice.","example":"He was charged with destroying evidence to avoid prosecution.","tags":["Criminal","Evidence"]},
+  {"term":"Detention","pos":"noun","definition":"State of being held in custody by authority.","example":"He was kept in detention pending inquiry.","tags":["Criminal"]},
+  {"term":"Detinue","pos":"noun","definition":"Civil action for recovery of wrongfully detained goods.","example":"Plaintiff brought detinue proceedings to recover his watch.","tags":["Civil","Property"]},
+  {"term":"Devolution","pos":"noun","definition":"Passing of rights or property to successors.","example":"Devolution of estate occurred on death of owner.","tags":["Property","Family"]},
+  {"term":"Diligence","pos":"noun","definition":"Careful and persistent work or effort required by law (e.g., due diligence).","example":"Buyer performed due diligence before purchase.","tags":["Commercial","Procedure"]},
+  {"term":"Diminution of Value","pos":"noun","definition":"Reduction in value of property due to breach or damage.","example":"Compensation calculated for diminution of value after trespass.","tags":["Civil","Property"]},
+  {"term":"Direct Evidence","pos":"noun","definition":"Evidence that directly proves a fact without inference.","example":"Eye-witness testimony provided direct evidence of the incident.","tags":["Evidence"]},
+  {"term":"Directed Verdict","pos":"noun","definition":"Verdict ordered by judge when reasonable jury could not find for one party (jurisdictional concept).","example":"Judge directed a verdict for the defendant after weak evidence.","tags":["Court","Procedure"]},
+  {"term":"Disallowance","pos":"noun","definition":"Refusal to accept a claim or expense for legal or tax purposes.","example":"Tax authority made disallowance of certain deductions.","tags":["Tax","Administrative"]},
+  {"term":"Disclaimer","pos":"noun","definition":"Statement disclaiming certain liabilities or rights.","example":"Website included a disclaimer about legal advice not being provided online.","tags":["Legal Notices"]},
+  {"term":"Discovery","pos":"noun","definition":"Pre-trial process of exchanging information and evidence between parties.","example":"Parties conducted discovery to obtain documents and witness statements.","tags":["Procedure","Civil"]},
+  {"term":"Discretion","pos":"noun","definition":"Power of a judge or official to make decisions within legal limits.","example":"The court exercised discretion in awarding costs.","tags":["Court"]},
+  {"term":"Disinherit","pos":"verb","definition":"To deprive someone of a legal right to inherit.","example":"Testator disinherited his son by explicit clause in will.","tags":["Family","Property"]},
+  {"term":"Dismissal","pos":"noun","definition":"Court or authority's termination of case or claim without a decision on merits.","example":"The petition was dismissed for lack of jurisdiction.","tags":["Court"]},
+  {"term":"Displaced Possession","pos":"noun","definition":"Possession removed from rightful party by unlawful act (context-specific).","example":"Plaintiff sought ejectment after displaced possession by trespasser.","tags":["Property"]},
+  {"term":"Disposal of Case","pos":"noun","definition":"Final adjudication or settlement ending the matter.","example":"The disposal of the case took three years in total.","tags":["Procedure"]},
+  {"term":"Dissenting Opinion","pos":"noun","definition":"Opinion by judge disagreeing with the majority decision.","example":"Justice wrote a dissenting opinion explaining his view.","tags":["Court"]},
+  {"term":"Domicile","pos":"noun","definition":"Permanent residence determining jurisdictional and personal law rights.","example":"Domicile determined succession and taxation issues.","tags":["Family","Civil"]},
+  {"term":"Doctrine of Necessity","pos":"noun","definition":"Exceptional legal doctrine permitting otherwise unlawful acts for public necessity (limited application).","example":"Court invoked doctrine of necessity in emergency appointment case.","tags":["Constitutional","Administrative"]},
+  {"term":"Doctrine of Frustration","pos":"noun","definition":"Doctrine discharging contractual obligations when performance becomes impossible.","example":"Contract frustrated due to statutory ban on imports.","tags":["Contract","Commercial"]},
+  {"term":"Double Jeopardy","pos":"noun","definition":"Prohibition against being tried twice for the same offence.","example":"Double jeopardy stopped retrial after acquittal.","tags":["Criminal","Constitutional"]},
+  {"term":"Drafting","pos":"noun","definition":"Art of preparing legal documents with precise language.","example":"Careful drafting prevented ambiguity in the lease.","tags":["Contract","Professional"]},
+  {"term":"Duly Notarized","pos":"adjective","definition":"Document certified by a notary as authentic.","example":"The deed was duly notarized before submission.","tags":["Procedure"]},
+  {"term":"Duress","pos":"noun","definition":"Compulsion by threat or force making a transaction voidable.","example":"Contract voidable due to duress during signing.","tags":["Contract","Criminal"]},
+  {"term":"Duty","pos":"noun","definition":"Legal obligation owed by one to another or to the state.","example":"Employer had a duty of care toward employees.","tags":["Civil"]},
+  {"term":"Easement","pos":"noun","definition":"Right to use another's land for a specific purpose.","example":"He held an easement of way across neighbor's plot.","tags":["Property"]},
+  {"term":"Ejectment","pos":"noun","definition":"Legal action to recover possession of property from wrongful occupant.","example":"Landlord filed ejectment proceedings to evict trespasser.","tags":["Property","Civil"]},
+  {"term":"Electronic Evidence","pos":"noun","definition":"Evidence in electronic form governed by specific legal requirements (e.g., certificates).","example":"The email was admitted as electronic evidence with proper certificate.","tags":["Evidence"]},
+  {"term":"Embezzlement","pos":"noun","definition":"Fraudulent appropriation of entrusted property by a person in a fiduciary role.","example":"Accountant charged with embezzlement of company funds.","tags":["Criminal"]},
+  {"term":"Employee","pos":"noun","definition":"Person engaged under a contract of service for wages or salary.","example":"Employee raised grievance over wrongful termination.","tags":["Employment","Service"]},
+  {"term":"Employment Contract","pos":"noun","definition":"Agreement setting terms of employment between employer and employee.","example":"Employment contract specified notice period of three months.","tags":["Employment","Contract"]},
+  {"term":"Encumbrance","pos":"noun","definition":"Burden on property such as mortgage, lien, or charge.","example":"Title search revealed prior encumbrance on the plot.","tags":["Property"]},
+  {"term":"Ending","pos":"verb","definition":"Conclusion of a legal relationship or proceeding (context-dependent).","example":"The agreement ended on expiration of the term.","tags":["Contract","Procedure"]},
+  {"term":"Enforcement","pos":"noun","definition":"Execution of a judgment or order to ensure compliance.","example":"Sheriff assisted in enforcement of eviction order.","tags":["Civil"]},
+  {"term":"Enjoin","pos":"verb","definition":"To direct or order by injunction; to prohibit action.","example":"Court enjoined the company from continuing construction.","tags":["Injunction","Civil"]},
+  {"term":"Enlargement of Time","pos":"noun","definition":"Extension of statutory or procedural time granted by court.","example":"Court granted enlargement of time to file record.","tags":["Procedure"]},
+  {"term":"Entrustment","pos":"noun","definition":"Giving property to another for safekeeping or resale under terms.","example":"Entrustment arrangement covered exported goods.","tags":["Commercial"]},
+  {"term":"Equity","pos":"noun","definition":"Principles of fairness applied by courts to supplement common law.","example":"Court granted equitable relief where damages were inadequate.","tags":["Civil","Equity"]},
+  {"term":"Equitable Relief","pos":"noun","definition":"Non-monetary remedies such as injunctions or specific performance.","example":"Plaintiff sought equitable relief for breach of contract.","tags":["Civil","Remedies"]},
+  {"term":"Escrow","pos":"noun","definition":"Third-party holding of funds or documents until contract conditions fulfilled.","example":"Purchase funds placed in escrow pending completion.","tags":["Commercial"]},
+  {"term":"Escheat","pos":"noun","definition":"Transfer of ownerless property to the state.","example":"Unclaimed estate escheated to the government.","tags":["Property"]},
+  {"term":"Estoppel","pos":"noun","definition":"Doctrine preventing a party from denying past conduct or statements.","example":"He was estopped from denying signature after acknowledging it publicly.","tags":["Civil","Evidence"]},
+  {"term":"Estreat","pos":"verb","definition":"To enforce forfeiture of a bond or surety.","example":"Court estreated the surety bond following default.","tags":["Court"]},
+  {"term":"Eviction","pos":"noun","definition":"Removal of occupant from land or premises by legal process.","example":"Eviction proceedings initiated for rent default.","tags":["Property"]},
+  {"term":"Evidence","pos":"noun","definition":"Material presented to prove or disprove allegations in court.","example":"Forensic evidence strengthened the prosecution's case.","tags":["Evidence"]},
+  {"term":"Ex Parte","pos":"adverb","definition":"Proceeding or order made when only one party is present.","example":"Court passed ex parte injunction in absence of respondent.","tags":["Procedure","Court"]},
+  {"term":"Examination-in-Chief","pos":"noun","definition":"Primary questioning of a witness by the party who called them.","example":"Examination-in-chief lasted an hour for the key witness.","tags":["Evidence"]},
+  {"term":"Exclusionary Rule","pos":"noun","definition":"Rule excluding evidence obtained unlawfully or by violating rights (jurisdictional nuances).","example":"Court applied the exclusionary rule to suppress the search evidence.","tags":["Criminal","Evidence"]},
+  {"term":"Execution","pos":"noun","definition":"Enforcement of a decree or judgement to satisfy obligations.","example":"Sheriff executed the decree by selling attached assets.","tags":["Civil"]},
+  {"term":"Executor","pos":"noun","definition":"Person appointed to administer the estate under a will.","example":"Executor filed application for probate to administer the estate.","tags":["Family","Property"]},
+  {"term":"Exemption","pos":"noun","definition":"Relief from legal duty, payment, or requirement.","example":"Certain incomes are exempt from tax under law.","tags":["Tax","Administrative"]},
+  {"term":"Exhibit","pos":"noun","definition":"Document or object produced in court as evidence.","example":"The contract was marked Exhibit A during trial.","tags":["Evidence"]},
+  {"term":"Exoneration","pos":"noun","definition":"Relief from obligation or blame by legal process.","example":"The pardon led to exoneration of the accused.","tags":["Criminal"]},
+  {"term":"Expert Evidence","pos":"noun","definition":"Opinion evidence given by a qualified expert witness.","example":"Court relied on expert evidence to interpret the document.","tags":["Evidence"]},
+  {"term":"Express Trust","pos":"noun","definition":"Trust deliberately created by settlor with clear terms.","example":"He created an express trust for his children's education.","tags":["Trusts","Property"]},
+  {"term":"Expropriation","pos":"noun","definition":"State taking of private property for public use upon compensation.","example":"Land requisitioned by government was a form of expropriation.","tags":["Administrative","Property"]},
+  {"term":"Facilitation","pos":"noun","definition":"Act of assisting another to commit an offence (accessory concept).","example":"He faced facilitation charges for arranging transport for smugglers.","tags":["Criminal"]},
+  {"term":"Facsimile","pos":"noun","definition":"Copy or reproduction, often of signatures or documents.","example":"Court accepted facsimile copy with proper verification.","tags":["Evidence"]},
+  {"term":"Failure of Consideration","pos":"noun","definition":"When expected benefit under a contract does not occur affecting enforceability.","example":"Suit for restitution filed due to failure of consideration.","tags":["Contract"]},
+  {"term":"False Imprisonment","pos":"noun","definition":"Unlawful restraint of a person's liberty without legal justification.","example":"Victim sued for false imprisonment after being detained without warrant.","tags":["Tort","Criminal"]},
+  {"term":"Fiduciary","pos":"noun","definition":"Person who owes a duty of trust and loyalty to another (fiduciary duty).","example":"Trustee is a fiduciary obliged to protect beneficiaries' interests.","tags":["Trusts","Professional"]},
+  {"term":"Filing","pos":"noun","definition":"Lodging documents with a court or registry to initiate or progress proceedings.","example":"Filing of the plaint triggered the suit process.","tags":["Procedure"]},
+  {"term":"Final Judgment","pos":"noun","definition":"Conclusive decision resolving the principal issues in litigation.","example":"The final judgment disposed of all claims.","tags":["Court"]},
+  {"term":"Findings of Fact","pos":"noun","definition":"Determinations by a fact-finder (judge/jury) about factual matters.","example":"Appellate court deferred to trial court's findings of fact.","tags":["Court","Procedure"]},
+  {"term":"Forensic","pos":"adjective","definition":"Related to scientific methods or techniques used in legal investigations.","example":"Forensic DNA matched the sample to the accused.","tags":["Evidence","Criminal"]},
+  {"term":"Forgery","pos":"noun","definition":"Falsely making or altering a document with intent to cheat.","example":"He was arrested for forgery of the deed.","tags":["Criminal"]},
+  {"term":"Forum","pos":"noun","definition":"Court or tribunal where a dispute is heard.","example":"The contract specified the forum for dispute resolution.","tags":["Court","Procedure"]},
+  {"term":"Fraud","pos":"noun","definition":"Intentional deception causing loss to another party.","example":"Company sued for fraudulent misrepresentation in sale.","tags":["Civil","Criminal"]},
+  {"term":"Freedom of Speech","pos":"noun","definition":"Fundamental right to express opinions subject to lawful restrictions.","example":"Court balanced freedom of speech with defamation laws.","tags":["Constitutional"]},
+  {"term":"Garnishee Order","pos":"noun","definition":"Court order directing a third party to pay money owed to a judgment debtor to the creditor.","example":"Bank received a garnishee order freezing the debtor's account.","tags":["Civil","Recovery"]},
+  {"term":"General Power of Attorney","pos":"noun","definition":"Power authorizing broad actions on behalf of principal.","example":"He executed a general power of attorney for business matters.","tags":["Procedure","Commercial"]},
+  {"term":"Good Faith","pos":"noun","definition":"Honest intention to act without intent to defraud.","example":"Buyer acted in good faith when purchasing the property.","tags":["Contract","Commercial"]},
+  {"term":"Grievance","pos":"noun","definition":"Formal complaint by an employee or stakeholder about injustice or unfair treatment.","example":"Worker submitted a grievance about unpaid overtime.","tags":["Employment","Procedure"]},
+  {"term":"Guardian","pos":"noun","definition":"Person legally appointed to care for and manage affairs of a minor or incapacitated person.","example":"Court appointed a guardian for the minor's estate.","tags":["Family"]},
+  {"term":"Guardian ad Litem","pos":"noun","definition":"Guardian appointed by court to represent interests of a minor in a legal proceeding.","example":"Court appointed a guardian ad litem for the child's custody suit.","tags":["Family","Court"]},
+  {"term":"Habeas Corpus","pos":"noun","definition":"Writ to produce a detained person before court to examine legality of detention.","example":"Petition for habeas corpus filed contesting unlawful detention.","tags":["Constitutional","Criminal"]},
+  {"term":"Hearing","pos":"noun","definition":"Court session where arguments and evidence are presented.","example":"The hearing was scheduled for next Tuesday.","tags":["Court"]},
+  {"term":"Heir","pos":"noun","definition":"Person entitled to inherit under law or will.","example":"Heirs applied for succession certificate.","tags":["Family","Property"]},
+  {"term":"Hidden Defect (Latent Defect)","pos":"noun","definition":"Defect not apparent on reasonable inspection, potentially leading to rescission or damages.","example":"Buyer claimed for latent defects discovered after purchase.","tags":["Commercial","Property"]},
+  {"term":"Hostile Witness","pos":"noun","definition":"Witness who opposes the party that called them and may be cross-examined more freely.","example":"Court allowed leading questions to the hostile witness.","tags":["Evidence"]},
+  {"term":"Human Rights","pos":"noun","definition":"Fundamental rights inherent to all persons protected by constitutional and international law.","example":"Litigant approached court alleging violation of human rights.","tags":["Constitutional"]},
+  {"term":"Immunity","pos":"noun","definition":"Legal protection from prosecution or liability in certain circumstances.","example":"Diplomatic immunity protected the official from arrest.","tags":["Constitutional","Criminal"]},
+  {"term":"Immovable Property","pos":"noun","definition":"Land and things permanently attached to land (buildings) that cannot be moved.","example":"Sale of immovable property requires registration.","tags":["Property"]},
+  {"term":"Impartiality","pos":"noun","definition":"Principle requiring decision-makers to be unbiased and fair.","example":"Judge recused to maintain impartiality in the case.","tags":["Court","Ethics"]},
+  {"term":"Impeachment of Witness","pos":"noun","definition":"Process of attacking the credibility of a witness.","example":"Defense sought impeachment of the prosecution witness.","tags":["Evidence"]},
+  {"term":"Implied Terms","pos":"noun","definition":"Terms not expressly stated but inferred by law or custom in contracts.","example":"Court read in implied terms for fitness of goods.","tags":["Contract"]},
+  {"term":"In Camera Proceedings","pos":"noun","definition":"Private court proceedings conducted away from public and press to protect privacy or sensitive information.","example":"Sexual offence evidence was heard in camera.","tags":["Court","Procedure"]},
+  {"term":"In Rem","pos":"adjective","definition":"Action directed against property rather than a person.","example":"Admiralty suit was in rem against the ship.","tags":["Maritime","Civil"]},
+  {"term":"In Pari Materia","pos":"phrase","definition":"Statutes dealing with the same subject must be interpreted together.","example":"Court interpreted the statutes in pari materia to harmonize provisions.","tags":["Interpretation"]},
+  {"term":"In Personam","pos":"adjective","definition":"Action or liability directed against a particular person.","example":"The court issued an in personam injunction against the director.","tags":["Civil"]},
+  {"term":"In Re","pos":"phrase","definition":"In the matter of; used in case captions.","example":"The matter was cited as In re Estate of Doe.","tags":["Procedure"]},
+  {"term":"Injunction","pos":"noun","definition":"Court order directing a party to do or refrain from doing a specified act.","example":"Court issued an injunction to stop the sale of the property.","tags":["Civil","Injunction"]},
+  {"term":"Inquest","pos":"noun","definition":"Judicial inquiry into the cause of death or other matters of public concern.","example":"An inquest was ordered into the unexplained death.","tags":["Criminal","Procedure"]},
+  {"term":"Insolvency","pos":"noun","definition":"Financial state where liabilities exceed assets leading to statutory insolvency proceedings.","example":"Company entered insolvency proceedings under IBC.","tags":["Commercial","Insolvency"]},
+  {"term":"Instalment","pos":"noun","definition":"Periodic payment forming part of a larger sum under agreement.","example":"Loan repayable in monthly instalments over five years.","tags":["Commercial"]},
+  {"term":"Instrument","pos":"noun","definition":"A formal legal document such as a deed or agreement.","example":"The transfer was effected by a registered instrument.","tags":["Procedure","Property"]},
+  {"term":"Insurance","pos":"noun","definition":"Contract transferring risk to an insurer for premium.","example":"Policyholder filed an insurance claim after fire damage.","tags":["Commercial"]},
+  {"term":"Interim Order","pos":"noun","definition":"Temporary order issued until final decision is made.","example":"Court passed an interim order restraining demolition.","tags":["Court","Procedure"]},
+  {"term":"Interlocutory","pos":"adjective","definition":"Order or application made during the pendency of a suit, not final.","example":"Interlocutory appeal challenged the interim order.","tags":["Procedure"]},
+  {"term":"Interpleader","pos":"noun","definition":"Procedure to resolve competing claims over the same property or fund held by a stakeholder.","example":"Bank sought interpleader to determine rightful claimant of funds.","tags":["Civil","Procedure"]},
+  {"term":"Intestate","pos":"adjective","definition":"Describes a person dying without a valid will.","example":"He died intestate, so succession followed statutory rules.","tags":["Family","Property"]},
+  {"term":"Invasion of Privacy","pos":"noun","definition":"Unauthorized intrusion into personal life that can give rise to legal liability.","example":"Photographer sued for invasion of privacy after publishing private images.","tags":["Tort","Civil"]},
+  {"term":"Issue","pos":"noun","definition":"Question of fact or law to be determined by the court in a case.","example":"Court framed issues to be tried at hearing.","tags":["Court","Procedure"]},
+  {"term":"Judgment","pos":"noun","definition":"Final decision of a court resolving the rights of parties.","example":"The court delivered judgment in favour of the plaintiff.","tags":["Court"]},
+  {"term":"Judgment Debtor","pos":"noun","definition":"Person against whom a monetary judgment is rendered.","example":"The judgment debtor failed to pay the decree amount.","tags":["Civil"]},
+  {"term":"Judgment Creditor","pos":"noun","definition":"Person entitled to enforce a monetary judgment against debtor.","example":"Judgment creditor filed execution petition to recover dues.","tags":["Civil"]},
+  {"term":"Judicial Review","pos":"noun","definition":"Review by higher court of lower court or administrative action for legality and constitutionality.","example":"High Court allowed judicial review of the tribunal's order.","tags":["Constitutional","Administrative"]},
+  {"term":"Jurisdiction","pos":"noun","definition":"Legal authority of a court or tribunal to hear and decide matters.","example":"The court lacked territorial jurisdiction over the claim.","tags":["Court"]},
+  {"term":"Jurisprudence","pos":"noun","definition":"Body of law and legal theories developed by courts and scholars.","example":"The judgment contributed significantly to Indian jurisprudence on privacy.","tags":["Legal Theory"]},
+  {"term":"Jury","pos":"noun","definition":"Group of lay persons deciding facts in a trial (rare in India today).","example":"Jury trials have largely been abolished in India.","tags":["Court","Historical"]},
+  {"term":"Justice","pos":"noun","definition":"Concept of fairness and legal rightness enforced by courts and legal systems.","example":"The procedure aimed at delivering justice to the aggrieved.","tags":["Philosophy","Court"]},
+  {"term":"Keeper of Records","pos":"noun","definition":"Official responsible for maintaining court or registry records.","example":"Application filed to the keeper of records for certified copy.","tags":["Procedure","Administrative"]},
+  {"term":"Khasra Number","pos":"noun","definition":"Land parcel identifier used in Indian land records (regional term).","example":"Buyer checked the property's khasra number in revenue records.","tags":["Property","India"]},
+  {"term":"Laches","pos":"noun","definition":"Unreasonable delay in asserting rights leading to denial of relief.","example":"Claim dismissed on ground of laches.","tags":["Civil"]},
+  {"term":"Landlord","pos":"noun","definition":"Owner of property who grants tenancy to another (tenant).","example":"Landlord sought eviction due to non-payment of rent.","tags":["Property"]},
+  {"term":"Latent Defect","pos":"noun","definition":"Hidden defect in goods or property not discoverable by reasonable inspection.","example":"Buyer sought rescission for latent defects found after purchase.","tags":["Commercial","Property"]},
+  {"term":"Law Merchant","pos":"noun","definition":"Commercial customs and practices followed in trade and commerce recognized by courts.","example":"Court referred to principles of law merchant in maritime dispute.","tags":["Commercial","Historical"]},
+  {"term":"Legal Heir","pos":"noun","definition":"Person entitled to inherit by operation of law when a person dies intestate.","example":"Legal heir applied for release of bank funds after father's death.","tags":["Family","Property"]},
+  {"term":"Legal Notice","pos":"noun","definition":"Formal notice served to communicate claim or demand before commencing proceedings.","example":"Plaintiff served a legal notice demanding payment within 15 days.","tags":["Procedure"]},
+  {"term":"Legatee","pos":"noun","definition":"Person who receives a gift under a will.","example":"He was the principal legatee in the will.","tags":["Family","Property"]},
+  {"term":"Letter of Administration","pos":"noun","definition":"Court authorization to administer estate when no will exists.","example":"He applied for letters of administration to manage the intestate estate.","tags":["Family","Property"]},
+  {"term":"Libel","pos":"noun","definition":"Defamation by written or published false statement harming reputation.","example":"Newspaper faced libel suit for publishing false allegations.","tags":["Civil","Defamation"]},
+  {"term":"Lien","pos":"noun","definition":"Right to retain possession of property until a debt or claim is satisfied.","example":"Mechanic's lien was placed on the repaired vehicle pending payment.","tags":["Property","Commercial"]},
+  {"term":"Limitation Period","pos":"noun","definition":"Maximum time allowed by law to file a lawsuit or appeal.","example":"Suit struck off as filed after the limitation period.","tags":["Procedure","Civil"]},
+  {"term":"Limitation Act","pos":"noun","definition":"Statute prescribing periods within which various legal actions must be brought (jurisdictional name varies).","example":"Claims were barred by the Limitation Act after three years.","tags":["Procedure","Statute"]},
+  {"term":"Liquidated Damages","pos":"noun","definition":"Pre-agreed sum payable upon breach of contract as compensation.","example":"Contract provided for liquidated damages of ₹100,000 for delay.","tags":["Contract","Commercial"]},
+  {"term":"Lis Pendens","pos":"noun","definition":"Doctrine that notice of ongoing litigation attaches to property involved in suit.","example":"Registrant noted lis pendens on title pending suits over the property.","tags":["Property","Civil"]},
+  {"term":"Local Limitation","pos":"noun","definition":"Rules determining the appropriate territorial jurisdiction for filing suits.","example":"Local limitation pointed to the district where the cause of action arose.","tags":["Procedure","Court"]},
+  {"term":"Maintenance","pos":"noun","definition":"Financial support ordered by court to spouse, children or dependents.","example":"Court granted interim maintenance to the wife under Section 125 CrPC.","tags":["Family"]},
+  {"term":"Malafide","pos":"adjective","definition":"Act done in bad faith with dishonest intent.","example":"The transfer was declared void due to malafide intentions.","tags":["Civil","Ethics"]},
+  {"term":"Malpractice","pos":"noun","definition":"Professional misconduct or negligence by professionals such as doctors or lawyers.","example":"Patient sued for medical malpractice after surgical errors.","tags":["Professional"]},
+  {"term":"Mandamus","pos":"noun","definition":"Writ ordering a public authority to perform a public duty.","example":"Writ of mandamus sought to compel the municipal authority to act.","tags":["Constitutional","Administrative"]},
+  {"term":"Mediation","pos":"noun","definition":"Voluntary process where a neutral mediator assists parties to reach settlement.","example":"Parties opted for mediation and settled disputes amicably.","tags":["ADR","Civil"]},
+  {"term":"Memorandum of Association","pos":"noun","definition":"Founding document of a company setting out its object and scope.","example":"Company's memorandum of association specified main activities." ,"tags":["Company","Commercial"]},
+  {"term":"Mens Rea","pos":"noun","definition":"Guilty mind or criminal intent required for many offences.","example":"Prosecution failed to establish mens rea beyond doubt.","tags":["Criminal"]},
+  {"term":"Merger","pos":"noun","definition":"Combination of two or more entities into one company.","example":"The merger resulted in a single entity controlling the assets.","tags":["Company","Commercial"]},
+  {"term":"Miscarriage of Justice","pos":"noun","definition":"Wrongful conviction or outcome due to procedural or substantive error.","example":"Appeal court overturned conviction for miscarriage of justice.","tags":["Criminal","Court"]},
+  {"term":"Misconduct","pos":"noun","definition":"Improper or unlawful behavior, often triggering disciplinary action.","example":"Employee faced disciplinary action for misconduct at workplace.","tags":["Employment","Service"]},
+  {"term":"Mitigating Circumstances","pos":"noun","definition":"Factors that may reduce the severity of punishment at sentencing.","example":"Court considered mitigating circumstances such as youth of the offender.","tags":["Criminal","Sentencing"]},
+  {"term":"Mortgage","pos":"noun","definition":"Security interest where borrower pledges immovable property to secure loan.","example":"Bank enforced mortgage on default of loan repayment.","tags":["Property","Commercial"]},
+  {"term":"Motion","pos":"noun","definition":"Formal application made to the court for an order during proceedings.","example":"He filed a motion requesting production of documents.","tags":["Procedure","Court"]},
+  {"term":"Movable Property","pos":"noun","definition":"Property that can be moved, as opposed to immovable property like land.","example":"Car classified as movable property for the suit.","tags":["Property"]},
+  {"term":"Mutatis Mutandis","pos":"phrase","definition":"With necessary changes having been made; appropriate adjustments applied.","example":"The provisions apply mutatis mutandis to the new context.","tags":["Interpretation"]},
+  {"term":"Natural Justice","pos":"noun","definition":"Basic procedural fairness, including the right to be heard and rule against bias.","example":"Order quashed for violating principles of natural justice.","tags":["Court"]},
+  {"term":"Negotiable Instrument","pos":"noun","definition":"Document guaranteeing the payment of a specific sum, transferable by endorsement (e.g., cheque).","example":"Cheque dishonor led to proceedings under the Negotiable Instruments Act.","tags":["Commercial"]},
+  {"term":"No-Objection Certificate (NOC)","pos":"noun","definition":"Document expressing consent or lack of objection from a party or authority.","example":"Bank demanded NOC before closing the loan account.","tags":["Administrative","Procedure"]},
+  {"term":"Non-Cognizable Offence","pos":"noun","definition":"Offence for which police cannot arrest without magistrate's order and require complaint for investigation.","example":"Defamation is typically a non-cognizable offence.","tags":["Criminal"]},
+  {"term":"Notary","pos":"noun","definition":"Official authorized to attest signatures and certify documents.","example":"He got the affidavit duly notarized at the notary office.","tags":["Procedure"]},
+  {"term":"Notice","pos":"noun","definition":"Formal communication informing a party of a claim, proceeding, or requirement to act.","example":"Tenant received notice to vacate the premises within 30 days.","tags":["Procedure"]},
+  {"term":"Nuisance","pos":"noun","definition":"Interference with enjoyment of property or rights causing harm or inconvenience.","example":"Neighbor's factory noise constituted a private nuisance.","tags":["Tort","Civil"]},
+  {"term":"Obligation","pos":"noun","definition":"Duty enforceable by law arising from contract, statute or equity.","example":"Contract imposed an obligation to deliver within 30 days.","tags":["Contract"]},
+  {"term":"Objection","pos":"noun","definition":"Formal protest raised during trial to exclude evidence or statement.","example":"Defence raised objection to leading questions during witness examination.","tags":["Court","Evidence"]},
+  {"term":"Offence","pos":"noun","definition":"Act or omission punishable by law.","example":"He was charged with a cognizable offence under IPC.","tags":["Criminal"]},
+  {"term":"Offer","pos":"noun","definition":"Proposal by one party to another that, if accepted, creates a binding contract.","example":"Seller's written offer included price and delivery terms.","tags":["Contract"]},
+  {"term":"Omission","pos":"noun","definition":"Failure to act when there is a legal duty to do so, sometimes constituting an offence.","example":"Omission to provide medical care led to liability.","tags":["Criminal","Civil"]},
+  {"term":"Onus","pos":"noun","definition":"Burden or responsibility to prove or do something in legal proceedings.","example":"Onus lay on the claimant to prove breach of contract.","tags":["Evidence"]},
+  {"term":"Open Court","pos":"noun","definition":"Proceedings held publicly in the presence of parties and public unless law permits otherwise.","example":"Proceedings conducted in open court during hearing.","tags":["Court","Procedure"]},
+  {"term":"Ordinance","pos":"noun","definition":"Temporary law issued by the executive (President or Governor) subject to legislative ratification.","example":"Government promulgated an ordinance to amend the Act temporarily.","tags":["Constitutional","Legislation"]},
+  {"term":"Order","pos":"noun","definition":"Court direction or ruling on procedural or substantive issues.","example":"Court passed order granting interim injunction.","tags":["Court","Procedure"]},
+  {"term":"Order Nisi","pos":"noun","definition":"Interim order requiring a party to show cause why the provisional order should not become final.","example":"Court issued order nisi to the respondent to show cause.","tags":["Procedure"]},
+  {"term":"Ordinary Course of Business","pos":"phrase","definition":"Transactions conducted as usual within a business' operations.","example":"Sale in the ordinary course of business was protected from avoidance in insolvency.","tags":["Commercial"]},
+  {"term":"Original Suit","pos":"noun","definition":"Suit instituted in the court having original jurisdiction over subject matter.","example":"Plaintiff filed original suit in district court for title dispute.","tags":["Civil","Court"]},
+  {"term":"Out-of-Court Settlement","pos":"noun","definition":"Agreement resolving dispute without trial or final adjudication by court.","example":"Parties reached an out-of-court settlement after mediation.","tags":["ADR"]},
+  {"term":"Overriding Statute","pos":"noun","definition":"Statute that takes precedence over conflicting laws or contracts.","example":"Regulatory policy acted as overriding statute in the matter.","tags":["Legislation"]},
+  {"term":"Panchanama","pos":"noun","definition":"Document recording inspection or seizure details at a place, often prepared by police with witnesses.","example":"Police prepared panchanama at the crime scene after seizure.","tags":["Criminal","Evidence"]},
+  {"term":"Partial Judgment","pos":"noun","definition":"Judgment disposing of part of the issues or parties in a case while others remain pending.","example":"Court passed partial judgment on liability while assessing damages later.","tags":["Court"]},
+  {"term":"Particulars","pos":"noun","definition":"Specific details of claim or charge required to be stated in pleadings.","example":"Court ordered plaintiff to provide particulars of the claim.","tags":["Procedure","Civil"]},
+  {"term":"Partition","pos":"noun","definition":"Division of co-owned property among co-owners.","example":"Siblings filed partition petition to divide ancestral land.","tags":["Property"]},
+  {"term":"Patent","pos":"noun","definition":"Exclusive right granted for an invention for a fixed period.","example":"Company obtained patent for new pharmaceutical compound.","tags":["Intellectual Property"]},
+  {"term":"Payment","pos":"noun","definition":"Discharge of monetary obligation under contract or statute.","example":"Payment made in full settled the debt.","tags":["Commercial"]},
+  {"term":"Pendente Lite","pos":"adverb","definition":"During the pendency of a lawsuit; temporary measures in effect while suit continues.","example":"Interim custody orders were granted pendente lite.","tags":["Civil","Procedure"]},
+  {"term":"Perjury","pos":"noun","definition":"Willful giving of false testimony under oath.","example":"Witness accused of perjury after contradictory statements discovered.","tags":["Criminal","Evidence"]},
+  {"term":"Personal Law","pos":"noun","definition":"Laws governing family and succession matters applicable to particular communities.","example":"Inheritance was determined according to personal law applicable to the family.","tags":["Family","Constitutional"]},
+  {"term":"Petition","pos":"noun","definition":"Formal written application to a court or authority for relief or remedy.","example":"He filed a petition under Article 32 seeking fundamental rights enforcement.","tags":["Procedure","Constitutional"]},
+  {"term":"Plaint","pos":"noun","definition":"Written complaint that initiates a civil suit.","example":"Plaint filed sought specific performance of contract.","tags":["Civil"]},
+  {"term":"Pleadings","pos":"noun","definition":"Formal written statements of claims and defenses by parties in litigation.","example":"Court struck out inadequate pleadings for lack of particularity.","tags":["Civil","Procedure"]},
+  {"term":"Pleadings Amendment","pos":"noun","definition":"Modification of pleadings with court permission to add or remove facts or claims.","example":"Court allowed amendment of pleadings to include new defendant.","tags":["Procedure"]},
+  {"term":"Pledge","pos":"noun","definition":"Delivery of movable property as security for a debt with possession to the pledgee.","example":"Jewellery pledged to the bank as security for loan.","tags":["Commercial","Property"]},
+  {"term":"Power of Attorney","pos":"noun","definition":"Legal document authorizing another to act on one’s behalf in specified matters.","example":"He signed a power of attorney authorizing property sale.","tags":["Commercial","Procedure"]},
+  {"term":"Precedent","pos":"noun","definition":"Earlier judicial decision that serves as authority for deciding subsequent similar cases.","example":"The court followed binding precedent set by the Supreme Court.","tags":["Court","Interpretation"]},
+  {"term":"Prejudice","pos":"noun","definition":"Prejudicial effect or disadvantage caused to a party; also procedural term for fairness concerns.","example":"Appeal allowed as trial error caused prejudice to defendant's case.","tags":["Court","Procedure"]},
+  {"term":"Preponderance of Evidence","pos":"phrase","definition":"Civil standard of proof requiring that a claim is more likely true than not.","example":"Plaintiff proved claim by preponderance of evidence.","tags":["Civil","Evidence"]},
+  {"term":"Prescribed Procedure","pos":"noun","definition":"Procedure laid down by statute or rule that must be followed for validity of action.","example":"Compliance with prescribed procedure was mandatory before seizing property.","tags":["Procedure","Administrative"]},
+  {"term":"Prescriptive Period","pos":"noun","definition":"Time limit after which legal claims may be barred by prescription (statute of limitation concept).","example":"Claims barred after the prescriptive period expired.","tags":["Procedure"]},
+  {"term":"Prima Facie","pos":"adverb","definition":"On first impression; sufficient to establish a fact unless disproved.","example":"Court found prima facie evidence to proceed to trial.","tags":["Procedure","Evidence"]},
+  {"term":"Principal","pos":"noun","definition":"Person who authorizes agent to act on their behalf; leading party in contract.","example":"Principal ratified agent's action retroactively.","tags":["Commercial","Agency"]},
+  {"term":"Probate","pos":"noun","definition":"Judicial process validating a will and granting administration of estate.","example":"He applied for probate to execute the will's directives.","tags":["Family","Property"]},
+  {"term":"Procedural Law","pos":"noun","definition":"Rules governing how courts operate and proceedings are conducted.","example":"Procedural law dictated notice and hearing requirements.","tags":["Procedure","Court"]},
+  {"term":"Product Liability","pos":"noun","definition":"Legal liability of manufacturers or sellers for defective products causing harm.","example":"Consumer sued for damages under product liability for defective appliance.","tags":["Tort","Consumer"]},
+  {"term":"Prohibition","pos":"noun","definition":"Writ restraining lower courts or authorities from exceeding jurisdiction.","example":"High Court issued prohibition to prevent unauthorized actions by the tribunal.","tags":["Constitutional","Procedure"]},
+  {"term":"Prosecution","pos":"noun","definition":"Party or authority bringing a criminal charge against accused.","example":"Public prosecutor presented evidence before the court.","tags":["Criminal"]},
+  {"term":"Provisional Remedy","pos":"noun","definition":"Temporary legal measure such as attachment or injunction pending final decision.","example":"Court granted provisional remedy of attachment to preserve assets.","tags":["Civil"]},
+  {"term":"Public Trust Doctrine","pos":"noun","definition":"Principle that certain natural resources are preserved for public use and government must protect them.","example":"Court applied the public trust doctrine to restrict private development of the riverbed.","tags":["Constitutional","Environmental"]},
+  {"term":"Punitive Damages","pos":"noun","definition":"Damages awarded to punish defendant and deter similar conduct rather than to compensate.","example":"Court awarded punitive damages for egregious misconduct.","tags":["Civil","Remedies"]},
+  {"term":"Purchase Deed","pos":"noun","definition":"Conveyance document effecting transfer of ownership of immovable property.","example":"Buyer took possession after execution of the purchase deed.","tags":["Property"]},
+  {"term":"Quash","pos":"verb","definition":"To set aside or annul a judicial or administrative order or proceeding.","example":"High Court quashed the FIR for lack of prima facie case.","tags":["Criminal","Procedure"]},
+  {"term":"Quantum Meruit","pos":"noun","definition":"Amount deserved for work performed when no contract exists or is unenforceable.","example":"Contractor claimed quantum meruit for extra work done.","tags":["Commercial","Remedies"]},
+  {"term":"Quasi-Judicial","pos":"adjective","definition":"Descriptive of authorities that exercise powers similar to courts but with limited jurisdiction.","example":"Tribunal functioned as quasi-judicial body in service matters.","tags":["Administrative"]},
+  {"term":"Quasi-Contract","pos":"noun","definition":"Obligation imposed by law to avoid unjust enrichment in absence of a contract.","example":"Court imposed liability under quasi-contract principles.","tags":["Equity","Civil"]},
+  {"term":"Quorum","pos":"noun","definition":"Minimum number of members of a body required to be present to transact business.","example":"Hearing postponed because quorum was not present.","tags":["Court","Procedure"]},
+  {"term":"Racketeering","pos":"noun","definition":"Dishonest and fraudulent business dealings often involving organized crime.","example":"Case involved racketeering charges across states.","tags":["Criminal","Commercial"]},
+  {"term":"Rack Rent","pos":"noun","definition":"Excessive rent beyond reasonable market value (historical/contractual concept).","example":"Tenant complained of being charged rack rent by landlord.","tags":["Property","Commercial"]},
+  {"term":"Ratification","pos":"noun","definition":"Official confirmation or approval of an act done without authority making it valid retroactively.","example":"Company ratified the act of employee after discovering benefits.","tags":["Commercial","Agency"]},
+  {"term":"RBI Compliance","pos":"noun","definition":"Adherence to Reserve Bank of India regulations for financial entities (India-specific).","example":"Bank updated policies to meet RBI compliance on KYC norms.","tags":["Regulatory","India"]},
+  {"term":"Real Estate","pos":"noun","definition":"Land and buildings forming immovable property and associated legal rules.","example":"Real estate transaction required registration and stamp duty payment.","tags":["Property"]},
+  {"term":"Receivership","pos":"noun","definition":"Court appointment of a receiver to manage or preserve property in dispute.","example":"Court placed company assets under receivership pending litigation.","tags":["Civil","Property"]},
+  {"term":"Recognizance","pos":"noun","definition":"Formal pledge by which a person undertakes to do something, often ensuring appearance in court.","example":"Accused released on recognizance to appear at trial dates.","tags":["Criminal"]},
+  {"term":"Recusal","pos":"noun","definition":"Withdrawal of a judge or official from a case due to conflict of interest or bias.","example":"Judge filed recusal due to prior association with a party.","tags":["Court","Ethics"]},
+  {"term":"Rejoinder","pos":"noun","definition":"Plaintiff's reply to the defendant's written statement in civil procedure.","example":"Plaintiff filed a rejoinder to address new defenses raised by defendant.","tags":["Civil","Procedure"]},
+  {"term":"Remand","pos":"verb","definition":"To send a case back to a lower court for further action or to send an accused to custody.","example":"Appellate court remanded the matter for fresh consideration.","tags":["Court","Procedure"]},
+  {"term":"Remittal","pos":"noun","definition":"Sending a case or record back to a lower court for reconsideration.","example":"High Court ordered remittal to the trial court for rehearing.","tags":["Procedure"]},
+  {"term":"Rent Agreement","pos":"noun","definition":"Contract setting terms and conditions of tenancy between landlord and tenant.","example":"Parties signed a rent agreement for one-year tenancy.","tags":["Property"]},
+  {"term":"Repair and Restoration","pos":"noun","definition":"Obligations and remedies for restoring property or repairing damage often adjudicated in civil courts.","example":"Court ordered repair and restoration of damaged heritage building.","tags":["Property","Civil"]},
+  {"term":"Res Judicata","pos":"noun","definition":"Principle that a matter already adjudicated cannot be re-litigated by same parties.","example":"Claim barred by res judicata as it was previously decided.","tags":["Civil","Finality"]},
+  {"term":"Rescission","pos":"noun","definition":"Cancellation of contract and restoration of parties to original positions.","example":"Contract rescinded due to misrepresentation at signing.","tags":["Contract","Remedies"]},
+  {"term":"Reseal","pos":"verb","definition":"Re-confirmation of judgment or decree by another jurisdiction for enforcement.","example":"Decree was resealed in the local court for execution.","tags":["Civil","Procedure"]},
+  {"term":"Reservation (in law)","pos":"noun","definition":"Set-aside or protection granted to certain groups under constitutional or statutory rules (context specific).","example":"Reservation policy applied in government recruitment as per applicable law.","tags":["Constitutional","Administrative"]},
+  {"term":"Respondent","pos":"noun","definition":"Person who responds to a petition or appeal; the opposite of appellant.","example":"Respondent filed written submissions opposing the appeal.","tags":["Court"]},
+  {"term":"Restitution","pos":"noun","definition":"Restoring a person or property to the position before a wrongful act occurred.","example":"Court ordered restitution of funds obtained by fraud.","tags":["Civil","Remedies"]},
+  {"term":"Restraining Order","pos":"noun","definition":"Court order preventing a person from performing specified acts, often temporary.","example":"A restraining order prevented contact between parties pending trial.","tags":["Family","Injunction"]},
+  {"term":"Retention","pos":"noun","definition":"Right to retain property until debts or obligations are satisfied.","example":"Supplier exercised retention of goods until payment cleared.","tags":["Commercial"]},
+  {"term":"Revocation","pos":"noun","definition":"Withdrawal or cancellation of a right, grant, or instrument.","example":"Power of attorney faced revocation by the principal.","tags":["Procedure","Contract"]},
+  {"term":"Right of Way","pos":"noun","definition":"Right to pass through property of another for ingress and egress.","example":"Village had a right of way across the farmland for access to road.","tags":["Property"]},
+  {"term":"Riparian Rights","pos":"noun","definition":"Rights of landowners adjacent to watercourses to reasonable use of water.","example":"Dispute over riparian rights decided by river usage norms.","tags":["Property","Environmental"]},
+  {"term":"Rule Nisi","pos":"noun","definition":"An order issued to show cause why a provisional remedy should not be made absolute.","example":"Court issued a rule nisi asking the respondent to show cause.","tags":["Procedure"]},
+  {"term":"Sanction","pos":"noun","definition":"Official permission or approval required in certain prosecutions or actions.","example":"Prosecution required sanction under Section 197 CrPC to proceed against public servant.","tags":["Criminal","Administrative"]},
+  {"term":"Search Warrant","pos":"noun","definition":"Authorisation from court to search premises and seize evidence.","example":"Police executed a search warrant to recover stolen goods.","tags":["Criminal"]},
+  {"term":"Seisin","pos":"noun","definition":"Legal possession of land, especially freehold ownership.","example":"Plaintiff asserted seisin since 1990 in support of title claim.","tags":["Property"]},
+  {"term":"Service of Notice","pos":"noun","definition":"Delivering legal notice to the concerned party in a manner prescribed by law.","example":"Suit delayed due to improper service of notice on the defendant.","tags":["Procedure"]},
+  {"term":"Set-Off","pos":"noun","definition":"Right to reduce mutual debts by offsetting amounts owed between parties.","example":"Defendant raised set-off against the claimant's demand.","tags":["Commercial","Civil"]},
+  {"term":"Settlement","pos":"noun","definition":"Agreement resolving a dispute without further litigation.","example":"Parties reached a settlement prior to trial.","tags":["Civil","ADR"]},
+  {"term":"Slander","pos":"noun","definition":"Oral defamation, spoken false statement harming reputation.","example":"He sued his colleague for slander after false allegations were spread verbally.","tags":["Defamation","Civil"]},
+  {"term":"Specific Performance","pos":"noun","definition":"Equitable remedy compelling a party to fulfil contractual obligations where damages are inadequate.","example":"Buyer sought specific performance for unique property sale.","tags":["Civil","Remedies"]},
+  {"term":"Spoliation","pos":"noun","definition":"Destruction or alteration of evidence intended to prevent its use in proceedings.","example":"Court presumed harm from spoliation when key documents were destroyed.","tags":["Evidence","Criminal"]},
+  {"term":"Stamp Duty","pos":"noun","definition":"Tax paid on certain legal documents, particularly for registration of immovable property.","example":"Sale deed could not be registered until stamp duty paid.","tags":["Property","Tax"]},
+  {"term":"Statute","pos":"noun","definition":"Law enacted by the legislature as opposed to judicial decisions.","example":"The new statute amended existing insolvency rules.","tags":["Legislation"]},
+  {"term":"Stay","pos":"noun","definition":"Temporary suspension of proceedings or enforcement of an order.","example":"Court granted stay of execution pending appeal.","tags":["Procedure"]},
+  {"term":"Statement Under Section 161","pos":"noun","definition":"Statement recorded by police during investigation under Section 161 CrPC.","example":"Witness gave a statement under Section 161 before the investigating officer.","tags":["Criminal","Evidence"]},
+  {"term":"Statement Under Section 164","pos":"noun","definition":"Statement recorded by magistrate before trial, commonly in sexual offence cases.","example":"Victim's statement under Section 164 was recorded by the magistrate.","tags":["Criminal","Evidence"]},
+  {"term":"Statutory Demand","pos":"noun","definition":"Formal demand required as a step in insolvency or debt recovery proceedings.","example":"Financial institution issued statutory demand prior to initiating insolvency.","tags":["Commercial","Insolvency"]},
+  {"term":"Statutory Notice","pos":"noun","definition":"Notice mandated by statute that must be served before taking further action.","example":"Land acquisition required serving statutory notice to affected owners.","tags":["Administrative","Procedure"]},
+  {"term":"Stay Order","pos":"noun","definition":"Judicial order suspending enforcement of a judgment or action temporarily.","example":"Court granted a stay order to prevent demolition pending hearing.","tags":["Procedure","Court"]},
+  {"term":"Sub Judice","pos":"adjective","definition":"Matter that is pending before a court and therefore subject to restrictions on public comment in some contexts.","example":"The media refrained from commentary due to the issue being sub judice.","tags":["Court"]},
+  {"term":"Subpoena","pos":"noun","definition":"Order commanding a person to attend court or produce documents.","example":"Court issued subpoena to compel witness attendance.","tags":["Court","Procedure"]},
+  {"term":"Summons","pos":"noun","definition":"Order requiring a person to appear in court or answer a claim.","example":"Defendant received summons for the scheduled hearing.","tags":["Procedure"]},
+  {"term":"Surrender","pos":"verb","definition":"Voluntary yielding up of a right or property, often in context of tenancy or lease.","example":"Tenant surrendered the premises to landlord at end of lease term.","tags":["Property"]},
+  {"term":"Surety","pos":"noun","definition":"Person who guarantees another's performance or appearance, often in bail or bond contexts.","example":"Court accepted surety for the accused's bail.","tags":["Criminal","Commercial"]},
+  {"term":"Surrejoinder","pos":"noun","definition":"Reply by defendant to plaintiff's rejoinder in civil procedure where permitted.","example":"Court allowed a short surrejoinder to address new facts in rejoinder.","tags":["Civil","Procedure"]},
+  {"term":"Survey","pos":"noun","definition":"Official mapping or measurement of land used as evidence in property disputes.","example":"Survey report was relied upon to fix boundaries.","tags":["Property"]},
+  {"term":"Suspension","pos":"noun","definition":"Temporary removal from duties or position pending inquiry or as punishment.","example":"Officer faced suspension during investigation of allegations of misconduct.","tags":["Employment","Service"]},
+  {"term":"Surrender Value","pos":"noun","definition":"Sum payable upon voluntary termination of certain contracts like insurance.","example":"Policyholder claimed surrender value upon canceling the policy.","tags":["Commercial","Insurance"]},
+  {"term":"Tangible Property","pos":"noun","definition":"Physical property that can be touched or moved, distinct from intangible property like copyrights.","example":"Furniture and machinery classified as tangible property for the inventory.","tags":["Property"]},
+  {"term":"Tort","pos":"noun","definition":"Civil wrong causing damage or injury, other than breach of contract.","example":"He sued in tort for negligence resulting in injury.","tags":["Civil","Tort"]},
+  {"term":"Trade Mark","pos":"noun","definition":"Sign, symbol or name used by a business to identify goods or services and distinct from others.","example":"Company registered the trade mark for its brand logo.","tags":["Intellectual Property"]},
+  {"term":"Transfer","pos":"noun","definition":"Conveyance of rights, title or interest from one person to another.","example":"Transfer of title completed at the registry after payment of stamp duty.","tags":["Property"]},
+  {"term":"TranspOse","pos":"verb","definition":"To change the order or arrangement of legal provisions or facts (context-specific).","example":"Arguments requested the court to transpose the schedule dates due to administrative reason.","tags":["Procedure"]},
+  {"term":"Trial","pos":"noun","definition":"Formal examination of evidence and arguments to determine guilt or liability.","example":"Trial lasted for several weeks with multiple witnesses examined.","tags":["Court","Criminal"]},
+  {"term":"Tribunal","pos":"noun","definition":"Specialized adjudicatory body established by statute to decide specific categories of disputes.","example":"The consumer tribunal resolved the defects claim quickly.","tags":["Administrative","Procedure"]},
+  {"term":"Trust","pos":"noun","definition":"Fiduciary arrangement where property is held by trustee for beneficiaries.","example":"A trust was created to manage the children's inheritance.","tags":["Trusts","Property"]},
+  {"term":"Trustee","pos":"noun","definition":"Person holding and managing trust property for the benefit of beneficiaries.","example":"Trustee accounted for trust funds annually to beneficiaries.","tags":["Trusts"]},
+  {"term":"Turning the Tide","pos":"phrase","definition":"Term used to describe reversal of fortunes in litigation or case law contexts (figurative).","example":"New evidence turned the tide in favour of the defence at trial.","tags":["Court"]},
+  {"term":"Typographical Error (Typo)","pos":"noun","definition":"Unintended error in written documents that may need correction by amendment.","example":"Court permitted correction for a minor typographical error in the deed.","tags":["Procedure"]},
+  {"term":"Ultra Vires","pos":"adjective","definition":"Act done beyond the legal power or authority of a person or body.","example":"The regulation was struck down as ultra vires the empowering statute.","tags":["Constitutional","Administrative"]},
+  {"term":"Undertaking","pos":"noun","definition":"Formal promise to the court or authority to perform or abstain from an act.","example":"He gave an undertaking not to transfer the property pending hearing.","tags":["Court","Procedure"]},
+  {"term":"Unilateral","pos":"adjective","definition":"Action or decision taken by one party without the consent of the other.","example":"Unilateral termination of the contract led to dispute and litigation.","tags":["Contract"]},
+  {"term":"Unjust Enrichment","pos":"noun","definition":"Retention of a benefit by one party at the expense of another without legal justification.","example":"Court ordered restitution to remedy unjust enrichment.","tags":["Equity","Civil"]},
+  {"term":"Usufruct","pos":"noun","definition":"Right to use and enjoy property belonging to another and take its fruits without altering substance.","example":"He enjoyed usufruct of the farmland during his lifetime.","tags":["Property"]},
+  {"term":"Vacate","pos":"verb","definition":"To set aside, annul, or withdraw an order or position.","example":"High Court vacated the interim injunction after hearing submissions.","tags":["Court","Procedure"]},
+  {"term":"Valuation","pos":"noun","definition":"Assessment of monetary worth of property, assets, or damages.","example":"Valuation report prepared to ascertain market value of the land.","tags":["Property","Commercial"]},
+  {"term":"Vested Right","pos":"noun","definition":"A right that is fully and unconditionally secured and not dependent on future events.","example":"He acquired a vested right to pension benefits upon retirement.","tags":["Property","Employment"]},
+  {"term":"Vicarious Liability","pos":"noun","definition":"Legal responsibility of an employer or principal for acts of employees or agents committed in course of employment.","example":"Employer held vicariously liable for the driver's negligence leading to accident.","tags":["Tort","Employment"]},
+  {"term":"Vindicatory Damages","pos":"noun","definition":"Compensation awarded to vindicate rights and denounce violations (rare/advanced remedy).","example":"Court awarded vindicatory damages to uphold property rights.","tags":["Civil","Remedies"]},
+  {"term":"Void Agreement","pos":"noun","definition":"Agreement without legal effect and unenforceable from the outset.","example":"Agreement void due to illegality of object was unenforceable.","tags":["Contract"]},
+  {"term":"Voidable Contract","pos":"noun","definition":"A contract that is valid until avoided by the aggrieved party due to factors like coercion.","example":"Contract voidable when entered into under undue influence.","tags":["Contract"]},
+  {"term":"Warrant","pos":"noun","definition":"Legal authorization for arrest, search or seizure.","example":"Police obtained a warrant to search the premises for evidence.","tags":["Criminal"]},
+  {"term":"Warrant of Attachment","pos":"noun","definition":"Court order to seize property to satisfy a judgment or secure a claim.","example":"Warrant of attachment was issued to freeze bank accounts.","tags":["Civil","Procedure"]},
+  {"term":"Will","pos":"noun","definition":"Legal declaration of a person's wishes as to distribution of estate after death.","example":"He left a registered will disposing of his movable and immovable property.","tags":["Family","Property"]},
+  {"term":"Willful Neglect","pos":"noun","definition":"Reckless disregard or intentional failure to perform legal duties.","example":"Willful neglect in maintaining safety standards resulted in prosecution.","tags":["Criminal","Civil"]},
+  {"term":"Willful Misconduct","pos":"noun","definition":"Deliberate wrongdoing rather than mere negligence.","example":"Company sued for willful misconduct causing environmental damage.","tags":["Civil","Criminal"]},
+  {"term":"Witness","pos":"noun","definition":"Person giving testimony or evidence in a legal proceeding.","example":"Witness turned hostile during cross-examination.","tags":["Evidence"]},
+  {"term":"Writ","pos":"noun","definition":"Formal written order issued by High Court or Supreme Court directing action or prohibiting actions (eg. habeas corpus, mandamus, prohibition).","example":"He filed a writ petition under Article 226 challenging detention.","tags":["Constitutional"]},
+  {"term":"Wrongful Dismissal","pos":"noun","definition":"Termination of employment in breach of contract or statutory protections.","example":"Worker claimed compensation for wrongful dismissal after being fired without notice.","tags":["Employment"]},
+  {"term":"Zimni Order","pos":"noun","definition":"Routine interim order recorded in court diary noting matters like further hearing dates.","example":"Court passed a zimni order to list the matter for next date.","tags":["Procedure"]}
 ]
-{
-  "term": "Garnishee Order",
-  "pos": "noun",
-  "definition": "Court order requiring a third party to pay debt owed to judgment debtor.",
-  "example": "Bank received a garnishee order freezing the account.",
-  "tags": ["Civil", "Recovery"]
-},
-{
-  "term": "Good Faith",
-  "pos": "noun",
-  "definition": "Honest intention without fraud or negligence.",
-  "example": "The buyer acted in good faith during the transaction.",
-  "tags": ["Civil", "Contract"]
-},
-{
-  "term": "Guardian",
-  "pos": "noun",
-  "definition": "Person legally responsible for care of a minor.",
-  "example": "The mother was appointed guardian.",
-  "tags": ["Family"]
-},
-{
-  "term": "Hearing",
-  "pos": "noun",
-  "definition": "Court session where arguments are presented.",
-  "example": "The matter is listed for final hearing tomorrow.",
-  "tags": ["Court"]
-},
-{
-  "term": "Hearsay Evidence",
-  "pos": "noun",
-  "definition": "Information not directly witnessed but reported by another.",
-  "example": "Hearsay evidence is generally inadmissible.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Homicide",
-  "pos": "noun",
-  "definition": "Killing of a person by another, lawful or unlawful.",
-  "example": "The case involved culpable homicide.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Immovable Property",
-  "pos": "noun",
-  "definition": "Land, buildings and things attached to earth.",
-  "example": "Sale of immovable property requires registration.",
-  "tags": ["Property"]
-},
-{
-  "term": "Immunity",
-  "pos": "noun",
-  "definition": "Legal protection from liability or prosecution.",
-  "example": "Witness received immunity in exchange for testimony.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Impeachment of Witness",
-  "pos": "noun",
-  "definition": "Challenging credibility of a witness.",
-  "example": "Defence counsel impeached the hostile witness.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "In Camera Proceedings",
-  "pos": "noun",
-  "definition": "Private court proceedings closed to public.",
-  "example": "Sexual offence trials are held in camera.",
-  "tags": ["Court"]
-},
-
-{
-  "term": "Injunction",
-  "pos": "noun",
-  "definition": "Court order preventing or directing a specific act.",
-  "example": "Court issued injunction on property sale.",
-  "tags": ["Civil", "Property"]
-},
-{
-  "term": "Inquest",
-  "pos": "noun",
-  "definition": "Inquiry into unnatural or suspicious death.",
-  "example": "Police conducted inquest before postmortem.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Interlocutory Order",
-  "pos": "noun",
-  "definition": "Order given during pendency of case, not final.",
-  "example": "Interlocutory order allowed interim relief.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Intestate",
-  "pos": "adjective",
-  "definition": "A person dying without a will.",
-  "example": "Property was divided as per intestate succession.",
-  "tags": ["Family", "Property"]
-},
-{
-  "term": "Investigation",
-  "pos": "noun",
-  "definition": "Inquiry by police to collect evidence.",
-  "example": "Investigation was transferred to special unit.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Jurisdiction",
-  "pos": "noun",
-  "definition": "Legal authority of a court to hear cases.",
-  "example": "The court had no territorial jurisdiction.",
-  "tags": ["Court"]
-},
-{
-  "term": "Jury",
-  "pos": "noun",
-  "definition": "Group deciding guilt in a trial; abolished in India except in special cases.",
-  "example": "India no longer uses jury trials.",
-  "tags": ["Court"]
-},
-{
-  "term": "Laches",
-  "pos": "noun",
-  "definition": "Delay in asserting rights leading to denial of relief.",
-  "example": "The petition was dismissed due to laches.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Lease Deed",
-  "pos": "noun",
-  "definition": "Contract allowing use of property for rent.",
-  "example": "Lease deed was registered for 11 months.",
-  "tags": ["Property"]
-},
-{
-  "term": "Libel",
-  "pos": "noun",
-  "definition": "Defamation in written or published form.",
-  "example": "Newspaper faced libel suit.",
-  "tags": ["Civil"]
-},
-
-{
-  "term": "Lien",
-  "pos": "noun",
-  "definition": "Right to keep someone's property until debt is paid.",
-  "example": "Mechanic had lien over the vehicle.",
-  "tags": ["Property", "Commercial"]
-},
-{
-  "term": "Limitation Period",
-  "pos": "noun",
-  "definition": "Maximum time allowed to file a case.",
-  "example": "Suit filed beyond limitation was dismissed.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Litigation",
-  "pos": "noun",
-  "definition": "Process of taking legal action.",
-  "example": "Family chose mediation over litigation.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Maintenance",
-  "pos": "noun",
-  "definition": "Financial support ordered by court, usually for spouse/children.",
-  "example": "Court granted interim maintenance under Section 125 CrPC.",
-  "tags": ["Family"]
-},
-{
-  "term": "Marriage Certificate",
-  "pos": "noun",
-  "definition": "Official document proving marriage.",
-  "example": "Needed for divorce proceedings.",
-  "tags": ["Family"]
-},
-{
-  "term": "Mediation",
-  "pos": "noun",
-  "definition": "Negotiated settlement process with mediator.",
-  "example": "Parties agreed to mediation instead of trial.",
-  "tags": ["Civil", "Family"]
-},
-{
-  "term": "Minor",
-  "pos": "noun",
-  "definition": "Person under age 18.",
-  "example": "Court granted custody of minor to mother.",
-  "tags": ["Family"]
-},
-{
-  "term": "Misconduct",
-  "pos": "noun",
-  "definition": "Unlawful or improper behavior, especially by officials.",
-  "example": "Departmental inquiry found misconduct.",
-  "tags": ["Civil", "Service"]
-},
-{
-  "term": "Mortgage",
-  "pos": "noun",
-  "definition": "Loan secured by property offered as security.",
-  "example": "Bank enforced mortgage on default.",
-  "tags": ["Property", "Commercial"]
-},
-{
-  "term": "Motion",
-  "pos": "noun",
-  "definition": "Formal request for a court order.",
-  "example": "He filed a motion seeking early hearing.",
-  "tags": ["Procedure"]
-},
-
-{
-  "term": "Natural Justice",
-  "pos": "noun",
-  "definition": "Principles ensuring fairness, such as right to be heard.",
-  "example": "Order was quashed for violating natural justice.",
-  "tags": ["Court"]
-},
-{
-  "term": "Negligence",
-  "pos": "noun",
-  "definition": "Failure to exercise reasonable care causing harm.",
-  "example": "Hospital sued for medical negligence.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Nominee",
-  "pos": "noun",
-  "definition": "Person appointed to receive benefits after death.",
-  "example": "Insurance amount released to nominee.",
-  "tags": ["Family"]
-},
-{
-  "term": "Non-cognizable Offence",
-  "pos": "noun",
-  "definition": "Police require court permission to arrest.",
-  "example": "Defamation is non-cognizable.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Notary",
-  "pos": "noun",
-  "definition": "Authorized person certifying legal documents.",
-  "example": "He notarized the affidavit.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Objection",
-  "pos": "noun",
-  "definition": "Formal protest raised during court proceeding.",
-  "example": "Counsel raised objection to inadmissible evidence.",
-  "tags": ["Court"]
-},
-{
-  "term": "Offence",
-  "pos": "noun",
-  "definition": "Act punishable by law.",
-  "example": "The act constituted a serious offence.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Oath",
-  "pos": "noun",
-  "definition": "Promise to tell truth in court.",
-  "example": "Witness took oath before testimony.",
-  "tags": ["Court"]
-},
-{
-  "term": "Order Sheet",
-  "pos": "noun",
-  "definition": "Daily record of court proceedings.",
-  "example": "Order sheet noted absence of witness.",
-  "tags": ["Court"]
-},
-{
-  "term": "Ordinance",
-  "pos": "noun",
-  "definition": "Temporary law issued by President or Governor.",
-  "example": "Government enacted ordinance on land reforms.",
-  "tags": ["Constitutional"]
-},
-
-{
-  "term": "Panchanama",
-  "pos": "noun",
-  "definition": "Document recording details at crime scene.",
-  "example": "Police prepared panchanama during raid.",
-  "tags": ["Criminal","Evidence"]
-},
-{
-  "term": "Parole",
-  "pos": "noun",
-  "definition": "Temporary release of a prisoner for specific reasons.",
-  "example": "He was granted parole for medical treatment.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Partnership Deed",
-  "pos": "noun",
-  "definition": "Document outlining rights and duties of business partners.",
-  "example": "Partnership deed included capital contributions.",
-  "tags": ["Commercial"]
-},
-{
-  "term": "Perjury",
-  "pos": "noun",
-  "definition": "Knowingly giving false evidence under oath.",
-  "example": "Witness booked for perjury.",
-  "tags": ["Criminal","Evidence"]
-},
-{
-  "term": "Plaint",
-  "pos": "noun",
-  "definition": "Initial document filed by plaintiff in civil suit.",
-  "example": "Plaint contained claim for damages.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Plea Bargaining",
-  "pos": "noun",
-  "definition": "Accused agrees to lesser punishment by admitting guilt.",
-  "example": "Court allowed plea bargaining in minor offences.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Power of Attorney",
-  "pos": "noun",
-  "definition": "Authorization allowing another person to act legally for someone.",
-  "example": "She executed power of attorney in favour of her brother.",
-  "tags": ["Civil","Property"]
-},
-{
-  "term": "Prima Facie",
-  "pos": "adjective",
-  "definition": "At first glance; sufficient to establish fact unless disproved.",
-  "example": "Court found prima facie case for trial.",
-  "tags": ["Court","Evidence"]
-},
-{
-  "term": "Proclamation",
-  "pos": "noun",
-  "definition": "Public notice declaring accused as absconding.",
-  "example": "Court issued proclamation under Section 82 CrPC.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Prohibition Order",
-  "pos": "noun",
-  "definition": "Order preventing lower authority from acting beyond jurisdiction.",
-  "example": "High Court issued prohibition order.",
-  "tags": ["Constitutional"]
-}
-{
-  "term": "Promissory Note",
-  "pos": "noun",
-  "definition": "Written unconditional promise to pay a specified sum.",
-  "example": "He filed a suit based on the promissory note.",
-  "tags": ["Commercial", "Civil"]
-},
-{
-  "term": "Prosecution",
-  "pos": "noun",
-  "definition": "Legal proceedings against an accused in criminal law.",
-  "example": "Prosecution failed to prove its case.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Quash",
-  "pos": "verb",
-  "definition": "To reject or void a legal proceeding or order.",
-  "example": "High Court quashed the FIR.",
-  "tags": ["Criminal", "Court"]
-},
-{
-  "term": "Quantum of Punishment",
-  "pos": "noun",
-  "definition": "The extent or severity of punishment decided by court.",
-  "example": "Court considered mitigating factors while deciding quantum.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Quasi-Judicial",
-  "pos": "adjective",
-  "definition": "Authority with powers similar to a court.",
-  "example": "The tribunal performs quasi-judicial functions.",
-  "tags": ["Court"]
-},
-{
-  "term": "Ratification",
-  "pos": "noun",
-  "definition": "Approval of an act done without authority.",
-  "example": "Company ratified the contract made by its director.",
-  "tags": ["Contract"]
-},
-{
-  "term": "Rebuttal",
-  "pos": "noun",
-  "definition": "Evidence or argument presented to counter the opponent.",
-  "example": "Prosecution produced rebuttal evidence.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Receivership",
-  "pos": "noun",
-  "definition": "Court appoints a receiver to manage property.",
-  "example": "Property was placed under receivership due to dispute.",
-  "tags": ["Civil", "Property"]
-},
-{
-  "term": "Recognizance",
-  "pos": "noun",
-  "definition": "Bond to ensure appearance in court.",
-  "example": "Accused was released on recognizance.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Recusal",
-  "pos": "noun",
-  "definition": "Judge withdrawing from a case due to conflict of interest.",
-  "example": "Judge recused himself citing personal reasons.",
-  "tags": ["Court"]
-},
-
-{
-  "term": "Rejoinder",
-  "pos": "noun",
-  "definition": "Response filed by plaintiff to defendant’s reply.",
-  "example": "Plaintiff submitted rejoinder to counter allegations.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Remand",
-  "pos": "verb",
-  "definition": "Sending accused back to custody or ordering re-hearing.",
-  "example": "Accused was remanded to judicial custody.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Rent Agreement",
-  "pos": "noun",
-  "definition": "Contract outlining terms of tenancy.",
-  "example": "Rent agreement required police verification.",
-  "tags": ["Property"]
-},
-{
-  "term": "Representation",
-  "pos": "noun",
-  "definition": "Formal request or submission to authority.",
-  "example": "Employee filed representation seeking reinstatement.",
-  "tags": ["Service Law"]
-},
-{
-  "term": "Res Judicata",
-  "pos": "noun",
-  "definition": "Matter already judged cannot be re-litigated.",
-  "example": "Suit dismissed due to res judicata.",
-  "tags": ["Civil", "Court"]
-},
-{
-  "term": "Restitution",
-  "pos": "noun",
-  "definition": "Restoring a party to original position.",
-  "example": "Court ordered restitution of property.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Restraining Order",
-  "pos": "noun",
-  "definition": "Order preventing a person from certain actions.",
-  "example": "Restraining order issued in domestic violence case.",
-  "tags": ["Family"]
-},
-{
-  "term": "Revision Petition",
-  "pos": "noun",
-  "definition": "Application seeking review of a lower court decision.",
-  "example": "Revision petition filed under CrPC.",
-  "tags": ["Criminal", "Civil"]
-},
-{
-  "term": "Rule Nisi",
-  "pos": "noun",
-  "definition": "Order requiring party to show cause why order shouldn’t be made absolute.",
-  "example": "High Court issued rule nisi in writ petition.",
-  "tags": ["Constitutional"]
-},
-{
-  "term": "Sanction",
-  "pos": "noun",
-  "definition": "Official permission, often required to prosecute public servants.",
-  "example": "Prosecution lacked sanction under Section 197 CrPC.",
-  "tags": ["Criminal"]
-},
-
-{
-  "term": "Search Warrant",
-  "pos": "noun",
-  "definition": "Court order allowing police to search premises.",
-  "example": "Search warrant issued for recovery of stolen items.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Section 482 CrPC",
-  "pos": "noun",
-  "definition": "High Court’s inherent powers to quash proceedings.",
-  "example": "Petition filed under Section 482 CrPC.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Seizure",
-  "pos": "noun",
-  "definition": "Confiscation of property or evidence.",
-  "example": "Police recorded seizure memo.",
-  "tags": ["Criminal", "Evidence"]
-},
-{
-  "term": "Sentence",
-  "pos": "noun",
-  "definition": "Punishment imposed by court.",
-  "example": "He received five-year sentence.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Service of Notice",
-  "pos": "noun",
-  "definition": "Delivering legal notice to concerned party.",
-  "example": "Case delayed due to improper service of notice.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Set Aside",
-  "pos": "verb",
-  "definition": "To cancel or nullify a court order.",
-  "example": "High Court set aside the conviction.",
-  "tags": ["Court"]
-},
-{
-  "term": "Settlement Deed",
-  "pos": "noun",
-  "definition": "Document transferring property without sale.",
-  "example": "Father executed settlement deed in favor of children.",
-  "tags": ["Property"]
-},
-{
-  "term": "Share Certificate",
-  "pos": "noun",
-  "definition": "Document proving ownership of company shares.",
-  "example": "Investor presented share certificate.",
-  "tags": ["Commercial"]
-},
-{
-  "term": "Show Cause Notice",
-  "pos": "noun",
-  "definition": "Order requiring person to explain why action should not be taken.",
-  "example": "Employee received show cause notice.",
-  "tags": ["Service", "Procedure"]
-},
-{
-  "term": "Solemnization",
-  "pos": "noun",
-  "definition": "Formal ceremony of marriage under law.",
-  "example": "Marriage solemnization required witnesses.",
-  "tags": ["Family"]
-},
-
-{
-  "term": "Specific Performance",
-  "pos": "noun",
-  "definition": "Court orders a party to fulfill contractual obligations.",
-  "example": "Buyer filed suit for specific performance.",
-  "tags": ["Civil", "Contract"]
-},
-{
-  "term": "Stamp Duty",
-  "pos": "noun",
-  "definition": "Tax on legal documents like property deeds.",
-  "example": "Sale deed registered after stamp duty payment.",
-  "tags": ["Property"]
-},
-{
-  "term": "Statement Under Section 161",
-  "pos": "noun",
-  "definition": "Statement given to police during investigation.",
-  "example": "Witness recorded 161 CrPC statement.",
-  "tags": ["Criminal", "Evidence"]
-},
-{
-  "term": "Statement Under Section 164",
-  "pos": "noun",
-  "definition": "Statement recorded before a Magistrate.",
-  "example": "Victim's 164 statement supported prosecution.",
-  "tags": ["Criminal", "Evidence"]
-},
-{
-  "term": "Status Quo Order",
-  "pos": "noun",
-  "definition": "Order to maintain existing condition.",
-  "example": "Court granted status quo on property.",
-  "tags": ["Civil", "Property"]
-},
-{
-  "term": "Stay Order",
-  "pos": "noun",
-  "definition": "Temporary suspension of a court order.",
-  "example": "High Court granted stay order.",
-  "tags": ["Court"]
-},
-{
-  "term": "Sub Judice",
-  "pos": "adjective",
-  "definition": "Matter pending before a court.",
-  "example": "The issue is sub judice.",
-  "tags": ["Court"]
-},
-{
-  "term": "Subpoena",
-  "pos": "noun",
-  "definition": "Summons requiring appearance or production of documents.",
-  "example": "Court issued subpoena to witness.",
-  "tags": ["Court"]
-},
-{
-  "term": "Summons",
-  "pos": "noun",
-  "definition": "Order requiring a person to appear in court.",
-  "example": "Accused received summons for hearing.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Surety",
-  "pos": "noun",
-  "definition": "Person who guarantees performance or appearance.",
-  "example": "Court accepted surety bond.",
-  "tags": ["Criminal"]
-},
-
-{
-  "term": "Suspension",
-  "pos": "noun",
-  "definition": "Temporary removal from duties or enforcement.",
-  "example": "Employee faced suspension pending inquiry.",
-  "tags": ["Service"]
-},
-{
-  "term": "Temporary Injunction",
-  "pos": "noun",
-  "definition": "Short-term court order to maintain status quo.",
-  "example": "Court granted temporary injunction on construction.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Tenant",
-  "pos": "noun",
-  "definition": "Person renting property.",
-  "example": "Tenant defaulted on monthly rent.",
-  "tags": ["Property"]
-},
-{
-  "term": "Testimony",
-  "pos": "noun",
-  "definition": "Statement given under oath in court.",
-  "example": "Witness testimony was crucial.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Tort",
-  "pos": "noun",
-  "definition": "Civil wrong causing injury or damage.",
-  "example": "He filed a tort claim for negligence.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Trial",
-  "pos": "noun",
-  "definition": "Examination of evidence to determine guilt or liability.",
-  "example": "Trial lasted two years.",
-  "tags": ["Court"]
-},
-{
-  "term": "Trespass",
-  "pos": "noun",
-  "definition": "Unauthorized entry onto property.",
-  "example": "Owner filed suit for trespass.",
-  "tags": ["Property", "Civil"]
-},
-{
-  "term": "Tribunal",
-  "pos": "noun",
-  "definition": "Body established to decide specific disputes.",
-  "example": "Employee filed case in service tribunal.",
-  "tags": ["Court"]
-},
-{
-  "term": "Ultra Vires",
-  "pos": "adjective",
-  "definition": "Act beyond legal authority.",
-  "example": "Order declared ultra vires.",
-  "tags": ["Constitutional"]
-},
-{
-  "term": "Undertaking",
-  "pos": "noun",
-  "definition": "Formal promise given to court.",
-  "example": "He filed undertaking not to dispossess tenant.",
-  "tags": ["Court"]
-},
-
-{
-  "term": "Verdict",
-  "pos": "noun",
-  "definition": "Final decision on guilt or liability.",
-  "example": "Court delivered verdict after hearing.",
-  "tags": ["Court"]
-},
-{
-  "term": "Vested Right",
-  "pos": "noun",
-  "definition": "Right legally enforceable without further conditions.",
-  "example": "He had vested right to the property share.",
-  "tags": ["Property"]
-},
-{
-  "term": "Victim Impact Statement",
-  "pos": "noun",
-  "definition": "Statement describing harm suffered by victim.",
-  "example": "Court considered victim impact statement.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Void Agreement",
-  "pos": "noun",
-  "definition": "Agreement without legal effect.",
-  "example": "Agreement lacking consideration was void.",
-  "tags": ["Contract"]
-},
-{
-  "term": "Voidable Contract",
-  "pos": "noun",
-  "definition": "Contract valid until avoided by aggrieved party.",
-  "example": "Contract obtained by coercion became voidable.",
-  "tags": ["Contract"]
-},
-{
-  "term": "Warrant",
-  "pos": "noun",
-  "definition": "Legal authorization for arrest, search or seizure.",
-  "example": "Court issued non-bailable warrant.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Will",
-  "pos": "noun",
-  "definition": "Legal declaration of a person's wishes after death.",
-  "example": "Property distributed as per registered will.",
-  "tags": ["Family", "Property"]
-},
-{
-  "term": "Witness",
-  "pos": "noun",
-  "definition": "Person who gives evidence in court.",
-  "example": "Witness turned hostile.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Writ",
-  "pos": "noun",
-  "definition": "Order issued by High Court/Supreme Court enforcing fundamental rights.",
-  "example": "Filed writ petition challenging detention.",
-  "tags": ["Constitutional"]
-},
-{
-  "term": "Zimni Order",
-  "pos": "noun",
-  "definition": "Daily interim order passed during investigation or trial.",
-  "example": "Court recorded zimni order for next date.",
-  "tags": ["Procedure"]
-}
-{
-  "term": "Abatement of Suit",
-  "pos": "noun",
-  "definition": "Ending of a suit due to death or non-prosecution of a party.",
-  "example": "Case abated due to non-substitution of legal heirs.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Absolute Ownership",
-  "pos": "noun",
-  "definition": "Complete legal rights over property without restriction.",
-  "example": "She enjoyed absolute ownership of the estate.",
-  "tags": ["Property"]
-},
-{
-  "term": "Adjournment Sine Die",
-  "pos": "noun",
-  "definition": "Adjournment without specifying next date.",
-  "example": "The matter was adjourned sine die.",
-  "tags": ["Court"]
-},
-{
-  "term": "Advisory Jurisdiction",
-  "pos": "noun",
-  "definition": "Supreme Court's power to give advisory opinions.",
-  "example": "Matter was referred under advisory jurisdiction.",
-  "tags": ["Constitutional"]
-},
-{
-  "term": "Affidavit of Evidence",
-  "pos": "noun",
-  "definition": "Written evidence filed instead of oral testimony.",
-  "example": "Plaintiff submitted affidavit of evidence.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Aggravating Circumstances",
-  "pos": "noun",
-  "definition": "Factors increasing seriousness of offence.",
-  "example": "Court considered aggravating circumstances in sentencing.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Alienation",
-  "pos": "noun",
-  "definition": "Transfer of property rights.",
-  "example": "Alienation without consent was challenged.",
-  "tags": ["Property"]
-},
-{
-  "term": "Amicus Curiae",
-  "pos": "noun",
-  "definition": "Person assisting court without being a party.",
-  "example": "Court appointed amicus curiae to assist.",
-  "tags": ["Court"]
-},
-{
-  "term": "Antecedents",
-  "pos": "noun",
-  "definition": "Accused's previous criminal record or reputation.",
-  "example": "Court considered antecedents before granting bail.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Appeal in Limine",
-  "pos": "noun",
-  "definition": "Dismissal of appeal at preliminary stage.",
-  "example": "Appeal dismissed in limine due to lack of merit.",
-  "tags": ["Court"]
-},
-
-{
-  "term": "Arrears",
-  "pos": "noun",
-  "definition": "Overdue payments not yet paid.",
-  "example": "Tenant was liable for rent arrears.",
-  "tags": ["Civil", "Property"]
-},
-{
-  "term": "Attachment Before Judgment",
-  "pos": "noun",
-  "definition": "Seizing property before decree to prevent disposal.",
-  "example": "Court ordered attachment before judgment.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Authority Letter",
-  "pos": "noun",
-  "definition": "Written authorization for representation.",
-  "example": "Bank required authority letter for transaction.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Award",
-  "pos": "noun",
-  "definition": "Decision given by arbitrator or tribunal.",
-  "example": "Arbitration award enforced by court.",
-  "tags": ["Arbitration"]
-},
-{
-  "term": "Beneficiary",
-  "pos": "noun",
-  "definition": "Person receiving benefit under trust or will.",
-  "example": "Beneficiary claimed his share under will.",
-  "tags": ["Property"]
-},
-{
-  "term": "Best Evidence Rule",
-  "pos": "noun",
-  "definition": "Primary evidence must be produced when available.",
-  "example": "Court rejected photocopy under best evidence rule.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Beyond Reasonable Doubt",
-  "pos": "phrase",
-  "definition": "Standard of proof in criminal cases.",
-  "example": "Prosecution must prove guilt beyond reasonable doubt.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Case Diary",
-  "pos": "noun",
-  "definition": "Police record of investigation.",
-  "example": "Court called for case diary.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Cause of Action",
-  "pos": "noun",
-  "definition": "Set of facts giving right to sue.",
-  "example": "Suit dismissed for lack of cause of action.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Certified Copy",
-  "pos": "noun",
-  "definition": "Official copy attested by court or authority.",
-  "example": "He applied for certified copy of order.",
-  "tags": ["Court"]
-},
-
-{
-  "term": "Charge-Sheet",
-  "pos": "noun",
-  "definition": "Final police report under Section 173 CrPC.",
-  "example": "Police filed charge-sheet within 60 days.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Civil Revision",
-  "pos": "noun",
-  "definition": "High Court review of lower court civil order.",
-  "example": "Civil revision allowed in part.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Closing Statement",
-  "pos": "noun",
-  "definition": "Final argument before judgment.",
-  "example": "Advocate delivered closing statement.",
-  "tags": ["Court"]
-},
-{
-  "term": "Collateral Evidence",
-  "pos": "noun",
-  "definition": "Evidence not directly relevant but supportive.",
-  "example": "Court considered collateral evidence.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Common Intention",
-  "pos": "noun",
-  "definition": "Shared intention making all accused liable.",
-  "example": "Section 34 IPC applied for common intention.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Competent Court",
-  "pos": "noun",
-  "definition": "Court having legal authority to hear a case.",
-  "example": "Matter transferred to competent court.",
-  "tags": ["Court"]
-},
-{
-  "term": "Condonation of Delay",
-  "pos": "noun",
-  "definition": "Court allows filing after limitation period.",
-  "example": "Delay condoned due to valid reasons.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Confession",
-  "pos": "noun",
-  "definition": "Accused admitting guilt.",
-  "example": "Confession recorded before magistrate.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Contingency Fee",
-  "pos": "noun",
-  "definition": "Fee payable to lawyer only upon success.",
-  "example": "Contingency fee agreements not allowed in India.",
-  "tags": ["Professional Ethics"]
-},
-{
-  "term": "Court Commissioner",
-  "pos": "noun",
-  "definition": "Person appointed to inspect, record or assist court.",
-  "example": "Commissioner submitted inspection report.",
-  "tags": ["Court"]
-},
-
-{
-  "term": "Cross-Complaint",
-  "pos": "noun",
-  "definition": "Complaint filed by defendant against plaintiff.",
-  "example": "Defendant filed cross-complaint.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Cross-Examination",
-  "pos": "noun",
-  "definition": "Questioning of witness by opposite party.",
-  "example": "Witness contradicted himself in cross-examination.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Custodial Interrogation",
-  "pos": "noun",
-  "definition": "Questioning accused while in police custody.",
-  "example": "Court allowed custodial interrogation.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Debarment",
-  "pos": "noun",
-  "definition": "Disallowing a person from rights or profession.",
-  "example": "Employee faced debarment proceedings.",
-  "tags": ["Service"]
-},
-{
-  "term": "Default Bail",
-  "pos": "noun",
-  "definition": "Bail granted when charge-sheet not filed in time.",
-  "example": "Accused entitled to default bail after 60 days.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Decree Holder",
-  "pos": "noun",
-  "definition": "Person in whose favour decree is passed.",
-  "example": "Decree holder executed the decree.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Deposition",
-  "pos": "noun",
-  "definition": "Witness statement recorded under oath.",
-  "example": "Deposition explained incident clearly.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Detention",
-  "pos": "noun",
-  "definition": "Keeping a person in custody.",
-  "example": "He was placed under preventive detention.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Discharge",
-  "pos": "noun",
-  "definition": "Releasing accused due to lack of evidence.",
-  "example": "Court discharged him under Section 227 CrPC.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Domicile",
-  "pos": "noun",
-  "definition": "Permanent residence determining legal rights.",
-  "example": "Domicile certificate required for reservation.",
-  "tags": ["Civil"]
-},
-
-{
-  "term": "Election Petition",
-  "pos": "noun",
-  "definition": "Petition challenging election result.",
-  "example": "Election petition filed before High Court.",
-  "tags": ["Constitutional"]
-},
-{
-  "term": "Embezzlement",
-  "pos": "noun",
-  "definition": "Fraudulent misappropriation of property.",
-  "example": "He was charged with embezzlement.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Encroachment",
-  "pos": "noun",
-  "definition": "Unauthorized occupation of land.",
-  "example": "Municipality removed encroachment.",
-  "tags": ["Property"]
-},
-{
-  "term": "Endorsement",
-  "pos": "noun",
-  "definition": "Signature transferring negotiable instrument.",
-  "example": "Cheque required proper endorsement.",
-  "tags": ["Commercial"]
-},
-{
-  "term": "Equitable Relief",
-  "pos": "noun",
-  "definition": "Non-monetary relief such as injunction.",
-  "example": "Court granted equitable relief.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Escheat",
-  "pos": "noun",
-  "definition": "Transfer of ownerless property to the state.",
-  "example": "Unclaimed estate escheated to government.",
-  "tags": ["Property"]
-},
-{
-  "term": "Estreat",
-  "pos": "verb",
-  "definition": "Enforcing forfeiture of bond.",
-  "example": "Court estreated surety bond.",
-  "tags": ["Court"]
-},
-{
-  "term": "Examination-in-Chief",
-  "pos": "noun",
-  "definition": "Initial questioning of witness by the calling party.",
-  "example": "Examination-in-chief lasted one hour.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Execution Petition",
-  "pos": "noun",
-  "definition": "Application to enforce a decree.",
-  "example": "Decree holder filed execution petition.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Ex-Parte Decree",
-  "pos": "noun",
-  "definition": "Decree passed when defendant does not appear.",
-  "example": "Ex-parte decree was later set aside.",
-  "tags": ["Civil"]
-},
-
-{
-  "term": "Forgery",
-  "pos": "noun",
-  "definition": "Making false documents with intent to cheat.",
-  "example": "He was arrested for forgery.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Fraudulent Transfer",
-  "pos": "noun",
-  "definition": "Transfer made to defeat creditors.",
-  "example": "Court voided fraudulent transfer.",
-  "tags": ["Property"]
-},
-{
-  "term": "Garnishee Order",
-  "pos": "noun",
-  "definition": "Order directing third party to pay creditor.",
-  "example": "Bank received garnishee order from court.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Good Faith",
-  "pos": "noun",
-  "definition": "Honest intention without negligence.",
-  "example": "Act done in good faith is protected.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Guardian Ad Litem",
-  "pos": "noun",
-  "definition": "Guardian appointed by court for minor in suit.",
-  "example": "Court appointed guardian ad litem.",
-  "tags": ["Family"]
-},
-{
-  "term": "Habitation",
-  "pos": "noun",
-  "definition": "Place where a person resides.",
-  "example": "Accused's habitation was confirmed.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Hearsay Evidence",
-  "pos": "noun",
-  "definition": "Evidence based on what someone else said.",
-  "example": "Court rejected hearsay evidence.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Hostile Witness",
-  "pos": "noun",
-  "definition": "Witness who contradicts earlier statements.",
-  "example": "Witness declared hostile.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Impeachment of Witness",
-  "pos": "noun",
-  "definition": "Challenging witness credibility.",
-  "example": "Defense sought impeachment of witness.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Imprisonment for Life",
-  "pos": "noun",
-  "definition": "A sentence lasting natural life unless remitted.",
-  "example": "He was sentenced to imprisonment for life.",
-  "tags": ["Criminal"]
-},
-
-{
-  "term": "In Limine",
-  "pos": "adverb",
-  "definition": "At the threshold; at the start of proceedings.",
-  "example": "Petition dismissed in limine.",
-  "tags": ["Court"]
-},
-{
-  "term": "Injunction Bond",
-  "pos": "noun",
-  "definition": "Bond ensuring compliance with injunction.",
-  "example": "Court required injunction bond.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Interlocutory Application",
-  "pos": "noun",
-  "definition": "Application seeking interim relief.",
-  "example": "Interlocutory application allowed by court.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Jeopardy",
-  "pos": "noun",
-  "definition": "Risk of conviction during trial.",
-  "example": "Double jeopardy prohibits second trial.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Jurisdictional Error",
-  "pos": "noun",
-  "definition": "Court acting beyond legal authority.",
-  "example": "Order quashed due to jurisdictional error.",
-  "tags": ["Court"]
-},
-{
-  "term": "Legal Heir Certificate",
-  "pos": "noun",
-  "definition": "Document proving relationship with deceased.",
-  "example": "Widow applied for legal heir certificate.",
-  "tags": ["Family"]
-},
-{
-  "term": "Letter of Administration",
-  "pos": "noun",
-  "definition": "Authority to administer estate when no will exists.",
-  "example": "Court issued letter of administration.",
-  "tags": ["Property"]
-},
-{
-  "term": "Limitation Period",
-  "pos": "noun",
-  "definition": "Maximum time allowed to file suit or appeal.",
-  "example": "Appeal filed beyond limitation.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Litigant",
-  "pos": "noun",
-  "definition": "Person engaged in a lawsuit.",
-  "example": "Litigant sought early hearing.",
-  "tags": ["Court"]
-},
-{
-  "term": "Magisterial Inquiry",
-  "pos": "noun",
-  "definition": "Inquiry conducted by magistrate into incidents like deaths or violence.",
-  "example": "Magisterial inquiry ordered in custodial death.",
-  "tags": ["Criminal"]
-},
-
-{
-  "term": "Mens Rea",
-  "pos": "noun",
-  "definition": "Guilty mind or criminal intent.",
-  "example": "Mens rea must be proved in theft.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Mitigating Circumstances",
-  "pos": "noun",
-  "definition": "Factors reducing severity of punishment.",
-  "example": "Youth considered mitigating circumstance.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Mootness",
-  "pos": "noun",
-  "definition": "Issue irrelevant due to changed circumstances.",
-  "example": "Petition dismissed as infructuous due to mootness.",
-  "tags": ["Court"]
-},
-{
-  "term": "Natural Guardian",
-  "pos": "noun",
-  "definition": "Person legally recognized as guardian by nature of relationship.",
-  "example": "Mother is natural guardian after father.",
-  "tags": ["Family"]
-},
-{
-  "term": "Nominee",
-  "pos": "noun",
-  "definition": "Person authorized to receive property on behalf of others.",
-  "example": "Nominee received insurance amount.",
-  "tags": ["Property"]
-},
-{
-  "term": "Officiating",
-  "pos": "noun",
-  "definition": "Temporary performance of duties of another post.",
-  "example": "He served in officiating capacity.",
-  "tags": ["Service"]
-},
-{
-  "term": "Parens Patriae",
-  "pos": "noun",
-  "definition": "Doctrine where state protects those unable to care for themselves.",
-  "example": "Court acted under parens patriae for child's welfare.",
-  "tags": ["Constitutional", "Family"]
-},
-{
-  "term": "Pari Materia",
-  "pos": "noun",
-  "definition": "Statutes dealing with same subject must be interpreted similarly.",
-  "example": "Both laws are in pari materia.",
-  "tags": ["Interpretation"]
-},
-{
-  "term": "Perjury",
-  "pos": "noun",
-  "definition": "Giving false statement under oath.",
-  "example": "He was prosecuted for perjury.",
-  "tags": ["Criminal"]
-},
-{
-  "term": "Perpetual Injunction",
-  "pos": "noun",
-  "definition": "Permanent court order preventing an act.",
-  "example": "Perpetual injunction granted over disputed land.",
-  "tags": ["Civil"]
-}
-{
-  "term": "Pendente Lite",
-  "pos": "adverb",
-  "definition": "During the pendency of a suit or proceeding.",
-  "example": "Interim maintenance awarded pendente lite.",
-  "tags": ["Civil","Procedure"]
-},
-{
-  "term": "Per Contra",
-  "pos": "phrase",
-  "definition": "On the other hand; in reply or opposition.",
-  "example": "The respondent filed a per contra affidavit.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Petition",
-  "pos": "noun",
-  "definition": "Formal written application to a court or authority.",
-  "example": "He filed a petition under Section 482 CrPC.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Plaint",
-  "pos": "noun",
-  "definition": "Written complaint initiating a civil suit.",
-  "example": "Plaint admitted for consideration by the court.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Pleadings",
-  "pos": "noun",
-  "definition": "Formal written statements of parties' claims or defenses.",
-  "example": "Court struck out defective pleadings.",
-  "tags": ["Civil"]
-},
-{
-  "term": "Possession",
-  "pos": "noun",
-  "definition": "Physical control over property or goods.",
-  "example": "Adverse possession claim required continuous possession.",
-  "tags": ["Property"]
-},
-{
-  "term": "Power of Attorney",
-  "pos": "noun",
-  "definition": "Document authorizing a person to act on another's behalf.",
-  "example": "He executed a power of attorney for sale of land.",
-  "tags": ["Commercial","Property"]
-},
-{
-  "term": "Precedent",
-  "pos": "noun",
-  "definition": "Earlier court decision used as authority for later cases.",
-  "example": "The judge relied on binding precedent.",
-  "tags": ["Court","Interpretation"]
-},
-{
-  "term": "Preponderance of Evidence",
-  "pos": "phrase",
-  "definition": "Standard of proof in civil cases — more likely than not.",
-  "example": "Plaintiff must prove claim by preponderance of evidence.",
-  "tags": ["Civil","Evidence"]
-},
-{
-  "term": "Prima Facie",
-  "pos": "adverb",
-  "definition": "On first appearance; sufficient at first sight unless rebutted.",
-  "example": "There is a prima facie case for trial.",
-  "tags": ["Procedure","Criminal"]
-},
-{
-  "term": "Pro Bono",
-  "pos": "adverb",
-  "definition": "Legal work undertaken voluntarily and without payment.",
-  "example": "Counsel accepted the matter pro bono.",
-  "tags": ["Professional Ethics"]
-},
-{
-  "term": "Probate",
-  "pos": "noun",
-  "definition": "Judicial process recognizing the validity of a will.",
-  "example": "He applied for probate to administer the estate.",
-  "tags": ["Property","Family"]
-},
-{
-  "term": "Procuring Cause",
-  "pos": "noun",
-  "definition": "Act or event that primarily brings about a result (often used in agency/real estate).",
-  "example": "Dispute arose over procuring cause of sale.",
-  "tags": ["Commercial"]
-},
-{
-  "term": "Prodcutio Veritatis",
-  "pos": "noun",
-  "definition": "(Latin) Presentation of truth; producing truthful evidence.",
-  "example": "The witness's prodcutio veritatis strengthened the case.",
-  "tags": ["Evidence"]
-},
-{
-  "term": "Prohibition",
-  "pos": "noun",
-  "definition": "Writ preventing a lower court from exceeding jurisdiction.",
-  "example": "High Court issued prohibition to restrain trial court.",
-  "tags": ["Court","Constitutional"]
-},
-{
-  "term": "Promissory Note",
-  "pos": "noun",
-  "definition": "Written unconditional promise to pay a sum of money.",
-  "example": "Bank sued on dishonoured promissory note.",
-  "tags": ["Commercial"]
-},
-{
-  "term": "Proof of Service",
-  "pos": "noun",
-  "definition": "Document proving that legal documents were served on a party.",
-  "example": "Case adjourned for want of proof of service.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Punitive Damages",
-  "pos": "noun",
-  "definition": "Monetary award to punish defendant and deter misconduct.",
-  "example": "Court awarded punitive damages for fraud.",
-  "tags": ["Civil","Remedies"]
-},
-{
-  "term": "Quantum Meruit",
-  "pos": "noun",
-  "definition": "Payment owed for services rendered where no contract exists.",
-  "example": "Contractor claimed quantum meruit for extra work.",
-  "tags": ["Commercial"]
-},
-{
-  "term": "Quash",
-  "pos": "verb",
-  "definition": "To set aside or annul an order or proceeding.",
-  "example": "High Court quashed the prosecution's complaint.",
-  "tags": ["Procedure","Criminal"]
-},
-{
-  "term": "Quasi-Contract",
-  "pos": "noun",
-  "definition": "Obligation imposed by law to prevent unjust enrichment.",
-  "example": "Court imposed liability under quasi-contract principles.",
-  "tags": ["Civil","Equity"]
-},
-{
-  "term": "Quorum",
-  "pos": "noun",
-  "definition": "Minimum number of members required to transact business.",
-  "example": "Bench lacked quorum; hearing adjourned.",
-  "tags": ["Court","Procedure"]
-},
-{
-  "term": "Ratification",
-  "pos": "noun",
-  "definition": "Confirmation of an act subsequently accepted by the principal.",
-  "example": "Employer's ratification validated agent's act.",
-  "tags": ["Commercial","Agency"]
-},
-{
-  "term": "Recusal",
-  "pos": "noun",
-  "definition": "Withdrawal of a judge or official from a case due to bias or conflict.",
-  "example": "Judge recused himself for impartiality.",
-  "tags": ["Court","Ethics"]
-},
-{
-  "term": "Reconveyance",
-  "pos": "noun",
-  "definition": "Transfer of property back to the grantor, often after mortgage repayment.",
-  "example": "Bank issued reconveyance on closure of loan.",
-  "tags": ["Property"]
-},
-{
-  "term": "Recourse",
-  "pos": "noun",
-  "definition": "Right to claim reimbursement or remedy from another party.",
-  "example": "Bank had recourse against guarantor.",
-  "tags": ["Commercial"]
-},
-{
-  "term": "Redhibition",
-  "pos": "noun",
-  "definition": "Cancellation of sale due to hidden defects (consumer law concept).",
-  "example": "Buyer sought redhibition for defect in goods.",
-  "tags": ["Commercial","Consumer"]
-},
-{
-  "term": "Remand",
-  "pos": "verb",
-  "definition": "To send a case back to a lower court for further action.",
-  "example": "Supreme Court remanded the matter for fresh inquiry.",
-  "tags": ["Court","Procedure"]
-},
-{
-  "term": "Remittal",
-  "pos": "noun",
-  "definition": "Sending a case or record back to a lower court.",
-  "example": "High Court ordered remittal for reconsideration.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Repeal",
-  "pos": "verb",
-  "definition": "Revocation or annulment of a law by legislative action.",
-  "example": "The statute was repealed by new legislation.",
-  "tags": ["Legislation"]
-},
-{
-  "term": "Res Judicata",
-  "pos": "noun",
-  "definition": "Matter already judged; bar to re-litigation of same cause.",
-  "example": "Claim dismissed due to res judicata.",
-  "tags": ["Civil","Finality"]
-},
-{
-  "term": "Res Ipsa Loquitur",
-  "pos": "phrase",
-  "definition": "The thing speaks for itself — doctrine inferring negligence from facts.",
-  "example": "In surgery case, res ipsa loquitur applied.",
-  "tags": ["Tort","Evidence"]
-},
-{
-  "term": "Restitution",
-  "pos": "noun",
-  "definition": "Restoring a person to the position before wrongful act.",
-  "example": "Court ordered restitution of misappropriated funds.",
-  "tags": ["Remedies","Civil"]
-},
-{
-  "term": "Restraining Order",
-  "pos": "noun",
-  "definition": "Court order restricting a party from certain actions (temporary or permanent).",
-  "example": "Temporary restraining order issued against defendant.",
-  "tags": ["Civil","Injunction"]
-},
-{
-  "term": "Reverse Mortgage",
-  "pos": "noun",
-  "definition": "Loan allowing homeowners to access equity while retaining title, repaid later.",
-  "example": "Elderly couple considered a reverse mortgage.",
-  "tags": ["Property","Commercial"]
-},
-{
-  "term": "Ripe",
-  "pos": "adjective",
-  "definition": "Ready for judicial review; not premature.",
-  "example": "Issue not ripe for adjudication.",
-  "tags": ["Court"]
-},
-{
-  "term": "Rognor",
-  "pos": "noun",
-  "definition": "Old term for a forged will or spurious title (rare).",
-  "example": "Court rejected the rognor offered in evidence.",
-  "tags": ["Historical","Evidence"]
-},
-{
-  "term": "Rule Nisi",
-  "pos": "noun",
-  "definition": "A court order to show cause why a certain action should not be taken.",
-  "example": "Court issued rule nisi for contempt proceedings.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Sale Deed",
-  "pos": "noun",
-  "definition": "Conveyance document effecting transfer of ownership in immovable property.",
-  "example": "Parties executed a registered sale deed.",
-  "tags": ["Property"]
-},
-{
-  "term": "Scire Facias",
-  "pos": "noun",
-  "definition": "Writ requiring a person to show why a judgment should not be enforced.",
-  "example": "Court issued scire facias in the matter.",
-  "tags": ["Procedure","Historical"]
-},
-{
-  "term": "Seisin",
-  "pos": "noun",
-  "definition": "Possession of land under freehold; legal possession.",
-  "example": "Plaintiff claimed seisin since 1990.",
-  "tags": ["Property"]
-},
-{
-  "term": "Service of Process",
-  "pos": "noun",
-  "definition": "Formal delivery of legal documents to give notice of proceedings.",
-  "example": "Service of process completed by registered post.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Set-Off",
-  "pos": "noun",
-  "definition": "Right to reduce mutual debts by offsetting amounts owed.",
-  "example": "Defendant raised a set-off against the claim.",
-  "tags": ["Commercial","Civil"]
-},
-{
-  "term": "Settlement",
-  "pos": "noun",
-  "definition": "Agreement resolving dispute without further litigation.",
-  "example": "Parties reached an out-of-court settlement.",
-  "tags": ["Civil","ADR"]
-},
-{
-  "term": "Specific Performance",
-  "pos": "noun",
-  "definition": "Equitable remedy compelling fulfillment of contractual obligation.",
-  "example": "Seller ordered to perform specific performance of sale contract.",
-  "tags": ["Civil","Equity"]
-},
-{
-  "term": "Stay",
-  "pos": "noun",
-  "definition": "Court order temporarily suspending a proceeding or enforcement.",
-  "example": "Supreme Court granted stay on execution of decree.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Sub Judice",
-  "pos": "adjective",
-  "definition": "Under judicial consideration and therefore prohibited from public discussion in certain contexts.",
-  "example": "Media advised not to comment on sub judice matters.",
-  "tags": ["Court","Procedure"]
-},
-{
-  "term": "Subpoena",
-  "pos": "noun",
-  "definition": "Order requiring a person to attend court or produce documents.",
-  "example": "Witness served with subpoena to appear in court.",
-  "tags": ["Procedure","Evidence"]
-},
-{
-  "term": "Summons",
-  "pos": "noun",
-  "definition": "Official notice to a defendant to appear and answer a suit.",
-  "example": "Summons returned served on the defendant.",
-  "tags": ["Procedure"]
-},
-{
-  "term": "Surety",
-  "pos": "noun",
-  "definition": "Person who guarantees another's performance or appearance.",
-  "example": "Surety forfeited bond when accused absconded.",
-  "tags": ["Criminal","Commercial"]
-},
-{
-  "term": "Sui Generis",
-  "pos": "adjective",
-  "definition": "Unique; of its own kind.",
-  "example": "Landmark judgement created a sui generis remedy.",
-  "tags": ["Interpretation"]
-},
-{
-  "term": "Surcharge",
-  "pos": "noun",
-  "definition": "Additional charge or penalty imposed by court or authority.",
-  "example": "Audit led to surcharge against trustee.",
-  "tags": ["Civil","Fiscal"]
-},
-{
-  "term": "Tarrif",
-  "pos": "noun",
-  "definition": "Schedule of charges or fees (often spelled 'tariff').",
-  "example": "Court registry updated fee tariff for filings.",
-  "tags": ["Procedure","Administrative"]
-}
-  ]
