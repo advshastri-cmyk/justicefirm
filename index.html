@@ -32,7 +32,6 @@
     html,body{overflow-x:hidden;}
     .wrap{max-width:var(--container);margin:0 auto;padding:20px var(--max-mobile-padding);}
 
-    /* small helpers */
     .muted { color: var(--muted); }
     .visually-hidden { position: absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
 
@@ -56,9 +55,17 @@
 
     #clock{color:var(--gold);font-weight:700;font-size:.95rem}
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start;margin:12px 0;position:relative}
-    .hero-card{background:var(--card);padding:28px;border-radius:14px;box-shadow:0 22px 70px rgba(7,12,25,0.06);position:relative;z-index:1}
+    /* HERO — uses hero_bg.jpg */
+    .hero{
+      display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start;margin:12px 0;position:relative;
+      background-image: url('hero_bg.jpg');
+      background-size:cover;
+      background-position:center center;
+      border-radius:16px;
+      padding:26px;
+      box-shadow: var(--shadow-2);
+    }
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));padding:24px;border-radius:12px;box-shadow:0 22px 60px rgba(7,12,25,0.06);position:relative;z-index:2}
     .eyebrow{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700;display:inline-block}
     .headline{font-family:Merriweather,serif;font-size:26px;margin:12px 0}
     .lead{color:var(--muted);margin-bottom:16px}
@@ -81,7 +88,12 @@
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
     .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2);transition:transform 320ms var(--easing),box-shadow 320ms var(--easing)}
     .card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(7,12,25,0.10)}
-    .member{background:var(--card);border-radius:12px;box-shadow:var(--shadow-2);overflow:hidden;transition:transform 320ms var(--easing)}
+
+    /* Practice cards with thumbnails */
+    .practice-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:16px; }
+    .practice-card { border-radius:14px; overflow:hidden; display:flex; gap:0; align-items:stretch; box-shadow:var(--shadow-2); background:#fff; }
+    .practice-thumb { width:140px; min-width:140px; height:140px; object-fit:cover; display:block }
+    .practice-body { padding:14px; display:flex; flex-direction:column; gap:8px; }
 
     .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .pay-box{background:var(--card);padding:18px;text-align:center;border-radius:12px;box-shadow:var(--shadow-2)}
@@ -129,47 +141,43 @@
     .tick-path { stroke: var(--success); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; fill:none; stroke-dasharray: 48; stroke-dashoffset: 48; transition: stroke-dashoffset 420ms ease-out; }
     .form-message.success .tick-path { stroke-dashoffset: 0; }
 
-    /* Mobile tweaks */
-    @media(max-width:1024px){
-      .hero{grid-template-columns:1fr 300px}
-      .panel{padding:12px}
-    }
+    /* Team styles (consistent squares) */
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; margin-top:16px; }
+    .member { background:var(--card); border-radius:14px; overflow:hidden; box-shadow:var(--shadow-2); transition:transform .25s var(--easing); display:flex; flex-direction:column; }
+    .member-figure { width:100%; height:220px; background:#eef2f7; position:relative; overflow:hidden; display:block; }
+    .member-figure img { width:100%; height:100%; object-fit:cover; object-position:center center; display:block; transition:transform .6s var(--easing); }
+    .member:hover img { transform:scale(1.04); }
+    .initials { display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent)); color:#fff; font-weight:800; display:grid; place-items:center; font-family:Merriweather,serif; font-size:1.05rem; }
+    .bio { padding:16px; display:flex; flex-direction:column; gap:6px; }
+    .bio h3 { margin:0; font-family:Merriweather,serif; font-size:1.05rem; }
+    .bio .role{ margin:0;color:var(--muted); font-size:.95rem; }
+    .bio .meta{ margin-top:auto;color:var(--muted); font-size:.88rem; }
+
+    /* Articles left-thumb layout */
+    #articlesGrid { display:grid; grid-template-columns: 1fr; gap:14px; margin-top:12px; }
+    .article-row { display:flex; gap:12px; align-items:flex-start; background:var(--card); padding:12px; border-radius:12px; box-shadow:var(--shadow-2); }
+    .article-thumb { width:120px; height:84px; flex:0 0 120px; border-radius:8px; object-fit:cover; }
+    .article-body { flex:1; display:flex; flex-direction:column; gap:8px; }
+    .article-title { font-weight:700; }
+    .article-excerpt { color:var(--muted); font-size:.95rem; }
+
+    /* Payment titanium / contact adjustments done inline in section */
+    @media(max-width:1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:12px} }
     @media(max-width:720px){
       .nav-toggle{display:block}
       .nav-links{display:none}
-      .hero{grid-template-columns:1fr;gap:12px}
+      .hero{grid-template-columns:1fr;gap:12px;padding:20px}
+      .practice-thumb{min-width:120px;width:120px;height:120px}
       .pay-grid{grid-template-columns:1fr}
       section{margin:18px 0}
       footer{flex-direction:column;align-items:flex-start}
-      .member img.photo{height:220px}
+      .member-figure{height:180px}
       .headline{font-size:20px}
       .logo{width:40px;height:40px}
       .wrap{padding:16px}
+      .article-thumb{width:100px;height:70px;flex:0 0 100px}
     }
 
-    /* Mobile full-screen nav panel (accessible) */
-    .mobile-nav-panel{position:fixed;inset:0;background:linear-gradient(180deg, rgba(3,16,42,0.94), rgba(4,23,51,0.96));color:#fff;display:none;flex-direction:column;padding:22px;z-index:1500;gap:18px}
-    .mobile-nav-panel.open{display:flex}
-    .mobile-nav-panel a{color:#fff;font-weight:700;padding:12px;border-radius:8px;background:transparent}
-    .mobile-nav-panel .close{margin-left:auto;background:transparent;border:0;color:#fff;font-size:22px}
-
-    /* Back to top */
-    #backTop{ position:fixed; right:18px; bottom:96px; z-index:1400; display:none; background:var(--accent); color:#fff; width:46px;height:46px;border-radius:999px;align-items:center;justify-content:center;box-shadow:var(--btn-shadow); }
-    #backTop.show{ display:flex }
-
-    /* Articles overrides (scoped) */
-    #articlesGrid .article-card { display:flex;flex-direction:column; gap:12px; padding:14px; border-radius:12px; box-shadow:var(--shadow-2); background:var(--card); min-height:160px;}
-    #articlesGrid .article-thumb { width:100%; height:160px; border-radius:8px; object-fit:cover; background:#f0f3f8; }
-    #articlesGrid .article-meta { display:flex;gap:8px;align-items:center;flex-wrap:wrap }
-    #articlesGrid .article-tags { display:flex;gap:8px;flex-wrap:wrap }
-    #articlesGrid .tag-chip { background:transparent;border:1px solid rgba(5,44,120,0.08);padding:6px 8px;border-radius:999px;font-weight:700;font-size:.86rem;cursor:pointer; }
-    #articlesGrid .read-more { margin-top:auto; display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:10px; font-weight:700; text-decoration:none; }
-    @media (max-width:720px) {
-      #articlesGrid .article-thumb { height:140px; }
-      #articlesGrid { grid-template-columns: 1fr !important; }
-    }
-
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
     }
@@ -222,6 +230,7 @@
     </div>
 
     <main id="main-content" tabindex="-1">
+      <!-- HERO -->
       <section class="hero" data-reveal>
         <div class="hero-card" data-reveal>
           <span class="eyebrow">Trusted in Indian Courts</span>
@@ -265,16 +274,44 @@
         </aside>
       </section>
 
+      <!-- PRACTICE -->
       <section id="practice">
         <h2>Practice Areas</h2>
         <p class="muted">Family, Criminal, Civil Litigation & Mediation.</p>
-        <div class="grid" style="margin-top:16px">
-          <article class="card" data-reveal><h3>Family & Matrimonial</h3><p>Divorce, custody, alimony, DV Act, 125 CrPC, mediation.</p></article>
-          <article class="card" data-reveal><h3>Criminal Defence</h3><p>Bail, anticipatory bail, criminal trials & appeals.</p></article>
-          <article class="card" data-reveal><h3>Civil & Property</h3><p>Partition, recovery, injunctions, property litigation.</p></article>
+
+        <div class="practice-grid">
+          <article class="practice-card" data-reveal>
+            <img class="practice-thumb" src="fam.jpg" alt="Family & Matrimonial" loading="lazy" decoding="async">
+            <div class="practice-body">
+              <h3 style="margin:0">Family & Matrimonial</h3>
+              <p class="muted" style="margin:0">Divorce, custody, alimony, DV Act, 125 CrPC, mediation.</p>
+              <div style="margin-top:auto">
+                <a class="btn btn--ghost btn--small" href="#contact">Consult</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="practice-card" data-reveal>
+            <img class="practice-thumb" src="crim.jpg" alt="Criminal Defence" loading="lazy" decoding="async">
+            <div class="practice-body">
+              <h3 style="margin:0">Criminal Defence</h3>
+              <p class="muted" style="margin:0">Bail, anticipatory bail, criminal trials & appeals.</p>
+              <div style="margin-top:auto"><a class="btn btn--ghost btn--small" href="#contact">Consult</a></div>
+            </div>
+          </article>
+
+          <article class="practice-card" data-reveal>
+            <img class="practice-thumb" src="prop.jpg" alt="Civil & Property" loading="lazy" decoding="async">
+            <div class="practice-body">
+              <h3 style="margin:0">Civil & Property</h3>
+              <p class="muted" style="margin:0">Partition, recovery, injunctions, property litigation.</p>
+              <div style="margin-top:auto"><a class="btn btn--ghost btn--small" href="#contact">Consult</a></div>
+            </div>
+          </article>
         </div>
       </section>
 
+      <!-- ABOUT -->
       <section id="about">
         <h2>About Adv. Ganga Shankar Shastri</h2>
         <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;align-items:flex-start">
@@ -290,149 +327,101 @@
         </div>
       </section>
 
-<section id="team" aria-labelledby="teamHeading">
-  <style>
-    /* Team: improved centering + focus control */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      margin-top: 16px;
-    }
+      <!-- TEAM (fixed centering + initials only on fail) -->
+      <section id="team" aria-labelledby="teamHeading">
+        <h2 id="teamHeading">Our Team</h2>
+        <p class="muted">Experienced advocates & legal consultants.</p>
 
-    .member {
-      background: var(--card);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: var(--shadow-2);
-      transition: transform .25s var(--easing), box-shadow .3s var(--easing);
-      display:flex;
-      flex-direction:column;
-    }
-    .member:hover { transform: translateY(-6px); box-shadow: 0 26px 70px rgba(7,12,25,0.14); }
+        <div class="team-grid" role="list" aria-label="Our team members">
+          <!-- Member 1 -->
+          <article class="member" role="listitem" tabindex="0">
+            <figure class="member-figure">
+              <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="center 22%">
+              <div class="initials" aria-hidden="true">GS</div>
+            </figure>
+            <div class="bio">
+              <h3>Adv. Ganga Shankar Shastri</h3>
+              <p class="role">Founder & Lead Counsel</p>
+              <p class="meta">15+ years • Allahabad High Court</p>
+            </div>
+          </article>
 
-    .member-figure {
-      width:100%;
-      height:240px;              /* ideal height */
-      display:block;
-      position:relative;
-      overflow:hidden;
-      background: #eef2f7;
-    }
+          <!-- Member 2 -->
+          <article class="member" role="listitem" tabindex="0">
+            <figure class="member-figure">
+              <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="center 20%">
+              <div class="initials" aria-hidden="true">MS</div>
+            </figure>
+            <div class="bio">
+              <h3>Adv. Minakshi Shastri</h3>
+              <p class="role">Senior Associate – Civil & Corporate</p>
+              <p class="meta">Property & Corporate Litigation</p>
+            </div>
+          </article>
 
-    /* Image handling: cover + controlled focal point */
-    .member-figure img {
-      width:100%;
-      height:100%;
-      object-fit: cover;         /* crop, don't stretch */
-      object-position: center center; /* default center */
-      display:block;
-      transition: transform .6s cubic-bezier(.16,.84,.32,1);
-      -webkit-user-drag: none;
-    }
-    .member:hover .member-figure img { transform: scale(1.04); }
+          <!-- Member 3 -->
+          <article class="member" role="listitem" tabindex="0">
+            <figure class="member-figure">
+              <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="center 18%">
+              <div class="initials" aria-hidden="true">SS</div>
+            </figure>
+            <div class="bio">
+              <h3>Adv. Shivani Shastri</h3>
+              <p class="role">Consulting Advocate – Constitutional Affairs</p>
+              <p class="meta">Research & Advisory</p>
+            </div>
+          </article>
 
-    /* when image is used as background fallback (if needed) */
-    .member-figure .initials {
-      display:none;
-      width:72px;height:72px;border-radius:12px;
-      background: linear-gradient(135deg, var(--accent-2), var(--accent));
-      color:#fff;font-weight:700;font-family:Merriweather,serif;
-      display:grid;place-items:center;font-size:1.05rem;
-      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-    }
+          <!-- Member 4 -->
+          <article class="member" role="listitem" tabindex="0">
+            <figure class="member-figure">
+              <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="center 20%" onerror="">
+              <div class="initials" aria-hidden="true">SK</div>
+            </figure>
+            <div class="bio">
+              <h3>Adv. Sanjay Kumar</h3>
+              <p class="role">Associate Counsel – Criminal Defence</p>
+              <p class="meta">Photo coming soon</p>
+            </div>
+          </article>
+        </div>
 
-    .bio { padding:16px; display:flex;flex-direction:column; gap:6px; }
-    .bio h3{ margin:0; font-family:Merriweather,serif; font-size:1.05rem; }
-    .bio .role{ margin:0;color:var(--muted); font-size:.95rem; }
-    .bio .meta{ margin-top:auto;color:var(--muted); font-size:.88rem; }
+        <!-- keep script local to team section for focusing images -->
+        <script>
+          (function(){
+            // apply data-focus -> object-position and show initials only if image fails
+            document.querySelectorAll('.member-figure').forEach(fig => {
+              const img = fig.querySelector('img');
+              const initials = fig.querySelector('.initials');
+              if(!img) return;
+              // apply focus if any
+              const focus = img.getAttribute('data-focus');
+              if(focus) img.style.objectPosition = focus;
+              else img.style.objectPosition = 'center center';
 
-    @media(max-width:720px){
-      .member-figure { height:210px; }
-    }
-  </style>
+              // When image loads correctly hide initials
+              function showInitialsIfBroken(){
+                // If naturalWidth is zero, image failed
+                if(!img.complete || (img.naturalWidth && img.naturalWidth === 0)) {
+                  if(initials) initials.style.display = 'grid';
+                  img.style.display = 'none';
+                } else {
+                  if(initials) initials.style.display = 'none';
+                  img.style.display = 'block';
+                }
+              }
 
-  <h2 id="teamHeading">Our Team</h2>
-  <p class="muted">Experienced advocates & legal consultants.</p>
+              // set handlers
+              img.addEventListener('load', showInitialsIfBroken);
+              img.addEventListener('error', showInitialsIfBroken);
+              // immediate check (for cache)
+              setTimeout(showInitialsIfBroken, 30);
+            });
+          })();
+        </script>
+      </section>
 
-  <div class="team-grid" role="list" aria-label="Our team members">
-    <!-- Member 1 -->
-    <article class="member" role="listitem" tabindex="0">
-      <figure class="member-figure" aria-hidden="false">
-        <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="center 22%" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='grid'">
-        <div class="initials" aria-hidden="true">GS</div>
-      </figure>
-      <div class="bio">
-        <h3>Adv. Ganga Shankar Shastri</h3>
-        <p class="role">Founder & Lead Counsel</p>
-        <p class="meta">15+ years • Allahabad High Court</p>
-      </div>
-    </article>
-
-    <!-- Member 2 -->
-    <article class="member" role="listitem" tabindex="0">
-      <figure class="member-figure">
-        <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="center 20%" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='grid'">
-        <div class="initials" aria-hidden="true">MS</div>
-      </figure>
-      <div class="bio">
-        <h3>Adv. Minakshi Shastri</h3>
-        <p class="role">Senior Associate – Civil & Corporate</p>
-        <p class="meta">Property & Corporate Litigation</p>
-      </div>
-    </article>
-
-    <!-- Member 3: Shivani — we set a focus to keep face centered -->
-    <article class="member" role="listitem" tabindex="0">
-      <figure class="member-figure">
-        <!-- IMPORTANT: data-focus can be like "center 14%" or "50% 40%" -->
-        <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="center 18%" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='grid'">
-        <div class="initials" aria-hidden="true">SS</div>
-      </figure>
-      <div class="bio">
-        <h3>Adv. Shivani Shastri</h3>
-        <p class="role">Consulting Advocate – Constitutional Affairs</p>
-        <p class="meta">Research & Advisory</p>
-      </div>
-    </article>
-
-    <!-- Member 4 -->
-    <article class="member" role="listitem" tabindex="0">
-      <figure class="member-figure">
-        <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="center 20%" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='grid'">
-        <div class="initials" aria-hidden="true">SK</div>
-      </figure>
-      <div class="bio">
-        <h3>Adv. Sanjay Kumar</h3>
-        <p class="role">Associate Counsel – Criminal Defence</p>
-        <p class="meta">Photo coming soon</p>
-      </div>
-    </article>
-  </div>
-
-  <script>
-    /* Apply per-image focus if provided via data-focus.
-       data-focus format examples:
-         data-focus="center 20%"  -> object-position: center 20%
-         data-focus="40% 18%"     -> object-position: 40% 18%
-    */
-    (function(){
-      try {
-        document.querySelectorAll('.member-figure img').forEach(img => {
-          const focus = img.getAttribute('data-focus');
-          if (focus) {
-            img.style.objectPosition = focus;
-          } else {
-            img.style.objectPosition = 'center center';
-          }
-          // improve smoothing on hi-dpi / prevent flicker
-          img.decoding = img.decoding || 'async';
-        });
-      } catch(e){ console.error('team focus script error', e); }
-    })();
-  </script>
-</section>
-      <!-- ===== Updated Articles & Insights (client-side list + search/filter/preview) ===== -->
+      <!-- ARTICLES: left-thumb layout (A) -->
       <section id="articles" aria-labelledby="articlesHeading" style="margin-top:0;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
           <div>
@@ -449,7 +438,7 @@
 
         <div id="articlesMeta" style="display:flex;gap:12px;align-items:center;margin-top:10px;flex-wrap:wrap">
           <div class="muted" id="articlesCount" aria-live="polite">Showing <strong id="articlesVisible">0</strong> articles</div>
-          <div style="margin-left:auto" class="muted">Sort: 
+          <div style="margin-left:auto" class="muted">Sort:
             <select id="articlesSort" aria-label="Sort articles" style="padding:6px;border-radius:8px;border:1px solid #e6ebf5;margin-left:8px">
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
@@ -457,7 +446,7 @@
           </div>
         </div>
 
-        <div id="articlesGrid" class="grid" style="margin-top:12px"></div>
+        <div id="articlesGrid"></div>
 
         <div id="articlePreview" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);z-index:1400;align-items:center;justify-content:center;padding:18px">
           <article role="dialog" aria-modal="true" aria-labelledby="previewTitle" style="max-width:820px;width:100%;background:var(--card);padding:18px;border-radius:10px;box-shadow:var(--shadow-2);overflow:auto;max-height:80vh">
@@ -472,359 +461,180 @@
           </article>
         </div>
       </section>
-      <!-- ===== End Articles section ===== -->
-<section id="payment">
-  <style>
-    /* ====== TITANIUM PREMIUM PAYMENT CARD ====== */
-    #payment { margin-top:28px; }
 
-    .titanium-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 22px;
-      margin-top: 18px;
-      align-items: stretch;
-    }
+      <!-- PAYMENT — TITANIUM with pay_bg.jpg -->
+      <section id="payment">
+        <h2 style="color:#e8f2ff">Secure Payment — Titanium</h2>
+        <p class="muted" style="color:#bfcfe0">Fast, secure payments. Use UPI or bank transfer — receipts available on request.</p>
 
-    /* Titanium card base */
-    .titanium-card {
-      position: relative;
-      border-radius: 24px;
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      min-height: 340px;
-      overflow: visible;
-      transition: transform .28s cubic-bezier(.16,.84,.32,1), box-shadow .28s;
-      /* metallic background */
-      background: linear-gradient(180deg, #0b1115 0%, #0f1519 35%, #111418 100%);
-      border: 1px solid rgba(255,255,255,0.04);
-      box-shadow:
-        0 10px 30px rgba(3,6,10,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.02);
-    }
-    .titanium-card:hover { transform: translateY(-6px); box-shadow: 0 34px 90px rgba(2,6,12,0.64); }
+        <div class="titanium-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:18px;align-items:stretch">
+          <!-- Titanium UPI Card -->
+          <div class="titanium-card" aria-labelledby="tupi" style="background-image: linear-gradient(180deg, rgba(2,6,10,0.66), rgba(8,12,16,0.66)), url('pay_bg.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,0.04);">
+            <div class="metal-bar" aria-hidden="true"></div>
+            <h4 id="tupi" style="color:#e6f2ff">UPI — Instant Payment</h4>
 
-    /* subtle brushed metal bar */
-    .titanium-card .metal-bar {
-      height:6px; border-radius:6px;
-      background: linear-gradient(90deg, rgba(200,200,200,0.06), rgba(255,255,255,0.03), rgba(200,200,200,0.06));
-      box-shadow: 0 4px 12px rgba(8,12,18,0.45);
-      margin-bottom:4px;
-    }
+            <div class="titanium-qr-wrap" role="region" aria-label="UPI QR code">
+              <div class="titanium-qr-frame" id="tqr" style="background:linear-gradient(180deg,#eef1f6,#dfe6ef);">
+                <img src="upi_qr.jpg" alt="UPI QR — The Justice Firm" loading="lazy" decoding="async">
+              </div>
 
-    .titanium-card h4 { margin:0; color:#e6eef7; font-family:Merriweather, serif; font-size:1.05rem; font-weight:700; }
+              <div class="titanium-pill" aria-hidden="false" style="color:#0b1220;background:rgba(255,255,255,0.95);">Scan with any UPI app</div>
+            </div>
 
-    /* QR area */
-    .titanium-qr-wrap {
-      display:flex; justify-content:center; align-items:center; flex-direction:column; gap:12px;
-      margin-top:6px;
-    }
+            <div class="titanium-info" role="status" aria-live="polite">
+              <span style="color:#dbefff">UPI ID:</span> <strong id="upi-id" style="color:#fff">adv.shastri@oksbi</strong><br>
+              <span style="font-size:.85rem;color:#9fb2cf">Encrypted & secure</span>
+            </div>
 
-    .titanium-qr-frame {
-      width:208px; height:208px;
-      border-radius:20px;
-      background: linear-gradient(180deg,#eef1f6, #dfe6ef); /* inner frame for contrast */
-      padding:10px;
-      box-shadow:
-        0 30px 70px rgba(3,6,10,0.50),
-        inset 0 6px 18px rgba(255,255,255,0.6);
-      display:flex;justify-content:center;align-items:center;overflow:hidden;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .titanium-qr-frame img {
-      width:100%; height:100%; object-fit:cover; border-radius:8px; display:block;
-    }
+            <div class="titanium-actions" role="group" aria-label="Payment actions">
+              <button id="copyUpiBtn" class="titanium-btn btn-titanium-copy" type="button" aria-label="Copy UPI ID">Copy UPI</button>
+              <button id="downloadQR" class="titanium-btn btn-titanium-download" type="button" aria-label="Download QR">Download QR</button>
+              <div id="ttoast" style="display:none" aria-hidden="true"></div>
+            </div>
+          </div>
 
-    /* small titanium label */
-    .titanium-pill {
-      background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      color:#d7e6ff;
-      padding:8px 14px; border-radius:999px; font-weight:700; font-size:.92rem;
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 6px 18px rgba(4,8,12,0.45);
-    }
+          <!-- Bank transfer titanium card -->
+          <div class="bank-titanium" aria-labelledby="tbank" style="background-image: linear-gradient(180deg, rgba(4,8,12,0.7), rgba(6,10,14,0.7)), url('pay_bg.jpg'); background-size:cover; background-position:center;">
+            <div style="display:flex;align-items:center;gap:10px;justify-content:center">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18" stroke="#dfeeff" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <h4 id="tbank">Bank Transfer</h4>
+            </div>
 
-    .titanium-info { text-align:center; color: #c7d6e6; font-size:.95rem; line-height:1.4; }
+            <div style="text-align:center;font-size:1rem;font-weight:600;color:#dbefff">
+              The Justice Firm — Canara Bank<br>
+              A/c: <strong>5328127000035</strong><br>
+              IFSC: <strong>CNRB0005131</strong>
+            </div>
 
-    /* actions */
-    .titanium-actions { display:flex; gap:12px; justify-content:center; margin-top:auto; flex-wrap:wrap; }
-    .titanium-btn {
-      min-width:140px; padding:10px 14px; border-radius:12px; font-weight:700; cursor:pointer;
-      border:0; transition: transform .14s;
-    }
-    .btn-titanium-copy {
-      background: linear-gradient(180deg,#18c06b,#0fa35b);
-      color:#fff;
-      box-shadow: 0 10px 36px rgba(15,163,91,0.14);
-    }
-    .btn-titanium-download {
-      background: transparent;
-      color:#e2eefc;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
-    }
-
-    /* subtle caption under buttons (toast-like) */
-    .titanium-toast {
-      display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:999px;
-      background: rgba(255,255,255,0.04); color:#b7e1b6; font-weight:700; border:1px solid rgba(15,163,91,0.10);
-    }
-
-    /* bank card dark variant */
-    .bank-titanium {
-      background: linear-gradient(180deg,#071019,#041018);
-      color:#dbefff;
-      border-radius:24px;
-      padding:18px;
-      box-shadow: 0 22px 60px rgba(2,6,10,0.7), inset 0 2px 0 rgba(255,255,255,0.02);
-      display:flex; flex-direction:column; gap:12px; min-height:340px;
-    }
-    .bank-titanium h4{ margin:0; color:#e6f2ff; font-family:Merriweather, serif; font-weight:700; }
-
-    @media(max-width:780px){
-      .titanium-qr-frame{ width:170px; height:170px; }
-      .titanium-btn{ min-width:120px; }
-    }
-    @media(max-width:440px){
-      .titanium-qr-frame{ width:150px; height:150px; }
-      .titanium-card, .bank-titanium{ min-height:300px; padding:14px; border-radius:18px; }
-    }
-  </style>
-
-  <h2 style="color:#e8f2ff">Secure Payment — Titanium</h2>
-  <p class="muted" style="color:#bfcfe0">Fast, secure payments. Use UPI or bank transfer — receipts available on request.</p>
-
-  <div class="titanium-grid">
-    <!-- Titanium UPI Card (uses upi_qr.jpg) -->
-    <div class="titanium-card" aria-labelledby="tupi">
-      <div class="metal-bar" aria-hidden="true"></div>
-      <h4 id="tupi">UPI — Instant Payment</h4>
-
-      <div class="titanium-qr-wrap" role="region" aria-label="UPI QR code">
-        <div class="titanium-qr-frame" id="tqr">
-          <img src="upi_qr.jpg" alt="UPI QR — The Justice Firm" loading="lazy" decoding="async">
+            <div style="display:flex;gap:12px;justify-content:center;margin-top:auto">
+              <a id="downloadReceipt" class="titanium-btn btn-titanium-download" href="#" style="color:#dbefff; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Download Receipt</a>
+              <a class="titanium-btn" href="https://wa.me/919454183793" target="_blank" rel="noopener" style="background:linear-gradient(90deg,#1b6fb2,#083b9a); color:#fff; text-decoration:none;">Need Help</a>
+            </div>
+          </div>
         </div>
 
-        <div class="titanium-pill" aria-hidden="false">Scan with any UPI app</div>
-      </div>
+        <script>
+          (function(){
+            const copyBtn = document.getElementById('copyUpiBtn');
+            const upiEl = document.getElementById('upi-id');
+            const toast = document.getElementById('ttoast');
+            const downloadBtn = document.getElementById('downloadQR');
 
-      <div class="titanium-info" role="status" aria-live="polite">
-        UPI ID: <strong id="upi-id">adv.shastri@oksbi</strong><br>
-        <span style="font-size:.85rem;color:#9fb2cf">Encrypted & secure</span>
-      </div>
+            function showToast(msg){
+              toast.innerHTML = `<span class="titanium-toast" role="status" aria-live="polite">${msg}</span>`;
+              toast.style.display = 'inline-flex';
+              toast.setAttribute('aria-hidden','false');
+              setTimeout(()=>{ toast.style.display='none'; toast.setAttribute('aria-hidden','true'); }, 2400);
+            }
 
-      <div class="titanium-actions" role="group" aria-label="Payment actions">
-        <button id="copyUpiBtn" class="titanium-btn btn-titanium-copy" type="button" aria-label="Copy UPI ID">Copy UPI</button>
-        <button id="downloadQR" class="titanium-btn btn-titanium-download" type="button" aria-label="Download QR">Download QR</button>
-        <div id="ttoast" style="display:none" aria-hidden="true"></div>
-      </div>
-    </div>
+            copyBtn?.addEventListener('click', async ()=> {
+              const upi = (upiEl?.textContent || '').trim();
+              if(!upi){ showToast('UPI not found'); return; }
+              try {
+                if(navigator.clipboard && navigator.clipboard.writeText){
+                  await navigator.clipboard.writeText(upi);
+                  showToast('UPI copied');
+                } else {
+                  window.prompt('Copy UPI ID', upi);
+                  showToast('Copy manually');
+                }
+              } catch(e){
+                try { window.prompt('Copy UPI ID', upi); showToast('Copy manually'); } catch(err){ showToast('Unable to copy'); }
+              }
+            });
 
-    <!-- Bank transfer titanium card -->
-    <div class="bank-titanium" aria-labelledby="tbank">
-      <div style="display:flex;align-items:center;gap:10px;justify-content:center">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18" stroke="#dfeeff" stroke-width="1.2" stroke-linecap="round"/></svg>
-        <h4 id="tbank">Bank Transfer</h4>
-      </div>
+            downloadBtn?.addEventListener('click', ()=> {
+              const a = document.createElement('a');
+              a.href = 'upi_qr.jpg';
+              a.download = 'justicefirm_upi_qr.jpg';
+              document.body.appendChild(a); a.click(); a.remove();
+            });
 
-      <div style="text-align:center;font-size:1rem;font-weight:600;color:#dbefff">
-        The Justice Firm — Canara Bank<br>
-        A/c: <strong>5328127000035</strong><br>
-        IFSC: <strong>CNRB0005131</strong>
-      </div>
+            const receipt = document.getElementById('downloadReceipt');
+            receipt?.addEventListener('click', (e)=>{
+              e.preventDefault();
+              const txt = `Receipt — The Justice Firm\nDate: ${new Date().toLocaleDateString('en-IN')}\nPaid to: The Justice Firm\nUPI ID: ${upiEl?.textContent || ''}\nReference: (enter transaction id)\n\nThank you.`;
+              const blob = new Blob([txt], { type: 'text/plain' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url; a.download = 'receipt.txt'; document.body.appendChild(a); a.click();
+              setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },1500);
+            });
+          })();
+        </script>
+      </section>
 
-      <div style="display:flex;gap:12px;justify-content:center;margin-top:auto">
-        <a id="downloadReceipt" class="titanium-btn btn-titanium-download" href="#" style="color:#dbefff; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Download Receipt</a>
-        <a class="titanium-btn" href="https://wa.me/919454183793" target="_blank" rel="noopener" style="background:linear-gradient(90deg,#1b6fb2,#083b9a); color:#fff; text-decoration:none;">Need Help</a>
-      </div>
-    </div>
-  </div>
+      <!-- CONTACT (contact_bg.jpg as subtle aside background) -->
+      <section id="contact">
+        <h2>Contact & Consultation</h2>
 
-  <script>
-    (function(){
-      const copyBtn = document.getElementById('copyUpiBtn');
-      const upiEl = document.getElementById('upi-id');
-      const toast = document.getElementById('ttoast');
-      const downloadBtn = document.getElementById('downloadQR');
+        <div class="contact-grid" style="display:grid;grid-template-columns:1fr minmax(220px,360px);gap:18px;margin-top:12px;align-items:start">
+          <!-- Form -->
+          <form id="contactForm" class="contact-form" action="https://formspree.io/f/mjkqwgje" method="POST" data-reveal>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div>
+                <label for="name">Full Name</label>
+                <input id="name" name="name" placeholder="Full Name" required>
+              </div>
+              <div>
+                <label for="phone">Phone (+91)</label>
+                <input id="phone" name="phone" type="tel" placeholder="Phone (+91)" required>
+              </div>
+            </div>
 
-      function showToast(msg){
-        toast.innerHTML = `<span class="titanium-toast" role="status" aria-live="polite">${msg}</span>`;
-        toast.style.display = 'inline-flex';
-        toast.setAttribute('aria-hidden','false');
-        setTimeout(()=>{ toast.style.display='none'; toast.setAttribute('aria-hidden','true'); }, 2400);
-      }
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Email" required>
+              </div>
+              <div>
+                <label for="matter">Matter</label>
+                <select id="matter" name="matter">
+                  <option>Family Matter</option>
+                  <option>Criminal</option>
+                  <option>Civil / Property</option>
+                  <option>Mediation</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
 
-      copyBtn?.addEventListener('click', async ()=> {
-        const upi = (upiEl?.textContent || '').trim();
-        if(!upi){ showToast('UPI not found'); return; }
-        try {
-          if(navigator.clipboard && navigator.clipboard.writeText){
-            await navigator.clipboard.writeText(upi);
-            showToast('UPI copied');
-          } else {
-            window.prompt('Copy UPI ID', upi);
-            showToast('Copy manually');
-          }
-        } catch(e){
-          try { window.prompt('Copy UPI ID', upi); showToast('Copy manually'); } catch(err){ showToast('Unable to copy'); }
-        }
-      });
+            <label for="message" style="margin-top:10px">Brief description</label>
+            <textarea id="message" name="message" rows="4" placeholder="Brief description…" required></textarea>
 
-      downloadBtn?.addEventListener('click', ()=> {
-        const a = document.createElement('a');
-        a.href = 'upi_qr.jpg';
-        a.download = 'justicefirm_upi_qr.jpg';
-        document.body.appendChild(a); a.click(); a.remove();
-      });
+            <input type="text" name="_gotcha" style="display:none" aria-hidden="true" tabindex="-1">
 
-      // Receipt download sample (text)
-      const receipt = document.getElementById('downloadReceipt');
-      receipt?.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const txt = `Receipt — The Justice Firm\nDate: ${new Date().toLocaleDateString('en-IN')}\nPaid to: The Justice Firm\nUPI ID: ${upiEl?.textContent || ''}\nReference: (enter transaction id)\n\nThank you.`;
-        const blob = new Blob([txt], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url; a.download = 'receipt.txt'; document.body.appendChild(a); a.click();
-        setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },1500);
-      });
-    })();
-  </script>
-</section>
+            <div id="contactMessage" class="form-message" role="status" aria-live="polite" aria-atomic="true"></div>
 
-<section id="contact">
-  <style>
-    /* Scoped styles to fix mobile overflow & make aside buttons responsive */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr minmax(220px, 360px); /* flexible right column */
-      gap: 18px;
-      margin-top: 12px;
-      align-items: start;
-    }
+            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+              <button class="btn btn--primary" type="submit">Send Request</button>
+              <button class="btn btn--ghost" id="scheduleCallBtn" type="button">Schedule Call</button>
+            </div>
+          </form>
 
-    /* Make form & aside visually consistent with rest of site */
-    .contact-form {
-      background: var(--card);
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: var(--shadow-2);
-    }
+          <!-- Aside -->
+          <aside class="contact-aside panel" data-reveal aria-label="Contact information" style="background-image:url('contact_bg.jpg'); background-size:cover; background-position:center;">
+            <div class="panel-content" style="background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.84)); padding:12px; border-radius:10px;">
+              <h4>Office Address</h4>
+              <p class="muted">Rajrooppur, Allahabad (Prayagraj), Uttar Pradesh</p>
 
-    .contact-aside {
-      background: var(--card);
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: var(--shadow-2);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      min-width: 0; /* important to prevent overflow inside grid */
-    }
+              <h4 style="margin-top:12px">Timings</h4>
+              <p class="muted">Mon–Sun · 9:00 AM – 9:00 PM</p>
+            </div>
 
-    /* Ensure long content inside aside doesn't force overflow */
-    .contact-aside .panel-content { overflow: hidden; }
+            <div class="contact-actions" aria-hidden="false">
+              <a href="https://wa.me/919454183793" class="btn btn--accent" target="_blank" rel="noopener" aria-label="WhatsApp chat">
+                💬 WhatsApp — Chat Now
+              </a>
 
-    /* Make action buttons full width on small screens and nicely spaced on larger screens */
-    .contact-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    @media (min-width: 720px) {
-      .contact-actions { flex-direction: column; }
-      .contact-actions a.btn { width: 100%; box-sizing: border-box; }
-    }
-    @media (max-width: 720px) {
-      /* Stack columns on small screens so nothing is cut off */
-      .contact-grid { grid-template-columns: 1fr; gap: 12px; }
-      /* Put the aside below the form on mobile (so user fills the form first) */
-      .contact-form { order: 1; }
-      .contact-aside { order: 2; }
-      .contact-aside .contact-actions { flex-direction: row; gap: 8px; flex-wrap: wrap; }
-      .contact-aside .contact-actions a.btn { flex: 1 1 calc(50% - 8px); min-width: 120px; }
-    }
-
-    /* Small tweak to textarea so it shrinks nicely on mobile */
-    .contact-form textarea { min-height: 110px; }
-
-    /* Accessibility: focus outlines for keyboard users */
-    .contact-aside a.btn:focus, .contact-form button:focus { outline: 3px solid rgba(8,59,155,0.12); outline-offset: 3px; }
-  </style>
-
-  <h2>Contact & Consultation</h2>
-
-  <div class="contact-grid">
-    <!-- Form -->
-    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mjkqwgje" method="POST" data-reveal>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div>
-          <label for="name">Full Name</label>
-          <input id="name" name="name" placeholder="Full Name" required>
+              <a href="tel:+918433438419" class="btn btn--primary" aria-label="Call">
+                📞 Call — Immediate Response
+              </a>
+            </div>
+          </aside>
         </div>
-        <div>
-          <label for="phone">Phone (+91)</label>
-          <input id="phone" name="phone" type="tel" placeholder="Phone (+91)" required>
-        </div>
-      </div>
+      </section>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email" required>
-        </div>
-        <div>
-          <label for="matter">Matter</label>
-          <select id="matter" name="matter">
-            <option>Family Matter</option>
-            <option>Criminal</option>
-            <option>Civil / Property</option>
-            <option>Mediation</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-
-      <label for="message" style="margin-top:10px">Brief description</label>
-      <textarea id="message" name="message" rows="4" placeholder="Brief description…" required></textarea>
-
-      <input type="text" name="_gotcha" style="display:none" aria-hidden="true" tabindex="-1">
-
-      <div id="contactMessage" class="form-message" role="status" aria-live="polite" aria-atomic="true"></div>
-
-      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-        <button class="btn btn--primary" type="submit">Send Request</button>
-        <button class="btn btn--ghost" id="scheduleCallBtn" type="button">Schedule Call</button>
-      </div>
-    </form>
-
-    <!-- Aside -->
-    <aside class="contact-aside panel" data-reveal aria-label="Contact information">
-      <div class="panel-content">
-        <h4>Office Address</h4>
-        <p class="muted">Rajrooppur, Allahabad (Prayagraj), Uttar Pradesh</p>
-
-        <h4 style="margin-top:12px">Timings</h4>
-        <p class="muted">Mon–Sun · 9:00 AM – 9:00 PM</p>
-      </div>
-
-      <div class="contact-actions" aria-hidden="false">
-        <!-- Buttons are full width on small screens because of CSS above -->
-        <a href="https://wa.me/919454183793" class="btn btn--accent" target="_blank" rel="noopener" aria-label="WhatsApp chat">
-          💬 WhatsApp — Chat Now
-        </a>
-
-        <a href="tel:+918433438419" class="btn btn--primary" aria-label="Call">
-          📞 Call — Immediate Response
-        </a>
-      </div>
-    </aside>
-  </div>
-</section>
-      
     </main>
 
     <footer>
@@ -836,17 +646,11 @@
     </footer>
   </div>
 
-  <!-- FAB (expandable) -->
+  <!-- FAB -->
   <div class="fab" id="fab" aria-expanded="false" aria-label="Quick contact">
     <div class="fab__menu" role="menu" aria-hidden="true" id="fabMenu">
-      <a class="fab__item" href="https://wa.me/919454183793" target="_blank" rel="noopener" role="menuitem" id="fabWa">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15.2c-.4 1.1-2.3 2.4-3.1 2.7-.8.3-1.8.4-4.1-.3-3.4-1.1-5.6-3.7-6.3-4.6-.6-.8-2.1-2.7-2.1-5 0-2.3 1.1-4.1 1.5-4.6C7.2 4 8.6 3 10.3 3c1.6 0 2.4.1 3.4.9.9.7 1.8 1.9 2.1 2.6.3.6.1 1.1-.1 1.5-.3.6-1 1.6-1.2 1.9-.2.3-.4.5-.1.9.2.3 1.2 1.8 2.6 3 1.8 1.4 3.1 1.9 3.6 2.1.4.2.7.1.9-.2.2-.3.9-1.3 1.3-1.9.3-.5.6-.9.9-1.2" stroke="#052c78" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        WhatsApp
-      </a>
-      <a class="fab__item" href="tel:+918433438419" role="menuitem" id="fabCall">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.06.76 3.03a2 2 0 0 1-.45 2.11L8.09 11.91a16 16 0 0 0 6 6l1.05-1.05a2 2 0 0 1 2.11-.45c.97.38 1.98.64 3.03.76A2 2 0 0 1 22 16.92z" stroke="#052c78" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Call
-      </a>
+      <a class="fab__item" href="https://wa.me/919454183793" target="_blank" rel="noopener" role="menuitem" id="fabWa">WhatsApp</a>
+      <a class="fab__item" href="tel:+918433438419" role="menuitem" id="fabCall">Call</a>
     </div>
 
     <button class="fab__main" id="fabToggle" aria-label="Open quick contact" title="Contact">
@@ -858,7 +662,7 @@
   </div>
 
   <!-- Back to top -->
-  <button id="backTop" aria-label="Back to top" title="Back to top">↑</button>
+  <button id="backTop" aria-label="Back to top" title="Back to top" style="position:fixed;right:18px;bottom:96px;display:none;background:var(--accent);color:#fff;width:46px;height:46px;border-radius:999px;align-items:center;justify-content:center;box-shadow:var(--btn-shadow);">↑</button>
 
   <!-- Booking Modal -->
   <div id="bookingModal" aria-hidden="true" aria-labelledby="modalTitle" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:1200;padding:18px">
@@ -882,83 +686,44 @@
     </div>
   </div>
 
-  <!-- ===== Enhanced Chatbot Widget (integrated) ===== -->
-  <style>
-    /* Chat widget styles (scoped) */
-    #ljf-chat { position: fixed; right: 18px; bottom: 22px; z-index: 1600; font-family: Inter, system-ui, sans-serif; }
-    #ljf-chat .chat-toggle { width:56px; height:56px; border-radius:999px; background:linear-gradient(180deg,#052c78,#083b9a); color:#fff; display:grid; place-items:center; box-shadow:0 12px 36px rgba(5,44,120,0.18); border:0; cursor:pointer; }
-    #ljf-chat .chat-panel { width:360px; max-width:calc(100vw - 36px); height:72vh; max-height:720px; background:#fff; border-radius:12px; box-shadow:0 28px 80px rgba(7,12,25,0.18); overflow:hidden; display:flex; flex-direction:column; transform:translateY(12px); }
-    #ljf-chat .chat-header { background:linear-gradient(90deg,#083b9a,#052c78); color:#fff; padding:12px 14px; display:flex; gap:10px; align-items:center; }
-    #ljf-chat .chat-header .title { font-weight:700; font-family:Merriweather,serif; }
-    #ljf-chat .chat-body { padding:12px; overflow:auto; flex:1; background:#f7f9fc; display:flex; flex-direction:column; gap:10px; }
-    #ljf-chat .message { max-width:78%; padding:10px 12px; border-radius:12px; font-size:.95rem; line-height:1.3; }
-    #ljf-chat .from-bot { background:#fff; align-self:flex-start; box-shadow:var(--shadow-1); color:var(--ink); }
-    #ljf-chat .from-user { background:linear-gradient(90deg,#17c964,#0ba35a); color:#fff; align-self:flex-end; }
-    #ljf-chat .quick-replies { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
-    #ljf-chat .chip { padding:8px 10px; border-radius:999px; background:#fff; border:1px solid rgba(5,44,120,0.06); cursor:pointer; font-weight:700; }
-    #ljf-chat .chat-footer { padding:10px; border-top:1px solid #eef3fb; display:flex; gap:8px; align-items:center; }
-    #ljf-chat input[type="text"], #ljf-chat input[type="tel"] { width:100%; padding:10px;border-radius:10px;border:1px solid #e6ebf5; font-size:0.95rem; }
-    #ljf-chat .lead-form { display:flex; flex-direction:column; gap:8px; padding:10px; background:#fff; border-radius:8px; box-shadow:var(--shadow-1); }
-    #ljf-chat .small-cta { display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:10px; background:linear-gradient(90deg,#083b9a,#052c78); color:#fff; border:0; cursor:pointer; font-weight:700; }
-    #ljf-chat .meta { font-size:.85rem; color:#6b7280; }
-    /* typing indicator */
-    .typing { display:flex; gap:4px; align-items:center; }
-    .typing span { width:6px;height:6px;background:#c7cbd6;border-radius:50%;opacity:0.6;animation:ljf-bounce 1s infinite; }
-    .typing span:nth-child(2){animation-delay:0.12s}
-    .typing span:nth-child(3){animation-delay:0.24s}
-    @keyframes ljf-bounce { 0% { transform:translateY(0); opacity:0.6 } 50% { transform:translateY(-6px); opacity:1 } 100% { transform:translateY(0); opacity:0.6 } }
-    @media(max-width:520px){ #ljf-chat .chat-panel{ width:92vw; height:78vh; right:8px; left:8px; bottom:16px; } }
-  </style>
-
-  <div id="ljf-chat" aria-live="polite" aria-atomic="true">
-    <button class="chat-toggle" id="ljf-toggle" aria-expanded="false" aria-label="Open chat">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- Chat widget (unchanged) -->
+  <div id="ljf-chat" aria-live="polite" aria-atomic="true" style="position:fixed;right:18px;bottom:22px;z-index:1600">
+    <!-- simplified toggle only; JS below handles full behavior -->
+    <button id="ljf-toggle" class="chat-toggle" aria-expanded="false" aria-label="Open chat" style="width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#052c78,#083b9a);color:#fff;border:0;box-shadow:0 12px 36px rgba(5,44,120,0.18);">
+      💬
     </button>
-
-    <div class="chat-panel" id="ljf-panel" style="display:none" role="dialog" aria-modal="false" aria-label="Chat with The Justice Firm">
-      <div class="chat-header">
-        <div style="display:flex;gap:10px;align-items:center">
-          <div style="width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,#083b9a,#052c78);display:grid;place-items:center;color:#fff;font-weight:800">TJ</div>
-          <div>
-            <div class="title">Chat with The Justice Firm</div>
-            <div class="meta">Quick answers or book a consultation</div>
-          </div>
-        </div>
-        <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
-          <button class="small-cta" id="ljf-whatsapp" title="Open WhatsApp">WhatsApp</button>
-          <button class="small-cta" id="ljf-book" title="Book consultation">Book</button>
-          <button id="ljf-close" aria-label="Close chat" style="background:transparent;border:0;color:#fff;font-size:18px">✕</button>
-        </div>
+    <div id="ljf-panel" class="chat-panel" style="display:none;position:fixed;right:18px;bottom:90px;width:360px;background:#fff;border-radius:12px;box-shadow:0 28px 80px rgba(7,12,25,0.18);overflow:hidden">
+      <div style="padding:12px 14px;background:linear-gradient(90deg,#083b9a,#052c78);color:#fff;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:10px;align-items:center"><div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#083b9a,#052c78);display:grid;place-items:center;color:#fff;font-weight:800">TJ</div><div><div style="font-weight:700">Chat with The Justice Firm</div><div style="font-size:.85rem;color:rgba(255,255,255,0.9)">Quick answers or book</div></div></div>
+        <div style="display:flex;gap:8px"><button id="ljf-close" style="background:transparent;border:0;color:#fff;font-size:18px">✕</button></div>
       </div>
-
-      <div class="chat-body" id="ljf-body" role="log" aria-live="polite">
-        <div class="message from-bot">Hello — I'm the virtual assistant. Try: <button class="chip" data-suggest="book">Book consultation</button> <button class="chip" data-suggest="fees">Fees</button> <button class="chip" data-suggest="documents">Documents</button></div>
+      <div id="ljf-body" style="padding:12px;height:340px;overflow:auto;background:#f7f9fc">
+        <div class="message from-bot" style="background:#fff;padding:10px;border-radius:10px;display:inline-block;box-shadow:var(--shadow-1)">Hello — I'm the virtual assistant. Try: <button class="chip" data-suggest="book">Book consultation</button> <button class="chip" data-suggest="fees">Fees</button></div>
       </div>
-
-      <div class="chat-footer">
-        <input id="ljf-input" type="text" placeholder="Type a quick question or choose a suggestion…" aria-label="Chat input">
-        <button id="ljf-send" class="small-cta" aria-label="Send message">Send</button>
+      <div style="padding:10px;border-top:1px solid #eef3fb;display:flex;gap:8px">
+        <input id="ljf-input" type="text" placeholder="Type a quick question…" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
+        <button id="ljf-send" class="small-cta" style="background:linear-gradient(90deg,#083b9a,#052c78);color:#fff;border-radius:8px;padding:8px 10px">Send</button>
       </div>
     </div>
   </div>
 
   <script>
-    /* Utility */
+    /* small utilities */
     const $ = s => document.querySelector(s);
     const $$ = s => Array.from(document.querySelectorAll(s));
     const bodyEl = document.body;
 
-    /* NAV mobile panel */
+    // mobile nav
     const navToggle = document.getElementById('navToggle');
     const mobilePanel = document.getElementById('mobileNavPanel');
     const mobileClose = document.getElementById('mobileNavClose');
-    function openMobileNav(){ mobilePanel.classList.add('open'); mobilePanel.setAttribute('aria-hidden','false'); navToggle.setAttribute('aria-expanded','true'); bodyEl.style.overflow='hidden'; const link = mobilePanel.querySelector('a'); if(link) link.focus();}
-    function closeMobileNav(){ mobilePanel.classList.remove('open'); mobilePanel.setAttribute('aria-hidden','true'); navToggle.setAttribute('aria-expanded','false'); bodyEl.style.overflow=''; navToggle.focus();}
+    function openMobileNav(){ mobilePanel.classList.add('open'); mobilePanel.setAttribute('aria-hidden','false'); navToggle.setAttribute('aria-expanded','true'); bodyEl.style.overflow='hidden'; const link = mobilePanel.querySelector('a'); if(link) link.focus(); }
+    function closeMobileNav(){ mobilePanel.classList.remove('open'); mobilePanel.setAttribute('aria-hidden','true'); navToggle.setAttribute('aria-expanded','false'); bodyEl.style.overflow=''; navToggle.focus(); }
     navToggle?.addEventListener('click', ()=> mobilePanel.classList.contains('open') ? closeMobileNav() : openMobileNav());
     mobileClose?.addEventListener('click', closeMobileNav);
     mobilePanel?.addEventListener('click', (e)=> { if(e.target.matches('a.mobile-link')) closeMobileNav(); });
 
-    /* Clock (Asia/Kolkata) */
+    // clock (Asia/Kolkata)
     function updateClock(){
       try {
         const opt = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
@@ -972,7 +737,7 @@
     }
     setInterval(updateClock, 1000); updateClock();
 
-    /* Next available slot (simple) */
+    // next slot
     (function setNextSlot(){
       const el = document.getElementById('nextSlot');
       const now = new Date();
@@ -985,7 +750,7 @@
       if (el) el.textContent = next.toLocaleString('en-IN', opt) + ' IST';
     })();
 
-    /* Calendar generator */
+    // calendar
     function generateCalendar(containerId='calendar'){
       const el = document.getElementById(containerId);
       if(!el) return;
@@ -1012,12 +777,11 @@
     generateCalendar();
     (function scheduleMidnightRefresh(){ const now = new Date(); const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 0, 0, 2); const ms = nextMidnight - now; setTimeout(()=>{ generateCalendar(); scheduleMidnightRefresh(); }, ms); })();
 
-    /* Booking modal + lock */
+    // booking modal
     const bookingModal = document.getElementById('bookingModal');
     const requestSlotBtn = document.getElementById('requestSlotBtn');
     const scheduleCallBtn = document.getElementById('scheduleCallBtn');
     const cancelBookingBtn = document.getElementById('cancelBookingBtn');
-
     function openBooking(){ if(!bookingModal) return; bookingModal.style.display='flex'; bookingModal.setAttribute('aria-hidden','false'); bodyEl.style.overflow='hidden'; const first = bookingModal.querySelector('input'); if(first) first.focus(); }
     function closeBooking(){ if(!bookingModal) return; bookingModal.style.display='none'; bookingModal.setAttribute('aria-hidden','true'); bodyEl.style.overflow=''; requestSlotBtn?.focus(); }
     requestSlotBtn?.addEventListener('click', openBooking);
@@ -1025,7 +789,7 @@
     cancelBookingBtn?.addEventListener('click', closeBooking);
     bookingModal?.addEventListener('click', (e)=>{ if(e.target === bookingModal) closeBooking(); });
 
-    /* Copy UPI */
+    // copy UPI small modal (used earlier)
     const copyUpiBtn = document.getElementById('copyUpiBtn');
     copyUpiBtn?.addEventListener('click', async () => {
       const upi = (document.getElementById('upi-id')?.textContent || '').trim();
@@ -1041,8 +805,6 @@
         window.prompt('Copy UPI ID', upi);
       }
     });
-
-    /* ephemeral message */
     function showInlineTemp(msg, ms=2500){
       let el = document.getElementById('tempMessage');
       if(!el){
@@ -1065,7 +827,7 @@
       setTimeout(()=>{ if(el) el.style.opacity = '0'; }, ms);
     }
 
-    /* showMessage with animated tick */
+    // formspree handler
     function showMessage(formId, type, text, autoHide=true, ms=6000){
       const map = { contactForm: 'contactMessage', bookingForm: 'bookingMessage' };
       const mid = map[formId];
@@ -1075,8 +837,7 @@
       el.innerHTML = '';
       if(type === 'success'){
         const svgNS = 'http://www.w3.org/2000/svg';
-        const wrap = document.createElement('div');
-        wrap.style.display = 'flex'; wrap.style.alignItems = 'center'; wrap.style.gap = '10px';
+        const wrap = document.createElement('div'); wrap.style.display = 'flex'; wrap.style.alignItems = 'center'; wrap.style.gap = '10px';
         const svg = document.createElementNS(svgNS, 'svg'); svg.setAttribute('viewBox','0 0 24 24'); svg.classList.add('tick-svg');
         const circle = document.createElementNS(svgNS,'circle'); circle.setAttribute('cx','12'); circle.setAttribute('cy','12'); circle.setAttribute('r','10'); circle.setAttribute('fill','rgba(31,122,58,0.08)');
         const path = document.createElementNS(svgNS,'path'); path.setAttribute('d','M6.5 12.3l3.2 3.2 7.8-8.1'); path.setAttribute('fill','none'); path.classList.add('tick-path');
@@ -1094,8 +855,6 @@
       el.focus();
       if(autoHide){ clearTimeout(el._hideTimer); el._hideTimer = setTimeout(()=>{ el.style.display = 'none'; }, ms); }
     }
-
-    /* Formspree AJAX Handler */
     function attachFormspreeHandler(formId){
       const form = document.getElementById(formId);
       if(!form) return;
@@ -1136,7 +895,7 @@
     attachFormspreeHandler('contactForm');
     attachFormspreeHandler('bookingForm');
 
-    /* Scroll reveal */
+    // scroll reveal
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const obs = new IntersectionObserver((entries, o) => {
         entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-revealed'); o.unobserve(en.target); } });
@@ -1146,7 +905,7 @@
       document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-revealed'));
     }
 
-    /* Hero subtle parallax only on non-touch */
+    // hero parallax skip on touch
     (function(){
       const hero = document.querySelector('.hero');
       if(!hero) return;
@@ -1162,7 +921,7 @@
       hero.addEventListener('mouseleave', ()=> hero.style.transform = 'translate3d(0,0,0)');
     })();
 
-    /* FAB toggle logic */
+    // FAB toggle
     const fab = document.getElementById('fab');
     const fabToggle = document.getElementById('fabToggle');
     const fabMenu = document.getElementById('fabMenu');
@@ -1178,30 +937,29 @@
     document.addEventListener('click', (e)=>{ if(!fab) return; if(fab.contains(e.target)) return; if(fab.getAttribute('aria-expanded') === 'true') toggleFab(false); });
     fabToggle?.addEventListener('keydown', (e)=> { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFab(); } });
 
-    /* Back to top */
+    // back to top
     const backTop = document.getElementById('backTop');
-    window.addEventListener('scroll', ()=> { if(window.scrollY > 300) backTop.classList.add('show'); else backTop.classList.remove('show'); });
+    window.addEventListener('scroll', ()=> { if(window.scrollY > 300) backTop.style.display = 'flex'; else backTop.style.display = 'none'; });
     backTop?.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
 
-    /* Close on ESC handling */
+    // ESC close catches
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         if (bookingModal && bookingModal.style.display === 'flex') closeBooking();
         if (fab && fab.getAttribute('aria-expanded') === 'true') toggleFab(false);
         if (mobilePanel && mobilePanel.classList.contains('open')) closeMobileNav();
-        // close chatbot if open
-        if (document.getElementById('ljf-panel') && document.getElementById('ljf-panel').style.display === 'flex') { document.getElementById('ljf-panel').style.display = 'none'; document.getElementById('ljf-toggle').setAttribute('aria-expanded','false'); }
+        const lj = document.getElementById('ljf-panel'); if (lj && lj.style.display === 'flex') { lj.style.display = 'none'; document.getElementById('ljf-toggle').setAttribute('aria-expanded','false'); }
       }
     });
 
-    /********** Articles JS (client-side data, search, filters, preview) **********/
+    /* ARTICLES client-side (left-thumbnail layout) */
     (function(){
       const articles = [
-        { id:'sec125', title:'Section 125 CrPC: Maintenance — What you must know', date:'2024-09-12', tags:['Family','Maintenance'], thumb:'article_sec125.jpg', excerpt:'A concise guide to maintenance claims under Section 125 CrPC — eligibility, documents, and the process in UP courts.', url:'articles/sec125.html', body:`<p>This guide explains entitlement, typical timelines and documents required to file a maintenance application under Section 125 CrPC. Practical tips and court approach.</p>`},
-        { id:'bail-law', title:'Understanding Bail: Regular vs Anticipatory', date:'2024-07-05', tags:['Criminal','Bail'], thumb:'article_bail.jpg', excerpt:'Key differences between regular bail and anticipatory bail, and practical tips for early release.', url:'articles/bail-law.html', body:`<p>When to apply for anticipatory bail, timelines and the courts’ approach — practical advice for accused persons.</p>`},
-        { id:'partition', title:'Partition Suits: Documents & Strategy', date:'2024-03-22', tags:['Civil','Property'], thumb:'article_partition.jpg', excerpt:'Step-by-step: how partition suits work, essential documents and how to protect your rights.', url:'articles/partition-suits.html', body:`<p>Checklist of documents, common pitfalls in partition suits and recommended approach for early resolution.</p>`}
+        { id:'sec125', title:'Section 125 CrPC: Maintenance — What you must know', date:'2024-09-12', tags:['Family','Maintenance'], thumb:'fam.jpg', excerpt:'A concise guide to maintenance claims under Section 125 CrPC — eligibility, documents, and the process in UP courts.', url:'articles/sec125.html', body:`<p>This guide explains entitlement, typical timelines and documents required to file a maintenance application under Section 125 CrPC. Practical tips and court approach.</p>`},
+        { id:'bail-law', title:'Understanding Bail: Regular vs Anticipatory', date:'2024-07-05', tags:['Criminal','Bail'], thumb:'crim.jpg', excerpt:'Key differences between regular bail and anticipatory bail, and practical tips for early release.', url:'articles/bail-law.html', body:`<p>When to apply for anticipatory bail, timelines and the courts’ approach — practical advice for accused persons.</p>`},
+        { id:'partition', title:'Partition Suits: Documents & Strategy', date:'2024-03-22', tags:['Civil','Property'], thumb:'prop.jpg', excerpt:'Step-by-step: how partition suits work, essential documents and how to protect your rights.', url:'articles/partition-suits.html', body:`<p>Checklist of documents, common pitfalls in partition suits and recommended approach for early resolution.</p>`},
+        { id:'practical-tips', title:'Practical Steps After Receiving Notice', date:'2024-01-18', tags:['General','Procedure'], thumb:'art.jpg', excerpt:'Immediate practical steps to take after receiving a legal notice — checklist for respondents.', url:'articles/notice-steps.html', body:`<p>Short checklist: do’s and don’ts, preserving evidence and acting promptly.</p>`}
       ];
-
       const grid = document.getElementById('articlesGrid');
       const searchInput = document.getElementById('articleSearch');
       const tagsWrap = document.getElementById('articleTags');
@@ -1254,38 +1012,25 @@
         grid.innerHTML = '';
         if(list.length === 0){ grid.innerHTML = '<div class="card muted">No articles found.</div>'; articlesCount.textContent = 0; return; }
         list.forEach(article => {
-          const card = document.createElement('article');
-          card.className = 'article-card card';
-          card.setAttribute('tabindex','0');
-          card.innerHTML = `
+          const row = document.createElement('article');
+          row.className = 'article-row';
+          row.setAttribute('tabindex','0');
+          row.innerHTML = `
             <img class="article-thumb" loading="lazy" alt="${escapeHtml(article.title)}" src="${article.thumb}">
-            <div style="display:flex;flex-direction:column;gap:6px;">
-              <div class="article-meta" aria-hidden="true">
-                <div style="font-weight:700">${escapeHtml(article.title)}</div>
-                <div class="muted" style="margin-left:auto">${new Date(article.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} • ${estimateReadingTime(article.excerpt + ' ' + (article.body || ''))}</div>
+            <div class="article-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+                <div class="article-title">${escapeHtml(article.title)}</div>
+                <div class="muted" style="font-size:.92rem">${new Date(article.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</div>
               </div>
-              <div class="muted" style="margin-top:6px">${escapeHtml(article.excerpt)}</div>
-              <div class="article-tags" style="margin-top:8px">${article.tags.map(t => `<button class="tag-chip" data-tag="${encodeURIComponent(t)}">${escapeHtml(t)}</button>`).join('')}</div>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
-                <a class="read-more btn btn--ghost" data-id="${article.id}" href="${article.url}" aria-label="Read more about ${escapeHtml(article.title)}">Read more →</a>
-                <button class="btn btn--small" data-preview="${article.id}" aria-controls="articlePreview">Preview</button>
+              <div class="article-excerpt">${escapeHtml(article.excerpt)}</div>
+              <div style="display:flex;gap:8px;align-items:center;margin-top:auto">
+                <a class="read-more btn btn--ghost btn--small" href="${article.url}">Read more →</a>
+                <button class="btn btn--small" data-preview="${article.id}">Preview</button>
+                <div style="margin-left:auto" class="muted">${estimateReadingTime(article.excerpt + ' ' + (article.body || ''))}</div>
               </div>
             </div>
           `;
-          grid.appendChild(card);
-        });
-
-        grid.querySelectorAll('.tag-chip[data-tag]').forEach(b => {
-          b.addEventListener('click', (e)=>{
-            const t = decodeURIComponent(b.dataset.tag);
-            const topBtn = Array.from(tagsWrap.querySelectorAll('button[data-tag]')).find(x => x.dataset.tag === t || (x.dataset.tag === 'all' && t==='all'));
-            if(topBtn){
-              tagsWrap.querySelectorAll('button[data-tag]').forEach(bb=>bb.setAttribute('aria-pressed','false'));
-              topBtn.setAttribute('aria-pressed','true');
-              applyFilters();
-              topBtn.focus();
-            }
-          });
+          grid.appendChild(row);
         });
 
         grid.querySelectorAll('button[data-preview]').forEach(btn => {
@@ -1294,7 +1039,6 @@
             openPreview(id);
           });
         });
-
         articlesCount.textContent = list.length;
       }
 
@@ -1330,22 +1074,17 @@
       sortSelect.addEventListener('change', () => applyFilters());
       document.getElementById('previewClose')?.addEventListener('click', closePreview);
       preview?.addEventListener('click', (e) => { if(e.target === preview) closePreview(); });
-      grid.addEventListener('keydown', (e) => { const card = e.target.closest('.article-card'); if(card && (e.key === 'Enter' || e.key === ' ')) { const previewBtn = card.querySelector('button[data-preview]'); if(previewBtn) previewBtn.click(); } });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && preview && preview.style.display === 'flex') closePreview(); });
     })();
 
-    /********** Enhanced Chatbot JS **********/
+    /* Chat widget basic behaviour */
     (function(){
-      const FORM_ENDPOINT = 'https://formspree.io/f/mjkqwgje';
-      const WHATSAPP = 'https://wa.me/919454183793';
       const toggle = document.getElementById('ljf-toggle');
       const panel = document.getElementById('ljf-panel');
       const closeBtn = document.getElementById('ljf-close');
       const body = document.getElementById('ljf-body');
       const input = document.getElementById('ljf-input');
       const sendBtn = document.getElementById('ljf-send');
-      const whatsappBtn = document.getElementById('ljf-whatsapp');
-      const bookBtn = document.getElementById('ljf-book');
 
       const KB = [
         { q: ['fee','fees','charge','pricing','cost'], a: 'Our fees vary by matter. Typical consultation is ₹500–₹1500. For case fee estimates, please tell the matter type or book a consultation.' },
@@ -1355,135 +1094,53 @@
         { q: ['timing','timings','hours','open'], a: 'Office hours: Mon–Sun 9:00 AM – 9:00 PM. For urgent matters outside hours, message on WhatsApp.' }
       ];
 
-      function appendMessage(text, who='bot', opts = {}){
+      function appendMessage(text, who='bot'){
         const el = document.createElement('div');
         el.className = 'message ' + (who === 'bot' ? 'from-bot' : 'from-user');
-        if(opts.html) el.innerHTML = text; else el.textContent = text;
+        el.style.padding = '8px';
+        el.style.borderRadius = '10px';
+        el.style.display = 'inline-block';
+        if(who==='bot'){ el.style.background='#fff'; el.style.boxShadow='0 6px 20px rgba(7,12,25,0.06)'; }
+        else { el.style.background='linear-gradient(90deg,#17c964,#0ba35a)'; el.style.color='#fff'; }
+        el.textContent = text;
         body.appendChild(el);
         body.scrollTop = body.scrollHeight;
       }
 
-      function showTyping(){
-        const t = document.createElement('div');
-        t.className = 'typing from-bot';
-        t.id = 'ljf-typing';
-        t.innerHTML = `<div style="padding:10px 12px;border-radius:12px;background:#fff;box-shadow:var(--shadow-1)"><div class="typing"><span></span><span></span><span></span></div></div>`;
-        body.appendChild(t);
-        body.scrollTop = body.scrollHeight;
-      }
-      function hideTyping(){
-        const t = document.getElementById('ljf-typing'); if(t) t.remove();
-      }
-
-      function openPanel(){ panel.style.display = 'flex'; toggle.setAttribute('aria-expanded','true'); setTimeout(()=>input.focus(), 120); }
+      function openPanel(){ panel.style.display = 'flex'; toggle.setAttribute('aria-expanded','true'); setTimeout(()=>input.focus(),120); }
       function closePanel(){ panel.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
-
       toggle.addEventListener('click', ()=> { panel.style.display === 'flex' ? closePanel() : openPanel(); });
       closeBtn.addEventListener('click', closePanel);
-
-      body.addEventListener('click', (e)=> {
-        const chip = e.target.closest('.chip');
-        if(!chip) return;
-        const val = chip.dataset.suggest;
-        handleUserMessage(val);
-      });
-
-      async function handleUserMessage(raw){
-        if(!raw) return;
-        const text = String(raw).trim();
-        if(!text) return;
-        appendMessage(text, 'user');
-        input.value = '';
-        // basic keyword match
-        const low = text.toLowerCase();
-        let matched = false;
-        for(const item of KB){
-          for(const kw of item.q){
-            if(low.includes(kw)){
-              showTyping();
-              await new Promise(r=>setTimeout(r, 420 + Math.random()*380));
-              hideTyping();
-              appendMessage(item.a, 'bot', { html: false });
-              matched = true;
-              break;
-            }
-          }
-          if(matched) break;
-        }
-        if(!matched){
-          showTyping();
-          await new Promise(r=>setTimeout(r, 700 + Math.random()*600));
-          hideTyping();
-          const fallback = 'Thanks — we received your question. Would you like to share your name & phone so we can call you?';
-          appendMessage(fallback, 'bot', { html: false });
-          setTimeout(showLeadCapture, 320);
-        }
-      }
 
       sendBtn.addEventListener('click', ()=> {
         const v = input.value.trim();
         if(!v) return;
-        handleUserMessage(v);
+        appendMessage(v, 'user');
+        input.value = '';
+        // simple KB match
+        const low = v.toLowerCase();
+        let matched = false;
+        for(const item of KB){
+          for(const kw of item.q){
+            if(low.includes(kw)){
+              setTimeout(()=> appendMessage(item.a, 'bot'), 420);
+              matched = true; break;
+            }
+          }
+          if(matched) break;
+        }
+        if(!matched) setTimeout(()=> appendMessage('Thanks — we will review and contact you. For urgent matters use WhatsApp.', 'bot'), 700);
       });
       input.addEventListener('keydown', (e)=> { if(e.key === 'Enter') { e.preventDefault(); sendBtn.click(); } });
 
-      whatsappBtn.addEventListener('click', ()=> { window.open(WHATSAPP, '_blank', 'noopener'); });
-      bookBtn.addEventListener('click', ()=> {
-        const bookingModal = document.getElementById('bookingModal');
-        if(bookingModal) { bookingModal.style.display = 'flex'; bookingModal.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; const first = bookingModal.querySelector('input'); if(first) first.focus(); } else { window.location.href = 'contact.html'; }
-      });
-
-      function showLeadCapture(){
-        if(document.getElementById('ljf-lead')) return;
-        const box = document.createElement('div');
-        box.id = 'ljf-lead';
-        box.className = 'lead-form';
-        box.innerHTML = `
-          <div style="display:flex;gap:8px">
-            <input id="ljf-lead-name" type="text" placeholder="Your name" aria-label="Your name">
-            <input id="ljf-lead-phone" type="tel" placeholder="Phone +91" aria-label="Phone">
-          </div>
-          <input id="ljf-lead-msg" type="text" placeholder="Brief message (optional)" aria-label="Message">
-          <div style="display:flex;gap:8px;justify-content:space-between;align-items:center">
-            <button id="ljf-send-lead" class="small-cta">Send</button>
-            <button id="ljf-skip" class="chip" style="background:transparent;border:1px solid rgba(5,44,120,0.06)">Skip</button>
-          </div>
-          <div class="meta" style="margin-top:6px">We keep your information confidential.</div>
-        `;
-        body.appendChild(box);
-        body.scrollTop = body.scrollHeight;
-
-        document.getElementById('ljf-skip').addEventListener('click', ()=> { box.remove(); });
-
-        document.getElementById('ljf-send-lead').addEventListener('click', async ()=> {
-          const name = document.getElementById('ljf-lead-name').value.trim();
-          const phone = document.getElementById('ljf-lead-phone').value.trim();
-          const msg = document.getElementById('ljf-lead-msg').value.trim();
-          if(!name || !phone){ alert('Please provide name and phone so we can contact you.'); return; }
-          const btn = document.getElementById('ljf-send-lead'); btn.disabled = true; btn.textContent = 'Sending…';
-          try {
-            const fd = new FormData(); fd.append('name', name); fd.append('phone', phone); fd.append('email', ''); fd.append('message', `Chat lead: ${msg || '(no message)'}`); fd.append('_subject', 'Chat Lead — justicefirms.com');
-            const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' }});
-            if(res.ok) { appendMessage('Thanks — we have your details and will contact you soon. If urgent, message us on WhatsApp.', 'bot'); box.remove(); } else { appendMessage('Could not send your details. Please message us on WhatsApp or call.', 'bot'); }
-          } catch (err) { console.error('Lead send error', err); appendMessage('Network error. Please try WhatsApp or call us directly.', 'bot'); }
-          finally { btn.disabled = false; btn.textContent = 'Send'; }
-        });
-      }
-
-      // auto-open on first visit (once per 24h)
+      // auto open once per session
       try {
-        const shown = localStorage.getItem('ljf_chat_shown_v2');
-        if(!shown){ setTimeout(()=> openPanel(), 1200); localStorage.setItem('ljf_chat_shown_v2', String(Date.now())); }
+        if(!localStorage.getItem('ljf_chat_shown')){ setTimeout(()=> openPanel(), 900); localStorage.setItem('ljf_chat_shown', '1'); }
       } catch(e){}
-
-      document.addEventListener('keydown', (e)=> { if(e.key === 'Escape' && panel.style.display === 'flex') closePanel(); });
-
     })();
 
-    // small: ensure clickable phone/mail links safe
+    // small safety
     $$('a[href^="tel:"], a[href^="mailto:"]').forEach(a=>a.setAttribute('rel','noopener'));
-
-    /* Footer year */
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
