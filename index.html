@@ -64,6 +64,7 @@
       border-radius:16px;
       padding:26px;
       box-shadow: var(--shadow-2);
+      overflow:visible;
     }
     .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));padding:24px;border-radius:12px;box-shadow:0 22px 60px rgba(7,12,25,0.06);position:relative;z-index:2}
     .eyebrow{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700;display:inline-block}
@@ -98,6 +99,15 @@
     .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .pay-box{background:var(--card);padding:18px;text-align:center;border-radius:12px;box-shadow:var(--shadow-2)}
     .pay-box img{width:140px;height:140px;border-radius:10px;border:2px solid var(--gold);object-fit:cover}
+
+    /* titanium cards: tightened styling */
+    .titanium-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+    .titanium-card, .bank-titanium { border-radius:14px; color:#e8f3ff; padding:18px; min-height:220px; display:flex; flex-direction:column; gap:12px; box-shadow: var(--shadow-2); }
+    .titanium-card h4, .bank-titanium h4 { margin:0; color:#e6f2ff; font-family:Merriweather,serif; }
+    .titanium-qr-frame { width:180px; height:180px; border-radius:10px; overflow:hidden; display:flex; align-items:center; justify-content:center; margin:8px auto 0; background:linear-gradient(180deg,#eef1f6,#dfe6ef); }
+    .titanium-qr-frame img{width:100%;height:100%;object-fit:cover}
+    .titanium-actions{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+    .titanium-btn{padding:10px 12px;border-radius:10px;border:0;cursor:pointer;color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent-2));}
 
     form input,form textarea,form select{width:100%;padding:10px;border-radius:10px;border:1px solid #d8dce3;font-size:1rem;font-family:Inter}
     label{font-size:.9rem;color:var(--muted);display:block;margin-bottom:6px}
@@ -161,7 +171,12 @@
     .article-title { font-weight:700; }
     .article-excerpt { color:var(--muted); font-size:.95rem; }
 
-    /* Payment titanium / contact adjustments done inline in section */
+    /* Mobile nav panel (hidden by default) */
+    .mobile-nav-panel{ display:none; position:fixed; inset:0; z-index:1200; background:linear-gradient(180deg, rgba(2,6,23,0.85), rgba(2,6,23,0.92)); color:#fff; padding:18px; overflow:auto }
+    .mobile-nav-panel.open{ display:block }
+    .mobile-nav-panel a, .mobile-nav-panel .mobile-link{ display:block; padding:12px 0; color:#fff; text-decoration:none; font-weight:700 }
+    .mobile-nav-panel .close{ background:transparent;border:0;color:#fff;font-size:20px;padding:6px; margin-left:auto }
+
     @media(max-width:1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:12px} }
     @media(max-width:720px){
       .nav-toggle{display:block}
@@ -176,6 +191,7 @@
       .logo{width:40px;height:40px}
       .wrap{padding:16px}
       .article-thumb{width:100px;height:70px;flex:0 0 100px}
+      .mobile-nav-panel{ padding-top:60px }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -203,27 +219,28 @@
         <a href="#team">Team</a>
         <a href="#articles">Articles</a>
         <a href="#payment">Payment</a>
-        <a href="contact.html" class="cta btn--ghost">Contact</a>
+        <a href="#contact" class="cta btn--ghost">Contact</a>
         <span id="clock" aria-live="polite" style="margin-left:8px"></span>
       </nav>
 
-      <button class="nav-toggle btn btn--icon" id="navToggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">☰</button>
+      <button class="nav-toggle btn btn--icon" id="navToggle" aria-expanded="false" aria-controls="mobileNavPanel" aria-label="Open menu">☰</button>
     </header>
 
-    <!-- Mobile nav panel -->
+    <!-- Mobile nav panel (hidden initially) -->
     <div id="mobileNavPanel" class="mobile-nav-panel" aria-hidden="true">
-      <div style="display:flex;align-items:center;gap:12px">
+      <div style="display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:12px">
         <div class="logo" style="width:44px;height:44px">TJ</div>
         <div style="font-weight:700">The Justice Firm</div>
-        <button class="close" id="mobileNavClose" aria-label="Close menu">✕</button>
+        <button class="close" id="mobileNavClose" aria-label="Close menu" style="margin-left:auto">✕</button>
       </div>
       <a href="#practice" class="mobile-link">Practice</a>
       <a href="#about" class="mobile-link">About</a>
       <a href="#team" class="mobile-link">Team</a>
       <a href="#articles" class="mobile-link">Articles</a>
       <a href="#payment" class="mobile-link">Payment</a>
-      <a href="contact.html" class="btn btn--primary" style="width:100%;">Contact / Book</a>
-      <div style="margin-top:auto;color:rgba(255,255,255,0.8);font-size:.95rem">
+      <a href="contact.html" class="btn btn--primary" style="width:100%;display:inline-flex;justify-content:center;margin-top:12px">Contact / Book</a>
+
+      <div style="margin-top:20px;color:rgba(255,255,255,0.9);font-size:.95rem">
         <div><strong>Call:</strong> <a href="tel:+919454183793" style="color:#fff">+91 94541 83793</a></div>
         <div style="margin-top:6px"><a href="mailto:adv.shastri@gmail.com" style="color:#fff">adv.shastri@gmail.com</a></div>
       </div>
@@ -327,7 +344,7 @@
         </div>
       </section>
 
-      <!-- TEAM (fixed centering + initials only on fail) -->
+      <!-- TEAM -->
       <section id="team" aria-labelledby="teamHeading">
         <h2 id="teamHeading">Our Team</h2>
         <p class="muted">Experienced advocates & legal consultants.</p>
@@ -336,7 +353,7 @@
           <!-- Member 1 -->
           <article class="member" role="listitem" tabindex="0">
             <figure class="member-figure">
-              <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="center 22%">
+              <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="50% 22%">
               <div class="initials" aria-hidden="true">GS</div>
             </figure>
             <div class="bio">
@@ -349,7 +366,7 @@
           <!-- Member 2 -->
           <article class="member" role="listitem" tabindex="0">
             <figure class="member-figure">
-              <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="center 20%">
+              <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="50% 20%">
               <div class="initials" aria-hidden="true">MS</div>
             </figure>
             <div class="bio">
@@ -362,7 +379,7 @@
           <!-- Member 3 -->
           <article class="member" role="listitem" tabindex="0">
             <figure class="member-figure">
-              <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="center 18%">
+              <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="50% 18%">
               <div class="initials" aria-hidden="true">SS</div>
             </figure>
             <div class="bio">
@@ -375,7 +392,7 @@
           <!-- Member 4 -->
           <article class="member" role="listitem" tabindex="0">
             <figure class="member-figure">
-              <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="center 20%" onerror="">
+              <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="50% 20%">
               <div class="initials" aria-hidden="true">SK</div>
             </figure>
             <div class="bio">
@@ -386,10 +403,8 @@
           </article>
         </div>
 
-        <!-- keep script local to team section for focusing images -->
         <script>
           (function(){
-            // apply data-focus -> object-position and show initials only if image fails
             document.querySelectorAll('.member-figure').forEach(fig => {
               const img = fig.querySelector('img');
               const initials = fig.querySelector('.initials');
@@ -399,9 +414,7 @@
               if(focus) img.style.objectPosition = focus;
               else img.style.objectPosition = 'center center';
 
-              // When image loads correctly hide initials
               function showInitialsIfBroken(){
-                // If naturalWidth is zero, image failed
                 if(!img.complete || (img.naturalWidth && img.naturalWidth === 0)) {
                   if(initials) initials.style.display = 'grid';
                   img.style.display = 'none';
@@ -411,17 +424,15 @@
                 }
               }
 
-              // set handlers
               img.addEventListener('load', showInitialsIfBroken);
               img.addEventListener('error', showInitialsIfBroken);
-              // immediate check (for cache)
-              setTimeout(showInitialsIfBroken, 30);
+              setTimeout(showInitialsIfBroken, 40);
             });
           })();
         </script>
       </section>
 
-      <!-- ARTICLES: left-thumb layout (A) -->
+      <!-- ARTICLES -->
       <section id="articles" aria-labelledby="articlesHeading" style="margin-top:0;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
           <div>
@@ -462,38 +473,29 @@
         </div>
       </section>
 
-      <!-- PAYMENT — TITANIUM with pay_bg.jpg -->
+      <!-- PAYMENT -->
       <section id="payment">
         <h2 style="color:#e8f2ff">Secure Payment — Titanium</h2>
         <p class="muted" style="color:#bfcfe0">Fast, secure payments. Use UPI or bank transfer — receipts available on request.</p>
 
-        <div class="titanium-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:18px;align-items:stretch">
-          <!-- Titanium UPI Card -->
+        <div class="titanium-grid" style="margin-top:18px;align-items:stretch">
           <div class="titanium-card" aria-labelledby="tupi" style="background-image: linear-gradient(180deg, rgba(2,6,10,0.66), rgba(8,12,16,0.66)), url('pay_bg.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,0.04);">
-            <div class="metal-bar" aria-hidden="true"></div>
             <h4 id="tupi" style="color:#e6f2ff">UPI — Instant Payment</h4>
 
-            <div class="titanium-qr-wrap" role="region" aria-label="UPI QR code">
-              <div class="titanium-qr-frame" id="tqr" style="background:linear-gradient(180deg,#eef1f6,#dfe6ef);">
-                <img src="upi_qr.jpg" alt="UPI QR — The Justice Firm" loading="lazy" decoding="async">
-              </div>
+            <div style="margin-top:6px;color:rgba(235,245,255,0.9)">Scan to pay — encrypted & secure</div>
 
-              <div class="titanium-pill" aria-hidden="false" style="color:#0b1220;background:rgba(255,255,255,0.95);">Scan with any UPI app</div>
+            <div class="titanium-qr-frame" style="margin-top:12px;">
+              <img src="upi_qr.jpg" alt="UPI QR — The Justice Firm" loading="lazy" decoding="async">
             </div>
 
-            <div class="titanium-info" role="status" aria-live="polite">
-              <span style="color:#dbefff">UPI ID:</span> <strong id="upi-id" style="color:#fff">adv.shastri@oksbi</strong><br>
-              <span style="font-size:.85rem;color:#9fb2cf">Encrypted & secure</span>
-            </div>
+            <div style="text-align:center;margin-top:8px;color:#dbefff">UPI ID: <strong id="upi-id" style="color:#fff">adv.shastri@oksbi</strong></div>
 
-            <div class="titanium-actions" role="group" aria-label="Payment actions">
-              <button id="copyUpiBtn" class="titanium-btn btn-titanium-copy" type="button" aria-label="Copy UPI ID">Copy UPI</button>
-              <button id="downloadQR" class="titanium-btn btn-titanium-download" type="button" aria-label="Download QR">Download QR</button>
-              <div id="ttoast" style="display:none" aria-hidden="true"></div>
+            <div class="titanium-actions" style="margin-top:auto">
+              <button id="copyUpiBtn" class="titanium-btn" type="button" aria-label="Copy UPI ID">Copy UPI</button>
+              <button id="downloadQR" class="titanium-btn" type="button" aria-label="Download QR">Download QR</button>
             </div>
           </div>
 
-          <!-- Bank transfer titanium card -->
           <div class="bank-titanium" aria-labelledby="tbank" style="background-image: linear-gradient(180deg, rgba(4,8,12,0.7), rgba(6,10,14,0.7)), url('pay_bg.jpg'); background-size:cover; background-position:center;">
             <div style="display:flex;align-items:center;gap:10px;justify-content:center">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18" stroke="#dfeeff" stroke-width="1.2" stroke-linecap="round"/></svg>
@@ -507,7 +509,7 @@
             </div>
 
             <div style="display:flex;gap:12px;justify-content:center;margin-top:auto">
-              <a id="downloadReceipt" class="titanium-btn btn-titanium-download" href="#" style="color:#dbefff; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Download Receipt</a>
+              <a id="downloadReceipt" class="titanium-btn" href="#" style="color:#dbefff; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Download Receipt</a>
               <a class="titanium-btn" href="https://wa.me/919454183793" target="_blank" rel="noopener" style="background:linear-gradient(90deg,#1b6fb2,#083b9a); color:#fff; text-decoration:none;">Need Help</a>
             </div>
           </div>
@@ -517,37 +519,36 @@
           (function(){
             const copyBtn = document.getElementById('copyUpiBtn');
             const upiEl = document.getElementById('upi-id');
-            const toast = document.getElementById('ttoast');
             const downloadBtn = document.getElementById('downloadQR');
 
-            function showToast(msg){
-              toast.innerHTML = `<span class="titanium-toast" role="status" aria-live="polite">${msg}</span>`;
-              toast.style.display = 'inline-flex';
-              toast.setAttribute('aria-hidden','false');
-              setTimeout(()=>{ toast.style.display='none'; toast.setAttribute('aria-hidden','true'); }, 2400);
+            function showTemp(msg){
+              const elId = 'tempMessageSmall';
+              let el = document.getElementById(elId);
+              if(!el){
+                el = document.createElement('div'); el.id = elId;
+                el.style.position = 'fixed'; el.style.left='16px'; el.style.bottom='18px'; el.style.background='#03102a'; el.style.color='#fff'; el.style.padding='10px 12px'; el.style.borderRadius='8px'; el.style.boxShadow='0 8px 30px rgba(0,0,0,0.18)'; el.style.zIndex='9999'; document.body.appendChild(el);
+              }
+              el.textContent = msg; el.style.opacity='1';
+              setTimeout(()=> el.style.opacity='0', 2200);
             }
 
             copyBtn?.addEventListener('click', async ()=> {
               const upi = (upiEl?.textContent || '').trim();
-              if(!upi){ showToast('UPI not found'); return; }
+              if(!upi){ showTemp('UPI not found'); return; }
               try {
                 if(navigator.clipboard && navigator.clipboard.writeText){
                   await navigator.clipboard.writeText(upi);
-                  showToast('UPI copied');
+                  showTemp('UPI copied');
                 } else {
                   window.prompt('Copy UPI ID', upi);
-                  showToast('Copy manually');
                 }
               } catch(e){
-                try { window.prompt('Copy UPI ID', upi); showToast('Copy manually'); } catch(err){ showToast('Unable to copy'); }
+                window.prompt('Copy UPI ID', upi);
               }
             });
 
             downloadBtn?.addEventListener('click', ()=> {
-              const a = document.createElement('a');
-              a.href = 'upi_qr.jpg';
-              a.download = 'justicefirm_upi_qr.jpg';
-              document.body.appendChild(a); a.click(); a.remove();
+              const a = document.createElement('a'); a.href = 'upi_qr.jpg'; a.download = 'justicefirm_upi_qr.jpg'; document.body.appendChild(a); a.click(); a.remove();
             });
 
             const receipt = document.getElementById('downloadReceipt');
@@ -564,7 +565,7 @@
         </script>
       </section>
 
-      <!-- CONTACT (contact_bg.jpg as subtle aside background) -->
+      <!-- CONTACT -->
       <section id="contact">
         <h2>Contact & Consultation</h2>
 
@@ -622,7 +623,7 @@
               <p class="muted">Mon–Sun · 9:00 AM – 9:00 PM</p>
             </div>
 
-            <div class="contact-actions" aria-hidden="false">
+            <div class="contact-actions" aria-hidden="false" style="display:flex;flex-direction:column;gap:10px;padding:12px">
               <a href="https://wa.me/919454183793" class="btn btn--accent" target="_blank" rel="noopener" aria-label="WhatsApp chat">
                 💬 WhatsApp — Chat Now
               </a>
@@ -686,9 +687,8 @@
     </div>
   </div>
 
-  <!-- Chat widget (unchanged) -->
+  <!-- Chat widget (no auto-open) -->
   <div id="ljf-chat" aria-live="polite" aria-atomic="true" style="position:fixed;right:18px;bottom:22px;z-index:1600">
-    <!-- simplified toggle only; JS below handles full behavior -->
     <button id="ljf-toggle" class="chat-toggle" aria-expanded="false" aria-label="Open chat" style="width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#052c78,#083b9a);color:#fff;border:0;box-shadow:0 12px 36px rgba(5,44,120,0.18);">
       💬
     </button>
@@ -789,22 +789,7 @@
     cancelBookingBtn?.addEventListener('click', closeBooking);
     bookingModal?.addEventListener('click', (e)=>{ if(e.target === bookingModal) closeBooking(); });
 
-    // copy UPI small modal (used earlier)
-    const copyUpiBtn = document.getElementById('copyUpiBtn');
-    copyUpiBtn?.addEventListener('click', async () => {
-      const upi = (document.getElementById('upi-id')?.textContent || '').trim();
-      if(!upi){ alert('UPI ID not found'); return; }
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(upi);
-          showInlineTemp(`UPI Copied: ${upi}`);
-        } else {
-          window.prompt('Copy UPI ID', upi);
-        }
-      } catch (err) {
-        window.prompt('Copy UPI ID', upi);
-      }
-    });
+    // copy UPI small temp message (already added in titanium script too)
     function showInlineTemp(msg, ms=2500){
       let el = document.getElementById('tempMessage');
       if(!el){
@@ -905,7 +890,7 @@
       document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-revealed'));
     }
 
-    // hero parallax skip on touch
+    // hero parallax: keep subtle, skip on touch devices
     (function(){
       const hero = document.querySelector('.hero');
       if(!hero) return;
@@ -916,7 +901,7 @@
         const x = (e.clientX - (rect.left + rect.width/2))/rect.width;
         const y = (e.clientY - (rect.top + rect.height/2))/rect.height;
         cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(()=> hero.style.transform = `translate3d(${x*6}px,${y*3}px,0)`);
+        raf = requestAnimationFrame(()=> hero.style.transform = `translate3d(${x*4}px,${y*2}px,0)`);
       });
       hero.addEventListener('mouseleave', ()=> hero.style.transform = 'translate3d(0,0,0)');
     })();
@@ -927,11 +912,12 @@
     const fabMenu = document.getElementById('fabMenu');
     function toggleFab(open){
       const isOpen = open === undefined ? fab.getAttribute('aria-expanded') === 'true' : open;
-      fab.setAttribute('aria-expanded', String(!isOpen));
-      fabMenu.setAttribute('aria-hidden', String(isOpen));
+      const newState = !isOpen;
+      fab.setAttribute('aria-expanded', String(newState));
+      fabMenu.setAttribute('aria-hidden', String(!newState));
       const icon = document.getElementById('fabIcon');
-      if(icon) icon.style.transform = !isOpen ? 'rotate(45deg) scale(1.02)' : 'rotate(0deg) scale(1)';
-      fabToggle.setAttribute('aria-pressed', String(!isOpen));
+      if(icon) icon.style.transform = newState ? 'rotate(45deg) scale(1.02)' : 'rotate(0deg) scale(1)';
+      fabToggle.setAttribute('aria-pressed', String(newState));
     }
     fabToggle?.addEventListener('click', ()=> toggleFab());
     document.addEventListener('click', (e)=>{ if(!fab) return; if(fab.contains(e.target)) return; if(fab.getAttribute('aria-expanded') === 'true') toggleFab(false); });
@@ -949,6 +935,7 @@
         if (fab && fab.getAttribute('aria-expanded') === 'true') toggleFab(false);
         if (mobilePanel && mobilePanel.classList.contains('open')) closeMobileNav();
         const lj = document.getElementById('ljf-panel'); if (lj && lj.style.display === 'flex') { lj.style.display = 'none'; document.getElementById('ljf-toggle').setAttribute('aria-expanded','false'); }
+        const preview = document.getElementById('articlePreview'); if (preview && preview.style.display === 'flex') preview.style.display = 'none';
       }
     });
 
@@ -1077,7 +1064,7 @@
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && preview && preview.style.display === 'flex') closePreview(); });
     })();
 
-    /* Chat widget basic behaviour */
+    /* Chat widget basic behaviour (NO AUTO-OPEN) */
     (function(){
       const toggle = document.getElementById('ljf-toggle');
       const panel = document.getElementById('ljf-panel');
@@ -1117,7 +1104,6 @@
         if(!v) return;
         appendMessage(v, 'user');
         input.value = '';
-        // simple KB match
         const low = v.toLowerCase();
         let matched = false;
         for(const item of KB){
@@ -1133,10 +1119,7 @@
       });
       input.addEventListener('keydown', (e)=> { if(e.key === 'Enter') { e.preventDefault(); sendBtn.click(); } });
 
-      // auto open once per session
-      try {
-        if(!localStorage.getItem('ljf_chat_shown')){ setTimeout(()=> openPanel(), 900); localStorage.setItem('ljf_chat_shown', '1'); }
-      } catch(e){}
+      // removed auto-open to avoid intrusive behavior
     })();
 
     // small safety
