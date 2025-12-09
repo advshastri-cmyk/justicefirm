@@ -157,7 +157,7 @@
     .member-figure { width:100%; height:220px; background:#eef2f7; position:relative; overflow:hidden; display:block; }
     .member-figure img { width:100%; height:100%; object-fit:cover; object-position:center center; display:block; transition:transform .6s var(--easing); }
     .member:hover img { transform:scale(1.04); }
-    .initials { display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent)); color:#fff; font-weight:800; display:grid; place-items:center; font-family:Merriweather,serif; font-size:1.05rem; }
+    .initials { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent)); color:#fff; font-weight:800; display:none; place-items:center; font-family:Merriweather,serif; font-size:1.05rem; }
     .bio { padding:16px; display:flex; flex-direction:column; gap:6px; }
     .bio h3 { margin:0; font-family:Merriweather,serif; font-size:1.05rem; }
     .bio .role{ margin:0;color:var(--muted); font-size:.95rem; }
@@ -171,13 +171,33 @@
     .article-title { font-weight:700; }
     .article-excerpt { color:var(--muted); font-size:.95rem; }
 
+    /* Dictionary section */
+    #dictionaryCard { margin-top:14px; }
+    .dict-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:start}
+    .dict-input-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .dict-results{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow-2);min-height:80px}
+    .dict-term{font-weight:700}
+    .dict-definition{margin-top:6px;color:var(--muted)}
+    .dict-note{margin-top:8px;font-size:.85rem;color:var(--muted)}
+
+    /* Tag chip (articles) */
+    .tag-chip{border-radius:999px;border:1px solid #dde4f3;padding:4px 10px;font-size:.85rem;background:#fff;cursor:pointer}
+    .tag-chip[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+    /* Chat widget basic message styles */
+    .message{margin-bottom:8px;max-width:80%}
+    .from-bot{align-self:flex-start}
+    .from-user{align-self:flex-end}
+
+    .chip{border-radius:999px;border:1px solid #dde4f3;padding:4px 10px;font-size:.82rem;background:#f1f5ff;cursor:pointer;margin-top:6px;margin-right:6px}
+
     /* Mobile nav panel (hidden by default) */
     .mobile-nav-panel{ display:none; position:fixed; inset:0; z-index:1200; background:linear-gradient(180deg, rgba(2,6,23,0.85), rgba(2,6,23,0.92)); color:#fff; padding:18px; overflow:auto }
     .mobile-nav-panel.open{ display:block }
     .mobile-nav-panel a, .mobile-nav-panel .mobile-link{ display:block; padding:12px 0; color:#fff; text-decoration:none; font-weight:700 }
     .mobile-nav-panel .close{ background:transparent;border:0;color:#fff;font-size:20px;padding:6px; margin-left:auto }
 
-    @media(max-width:1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:12px} }
+    @media(max-width:1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:12px} .dict-layout{grid-template-columns:1fr} }
     @media(max-width:720px){
       .nav-toggle{display:block}
       .nav-links{display:none}
@@ -218,6 +238,7 @@
         <a href="#about">About</a>
         <a href="#team">Team</a>
         <a href="#articles">Articles</a>
+        <a href="#dictionary">Dictionary</a>
         <a href="#payment">Payment</a>
         <a href="#contact" class="cta btn--ghost">Contact</a>
         <span id="clock" aria-live="polite" style="margin-left:8px"></span>
@@ -237,8 +258,9 @@
       <a href="#about" class="mobile-link">About</a>
       <a href="#team" class="mobile-link">Team</a>
       <a href="#articles" class="mobile-link">Articles</a>
+      <a href="#dictionary" class="mobile-link">Dictionary</a>
       <a href="#payment" class="mobile-link">Payment</a>
-      <a href="contact.html" class="btn btn--primary" style="width:100%;display:inline-flex;justify-content:center;margin-top:12px">Contact / Book</a>
+      <a href="#contact" class="btn btn--primary" style="width:100%;display:inline-flex;justify-content:center;margin-top:12px">Contact / Book</a>
 
       <div style="margin-top:20px;color:rgba(255,255,255,0.9);font-size:.95rem">
         <div><strong>Call:</strong> <a href="tel:+919454183793" style="color:#fff">+91 94541 83793</a></div>
@@ -473,6 +495,27 @@
         </div>
       </section>
 
+      <!-- DICTIONARY -->
+      <section id="dictionary" aria-labelledby="dictionaryHeading">
+        <h2 id="dictionaryHeading">Legal Word Helper (Dictionary)</h2>
+        <p class="muted">Type a simple term like “FIR”, “maintenance”, “custody”, “bail” — get a plain English meaning.</p>
+
+        <div id="dictionaryCard" class="dict-layout">
+          <div>
+            <label for="dictInput">Search legal term</label>
+            <div class="dict-input-wrap">
+              <input id="dictInput" type="search" placeholder="e.g. FIR, maintenance, alimony, custody" aria-label="Search legal term">
+              <button id="dictSearchBtn" class="btn btn--primary btn--small" type="button">Search</button>
+            </div>
+            <p class="dict-note">Tip: Hindi / Hinglish words like “baarakhasta”, “talak”, “girftari” are also recognised for many terms.</p>
+          </div>
+
+          <div class="dict-results" id="dictResults" aria-live="polite" aria-atomic="true">
+            <div class="muted">Start by typing a term above. Example: <strong>“Section 125”</strong> or <strong>“custody”</strong>.</div>
+          </div>
+        </div>
+      </section>
+
       <!-- PAYMENT -->
       <section id="payment">
         <h2 style="color:#e8f2ff">Secure Payment — Titanium</h2>
@@ -532,8 +575,8 @@
               setTimeout(()=> el.style.opacity='0', 2200);
             }
 
-            copyBtn?.addEventListener('click', async ()=> {
-              const upi = (upiEl?.textContent || '').trim();
+            copyBtn && copyBtn.addEventListener('click', async ()=> {
+              const upi = (upiEl && upiEl.textContent || '').trim();
               if(!upi){ showTemp('UPI not found'); return; }
               try {
                 if(navigator.clipboard && navigator.clipboard.writeText){
@@ -547,14 +590,14 @@
               }
             });
 
-            downloadBtn?.addEventListener('click', ()=> {
+            downloadBtn && downloadBtn.addEventListener('click', ()=> {
               const a = document.createElement('a'); a.href = 'upi_qr.jpg'; a.download = 'justicefirm_upi_qr.jpg'; document.body.appendChild(a); a.click(); a.remove();
             });
 
             const receipt = document.getElementById('downloadReceipt');
-            receipt?.addEventListener('click', (e)=>{
+            receipt && receipt.addEventListener('click', (e)=>{
               e.preventDefault();
-              const txt = `Receipt — The Justice Firm\nDate: ${new Date().toLocaleDateString('en-IN')}\nPaid to: The Justice Firm\nUPI ID: ${upiEl?.textContent || ''}\nReference: (enter transaction id)\n\nThank you.`;
+              const txt = `Receipt — The Justice Firm\nDate: ${new Date().toLocaleDateString('en-IN')}\nPaid to: The Justice Firm\nUPI ID: ${(upiEl && upiEl.textContent) || ''}\nReference: (enter transaction id)\n\nThank you.`;
               const blob = new Blob([txt], { type: 'text/plain' });
               const url = URL.createObjectURL(blob);
               const a = document.createElement('a');
@@ -652,6 +695,7 @@
     <div class="fab__menu" role="menu" aria-hidden="true" id="fabMenu">
       <a class="fab__item" href="https://wa.me/919454183793" target="_blank" rel="noopener" role="menuitem" id="fabWa">WhatsApp</a>
       <a class="fab__item" href="tel:+918433438419" role="menuitem" id="fabCall">Call</a>
+      <a class="fab__item" href="#dictionary" role="menuitem">Legal Dictionary</a>
     </div>
 
     <button class="fab__main" id="fabToggle" aria-label="Open quick contact" title="Contact">
@@ -663,7 +707,7 @@
   </div>
 
   <!-- Back to top -->
-  <button id="backTop" aria-label="Back to top" title="Back to top" style="position:fixed;right:18px;bottom:96px;display:none;background:var(--accent);color:#fff;width:46px;height:46px;border-radius:999px;align-items:center;justify-content:center;box-shadow:var(--btn-shadow);">↑</button>
+  <button id="backTop" aria-label="Back to top" title="Back to top" style="position:fixed;right:18px;bottom:96px;display:none;background:var(--accent);color:#fff;width:46px;height:46px;border-radius:999px;align-items:center;justify-content:center;box-shadow:var(--btn-shadow);border:0;cursor:pointer;font-size:1.1rem;">↑</button>
 
   <!-- Booking Modal -->
   <div id="bookingModal" aria-hidden="true" aria-labelledby="modalTitle" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:1200;padding:18px">
@@ -688,21 +732,21 @@
   </div>
 
   <!-- Chat widget (no auto-open) -->
-  <div id="ljf-chat" aria-live="polite" aria-atomic="true" style="position:fixed;right:18px;bottom:22px;z-index:1600">
+  <div id="ljf-chat" aria-live="polite" aria-atomic="true" style="position:fixed;left:18px;bottom:22px;z-index:1600">
     <button id="ljf-toggle" class="chat-toggle" aria-expanded="false" aria-label="Open chat" style="width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#052c78,#083b9a);color:#fff;border:0;box-shadow:0 12px 36px rgba(5,44,120,0.18);">
       💬
     </button>
-    <div id="ljf-panel" class="chat-panel" style="display:none;position:fixed;right:18px;bottom:90px;width:360px;background:#fff;border-radius:12px;box-shadow:0 28px 80px rgba(7,12,25,0.18);overflow:hidden">
+    <div id="ljf-panel" class="chat-panel" style="display:none;position:fixed;left:18px;bottom:90px;width:360px;max-width:92vw;background:#fff;border-radius:12px;box-shadow:0 28px 80px rgba(7,12,25,0.18);overflow:hidden;flex-direction:column;">
       <div style="padding:12px 14px;background:linear-gradient(90deg,#083b9a,#052c78);color:#fff;display:flex;align-items:center;justify-content:space-between">
         <div style="display:flex;gap:10px;align-items:center"><div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#083b9a,#052c78);display:grid;place-items:center;color:#fff;font-weight:800">TJ</div><div><div style="font-weight:700">Chat with The Justice Firm</div><div style="font-size:.85rem;color:rgba(255,255,255,0.9)">Quick answers or book</div></div></div>
         <div style="display:flex;gap:8px"><button id="ljf-close" style="background:transparent;border:0;color:#fff;font-size:18px">✕</button></div>
       </div>
-      <div id="ljf-body" style="padding:12px;height:340px;overflow:auto;background:#f7f9fc">
-        <div class="message from-bot" style="background:#fff;padding:10px;border-radius:10px;display:inline-block;box-shadow:var(--shadow-1)">Hello — I'm the virtual assistant. Try: <button class="chip" data-suggest="book">Book consultation</button> <button class="chip" data-suggest="fees">Fees</button></div>
+      <div id="ljf-body" style="padding:12px;height:340px;overflow:auto;background:#f7f9fc;display:flex;flex-direction:column;">
+        <div class="message from-bot" style="background:#fff;padding:10px;border-radius:10px;display:inline-block;box-shadow:var(--shadow-1)">Hello — I'm the virtual assistant. Try: <button class="chip" data-suggest="book">Book consultation</button> <button class="chip" data-suggest="fees">Fees</button> <button class="chip" data-suggest="docs">Documents</button></div>
       </div>
       <div style="padding:10px;border-top:1px solid #eef3fb;display:flex;gap:8px">
         <input id="ljf-input" type="text" placeholder="Type a quick question…" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
-        <button id="ljf-send" class="small-cta" style="background:linear-gradient(90deg,#083b9a,#052c78);color:#fff;border-radius:8px;padding:8px 10px">Send</button>
+        <button id="ljf-send" class="small-cta" style="background:linear-gradient(90deg,#083b9a,#052c78);color:#fff;border-radius:8px;padding:8px 10px;border:0;cursor:pointer;">Send</button>
       </div>
     </div>
   </div>
@@ -717,11 +761,11 @@
     const navToggle = document.getElementById('navToggle');
     const mobilePanel = document.getElementById('mobileNavPanel');
     const mobileClose = document.getElementById('mobileNavClose');
-    function openMobileNav(){ mobilePanel.classList.add('open'); mobilePanel.setAttribute('aria-hidden','false'); navToggle.setAttribute('aria-expanded','true'); bodyEl.style.overflow='hidden'; const link = mobilePanel.querySelector('a'); if(link) link.focus(); }
-    function closeMobileNav(){ mobilePanel.classList.remove('open'); mobilePanel.setAttribute('aria-hidden','true'); navToggle.setAttribute('aria-expanded','false'); bodyEl.style.overflow=''; navToggle.focus(); }
-    navToggle?.addEventListener('click', ()=> mobilePanel.classList.contains('open') ? closeMobileNav() : openMobileNav());
-    mobileClose?.addEventListener('click', closeMobileNav);
-    mobilePanel?.addEventListener('click', (e)=> { if(e.target.matches('a.mobile-link')) closeMobileNav(); });
+    function openMobileNav(){ if(!mobilePanel) return; mobilePanel.classList.add('open'); mobilePanel.setAttribute('aria-hidden','false'); navToggle && navToggle.setAttribute('aria-expanded','true'); bodyEl.style.overflow='hidden'; const link = mobilePanel.querySelector('a'); if(link) link.focus(); }
+    function closeMobileNav(){ if(!mobilePanel) return; mobilePanel.classList.remove('open'); mobilePanel.setAttribute('aria-hidden','true'); navToggle && navToggle.setAttribute('aria-expanded','false'); bodyEl.style.overflow=''; navToggle && navToggle.focus(); }
+    navToggle && navToggle.addEventListener('click', ()=> mobilePanel && mobilePanel.classList.contains('open') ? closeMobileNav() : openMobileNav());
+    mobileClose && mobileClose.addEventListener('click', closeMobileNav);
+    mobilePanel && mobilePanel.addEventListener('click', (e)=> { if(e.target.matches('a.mobile-link')) closeMobileNav(); });
 
     // clock (Asia/Kolkata)
     function updateClock(){
@@ -741,8 +785,8 @@
     (function setNextSlot(){
       const el = document.getElementById('nextSlot');
       const now = new Date();
-      const next = new Date(now);
       const inIST = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+      const next = new Date(inIST);
       const hour = inIST.getHours();
       if (hour >= 16) next.setDate(next.getDate() + 1);
       next.setHours(11,0,0,0);
@@ -783,13 +827,13 @@
     const scheduleCallBtn = document.getElementById('scheduleCallBtn');
     const cancelBookingBtn = document.getElementById('cancelBookingBtn');
     function openBooking(){ if(!bookingModal) return; bookingModal.style.display='flex'; bookingModal.setAttribute('aria-hidden','false'); bodyEl.style.overflow='hidden'; const first = bookingModal.querySelector('input'); if(first) first.focus(); }
-    function closeBooking(){ if(!bookingModal) return; bookingModal.style.display='none'; bookingModal.setAttribute('aria-hidden','true'); bodyEl.style.overflow=''; requestSlotBtn?.focus(); }
-    requestSlotBtn?.addEventListener('click', openBooking);
-    scheduleCallBtn?.addEventListener('click', openBooking);
-    cancelBookingBtn?.addEventListener('click', closeBooking);
-    bookingModal?.addEventListener('click', (e)=>{ if(e.target === bookingModal) closeBooking(); });
+    function closeBooking(){ if(!bookingModal) return; bookingModal.style.display='none'; bookingModal.setAttribute('aria-hidden','true'); bodyEl.style.overflow=''; requestSlotBtn && requestSlotBtn.focus(); }
+    requestSlotBtn && requestSlotBtn.addEventListener('click', openBooking);
+    scheduleCallBtn && scheduleCallBtn.addEventListener('click', openBooking);
+    cancelBookingBtn && cancelBookingBtn.addEventListener('click', closeBooking);
+    bookingModal && bookingModal.addEventListener('click', (e)=>{ if(e.target === bookingModal) closeBooking(); });
 
-    // copy UPI small temp message (already added in titanium script too)
+    // small inline toast
     function showInlineTemp(msg, ms=2500){
       let el = document.getElementById('tempMessage');
       if(!el){
@@ -911,6 +955,7 @@
     const fabToggle = document.getElementById('fabToggle');
     const fabMenu = document.getElementById('fabMenu');
     function toggleFab(open){
+      if(!fab || !fabMenu || !fabToggle) return;
       const isOpen = open === undefined ? fab.getAttribute('aria-expanded') === 'true' : open;
       const newState = !isOpen;
       fab.setAttribute('aria-expanded', String(newState));
@@ -919,14 +964,21 @@
       if(icon) icon.style.transform = newState ? 'rotate(45deg) scale(1.02)' : 'rotate(0deg) scale(1)';
       fabToggle.setAttribute('aria-pressed', String(newState));
     }
-    fabToggle?.addEventListener('click', ()=> toggleFab());
-    document.addEventListener('click', (e)=>{ if(!fab) return; if(fab.contains(e.target)) return; if(fab.getAttribute('aria-expanded') === 'true') toggleFab(false); });
-    fabToggle?.addEventListener('keydown', (e)=> { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFab(); } });
+    fabToggle && fabToggle.addEventListener('click', ()=> toggleFab());
+    document.addEventListener('click', (e)=>{ if(!fab || !fabMenu) return; if(fab.contains(e.target)) return; if(fab.getAttribute('aria-expanded') === 'true') toggleFab(false); });
+    fabToggle && fabToggle.addEventListener('keydown', (e)=> { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFab(); } });
 
     // back to top
     const backTop = document.getElementById('backTop');
-    window.addEventListener('scroll', ()=> { if(window.scrollY > 300) backTop.style.display = 'flex'; else backTop.style.display = 'none'; });
-    backTop?.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+    window.addEventListener('scroll', ()=> {
+      if(!backTop) return;
+      if(window.scrollY > 300) {
+        backTop.style.display = 'flex';
+      } else {
+        backTop.style.display = 'none';
+      }
+    });
+    backTop && backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
 
     // ESC close catches
     document.addEventListener('keydown', (e) => {
@@ -934,7 +986,9 @@
         if (bookingModal && bookingModal.style.display === 'flex') closeBooking();
         if (fab && fab.getAttribute('aria-expanded') === 'true') toggleFab(false);
         if (mobilePanel && mobilePanel.classList.contains('open')) closeMobileNav();
-        const lj = document.getElementById('ljf-panel'); if (lj && lj.style.display === 'flex') { lj.style.display = 'none'; document.getElementById('ljf-toggle').setAttribute('aria-expanded','false'); }
+        const lj = document.getElementById('ljf-panel'); 
+        const ljToggle = document.getElementById('ljf-toggle');
+        if (lj && lj.style.display === 'flex') { lj.style.display = 'none'; if(ljToggle) ljToggle.setAttribute('aria-expanded','false'); }
         const preview = document.getElementById('articlePreview'); if (preview && preview.style.display === 'flex') preview.style.display = 'none';
       }
     });
@@ -956,13 +1010,13 @@
       const previewTitle = document.getElementById('previewTitle');
       const previewBody = document.getElementById('previewBody');
       const previewMeta = document.getElementById('previewMeta');
-      const previewClose = document.getElementById('previewClose');
 
       const tagSet = new Set();
       articles.forEach(a => a.tags.forEach(t => tagSet.add(t)));
       const tags = Array.from(tagSet);
 
       function renderTagFilters(){
+        if(!tagsWrap) return;
         tagsWrap.innerHTML = '';
         const allBtn = document.createElement('button');
         allBtn.className = 'tag-chip';
@@ -993,8 +1047,11 @@
         return `${minutes} min read`;
       }
 
+      function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); }); }
+
       function renderArticles(list){
-        const order = sortSelect.value || 'newest';
+        if(!grid || !articlesCount) return;
+        const order = sortSelect ? (sortSelect.value || 'newest') : 'newest';
         list.sort((a,b) => order === 'newest' ? (new Date(b.date) - new Date(a.date)) : (new Date(a.date) - new Date(b.date)));
         grid.innerHTML = '';
         if(list.length === 0){ grid.innerHTML = '<div class="card muted">No articles found.</div>'; articlesCount.textContent = 0; return; }
@@ -1012,7 +1069,7 @@
               <div class="article-excerpt">${escapeHtml(article.excerpt)}</div>
               <div style="display:flex;gap:8px;align-items:center;margin-top:auto">
                 <a class="read-more btn btn--ghost btn--small" href="${article.url}">Read more →</a>
-                <button class="btn btn--small" data-preview="${article.id}">Preview</button>
+                <button class="btn btn--small" data-preview="${article.id}" type="button">Preview</button>
                 <div style="margin-left:auto" class="muted">${estimateReadingTime(article.excerpt + ' ' + (article.body || ''))}</div>
               </div>
             </div>
@@ -1021,7 +1078,7 @@
         });
 
         grid.querySelectorAll('button[data-preview]').forEach(btn => {
-          btn.addEventListener('click', (e) => {
+          btn.addEventListener('click', () => {
             const id = btn.dataset.preview;
             openPreview(id);
           });
@@ -1030,7 +1087,8 @@
       }
 
       function applyFilters(){
-        const q = (searchInput.value || '').trim().toLowerCase();
+        if(!tagsWrap) return;
+        const q = (searchInput && searchInput.value || '').trim().toLowerCase();
         const active = Array.from(tagsWrap.querySelectorAll('button[data-tag]')).find(b => b.getAttribute('aria-pressed') === 'true');
         const tag = active ? active.dataset.tag : 'all';
         let filtered = articles.filter(a => {
@@ -1043,28 +1101,78 @@
       }
 
       function openPreview(id){
+        if(!preview || !previewTitle || !previewMeta || !previewBody) return;
         const a = articles.find(x=>x.id===id);
         if(!a) return;
         previewTitle.textContent = a.title;
         previewMeta.textContent = `${new Date(a.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} • ${a.tags.join(' • ')}`;
         previewBody.innerHTML = a.body || `<p>${a.excerpt}</p>`;
         preview.style.display = 'flex';
-        preview.querySelector('[role="dialog"]').focus();
+        const dlg = preview.querySelector('[role="dialog"]');
+        if(dlg) dlg.focus();
       }
-      function closePreview(){ preview.style.display = 'none'; }
-
-      function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); }); }
+      function closePreview(){ if(preview) preview.style.display = 'none'; }
 
       renderTagFilters();
       renderArticles(articles);
-      searchInput.addEventListener('input', () => applyFilters());
-      sortSelect.addEventListener('change', () => applyFilters());
-      document.getElementById('previewClose')?.addEventListener('click', closePreview);
-      preview?.addEventListener('click', (e) => { if(e.target === preview) closePreview(); });
+      searchInput && searchInput.addEventListener('input', () => applyFilters());
+      sortSelect && sortSelect.addEventListener('change', () => applyFilters());
+      document.getElementById('previewClose') && document.getElementById('previewClose').addEventListener('click', closePreview);
+      preview && preview.addEventListener('click', (e) => { if(e.target === preview) closePreview(); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && preview && preview.style.display === 'flex') closePreview(); });
     })();
 
-    /* Chat widget basic behaviour (NO AUTO-OPEN) */
+    /* DICTIONARY behaviour */
+    (function(){
+      const dictInput = document.getElementById('dictInput');
+      const dictBtn = document.getElementById('dictSearchBtn');
+      const dictResults = document.getElementById('dictResults');
+      if(!dictInput || !dictBtn || !dictResults) return;
+
+      const TERMS = [
+        { keys:['fir','f.i.r','first information report','जाँच रिपोर्ट','एफआईआर'], term:'FIR (First Information Report)', def:'A written document prepared by police when they receive information about the commission of a cognizable offence. It starts the criminal case and investigation.' },
+        { keys:['125','section 125','sec 125','125 crpc','maintenance','मेण्टेनेन्स','भरण पोषण'], term:'Section 125 CrPC (Maintenance)', def:'Provision for basic monthly maintenance to wife, minor children or parents who cannot maintain themselves, granted by a Magistrate.' },
+        { keys:['custody','child custody','बच्चे की कस्टडी','guardianship'], term:'Child Custody', def:'Court’s decision as to which parent or person will live with and take day-to-day care of a child after separation or divorce.' },
+        { keys:['bail','जमानत','anticipatory bail','regular bail'], term:'Bail', def:'Permission from court for an accused person to remain out of jail during investigation or trial, subject to certain conditions.' },
+        { keys:['anticipatory','anticipatory bail','438 crpc'], term:'Anticipatory Bail (Section 438 CrPC)', def:'Bail granted in anticipation of arrest. Person is not taken into regular custody if they comply with conditions of the anticipatory bail order.' },
+        { keys:['injunction','stay order','स्टे ऑर्डर'], term:'Injunction / Stay Order', def:'An order of the civil court directing a party to do something or not to do something (for example, not to sell property) until further orders.' },
+        { keys:['alimony','permanent alimony','maintenance after divorce'], term:'Alimony / Permanent Maintenance', def:'Amount granted to a spouse (usually wife) for her maintenance after divorce, separate from day-to-day interim maintenance.' },
+        { keys:['mediation','settlement','समझौता','lok adalat'], term:'Mediation / Settlement', def:'Confidential process where a neutral mediator helps parties discuss issues and try to reach a mutually acceptable settlement without full trial.' },
+        { keys:['decree','divorce decree','डिक्री'], term:'Decree', def:'Formal final order of the court finally deciding a civil dispute, such as granting divorce or declaring rights in property.' },
+        { keys:['execution','execution case','darkhast'], term:'Execution of Decree', def:'Legal process of implementing or enforcing a court decree, for example recovery of money or handing over property.' }
+      ];
+
+      function findTerm(qRaw){
+        const q = qRaw.trim().toLowerCase();
+        if(!q) return null;
+        // exact / contains match inside each keys array
+        for(const item of TERMS){
+          for(const k of item.keys){
+            if(q === k.toLowerCase() || q.includes(k.toLowerCase()) || k.toLowerCase().includes(q)) return item;
+          }
+        }
+        return null;
+      }
+
+      function renderResult(){
+        const q = dictInput.value || '';
+        if(!q.trim()){
+          dictResults.innerHTML = '<div class="muted">Please type a term above, e.g. <strong>“FIR”</strong> or <strong>“bail”</strong>.</div>';
+          return;
+        }
+        const match = findTerm(q);
+        if(!match){
+          dictResults.innerHTML = `<div class="dict-term">No simple definition found for “${q.replace(/</g,'&lt;')}”.</div><div class="dict-definition">Please describe your situation in the contact form or WhatsApp — we can explain it specifically for your case.</div>`;
+          return;
+        }
+        dictResults.innerHTML = `<div class="dict-term">${match.term}</div><div class="dict-definition">${match.def}</div><div class="dict-note">Note: This is a general explanation. Actual rights and procedures depend on facts of your case and latest court decisions.</div>`;
+      }
+
+      dictBtn.addEventListener('click', renderResult);
+      dictInput.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); renderResult(); } });
+    })();
+
+    /* Chat widget basic behaviour (NO AUTO-OPEN, FIXED & SEPARATE FROM FAB) */
     (function(){
       const toggle = document.getElementById('ljf-toggle');
       const panel = document.getElementById('ljf-panel');
@@ -1073,12 +1181,14 @@
       const input = document.getElementById('ljf-input');
       const sendBtn = document.getElementById('ljf-send');
 
+      if(!toggle || !panel || !body || !input || !sendBtn) return;
+
       const KB = [
-        { q: ['fee','fees','charge','pricing','cost'], a: 'Our fees vary by matter. Typical consultation is ₹500–₹1500. For case fee estimates, please tell the matter type or book a consultation.' },
-        { q: ['book','appointment','slot'], a: 'You can book a consultation now — I can collect name & phone and our team will confirm promptly.' },
-        { q: ['documents','papers','docs'], a: 'Documents depend on matter. For property: title deeds, tax receipts; for family: marriage certificate, ID, prior orders. Want a checklist for a specific matter?' },
-        { q: ['bail','arrest'], a: 'If arrested, remain calm and ask for a lawyer immediately. Do not sign documents without counsel. Contact us on WhatsApp for urgent assistance.' },
-        { q: ['timing','timings','hours','open'], a: 'Office hours: Mon–Sun 9:00 AM – 9:00 PM. For urgent matters outside hours, message on WhatsApp.' }
+        { q: ['fee','fees','charge','pricing','cost'], a: 'Our fees vary by matter. Typical consultation is ₹500–₹1500. For a proper quote, please mention matter type (family/criminal/property).' },
+        { q: ['book','appointment','slot','consultation'], a: 'To book consultation: share your name, phone and matter type here, or use the contact form. Our team will confirm a time shortly.' },
+        { q: ['documents','papers','docs','document'], a: 'Documents depend on case. Property: title deed, tax receipt; Family: marriage certificate, ID proof, earlier orders. Criminal: FIR copy, notices, arrest memo.' },
+        { q: ['bail','arrest'], a: 'If someone is arrested: stay calm, do not sign anything blindly, and contact a lawyer urgently. You can WhatsApp us for immediate help.' },
+        { q: ['timing','timings','hours','open'], a: 'Office hours: Mon–Sun 9:00 AM – 9:00 PM (with prior appointment). For urgent matters, send a WhatsApp message anytime.' }
       ];
 
       function appendMessage(text, who='bot'){
@@ -1099,11 +1209,10 @@
       toggle.addEventListener('click', ()=> { panel.style.display === 'flex' ? closePanel() : openPanel(); });
       closeBtn.addEventListener('click', closePanel);
 
-      sendBtn.addEventListener('click', ()=> {
-        const v = input.value.trim();
+      function handleQuery(raw){
+        const v = raw.trim();
         if(!v) return;
         appendMessage(v, 'user');
-        input.value = '';
         const low = v.toLowerCase();
         let matched = false;
         for(const item of KB){
@@ -1115,16 +1224,37 @@
           }
           if(matched) break;
         }
-        if(!matched) setTimeout(()=> appendMessage('Thanks — we will review and contact you. For urgent matters use WhatsApp.', 'bot'), 700);
+        if(!matched) setTimeout(()=> appendMessage('Thank you. We will review and respond. For urgent matters please call or WhatsApp on the numbers given.', 'bot'), 700);
+      }
+
+      sendBtn.addEventListener('click', ()=> {
+        const v = input.value;
+        if(!v.trim()) return;
+        handleQuery(v);
+        input.value = '';
       });
       input.addEventListener('keydown', (e)=> { if(e.key === 'Enter') { e.preventDefault(); sendBtn.click(); } });
 
-      // removed auto-open to avoid intrusive behavior
+      // quick chips click
+      body.addEventListener('click', (e)=>{
+        const chip = e.target.closest('.chip');
+        if(!chip) return;
+        const type = chip.dataset.suggest || '';
+        let text = '';
+        if(type === 'book') text = 'I want to book a consultation.';
+        else if(type === 'fees') text = 'What are your fees?';
+        else if(type === 'docs') text = 'Which documents are required?';
+        if(text){
+          input.value = text;
+          sendBtn.click();
+        }
+      });
     })();
 
     // small safety
     $$('a[href^="tel:"], a[href^="mailto:"]').forEach(a=>a.setAttribute('rel','noopener'));
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+    if(yearEl) yearEl.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
