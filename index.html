@@ -411,39 +411,182 @@
     </div>
 
     <main id="main-content" tabindex="-1">
-      <!-- HERO -->
-      <section class="hero" data-reveal>
-        <div class="hero-card" data-reveal>
-          <span class="eyebrow">Trusted in Indian Courts</span>
-          <h1 class="headline">Practical counsel for Family, Criminal & Civil disputes.</h1>
-          <p class="lead">Confidential, strategic and results-focused representation across Allahabad and Uttar Pradesh.</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="contact.html" target="_blank" rel="noopener">Book Consultation</a>
-            <a class="btn btn--ghost" href="#practice">Explore Practice</a>
-          </div>
-          <p class="muted" style="margin-top:12px;font-size:.92rem;color:var(--muted)"><strong>+91 94541 83793</strong> · <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a></p>
-        </div>
+     <!-- HERO (replace existing hero section with this block) -->
+<section class="hero" data-reveal aria-label="Hero — The Justice Firm">
+  <style>
+    /* HERO — Premium redesign */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 22px;
+      align-items: start;
+      margin: 18px 0;
+      padding: 26px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      color: var(--text);
+      background-image: url('hero_bg.jpg');
+      background-size: cover;
+      background-position: center center;
+      box-shadow: 0 24px 90px rgba(2,6,20,0.6);
+    }
 
-        <aside class="panel" data-reveal aria-labelledby="nextSlotLabel">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-            <div>
-              <h4 id="nextSlotLabel" style="margin:0;color:var(--ink)">Next Available Slot</h4>
-              <div class="muted" id="nextSlot" style="margin-top:6px">Loading…</div>
-            </div>
-            <div id="clock-nav">--:--:-- IST</div>
-          </div>
+    /* dark overlay to ensure text visibility */
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background: linear-gradient(180deg, rgba(3,8,20,0.55), rgba(7,12,24,0.72));
+      z-index:0;
+      pointer-events:none;
+    }
 
-          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn btn--ghost" id="requestSlotBtn" type="button">Request Slot</button>
-            <a class="btn btn--ghost" href="contact.html" target="_blank" rel="noopener">Contact</a>
-          </div>
+    .hero-card, .panel {
+      position: relative;
+      z-index: 2;
+    }
 
-          <div id="calendar-section" aria-label="Court calendar">
-            <h4 style="margin:8px 0 6px 0;color:var(--ink)">Court Calendar</h4>
-            <div id="calendar" role="table" aria-live="polite" aria-atomic="true"></div>
-          </div>
-        </aside>
-      </section>
+    /* hero-card: glass / light surface so headline is crisp */
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,252,255,0.96));
+      color: var(--ink);
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(7,12,25,0.12);
+      border: 1px solid rgba(6,12,28,0.06);
+      max-width: 800px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-weight:700;
+      font-size:.88rem;
+      padding:8px 12px;
+      border-radius:999px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#fff;
+      letter-spacing:0.02em;
+    }
+
+    .headline{
+      font-family: 'Merriweather', serif;
+      font-size: 30px;
+      line-height: 1.12;
+      margin: 12px 0 8px;
+      color: var(--ink);
+      font-weight:700;
+      letter-spacing:-0.01em;
+    }
+
+    .headline::after{
+      content:"";
+      display:block;
+      width:56px;
+      height:4px;
+      background:var(--gold);
+      border-radius:4px;
+      margin-top:10px;
+      box-shadow: 0 6px 18px rgba(182,139,23,0.12);
+    }
+
+    .lead{
+      margin-top:12px;
+      color:var(--muted-dark);
+      font-size:1rem;
+    }
+
+    .hero-cta { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; align-items:center; }
+
+    /* Buttons (use existing btn classes but improve sizes) */
+    .btn { font-weight:700; padding:10px 14px; border-radius:12px; cursor:pointer; border:0; }
+    .btn-primary {
+      background: linear-gradient(180deg,var(--accent),var(--accent-2));
+      color:#fff;
+      box-shadow: 0 12px 36px rgba(17,65,168,0.16);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 22px 56px rgba(17,65,168,0.22); }
+    .btn--ghost {
+      background: transparent;
+      border: 1px solid rgba(8,12,20,0.06);
+      color: var(--ink);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero .muted.linkline {
+      margin-top:12px;
+      font-size:.95rem;
+      color:var(--muted-dark);
+    }
+    .hero .muted.linkline a { color: var(--accent); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+    /* Aside panel: compact, light, readable */
+    .panel {
+      background: linear-gradient(180deg,#fff,#fbfdff);
+      padding:18px;
+      border-radius:12px;
+      box-shadow: var(--shadow-2);
+      color: var(--ink);
+      min-width:240px;
+    }
+    #clock-nav { font-weight:700; color:var(--gold); font-size:0.95rem; text-align:right; }
+
+    #calendar-section { background: linear-gradient(180deg,#fff,#fbfdff); border-radius:10px; padding:10px; margin-top:12px; box-shadow:0 12px 36px rgba(7,12,25,0.03); }
+    #calendar { width:100%; overflow-x:auto; font-size:.95rem; color:var(--muted-dark); }
+    #calendar table caption { font-weight:700; color:var(--ink); }
+
+    /* Responsiveness */
+    @media (max-width:1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:14px} }
+    @media (max-width:720px){
+      .hero { grid-template-columns: 1fr; padding:20px; gap:12px; }
+      .hero-card { padding:20px; }
+      .headline { font-size:22px; }
+      .panel { order:2; width:100%; max-width:none; }
+      .hero-card { order:1; width:100%; }
+      .hero-cta { justify-content:flex-start; }
+    }
+
+    /* small helpers */
+    .eyebrow small { opacity:0.9; color:rgba(255,255,255,0.92); }
+  </style>
+
+  <div class="hero-card" data-reveal>
+    <span class="eyebrow" aria-hidden="true">Trusted in Indian Courts</span>
+
+    <h1 class="headline">Practical counsel for Family, Criminal &amp; Civil disputes.</h1>
+
+    <p class="lead">Confidential, strategic and results-focused representation across Allahabad and Uttar Pradesh.</p>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="contact.html" target="_blank" rel="noopener">Book Consultation</a>
+      <a class="btn btn--ghost" href="#practice">Explore Practice</a>
+    </div>
+
+    <p class="muted linkline" style="margin-top:12px;font-size:.95rem">
+      <strong style="color:var(--ink);font-weight:700">+91 94541 83793</strong> · <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
+    </p>
+  </div>
+
+  <aside class="panel" data-reveal aria-labelledby="nextSlotLabel">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <div>
+        <h4 id="nextSlotLabel" style="margin:0;color:var(--ink);font-size:1rem">Next Available Slot</h4>
+        <div class="muted" id="nextSlot" style="margin-top:6px;color:var(--muted-dark)">Loading…</div>
+      </div>
+      <div id="clock-nav" aria-live="polite">--:--:-- IST</div>
+    </div>
+
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn--ghost" id="requestSlotBtn" type="button" style="min-width:110px">Request Slot</button>
+      <a class="btn btn--ghost" href="contact.html" target="_blank" rel="noopener" style="min-width:110px">Contact</a>
+    </div>
+
+    <div id="calendar-section" aria-label="Court calendar">
+      <h4 style="margin:8px 0 6px 0;color:var(--ink);font-size:.98rem">Court Calendar</h4>
+      <div id="calendar" role="table" aria-live="polite" aria-atomic="true"></div>
+    </div>
+  </aside>
+</section>
 
      <!-- ABOUT / PHILOSOPHY -->
 <section id="about" aria-labelledby="aboutHeading" class="card" style="padding:22px;">
