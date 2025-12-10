@@ -347,36 +347,136 @@
   </aside>
 </section>
 
-     <!-- ABOUT / PHILOSOPHY -->
-<section id="about" aria-labelledby="aboutHeading" class="card" style="padding:22px;">
-  <h2 id="aboutHeading">About Us — Clarity, Compassion, and Discipline</h2>
+     <!-- ABOUT / PHILOSOPHY — premium replacement -->
+<section id="about" aria-labelledby="aboutHeading" class="card about-card" style="padding:28px;">
+  <style>
+    /* Local styles for About section (keeps global variables) */
+    .about-card {
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      color: var(--ink);
+      border-radius: 14px;
+      box-shadow: var(--shadow-2);
+      border: 1px solid rgba(6,12,28,0.04);
+      padding: 28px;
+    }
+    .about-head {
+      display:flex;
+      align-items:flex-end;
+      gap:14px;
+      margin-bottom:10px;
+    }
+    .about-head h2 {
+      font-family: "Merriweather", serif;
+      font-size:1.28rem;
+      line-height:1.05;
+      margin:0;
+      color:var(--ink);
+      font-weight:700;
+    }
+    .about-accent {
+      height:6px;
+      width:72px;
+      background: linear-gradient(90deg, var(--gold), rgba(182,139,23,0.85));
+      border-radius:6px;
+      box-shadow: 0 8px 20px rgba(182,139,23,0.08);
+      margin-left:6px;
+    }
 
-  <!-- this will now use var(--muted-dark) from CSS above -->
-  <p class="muted" style="margin-top:8px">
+    .about-intro { margin-top:8px; color:var(--muted-dark); font-size:1rem; line-height:1.6; }
+
+    .about-grid {
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:20px;
+      align-items:start;
+      margin-top:16px;
+    }
+
+    .about-body p { margin:0 0 12px 0; color:var(--ink); font-size:1rem; line-height:1.6; }
+
+    .about-list {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:8px;
+    }
+    .about-list li {
+      list-style:none;
+      background:#f6f9ff;
+      border:1px solid #eef4ff;
+      padding:8px 12px;
+      border-radius:10px;
+      color:var(--muted-dark);
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      max-width:fit-content;
+    }
+    .about-list li::before{
+      content: "✔";
+      font-weight:700;
+      color: var(--accent);
+      font-size:0.85rem;
+      display:inline-block;
+      width:18px;
+      text-align:center;
+      margin-right:6px;
+    }
+
+    aside.quick-facts {
+      background: linear-gradient(180deg,#fff,#fcfdff);
+      padding:14px;
+      border-radius:12px;
+      box-shadow: 0 10px 30px rgba(7,12,25,0.04);
+      border:1px solid rgba(6,12,28,0.04);
+    }
+    .quick-facts strong { display:block; margin-bottom:8px; color:var(--ink); font-weight:700; }
+    .quick-facts .meta { color:var(--muted-dark); font-size:.95rem; line-height:1.45; }
+
+    /* small responsive tweaks */
+    @media (max-width: 920px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-list li { max-width:100%; display:flex; }
+    }
+  </style>
+
+  <div class="about-head">
+    <h2 id="aboutHeading">About Us — Clarity, Compassion, and Discipline</h2>
+    <div class="about-accent" aria-hidden="true"></div>
+  </div>
+
+  <p class="about-intro muted-dark">
     We are a boutique law practice based in Allahabad (Prayagraj), combining rigorous legal analysis with humane client care.
     Our approach balances strategic clarity, empathetic client communication, and disciplined courtroom advocacy.
   </p>
 
-  <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px;align-items:start">
-    <div>
-      <!-- inherits var(--ink) from #about now -->
-      <p style="margin:0 0 10px">
-        Our mission: to help clients resolve disputes efficiently while protecting rights and dignity.
-        We prefer negotiated settlements when appropriate, and yet we are prepared to litigate vigorously when justice requires it.
+  <div class="about-grid">
+    <div class="about-body">
+      <p>
+        <strong style="font-weight:700;color:var(--ink)">Our mission:</strong>
+        To help clients resolve disputes efficiently while protecting rights and dignity. We prefer negotiated settlements where appropriate, and are prepared to litigate vigorously when justice demands it.
       </p>
 
-      <!-- remove old color:var(--muted); let CSS handle it -->
-      <ul style="margin-top:10px;">
+      <ul class="about-list" aria-hidden="false">
         <li>Practical advice tailored to Indian courts and procedures</li>
-        <li>Clear fee estimates and responsive communication</li>
-        <li>Support through each procedural step — paperwork, hearing prep and post-order compliance</li>
+        <li>Clear fee estimates and transparent communication</li>
+        <li>Support through each procedural step — paperwork, hearing preparation and post-order compliance</li>
       </ul>
     </div>
 
-    <aside style="background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:10px;box-shadow:var(--shadow-2)">
-      <strong style="display:block;margin-bottom:8px;color:var(--ink)">Quick facts</strong>
-      <div class="muted" style="color:var(--muted-dark)">
-        Founded: 2010 · Principal Counsel: Adv. Ganga S. Shastri · Practice: Family, Criminal, Civil & Constitutional advisory
+    <aside class="quick-facts" aria-labelledby="quickFactsLabel">
+      <strong id="quickFactsLabel">Quick facts</strong>
+      <div class="meta">
+        <div><strong>Founded:</strong> 2010</div>
+        <div style="margin-top:6px"><strong>Principal Counsel:</strong> Adv. Ganga S. Shastri</div>
+        <div style="margin-top:6px"><strong>Practice:</strong> Family, Criminal, Civil &amp; Constitutional advisory</div>
+      </div>
+
+      <!-- optional small CTA inside aside -->
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:flex-start">
+        <a class="btn btn-primary" href="contact.html" style="padding:8px 12px;border-radius:10px;">Book Consultation</a>
+        <a class="btn btn--ghost" href="#practice" style="padding:8px 12px;border-radius:10px;">Learn more</a>
       </div>
     </aside>
   </div>
