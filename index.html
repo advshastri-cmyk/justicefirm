@@ -51,11 +51,30 @@
     .nav-links{display:flex;gap:12px;align-items:center}
     .nav-links a{color:var(--muted);font-weight:600;padding:8px 10px;border-radius:8px}
     .nav-links a.cta{background:var(--accent);color:#fff}
-    .nav-toggle{display:none;border:0;font-size:22px;background:none;color:var(--ink);padding:6px;border-radius:8px}
+    .nav-toggle{
+      display:none; border:0; font-size:20px; background:transparent; color:var(--ink);
+      padding:6px; border-radius:8px;
+    }
+
+    /* small-screen round toggle */
+    .nav-toggle.round {
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      box-shadow:var(--shadow-1);
+      border:1px solid rgba(7,12,25,0.04);
+      transition:transform .18s var(--easing),box-shadow .18s var(--easing);
+    }
+    .nav-toggle.round:focus { box-shadow: var(--btn-focus); outline: none; }
+    .nav-toggle.round:hover { transform:scale(1.03); }
 
     #clock{color:var(--gold);font-weight:700;font-size:.95rem}
 
-    /* HERO — uses hero_bg.jpg */
+    /* HERO */
     .hero{
       display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start;margin:12px 0;position:relative;
       background-image: url('hero_bg.jpg');
@@ -90,7 +109,7 @@
     .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2);transition:transform 320ms var(--easing),box-shadow 320ms var(--easing)}
     .card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(7,12,25,0.10)}
 
-    /* Practice cards with thumbnails */
+    /* Practices */
     .practice-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:16px; }
     .practice-card { border-radius:14px; overflow:hidden; display:flex; gap:0; align-items:stretch; box-shadow:var(--shadow-2); background:#fff; }
     .practice-thumb { width:140px; min-width:140px; height:140px; object-fit:cover; display:block }
@@ -100,7 +119,7 @@
     .pay-box{background:var(--card);padding:18px;text-align:center;border-radius:12px;box-shadow:var(--shadow-2)}
     .pay-box img{width:140px;height:140px;border-radius:10px;border:2px solid var(--gold);object-fit:cover}
 
-    /* titanium cards: tightened styling */
+    /* titanium cards */
     .titanium-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
     .titanium-card, .bank-titanium { border-radius:14px; color:#e8f3ff; padding:18px; min-height:220px; display:flex; flex-direction:column; gap:12px; box-shadow: var(--shadow-2); }
     .titanium-card h4, .bank-titanium h4 { margin:0; color:#e6f2ff; font-family:Merriweather,serif; }
@@ -200,6 +219,7 @@
     @media(max-width:1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:12px} .dict-layout{grid-template-columns:1fr} }
     @media(max-width:720px){
       .nav-toggle{display:block}
+      .nav-toggle.round{display:flex}
       .nav-links{display:none}
       .hero{grid-template-columns:1fr;gap:12px;padding:20px}
       .practice-thumb{min-width:120px;width:120px;height:120px}
@@ -235,7 +255,7 @@
 
       <nav id="main-nav" class="nav-links" role="navigation" aria-label="Main">
         <a href="#practice">Practice</a>
-        <a href="#about">About</a>
+        <!-- about link removed -->
         <a href="#team">Team</a>
         <a href="#articles">Articles</a>
         <a href="#dictionary">Dictionary</a>
@@ -244,10 +264,13 @@
         <span id="clock" aria-live="polite" style="margin-left:8px"></span>
       </nav>
 
-      <button class="nav-toggle btn btn--icon" id="navToggle" aria-expanded="false" aria-controls="mobileNavPanel" aria-label="Open menu">☰</button>
+      <!-- round mobile toggle -->
+      <button class="nav-toggle round btn btn--icon" id="navToggle" aria-expanded="false" aria-controls="mobileNavPanel" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /><path d="M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      </button>
     </header>
 
-    <!-- Mobile nav panel (hidden initially) -->
+    <!-- Mobile nav panel -->
     <div id="mobileNavPanel" class="mobile-nav-panel" aria-hidden="true">
       <div style="display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:12px">
         <div class="logo" style="width:44px;height:44px">TJ</div>
@@ -255,7 +278,6 @@
         <button class="close" id="mobileNavClose" aria-label="Close menu" style="margin-left:auto">✕</button>
       </div>
       <a href="#practice" class="mobile-link">Practice</a>
-      <a href="#about" class="mobile-link">About</a>
       <a href="#team" class="mobile-link">Team</a>
       <a href="#articles" class="mobile-link">Articles</a>
       <a href="#dictionary" class="mobile-link">Dictionary</a>
@@ -269,6 +291,7 @@
     </div>
 
     <main id="main-content" tabindex="-1">
+
       <!-- HERO -->
       <section class="hero" data-reveal>
         <div class="hero-card" data-reveal>
@@ -350,622 +373,119 @@
         </div>
       </section>
 
-      <!-- ABOUT -->
-      <section id="about">
-        <h2>About Adv. Ganga Shankar Shastri</h2>
-        <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;align-items:flex-start">
-          <div class="placeholder-card" data-reveal style="min-width:240px;max-width:240px;border-radius:12px;background:#fff;padding:8px;box-shadow:var(--shadow-2)">
-            <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri — Founder" style="width:100%;height:auto;border-radius:8px;object-fit:cover" onerror="this.parentElement.innerHTML='[Image for S Sha] 240px x 240px'">
-          </div>
+      <!-- TEAM -->
+      <!-- ========================= OUR TEAM (PREMIUM + SOBER PARAGRAPH MODAL) ========================= -->
+      <section id="team" aria-labelledby="teamHeading" class="team-section-premium">
+        <div class="wrap">
+          <header class="team-header">
+            <h2 id="teamHeading">Our Team</h2>
+            <p class="muted">Experienced advocates &amp; legal consultants.</p>
+          </header>
 
-          <div style="flex:1;min-width:220px" data-reveal>
-            <p>With over 15 years of practice before the Allahabad High Court and district courts, Adv. Ganga Shankar Shastri is known for his clarity, courtroom preparation and practical client-focused representation.</p>
-            <p class="muted">We emphasise confidentiality, balanced negotiation and strong litigation strategy.</p>
-            <a class="btn btn--primary" href="#contact" style="margin-top:12px">Book Consultation</a>
+          <div class="team-grid" role="list" aria-label="Our team members">
+
+            <!-- GANGA -->
+            <article class="member" role="listitem" tabindex="0"
+              data-name="Adv. Ganga Shankar Shastri"
+              data-bio='{
+                "title":"Adv. Ganga Shankar Shastri",
+                "subtitle":"Founder & Lead Counsel",
+                "quote":"Justice is served best when clarity meets conscience.",
+                "content":"Adv. Ganga Shankar Shastri holds a Bachelor\\'s degree in Information Technology and a Bachelor\\'s degree in Law, blending analytical precision with deep legal insight.\\n\\nWith over 15 years of experience in law, he has guided complex matters before the Allahabad High Court with clarity, discipline, and unwavering composure.\\n\\nHe is the author of the respected Supreme Court judgment compilation series \\\"Nirnay Dhara\\\", known for its scholarly depth and practical relevance. Admired for his humility, principled advocacy, and steady judgement, he remains a trusted counsel for clients facing high-stakes litigation."
+              }'>
+              <figure class="member-figure" aria-hidden="true">
+                <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="50% 22%">
+                <div class="initials" aria-hidden="true">GS</div>
+                <div class="sheen" aria-hidden="true"></div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Ganga Shankar Shastri</h3>
+                <p class="role">Founder &amp; Lead Counsel</p>
+                <p class="meta">15+ years • Allahabad High Court</p>
+              </div>
+            </article>
+
+            <!-- MINAKSHI -->
+            <article class="member" role="listitem" tabindex="0"
+              data-name="Adv. Minakshi Shastri"
+              data-bio='{
+                "title":"Adv. Minakshi Shastri",
+                "subtitle":"Senior Associate – Civil & Corporate",
+                "quote":"Clarity, compassion, and discipline — the pillars of enduring advocacy.",
+                "content":"Adv. Minakshi Shastri holds a Master of Laws (LL.M.) and is a postgraduate of the Indian Institute of Human Rights.\\n\\nShe combines academic depth with practical courtroom skill, shaping strategies marked by precision and compassion.\\n\\nRecognised for her calm authority, meticulous preparation, and empathetic client guidance, she brings unwavering commitment to every civil and corporate matter she leads."
+              }'>
+              <figure class="member-figure" aria-hidden="true">
+                <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="50% 20%">
+                <div class="initials" aria-hidden="true">MS</div>
+                <div class="sheen" aria-hidden="true"></div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Minakshi Shastri</h3>
+                <p class="role">Senior Associate – Civil &amp; Corporate</p>
+                <p class="meta">Property &amp; Corporate Litigation</p>
+              </div>
+            </article>
+
+            <!-- SHIVANI -->
+            <article class="member" role="listitem" tabindex="0"
+              data-name="Adv. Shivani Shastri"
+              data-bio='{
+                "title":"Adv. Shivani Shastri",
+                "subtitle":"Consulting Advocate – Constitutional Affairs",
+                "quote":"Progress in law begins with the courage to question, learn, and refine.",
+                "content":"Adv. Shivani Shastri holds a Master of Laws (LL.M.) and is currently pursuing her Ph.D. to deepen her research in constitutional studies.\\n\\nHer scholarly approach, analytical discipline, and commitment to continued learning distinguish her among emerging legal minds.\\n\\nKnown for her clarity of thought and respectful professionalism, she contributes refined research, thoughtful advisory work, and principled perspective to every constitutional matter she engages with."
+              }'>
+              <figure class="member-figure" aria-hidden="true">
+                <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="50% 18%">
+                <div class="initials" aria-hidden="true">SS</div>
+                <div class="sheen" aria-hidden="true"></div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Shivani Shastri</h3>
+                <p class="role">Consulting Advocate – Constitutional Affairs</p>
+                <p class="meta">Research &amp; Advisory</p>
+              </div>
+            </article>
+
+            <!-- SANJAY -->
+            <article class="member" role="listitem" tabindex="0"
+              data-name="Adv. Sanjay Kumar"
+              data-bio="">
+              <figure class="member-figure" aria-hidden="true">
+                <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="50% 20%">
+                <div class="initials" aria-hidden="true">SK</div>
+                <div class="sheen" aria-hidden="true"></div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Sanjay Kumar</h3>
+                <p class="role">Associate Counsel – Criminal Defence</p>
+                <p class="meta">Photo coming soon</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="profileModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
+          <div class="modal-backdrop" data-close="true"></div>
+          <div class="modal-panel" role="document" aria-live="polite">
+            <button class="modal-close" aria-label="Close profile" data-close="true">&times;</button>
+            <div class="modal-content">
+              <header class="modal-head">
+                <h3 id="modalTitle"></h3>
+                <p class="modal-sub" id="modalSub"></p>
+              </header>
+              <blockquote class="modal-quote" id="modalQuote" aria-hidden="true"></blockquote>
+              <section id="modalDesc" class="modal-body"></section>
+              <footer class="modal-foot">
+                <button class="btn btn-primary" data-close="true">Close</button>
+              </footer>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- TEAM -->
-      <!-- ========================= OUR TEAM (PREMIUM + SOBER PARAGRAPH MODAL) ========================= -->
-<section id="team" aria-labelledby="teamHeading" class="team-section-premium">
-  <div class="wrap">
-    <header class="team-header">
-      <h2 id="teamHeading">Our Team</h2>
-      <p class="muted">Experienced advocates &amp; legal consultants.</p>
-    </header>
-
-    <div class="team-grid" role="list" aria-label="Our team members">
-
-      <!-- ================= GANGA SHANKAR SHASTRI ================= -->
-      <article class="member" role="listitem" tabindex="0"
-        data-name="Adv. Ganga Shankar Shastri"
-        data-bio='{
-          "title": "Adv. Ganga Shankar Shastri",
-          "subtitle": "Founder & Lead Counsel",
-          "quote": "Justice is served best when clarity meets conscience.",
-          "content": "Adv. Ganga Shankar Shastri holds a Bachelor\\'s degree in Information Technology and a Bachelor\\'s degree in Law, blending analytical precision with deep legal insight.\\n\\nWith over 15 years of experience in law, he has guided complex matters before the Allahabad High Court with clarity, discipline, and unwavering composure.\\n\\nHe is the author of the respected Supreme Court judgment compilation series \\'Nirnay Dhara\\', known for its scholarly depth and practical relevance. Admired for his humility, principled advocacy, and steady judgement, he remains a trusted counsel for clients facing high-stakes litigation."
-        }'>
-
-        <figure class="member-figure" aria-hidden="true">
-          <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="50% 22%">
-          <div class="initials" aria-hidden="true">GS</div>
-          <div class="sheen" aria-hidden="true"></div>
-        </figure>
-
-        <div class="bio">
-          <h3>Adv. Ganga Shankar Shastri</h3>
-          <p class="role">Founder &amp; Lead Counsel</p>
-          <p class="meta">15+ years • Allahabad High Court</p>
-        </div>
-      </article>
-
-      <!-- ================= MINAKSHI SHASTRI ================= -->
-      <article class="member" role="listitem" tabindex="0"
-        data-name="Adv. Minakshi Shastri"
-        data-bio='{
-          "title": "Adv. Minakshi Shastri",
-          "subtitle": "Senior Associate – Civil & Corporate",
-          "quote": "Clarity, compassion, and discipline — the pillars of enduring advocacy.",
-          "content": "Adv. Minakshi Shastri holds a Master of Laws (LL.M.) and is a postgraduate of the Indian Institute of Human Rights.\\n\\nShe combines academic depth with practical courtroom skill, shaping strategies marked by precision and compassion.\\n\\nRecognised for her calm authority, meticulous preparation, and empathetic client guidance, she brings unwavering commitment to every civil and corporate matter she leads."
-        }'>
-
-        <figure class="member-figure" aria-hidden="true">
-          <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="50% 20%">
-          <div class="initials" aria-hidden="true">MS</div>
-          <div class="sheen" aria-hidden="true"></div>
-        </figure>
-
-        <div class="bio">
-          <h3>Adv. Minakshi Shastri</h3>
-          <p class="role">Senior Associate – Civil &amp; Corporate</p>
-          <p class="meta">Property &amp; Corporate Litigation</p>
-        </div>
-      </article>
-
-      <!-- ================= SHIVANI SHASTRI ================= -->
-      <article class="member" role="listitem" tabindex="0"
-        data-name="Adv. Shivani Shastri"
-        data-bio='{
-          "title": "Adv. Shivani Shastri",
-          "subtitle": "Consulting Advocate – Constitutional Affairs",
-          "quote": "Progress in law begins with the courage to question, learn, and refine.",
-          "content": "Adv. Shivani Shastri holds a Master of Laws (LL.M.) and is currently pursuing her Ph.D. to deepen her research in constitutional studies.\\n\\nHer scholarly approach, analytical discipline, and commitment to continued learning distinguish her among emerging legal minds.\\n\\nKnown for her clarity of thought and respectful professionalism, she contributes refined research, thoughtful advisory work, and principled perspective to every constitutional matter she engages with."
-        }'>
-
-        <figure class="member-figure" aria-hidden="true">
-          <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="50% 18%">
-          <div class="initials" aria-hidden="true">SS</div>
-          <div class="sheen" aria-hidden="true"></div>
-        </figure>
-
-        <div class="bio">
-          <h3>Adv. Shivani Shastri</h3>
-          <p class="role">Consulting Advocate – Constitutional Affairs</p>
-          <p class="meta">Research &amp; Advisory</p>
-        </div>
-      </article>
-
-      <!-- ================= SANJAY KUMAR (no bio yet) ================= -->
-      <article class="member" role="listitem" tabindex="0"
-        data-name="Adv. Sanjay Kumar"
-        data-bio="">
-        <figure class="member-figure" aria-hidden="true">
-          <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="50% 20%">
-          <div class="initials" aria-hidden="true">SK</div>
-          <div class="sheen" aria-hidden="true"></div>
-        </figure>
-
-        <div class="bio">
-          <h3>Adv. Sanjay Kumar</h3>
-          <p class="role">Associate Counsel – Criminal Defence</p>
-          <p class="meta">Photo coming soon</p>
-        </div>
-      </article>
-
-    </div>
-  </div>
-
-  <!-- ================= MODAL ================= -->
-  <div id="profileModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
-    <div class="modal-backdrop" data-close="true"></div>
-
-    <div class="modal-panel" role="document" aria-live="polite">
-      <button class="modal-close" aria-label="Close profile" data-close="true">&times;</button>
-
-      <div class="modal-content">
-        <header class="modal-head">
-          <h3 id="modalTitle"></h3>
-          <p class="modal-sub" id="modalSub"></p>
-        </header>
-
-        <blockquote class="modal-quote" id="modalQuote" aria-hidden="true"></blockquote>
-
-        <section id="modalDesc" class="modal-body"></section>
-
-        <footer class="modal-foot">
-          <button class="btn btn-primary" data-close="true">Close</button>
-        </footer>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= SCRIPT ================= -->
-  <script>
-    (function () {
-      /* ---------------- Utilities ---------------- */
-      function getInitials(name) {
-        if (!name) return '';
-        const parts = name.trim().split(/\s+/).filter(Boolean);
-        if (parts.length === 1) return parts[0].slice(0,2).toUpperCase();
-        return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-      }
-
-      function safeParseJSON(str) {
-        if (!str) return null;
-        try { return JSON.parse(str); }
-        catch (e) { return null; }
-      }
-
-      /* ---------------- Image fallback & focus handling ---------------- */
-      document.querySelectorAll('.member').forEach(member => {
-        const fig = member.querySelector('.member-figure');
-        const img = fig && fig.querySelector('img');
-        const initialsEl = fig.querySelector('.initials');
-        const name = member.getAttribute('data-name') || member.querySelector('h3')?.textContent || '';
-
-        if (initialsEl) initialsEl.textContent = getInitials(name);
-
-        if (!img) {
-          if (initialsEl) initialsEl.style.display = 'grid';
-          return;
-        }
-
-        // respect data-focus
-        const focus = img.getAttribute('data-focus');
-        img.style.objectFit = 'cover';
-        img.style.objectPosition = focus || 'center center';
-
-        function update() {
-          if (img.complete && img.naturalWidth && img.naturalWidth > 0) {
-            img.style.display = 'block';
-            if (initialsEl) initialsEl.style.display = 'none';
-          } else {
-            img.style.display = 'none';
-            if (initialsEl) initialsEl.style.display = 'grid';
-          }
-        }
-
-        img.addEventListener('load', update);
-        img.addEventListener('error', update);
-        setTimeout(update, 60);
-      });
-
-      /* ---------------- Reveal & pointer parallax (degrade for reduced motion) ---------------- */
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!prefersReduced && 'IntersectionObserver' in window) {
-        const obs = new IntersectionObserver((entries, o) => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              e.target.classList.add('in-view');
-              o.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.16 });
-        document.querySelectorAll('.member').forEach(m => obs.observe(m));
-      } else {
-        document.querySelectorAll('.member').forEach(m => m.classList.add('in-view'));
-      }
-
-      if (window.matchMedia('(pointer: fine)').matches && !prefersReduced) {
-        document.querySelectorAll('.member').forEach(member => {
-          const img = member.querySelector('.member-figure img');
-
-          function onMove(e) {
-            const rect = member.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
-            const dx = (e.clientX - cx) / rect.width;
-            const dy = (e.clientY - cy) / rect.height;
-            const tx = dx * 8;
-            const ty = dy * 8;
-            const rx = dy * -2.8;
-            const ry = dx * 5;
-
-            if (img && img.style.display !== 'none') {
-              img.style.transform = `translate(${tx}px, ${ty}px) scale(1.06) rotateX(${rx}deg) rotateY(${ry}deg)`;
-            }
-            member.style.transform = `translateY(-6px) rotateX(${rx / 6}deg) rotateY(${ry / 8}deg)`;
-          }
-
-          function onLeave() {
-            const imgEl = member.querySelector('.member-figure img');
-            if (imgEl) imgEl.style.transform = '';
-            member.style.transform = '';
-          }
-
-          member.addEventListener('pointermove', onMove);
-          member.addEventListener('pointerleave', onLeave);
-          member.addEventListener('pointercancel', onLeave);
-          member.addEventListener('blur', onLeave);
-        });
-      }
-
-      /* ---------------- Accessible modal (paragraphs + focus trap) ---------------- */
-      const modal = document.getElementById('profileModal');
-      const modalPanel = modal.querySelector('.modal-panel');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalSub = document.getElementById('modalSub');
-      const modalBody = document.getElementById('modalDesc');
-      const modalQuote = document.getElementById('modalQuote');
-      let lastFocused = null;
-
-      // make innerHTML paragraphs from double-linebreaks
-      function contentToParagraphs(text) {
-        if (!text) return '';
-        return text
-          .split(/\n\s*\n/) // split on blank line
-          .map(p => `<p>${escapeHtml(p.trim())}</p>`)
-          .join('');
-      }
-
-      // simple HTML escape to be safe
-      function escapeHtml(str) {
-        return str.replace(/[&<>"']/g, function (m) {
-          return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;' })[m];
-        });
-      }
-
-      // Focus trap implementation (robust enough for modal)
-      let focusable = [];
-      function trapFocus(container) {
-        focusable = Array.from(container.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'))
-          .filter(n => n.offsetParent !== null);
-        if (focusable.length === 0) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-
-        function handleKey(e) {
-          if (e.key === 'Tab') {
-            if (e.shiftKey && document.activeElement === first) {
-              e.preventDefault();
-              last.focus();
-            } else if (!e.shiftKey && document.activeElement === last) {
-              e.preventDefault();
-              first.focus();
-            }
-          } else if (e.key === 'Escape') {
-            closeModal();
-          }
-        }
-        container.addEventListener('keydown', handleKey);
-        // store handler so we can remove later
-        container._trapHandler = handleKey;
-      }
-      function releaseTrap(container) {
-        if (container && container._trapHandler) {
-          container.removeEventListener('keydown', container._trapHandler);
-          delete container._trapHandler;
-        }
-      }
-
-      function openModal(data, opener) {
-        lastFocused = opener || document.activeElement;
-        modalTitle.textContent = data.title || '';
-        modalSub.textContent = data.subtitle || '';
-        modalQuote.textContent = data.quote || '';
-        modalQuote.style.display = data.quote ? 'block' : 'none';
-        modalBody.innerHTML = contentToParagraphs(data.content || '');
-        modal.removeAttribute('hidden');
-        document.documentElement.style.overflow = 'hidden';
-        setTimeout(() => { // allow CSS to settle then focus
-          const focusTarget = modal.querySelector('.modal-close') || modal.querySelector('button, [tabindex]');
-          if (focusTarget) focusTarget.focus();
-          trapFocus(modal);
-        }, 50);
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-      }
-
-      function closeModal() {
-        modal.classList.remove('open');
-        modal.setAttribute('hidden', '');
-        releaseTrap(modal);
-        document.documentElement.style.overflow = '';
-        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-      }
-
-      // open on click / keyboard
-      document.querySelectorAll('.member').forEach(member => {
-        member.addEventListener('click', (e) => {
-          const raw = member.getAttribute('data-bio');
-          const data = safeParseJSON(raw);
-          if (data) openModal(data, member);
-        });
-        member.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            const raw = member.getAttribute('data-bio');
-            const data = safeParseJSON(raw);
-            if (data) openModal(data, member);
-          }
-        });
-      });
-
-      // close handlers (backdrop, buttons)
-      modal.addEventListener('click', (e) => {
-        if (e.target.matches('[data-close]') || e.target.classList.contains('modal-backdrop')) closeModal();
-      });
-      // close buttons inside modal (marked data-close)
-      modal.querySelectorAll('[data-close]').forEach(btn => {
-        btn.addEventListener('click', closeModal);
-      });
-
-      // escape to close when modal open
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal();
-      });
-
-      // ensure modal hidden state on initial load
-      modal.setAttribute('hidden', '');
-
-    })();
-  </script>
-
-  <!-- ================= STYLES ================= -->
-  <style>
-    /* ---------- Section wrapper & animated background ---------- */
-    .team-section-premium {
-      position: relative;
-      padding: 64px 18px;
-      color: #e9f0fb;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      overflow: hidden;
-      isolation: isolate;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .team-section-premium::before {
-      content: "";
-      position: absolute;
-      inset: -20% -10%;
-      z-index: 0;
-      background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(135,123,255,0.12), transparent 8%),
-        radial-gradient(900px 500px at 90% 80%, rgba(20,255,220,0.04), transparent 8%),
-        linear-gradient(180deg, rgba(3,8,18,0.88) 0%, rgba(8,12,20,0.95) 100%);
-      filter: blur(26px) saturate(1.05);
-      animation: bgShift 12s linear infinite alternate;
-      pointer-events: none;
-    }
-    @keyframes bgShift {
-      0% { transform: translate3d(-1.8%, -1%, 0) rotate(0.01deg); }
-      50% { transform: translate3d(2%, 1.2%, 0) rotate(-0.02deg); }
-      100% { transform: translate3d(-0.8%, -0.4%, 0) rotate(0.01deg); }
-    }
-    .team-section-premium::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,0.01) 1px, transparent 1px);
-      background-size: 12px 12px;
-      opacity: 0.45;
-      mix-blend-mode: overlay;
-    }
-
-    .wrap { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; }
-
-    .team-header { margin-bottom: 26px; }
-    .team-header h2 { margin: 0; color: #fff; font-weight: 700; letter-spacing: -.02em; font-size: 1.95rem; }
-    .team-header .muted { margin: 6px 0 0; color: #98a9c0; font-size: .95rem; }
-
-    /* Grid */
-    .team-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
-    @media (min-width: 720px) { .team-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
-    @media (min-width: 1100px) { .team-grid { grid-template-columns: repeat(4, 1fr); gap: 28px; } }
-
-    /* Card */
-    .member {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      border-radius: 14px;
-      overflow: visible;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.04);
-      box-shadow: 0 8px 30px rgba(2,6,23,0.55);
-      transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .45s;
-      transform-origin: center;
-      min-height: 260px;
-      outline: none;
-      will-change: transform;
-      backface-visibility: hidden;
-    }
-    .member.in-view { transform: translateY(0); opacity: 1; }
-    .member:hover, .member:focus { transform: translateY(-6px); box-shadow: 0 22px 60px rgba(2,8,26,0.78); z-index: 3; cursor: pointer; }
-
-    /* Figure */
-    .member-figure {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/3;
-      overflow: hidden;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(180deg, rgba(10,14,20,0.35), rgba(6,8,14,0.5));
-    }
-    .member-figure img {
-      width: 110%;
-      height: 110%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-      transform: scale(1);
-      transition: transform .9s cubic-bezier(.15,.9,.2,1), filter .7s;
-      filter: contrast(1.01) saturate(.96) brightness(.96);
-      will-change: transform;
-    }
-    .member:hover .member-figure img { transform: scale(1.08); }
-
-    .sheen {
-      pointer-events: none;
-      position: absolute;
-      left: -30%;
-      top: -50%;
-      width: 160%;
-      height: 220%;
-      background: linear-gradient(120deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 20%, rgba(255,255,255,0.0) 50%);
-      transform: rotate(22deg) translateX(-40%);
-      mix-blend-mode: screen;
-      filter: blur(18px) saturate(1.05);
-      transition: transform 1.6s linear, opacity .6s;
-      opacity: 0.12;
-    }
-    .member:hover .sheen { transform: translateX(30%) rotate(22deg); opacity: 0.22; }
-
-    /* Initials fallback */
-    .initials {
-      position: absolute;
-      inset: 0;
-      display: none; /* toggled by JS */
-      place-items: center;
-      font-weight: 700;
-      color: #ffffff;
-      background: linear-gradient(180deg, rgba(34,41,60,0.92), rgba(17,22,34,0.96));
-      font-size: 1.125rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      -webkit-backdrop-filter: blur(6px);
-      backdrop-filter: blur(6px);
-    }
-
-    /* Bio */
-    .bio {
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      justify-content: center;
-      align-items: flex-start;
-      margin-top: 10px;
-    }
-    .bio h3 { margin: 0; font-size: 1rem; color: #fff; line-height: 1.15; }
-    .role { margin: 0; color: #b7c7da; font-size: .9rem; }
-    .meta { margin: 0; color: #8ea4bf; font-size: .82rem; }
-
-    /* subtle glow */
-    .member::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 10%;
-      width: 80%;
-      height: 14px;
-      filter: blur(18px);
-      background: radial-gradient(closest-side, rgba(28,120,255,0.05), transparent 60%);
-      opacity: 0.6;
-      pointer-events: none;
-      transition: opacity .4s;
-    }
-    .member:hover::after { opacity: 1; }
-
-    /* ---------- Modal styles (sober paragraph layout) ---------- */
-    .modal[hidden] { display: none; }
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(2,6,20,0.64);
-      backdrop-filter: blur(6px);
-      transition: opacity .35s ease;
-    }
-    .modal-panel {
-      position: relative;
-      z-index: 3;
-      max-width: 720px;
-      width: calc(100% - 40px);
-      margin: 16px;
-      border-radius: 12px;
-      transform: translateY(10px) scale(.995);
-      transition: transform .36s cubic-bezier(.2,.9,.2,1), opacity .36s;
-      box-shadow: 0 24px 80px rgba(4,8,20,0.75);
-    }
-    .modal.open .modal-panel { transform: translateY(0) scale(1); }
-    .modal-content {
-      background: linear-gradient(180deg, rgba(10,14,22,0.98), rgba(6,8,14,0.99));
-      padding: 22px;
-      color: #eaf3ff;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .modal-close {
-      position: absolute;
-      right: 12px;
-      top: 10px;
-      background: transparent;
-      border: none;
-      color: #cfe6ff;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .modal-close:focus { outline: 2px solid rgba(145,180,255,0.22); border-radius: 6px; }
-
-    .modal-head h3 { margin: 0 0 6px 0; font-size: 1.2rem; color: #fff; }
-    .modal-sub { margin: 0 0 12px 0; color: #9fb0c9; font-size: .95rem; }
-
-    .modal-quote {
-      margin: 8px 0 12px 0;
-      padding-left: 12px;
-      border-left: 3px solid rgba(77,124,255,0.18);
-      color: #cfe2fc;
-      font-style: italic;
-    }
-
-    /* Sober paragraph styling: limited line length, comfortable leading */
-    .modal-body {
-      color: #dfeafc;
-      font-size: 0.98rem;
-      line-height: 1.6;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-    .modal-body p { margin: 0 0 14px 0; text-align: left; opacity: 0.95; }
-
-    .modal-foot { display:flex; justify-content:flex-end; gap:10px; margin-top: 6px; }
-    .btn { border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight:600; }
-    .btn-primary { background: linear-gradient(180deg,#36a0ff,#0d6fe8); color: white; box-shadow: 0 8px 24px rgba(13,111,232,0.18); }
-    .btn-primary:focus { outline: 2px solid rgba(13,111,232,0.22); }
-
-    /* responsive tweaks */
-    @media (max-width: 520px) {
-      .member { min-height: 220px; }
-      .member-figure { aspect-ratio: 16/10; border-radius: 10px; }
-      .modal-panel { width: calc(100% - 24px); margin: 10px; }
-      .modal-content { padding: 16px; }
-      .modal-close { right: 8px; top: 8px; font-size: 22px; }
-      .modal-body { font-size: 0.96rem; line-height: 1.55; }
-    }
-
-    /* reduce motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      .team-section-premium::before, .member-figure img, .member, .sheen, .modal .modal-panel { animation: none !important; transition: none !important; transform: none !important; }
-    }
-  </style>
-</section>
-<!-- ========================= END TEAM SECTION ========================= -->
       <!-- ARTICLES -->
       <section id="articles" aria-labelledby="articlesHeading" style="margin-top:0;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
@@ -1030,8 +550,8 @@
 
       <!-- PAYMENT -->
       <section id="payment">
-        <h2 style="color:#e8f2ff">Secure Payment — Titanium</h2>
-        <p class="muted" style="color:#bfcfe0">Fast, secure payments. Use UPI or bank transfer — receipts available on request.</p>
+        <h2 style="color:var(--ink)">Secure Payment — Titanium</h2>
+        <p class="muted" style="color:#6b7b90">Fast, secure payments. Use UPI or bank transfer — receipts available on request.</p>
 
         <div class="titanium-grid" style="margin-top:18px;align-items:stretch">
           <div class="titanium-card" aria-labelledby="tupi" style="background-image: linear-gradient(180deg, rgba(2,6,10,0.66), rgba(8,12,16,0.66)), url('pay_bg.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,0.04);">
@@ -1243,7 +763,7 @@
     </div>
   </div>
 
-  <!-- Chat widget (no auto-open) -->
+  <!-- Chat widget -->
   <div id="ljf-chat" aria-live="polite" aria-atomic="true" style="position:fixed;left:18px;bottom:22px;z-index:1600">
     <button id="ljf-toggle" class="chat-toggle" aria-expanded="false" aria-label="Open chat" style="width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#052c78,#083b9a);color:#fff;border:0;box-shadow:0 12px 36px rgba(5,44,120,0.18);">
       💬
@@ -1411,6 +931,7 @@
           const action = form.getAttribute('action');
           if (!action || action.indexOf('formspree.io') === -1) {
             showMessage(formId, 'error', 'Form endpoint not set. Please create a form on formspree.io and paste the endpoint into form action.');
+            if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = originalText; }
             return;
           }
           const resp = await fetch(action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' }});
@@ -1446,7 +967,7 @@
       document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-revealed'));
     }
 
-    // hero parallax: keep subtle, skip on touch devices
+    // hero parallax
     (function(){
       const hero = document.querySelector('.hero');
       if(!hero) return;
@@ -1468,8 +989,8 @@
     const fabMenu = document.getElementById('fabMenu');
     function toggleFab(open){
       if(!fab || !fabMenu || !fabToggle) return;
-      const isOpen = open === undefined ? fab.getAttribute('aria-expanded') === 'true' : open;
-      const newState = !isOpen;
+      const isOpen = fab.getAttribute('aria-expanded') === 'true';
+      const newState = open === undefined ? !isOpen : !!open;
       fab.setAttribute('aria-expanded', String(newState));
       fabMenu.setAttribute('aria-hidden', String(!newState));
       const icon = document.getElementById('fabIcon');
@@ -1492,13 +1013,13 @@
     });
     backTop && backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
 
-    // ESC close catches
+    // ESC close catches & other generic keyboard handling
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         if (bookingModal && bookingModal.style.display === 'flex') closeBooking();
         if (fab && fab.getAttribute('aria-expanded') === 'true') toggleFab(false);
         if (mobilePanel && mobilePanel.classList.contains('open')) closeMobileNav();
-        const lj = document.getElementById('ljf-panel'); 
+        const lj = document.getElementById('ljf-panel');
         const ljToggle = document.getElementById('ljf-toggle');
         if (lj && lj.style.display === 'flex') { lj.style.display = 'none'; if(ljToggle) ljToggle.setAttribute('aria-expanded','false'); }
         const preview = document.getElementById('articlePreview'); if (preview && preview.style.display === 'flex') preview.style.display = 'none';
@@ -1657,7 +1178,6 @@
       function findTerm(qRaw){
         const q = qRaw.trim().toLowerCase();
         if(!q) return null;
-        // exact / contains match inside each keys array
         for(const item of TERMS){
           for(const k of item.keys){
             if(q === k.toLowerCase() || q.includes(k.toLowerCase()) || k.toLowerCase().includes(q)) return item;
@@ -1684,7 +1204,7 @@
       dictInput.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); renderResult(); } });
     })();
 
-    /* Chat widget basic behaviour (NO AUTO-OPEN, FIXED & SEPARATE FROM FAB) */
+    /* Chat widget behaviour */
     (function(){
       const toggle = document.getElementById('ljf-toggle');
       const panel = document.getElementById('ljf-panel');
@@ -1747,7 +1267,6 @@
       });
       input.addEventListener('keydown', (e)=> { if(e.key === 'Enter') { e.preventDefault(); sendBtn.click(); } });
 
-      // quick chips click
       body.addEventListener('click', (e)=>{
         const chip = e.target.closest('.chip');
         if(!chip) return;
