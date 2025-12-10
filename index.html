@@ -18,16 +18,16 @@
        ========================== */
 
     :root{
-      /* Palette B variables */
-      --bg-900: #0a1222;     /* darkest page background */
-      --bg-700: #0e233f;     /* slightly lighter for gradient */
-      --card:    #f7f9fc;    /* light card / panel surface */
-      --text:    #e7eef9;    /* inverted (light) text for dark surfaces */
-      --ink:     #0b1422;    /* dark ink for text on card/light surfaces */
-      --muted:   #9aaec6;    /* muted/subtle text */
-      --accent:  #1141a8;    /* primary accent (nav, CTA) */
-      --accent-2:#0b2f7a;    /* darker accent */
-      --gold:    #b68b17;    /* antique gold */
+      --bg-900: #0a1222;
+      --bg-700: #0e233f;
+      --card:    #f7f9fc;
+      --text:    #e7eef9;
+      --ink:     #0b1422;
+      --muted:   #9aaec6;
+      --muted-dark: #5b6b78; /* used on light surfaces */
+      --accent:  #1141a8;
+      --accent-2:#0b2f7a;
+      --gold:    #b68b17;
 
       --radius:14px; --container:1180px; --easing:cubic-bezier(.16,.84,.32,1);
       --shadow-1: 0 6px 30px rgba(7,12,25,0.06); --shadow-2: 0 14px 40px rgba(7,12,25,0.05);
@@ -38,7 +38,7 @@
 
     /* Reset + baseline */
     *,*::before,*::after{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg-900),var(--bg-700));color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; -webkit-font-smoothing:antialiased;line-height:1.45}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg-900),var(--bg-700));color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; -webkit-font-smoothing:antialiased;line-height:1.45}
     a{color:inherit;text-decoration:none}
     img,svg,canvas{max-width:100%;height:auto;display:block}
     html,body{overflow-x:hidden}
@@ -65,8 +65,6 @@
     .nav-links a{color:var(--muted);font-weight:600;padding:8px 10px;border-radius:8px}
     .nav-links a.cta{background:var(--accent);color:#fff}
     .nav-toggle{display:none;border:0;background:none;padding:6px;border-radius:8px}
-
-    /* round mobile toggle */
     .nav-toggle.round{display:none;width:44px;height:44px;border-radius:999px;background:#fff;box-shadow:var(--shadow-1);border:1px solid rgba(7,12,25,0.04);display:flex;align-items:center;justify-content:center}
 
     #clock{color:var(--gold);font-weight:700;font-size:.95rem}
@@ -100,7 +98,8 @@
     #calendar td.today{background:var(--gold);color:#000;font-weight:700;border-radius:50%}
 
     section{margin:30px 0}
-    h2{font-family:Merriweather,serif;font-size:1.22rem;margin:0 0 10px;position:relative;color:var(--ink)}
+    /* Use light heading on the dark page; override inside light cards where needed */
+    h2{font-family:Merriweather,serif;font-size:1.22rem;margin:0 0 10px;position:relative;color:var(--text)}
     h2::after{content:"";display:block;width:48px;height:4px;background:var(--gold);border-radius:4px;margin-top:8px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
     .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2);transition:transform 320ms var(--easing),box-shadow 320ms var(--easing)}
@@ -222,7 +221,7 @@
     .initials {
       position: absolute;
       inset: 0;
-      display: none; /* toggled by JS */
+      display: none;
       place-items: center;
       font-weight: 700;
       color: var(--text);
@@ -333,6 +332,9 @@
     .btn-primary { background: linear-gradient(180deg,var(--accent),var(--accent-2)); color: white; box-shadow: 0 8px 24px rgba(17,65,168,0.18); }
     .btn-primary:focus { outline: 2px solid rgba(17,65,168,0.22); }
 
+    /* readable muted on light surfaces */
+    .card .muted, .panel .muted, .dict-results .muted, .practice-body .muted { color: var(--muted-dark); }
+
     /* responsive */
     @media (max-width: 1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:12px} }
     @media (max-width:720px){
@@ -355,10 +357,8 @@
     .btn--small { padding:8px 10px; font-size:.88rem; border-radius:10px; font-weight:600; }
     .tag-chip{border-radius:999px;border:1px solid #dde4f3;padding:6px 10px;font-size:.85rem;background:#fff;cursor:pointer}
 
-    /* small gold accent for links in footer */
     footer a { color: var(--gold); text-decoration: none; }
 
-    /* Ensure initials visible when image missing */
     .member-figure .initials{ display: none; }
   </style>
 </head>
@@ -371,7 +371,7 @@
         <div class="logo" aria-hidden="true">TJ</div>
         <div>
           <div class="brand-name">The Justice Firm</div>
-          <div class="muted" style="font-size:.85rem">Advocates & Legal Consultants (India)</div>
+          <div class="muted" style="font-size:.85rem;color:var(--muted) !important">Advocates & Legal Consultants (India)</div>
         </div>
       </div>
 
@@ -381,7 +381,6 @@
         <a href="#articles">Articles</a>
         <a href="#dictionary">Dictionary</a>
         <a href="#payment">Payment</a>
-        <!-- Contact opens new tab as requested -->
         <a href="contact.html" target="_blank" rel="noopener" class="cta btn--ghost">Contact</a>
         <span id="clock" aria-live="polite" style="margin-left:8px"></span>
       </nav>
@@ -422,13 +421,13 @@
             <a class="btn btn-primary" href="contact.html" target="_blank" rel="noopener">Book Consultation</a>
             <a class="btn btn--ghost" href="#practice">Explore Practice</a>
           </div>
-          <p class="muted" style="margin-top:12px;font-size:.92rem"><strong>+91 94541 83793</strong> · <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a></p>
+          <p class="muted" style="margin-top:12px;font-size:.92rem;color:var(--muted)"><strong>+91 94541 83793</strong> · <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a></p>
         </div>
 
         <aside class="panel" data-reveal aria-labelledby="nextSlotLabel">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
             <div>
-              <h4 id="nextSlotLabel" style="margin:0">Next Available Slot</h4>
+              <h4 id="nextSlotLabel" style="margin:0;color:var(--ink)">Next Available Slot</h4>
               <div class="muted" id="nextSlot" style="margin-top:6px">Loading…</div>
             </div>
             <div id="clock-nav">--:--:-- IST</div>
@@ -440,10 +439,26 @@
           </div>
 
           <div id="calendar-section" aria-label="Court calendar">
-            <h4 style="margin:8px 0 6px 0">Court Calendar</h4>
+            <h4 style="margin:8px 0 6px 0;color:var(--ink)">Court Calendar</h4>
             <div id="calendar" role="table" aria-live="polite" aria-atomic="true"></div>
           </div>
         </aside>
+      </section>
+
+      <!-- ABOUT / PHILOSOPHY -->
+      <section id="about" aria-labelledby="aboutHeading" class="card" style="padding:22px;">
+        <h2 id="aboutHeading">About Us — Clarity, Compassion, and Discipline</h2>
+        <p class="muted" style="margin-top:8px">We are a boutique law practice based in Allahabad (Prayagraj), combining rigorous legal analysis with humane client care. Our approach balances strategic clarity, empathetic client communication, and disciplined courtroom advocacy.</p>
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px;align-items:start">
+          <div>
+            <p style="margin:0 0 10px">Our mission: to help clients resolve disputes efficiently while protecting rights and dignity. We prefer negotiated settlements when appropriate, and yet we are prepared to litigate vigorously when justice requires it.</p>
+            <ul style="margin-top:10px;color:var(--muted)"><li>Practical advice tailored to Indian courts and procedures</li><li>Clear fee estimates and responsive communication</li><li>Support through each procedural step — paperwork, hearing prep and post-order compliance</li></ul>
+          </div>
+          <aside style="background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:10px;box-shadow:var(--shadow-2)">
+            <strong style="display:block;margin-bottom:8px;color:var(--ink)">Quick facts</strong>
+            <div class="muted" style="color:var(--muted-dark)">Founded: 2010 · Principal Counsel: Adv. Ganga S. Shastri · Practice: Family, Criminal, Civil & Constitutional advisory</div>
+          </aside>
+        </div>
       </section>
 
       <!-- PRACTICE -->
@@ -455,7 +470,7 @@
           <article class="practice-card" data-reveal>
             <img class="practice-thumb" src="fam.jpg" alt="Family & Matrimonial" loading="lazy" decoding="async">
             <div class="practice-body">
-              <h3 style="margin:0">Family & Matrimonial</h3>
+              <h3 style="margin:0;color:var(--ink)">Family & Matrimonial</h3>
               <p class="muted" style="margin:0">Divorce, custody, alimony, DV Act, 125 CrPC, mediation.</p>
               <div style="margin-top:auto"><a class="btn btn--ghost btn--small" href="contact.html" target="_blank" rel="noopener">Consult</a></div>
             </div>
@@ -464,7 +479,7 @@
           <article class="practice-card" data-reveal>
             <img class="practice-thumb" src="crim.jpg" alt="Criminal Defence" loading="lazy" decoding="async">
             <div class="practice-body">
-              <h3 style="margin:0">Criminal Defence</h3>
+              <h3 style="margin:0;color:var(--ink)">Criminal Defence</h3>
               <p class="muted" style="margin:0">Bail, anticipatory bail, criminal trials & appeals.</p>
               <div style="margin-top:auto"><a class="btn btn--ghost btn--small" href="contact.html" target="_blank" rel="noopener">Consult</a></div>
             </div>
@@ -473,255 +488,145 @@
           <article class="practice-card" data-reveal>
             <img class="practice-thumb" src="prop.jpg" alt="Civil & Property" loading="lazy" decoding="async">
             <div class="practice-body">
-              <h3 style="margin:0">Civil & Property</h3>
+              <h3 style="margin:0;color:var(--ink)">Civil & Property</h3>
               <p class="muted" style="margin:0">Partition, recovery, injunctions, property litigation.</p>
               <div style="margin-top:auto"><a class="btn btn--ghost btn--small" href="contact.html" target="_blank" rel="noopener">Consult</a></div>
             </div>
           </article>
         </div>
       </section>
-<!-- Replace your existing <section id="team"> block with this full, ready-to-use section -->
-<section id="team" aria-labelledby="teamHeading" class="team-section-premium">
-  <style>
-    /* Minimal, component-scoped styles (move to main CSS if you prefer). */
-    .team-wrap { max-width:1200px; margin:0 auto; padding:28px 16px; }
-    .team-header { text-align:center; margin-bottom:20px; }
-    .team-header .muted { color:#666; margin-top:6px; }
-    .team-grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items:start; }
-    .member { cursor:pointer; border-radius:8px; padding:10px; background:#fff; box-shadow:0 1px 6px rgba(0,0,0,0.06); transition:transform .12s, box-shadow .12s; outline:none; border:1px solid rgba(0,0,0,0.03); }
-    .member:hover, .member:focus { transform:translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.08); }
-    .member-figure { width:100%; aspect-ratio:3/4; overflow:hidden; position:relative; border-radius:8px; background:#f5f5f5; margin-bottom:10px; }
-    .member-figure img { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 50%; }
-    .initials { position:absolute; left:10px; bottom:10px; background: rgba(255,255,255,0.9); padding:6px 8px; border-radius:6px; font-weight:700; font-size:0.9rem; }
-    .bio h3 { margin:0 0 4px 0; font-size:1.05rem; }
-    .role { margin:0 0 6px 0; color:#444; font-weight:500; }
-    .meta { margin:0; color:#777; font-size:0.9rem; }
 
-    /* Modal */
-    #profileModal[hidden]{display:none;}
-    #profileModal.modal { position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; }
-    .modal-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.5); }
-    .modal-panel { position:relative; width:min(820px, calc(100% - 36px)); max-height:90vh; overflow:auto; background:#fff; border-radius:12px; z-index:2; padding:22px; box-shadow:0 14px 40px rgba(0,0,0,0.25); }
-    .modal-close { position:absolute; right:14px; top:10px; background:none; border:0; font-size:26px; cursor:pointer; line-height:1; }
-    .modal-head h3 { margin:0 0 6px; }
-    .modal-sub { margin:0 0 8px; color:#555; }
-    .modal-quote { font-style:italic; margin:8px 0 12px; color:#333; }
-    .modal-body p { margin:0 0 1rem 0; line-height:1.5; color:#222; }
-    .modal-foot { text-align:right; margin-top:8px; }
-    .btn-primary { background:#0b5fff; color:#fff; border:0; padding:8px 14px; border-radius:8px; cursor:pointer; }
-    @media (min-width:900px){ .team-grid { gap:20px; grid-template-columns: repeat(4, 1fr); } }
-  </style>
+      <!-- TEAM -->
+      <section id="team" aria-labelledby="teamHeading" class="team-section-premium">
+        <div class="team-wrap">
+          <header class="team-header">
+            <h2 id="teamHeading">Our Team</h2>
+            <p class="muted">Experienced advocates &amp; legal consultants.</p>
+          </header>
 
-  <div class="team-wrap">
-    <header class="team-header">
-      <h2 id="teamHeading">Our Team</h2>
-      <p class="muted">Experienced advocates &amp; legal consultants.</p>
-    </header>
+          <div class="team-grid" role="list" aria-label="Our team members">
 
-    <div class="team-grid" role="list" aria-label="Our team members">
+            <!-- Member 1: Ganga -->
+            <article class="member" role="listitem" tabindex="0"
+              data-title="Adv. Ganga Shankar Shastri"
+              data-subtitle="Founder & Lead Counsel"
+              data-quote="Justice is served best when clarity meets conscience."
+              data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law, blending analytical precision with deep legal insight.\n\nWith over 15 years of experience in law, he has guided complex matters before the Allahabad High Court with clarity, discipline, and unwavering composure.\n\nHe is the author of the respected Supreme Court judgment compilation series 'Nirnay Dhara', known for its scholarly depth and practical relevance. Admired for his humility, principled advocacy, and steady judgement, he remains a trusted counsel for clients facing high-stakes litigation.">
+              <figure class="member-figure" aria-hidden="true">
+                <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="50% 22%">
+                <div class="initials" aria-hidden="true">GS</div>
+                <div class="sheen" aria-hidden="true"></div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Ganga Shankar Shastri</h3>
+                <p class="role">Founder &amp; Lead Counsel</p>
+                <p class="meta">15+ years • Allahabad High Court</p>
+              </div>
+            </article>
 
-      <!-- Member 1: Ganga -->
-      <article class="member" role="listitem" tabindex="0"
-               data-title="Adv. Ganga Shankar Shastri"
-               data-subtitle="Founder & Lead Counsel"
-               data-quote="Justice is served best when clarity meets conscience."
-               data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law, blending analytical precision with deep legal insight.
+            <!-- Member 2: Minakshi -->
+            <article class="member" role="listitem" tabindex="0"
+              data-title="Adv. Minakshi Shastri"
+              data-subtitle="Senior Associate – Civil & Corporate"
+              data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
+              data-content="Adv. Minakshi Shastri holds a Master of Laws (LL.M.) and is a postgraduate of the Indian Institute of Human Rights.\n\nShe combines academic depth with practical courtroom skill, shaping strategies marked by precision and compassion.\n\nRecognised for her calm authority, meticulous preparation, and empathetic client guidance, she brings unwavering commitment to every civil and corporate matter she leads.">
+              <figure class="member-figure" aria-hidden="true">
+                <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="50% 20%">
+                <div class="initials" aria-hidden="true">MS</div>
+                <div class="sheen" aria-hidden="true"></div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Minakshi Shastri</h3>
+                <p class="role">Senior Associate – Civil &amp; Corporate</p>
+                <p class="meta">Property &amp; Corporate Litigation</p>
+              </div>
+            </article>
 
-With over 15 years of experience in law, he has guided complex matters before the Allahabad High Court with clarity, discipline, and unwavering composure.
+            <!-- Member 3: Shivani -->
+            <article class="member" role="listitem" tabindex="0"
+              data-title="Adv. Shivani Shastri"
+              data-subtitle="Consulting Advocate – Constitutional Affairs"
+              data-quote="Progress in law begins with the courage to question, learn, and refine."
+              data-content="Adv. Shivani Shastri holds a Master of Laws (LL.M.) and is currently pursuing her Ph.D. to deepen her research in constitutional studies.\n\nHer scholarly approach, analytical discipline, and commitment to continued learning distinguish her among emerging legal minds.\n\nKnown for her clarity of thought and respectful professionalism, she contributes refined research, thoughtful advisory work, and principled perspective to every constitutional matter she engages with.">
+              <figure class="member-figure" aria-hidden="true">
+                <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="50% 18%">
+                <div class="initials" aria-hidden="true">SS</div>
+                <div class="sheen" aria-hidden="true"></div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Shivani Shastri</h3>
+                <p class="role">Consulting Advocate – Constitutional Affairs</p>
+                <p class="meta">Research &amp; Advisory</p>
+              </div>
+            </article>
 
-He is the author of the respected Supreme Court judgment compilation series “Nirnay Dhara”, known for its scholarly depth and practical relevance. Admired for his humility, principled advocacy, and steady judgement, he remains a trusted counsel for clients facing high-stakes litigation.">
-        <figure class="member-figure" aria-hidden="true">
-          <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="50% 22%">
-          <div class="initials" aria-hidden="true">GS</div>
-        </figure>
-        <div class="bio">
-          <h3>Adv. Ganga Shankar Shastri</h3>
-          <p class="role">Founder &amp; Lead Counsel</p>
-          <p class="meta">15+ years • Allahabad High Court</p>
+            <!-- Member 4: Sanjay -->
+            <article class="member" role="listitem" tabindex="0"
+              data-title="Adv. Sanjay Kumar"
+              data-subtitle="Associate Counsel – Criminal Defence"
+              data-quote=""
+              data-content="Adv. Sanjay Kumar is an Associate Counsel specialising in criminal defence. He brings practical courtroom experience, focused client advocacy, and attentive case preparation.\n\nBio and profile photo will be updated shortly.">
+              <figure class="member-figure" aria-hidden="true">
+                <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="50% 20%">
+                <div class="initials" aria-hidden="true">SK</div>
+                <div class="sheen" aria-hidden="true"></div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Sanjay Kumar</h3>
+                <p class="role">Associate Counsel – Criminal Defence</p>
+                <p class="meta">Photo coming soon</p>
+              </div>
+            </article>
+
+          </div>
         </div>
-      </article>
 
-      <!-- Member 2: Minakshi -->
-      <article class="member" role="listitem" tabindex="0"
-               data-title="Adv. Minakshi Shastri"
-               data-subtitle="Senior Associate – Civil & Corporate"
-               data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
-               data-content="Adv. Minakshi Shastri holds a Master of Laws (LL.M.) and is a postgraduate of the Indian Institute of Human Rights.
+        <!-- Modal -->
+        <div id="profileModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle" aria-describedby="modalDesc" hidden>
+          <div class="modal-backdrop" data-close="true"></div>
+          <div class="modal-panel" role="document" aria-live="polite">
+            <button class="modal-close" aria-label="Close profile" data-close="true">&times;</button>
+            <div class="modal-content">
+              <header class="modal-head">
+                <h3 id="profileModalTitle"></h3>
+                <p class="modal-sub" id="profileModalSub"></p>
+              </header>
 
-She combines academic depth with practical courtroom skill, shaping strategies marked by precision and compassion.
+              <blockquote class="modal-quote" id="profileModalQuote" aria-hidden="true"></blockquote>
 
-Recognised for her calm authority, meticulous preparation, and empathetic client guidance, she brings unwavering commitment to every civil and corporate matter she leads.">
-        <figure class="member-figure" aria-hidden="true">
-          <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="50% 20%">
-          <div class="initials" aria-hidden="true">MS</div>
-        </figure>
-        <div class="bio">
-          <h3>Adv. Minakshi Shastri</h3>
-          <p class="role">Senior Associate – Civil &amp; Corporate</p>
-          <p class="meta">Property &amp; Corporate Litigation</p>
+              <section id="modalDesc" class="modal-body"></section>
+
+              <footer class="modal-foot">
+                <button class="btn-primary" data-close="true">Close</button>
+              </footer>
+            </div>
+          </div>
         </div>
-      </article>
+      </section>
 
-      <!-- Member 3: Shivani -->
-      <article class="member" role="listitem" tabindex="0"
-               data-title="Adv. Shivani Shastri"
-               data-subtitle="Consulting Advocate – Constitutional Affairs"
-               data-quote="Progress in law begins with the courage to question, learn, and refine."
-               data-content="Adv. Shivani Shastri holds a Master of Laws (LL.M.) and is currently pursuing her Ph.D. to deepen her research in constitutional studies.
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" aria-labelledby="testimonialsHeading" class="card" style="padding:22px;">
+        <h2 id="testimonialsHeading">What Clients Say</h2>
+        <p class="muted" style="margin-top:8px">Short, verifiable testimonials from clients and peers.</p>
 
-Her scholarly approach, analytical discipline, and commitment to continued learning distinguish her among emerging legal minds.
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px">
+          <figure class="card" style="padding:14px">
+            <blockquote style="margin:0;color:var(--ink)">“Adv. Ganga Shankar Shastri handled our family case with utmost sensitivity and clarity — we got a fair outcome quickly.”</blockquote>
+            <figcaption class="muted" style="margin-top:10px;color:var(--muted-dark)">— Ritu K., Allahabad</figcaption>
+          </figure>
 
-Known for her clarity of thought and respectful professionalism, she contributes refined research, thoughtful advisory work, and principled perspective to every constitutional matter she engages with.">
-        <figure class="member-figure" aria-hidden="true">
-          <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="50% 18%">
-          <div class="initials" aria-hidden="true">SS</div>
-        </figure>
-        <div class="bio">
-          <h3>Adv. Shivani Shastri</h3>
-          <p class="role">Consulting Advocate – Constitutional Affairs</p>
-          <p class="meta">Research &amp; Advisory</p>
+          <figure class="card" style="padding:14px">
+            <blockquote style="margin:0;color:var(--ink)">“Professional, calm and practical advice. Highly recommended for property disputes.”</blockquote>
+            <figcaption class="muted" style="margin-top:10px;color:var(--muted-dark)">— Ramesh P., Lucknow</figcaption>
+          </figure>
+
+          <figure class="card" style="padding:14px">
+            <blockquote style="margin:0;color:var(--ink)">“Clear guidance during a criminal matter — responsive even outside office hours.”</blockquote>
+            <figcaption class="muted" style="margin-top:10px;color:var(--muted-dark)">— Sakshi M., Kanpur</figcaption>
+          </figure>
         </div>
-      </article>
+      </section>
 
-      <!-- Member 4: Sanjay (placeholder bio) -->
-      <article class="member" role="listitem" tabindex="0"
-               data-title="Adv. Sanjay Kumar"
-               data-subtitle="Associate Counsel – Criminal Defence"
-               data-quote=""
-               data-content="Adv. Sanjay Kumar is an Associate Counsel specialising in criminal defence. He brings practical courtroom experience, focused client advocacy, and attentive case preparation.
-
-Bio and profile photo will be updated shortly.">
-        <figure class="member-figure" aria-hidden="true">
-          <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="50% 20%">
-          <div class="initials" aria-hidden="true">SK</div>
-        </figure>
-        <div class="bio">
-          <h3>Adv. Sanjay Kumar</h3>
-          <p class="role">Associate Counsel – Criminal Defence</p>
-          <p class="meta">Photo coming soon</p>
-        </div>
-      </article>
-
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div id="profileModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
-    <div class="modal-backdrop" data-close="true"></div>
-    <div class="modal-panel" role="document" aria-live="polite">
-      <button class="modal-close" aria-label="Close profile" data-close="true">&times;</button>
-      <div class="modal-content">
-        <header class="modal-head">
-          <h3 id="modalTitle"></h3>
-          <p class="modal-sub" id="modalSub"></p>
-        </header>
-
-        <blockquote class="modal-quote" id="modalQuote" aria-hidden="true"></blockquote>
-
-        <section id="modalDesc" class="modal-body" aria-live="polite"></section>
-
-        <footer class="modal-foot">
-          <button class="btn-primary" data-close="true">Close</button>
-        </footer>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    /* Minimal, robust JS for modal + image focus + accessibility */
-    (function () {
-      const qs = (s, ctx=document) => ctx.querySelector(s);
-      const qsa = (s, ctx=document) => Array.from(ctx.querySelectorAll(s));
-      const members = qsa('.member');
-      const modal = qs('#profileModal');
-      if (!modal) return;
-      const modalTitle = qs('#modalTitle', modal);
-      const modalSub = qs('#modalSub', modal);
-      const modalQuote = qs('#modalQuote', modal);
-      const modalDesc = qs('#modalDesc', modal);
-      const closeables = qsa('[data-close]', modal);
-
-      // apply image focus positions
-      qsa('.member-figure img').forEach(img => {
-        const focus = img.getAttribute('data-focus');
-        img.style.objectPosition = (focus && focus.trim()) ? focus : '50% 50%';
-      });
-
-      function escapeHtml(s) {
-        return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-      }
-
-      function contentToHTML(raw) {
-        if (!raw || !raw.trim()) return '<p><em>Bio coming soon.</em></p>';
-        // Normalize literal \n and real newlines, split into paragraphs on two+ newlines
-        const normalized = raw.replace(/\\n/g, '\n').replace(/\r/g, '');
-        const paras = normalized.split(/\n{2,}/).map(p => p.trim()).filter(Boolean);
-        return paras.map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('');
-      }
-
-      let lastFocusedMember = null;
-
-      function openModalFrom(member) {
-        lastFocusedMember = member;
-        const title = member.getAttribute('data-title') || '';
-        const subtitle = member.getAttribute('data-subtitle') || '';
-        const quote = member.getAttribute('data-quote') || '';
-        const content = member.getAttribute('data-content') || '';
-
-        modalTitle.textContent = title;
-        modalSub.textContent = subtitle;
-        if (quote && quote.trim()) {
-          modalQuote.textContent = quote;
-          modalQuote.style.display = '';
-        } else {
-          modalQuote.style.display = 'none';
-          modalQuote.textContent = '';
-        }
-        modalDesc.innerHTML = contentToHTML(content);
-
-        modal.removeAttribute('hidden');
-        document.body.style.overflow = 'hidden';
-        const focusTarget = modal.querySelector('.modal-close') || modal.querySelector('button[data-close]');
-        if (focusTarget) focusTarget.focus();
-      }
-
-      function closeModal() {
-        modal.setAttribute('hidden', '');
-        document.body.style.overflow = '';
-        if (lastFocusedMember && document.body.contains(lastFocusedMember)) lastFocusedMember.focus();
-        lastFocusedMember = null;
-      }
-
-      members.forEach(m => {
-        m.addEventListener('click', () => openModalFrom(m));
-        m.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModalFrom(m); }
-        });
-      });
-
-      closeables.forEach(btn => btn.addEventListener('click', closeModal));
-
-      // backdrop close
-      const backdrop = qs('.modal-backdrop', modal);
-      if (backdrop) backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
-
-      // Esc to close
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal(); });
-
-      // simple focus trap inside modal
-      modal.addEventListener('keydown', (e) => {
-        if (e.key !== 'Tab' || modal.hasAttribute('hidden')) return;
-        const focusable = Array.from(modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])')).filter(el => el.offsetParent !== null);
-        if (!focusable.length) return;
-        const first = focusable[0], last = focusable[focusable.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      });
-
-    })();
-  </script>
-</section>
-      
       <!-- ARTICLES -->
       <section id="articles" aria-labelledby="articlesHeading" style="margin-top:0;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
@@ -732,7 +637,7 @@ Bio and profile photo will be updated shortly.">
 
           <div style="display:flex;gap:8px;align-items:center">
             <label for="articleSearch" class="muted" style="font-size:.88rem;margin-right:6px">Search</label>
-            <input id="articleSearch" type="search" placeholder="Search articles…" aria-label="Search articles" style="padding:8px;border-radius:10px;border:1px solid #e2e6ef;min-width:160px">
+            <input id="articleSearch" type="search" placeholder="Search articles…" aria-label="Search articles" style="padding:8px;border-radius:10px;border:1px solid #e2e6ef;min-width:160px;background:#fff;color:var(--ink)">
             <div id="articleTags" role="list" aria-label="Filter by tag" style="display:flex;gap:8px;flex-wrap:wrap;margin-left:6px"></div>
           </div>
         </div>
@@ -753,12 +658,12 @@ Bio and profile photo will be updated shortly.">
           <article role="dialog" aria-modal="true" aria-labelledby="previewTitle" style="max-width:820px;width:100%;background:var(--card);padding:18px;border-radius:10px;box-shadow:var(--shadow-2);overflow:auto;max-height:80vh">
             <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
               <div>
-                <h3 id="previewTitle" style="margin:0">Title</h3>
-                <div class="muted" id="previewMeta" style="margin-top:6px;font-size:.95rem"></div>
+                <h3 id="previewTitle" style="margin:0;color:var(--ink)">Title</h3>
+                <div class="muted" id="previewMeta" style="margin-top:6px;font-size:.95rem;color:var(--muted-dark)"></div>
               </div>
               <button id="previewClose" class="btn btn--ghost" aria-label="Close preview">Close</button>
             </header>
-            <div id="previewBody" style="margin-top:12px;color:var(--muted)"></div>
+            <div id="previewBody" style="margin-top:12px;color:var(--muted-dark)"></div>
           </article>
         </div>
       </section>
@@ -772,13 +677,13 @@ Bio and profile photo will be updated shortly.">
           <div>
             <label for="dictInput">Search legal term</label>
             <div class="dict-input-wrap" style="display:flex;gap:8px;margin-top:8px">
-              <input id="dictInput" type="search" placeholder="e.g. FIR, maintenance, alimony, custody" aria-label="Search legal term" style="flex:1;padding:8px;border-radius:10px;border:1px solid #e2e6ef">
+              <input id="dictInput" type="search" placeholder="e.g. FIR, maintenance, alimony, custody" aria-label="Search legal term" style="flex:1;padding:8px;border-radius:10px;border:1px solid #e2e6ef;background:#fff;color:var(--ink)">
               <button id="dictSearchBtn" class="btn btn-primary btn--small" type="button">Search</button>
             </div>
-            <p class="dict-note muted" style="margin-top:8px">Tip: Hindi / Hinglish words like “baarakhasta”, “talak”, “girftari” are also recognised for many terms.</p>
+            <p class="dict-note muted" style="margin-top:8px;color:var(--muted-dark)">Tip: Hindi / Hinglish words like “baarakhasta”, “talak”, “girftari” are also recognised for many terms.</p>
           </div>
 
-          <div class="dict-results" id="dictResults" aria-live="polite" aria-atomic="true" style="background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow-2)">
+          <div class="dict-results" id="dictResults" aria-live="polite" aria-atomic="true" style="background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow-2);color:var(--muted-dark)">
             <div class="muted">Start by typing a term above. Example: <strong>“Section 125”</strong> or <strong>“custody”</strong>.</div>
           </div>
         </div>
@@ -786,8 +691,8 @@ Bio and profile photo will be updated shortly.">
 
       <!-- PAYMENT -->
       <section id="payment">
-        <h2 style="color:#e8f2ff">Secure Payment — Titanium</h2>
-        <p class="muted" style="color:#bfcfe0">Fast, secure payments. Use UPI or bank transfer — receipts available on request.</p>
+        <h2 style="color:var(--text)">Secure Payment</h2>
+        <p class="muted" style="color:var(--muted)">Fast, secure payments. Use UPI or bank transfer — receipts available on request.</p>
 
         <div class="titanium-grid" style="margin-top:18px;align-items:stretch;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
           <div class="titanium-card" aria-labelledby="tupi" style="background-image: linear-gradient(180deg, rgba(2,6,10,0.66), rgba(8,12,16,0.66)), url('pay_bg.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,0.04); padding:18px; border-radius:14px; color:#e6f2ff;">
@@ -853,11 +758,11 @@ Bio and profile photo will be updated shortly.">
   <!-- Back to top -->
   <button id="backTop" aria-label="Back to top" title="Back to top" style="position:fixed;right:18px;bottom:96px;display:none;background:var(--accent);color:#fff;width:46px;height:46px;border-radius:999px;align-items:center;justify-content:center;box-shadow:var(--btn-shadow);border:0;cursor:pointer;font-size:1.1rem;z-index:1600">↑</button>
 
-  <!-- Booking Modal -->
-  <div id="bookingModal" aria-hidden="true" aria-labelledby="modalTitle" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:1200;padding:18px">
-    <div role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="background:var(--card);padding:20px;border-radius:12px;max-width:420px;width:100%">
-      <h3 id="modalTitle">Request Consultation</h3>
-      <p class="muted">Choose a date — we will confirm via email.</p>
+  <!-- Booking Modal (renamed title id to avoid collision) -->
+  <div id="bookingModal" aria-hidden="true" aria-labelledby="bookingModalTitle" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:1200;padding:18px">
+    <div role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle" style="background:var(--card);padding:20px;border-radius:12px;max-width:420px;width:100%">
+      <h3 id="bookingModalTitle">Request Consultation</h3>
+      <p class="muted" style="color:var(--muted-dark)">Choose a date — we will confirm via email.</p>
       <form id="bookingForm" action="https://formspree.io/f/myzqwkvv" method="POST">
         <label for="bk-client">Full name</label>
         <input id="bk-client" name="client" placeholder="Full name" required style="margin-top:10px;width:100%;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
@@ -965,7 +870,7 @@ Bio and profile photo will be updated shortly.">
         if (el) el.textContent = next.toLocaleString('en-IN', opt) + ' IST';
       })();
 
-      // IMAGE fallback + focus pos set
+      // HELPERS
       function getInitials(name){
         if(!name) return '';
         const parts = name.trim().split(/\s+/).filter(Boolean);
@@ -973,13 +878,15 @@ Bio and profile photo will be updated shortly.">
         return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
       }
       function safeParseJSON(s){ if(!s) return null; try { return JSON.parse(s); } catch(e) { return null; } }
+      function escapeHtml(str){ return String(str).replace(/[&<>"']/g, function (m) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;' })[m]; }); }
 
+      // MEMBER IMAGE fallback & focus positions
       document.querySelectorAll('.member').forEach(member => {
         const fig = member.querySelector('.member-figure');
         if(!fig) return;
         const img = fig.querySelector('img');
         const initialsEl = fig.querySelector('.initials');
-        const name = member.getAttribute('data-name') || member.querySelector('h3')?.textContent || '';
+        const name = member.getAttribute('data-title') || member.querySelector('h3')?.textContent || '';
         if(initialsEl) initialsEl.textContent = getInitials(name);
 
         if(img){
@@ -1004,21 +911,25 @@ Bio and profile photo will be updated shortly.">
         }
       });
 
-      // subtle pointer parallax for fine pointers
+      // small pointer parallax (non-intrusive)
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (window.matchMedia('(pointer: fine)').matches && !prefersReduced) {
         document.querySelectorAll('.member').forEach(member => {
           const img = member.querySelector('.member-figure img');
+          let raf = null;
           function onMove(e){
-            const rect = member.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
-            const dx = (e.clientX - cx) / rect.width;
-            const dy = (e.clientY - cy) / rect.height;
-            const tx = dx * 8; const ty = dy * 8;
-            const rx = dy * -2.8; const ry = dx * 5;
-            if(img && img.style.display !== 'none') img.style.transform = `translate(${tx}px, ${ty}px) scale(1.06) rotateX(${rx}deg) rotateY(${ry}deg)`;
-            member.style.transform = `translateY(-6px) rotateX(${rx / 6}deg) rotateY(${ry / 8}deg)`;
+            if(raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(()=> {
+              const rect = member.getBoundingClientRect();
+              const cx = rect.left + rect.width / 2;
+              const cy = rect.top + rect.height / 2;
+              const dx = (e.clientX - cx) / rect.width;
+              const dy = (e.clientY - cy) / rect.height;
+              const tx = dx * 8; const ty = dy * 8;
+              const rx = dy * -2.8; const ry = dx * 5;
+              if(img && img.style.display !== 'none') img.style.transform = `translate(${tx}px, ${ty}px) scale(1.06) rotateX(${rx}deg) rotateY(${ry}deg)`;
+              member.style.transform = `translateY(-6px) rotateX(${rx / 6}deg) rotateY(${ry / 8}deg)`;
+            });
           }
           function onLeave(){ const imgEl = member.querySelector('.member-figure img'); if(imgEl) imgEl.style.transform = ''; member.style.transform = ''; }
           member.addEventListener('pointermove', onMove);
@@ -1028,21 +939,52 @@ Bio and profile photo will be updated shortly.">
         });
       }
 
-      // MODAL logic (accessible)
+      // MODAL (single consolidated logic) - supports both data-bio JSON and data-* attributes
       const modal = document.getElementById('profileModal');
-      const modalPanel = modal.querySelector('.modal-panel');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalSub = document.getElementById('modalSub');
-      const modalBody = document.getElementById('modalDesc');
-      const modalQuote = document.getElementById('modalQuote');
-      let lastFocused = null;
+      const modalPanel = modal && modal.querySelector('.modal-panel');
+      const modalTitle = modal && document.getElementById('profileModalTitle');
+      const modalSub = modal && document.getElementById('profileModalSub');
+      const modalQuote = modal && document.getElementById('profileModalQuote');
+      const modalBody = modal && document.getElementById('modalDesc');
+      const closeables = modal ? Array.from(modal.querySelectorAll('[data-close]')) : [];
 
-      function escapeHtml(str){ return String(str).replace(/[&<>"']/g, function (m) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;' })[m]; }); }
       function contentToParagraphs(text){
-        if(!text) return '';
-        return text.split(/\n\s*\n/).map(p => `<p>${escapeHtml(p.trim())}</p>`).join('');
+        if(!text) return '<p><em>Bio coming soon.</em></p>';
+        // Convert literal \n to paragraphs and <br> for single newline
+        const normal = String(text).replace(/\r/g,'').replace(/\\n/g, '\n');
+        const paras = normal.split(/\n{2,}/).map(p => p.trim()).filter(Boolean);
+        return paras.map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('');
       }
 
+      let lastFocused = null;
+      function openModalWithData(data, opener){
+        lastFocused = opener || document.activeElement;
+        if(modalTitle) modalTitle.textContent = data.title || '';
+        if(modalSub) modalSub.textContent = data.subtitle || '';
+        if(modalQuote){
+          if(data.quote && data.quote.trim()){ modalQuote.textContent = data.quote; modalQuote.style.display = ''; }
+          else { modalQuote.style.display = 'none'; modalQuote.textContent = ''; }
+        }
+        if(modalBody) modalBody.innerHTML = contentToParagraphs(data.content || '');
+        modal && modal.removeAttribute('hidden');
+        document.documentElement.style.overflow = 'hidden';
+        setTimeout(()=> {
+          const focusTarget = modal.querySelector('.modal-close') || modal.querySelector('button, [tabindex]');
+          if(focusTarget) focusTarget.focus();
+          trapFocus(modal);
+        }, 50);
+        modal && modal.classList.add('open');
+        modal && modal.setAttribute('aria-hidden', 'false');
+      }
+      function closeModal(){
+        if(!modal) return;
+        modal.classList.remove('open');
+        modal.setAttribute('hidden', '');
+        releaseTrap(modal);
+        document.documentElement.style.overflow = '';
+        if(lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+        lastFocused = null;
+      }
       function trapFocus(container){
         const focusable = Array.from(container.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])')).filter(n => n.offsetParent !== null);
         if(focusable.length === 0) return;
@@ -1061,54 +1003,41 @@ Bio and profile photo will be updated shortly.">
         if(container && container._trapHandler){ container.removeEventListener('keydown', container._trapHandler); delete container._trapHandler; }
       }
 
-      function openModal(data, opener){
-        lastFocused = opener || document.activeElement;
-        modalTitle.textContent = data.title || '';
-        modalSub.textContent = data.subtitle || '';
-        modalQuote.textContent = data.quote || '';
-        modalQuote.style.display = data.quote ? 'block' : 'none';
-        modalBody.innerHTML = contentToParagraphs(data.content || '');
-        modal.removeAttribute('hidden');
-        document.documentElement.style.overflow = 'hidden';
-        setTimeout(()=> {
-          const focusTarget = modal.querySelector('.modal-close') || modal.querySelector('button, [tabindex]');
-          if(focusTarget) focusTarget.focus();
-          trapFocus(modal);
-        }, 50);
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-      }
-      function closeModal(){
-        modal.classList.remove('open');
-        modal.setAttribute('hidden', '');
-        releaseTrap(modal);
-        document.documentElement.style.overflow = '';
-        if(lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-      }
-
-      // bind members to open modal
+      // bind members to open modal (supports both data-bio JSON and data-title/data-content)
       document.querySelectorAll('.member').forEach(member => {
+        function buildDataFromMember(m){
+          const raw = m.getAttribute('data-bio');
+          let parsed = raw ? safeParseJSON(raw) : null;
+          if(parsed) return parsed;
+          // fallback to attributes
+          return {
+            title: m.getAttribute('data-title') || m.querySelector('h3')?.textContent || '',
+            subtitle: m.getAttribute('data-subtitle') || m.querySelector('.role')?.textContent || '',
+            quote: m.getAttribute('data-quote') || '',
+            content: m.getAttribute('data-content') || ''
+          };
+        }
         member.addEventListener('click', (e) => {
-          const raw = member.getAttribute('data-bio');
-          const data = safeParseJSON(raw);
-          if (data) openModal(data, member);
+          const data = buildDataFromMember(member);
+          openModalWithData(data, member);
         });
         member.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            const raw = member.getAttribute('data-bio');
-            const data = safeParseJSON(raw);
-            if (data) openModal(data, member);
+            const data = buildDataFromMember(member);
+            openModalWithData(data, member);
           }
         });
       });
 
       // close modal handlers
-      modal.addEventListener('click', (e) => {
-        if (e.target.matches('[data-close]') || e.target.classList.contains('modal-backdrop')) closeModal();
-      });
-      modal.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', closeModal));
-      window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal(); });
+      closeables.forEach(btn => btn.addEventListener('click', closeModal));
+      if (modal){
+        modal.addEventListener('click', (e) => {
+          if (e.target.classList.contains('modal-backdrop') || e.target.matches('[data-close]')) closeModal();
+        });
+      }
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal && !modal.hasAttribute('hidden')) closeModal(); });
 
       // BOOKING modal
       const bookingModal = document.getElementById('bookingModal');
@@ -1191,14 +1120,14 @@ Bio and profile photo will be updated shortly.">
               <img class="article-thumb" loading="lazy" alt="${escapeHtml(article.title)}" src="${article.thumb}" style="width:120px;height:84px;object-fit:cover;border-radius:8px;flex:0 0 120px">
               <div style="flex:1">
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-                  <div class="article-title" style="font-weight:700">${escapeHtml(article.title)}</div>
-                  <div class="muted" style="font-size:.92rem">${new Date(article.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</div>
+                  <div class="article-title" style="font-weight:700;color:var(--ink)">${escapeHtml(article.title)}</div>
+                  <div class="muted" style="font-size:.92rem;color:var(--muted-dark)">${new Date(article.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</div>
                 </div>
-                <div class="article-excerpt muted" style="margin-top:6px">${escapeHtml(article.excerpt)}</div>
+                <div class="article-excerpt muted" style="margin-top:6px;color:var(--muted-dark)">${escapeHtml(article.excerpt)}</div>
                 <div style="display:flex;gap:8px;align-items:center;margin-top:10px">
                   <a class="read-more btn btn--ghost btn--small" href="${article.url}" target="_blank" rel="noopener">Read more →</a>
                   <button class="btn btn--small" data-preview="${article.id}" type="button">Preview</button>
-                  <div style="margin-left:auto" class="muted">${estimateReadingTime(article.excerpt + ' ' + (article.body || ''))}</div>
+                  <div style="margin-left:auto" class="muted" style="color:var(--muted-dark)">${estimateReadingTime(article.excerpt + ' ' + (article.body || ''))}</div>
                 </div>
               </div>
             `;
@@ -1292,7 +1221,7 @@ Bio and profile photo will be updated shortly.">
             dictResults.innerHTML = `<div class="dict-term">No simple definition found for “${q.replace(/</g,'&lt;')}”.</div><div class="dict-definition">Please describe your situation in the contact form or WhatsApp — we can explain it specifically for your case.</div>`;
             return;
           }
-          dictResults.innerHTML = `<div class="dict-term">${match.term}</div><div class="dict-definition">${match.def}</div><div class="dict-note">Note: This is a general explanation. Actual rights and procedures depend on facts of your case and latest court decisions.</div>`;
+          dictResults.innerHTML = `<div class="dict-term" style="font-weight:700;color:var(--ink)">${match.term}</div><div class="dict-definition" style="margin-top:8px;color:var(--muted-dark)">${match.def}</div><div class="dict-note" style="margin-top:6px;color:var(--muted-dark)">Note: This is a general explanation. Actual rights and procedures depend on facts of your case and latest court decisions.</div>`;
         }
 
         dictBtn.addEventListener('click', renderResult);
@@ -1373,7 +1302,7 @@ Bio and profile photo will be updated shortly.">
         });
       })();
 
-      // FAB toggle
+      // FAB toggle (fixed close-on-outside-click behaviour)
       (function(){
         const fab = document.getElementById('fab');
         const fabToggle = document.getElementById('fabToggle');
@@ -1389,8 +1318,13 @@ Bio and profile photo will be updated shortly.">
           const icon = document.getElementById('fabIcon');
           if(icon) icon.style.transform = newState ? 'rotate(45deg) scale(1.02)' : 'rotate(0deg) scale(1)';
         }
-        fabToggle.addEventListener('click', ()=> toggleFab());
-        document.addEventListener('click', (e)=> { if(!fab || fab.contains(e.target)) return; if(fab.getAttribute('aria-expanded') === 'true') toggleFab(false); });
+        // stop propagation on the toggle so the document click handler won't close immediately
+        fabToggle.addEventListener('click', (e)=> { e.stopPropagation(); toggleFab(); });
+        document.addEventListener('click', (e)=> {
+          if(!fab) return;
+          if(fab.contains(e.target)) return; // click inside fab — ignore
+          if(fab.getAttribute('aria-expanded') === 'true') toggleFab(false);
+        });
       })();
 
       // back-to-top
