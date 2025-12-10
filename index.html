@@ -12,19 +12,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
 
   <style>
+    /* ==========================
+       Palette B — Deep Indigo & Antique Gold
+       (Applied site-wide)
+       ========================== */
+
     :root{
-      --bg:#0b1220; --card:#ffffff; --ink:#071225; --muted:#6b7b90;
-      --accent:#083b9a; --accent-2:#052c78; --gold:#c89b1e;
+      /* Palette B variables */
+      --bg-900: #0a1222;     /* darkest page background */
+      --bg-700: #0e233f;     /* slightly lighter for gradient */
+      --card:    #f7f9fc;    /* light card / panel surface */
+      --text:    #e7eef9;    /* inverted (light) text for dark surfaces */
+      --ink:     #0b1422;    /* dark ink for text on card/light surfaces */
+      --muted:   #9aaec6;    /* muted/subtle text */
+      --accent:  #1141a8;    /* primary accent (nav, CTA) */
+      --accent-2:#0b2f7a;    /* darker accent */
+      --gold:    #b68b17;    /* antique gold */
+
       --radius:14px; --container:1180px; --easing:cubic-bezier(.16,.84,.32,1);
       --shadow-1: 0 6px 30px rgba(7,12,25,0.06); --shadow-2: 0 14px 40px rgba(7,12,25,0.05);
-      --btn-radius:12px; --btn-padding:12px 16px; --btn-shadow: 0 10px 32px rgba(5,44,120,0.12);
-      --btn-focus: 0 0 0 4px rgba(8,59,155,0.12);
+      --btn-radius:12px; --btn-padding:12px 16px; --btn-shadow: 0 10px 32px rgba(17,65,168,0.12);
+      --btn-focus: 0 0 0 4px rgba(17,65,168,0.12);
       --max-mobile-padding:18px;
     }
 
     /* Reset + baseline */
     *,*::before,*::after{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,#071229,#07182e);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; -webkit-font-smoothing:antialiased;line-height:1.45}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg-900),var(--bg-700));color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; -webkit-font-smoothing:antialiased;line-height:1.45}
     a{color:inherit;text-decoration:none}
     img,svg,canvas{max-width:100%;height:auto;display:block}
     html,body{overflow-x:hidden}
@@ -39,8 +53,10 @@
     /* NAV */
     .nav{
       display:flex;align-items:center;justify-content:space-between;
-      background:rgba(255,255,255,0.94);backdrop-filter:blur(6px); padding:12px; border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.92));
+      padding:12px; border-radius:12px;
       box-shadow:var(--shadow-1); margin:12px 0; position:relative; z-index:30;
+      color: var(--ink);
     }
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.05rem}
@@ -65,15 +81,16 @@
       padding:26px;
       box-shadow: 0 22px 80px rgba(2,6,20,0.6);
       overflow:visible;
+      color: var(--text);
     }
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));padding:24px;border-radius:12px;box-shadow:0 22px 60px rgba(7,12,25,0.06);position:relative;z-index:2}
+    .hero-card{background:linear-gradient(180deg, rgba(247,249,252,0.98), rgba(247,249,252,0.96));padding:24px;border-radius:12px;box-shadow:0 22px 60px rgba(7,12,25,0.06);position:relative;z-index:2;color:var(--ink)}
     .eyebrow{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700;display:inline-block}
     .headline{font-family:Merriweather,serif;font-size:26px;margin:12px 0}
     .lead{color:var(--muted);margin-bottom:16px}
     .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
 
     /* Aside panel */
-    .panel{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2);z-index:1}
+    .panel{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2);z-index:1;color:var(--ink)}
     #clock-nav{font-weight:700;color:var(--gold);font-size:.95rem;text-align:right}
     #calendar-section{background:linear-gradient(180deg,#fff,#fbfdff);border-radius:10px;padding:10px;margin-top:12px;box-shadow:0 12px 36px rgba(7,12,25,0.04)}
     #calendar{width:100%;overflow-x:auto}
@@ -83,7 +100,7 @@
     #calendar td.today{background:var(--gold);color:#000;font-weight:700;border-radius:50%}
 
     section{margin:30px 0}
-    h2{font-family:Merriweather,serif;font-size:1.22rem;margin:0 0 10px;position:relative}
+    h2{font-family:Merriweather,serif;font-size:1.22rem;margin:0 0 10px;position:relative;color:var(--ink)}
     h2::after{content:"";display:block;width:48px;height:4px;background:var(--gold);border-radius:4px;margin-top:8px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
     .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow-2);transition:transform 320ms var(--easing),box-shadow 320ms var(--easing)}
@@ -91,15 +108,15 @@
 
     /* practice */
     .practice-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:16px; }
-    .practice-card { border-radius:14px; overflow:hidden; display:flex; gap:0; align-items:stretch; box-shadow:var(--shadow-2); background:#fff; }
+    .practice-card { border-radius:14px; overflow:hidden; display:flex; gap:0; align-items:stretch; box-shadow:var(--shadow-2); background:var(--card); }
     .practice-thumb { width:140px; min-width:140px; height:140px; object-fit:cover; display:block }
     .practice-body { padding:14px; display:flex; flex-direction:column; gap:8px; }
 
-    /* Team premium */
+    /* Team premium (dark textured section) */
     .team-section-premium {
       position: relative;
       padding: 56px 18px;
-      color: #e9f0fb;
+      color: var(--text);
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       overflow: hidden;
       isolation: isolate;
@@ -111,9 +128,9 @@
       inset: -20% -10%;
       z-index: 0;
       background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(135,123,255,0.12), transparent 8%),
-        radial-gradient(900px 500px at 90% 80%, rgba(20,255,220,0.04), transparent 8%),
-        linear-gradient(180deg, rgba(3,8,18,0.88) 0%, rgba(8,12,20,0.95) 100%);
+        radial-gradient(1200px 600px at 10% 10%, rgba(135,123,255,0.08), transparent 8%),
+        radial-gradient(900px 500px at 90% 80%, rgba(20,255,220,0.03), transparent 8%),
+        linear-gradient(180deg, rgba(4,7,15,0.9) 0%, rgba(8,12,20,0.96) 100%);
       filter: blur(26px) saturate(1.05);
       animation: bgShift 12s linear infinite alternate;
       pointer-events: none;
@@ -208,7 +225,7 @@
       display: none; /* toggled by JS */
       place-items: center;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--text);
       background: linear-gradient(180deg, rgba(34,41,60,0.92), rgba(17,22,34,0.96));
       font-size: 1.125rem;
       letter-spacing: 0.06em;
@@ -226,6 +243,7 @@
       justify-content: center;
       align-items: flex-start;
       margin-top: 10px;
+      color: var(--text);
     }
     .bio h3 { margin: 0; font-size: 1rem; color: #fff; line-height: 1.15; }
     .role { margin: 0; color: #b7c7da; font-size: .9rem; }
@@ -312,8 +330,8 @@
     .modal-body p { margin: 0 0 14px 0; text-align: left; opacity: 0.95; }
     .modal-foot { display:flex; justify-content:flex-end; gap:10px; margin-top: 6px; }
     .btn { border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight:600; }
-    .btn-primary { background: linear-gradient(180deg,#36a0ff,#0d6fe8); color: white; box-shadow: 0 8px 24px rgba(13,111,232,0.18); }
-    .btn-primary:focus { outline: 2px solid rgba(13,111,232,0.22); }
+    .btn-primary { background: linear-gradient(180deg,var(--accent),var(--accent-2)); color: white; box-shadow: 0 8px 24px rgba(17,65,168,0.18); }
+    .btn-primary:focus { outline: 2px solid rgba(17,65,168,0.22); }
 
     /* responsive */
     @media (max-width: 1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:12px} }
@@ -333,9 +351,15 @@
     }
 
     /* small helper classes */
-    .btn--ghost { background:transparent; color:var(--ink); border:1px solid rgba(5,44,120,0.08); box-shadow:none; padding:10px 12px; border-radius:10px; }
+    .btn--ghost { background:transparent; color:var(--ink); border:1px solid rgba(17,65,168,0.08); box-shadow:none; padding:10px 12px; border-radius:10px; }
     .btn--small { padding:8px 10px; font-size:.88rem; border-radius:10px; font-weight:600; }
     .tag-chip{border-radius:999px;border:1px solid #dde4f3;padding:6px 10px;font-size:.85rem;background:#fff;cursor:pointer}
+
+    /* small gold accent for links in footer */
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* Ensure initials visible when image missing */
+    .member-figure .initials{ display: none; }
   </style>
 </head>
 <body>
@@ -368,7 +392,7 @@
     </header>
 
     <!-- Mobile nav panel -->
-    <div id="mobileNavPanel" class="mobile-nav-panel" aria-hidden="true" style="display:none;position:fixed;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.92), rgba(2,6,23,0.96));color:#fff;padding:18px;z-index:1200;overflow:auto">
+    <div id="mobileNavPanel" class="mobile-nav-panel" aria-hidden="true" style="display:none;position:fixed;inset:0;background:linear-gradient(180deg, rgba(10,18,34,0.96), rgba(8,12,20,0.96));color:#fff;padding:18px;z-index:1200;overflow:auto">
       <div style="display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:12px">
         <div class="logo" style="width:44px;height:44px">TJ</div>
         <div style="font-weight:700">The Justice Firm</div>
@@ -379,7 +403,7 @@
       <a href="#articles" class="mobile-link">Articles</a>
       <a href="#dictionary" class="mobile-link">Dictionary</a>
       <a href="#payment" class="mobile-link">Payment</a>
-      <a href="contact.html" target="_blank" rel="noopener" class="btn btn--primary" style="width:100%;display:inline-flex;justify-content:center;margin-top:12px">Contact / Book</a>
+      <a href="contact.html" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;display:inline-flex;justify-content:center;margin-top:12px">Contact / Book</a>
 
       <div style="margin-top:20px;color:rgba(255,255,255,0.9);font-size:.95rem">
         <div><strong>Call:</strong> <a href="tel:+919454183793" style="color:#fff">+91 94541 83793</a></div>
@@ -695,7 +719,7 @@
       <a class="fab__item" href="#dictionary">Legal Dictionary</a>
     </div>
 
-    <button id="fabToggle" class="fab__main" aria-label="Open quick contact" title="Contact" style="width:60px;height:60px;border-radius:999px;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#fff;border:0;box-shadow:0 18px 48px rgba(5,44,120,0.18);display:grid;place-items:center">
+    <button id="fabToggle" class="fab__main" aria-label="Open quick contact" title="Contact" style="width:60px;height:60px;border-radius:999px;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#fff;border:0;box-shadow:0 18px 48px rgba(17,65,168,0.18);display:grid;place-items:center">
       <svg id="fabIcon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M5 12h14" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </div>
@@ -727,12 +751,12 @@
 
   <!-- Chat widget -->
   <div id="ljf-chat" aria-live="polite" aria-atomic="true" style="position:fixed;left:18px;bottom:22px;z-index:1600">
-    <button id="ljf-toggle" class="chat-toggle" aria-expanded="false" aria-label="Open chat" style="width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#052c78,#083b9a);color:#fff;border:0;box-shadow:0 12px 36px rgba(5,44,120,0.18);">
+    <button id="ljf-toggle" class="chat-toggle" aria-expanded="false" aria-label="Open chat" style="width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#fff;border:0;box-shadow:0 12px 36px rgba(17,65,168,0.18);">
       💬
     </button>
     <div id="ljf-panel" class="chat-panel" style="display:none;position:fixed;left:18px;bottom:90px;width:360px;max-width:92vw;background:#fff;border-radius:12px;box-shadow:0 28px 80px rgba(7,12,25,0.18);overflow:hidden;flex-direction:column;">
-      <div style="padding:12px 14px;background:linear-gradient(90deg,#083b9a,#052c78);color:#fff;display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;gap:10px;align-items:center"><div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#083b9a,#052c78);display:grid;place-items:center;color:#fff;font-weight:800">TJ</div><div><div style="font-weight:700">Chat with The Justice Firm</div><div style="font-size:.85rem;color:rgba(255,255,255,0.9)">Quick answers or book</div></div></div>
+      <div style="padding:12px 14px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:10px;align-items:center"><div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-weight:800">TJ</div><div><div style="font-weight:700">Chat with The Justice Firm</div><div style="font-size:.85rem;color:rgba(255,255,255,0.9)">Quick answers or book</div></div></div>
         <div style="display:flex;gap:8px"><button id="ljf-close" style="background:transparent;border:0;color:#fff;font-size:18px">✕</button></div>
       </div>
       <div id="ljf-body" style="padding:12px;height:340px;overflow:auto;background:#f7f9fc;display:flex;flex-direction:column;">
@@ -740,7 +764,7 @@
       </div>
       <div style="padding:10px;border-top:1px solid #eef3fb;display:flex;gap:8px">
         <input id="ljf-input" type="text" placeholder="Type a quick question…" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
-        <button id="ljf-send" class="small-cta" style="background:linear-gradient(90deg,#083b9a,#052c78);color:#fff;border-radius:8px;padding:8px 10px;border:0;cursor:pointer;">Send</button>
+        <button id="ljf-send" class="small-cta" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border-radius:8px;padding:8px 10px;border:0;cursor:pointer;">Send</button>
       </div>
     </div>
   </div>
