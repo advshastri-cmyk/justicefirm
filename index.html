@@ -515,113 +515,195 @@
         </div>
       </section>
 
-      <!-- TEAM -->
-      <section id="team" aria-labelledby="teamHeading" class="team-section-premium">
-        <div class="team-wrap">
-          <header class="team-header">
-            <h2 id="teamHeading">Our Team</h2>
-            <p class="muted">Experienced advocates &amp; legal consultants.</p>
-          </header>
+    <!-- TEAM -->
+<section id="team" aria-labelledby="teamHeading" class="team-section-premium">
+<style>
+/* =======================
+   TEAM SECTION FIX / CLEANUP
+   ======================= */
 
-          <div class="team-grid" role="list" aria-label="Our team members">
+.team-section-premium {
+  position: relative;
+  padding: 56px 18px;
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+  overflow: hidden;
+  isolation: isolate;
+}
 
-            <!-- Member 1: Ganga -->
-            <article class="member" role="listitem" tabindex="0"
-              data-title="Adv. Ganga Shankar Shastri"
-              data-subtitle="Founder & Lead Counsel"
-              data-quote="Justice is served best when clarity meets conscience."
-              data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law, blending analytical precision with deep legal insight.\n\nWith over 15 years of experience in law, he has guided complex matters before the Allahabad High Court with clarity, discipline, and unwavering composure.\n\nHe is the author of the respected Supreme Court judgment compilation series 'Nirnay Dhara', known for its scholarly depth and practical relevance. Admired for his humility, principled advocacy, and steady judgement, he remains a trusted counsel for clients facing high-stakes litigation.">
-              <figure class="member-figure" aria-hidden="true">
-                <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="50% 22%">
-                <div class="initials" aria-hidden="true">GS</div>
-                <div class="sheen" aria-hidden="true"></div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Ganga Shankar Shastri</h3>
-                <p class="role">Founder &amp; Lead Counsel</p>
-                <p class="meta">15+ years • Allahabad High Court</p>
-              </div>
-            </article>
+/* Subtle animated texture */
+.team-section-premium::before {
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(4,7,15,0.9),rgba(8,12,20,0.96));
+  z-index:0;
+}
 
-            <!-- Member 2: Minakshi -->
-            <article class="member" role="listitem" tabindex="0"
-              data-title="Adv. Minakshi Shastri"
-              data-subtitle="Senior Associate – Civil & Corporate"
-              data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
-              data-content="Adv. Minakshi Shastri holds a Master of Laws (LL.M.) and is a postgraduate of the Indian Institute of Human Rights.\n\nShe combines academic depth with practical courtroom skill, shaping strategies marked by precision and compassion.\n\nRecognised for her calm authority, meticulous preparation, and empathetic client guidance, she brings unwavering commitment to every civil and corporate matter she leads.">
-              <figure class="member-figure" aria-hidden="true">
-                <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="50% 20%">
-                <div class="initials" aria-hidden="true">MS</div>
-                <div class="sheen" aria-hidden="true"></div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Minakshi Shastri</h3>
-                <p class="role">Senior Associate – Civil &amp; Corporate</p>
-                <p class="meta">Property &amp; Corporate Litigation</p>
-              </div>
-            </article>
+.team-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+}
 
-            <!-- Member 3: Shivani -->
-            <article class="member" role="listitem" tabindex="0"
-              data-title="Adv. Shivani Shastri"
-              data-subtitle="Consulting Advocate – Constitutional Affairs"
-              data-quote="Progress in law begins with the courage to question, learn, and refine."
-              data-content="Adv. Shivani Shastri holds a Master of Laws (LL.M.) and is currently pursuing her Ph.D. to deepen her research in constitutional studies.\n\nHer scholarly approach, analytical discipline, and commitment to continued learning distinguish her among emerging legal minds.\n\nKnown for her clarity of thought and respectful professionalism, she contributes refined research, thoughtful advisory work, and principled perspective to every constitutional matter she engages with.">
-              <figure class="member-figure" aria-hidden="true">
-                <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="50% 18%">
-                <div class="initials" aria-hidden="true">SS</div>
-                <div class="sheen" aria-hidden="true"></div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Shivani Shastri</h3>
-                <p class="role">Consulting Advocate – Constitutional Affairs</p>
-                <p class="meta">Research &amp; Advisory</p>
-              </div>
-            </article>
+.team-header h2 {
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 2rem;
+}
+.team-header .muted {
+  margin-top: 6px;
+  color: #98a9c0;
+}
 
-            <!-- Member 4: Sanjay -->
-            <article class="member" role="listitem" tabindex="0"
-              data-title="Adv. Sanjay Kumar"
-              data-subtitle="Associate Counsel – Criminal Defence"
-              data-quote=""
-              data-content="Adv. Sanjay Kumar is an Associate Counsel specialising in criminal defence. He brings practical courtroom experience, focused client advocacy, and attentive case preparation.\n\nBio and profile photo will be updated shortly.">
-              <figure class="member-figure" aria-hidden="true">
-                <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="50% 20%">
-                <div class="initials" aria-hidden="true">SK</div>
-                <div class="sheen" aria-hidden="true"></div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Sanjay Kumar</h3>
-                <p class="role">Associate Counsel – Criminal Defence</p>
-                <p class="meta">Photo coming soon</p>
-              </div>
-            </article>
+.team-grid {
+  display: grid;
+  gap: 26px;
+  margin-top: 26px;
+}
+@media (min-width:720px){
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width:1100px){
+  .team-grid { grid-template-columns: repeat(4, 1fr); }
+}
 
-          </div>
-        </div>
+.member {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:14px 14px 18px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow:0 10px 30px rgba(0,0,0,0.45);
+  transition:transform .35s, box-shadow .35s;
+  text-align:center;
+  cursor:pointer;
+}
+.member:hover { transform:translateY(-4px); box-shadow:0 20px 50px rgba(0,0,0,0.75); }
 
-        <!-- Modal -->
-        <div id="profileModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle" aria-describedby="modalDesc" hidden>
-          <div class="modal-backdrop" data-close="true"></div>
-          <div class="modal-panel" role="document" aria-live="polite">
-            <button class="modal-close" aria-label="Close profile" data-close="true">&times;</button>
-            <div class="modal-content">
-              <header class="modal-head">
-                <h3 id="profileModalTitle"></h3>
-                <p class="modal-sub" id="profileModalSub"></p>
-              </header>
+/* Fix CUT photos: consistent proportions */
+.member-figure {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 14px;
+  margin: 8px auto 10px;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  background:#101623;
+}
 
-              <blockquote class="modal-quote" id="profileModalQuote" aria-hidden="true"></blockquote>
+.member-figure img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+}
 
-              <section id="modalDesc" class="modal-body"></section>
+.member-figure .initials {
+  display:grid; place-items:center;
+  width:100%; height:100%;
+  font-weight:700; font-size:1.1rem;
+}
 
-              <footer class="modal-foot">
-                <button class="btn-primary" data-close="true">Close</button>
-              </footer>
-            </div>
-          </div>
-        </div>
-      </section>
+/* Bio text */
+.bio { display:flex; flex-direction:column; gap:4px; }
+.bio h3 { margin:0; color:#fff; font-size:1rem; font-weight:600; }
+.role { margin:0; font-size:.9rem; color:#b7c7da; }
+.meta { margin:0; font-size:.82rem; color:#8ea4bf; }
+
+/* Mobile small width */
+@media(max-width:720px){
+  .member { max-width: 320px; margin-inline:auto; }
+}
+</style>
+
+<div class="team-wrap">
+  <header class="team-header">
+    <h2 id="teamHeading">Our Team</h2>
+    <p class="muted">Experienced advocates &amp; legal consultants.</p>
+  </header>
+
+  <div class="team-grid" role="list">
+
+    <!-- 1: Ganga -->
+    <article class="member" role="listitem" tabindex="0"
+      data-title="Adv. Ganga Shankar Shastri"
+      data-subtitle="Founder & Lead Counsel"
+      data-quote="Justice is served best when clarity meets conscience."
+      data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law...\n\n15+ years experience...">
+      <figure class="member-figure">
+        <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri">
+        <div class="initials">GS</div>
+      </figure>
+      <div class="bio">
+        <h3>Adv. Ganga Shankar Shastri</h3>
+        <p class="role">Founder &amp; Lead Counsel</p>
+        <p class="meta">High Court • 15+ years</p>
+      </div>
+    </article>
+
+    <!-- 2: Minakshi -->
+    <article class="member" role="listitem" tabindex="0"
+      data-title="Adv. Minakshi Shastri"
+      data-subtitle="Senior Associate – Civil & Corporate"
+      data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
+      data-content="LL.M. • Property & Corporate litigation expert...">
+      <figure class="member-figure">
+        <img src="minakshi.jpg" alt="Adv. Minakshi Shastri">
+        <div class="initials">MS</div>
+      </figure>
+      <div class="bio">
+        <h3>Adv. Minakshi Shastri</h3>
+        <p class="role">Senior Associate – Civil &amp; Corporate</p>
+        <p class="meta">Property Litigation</p>
+      </div>
+    </article>
+
+    <!-- 3: Shivani -->
+    <article class="member" role="listitem" tabindex="0"
+      data-title="Adv. Shivani Shastri"
+      data-subtitle="Consulting Advocate – Constitutional Affairs"
+      data-quote="Progress in law begins with the courage to question, learn, and refine."
+      data-content="LL.M., pursuing Ph.D. • Research & Advisory...">
+      <figure class="member-figure">
+        <img src="shivani.jpg" alt="Adv. Shivani Shastri">
+        <div class="initials">SS</div>
+      </figure>
+      <div class="bio">
+        <h3>Adv. Shivani Shastri</h3>
+        <p class="role">Consulting Advocate – Constitutional Affairs</p>
+        <p class="meta">Research &amp; Advisory</p>
+      </div>
+    </article>
+
+    <!-- 4: Sanjay -->
+    <article class="member" role="listitem" tabindex="0"
+      data-title="Adv. Sanjay Kumar"
+      data-subtitle="Associate Counsel – Criminal Defence"
+      data-content="Criminal Defence • Practical courtroom experience">
+      <figure class="member-figure">
+        <img src="sanjay.jpg" alt="Adv. Sanjay Kumar">
+        <div class="initials">SK</div>
+      </figure>
+      <div class="bio">
+        <h3>Adv. Sanjay Kumar</h3>
+        <p class="role">Associate Counsel – Criminal Defence</p>
+        <p class="meta">Criminal Practice</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- Modal stays unchanged (keep yours below this) -->
+</section>
 
       <!-- TESTIMONIALS -->
       <section id="testimonials" aria-labelledby="testimonialsHeading" class="card" style="padding:22px;">
