@@ -480,122 +480,248 @@
           </article>
         </div>
       </section>
+<!-- Replace your existing <section id="team"> block with this full, ready-to-use section -->
+<section id="team" aria-labelledby="teamHeading" class="team-section-premium">
+  <style>
+    /* Minimal, component-scoped styles (move to main CSS if you prefer). */
+    .team-wrap { max-width:1200px; margin:0 auto; padding:28px 16px; }
+    .team-header { text-align:center; margin-bottom:20px; }
+    .team-header .muted { color:#666; margin-top:6px; }
+    .team-grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items:start; }
+    .member { cursor:pointer; border-radius:8px; padding:10px; background:#fff; box-shadow:0 1px 6px rgba(0,0,0,0.06); transition:transform .12s, box-shadow .12s; outline:none; border:1px solid rgba(0,0,0,0.03); }
+    .member:hover, .member:focus { transform:translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+    .member-figure { width:100%; aspect-ratio:3/4; overflow:hidden; position:relative; border-radius:8px; background:#f5f5f5; margin-bottom:10px; }
+    .member-figure img { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 50%; }
+    .initials { position:absolute; left:10px; bottom:10px; background: rgba(255,255,255,0.9); padding:6px 8px; border-radius:6px; font-weight:700; font-size:0.9rem; }
+    .bio h3 { margin:0 0 4px 0; font-size:1.05rem; }
+    .role { margin:0 0 6px 0; color:#444; font-weight:500; }
+    .meta { margin:0; color:#777; font-size:0.9rem; }
 
-      <!-- TEAM -->
-      <section id="team" aria-labelledby="teamHeading" class="team-section-premium">
-        <div class="team-wrap">
-          <header class="team-header">
-            <h2 id="teamHeading">Our Team</h2>
-            <p class="muted">Experienced advocates &amp; legal consultants.</p>
-          </header>
+    /* Modal */
+    #profileModal[hidden]{display:none;}
+    #profileModal.modal { position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; }
+    .modal-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.5); }
+    .modal-panel { position:relative; width:min(820px, calc(100% - 36px)); max-height:90vh; overflow:auto; background:#fff; border-radius:12px; z-index:2; padding:22px; box-shadow:0 14px 40px rgba(0,0,0,0.25); }
+    .modal-close { position:absolute; right:14px; top:10px; background:none; border:0; font-size:26px; cursor:pointer; line-height:1; }
+    .modal-head h3 { margin:0 0 6px; }
+    .modal-sub { margin:0 0 8px; color:#555; }
+    .modal-quote { font-style:italic; margin:8px 0 12px; color:#333; }
+    .modal-body p { margin:0 0 1rem 0; line-height:1.5; color:#222; }
+    .modal-foot { text-align:right; margin-top:8px; }
+    .btn-primary { background:#0b5fff; color:#fff; border:0; padding:8px 14px; border-radius:8px; cursor:pointer; }
+    @media (min-width:900px){ .team-grid { gap:20px; grid-template-columns: repeat(4, 1fr); } }
+  </style>
 
-          <div class="team-grid" role="list" aria-label="Our team members">
+  <div class="team-wrap">
+    <header class="team-header">
+      <h2 id="teamHeading">Our Team</h2>
+      <p class="muted">Experienced advocates &amp; legal consultants.</p>
+    </header>
 
-            <!-- Member 1: Ganga -->
-            <article class="member" role="listitem" tabindex="0"
-              data-name="Adv. Ganga Shankar Shastri"
-              data-bio='{
-                "title":"Adv. Ganga Shankar Shastri",
-                "subtitle":"Founder & Lead Counsel",
-                "quote":"Justice is served best when clarity meets conscience.",
-                "content":"Adv. Ganga Shankar Shastri holds a Bachelor\\'s degree in Information Technology and a Bachelor\\'s degree in Law, blending analytical precision with deep legal insight.\\n\\nWith over 15 years of experience in law, he has guided complex matters before the Allahabad High Court with clarity, discipline, and unwavering composure.\\n\\nHe is the author of the respected Supreme Court judgment compilation series \\\"Nirnay Dhara\\\", known for its scholarly depth and practical relevance. Admired for his humility, principled advocacy, and steady judgement, he remains a trusted counsel for clients facing high-stakes litigation."
-              }'>
-              <figure class="member-figure" aria-hidden="true">
-                <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="50% 22%">
-                <div class="initials" aria-hidden="true">GS</div>
-                <div class="sheen" aria-hidden="true"></div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Ganga Shankar Shastri</h3>
-                <p class="role">Founder &amp; Lead Counsel</p>
-                <p class="meta">15+ years • Allahabad High Court</p>
-              </div>
-            </article>
+    <div class="team-grid" role="list" aria-label="Our team members">
 
-            <!-- Member 2: Minakshi -->
-            <article class="member" role="listitem" tabindex="0"
-              data-name="Adv. Minakshi Shastri"
-              data-bio='{
-                "title":"Adv. Minakshi Shastri",
-                "subtitle":"Senior Associate – Civil & Corporate",
-                "quote":"Clarity, compassion, and discipline — the pillars of enduring advocacy.",
-                "content":"Adv. Minakshi Shastri holds a Master of Laws (LL.M.) and is a postgraduate of the Indian Institute of Human Rights.\\n\\nShe combines academic depth with practical courtroom skill, shaping strategies marked by precision and compassion.\\n\\nRecognised for her calm authority, meticulous preparation, and empathetic client guidance, she brings unwavering commitment to every civil and corporate matter she leads."
-              }'>
-              <figure class="member-figure" aria-hidden="true">
-                <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="50% 20%">
-                <div class="initials" aria-hidden="true">MS</div>
-                <div class="sheen" aria-hidden="true"></div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Minakshi Shastri</h3>
-                <p class="role">Senior Associate – Civil &amp; Corporate</p>
-                <p class="meta">Property &amp; Corporate Litigation</p>
-              </div>
-            </article>
+      <!-- Member 1: Ganga -->
+      <article class="member" role="listitem" tabindex="0"
+               data-title="Adv. Ganga Shankar Shastri"
+               data-subtitle="Founder & Lead Counsel"
+               data-quote="Justice is served best when clarity meets conscience."
+               data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law, blending analytical precision with deep legal insight.
 
-            <!-- Member 3: Shivani -->
-            <article class="member" role="listitem" tabindex="0"
-              data-name="Adv. Shivani Shastri"
-              data-bio='{
-                "title":"Adv. Shivani Shastri",
-                "subtitle":"Consulting Advocate – Constitutional Affairs",
-                "quote":"Progress in law begins with the courage to question, learn, and refine.",
-                "content":"Adv. Shivani Shastri holds a Master of Laws (LL.M.) and is currently pursuing her Ph.D. to deepen her research in constitutional studies.\\n\\nHer scholarly approach, analytical discipline, and commitment to continued learning distinguish her among emerging legal minds.\\n\\nKnown for her clarity of thought and respectful professionalism, she contributes refined research, thoughtful advisory work, and principled perspective to every constitutional matter she engages with."
-              }'>
-              <figure class="member-figure" aria-hidden="true">
-                <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="50% 18%">
-                <div class="initials" aria-hidden="true">SS</div>
-                <div class="sheen" aria-hidden="true"></div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Shivani Shastri</h3>
-                <p class="role">Consulting Advocate – Constitutional Affairs</p>
-                <p class="meta">Research &amp; Advisory</p>
-              </div>
-            </article>
+With over 15 years of experience in law, he has guided complex matters before the Allahabad High Court with clarity, discipline, and unwavering composure.
 
-            <!-- Member 4: Sanjay -->
-            <article class="member" role="listitem" tabindex="0"
-              data-name="Adv. Sanjay Kumar"
-              data-bio=''>
-              <figure class="member-figure" aria-hidden="true">
-                <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="50% 20%">
-                <div class="initials" aria-hidden="true">SK</div>
-                <div class="sheen" aria-hidden="true"></div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Sanjay Kumar</h3>
-                <p class="role">Associate Counsel – Criminal Defence</p>
-                <p class="meta">Photo coming soon</p>
-              </div>
-            </article>
-
-          </div>
+He is the author of the respected Supreme Court judgment compilation series “Nirnay Dhara”, known for its scholarly depth and practical relevance. Admired for his humility, principled advocacy, and steady judgement, he remains a trusted counsel for clients facing high-stakes litigation.">
+        <figure class="member-figure" aria-hidden="true">
+          <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" loading="lazy" decoding="async" data-focus="50% 22%">
+          <div class="initials" aria-hidden="true">GS</div>
+        </figure>
+        <div class="bio">
+          <h3>Adv. Ganga Shankar Shastri</h3>
+          <p class="role">Founder &amp; Lead Counsel</p>
+          <p class="meta">15+ years • Allahabad High Court</p>
         </div>
+      </article>
 
-        <!-- Modal -->
-        <div id="profileModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
-          <div class="modal-backdrop" data-close="true"></div>
-          <div class="modal-panel" role="document" aria-live="polite">
-            <button class="modal-close" aria-label="Close profile" data-close="true">&times;</button>
-            <div class="modal-content">
-              <header class="modal-head">
-                <h3 id="modalTitle"></h3>
-                <p class="modal-sub" id="modalSub"></p>
-              </header>
+      <!-- Member 2: Minakshi -->
+      <article class="member" role="listitem" tabindex="0"
+               data-title="Adv. Minakshi Shastri"
+               data-subtitle="Senior Associate – Civil & Corporate"
+               data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
+               data-content="Adv. Minakshi Shastri holds a Master of Laws (LL.M.) and is a postgraduate of the Indian Institute of Human Rights.
 
-              <blockquote class="modal-quote" id="modalQuote" aria-hidden="true"></blockquote>
+She combines academic depth with practical courtroom skill, shaping strategies marked by precision and compassion.
 
-              <section id="modalDesc" class="modal-body"></section>
-
-              <footer class="modal-foot">
-                <button class="btn-primary" data-close="true">Close</button>
-              </footer>
-            </div>
-          </div>
+Recognised for her calm authority, meticulous preparation, and empathetic client guidance, she brings unwavering commitment to every civil and corporate matter she leads.">
+        <figure class="member-figure" aria-hidden="true">
+          <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" loading="lazy" decoding="async" data-focus="50% 20%">
+          <div class="initials" aria-hidden="true">MS</div>
+        </figure>
+        <div class="bio">
+          <h3>Adv. Minakshi Shastri</h3>
+          <p class="role">Senior Associate – Civil &amp; Corporate</p>
+          <p class="meta">Property &amp; Corporate Litigation</p>
         </div>
-      </section>
+      </article>
 
+      <!-- Member 3: Shivani -->
+      <article class="member" role="listitem" tabindex="0"
+               data-title="Adv. Shivani Shastri"
+               data-subtitle="Consulting Advocate – Constitutional Affairs"
+               data-quote="Progress in law begins with the courage to question, learn, and refine."
+               data-content="Adv. Shivani Shastri holds a Master of Laws (LL.M.) and is currently pursuing her Ph.D. to deepen her research in constitutional studies.
+
+Her scholarly approach, analytical discipline, and commitment to continued learning distinguish her among emerging legal minds.
+
+Known for her clarity of thought and respectful professionalism, she contributes refined research, thoughtful advisory work, and principled perspective to every constitutional matter she engages with.">
+        <figure class="member-figure" aria-hidden="true">
+          <img src="new_shivani.jpg" alt="Adv. Shivani Shastri" loading="lazy" decoding="async" data-focus="50% 18%">
+          <div class="initials" aria-hidden="true">SS</div>
+        </figure>
+        <div class="bio">
+          <h3>Adv. Shivani Shastri</h3>
+          <p class="role">Consulting Advocate – Constitutional Affairs</p>
+          <p class="meta">Research &amp; Advisory</p>
+        </div>
+      </article>
+
+      <!-- Member 4: Sanjay (placeholder bio) -->
+      <article class="member" role="listitem" tabindex="0"
+               data-title="Adv. Sanjay Kumar"
+               data-subtitle="Associate Counsel – Criminal Defence"
+               data-quote=""
+               data-content="Adv. Sanjay Kumar is an Associate Counsel specialising in criminal defence. He brings practical courtroom experience, focused client advocacy, and attentive case preparation.
+
+Bio and profile photo will be updated shortly.">
+        <figure class="member-figure" aria-hidden="true">
+          <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" loading="lazy" decoding="async" data-focus="50% 20%">
+          <div class="initials" aria-hidden="true">SK</div>
+        </figure>
+        <div class="bio">
+          <h3>Adv. Sanjay Kumar</h3>
+          <p class="role">Associate Counsel – Criminal Defence</p>
+          <p class="meta">Photo coming soon</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="profileModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-panel" role="document" aria-live="polite">
+      <button class="modal-close" aria-label="Close profile" data-close="true">&times;</button>
+      <div class="modal-content">
+        <header class="modal-head">
+          <h3 id="modalTitle"></h3>
+          <p class="modal-sub" id="modalSub"></p>
+        </header>
+
+        <blockquote class="modal-quote" id="modalQuote" aria-hidden="true"></blockquote>
+
+        <section id="modalDesc" class="modal-body" aria-live="polite"></section>
+
+        <footer class="modal-foot">
+          <button class="btn-primary" data-close="true">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* Minimal, robust JS for modal + image focus + accessibility */
+    (function () {
+      const qs = (s, ctx=document) => ctx.querySelector(s);
+      const qsa = (s, ctx=document) => Array.from(ctx.querySelectorAll(s));
+      const members = qsa('.member');
+      const modal = qs('#profileModal');
+      if (!modal) return;
+      const modalTitle = qs('#modalTitle', modal);
+      const modalSub = qs('#modalSub', modal);
+      const modalQuote = qs('#modalQuote', modal);
+      const modalDesc = qs('#modalDesc', modal);
+      const closeables = qsa('[data-close]', modal);
+
+      // apply image focus positions
+      qsa('.member-figure img').forEach(img => {
+        const focus = img.getAttribute('data-focus');
+        img.style.objectPosition = (focus && focus.trim()) ? focus : '50% 50%';
+      });
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      }
+
+      function contentToHTML(raw) {
+        if (!raw || !raw.trim()) return '<p><em>Bio coming soon.</em></p>';
+        // Normalize literal \n and real newlines, split into paragraphs on two+ newlines
+        const normalized = raw.replace(/\\n/g, '\n').replace(/\r/g, '');
+        const paras = normalized.split(/\n{2,}/).map(p => p.trim()).filter(Boolean);
+        return paras.map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('');
+      }
+
+      let lastFocusedMember = null;
+
+      function openModalFrom(member) {
+        lastFocusedMember = member;
+        const title = member.getAttribute('data-title') || '';
+        const subtitle = member.getAttribute('data-subtitle') || '';
+        const quote = member.getAttribute('data-quote') || '';
+        const content = member.getAttribute('data-content') || '';
+
+        modalTitle.textContent = title;
+        modalSub.textContent = subtitle;
+        if (quote && quote.trim()) {
+          modalQuote.textContent = quote;
+          modalQuote.style.display = '';
+        } else {
+          modalQuote.style.display = 'none';
+          modalQuote.textContent = '';
+        }
+        modalDesc.innerHTML = contentToHTML(content);
+
+        modal.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+        const focusTarget = modal.querySelector('.modal-close') || modal.querySelector('button[data-close]');
+        if (focusTarget) focusTarget.focus();
+      }
+
+      function closeModal() {
+        modal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+        if (lastFocusedMember && document.body.contains(lastFocusedMember)) lastFocusedMember.focus();
+        lastFocusedMember = null;
+      }
+
+      members.forEach(m => {
+        m.addEventListener('click', () => openModalFrom(m));
+        m.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModalFrom(m); }
+        });
+      });
+
+      closeables.forEach(btn => btn.addEventListener('click', closeModal));
+
+      // backdrop close
+      const backdrop = qs('.modal-backdrop', modal);
+      if (backdrop) backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
+
+      // Esc to close
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal(); });
+
+      // simple focus trap inside modal
+      modal.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab' || modal.hasAttribute('hidden')) return;
+        const focusable = Array.from(modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])')).filter(el => el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+    })();
+  </script>
+</section>
+      
       <!-- ARTICLES -->
       <section id="articles" aria-labelledby="articlesHeading" style="margin-top:0;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
