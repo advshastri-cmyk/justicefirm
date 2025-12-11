@@ -487,468 +487,416 @@
 </section>
 <!-- ================= END PREMIUM HERO ================= -->
 ```0
-<!-- ================= PREMIUM SLOT BOOKING CALENDAR — single copy-paste block ================= -->
+<!-- ================= REPLACEMENT: LIGHTWEIGHT PREMIUM CALENDAR / SLOT BOOKING ================= -->
 <section id="slot-booking" aria-label="Slot booking" style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;margin-top:36px;">
 
   <style>
-  /* -- Premium slot booking styles (self-contained) -- */
+  /* --- Lightweight premium calendar styles (self-contained) --- */
   :root{
     --card:#ffffff;
-    --bg:#0f1724;
     --ink:#071028;
-    --muted:#667085;
-    --accent-500:#0b6bff;
-    --accent-600:#0f4acb;
+    --muted:#6b7280;
+    --accent:#0b6bff;
+    --accent-2:#0f4acb;
+    --glass: rgba(11,18,32,0.04);
     --success:#059669;
-    --danger:#ef4444;
   }
 
   .slot-wrap{
-    max-width:1180px;margin-inline:auto;background:linear-gradient(180deg,#fff,#fbfdff);
-    border-radius:16px;padding:22px;border:1px solid rgba(11,18,32,0.04);
-    box-shadow:0 28px 80px rgba(7,12,25,0.06);display:grid;grid-template-columns:420px 1fr;gap:22px;align-items:start;
+    max-width:1100px;
+    margin-inline:auto;
+    background:linear-gradient(180deg,#fff,#fbfdff);
+    border-radius:14px;
+    padding:18px;
+    border:1px solid rgba(11,18,32,0.04);
+    box-shadow:0 18px 48px rgba(7,12,25,0.06);
+    display:grid;
+    grid-template-columns: 360px 1fr;
+    gap:18px;
+    align-items:start;
   }
 
-  /* Goddess image */
-  .slot-goddess{
-    width:100%;height:240px;border-radius:12px;overflow:hidden;display:block;
-    background:#f3f6fb;border:1px solid rgba(14,22,40,0.04);object-fit:cover;
-    box-shadow:0 14px 40px rgba(7,12,25,0.04);
+  /* IMAGE column: preserve full head of statue, gentle frame */
+  .slot-image {
+    border-radius:12px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#f7f9fc,#eef6ff);
+    border:1px solid rgba(11,18,32,0.03);
+    display:block;
+    height:100%;
+    min-height:320px;
+    box-shadow: inset 0 -20px 40px rgba(11,74,203,0.02);
+  }
+  .slot-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    /* keep the statue head visible — align to top center */
+    object-position: center top;
+    display:block;
+  }
+  .image-caption{
+    padding:12px 14px;
+    font-size:0.9rem;
+    color:var(--muted);
+    text-align:left;
   }
 
-  /* Right panel */
-  .slot-panel{display:flex;flex-direction:column;gap:14px;padding:8px 4px;}
-  .slot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
-  .slot-title{margin:0;font-size:1rem;color:var(--ink);font-weight:700;}
-  .slot-sub{margin-top:6px;color:var(--muted);font-size:0.92rem;max-width:680px;line-height:1.45;}
+  /* PANEL: compact, airy */
+  .slot-panel{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .slot-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .slot-title{margin:0;font-size:1.02rem;color:var(--ink);font-weight:700;}
+  .slot-sub{margin-top:6px;color:var(--muted);font-size:0.95rem;max-width:70ch;line-height:1.45;}
 
-  .clock{
+  .mini-clock{
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
-    background:linear-gradient(90deg, rgba(11,107,255,0.06), rgba(15,74,203,0.04));padding:8px 12px;border-radius:10px;
-    color:var(--accent-600);font-weight:800;letter-spacing:0.02em;border:1px solid rgba(11,74,203,0.06);
+    padding:6px 10px;border-radius:10px;background:linear-gradient(90deg, rgba(11,107,255,0.06), rgba(15,74,203,0.03));
+    color:var(--accent);font-weight:700;border:1px solid rgba(11,74,203,0.06);font-size:0.92rem;
   }
 
-  .next-slot{
-    display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);
-    border:1px solid rgba(11,18,32,0.04);box-shadow:0 12px 36px rgba(7,12,25,0.04);
+  .next-slot {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);
+    border:1px solid rgba(11,18,32,0.04);
   }
-  .next-slot strong{font-size:1rem;color:var(--ink);display:block}
-  .next-slot small{color:var(--muted);font-size:0.92rem}
+  .next-slot .when{font-weight:700;color:var(--ink);}
+  .next-slot .tz{color:var(--muted);font-size:0.92rem}
 
-  .slot-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
-  .btn{
-    padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;font-size:.95rem;
-  }
-  .btn-primary{background:linear-gradient(90deg,var(--accent-500),var(--accent-600));color:#fff;box-shadow:0 8px 26px rgba(11,74,203,0.12)}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .btn{padding:9px 12px;border-radius:10px;font-weight:700;border:0;cursor:pointer;font-size:0.92rem}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 10px 28px rgba(11,74,203,0.08)}
   .btn-ghost{background:transparent;border:1px solid rgba(11,18,32,0.06);color:var(--ink)}
-  .btn-outline{background:transparent;border:1px dashed rgba(11,18,32,0.06);color:var(--muted)}
 
-  /* Calendar */
-  .calendar-wrap{background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:12px;border:1px solid rgba(11,18,32,0.04);box-shadow:0 12px 36px rgba(7,12,25,0.04);}
-  .cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-  .cal-nav{display:flex;gap:8px;align-items:center}
-  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-  .day-col{background:transparent;padding:6px;border-radius:8px;text-align:center;color:var(--muted);font-size:0.85rem}
-  .slot-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
-
-  .slot-pill{
-    padding:8px 10px;border-radius:10px;background:linear-gradient(180deg,#f7fbff,#eef6ff);border:1px solid rgba(11,74,203,0.06);
-    color:var(--accent-600);font-weight:700;font-size:0.9rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  /* WEEK strip (compact) */
+  .week-strip{display:flex;gap:8px;overflow:auto;padding:6px 2px;}
+  .day-card{
+    min-width:120px;
+    border-radius:10px;padding:10px;border:1px solid rgba(11,18,32,0.03);
+    background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 8px 26px rgba(7,12,25,0.04);
+    display:flex;flex-direction:column;gap:8px;align-items:flex-start;
   }
-  .slot-pill.booked{background:#f8fafb;border:1px solid rgba(239,68,68,0.06);color:var(--muted);text-decoration:line-through;cursor:not-allowed}
-  .slot-pill:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(11,74,203,0.06)}
-  .slot-meta{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:10px;color:var(--muted);font-size:0.9rem;}
+  .day-name{font-weight:700;color:var(--ink);font-size:0.92rem}
+  .day-date{color:var(--muted);font-size:0.87rem}
+
+  .slots-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .slot-pill{
+    padding:6px 8px;border-radius:8px;background:linear-gradient(180deg,#f7fbff,#eef6ff);
+    color:var(--accent);font-weight:700;font-size:0.86rem;border:1px solid rgba(11,74,203,0.06);cursor:pointer;
+  }
+  .slot-pill.booked{background:#fff;color:var(--muted);border:1px solid rgba(239,68,68,0.06);text-decoration:line-through;cursor:not-allowed}
+
+  .calendar-legend{display:flex;gap:12px;margin-top:8px;align-items:center}
+  .legend-item{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:0.9rem}
+  .legend-swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
 
   /* Modal */
   .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);z-index:2200;align-items:center;justify-content:center;padding:18px}
   .modal-card{background:#fff;padding:18px;border-radius:12px;max-width:520px;width:100%;box-shadow:0 30px 90px rgba(7,12,25,0.28)}
-  .form-row{display:flex;gap:8px;flex-wrap:wrap}
-  .form-control{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(11,18,32,0.06);font-size:0.95rem}
-  .muted-note{color:var(--muted);font-size:0.92rem;text-align:center;margin-top:10px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .form-control{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(11,18,32,0.06);font-size:0.94rem}
 
   /* responsive */
-  @media (max-width:980px){ .slot-wrap{grid-template-columns:1fr; } .slot-goddess{height:200px} .calendar-wrap{order:2} }
+  @media (max-width:980px){
+    .slot-wrap{grid-template-columns:1fr; padding:14px}
+    .slot-image{min-height:220px}
+    .slot-panel{order:2}
+  }
   </style>
 
   <div class="slot-wrap" role="region" aria-label="Slot booking and court calendar">
 
-    <!-- LEFT: decorative image and small info -->
+    <!-- LEFT: Goddess image (keeps head visible) -->
     <div>
-      <!-- Decorative goddess image: replace src with your path -->
-      <img id="goddesImg" class="slot-goddess" src="goddes.jpg" alt="Statue of Lady Justice — decorative" loading="lazy">
-
-      <div style="margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
-        <div style="font-weight:700;color:var(--ink)">In-person & virtual slots</div>
-        <div style="color:var(--muted);font-size:0.92rem">Sessions: 30 mins</div>
+      <div class="slot-image" aria-hidden="true">
+        <img src="goddes.jpg" alt="" onerror="this.style.display='none'">
       </div>
-
-      <div style="margin-top:10px;color:var(--muted);font-size:0.92rem;line-height:1.5">
-        We recommend booking at least 24 hours in advance. For urgent hearings, use the <strong>Request Slot</strong> option and we will prioritise.
-      </div>
+      <div class="image-caption">Statue of Lady Justice — symbolic of impartial counsel and measured advocacy.</div>
     </div>
 
-    <!-- RIGHT: panel with clock, next slot, calendar -->
+    <!-- RIGHT: compact controls + week strip -->
     <div class="slot-panel">
 
-      <div class="slot-top">
+      <div class="slot-head">
         <div>
-          <h3 class="slot-title">Next Available Slot</h3>
-          <div class="slot-sub">Book a convenient time for consultation or court attendance.</div>
+          <div class="slot-title">Next Available Slot</div>
+          <div class="slot-sub">Quickly request a consultation, courtroom attendance or priority booking.</div>
         </div>
-
-        <div class="clock" id="clock">--:--:-- IST</div>
+        <div class="mini-clock" id="miniClock">--:--:-- IST</div>
       </div>
 
       <div class="next-slot" aria-live="polite">
         <div>
-          <small style="color:var(--muted)">Upcoming</small>
-          <strong id="nextSlotDisplay">Loading…</strong>
-          <div style="margin-top:6px;color:var(--muted)">Timezone: India Standard Time (UTC+5:30)</div>
+          <div style="font-size:0.86rem;color:var(--muted)">Upcoming</div>
+          <div class="when" id="nextSlotLite">Loading…</div>
+          <div class="tz">India Standard Time (UTC+5:30)</div>
         </div>
-
-        <div class="slot-actions">
-          <button id="requestSlotBtn" class="btn btn-primary" type="button" aria-haspopup="dialog">Request Slot</button>
-          <button id="quickCallBtn" class="btn btn-ghost" type="button">Call to Confirm</button>
-          <button id="viewCalendarBtn" class="btn btn-outline" type="button">View full calendar</button>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <button id="quickRequest" class="btn btn-primary" aria-haspopup="dialog">Request Slot</button>
+          <a href="tel:+919454183793" class="btn btn-ghost" style="text-decoration:none">Call to confirm</a>
         </div>
       </div>
 
-      <!-- Calendar -->
-      <div class="calendar-wrap" id="calendarSection">
-        <div class="cal-header">
-          <div style="font-weight:700;color:var(--ink)">Court Calendar — This week</div>
-          <div class="cal-nav">
-            <button id="prevWeek" class="btn btn-ghost" aria-label="Previous week">&lt;</button>
-            <div style="min-width:160px;text-align:center;color:var(--muted)" id="weekRange">—</div>
-            <button id="nextWeek" class="btn btn-ghost" aria-label="Next week">&gt;</button>
-          </div>
+      <div style="margin-top:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700;color:var(--ink)">This week</div>
+          <div style="color:var(--muted);font-size:0.9rem" id="weekRangeLite">—</div>
         </div>
 
-        <div class="cal-grid" id="calendarGrid" role="table" aria-label="Weekly calendar">
-          <!-- dynamically filled -->
+        <div class="week-strip" id="weekStrip" role="list" aria-label="Weekly slot overview">
+          <!-- days populated by JS -->
         </div>
 
-        <div class="slot-meta" id="calendarLegend">
-          <div style="display:flex;gap:8px;align-items:center">
-            <span style="width:10px;height:10px;border-radius:3px;background:linear-gradient(180deg,#f7fbff,#eef6ff);border:1px solid rgba(11,74,203,0.06);display:inline-block"></span>
-            <div style="color:var(--muted);font-size:0.92rem">Available</div>
-          </div>
-          <div style="display:flex;gap:8px;align-items:center">
-            <span style="width:10px;height:10px;border-radius:3px;background:#fff;border:1px solid rgba(239,68,68,0.06);display:inline-block"></span>
-            <div style="color:var(--muted);font-size:0.92rem">Booked</div>
-          </div>
+        <div class="calendar-legend" aria-hidden="true">
+          <div class="legend-item"><span class="legend-swatch" style="background:linear-gradient(180deg,#f7fbff,#eef6ff);border:1px solid rgba(11,74,203,0.06)"></span>Available</div>
+          <div class="legend-item"><span class="legend-swatch" style="background:#fff;border:1px solid rgba(239,68,68,0.06)"></span>Booked</div>
         </div>
       </div>
 
-    </div><!-- /.slot-panel -->
+    </div> <!-- /.slot-panel -->
 
-  </div><!-- /.slot-wrap -->
+  </div> <!-- /.slot-wrap -->
 
-  <!-- Booking modal -->
-  <div id="slotModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Request a slot">
-    <div class="modal-card">
-      <h3 style="margin:0 0 6px;font-size:1.05rem;color:var(--ink)">Request slot</h3>
-      <div style="color:var(--muted);margin-bottom:12px">Select an available slot and provide brief details. We'll confirm by phone/WhatsApp.</div>
+  <!-- Modal: Request -->
+  <div id="slotModalLite" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Request a slot">
+    <div class="modal-card" role="document">
+      <h3 style="margin:0 0 8px;color:var(--ink)">Request a slot</h3>
+      <div style="color:var(--muted);margin-bottom:12px;font-size:0.95rem">Select a time and leave a short note. We'll confirm by call or WhatsApp.</div>
 
-      <form id="slotForm" style="display:flex;flex-direction:column;gap:10px">
-        <label style="font-size:0.9rem;color:var(--muted)">Selected slot</label>
-        <input id="selectedSlotInput" class="form-control form-control--disabled" readonly style="background:#f7fafc;border-radius:8px;padding:10px"/>
-
-        <div class="form-row">
-          <input id="clientName" class="form-control" placeholder="Your name" required>
-          <input id="clientPhone" class="form-control" placeholder="Phone (+91...)" required>
+      <form id="slotFormLite" style="display:flex;flex-direction:column;gap:10px">
+        <input id="chosenSlot" class="form-control" readonly placeholder="Choose a slot from the week above" />
+        <div class="form-grid">
+          <input id="clientNameLite" class="form-control" placeholder="Your name" required />
+          <input id="clientPhoneLite" class="form-control" placeholder="Phone (+91...)" required />
         </div>
-
-        <textarea id="clientNote" class="form-control" placeholder="Short purpose / case ref (optional)" rows="3"></textarea>
+        <textarea id="clientNoteLite" class="form-control" placeholder="Purpose / case ref (optional)" rows="3"></textarea>
 
         <div style="display:flex;gap:8px;justify-content:flex-end">
-          <button type="button" id="modalCloseBtn" class="btn btn-ghost">Cancel</button>
-          <button type="submit" class="btn btn-primary">Request slot</button>
+          <button type="button" id="modalCancelLite" class="btn btn-ghost">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send request</button>
         </div>
 
-        <div class="muted-note">By requesting you agree we may contact you to confirm timing. Not a confirmed booking until we reply.</div>
+        <div style="font-size:0.88rem;color:var(--muted);text-align:center;margin-top:6px">Request sends a pre-filled WhatsApp message for confirmation. Not a final booking until we reply.</div>
       </form>
     </div>
   </div>
 
   <script>
   (function(){
-    /* --- Configuration --- */
-    const SLOT_LENGTH_MIN = 30; // minutes
-    const WORK_START = {hour:10, minute:0}; // 10:00
-    const WORK_END = {hour:17, minute:0};   // 17:00
+    /* --- lightweight calendar logic (single-file) --- */
+    const SLOT_MIN = 30; // minutes
+    const WORK_START_H = 10, WORK_END_H = 17;
     const DAYS_OPEN = [1,2,3,4,5,6]; // Mon-Sat (0=Sun)
-    const USER_PHONE = "+919454183793";
+    const USER_WHATSAPP = '919454183793';
 
-    /* --- State: initial booked slots (ISO strings) - demo data --- */
-    // These are sample booked slots; in production this would come from server
-    const bookedSlots = new Set([
-      // ISO strings in local timezone (Asia/Kolkata). Example: today at next hour.
-      // We'll generate some demo ones programmatically later if none present.
-    ]);
+    // Demo booked slots set (ISO strings). Replace by server data in production.
+    const booked = new Set();
 
-    // Utilities for IST time handling (relies on client clock but displays IST)
-    function nowIST(){
-      // returns Date object in user's local timezone representing current IST time offset
-      // Simpler: get current UTC, add +5:30 offset -> create Date
-      const d = new Date();
-      const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-      const ist = new Date(utc + (5.5 * 3600000));
-      return ist;
-    }
-    function toLocalISO(dt){
-      // returns ISO string without timezone (local representation) e.g. '2025-09-14T10:30:00'
-      const y = dt.getFullYear();
-      const m = String(dt.getMonth()+1).padStart(2,'0');
-      const d = String(dt.getDate()).padStart(2,'0');
-      const hh = String(dt.getHours()).padStart(2,'0');
-      const mm = String(dt.getMinutes()).padStart(2,'0');
-      const ss = String(dt.getSeconds()).padStart(2,'0');
-      return `${y}-${m}-${d}T${hh}:${mm}:${ss}`;
-    }
-    function formatSlotLabel(iso){
-      const dt = new Date(iso);
-      // format like: Tue, 14 Sep — 10:30
+    // Elements
+    const miniClock = document.getElementById('miniClock');
+    const weekStrip = document.getElementById('weekStrip');
+    const weekRangeLite = document.getElementById('weekRangeLite');
+    const nextSlotLite = document.getElementById('nextSlotLite');
+    const quickRequest = document.getElementById('quickRequest');
+    const slotModal = document.getElementById('slotModalLite');
+    const chosenSlot = document.getElementById('chosenSlot');
+    const slotForm = document.getElementById('slotFormLite');
+    const modalCancel = document.getElementById('modalCancelLite');
+
+    // time utilities (show IST)
+    function nowIST(){ const d=new Date(); const utc=d.getTime()+ (d.getTimezoneOffset()*60000); return new Date(utc + (5.5*3600000)); }
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function formatShort(dt){
       const opts = {weekday:'short', day:'numeric', month:'short'};
       const datePart = dt.toLocaleDateString('en-IN', opts);
-      const timePart = String(dt.getHours()).padStart(2,'0') + ':' + String(dt.getMinutes()).padStart(2,'0');
+      const timePart = pad(dt.getHours()) + ':' + pad(dt.getMinutes());
       return `${datePart} • ${timePart}`;
     }
-
-    /* --- Clock display --- */
-    const clockEl = document.getElementById('clock');
-    function tickClock(){
-      const ist = nowIST();
-      const hh = String(ist.getHours()).padStart(2,'0');
-      const mm = String(ist.getMinutes()).padStart(2,'0');
-      const ss = String(ist.getSeconds()).padStart(2,'0');
-      clockEl.textContent = `${hh}:${mm}:${ss} IST`;
+    function toISOLocal(dt){
+      const y=dt.getFullYear(), m=pad(dt.getMonth()+1), d=pad(dt.getDate()), hh=pad(dt.getHours()), mm=pad(dt.getMinutes()), ss=pad(dt.getSeconds());
+      return `${y}-${m}-${d}T${hh}:${mm}:${ss}`;
     }
-    setInterval(tickClock, 1000);
-    tickClock();
 
-    /* --- Calendar generation & next slot logic --- */
-    const calendarGrid = document.getElementById('calendarGrid');
-    const weekRange = document.getElementById('weekRange');
-    const nextSlotDisplay = document.getElementById('nextSlotDisplay');
-    let weekOffset = 0; // 0 = current week starting Monday (or today)
-    // Generate demo booked slots if empty (to show booked pills)
-    function seedDemoBookings(){
-      if(bookedSlots.size > 0) return;
-      const ist = nowIST();
-      // make 3 bookings in coming days
-      for(let i=1;i<=4;i++){
-        const dt = new Date(ist.getTime() + i*24*3600000);
-        // pick 11:00 and 14:30 etc
-        dt.setHours(11 + (i%3)*1, (i%2)*30, 0, 0);
-        bookedSlots.add(dt.toISOString());
-      }
-    }
-    seedDemoBookings();
+    // clock tick
+    function tick(){ const t=nowIST(); miniClock.textContent = pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())+' IST'; }
+    setInterval(tick,1000); tick();
 
-    // compute start of week (Monday) for given offset
-    function startOfWeek(istDate, offsetWeeks=0){
-      // find Monday of current week
-      const d = new Date(istDate);
-      const day = d.getDay(); // 0 Sun .. 6 Sat
-      // determine Monday: if day==0 => previous Monday is -6
-      const diffToMonday = ((day + 6) % 7); // 0 for Mon, 6 for Sun
+    // helpers to get week (Mon-Sun)
+    function startOfWeek(ist){
+      const d=new Date(ist);
+      const day=d.getDay(); // 0 Sun
+      const diff = (day + 6) % 7; // days since Monday
       d.setHours(0,0,0,0);
-      d.setDate(d.getDate() - diffToMonday + (offsetWeeks*7));
+      d.setDate(d.getDate() - diff);
       return d;
     }
 
-    function addMinutes(date, mins){ return new Date(date.getTime() + mins*60000); }
-
-    function generateSlotsForDate(date){
-      const slots = [];
-      const workStart = new Date(date); workStart.setHours(WORK_START.hour, WORK_START.minute, 0, 0);
-      const workEnd = new Date(date); workEnd.setHours(WORK_END.hour, WORK_END.minute, 0, 0);
-      let cursor = new Date(workStart);
-      while(cursor < workEnd){
-        // only on open days
-        const dt = new Date(cursor);
-        slots.push(new Date(dt));
-        cursor = addMinutes(cursor, SLOT_LENGTH_MIN);
+    function generateSlotsForDay(date){
+      const slots=[];
+      const start = new Date(date); start.setHours(WORK_START_H,0,0,0);
+      const end = new Date(date); end.setHours(WORK_END_H,0,0,0);
+      for(let cur=new Date(start); cur<end; cur.setMinutes(cur.getMinutes()+SLOT_MIN)){
+        slots.push(new Date(cur));
       }
       return slots;
     }
 
-    function isOpenDay(date){
-      const dow = date.getDay();
-      return DAYS_OPEN.includes(dow);
-    }
-
-    function renderWeek(offset=0){
-      calendarGrid.innerHTML = '';
+    // render week strip
+    function renderWeek(offsetWeeks=0){
+      weekStrip.innerHTML = '';
       const ist = nowIST();
-      const start = startOfWeek(ist, offset);
-      const days = [];
-      for(let i=0;i<7;i++){
-        const d = new Date(start); d.setDate(start.getDate() + i);
-        days.push(d);
-      }
-      // set week range label
-      const opts = {day:'numeric', month:'short'};
-      const r0 = days[0].toLocaleDateString('en-IN', opts);
-      const r6 = days[6].toLocaleDateString('en-IN', opts);
-      weekRange.textContent = `${r0} — ${r6}`;
+      const start = startOfWeek(ist);
+      start.setDate(start.getDate() + offsetWeeks*7);
+      const weekDays = [];
+      for(let i=0;i<7;i++){ const d=new Date(start); d.setDate(start.getDate()+i); weekDays.push(d); }
 
-      // for each day render column
-      days.forEach(day => {
-        const col = document.createElement('div');
-        col.className = 'day-col';
-        const dayName = day.toLocaleDateString('en-IN', {weekday:'short'});
-        const dateNum = day.toLocaleDateString('en-IN', {day:'numeric','month':'short'});
-        col.innerHTML = `<div style="font-weight:700;color:var(--ink)">${dayName}</div><div style="font-size:0.88rem;color:var(--muted)}">${dateNum}</div>`;
-        // slots container
-        const list = document.createElement('div');
-        list.className = 'slot-list';
-        // only generate if open day
-        if(isOpenDay(day)){
-          const slots = generateSlotsForDate(day);
-          // choose up to first 4 slots to show pills to avoid long page
-          slots.slice(0,8).forEach(slotDate => {
-            // create pill
-            const iso = slotDate.toISOString();
+      // show compact range
+      const r0 = weekDays[0].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+      const r6 = weekDays[6].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+      weekRangeLite.textContent = `${r0} — ${r6}`;
+
+      // create day cards
+      weekDays.forEach(day => {
+        const card = document.createElement('div');
+        card.className = 'day-card';
+        const dayName = day.toLocaleDateString('en-IN',{weekday:'short'});
+        const dateNum = day.toLocaleDateString('en-IN',{day:'numeric','month':'short'});
+        card.innerHTML = `<div class="day-name">${dayName}</div><div class="day-date">${dateNum}</div>`;
+        const slotRow = document.createElement('div'); slotRow.className = 'slots-row';
+
+        if(DAYS_OPEN.includes(day.getDay())){
+          const slots = generateSlotsForDay(day);
+          // only show first 6 for compactness
+          slots.slice(0,6).forEach(s => {
+            const iso = toISOLocal(s);
             const pill = document.createElement('button');
-            pill.className = 'slot-pill';
-            pill.type = 'button';
-            pill.dataset.iso = iso;
-            // booked?
-            const booked = bookedSlots.has(iso);
-            if(booked){
-              pill.classList.add('booked');
-              pill.textContent = String(slotDate.getHours()).padStart(2,'0') + ':' + String(slotDate.getMinutes()).padStart(2,'0') + ' • Booked';
-              pill.disabled = true;
+            pill.type='button';
+            const isBooked = booked.has(iso);
+            pill.className = 'slot-pill' + (isBooked ? ' booked' : '');
+            pill.textContent = pad(s.getHours()) + ':' + pad(s.getMinutes()) + (isBooked ? ' • Booked' : '');
+            if(!isBooked){
+              pill.addEventListener('click', ()=> selectSlot(iso));
             } else {
-              pill.textContent = String(slotDate.getHours()).padStart(2,'0') + ':' + String(slotDate.getMinutes()).padStart(2,'0');
-              pill.addEventListener('click', ()=> onSelectSlot(iso));
+              pill.disabled = true;
             }
-            list.appendChild(pill);
+            slotRow.appendChild(pill);
           });
         } else {
           const closed = document.createElement('div');
-          closed.style.color = 'var(--muted)';
-          closed.style.fontSize = '.9rem';
-          closed.style.marginTop = '8px';
-          closed.textContent = 'Closed';
-          list.appendChild(closed);
+          closed.style.color='var(--muted)'; closed.style.fontSize='.9rem';
+          closed.textContent='Closed';
+          slotRow.appendChild(closed);
         }
-        col.appendChild(list);
-        calendarGrid.appendChild(col);
+
+        card.appendChild(slotRow);
+        weekStrip.appendChild(card);
       });
+      // compute next available and set
+      computeAndShowNext();
     }
 
-    // compute next available slot (earliest slot in future not booked)
-    function computeNextAvailable(){
-      const istNow = nowIST();
-      // search from now to next 28 days
-      for(let dayOffset=0; dayOffset<28; dayOffset++){
-        const d = new Date(istNow); d.setDate(d.getDate() + dayOffset);
-        if(!isOpenDay(d)) continue;
-        const slots = generateSlotsForDate(d);
+    // compute next available slot
+    function computeAndShowNext(){
+      const ist = nowIST();
+      // search next 21 days
+      for(let d=0;d<21;d++){
+        const day=new Date(ist); day.setDate(ist.getDate()+d);
+        if(!DAYS_OPEN.includes(day.getDay())) continue;
+        const slots = generateSlotsForDay(day);
         for(const s of slots){
-          // only future slots (strictly after now)
-          const sTime = new Date(s);
-          if(sTime <= istNow && dayOffset===0) continue;
-          // check booked set (compare by exact ISO of local time)
-          const iso = sTime.toISOString();
-          if(!bookedSlots.has(iso)) return sTime;
+          // require strictly future
+          const sCopy = new Date(s);
+          // adjust to local time equivalent (s is already IST computed)
+          if(d===0 && sCopy <= ist) continue;
+          const iso = toISOLocal(sCopy);
+          if(!booked.has(iso)){
+            nextSlotLite.textContent = formatShort(sCopy);
+            return sCopy;
+          }
         }
       }
+      nextSlotLite.textContent = 'No slots in next 21 days';
       return null;
     }
 
-    function updateNextSlotDisplay(){
-      const next = computeNextAvailable();
-      if(!next){
-        nextSlotDisplay.textContent = 'No slots available in the next 28 days';
-        return;
-      }
-      nextSlotDisplay.textContent = formatSlotLabel(next);
+    // selection -> open modal
+    function selectSlot(iso){
+      const dt = new Date(iso);
+      chosenSlot.value = formatShort(dt);
+      chosenSlot.dataset.iso = iso;
+      openModal();
     }
 
-    // selection / modal logic
-    const slotModal = document.getElementById('slotModal');
-    const selectedSlotInput = document.getElementById('selectedSlotInput');
-    const slotForm = document.getElementById('slotForm');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    // modal controls
+    function openModal(){ slotModal.style.display='flex'; slotModal.setAttribute('aria-hidden','false'); document.getElementById('clientNameLite').focus(); }
+    function closeModal(){ slotModal.style.display='none'; slotModal.setAttribute('aria-hidden','true'); slotForm.reset(); chosenSlot.value=''; delete chosenSlot.dataset.iso; }
 
-    function onSelectSlot(iso){
-      selectedSlotInput.value = formatSlotLabel(iso);
-      selectedSlotInput.dataset.iso = iso;
-      openSlotModal();
-    }
+    // quick request picks next available
+    quickRequest.addEventListener('click', ()=>{
+      const next = computeAndShowNext();
+      if(!next){ alert('No slots available soon'); return; }
+      chosenSlot.value = formatShort(next);
+      chosenSlot.dataset.iso = toISOLocal(next);
+      openModal();
+    });
 
-    function openSlotModal(){
-      slotModal.style.display = 'flex';
-      slotModal.setAttribute('aria-hidden','false');
-      document.getElementById('clientName').focus();
-    }
-    function closeSlotModal(){
-      slotModal.style.display = 'none';
-      slotModal.setAttribute('aria-hidden','true');
-      slotForm.reset();
-    }
-
-    modalCloseBtn.addEventListener('click', closeSlotModal);
-    slotModal.addEventListener('click', (e)=> { if(e.target === slotModal) closeSlotModal(); });
-    document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeSlotModal(); });
-
-    // handle form submit - simulate booking
+    // form submit -> mark booked (demo) and open WhatsApp
     slotForm.addEventListener('submit', (e)=>{
       e.preventDefault();
-      const iso = selectedSlotInput.dataset.iso;
-      if(!iso){ alert('No slot selected'); return; }
-      const name = document.getElementById('clientName').value.trim();
-      const phone = document.getElementById('clientPhone').value.trim();
-      if(!name || !phone){ alert('Please provide name and phone'); return; }
-      // mark booked
-      bookedSlots.add(iso);
-      // update UI (re-render week)
-      renderWeek(weekOffset);
-      updateNextSlotDisplay();
-      closeSlotModal();
-      // simulate server confirmation via WhatsApp/Call: open whatsapp with message prefilled
-      const msg = encodeURIComponent(`Hello, I have requested slot for ${formatSlotLabel(new Date(iso))}.\nName: ${name}\nPhone: ${phone}`);
-      window.open(`https://wa.me/${USER_PHONE.replace(/\D/g,'')}?text=${msg}`, '_blank');
+      const iso = chosenSlot.dataset.iso;
+      if(!iso){ alert('Please select a slot'); return; }
+      const name = document.getElementById('clientNameLite').value.trim();
+      const phone = document.getElementById('clientPhoneLite').value.trim();
+      const note = document.getElementById('clientNoteLite').value.trim();
+      if(!name || !phone){ alert('Name and phone required'); return; }
+      // mark booked (demo)
+      booked.add(iso);
+      renderWeek(0);
+      closeModal();
+      // open whatsapp prefilled
+      const msg = encodeURIComponent(`Requesting slot: ${chosenSlot.value}\nName: ${name}\nPhone: ${phone}\nNote: ${note}`);
+      window.open(`https://wa.me/${USER_WHATSAPP}?text=${msg}`, '_blank');
     });
 
-    // Quick request button: pick next available and open modal prefilled
-    document.getElementById('requestSlotBtn').addEventListener('click', ()=>{
-      const next = computeNextAvailable();
-      if(!next){ alert('No slots available in next 28 days'); return; }
-      selectedSlotInput.value = formatSlotLabel(next.toISOString ? next.toISOString() : next);
-      selectedSlotInput.dataset.iso = next.toISOString();
-      openSlotModal();
-    });
+    modalCancel.addEventListener('click', closeModal);
+    slotModal.addEventListener('click', (e)=> { if(e.target === slotModal) closeModal(); });
+    document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeModal(); });
 
-    // Call to confirm
-    document.getElementById('quickCallBtn').addEventListener('click', ()=> {
-      window.location.href = 'tel:' + USER_PHONE;
-    });
+    // initialize: create small demo bookings if none exist
+    (function seedDemo(){
+      if(booked.size) return;
+      const now = nowIST();
+      const demo1 = new Date(now); demo1.setDate(now.getDate()+1); demo1.setHours(11,0,0,0);
+      const demo2 = new Date(now); demo2.setDate(now.getDate()+2); demo2.setHours(14,30,0,0);
+      booked.add(toISOLocal(demo1)); booked.add(toISOLocal(demo2));
+    })();
 
-    // week navigation
-    document.getElementById('prevWeek').addEventListener('click', ()=> { weekOffset--; renderWeek(weekOffset); });
-    document.getElementById('nextWeek').addEventListener('click', ()=> { weekOffset++; renderWeek(weekOffset); });
-    document.getElementById('viewCalendarBtn').addEventListener('click', ()=> { /* optionally scroll into calendar */ document.getElementById('calendarSection').scrollIntoView({behavior:'smooth'}); });
+    // expose user whatsapp (for message link)
+    const USER_WHATSAPP = '919454183793';
 
-    // initialize
+    // initial render
     renderWeek(0);
-    updateNextSlotDisplay();
 
-    // update next slot every 30s (in case of clock)
-    setInterval(()=> {
-      renderWeek(weekOffset);
-      updateNextSlotDisplay();
-    }, 30000);
+    // update clock & next slot periodically
+    setInterval(()=> { tick(); computeAndShowNext(); }, 30000);
 
   })();
   </script>
 
 </section>
-<!-- ================= END SLOT BOOKING CALENDAR ================= -->
+<!-- ================= END REPLACEMENT CALENDAR ================= -->
+```0
 ```0
        
       <!-- Enhanced ABOUT Section with better readability and contrast --><section id="about" aria-labelledby="aboutHeading" class="card" style="padding:28px; background:#f7f9fc; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
