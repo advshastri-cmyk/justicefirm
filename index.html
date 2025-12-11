@@ -487,151 +487,110 @@
 </section>
 <!-- ================= END PREMIUM HERO ================= -->
 ```0
-<!-- ================= REPLACEMENT: LIGHTWEIGHT PREMIUM CALENDAR / SLOT BOOKING ================= -->
-<section id="slot-booking" aria-label="Slot booking" style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;margin-top:36px;">
+<!-- PREMIUM SLOT BOOKING — Brass Clink + Single-step Booking (No OTP) -->
+<section id="slot-booking-premium-no-otp" aria-label="Slot booking" style="font-family: 'Georgia', 'Merriweather', serif, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; margin-top:36px;">
 
   <style>
-  /* --- Lightweight premium calendar styles (self-contained) --- */
+  /* Premium mechanical theme (unchanged visual language) */
   :root{
-    --card:#ffffff;
-    --ink:#071028;
-    --muted:#6b7280;
-    --accent:#0b6bff;
-    --accent-2:#0f4acb;
-    --glass: rgba(11,18,32,0.04);
-    --success:#059669;
+    --card:#fffaf6; --leather:#2b1f16; --brass-1:linear-gradient(180deg,#f3d8a0,#e3b86a);
+    --brass-2:linear-gradient(180deg,#e8c774,#cfa349); --ink:#0b0a09; --muted:#6e5f55;
+    --accent:#b8872b; --shadow-strong:0 20px 60px rgba(6,3,2,0.5); --radius:14px;
   }
+  .slot-wrap{max-width:1140px;margin-inline:auto;padding:18px;border-radius:14px;
+    background: linear-gradient(180deg,var(--card), #f7f6f3); box-shadow: var(--shadow-strong);
+    border:1px solid rgba(10,7,5,0.06); display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start;position:relative;overflow:visible;}
 
-  .slot-wrap{
-    max-width:1100px;
-    margin-inline:auto;
-    background:linear-gradient(180deg,#fff,#fbfdff);
-    border-radius:14px;
-    padding:18px;
-    border:1px solid rgba(11,18,32,0.04);
-    box-shadow:0 18px 48px rgba(7,12,25,0.06);
-    display:grid;
-    grid-template-columns: 360px 1fr;
-    gap:18px;
-    align-items:start;
-  }
+  .gear-decor{position:absolute;left:-30px;top:-30px;opacity:0.08;transform:rotate(-12deg);pointer-events:none;}
+  @media (max-width:980px){ .gear-decor{display:none;} }
 
-  /* IMAGE column: preserve full head of statue, gentle frame */
-  .slot-image {
-    border-radius:12px;
-    overflow:hidden;
-    background:linear-gradient(180deg,#f7f9fc,#eef6ff);
-    border:1px solid rgba(11,18,32,0.03);
-    display:block;
-    height:100%;
-    min-height:320px;
-    box-shadow: inset 0 -20px 40px rgba(11,74,203,0.02);
-  }
-  .slot-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    /* keep the statue head visible — align to top center */
-    object-position: center top;
-    display:block;
-  }
-  .image-caption{
-    padding:12px 14px;
-    font-size:0.9rem;
-    color:var(--muted);
-    text-align:left;
-  }
+  .slot-image{border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(10,7,5,0.03), rgba(10,7,5,0.01));
+    border:1px solid rgba(10,7,5,0.04);box-shadow: inset 0 -18px 40px rgba(0,0,0,0.04);min-height:360px}
+  .slot-frame{padding:14px;background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.02));display:flex;flex-direction:column;height:100%}
+  .portrait{flex:1;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#e9e2d6,#efeadf);display:grid;place-items:center;border:4px solid rgba(168,132,74,0.06);box-shadow:0 10px 30px rgba(0,0,0,0.06);min-height:280px}
+  .portrait img{ width:100%;height:100%;object-fit:cover;object-position:center top;display:block; }
+  .image-caption{padding:12px 10px;font-size:0.92rem;color:var(--muted);text-align:left;border-top:1px solid rgba(10,7,5,0.02); background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);}
 
-  /* PANEL: compact, airy */
-  .slot-panel{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
-  .slot-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:12px;
-  }
-  .slot-title{margin:0;font-size:1.02rem;color:var(--ink);font-weight:700;}
-  .slot-sub{margin-top:6px;color:var(--muted);font-size:0.95rem;max-width:70ch;line-height:1.45;}
+  .slot-panel{display:flex;flex-direction:column;gap:14px}
+  .slot-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px;border-radius:10px;background:linear-gradient(160deg, rgba(40,30,20,0.96), rgba(34,25,18,0.98));color:#fff;box-shadow: inset 0 -6px 12px rgba(0,0,0,0.35);border:1px solid rgba(0,0,0,0.35);}
+  .slot-title{margin:0;font-size:1.06rem;font-weight:700;letter-spacing:0.6px;font-family:'Georgia',serif;}
+  .slot-sub{margin-top:6px;color:rgba(255,255,255,0.85);font-size:0.92rem;max-width:62ch;line-height:1.45;font-weight:500}
+  .mini-clock{font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', monospace;padding:8px 12px;border-radius:10px;background:var(--brass-1);color:#0b0a09;font-weight:800;border:1px solid rgba(0,0,0,0.08);font-size:0.92rem;box-shadow:0 6px 18px rgba(160,120,40,0.12), inset 0 -4px 8px rgba(255,255,255,0.12);}
 
-  .mini-clock{
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
-    padding:6px 10px;border-radius:10px;background:linear-gradient(90deg, rgba(11,107,255,0.06), rgba(15,74,203,0.03));
-    color:var(--accent);font-weight:700;border:1px solid rgba(11,74,203,0.06);font-size:0.92rem;
-  }
-
-  .next-slot {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
-    padding:12px 14px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);
-    border:1px solid rgba(11,18,32,0.04);
-  }
-  .next-slot .when{font-weight:700;color:var(--ink);}
+  .next-slot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border-radius:12px;background: linear-gradient(180deg, rgba(200,160,80,0.06), rgba(20,10,6,0.02));border:1px solid rgba(10,7,5,0.04);box-shadow: 0 10px 30px rgba(0,0,0,0.06);}
+  .next-slot .when{font-weight:800;color:var(--leather);font-family:'Georgia',serif;}
   .next-slot .tz{color:var(--muted);font-size:0.92rem}
 
   .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-  .btn{padding:9px 12px;border-radius:10px;font-weight:700;border:0;cursor:pointer;font-size:0.92rem}
-  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 10px 28px rgba(11,74,203,0.08)}
-  .btn-ghost{background:transparent;border:1px solid rgba(11,18,32,0.06);color:var(--ink)}
+  .btn{padding:10px 14px;border-radius:10px;font-weight:800;border:0;cursor:pointer;font-size:0.92rem;font-family:'Georgia',serif}
+  .btn-primary{background: linear-gradient(180deg,#f6e1a3,#e1b84b);color:#2d1f15;border:1px solid rgba(0,0,0,0.06);box-shadow: 0 8px 20px rgba(160,120,40,0.14), inset 0 -6px 8px rgba(255,255,255,0.25);}
+  .btn-ghost{background:transparent;border:1px solid rgba(10,7,5,0.08);color:var(--leather);box-shadow:none;font-weight:700;}
 
-  /* WEEK strip (compact) */
-  .week-strip{display:flex;gap:8px;overflow:auto;padding:6px 2px;}
-  .day-card{
-    min-width:120px;
-    border-radius:10px;padding:10px;border:1px solid rgba(11,18,32,0.03);
-    background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 8px 26px rgba(7,12,25,0.04);
-    display:flex;flex-direction:column;gap:8px;align-items:flex-start;
-  }
-  .day-name{font-weight:700;color:var(--ink);font-size:0.92rem}
-  .day-date{color:var(--muted);font-size:0.87rem}
+  .week-strip{display:flex;gap:10px;overflow:auto;padding:8px 6px;}
+  .day-card{min-width:132px;border-radius:10px;padding:12px;border:1px solid rgba(10,7,5,0.04);background: linear-gradient(180deg,#f8f3ea,#efe8d8);box-shadow: 0 12px 30px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:8px;align-items:flex-start;font-size:0.92rem;color:var(--ink);}
+  .day-name{font-weight:800;color:var(--leather);font-size:0.95rem}
+  .day-date{color:var(--muted);font-size:0.86rem}
+  .slots-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .slot-pill{padding:8px 10px;border-radius:8px;background:linear-gradient(180deg,#fff7ea,#fff0d2);color:var(--accent);font-weight:800;font-size:0.88rem;border:1px solid rgba(170,120,40,0.08);cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,0.06);transition:transform .12s ease, box-shadow .12s ease;font-family:'Georgia',serif;}
+  .slot-pill:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(0,0,0,0.08); }
+  .slot-pill.booked{background:#efeeee;color:var(--muted);border:1px solid rgba(200,60,60,0.06);text-decoration:line-through;cursor:not-allowed;box-shadow:none}
 
-  .slots-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
-  .slot-pill{
-    padding:6px 8px;border-radius:8px;background:linear-gradient(180deg,#f7fbff,#eef6ff);
-    color:var(--accent);font-weight:700;font-size:0.86rem;border:1px solid rgba(11,74,203,0.06);cursor:pointer;
-  }
-  .slot-pill.booked{background:#fff;color:var(--muted);border:1px solid rgba(239,68,68,0.06);text-decoration:line-through;cursor:not-allowed}
-
-  .calendar-legend{display:flex;gap:12px;margin-top:8px;align-items:center}
+  .calendar-legend{display:flex;gap:12px;margin-top:10px;align-items:center}
   .legend-item{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:0.9rem}
   .legend-swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
 
-  /* Modal */
   .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);z-index:2200;align-items:center;justify-content:center;padding:18px}
-  .modal-card{background:#fff;padding:18px;border-radius:12px;max-width:520px;width:100%;box-shadow:0 30px 90px rgba(7,12,25,0.28)}
+  .modal-card{background:linear-gradient(180deg,#fffaf2,#f5efe3);padding:18px;border-radius:12px;max-width:540px;width:100%;box-shadow:0 30px 100px rgba(7,12,25,0.32);border:1px solid rgba(10,7,5,0.04)}
+  .modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:8px;border-bottom:1px dashed rgba(10,7,5,0.02);margin-bottom:10px}
+  .modal-title{font-weight:800;font-family:'Georgia',serif;color:var(--leather)}
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .form-control{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(11,18,32,0.06);font-size:0.94rem}
+  .form-control{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(10,7,5,0.06);font-size:0.95rem;background:#fffafa;color:var(--ink)}
 
-  /* responsive */
-  @media (max-width:980px){
-    .slot-wrap{grid-template-columns:1fr; padding:14px}
-    .slot-image{min-height:220px}
-    .slot-panel{order:2}
-  }
+  .sound-row{display:flex;gap:10px;align-items:center;justify-content:flex-end}
+
+  @media (max-width:980px){ .slot-wrap{grid-template-columns:1fr;padding:14px}.gear-decor{display:none} }
+  @media (prefers-reduced-motion: reduce){ .slot-pill,.btn-primary{transition:none} }
   </style>
+
+  <svg class="gear-decor" width="280" height="280" viewBox="0 0 100 100" aria-hidden="true">
+    <g fill="none" stroke="#000" stroke-width="1" opacity="0.12">
+      <path d="M50 20 L53 28 L61 29 L56 35 L58 44 L50 40 L42 44 L44 35 L39 29 L47 28 Z" fill="#000"></path>
+      <circle cx="50" cy="50" r="36"></circle>
+      <circle cx="50" cy="50" r="8"></circle>
+    </g>
+  </svg>
 
   <div class="slot-wrap" role="region" aria-label="Slot booking and court calendar">
 
-    <!-- LEFT: Goddess image (keeps head visible) -->
     <div>
-      <div class="slot-image" aria-hidden="true">
-        <img src="goddes.jpg" alt="" onerror="this.style.display='none'">
+      <div class="slot-image" aria-hidden="false">
+        <div class="slot-frame">
+          <div class="portrait" role="img" aria-label="Lady Justice portrait">
+            <img src="goddess.jpg" alt="Lady Justice" onerror="this.style.display='none'">
+            <svg width="84" height="84" viewBox="0 0 24 24" style="max-width:84px;max-height:84px" aria-hidden="true">
+              <g fill="none" stroke="#b78f3a" stroke-width="0.6">
+                <path d="M12 2v2M7 6l1 6M17 6l-1 6M4 20h16" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="3" stroke="#c9a45a" stroke-width="0.9" fill="#fff6e6"/>
+              </g>
+            </svg>
+          </div>
+
+          <div style="margin-top:12px;">
+            <div style="font-weight:800;color:var(--leather);font-family:'Georgia',serif;font-size:1.02rem">Chambers • The Justice Firm</div>
+            <div style="color:var(--muted);margin-top:6px;font-size:0.92rem;line-height:1.45">Private consultations, courtroom representation and priority bookings — handled with discretion and care.</div>
+          </div>
+        </div>
       </div>
-      <div class="image-caption">Statue of Lady Justice — symbolic of impartial counsel and measured advocacy.</div>
+
+      <div class="image-caption">Lady Justice — impartiality, measured advocacy, and seasoned counsel.</div>
     </div>
 
-    <!-- RIGHT: compact controls + week strip -->
     <div class="slot-panel">
 
-      <div class="slot-head">
+      <div class="slot-head" role="banner">
         <div>
           <div class="slot-title">Next Available Slot</div>
-          <div class="slot-sub">Quickly request a consultation, courtroom attendance or priority booking.</div>
+          <div class="slot-sub">Request a consultation, courtroom attendance or priority booking — we'll confirm within business hours.</div>
         </div>
         <div class="mini-clock" id="miniClock">--:--:-- IST</div>
       </div>
@@ -642,238 +601,233 @@
           <div class="when" id="nextSlotLite">Loading…</div>
           <div class="tz">India Standard Time (UTC+5:30)</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
           <button id="quickRequest" class="btn btn-primary" aria-haspopup="dialog">Request Slot</button>
           <a href="tel:+919454183793" class="btn btn-ghost" style="text-decoration:none">Call to confirm</a>
         </div>
       </div>
 
-      <div style="margin-top:8px">
+      <div>
         <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-weight:700;color:var(--ink)">This week</div>
+          <div style="font-weight:800;color:var(--leather)">This Week</div>
           <div style="color:var(--muted);font-size:0.9rem" id="weekRangeLite">—</div>
         </div>
 
-        <div class="week-strip" id="weekStrip" role="list" aria-label="Weekly slot overview">
-          <!-- days populated by JS -->
-        </div>
+        <div class="week-strip" id="weekStrip" role="list" aria-label="Weekly slot overview"></div>
 
         <div class="calendar-legend" aria-hidden="true">
-          <div class="legend-item"><span class="legend-swatch" style="background:linear-gradient(180deg,#f7fbff,#eef6ff);border:1px solid rgba(11,74,203,0.06)"></span>Available</div>
-          <div class="legend-item"><span class="legend-swatch" style="background:#fff;border:1px solid rgba(239,68,68,0.06)"></span>Booked</div>
+          <div class="legend-item"><span class="legend-swatch" style="background:linear-gradient(180deg,#fff7ea,#fff0d2);border:1px solid rgba(170,120,40,0.08)"></span>Available</div>
+          <div class="legend-item"><span class="legend-swatch" style="background:#efeeee;border:1px solid rgba(200,60,60,0.06)"></span>Booked</div>
         </div>
+
+        <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between">
+          <div style="color:var(--muted)">Micro-interactions</div>
+          <div class="sound-row">
+            <label style="font-size:0.9rem;color:var(--muted);margin-right:6px">Brass sound</label>
+            <button id="soundToggle" class="btn btn-ghost" aria-pressed="false">Enable</button>
+          </div>
+        </div>
+
       </div>
 
-    </div> <!-- /.slot-panel -->
+    </div>
+  </div>
 
-  </div> <!-- /.slot-wrap -->
-
-  <!-- Modal: Request -->
-  <div id="slotModalLite" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Request a slot">
+  <!-- Modal: single-step booking -->
+  <div id="slotModalNoOTP" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Request a slot">
     <div class="modal-card" role="document">
-      <h3 style="margin:0 0 8px;color:var(--ink)">Request a slot</h3>
-      <div style="color:var(--muted);margin-bottom:12px;font-size:0.95rem">Select a time and leave a short note. We'll confirm by call or WhatsApp.</div>
-
-      <form id="slotFormLite" style="display:flex;flex-direction:column;gap:10px">
-        <input id="chosenSlot" class="form-control" readonly placeholder="Choose a slot from the week above" />
-        <div class="form-grid">
-          <input id="clientNameLite" class="form-control" placeholder="Your name" required />
-          <input id="clientPhoneLite" class="form-control" placeholder="Phone (+91...)" required />
+      <div class="modal-head">
+        <div>
+          <div class="modal-title">Request a slot</div>
+          <div style="color:var(--muted);font-size:0.95rem">Select a time and leave a short note — confirmation by call/WhatsApp.</div>
         </div>
-        <textarea id="clientNoteLite" class="form-control" placeholder="Purpose / case ref (optional)" rows="3"></textarea>
+        <div style="text-align:right;color:var(--muted);font-size:0.9rem">Secure • Private</div>
+      </div>
 
-        <div style="display:flex;gap:8px;justify-content:flex-end">
-          <button type="button" id="modalCancelLite" class="btn btn-ghost">Cancel</button>
+      <form id="slotFormNoOtp" style="display:flex;flex-direction:column;gap:12px">
+        <input id="chosenSlotNoOtp" class="form-control" readonly placeholder="Choose a slot from the week above" />
+        <div class="form-grid">
+          <input id="clientNameNoOtp" class="form-control" placeholder="Your name" required />
+          <input id="clientPhoneNoOtp" class="form-control" placeholder="Phone (+91...)" required />
+        </div>
+        <textarea id="clientNoteNoOtp" class="form-control" placeholder="Purpose / case ref (optional)" rows="3"></textarea>
+
+        <div style="display:flex;gap:10px;justify-content:flex-end">
+          <button type="button" id="modalCancelNoOtp" class="btn btn-ghost">Cancel</button>
           <button type="submit" class="btn btn-primary">Send request</button>
         </div>
 
         <div style="font-size:0.88rem;color:var(--muted);text-align:center;margin-top:6px">Request sends a pre-filled WhatsApp message for confirmation. Not a final booking until we reply.</div>
       </form>
+
+      <div id="bookingStatus" style="margin-top:10px;color:var(--muted);font-size:0.92rem" role="status" aria-live="polite"></div>
     </div>
   </div>
 
   <script>
   (function(){
-    /* --- lightweight calendar logic (single-file) --- */
-    const SLOT_MIN = 30; // minutes
+    /* ---------- Config ---------- */
+    const SLOT_MIN = 30;
     const WORK_START_H = 10, WORK_END_H = 17;
-    const DAYS_OPEN = [1,2,3,4,5,6]; // Mon-Sat (0=Sun)
+    const DAYS_OPEN = [1,2,3,4,5,6]; // Mon-Sat
     const USER_WHATSAPP = '919454183793';
 
-    // Demo booked slots set (ISO strings). Replace by server data in production.
-    const booked = new Set();
-
-    // Elements
+    /* ---------- Elements ---------- */
     const miniClock = document.getElementById('miniClock');
     const weekStrip = document.getElementById('weekStrip');
     const weekRangeLite = document.getElementById('weekRangeLite');
     const nextSlotLite = document.getElementById('nextSlotLite');
     const quickRequest = document.getElementById('quickRequest');
-    const slotModal = document.getElementById('slotModalLite');
-    const chosenSlot = document.getElementById('chosenSlot');
-    const slotForm = document.getElementById('slotFormLite');
-    const modalCancel = document.getElementById('modalCancelLite');
 
-    // time utilities (show IST)
-    function nowIST(){ const d=new Date(); const utc=d.getTime()+ (d.getTimezoneOffset()*60000); return new Date(utc + (5.5*3600000)); }
+    const slotModal = document.getElementById('slotModalNoOTP');
+    const chosenSlot = document.getElementById('chosenSlotNoOtp');
+    const slotForm = document.getElementById('slotFormNoOtp');
+    const clientName = document.getElementById('clientNameNoOtp');
+    const clientPhone = document.getElementById('clientPhoneNoOtp');
+    const clientNote = document.getElementById('clientNoteNoOtp');
+    const modalCancel = document.getElementById('modalCancelNoOtp');
+    const bookingStatus = document.getElementById('bookingStatus');
+    const soundToggle = document.getElementById('soundToggle');
+
+    /* ---------- State ---------- */
+    const booked = new Set();
+    let prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let soundEnabled = localStorage.getItem('pd_sound') === '1' && !prefersReduced;
+    soundToggle.textContent = soundEnabled ? 'Enabled' : 'Enable';
+    soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
+
+    /* ---------- Audio (brass click) ---------- */
+    let audioCtx = null;
+    function initAudio(){ if(audioCtx) return; try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }catch(e){ audioCtx = null; } }
+    function playBrassClick(){
+      if(!soundEnabled || prefersReduced) return;
+      initAudio();
+      if(!audioCtx) return;
+      const t = audioCtx.currentTime;
+      const noise = audioCtx.createBufferSource();
+      const buffer = audioCtx.createBuffer(1, audioCtx.sampleRate * 0.04, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i=0;i<data.length;i++) data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.02));
+      noise.buffer = buffer;
+      const noiseFilter = audioCtx.createBiquadFilter();
+      noiseFilter.type = 'bandpass'; noiseFilter.frequency.value = 2500;
+      noise.connect(noiseFilter);
+
+      const osc = audioCtx.createOscillator();
+      osc.type = 'sawtooth'; osc.frequency.setValueAtTime(800, t); osc.frequency.exponentialRampToValueAtTime(300, t + 0.06);
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.001, t); gain.gain.exponentialRampToValueAtTime(0.14, t + 0.01); gain.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+
+      noiseFilter.connect(gain); osc.connect(gain); gain.connect(audioCtx.destination);
+
+      noise.start(t); osc.start(t); noise.stop(t + 0.12); osc.stop(t + 0.12);
+    }
+
+    soundToggle.addEventListener('click', ()=> {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem('pd_sound', soundEnabled ? '1' : '0');
+      soundToggle.textContent = soundEnabled ? 'Enabled' : 'Enable';
+      soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
+      if(soundEnabled) playBrassClick();
+    });
+
+    /* ---------- Time helpers ---------- */
     function pad(n){ return String(n).padStart(2,'0'); }
-    function formatShort(dt){
-      const opts = {weekday:'short', day:'numeric', month:'short'};
-      const datePart = dt.toLocaleDateString('en-IN', opts);
-      const timePart = pad(dt.getHours()) + ':' + pad(dt.getMinutes());
-      return `${datePart} • ${timePart}`;
-    }
-    function toISOLocal(dt){
-      const y=dt.getFullYear(), m=pad(dt.getMonth()+1), d=pad(dt.getDate()), hh=pad(dt.getHours()), mm=pad(dt.getMinutes()), ss=pad(dt.getSeconds());
-      return `${y}-${m}-${d}T${hh}:${mm}:${ss}`;
-    }
-
-    // clock tick
-    function tick(){ const t=nowIST(); miniClock.textContent = pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())+' IST'; }
-    setInterval(tick,1000); tick();
-
-    // helpers to get week (Mon-Sun)
-    function startOfWeek(ist){
-      const d=new Date(ist);
-      const day=d.getDay(); // 0 Sun
-      const diff = (day + 6) % 7; // days since Monday
-      d.setHours(0,0,0,0);
-      d.setDate(d.getDate() - diff);
-      return d;
-    }
+    function nowIST(){ const d=new Date(); const utc = d.getTime() + (d.getTimezoneOffset()*60000); return new Date(utc + (5.5*3600000)); }
+    function formatShort(dt){ const opts = {weekday:'short', day:'numeric', month:'short'}; const datePart = dt.toLocaleDateString('en-IN', opts); const timePart = pad(dt.getHours()) + ':' + pad(dt.getMinutes()); return `${datePart} • ${timePart}`; }
+    function toISOLocal(dt){ const y=dt.getFullYear(), m=pad(dt.getMonth()+1), d=pad(dt.getDate()), hh=pad(dt.getHours()), mm=pad(dt.getMinutes()), ss=pad(dt.getSeconds()); return `${y}-${m}-${d}T${hh}:${mm}:${ss}`; }
+    function startOfWeek(ist){ const d=new Date(ist); const day=d.getDay(); const diff=(day+6)%7; d.setHours(0,0,0,0); d.setDate(d.getDate()-diff); return d; }
 
     function generateSlotsForDay(date){
-      const slots=[];
-      const start = new Date(date); start.setHours(WORK_START_H,0,0,0);
-      const end = new Date(date); end.setHours(WORK_END_H,0,0,0);
-      for(let cur=new Date(start); cur<end; cur.setMinutes(cur.getMinutes()+SLOT_MIN)){
-        slots.push(new Date(cur));
-      }
+      const slots=[]; const start=new Date(date); start.setHours(WORK_START_H,0,0,0); const end=new Date(date); end.setHours(WORK_END_H,0,0,0);
+      for(let cur=new Date(start); cur<end; cur.setMinutes(cur.getMinutes()+SLOT_MIN)) slots.push(new Date(cur));
       return slots;
     }
 
-    // render week strip
-    function renderWeek(offsetWeeks=0){
-      weekStrip.innerHTML = '';
-      const ist = nowIST();
-      const start = startOfWeek(ist);
-      start.setDate(start.getDate() + offsetWeeks*7);
-      const weekDays = [];
-      for(let i=0;i<7;i++){ const d=new Date(start); d.setDate(start.getDate()+i); weekDays.push(d); }
+    /* ---------- Clock ---------- */
+    function tick(){ const t=nowIST(); miniClock.textContent = pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())+' IST'; }
+    setInterval(tick,1000); tick();
 
-      // show compact range
-      const r0 = weekDays[0].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
-      const r6 = weekDays[6].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
-      weekRangeLite.textContent = `${r0} — ${r6}`;
-
-      // create day cards
-      weekDays.forEach(day => {
-        const card = document.createElement('div');
-        card.className = 'day-card';
-        const dayName = day.toLocaleDateString('en-IN',{weekday:'short'});
-        const dateNum = day.toLocaleDateString('en-IN',{day:'numeric','month':'short'});
-        card.innerHTML = `<div class="day-name">${dayName}</div><div class="day-date">${dateNum}</div>`;
-        const slotRow = document.createElement('div'); slotRow.className = 'slots-row';
-
-        if(DAYS_OPEN.includes(day.getDay())){
-          const slots = generateSlotsForDay(day);
-          // only show first 6 for compactness
-          slots.slice(0,6).forEach(s => {
-            const iso = toISOLocal(s);
-            const pill = document.createElement('button');
-            pill.type='button';
-            const isBooked = booked.has(iso);
-            pill.className = 'slot-pill' + (isBooked ? ' booked' : '');
-            pill.textContent = pad(s.getHours()) + ':' + pad(s.getMinutes()) + (isBooked ? ' • Booked' : '');
-            if(!isBooked){
-              pill.addEventListener('click', ()=> selectSlot(iso));
-            } else {
-              pill.disabled = true;
-            }
-            slotRow.appendChild(pill);
-          });
-        } else {
-          const closed = document.createElement('div');
-          closed.style.color='var(--muted)'; closed.style.fontSize='.9rem';
-          closed.textContent='Closed';
-          slotRow.appendChild(closed);
-        }
-
-        card.appendChild(slotRow);
-        weekStrip.appendChild(card);
-      });
-      // compute next available and set
-      computeAndShowNext();
-    }
-
-    // compute next available slot
+    /* ---------- Week rendering ---------- */
     function computeAndShowNext(){
       const ist = nowIST();
-      // search next 21 days
-      for(let d=0;d<21;d++){
+      for(let d=0; d<21; d++){
         const day=new Date(ist); day.setDate(ist.getDate()+d);
         if(!DAYS_OPEN.includes(day.getDay())) continue;
         const slots = generateSlotsForDay(day);
         for(const s of slots){
-          // require strictly future
           const sCopy = new Date(s);
-          // adjust to local time equivalent (s is already IST computed)
           if(d===0 && sCopy <= ist) continue;
           const iso = toISOLocal(sCopy);
-          if(!booked.has(iso)){
-            nextSlotLite.textContent = formatShort(sCopy);
-            return sCopy;
-          }
+          if(!booked.has(iso)){ nextSlotLite.textContent = formatShort(sCopy); return sCopy; }
         }
       }
-      nextSlotLite.textContent = 'No slots in next 21 days';
-      return null;
+      nextSlotLite.textContent = 'No slots in next 21 days'; return null;
     }
 
-    // selection -> open modal
+    function renderWeek(){
+      weekStrip.innerHTML = '';
+      const ist = nowIST();
+      const start = startOfWeek(ist);
+      const weekDays=[];
+      for(let i=0;i<7;i++){ const d=new Date(start); d.setDate(start.getDate()+i); weekDays.push(d); }
+      const r0=weekDays[0].toLocaleDateString('en-IN',{day:'numeric',month:'short'}), r6=weekDays[6].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+      weekRangeLite.textContent = `${r0} — ${r6}`;
+
+      weekDays.forEach(day=>{
+        const card=document.createElement('div'); card.className='day-card';
+        const dayName = day.toLocaleDateString('en-IN',{weekday:'short'}); const dateNum=day.toLocaleDateString('en-IN',{day:'numeric','month':'short'});
+        card.innerHTML = `<div class="day-name">${dayName}</div><div class="day-date">${dateNum}</div>`;
+        const slotRow=document.createElement('div'); slotRow.className='slots-row';
+        if(DAYS_OPEN.includes(day.getDay())){
+          const slots = generateSlotsForDay(day);
+          slots.slice(0,6).forEach(s=>{
+            const iso=toISOLocal(s);
+            const pill=document.createElement('button'); pill.type='button';
+            const isBooked = booked.has(iso);
+            pill.className = 'slot-pill' + (isBooked ? ' booked' : '');
+            pill.textContent = pad(s.getHours())+':'+pad(s.getMinutes()) + (isBooked ? ' • Booked' : '');
+            if(!isBooked){ pill.addEventListener('click', ()=> selectSlot(iso)); }
+            else pill.disabled=true;
+            pill.addEventListener('click', ()=> playBrassClick());
+            slotRow.appendChild(pill);
+          });
+        } else {
+          const closed = document.createElement('div'); closed.style.color='var(--muted)'; closed.style.fontSize='.9rem'; closed.textContent='Closed';
+          slotRow.appendChild(closed);
+        }
+        card.appendChild(slotRow); weekStrip.appendChild(card);
+      });
+      computeAndShowNext();
+    }
+
+    /* ---------- Selection & modal ---------- */
     function selectSlot(iso){
       const dt = new Date(iso);
       chosenSlot.value = formatShort(dt);
       chosenSlot.dataset.iso = iso;
       openModal();
+      playBrassClick();
     }
-
-    // modal controls
-    function openModal(){ slotModal.style.display='flex'; slotModal.setAttribute('aria-hidden','false'); document.getElementById('clientNameLite').focus(); }
+    function openModal(){ slotModal.style.display='flex'; slotModal.setAttribute('aria-hidden','false'); clientName.focus(); bookingStatus.textContent=''; }
     function closeModal(){ slotModal.style.display='none'; slotModal.setAttribute('aria-hidden','true'); slotForm.reset(); chosenSlot.value=''; delete chosenSlot.dataset.iso; }
 
-    // quick request picks next available
     quickRequest.addEventListener('click', ()=>{
       const next = computeAndShowNext();
       if(!next){ alert('No slots available soon'); return; }
       chosenSlot.value = formatShort(next);
       chosenSlot.dataset.iso = toISOLocal(next);
       openModal();
-    });
-
-    // form submit -> mark booked (demo) and open WhatsApp
-    slotForm.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const iso = chosenSlot.dataset.iso;
-      if(!iso){ alert('Please select a slot'); return; }
-      const name = document.getElementById('clientNameLite').value.trim();
-      const phone = document.getElementById('clientPhoneLite').value.trim();
-      const note = document.getElementById('clientNoteLite').value.trim();
-      if(!name || !phone){ alert('Name and phone required'); return; }
-      // mark booked (demo)
-      booked.add(iso);
-      renderWeek(0);
-      closeModal();
-      // open whatsapp prefilled
-      const msg = encodeURIComponent(`Requesting slot: ${chosenSlot.value}\nName: ${name}\nPhone: ${phone}\nNote: ${note}`);
-      window.open(`https://wa.me/${USER_WHATSAPP}?text=${msg}`, '_blank');
+      playBrassClick();
     });
 
     modalCancel.addEventListener('click', closeModal);
     slotModal.addEventListener('click', (e)=> { if(e.target === slotModal) closeModal(); });
     document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeModal(); });
 
-    // initialize: create small demo bookings if none exist
+    /* ---------- Demo seed bookings ---------- */
     (function seedDemo(){
       if(booked.size) return;
       const now = nowIST();
@@ -882,21 +836,46 @@
       booked.add(toISOLocal(demo1)); booked.add(toISOLocal(demo2));
     })();
 
-    // expose user whatsapp (for message link)
-    const USER_WHATSAPP = '919454183793';
+    /* ---------- Form submit: single-step booking ---------- */
+    slotForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const iso = chosenSlot.dataset.iso;
+      if(!iso){ bookingStatus.textContent = 'Please select a slot first.'; return; }
+      const nameVal = clientName.value.trim();
+      const phoneVal = clientPhone.value.trim();
+      const noteVal = clientNote.value.trim();
+      if(!nameVal || !phoneVal){ bookingStatus.textContent = 'Name and phone required.'; return; }
 
-    // initial render
-    renderWeek(0);
+      // mark booked (demo)
+      booked.add(iso);
+      renderWeek();
+      // micro-interaction
+      playBrassClick();
 
-    // update clock & next slot periodically
+      // open WhatsApp pre-filled (confirmation)
+      const msg = encodeURIComponent(`Requesting slot: ${chosenSlot.value}\nName: ${nameVal}\nPhone: ${phoneVal}\nNote: ${noteVal}`);
+      window.open(`https://wa.me/${USER_WHATSAPP}?text=${msg}`, '_blank');
+
+      bookingStatus.textContent = 'Request sent. We will contact you to confirm.';
+      setTimeout(()=> { closeModal(); }, 800);
+    });
+
+    /* ---------- Initial render ---------- */
+    renderWeek();
     setInterval(()=> { tick(); computeAndShowNext(); }, 30000);
 
+    /* ---------- Developer note ----------
+      For production:
+       - Persist bookings server-side and validate availability before confirming.
+       - Replace client-side 'booked' Set with server API calls:
+         POST /api/book-slot { iso, name, phone, note } -> returns booking status
+       - Use server to send WhatsApp/SMS or confirm via CRM.
+    -------------------------------------- */
   })();
   </script>
 
 </section>
 <!-- ================= END REPLACEMENT CALENDAR ================= -->
-```0
 ```0
        
       <!-- Enhanced ABOUT Section with better readability and contrast --><section id="about" aria-labelledby="aboutHeading" class="card" style="padding:28px; background:#f7f9fc; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
