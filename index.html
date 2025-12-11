@@ -487,31 +487,470 @@
 </section>
 <!-- ================= END PREMIUM HERO ================= -->
 ```0
+<!-- ================= PREMIUM SLOT BOOKING CALENDAR — single copy-paste block ================= -->
+<section id="slot-booking" aria-label="Slot booking" style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;margin-top:36px;">
 
-        <!-- decorative goddes image — uses file name you gave: goddes.jpg -->
-        <img id="goddes" src="goddes.jpg" alt="Statue of Lady Justice — decorative" aria-hidden="true">
+  <style>
+  /* -- Premium slot booking styles (self-contained) -- */
+  :root{
+    --card:#ffffff;
+    --bg:#0f1724;
+    --ink:#071028;
+    --muted:#667085;
+    --accent-500:#0b6bff;
+    --accent-600:#0f4acb;
+    --success:#059669;
+    --danger:#ef4444;
+  }
 
-        <aside class="panel" data-reveal aria-labelledby="nextSlotLabel">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-            <div>
-              <h4 id="nextSlotLabel" style="margin:0;color:var(--ink);font-size:1rem">Next Available Slot</h4>
-              <div class="muted" id="nextSlot" style="margin-top:6px;color:var(--muted-dark)">Loading…</div>
-            </div>
-            <div id="clock-nav" aria-live="polite">--:--:-- IST</div>
+  .slot-wrap{
+    max-width:1180px;margin-inline:auto;background:linear-gradient(180deg,#fff,#fbfdff);
+    border-radius:16px;padding:22px;border:1px solid rgba(11,18,32,0.04);
+    box-shadow:0 28px 80px rgba(7,12,25,0.06);display:grid;grid-template-columns:420px 1fr;gap:22px;align-items:start;
+  }
+
+  /* Goddess image */
+  .slot-goddess{
+    width:100%;height:240px;border-radius:12px;overflow:hidden;display:block;
+    background:#f3f6fb;border:1px solid rgba(14,22,40,0.04);object-fit:cover;
+    box-shadow:0 14px 40px rgba(7,12,25,0.04);
+  }
+
+  /* Right panel */
+  .slot-panel{display:flex;flex-direction:column;gap:14px;padding:8px 4px;}
+  .slot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .slot-title{margin:0;font-size:1rem;color:var(--ink);font-weight:700;}
+  .slot-sub{margin-top:6px;color:var(--muted);font-size:0.92rem;max-width:680px;line-height:1.45;}
+
+  .clock{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+    background:linear-gradient(90deg, rgba(11,107,255,0.06), rgba(15,74,203,0.04));padding:8px 12px;border-radius:10px;
+    color:var(--accent-600);font-weight:800;letter-spacing:0.02em;border:1px solid rgba(11,74,203,0.06);
+  }
+
+  .next-slot{
+    display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);
+    border:1px solid rgba(11,18,32,0.04);box-shadow:0 12px 36px rgba(7,12,25,0.04);
+  }
+  .next-slot strong{font-size:1rem;color:var(--ink);display:block}
+  .next-slot small{color:var(--muted);font-size:0.92rem}
+
+  .slot-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  .btn{
+    padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;font-size:.95rem;
+  }
+  .btn-primary{background:linear-gradient(90deg,var(--accent-500),var(--accent-600));color:#fff;box-shadow:0 8px 26px rgba(11,74,203,0.12)}
+  .btn-ghost{background:transparent;border:1px solid rgba(11,18,32,0.06);color:var(--ink)}
+  .btn-outline{background:transparent;border:1px dashed rgba(11,18,32,0.06);color:var(--muted)}
+
+  /* Calendar */
+  .calendar-wrap{background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:12px;border:1px solid rgba(11,18,32,0.04);box-shadow:0 12px 36px rgba(7,12,25,0.04);}
+  .cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .cal-nav{display:flex;gap:8px;align-items:center}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .day-col{background:transparent;padding:6px;border-radius:8px;text-align:center;color:var(--muted);font-size:0.85rem}
+  .slot-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+
+  .slot-pill{
+    padding:8px 10px;border-radius:10px;background:linear-gradient(180deg,#f7fbff,#eef6ff);border:1px solid rgba(11,74,203,0.06);
+    color:var(--accent-600);font-weight:700;font-size:0.9rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  }
+  .slot-pill.booked{background:#f8fafb;border:1px solid rgba(239,68,68,0.06);color:var(--muted);text-decoration:line-through;cursor:not-allowed}
+  .slot-pill:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(11,74,203,0.06)}
+  .slot-meta{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:10px;color:var(--muted);font-size:0.9rem;}
+
+  /* Modal */
+  .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);z-index:2200;align-items:center;justify-content:center;padding:18px}
+  .modal-card{background:#fff;padding:18px;border-radius:12px;max-width:520px;width:100%;box-shadow:0 30px 90px rgba(7,12,25,0.28)}
+  .form-row{display:flex;gap:8px;flex-wrap:wrap}
+  .form-control{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(11,18,32,0.06);font-size:0.95rem}
+  .muted-note{color:var(--muted);font-size:0.92rem;text-align:center;margin-top:10px}
+
+  /* responsive */
+  @media (max-width:980px){ .slot-wrap{grid-template-columns:1fr; } .slot-goddess{height:200px} .calendar-wrap{order:2} }
+  </style>
+
+  <div class="slot-wrap" role="region" aria-label="Slot booking and court calendar">
+
+    <!-- LEFT: decorative image and small info -->
+    <div>
+      <!-- Decorative goddess image: replace src with your path -->
+      <img id="goddesImg" class="slot-goddess" src="goddes.jpg" alt="Statue of Lady Justice — decorative" loading="lazy">
+
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+        <div style="font-weight:700;color:var(--ink)">In-person & virtual slots</div>
+        <div style="color:var(--muted);font-size:0.92rem">Sessions: 30 mins</div>
+      </div>
+
+      <div style="margin-top:10px;color:var(--muted);font-size:0.92rem;line-height:1.5">
+        We recommend booking at least 24 hours in advance. For urgent hearings, use the <strong>Request Slot</strong> option and we will prioritise.
+      </div>
+    </div>
+
+    <!-- RIGHT: panel with clock, next slot, calendar -->
+    <div class="slot-panel">
+
+      <div class="slot-top">
+        <div>
+          <h3 class="slot-title">Next Available Slot</h3>
+          <div class="slot-sub">Book a convenient time for consultation or court attendance.</div>
+        </div>
+
+        <div class="clock" id="clock">--:--:-- IST</div>
+      </div>
+
+      <div class="next-slot" aria-live="polite">
+        <div>
+          <small style="color:var(--muted)">Upcoming</small>
+          <strong id="nextSlotDisplay">Loading…</strong>
+          <div style="margin-top:6px;color:var(--muted)">Timezone: India Standard Time (UTC+5:30)</div>
+        </div>
+
+        <div class="slot-actions">
+          <button id="requestSlotBtn" class="btn btn-primary" type="button" aria-haspopup="dialog">Request Slot</button>
+          <button id="quickCallBtn" class="btn btn-ghost" type="button">Call to Confirm</button>
+          <button id="viewCalendarBtn" class="btn btn-outline" type="button">View full calendar</button>
+        </div>
+      </div>
+
+      <!-- Calendar -->
+      <div class="calendar-wrap" id="calendarSection">
+        <div class="cal-header">
+          <div style="font-weight:700;color:var(--ink)">Court Calendar — This week</div>
+          <div class="cal-nav">
+            <button id="prevWeek" class="btn btn-ghost" aria-label="Previous week">&lt;</button>
+            <div style="min-width:160px;text-align:center;color:var(--muted)" id="weekRange">—</div>
+            <button id="nextWeek" class="btn btn-ghost" aria-label="Next week">&gt;</button>
           </div>
+        </div>
 
-          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn btn--ghost" id="requestSlotBtn" type="button" style="min-width:110px">Request Slot</button>
-            <a class="btn btn--ghost" href="contact.html" target="_blank" rel="noopener" style="min-width:110px">Contact</a>
+        <div class="cal-grid" id="calendarGrid" role="table" aria-label="Weekly calendar">
+          <!-- dynamically filled -->
+        </div>
+
+        <div class="slot-meta" id="calendarLegend">
+          <div style="display:flex;gap:8px;align-items:center">
+            <span style="width:10px;height:10px;border-radius:3px;background:linear-gradient(180deg,#f7fbff,#eef6ff);border:1px solid rgba(11,74,203,0.06);display:inline-block"></span>
+            <div style="color:var(--muted);font-size:0.92rem">Available</div>
           </div>
-
-          <div id="calendar-section" aria-label="Court calendar">
-            <h4 style="margin:8px 0 6px 0;color:var(--ink);font-size:.98rem">Court Calendar</h4>
-            <div id="calendar" role="table" aria-live="polite" aria-atomic="true"></div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span style="width:10px;height:10px;border-radius:3px;background:#fff;border:1px solid rgba(239,68,68,0.06);display:inline-block"></span>
+            <div style="color:var(--muted);font-size:0.92rem">Booked</div>
           </div>
-        </aside>
-      </section>
+        </div>
+      </div>
 
+    </div><!-- /.slot-panel -->
+
+  </div><!-- /.slot-wrap -->
+
+  <!-- Booking modal -->
+  <div id="slotModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Request a slot">
+    <div class="modal-card">
+      <h3 style="margin:0 0 6px;font-size:1.05rem;color:var(--ink)">Request slot</h3>
+      <div style="color:var(--muted);margin-bottom:12px">Select an available slot and provide brief details. We'll confirm by phone/WhatsApp.</div>
+
+      <form id="slotForm" style="display:flex;flex-direction:column;gap:10px">
+        <label style="font-size:0.9rem;color:var(--muted)">Selected slot</label>
+        <input id="selectedSlotInput" class="form-control form-control--disabled" readonly style="background:#f7fafc;border-radius:8px;padding:10px"/>
+
+        <div class="form-row">
+          <input id="clientName" class="form-control" placeholder="Your name" required>
+          <input id="clientPhone" class="form-control" placeholder="Phone (+91...)" required>
+        </div>
+
+        <textarea id="clientNote" class="form-control" placeholder="Short purpose / case ref (optional)" rows="3"></textarea>
+
+        <div style="display:flex;gap:8px;justify-content:flex-end">
+          <button type="button" id="modalCloseBtn" class="btn btn-ghost">Cancel</button>
+          <button type="submit" class="btn btn-primary">Request slot</button>
+        </div>
+
+        <div class="muted-note">By requesting you agree we may contact you to confirm timing. Not a confirmed booking until we reply.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    /* --- Configuration --- */
+    const SLOT_LENGTH_MIN = 30; // minutes
+    const WORK_START = {hour:10, minute:0}; // 10:00
+    const WORK_END = {hour:17, minute:0};   // 17:00
+    const DAYS_OPEN = [1,2,3,4,5,6]; // Mon-Sat (0=Sun)
+    const USER_PHONE = "+919454183793";
+
+    /* --- State: initial booked slots (ISO strings) - demo data --- */
+    // These are sample booked slots; in production this would come from server
+    const bookedSlots = new Set([
+      // ISO strings in local timezone (Asia/Kolkata). Example: today at next hour.
+      // We'll generate some demo ones programmatically later if none present.
+    ]);
+
+    // Utilities for IST time handling (relies on client clock but displays IST)
+    function nowIST(){
+      // returns Date object in user's local timezone representing current IST time offset
+      // Simpler: get current UTC, add +5:30 offset -> create Date
+      const d = new Date();
+      const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+      const ist = new Date(utc + (5.5 * 3600000));
+      return ist;
+    }
+    function toLocalISO(dt){
+      // returns ISO string without timezone (local representation) e.g. '2025-09-14T10:30:00'
+      const y = dt.getFullYear();
+      const m = String(dt.getMonth()+1).padStart(2,'0');
+      const d = String(dt.getDate()).padStart(2,'0');
+      const hh = String(dt.getHours()).padStart(2,'0');
+      const mm = String(dt.getMinutes()).padStart(2,'0');
+      const ss = String(dt.getSeconds()).padStart(2,'0');
+      return `${y}-${m}-${d}T${hh}:${mm}:${ss}`;
+    }
+    function formatSlotLabel(iso){
+      const dt = new Date(iso);
+      // format like: Tue, 14 Sep — 10:30
+      const opts = {weekday:'short', day:'numeric', month:'short'};
+      const datePart = dt.toLocaleDateString('en-IN', opts);
+      const timePart = String(dt.getHours()).padStart(2,'0') + ':' + String(dt.getMinutes()).padStart(2,'0');
+      return `${datePart} • ${timePart}`;
+    }
+
+    /* --- Clock display --- */
+    const clockEl = document.getElementById('clock');
+    function tickClock(){
+      const ist = nowIST();
+      const hh = String(ist.getHours()).padStart(2,'0');
+      const mm = String(ist.getMinutes()).padStart(2,'0');
+      const ss = String(ist.getSeconds()).padStart(2,'0');
+      clockEl.textContent = `${hh}:${mm}:${ss} IST`;
+    }
+    setInterval(tickClock, 1000);
+    tickClock();
+
+    /* --- Calendar generation & next slot logic --- */
+    const calendarGrid = document.getElementById('calendarGrid');
+    const weekRange = document.getElementById('weekRange');
+    const nextSlotDisplay = document.getElementById('nextSlotDisplay');
+    let weekOffset = 0; // 0 = current week starting Monday (or today)
+    // Generate demo booked slots if empty (to show booked pills)
+    function seedDemoBookings(){
+      if(bookedSlots.size > 0) return;
+      const ist = nowIST();
+      // make 3 bookings in coming days
+      for(let i=1;i<=4;i++){
+        const dt = new Date(ist.getTime() + i*24*3600000);
+        // pick 11:00 and 14:30 etc
+        dt.setHours(11 + (i%3)*1, (i%2)*30, 0, 0);
+        bookedSlots.add(dt.toISOString());
+      }
+    }
+    seedDemoBookings();
+
+    // compute start of week (Monday) for given offset
+    function startOfWeek(istDate, offsetWeeks=0){
+      // find Monday of current week
+      const d = new Date(istDate);
+      const day = d.getDay(); // 0 Sun .. 6 Sat
+      // determine Monday: if day==0 => previous Monday is -6
+      const diffToMonday = ((day + 6) % 7); // 0 for Mon, 6 for Sun
+      d.setHours(0,0,0,0);
+      d.setDate(d.getDate() - diffToMonday + (offsetWeeks*7));
+      return d;
+    }
+
+    function addMinutes(date, mins){ return new Date(date.getTime() + mins*60000); }
+
+    function generateSlotsForDate(date){
+      const slots = [];
+      const workStart = new Date(date); workStart.setHours(WORK_START.hour, WORK_START.minute, 0, 0);
+      const workEnd = new Date(date); workEnd.setHours(WORK_END.hour, WORK_END.minute, 0, 0);
+      let cursor = new Date(workStart);
+      while(cursor < workEnd){
+        // only on open days
+        const dt = new Date(cursor);
+        slots.push(new Date(dt));
+        cursor = addMinutes(cursor, SLOT_LENGTH_MIN);
+      }
+      return slots;
+    }
+
+    function isOpenDay(date){
+      const dow = date.getDay();
+      return DAYS_OPEN.includes(dow);
+    }
+
+    function renderWeek(offset=0){
+      calendarGrid.innerHTML = '';
+      const ist = nowIST();
+      const start = startOfWeek(ist, offset);
+      const days = [];
+      for(let i=0;i<7;i++){
+        const d = new Date(start); d.setDate(start.getDate() + i);
+        days.push(d);
+      }
+      // set week range label
+      const opts = {day:'numeric', month:'short'};
+      const r0 = days[0].toLocaleDateString('en-IN', opts);
+      const r6 = days[6].toLocaleDateString('en-IN', opts);
+      weekRange.textContent = `${r0} — ${r6}`;
+
+      // for each day render column
+      days.forEach(day => {
+        const col = document.createElement('div');
+        col.className = 'day-col';
+        const dayName = day.toLocaleDateString('en-IN', {weekday:'short'});
+        const dateNum = day.toLocaleDateString('en-IN', {day:'numeric','month':'short'});
+        col.innerHTML = `<div style="font-weight:700;color:var(--ink)">${dayName}</div><div style="font-size:0.88rem;color:var(--muted)}">${dateNum}</div>`;
+        // slots container
+        const list = document.createElement('div');
+        list.className = 'slot-list';
+        // only generate if open day
+        if(isOpenDay(day)){
+          const slots = generateSlotsForDate(day);
+          // choose up to first 4 slots to show pills to avoid long page
+          slots.slice(0,8).forEach(slotDate => {
+            // create pill
+            const iso = slotDate.toISOString();
+            const pill = document.createElement('button');
+            pill.className = 'slot-pill';
+            pill.type = 'button';
+            pill.dataset.iso = iso;
+            // booked?
+            const booked = bookedSlots.has(iso);
+            if(booked){
+              pill.classList.add('booked');
+              pill.textContent = String(slotDate.getHours()).padStart(2,'0') + ':' + String(slotDate.getMinutes()).padStart(2,'0') + ' • Booked';
+              pill.disabled = true;
+            } else {
+              pill.textContent = String(slotDate.getHours()).padStart(2,'0') + ':' + String(slotDate.getMinutes()).padStart(2,'0');
+              pill.addEventListener('click', ()=> onSelectSlot(iso));
+            }
+            list.appendChild(pill);
+          });
+        } else {
+          const closed = document.createElement('div');
+          closed.style.color = 'var(--muted)';
+          closed.style.fontSize = '.9rem';
+          closed.style.marginTop = '8px';
+          closed.textContent = 'Closed';
+          list.appendChild(closed);
+        }
+        col.appendChild(list);
+        calendarGrid.appendChild(col);
+      });
+    }
+
+    // compute next available slot (earliest slot in future not booked)
+    function computeNextAvailable(){
+      const istNow = nowIST();
+      // search from now to next 28 days
+      for(let dayOffset=0; dayOffset<28; dayOffset++){
+        const d = new Date(istNow); d.setDate(d.getDate() + dayOffset);
+        if(!isOpenDay(d)) continue;
+        const slots = generateSlotsForDate(d);
+        for(const s of slots){
+          // only future slots (strictly after now)
+          const sTime = new Date(s);
+          if(sTime <= istNow && dayOffset===0) continue;
+          // check booked set (compare by exact ISO of local time)
+          const iso = sTime.toISOString();
+          if(!bookedSlots.has(iso)) return sTime;
+        }
+      }
+      return null;
+    }
+
+    function updateNextSlotDisplay(){
+      const next = computeNextAvailable();
+      if(!next){
+        nextSlotDisplay.textContent = 'No slots available in the next 28 days';
+        return;
+      }
+      nextSlotDisplay.textContent = formatSlotLabel(next);
+    }
+
+    // selection / modal logic
+    const slotModal = document.getElementById('slotModal');
+    const selectedSlotInput = document.getElementById('selectedSlotInput');
+    const slotForm = document.getElementById('slotForm');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+    function onSelectSlot(iso){
+      selectedSlotInput.value = formatSlotLabel(iso);
+      selectedSlotInput.dataset.iso = iso;
+      openSlotModal();
+    }
+
+    function openSlotModal(){
+      slotModal.style.display = 'flex';
+      slotModal.setAttribute('aria-hidden','false');
+      document.getElementById('clientName').focus();
+    }
+    function closeSlotModal(){
+      slotModal.style.display = 'none';
+      slotModal.setAttribute('aria-hidden','true');
+      slotForm.reset();
+    }
+
+    modalCloseBtn.addEventListener('click', closeSlotModal);
+    slotModal.addEventListener('click', (e)=> { if(e.target === slotModal) closeSlotModal(); });
+    document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeSlotModal(); });
+
+    // handle form submit - simulate booking
+    slotForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const iso = selectedSlotInput.dataset.iso;
+      if(!iso){ alert('No slot selected'); return; }
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      if(!name || !phone){ alert('Please provide name and phone'); return; }
+      // mark booked
+      bookedSlots.add(iso);
+      // update UI (re-render week)
+      renderWeek(weekOffset);
+      updateNextSlotDisplay();
+      closeSlotModal();
+      // simulate server confirmation via WhatsApp/Call: open whatsapp with message prefilled
+      const msg = encodeURIComponent(`Hello, I have requested slot for ${formatSlotLabel(new Date(iso))}.\nName: ${name}\nPhone: ${phone}`);
+      window.open(`https://wa.me/${USER_PHONE.replace(/\D/g,'')}?text=${msg}`, '_blank');
+    });
+
+    // Quick request button: pick next available and open modal prefilled
+    document.getElementById('requestSlotBtn').addEventListener('click', ()=>{
+      const next = computeNextAvailable();
+      if(!next){ alert('No slots available in next 28 days'); return; }
+      selectedSlotInput.value = formatSlotLabel(next.toISOString ? next.toISOString() : next);
+      selectedSlotInput.dataset.iso = next.toISOString();
+      openSlotModal();
+    });
+
+    // Call to confirm
+    document.getElementById('quickCallBtn').addEventListener('click', ()=> {
+      window.location.href = 'tel:' + USER_PHONE;
+    });
+
+    // week navigation
+    document.getElementById('prevWeek').addEventListener('click', ()=> { weekOffset--; renderWeek(weekOffset); });
+    document.getElementById('nextWeek').addEventListener('click', ()=> { weekOffset++; renderWeek(weekOffset); });
+    document.getElementById('viewCalendarBtn').addEventListener('click', ()=> { /* optionally scroll into calendar */ document.getElementById('calendarSection').scrollIntoView({behavior:'smooth'}); });
+
+    // initialize
+    renderWeek(0);
+    updateNextSlotDisplay();
+
+    // update next slot every 30s (in case of clock)
+    setInterval(()=> {
+      renderWeek(weekOffset);
+      updateNextSlotDisplay();
+    }, 30000);
+
+  })();
+  </script>
+
+</section>
+<!-- ================= END SLOT BOOKING CALENDAR ================= -->
+```0
+       
       <!-- Enhanced ABOUT Section with better readability and contrast --><section id="about" aria-labelledby="aboutHeading" class="card" style="padding:28px; background:#f7f9fc; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.06);">
   <h2 id="aboutHeading" style="color:#14213d; margin-bottom:10px; font-size:1.8rem; font-weight:700;">
     About Us — Clarity, Compassion, and Discipline
