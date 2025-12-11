@@ -577,48 +577,426 @@
   </div>
 </section>
       
-      <!-- ARTICLES -->
-      <section id="articles" aria-labelledby="articlesHeading" class="card" style="margin-top:24px;padding:24px;background:var(--card);color:var(--ink);border-radius:12px;box-shadow:0 12px 36px rgba(7,12,25,0.04);">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
-          <div>
-            <h2 id="articlesHeading" style="color:var(--ink);margin-bottom:4px;">Articles & Insights</h2>
-            <p class="muted" style="margin-top:6px;color:var(--muted-dark);">Short guides, practical steps and case insights — written for clients and families.</p>
-          </div>
+      <!-- ================= PREMIUM ARTICLES & INSIGHTS — Single File (8 Indian-law articles) ================ -->
+<section id="articles" aria-labelledby="articlesHeading"
+style="margin-top:28px;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;">
 
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <label for="articleSearch" class="muted" style="font-size:.88rem;margin-right:6px;color:var(--muted-dark);">Search</label>
-            <input id="articleSearch" type="search" placeholder="Search articles…" aria-label="Search articles" style="padding:8px;border-radius:10px;border:1px solid #e2e6ef;min-width:180px;background:#fff;color:var(--ink);">
-            <div id="articleTags" role="list" aria-label="Filter by tag" style="display:flex;gap:8px;flex-wrap:wrap;margin-left:6px;"></div>
-          </div>
-        </div>
+<style>
+/* ---------------- Self-contained premium styles ---------------- */
+:root{
+  --accent-500:#0b4acb;
+  --accent-600:#083a9a;
+  --card:#ffffff;
+  --muted:#64748b;
+  --ink:#0f1724;
+  --bg-soft:#f7f9fc;
+  --glass: rgba(255,255,255,0.6);
+}
 
-        <div id="articlesMeta" style="display:flex;gap:12px;align-items:center;margin-top:10px;flex-wrap:wrap;">
-          <div class="muted" id="articlesCount" aria-live="polite" style="color:var(--muted-dark);">Showing <strong id="articlesVisible">0</strong> articles</div>
-          <div style="margin-left:auto" class="muted">
-            <span style="color:var(--muted-dark);">Sort:</span>
-            <select id="articlesSort" aria-label="Sort articles" style="padding:6px;border-radius:8px;border:1px solid #e6ebf5;margin-left:8px;background:#fff;color:var(--ink);">
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
-            </select>
-          </div>
-        </div>
+/* Container */
+.tf-articles{padding:28px;background:linear-gradient(180deg,#fff,#fbfcff);color:var(--ink);border-radius:14px;box-shadow:0 18px 56px rgba(7,12,25,0.06);border:1px solid rgba(12,18,32,0.04);}
 
-        <div id="articlesGrid" style="margin-top:12px;"></div>
+/* Header */
+.tf-hdr{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;}
+.tf-hdr h2{margin:0 0 4px;font-size:1.6rem;font-weight:700;color:var(--ink);}
+.tf-hdr p{margin:0;color:var(--muted);font-size:0.98rem;}
 
-        <div id="articlePreview" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);z-index:1400;align-items:center;justify-content:center;padding:18px;">
-          <article role="dialog" aria-modal="true" aria-labelledby="previewTitle" style="max-width:820px;width:100%;background:var(--card);padding:18px;border-radius:10px;box-shadow:0 24px 80px rgba(7,12,25,0.18);overflow:auto;max-height:80vh;">
-            <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h3 id="previewTitle" style="margin:0;color:var(--ink);">Title</h3>
-                <div class="muted" id="previewMeta" style="margin-top:6px;font-size:.95rem;color:var(--muted-dark);"></div>
-              </div>
-              <button id="previewClose" class="btn btn--ghost" aria-label="Close preview">Close</button>
-            </header>
-            <div id="previewBody" style="margin-top:12px;color:var(--muted-dark);"></div>
-          </article>
-        </div>
-      </section>
+/* Controls */
+.tf-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.tf-search{display:flex;align-items:center;gap:8px;background:#f0f3f9;padding:6px 10px;border-radius:12px;border:1px solid rgba(14,22,40,0.04);}
+.tf-search input{border:0;background:transparent;padding:8px 6px;min-width:200px;font-size:.95rem;color:var(--ink);outline:none;}
+.tf-tag-pill{padding:6px 12px;border-radius:20px;background:#fff;border:1px solid #e4e7ee;color:var(--muted);font-size:.88rem;cursor:pointer;}
+.tf-tag-pill.active{border-color:var(--accent-500);box-shadow:0 6px 18px rgba(11,74,203,0.06);color:var(--accent-600);}
 
+/* Meta */
+.tf-meta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px;color:var(--muted);font-size:.94rem;}
+
+/* Grid */
+.tf-grid{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+
+/* Cards */
+.article-card{background:#fff;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;border:1px solid rgba(12,18,32,0.05);box-shadow:0 12px 34px rgba(7,12,25,0.05);cursor:pointer;transform:translateY(0);opacity:1;transition:transform .28s cubic-bezier(.2,.9,.2,1),opacity .28s ease,box-shadow .28s ease;}
+.article-card.hidden { transform: translateY(10px); opacity:0; pointer-events:none; height:0; padding:0 18px; margin:0; border:0; box-shadow:none; overflow:hidden; }
+.article-card:hover{transform:translateY(-6px);box-shadow:0 22px 60px rgba(7,12,25,0.12);}
+
+/* Eyebrow, title, excerpt */
+.article-eyebrow{display:flex;gap:8px;align-items:center;font-size:.85rem;color:var(--muted);}
+.article-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,var(--accent-500),var(--accent-600));}
+.article-title{margin:0;font-size:1.06rem;font-weight:600;color:var(--ink);line-height:1.28;}
+.article-excerpt{margin:0;color:var(--muted);font-size:.94rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+
+/* Footer */
+.article-footer{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.88rem;margin-top:auto;}
+.article-cta{border:0;background:transparent;color:var(--accent-600);font-weight:700;cursor:pointer;padding:6px 8px;border-radius:8px;}
+.article-cta:focus{outline:2px solid rgba(11,74,203,0.12);outline-offset:2px;}
+
+/* Load more button */
+.load-more-wrap{display:flex;justify-content:center;margin-top:18px;}
+.btn-load-more{background:linear-gradient(90deg,var(--accent-500),var(--accent-600));color:#fff;border:0;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(11,74,203,0.12);}
+.btn-load-more:disabled{opacity:.6;cursor:not-allowed;}
+
+/* Preview modal */
+.tf-preview-backdrop{display:none;position:fixed;inset:0;background:rgba(2,6,23,0.65);z-index:1400;align-items:center;justify-content:center;padding:20px;}
+.tf-preview{background:#fff;padding:22px;border-radius:12px;max-width:860px;width:100%;max-height:86vh;overflow:auto;box-shadow:0 30px 90px rgba(7,12,25,0.25);transform:translateY(16px);opacity:0;transition:all .25s ease;}
+.tf-preview.open{transform:translateY(0);opacity:1;}
+.tf-preview h3{margin:0;font-size:1.26rem;color:var(--ink);}
+.preview-meta{color:var(--muted);margin-top:6px;font-size:.92rem;}
+.preview-body{margin-top:14px;color:var(--muted);line-height:1.6;}
+
+/* Responsive */
+@media(max-width:640px){
+  .tf-articles{padding:18px;}
+  .tf-search input{min-width:140px;}
+  .article-title{font-size:1rem;}
+  .tf-grid{gap:12px;}
+}
+</style>
+
+<div class="tf-articles" aria-labelledby="articlesHeadingWrap">
+
+  <!-- HEADER -->
+  <div class="tf-hdr" id="articlesHeadingWrap">
+    <div>
+      <h2 id="articlesHeading">Articles &amp; Insights</h2>
+      <p>Practical notes on Indian bail law, civil & criminal procedure, contracts and evidence — concise, client-friendly and court-aware.</p>
+    </div>
+
+    <div class="tf-controls" role="region" aria-label="Articles controls">
+      <div class="tf-search" title="Search articles">
+        <label for="articleSearch" class="sr-only" style="position:absolute;left:-9999px;">Search articles</label>
+        <input id="articleSearch" type="search" placeholder="Search articles…" aria-label="Search articles">
+      </div>
+
+      <div id="articleTags" aria-label="Filter by tag" style="display:flex;gap:8px;">
+        <button class="tf-tag-pill" data-tag="bail">Bail</button>
+        <button class="tf-tag-pill" data-tag="civil">Civil</button>
+        <button class="tf-tag-pill" data-tag="criminal">Criminal</button>
+        <button class="tf-tag-pill" data-tag="contract">Contract</button>
+        <button class="tf-tag-pill" data-tag="evidence">Evidence</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- META -->
+  <div class="tf-meta" id="articlesMeta">Showing <strong id="articlesVisible">4</strong> articles</div>
+
+  <!-- GRID (initially show first 4; rest hidden until Load more) -->
+  <div id="articlesGrid" class="tf-grid" aria-live="polite">
+
+    <!-- 1: Bail — Arrest & Early Bail (Card 1) -->
+    <article class="article-card" data-tags="bail,criminal" data-id="1" tabindex="0"
+      itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="mainEntityOfPage" content="#article-1" />
+      <meta itemprop="author" content="The Justice Firm" />
+      <meta itemprop="datePublished" content="2025-05-20" />
+      <div class="article-eyebrow"><span class="dot"></span><span>Bail</span></div>
+      <h3 class="article-title" itemprop="headline">Arrest to First Bail: Practical steps under CrPC</h3>
+      <p class="article-excerpt" itemprop="description">A client-facing checklist: rights on arrest, police custody vs judicial custody, and early applications under Sections 436–437 CrPC. Useful for families and counsel preparing a prompt bail application.</p>
+      <div class="article-footer"><span>May 20, 2025 • 4 min</span><button class="article-cta" data-action="open">Read</button></div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Arrest to First Bail: Practical steps under CrPC","datePublished":"2025-05-20","author":{"@type":"Organization","name":"The Justice Firm"},"description":"Checklist: rights on arrest, custody types and early bail applications (Sections 436-437 CrPC)."}
+      </script>
+    </article>
+
+    <!-- 2: Bail — Anticipatory Bail Guide (Card 2) -->
+    <article class="article-card" data-tags="bail,criminal" data-id="2" tabindex="0"
+      itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="mainEntityOfPage" content="#article-2" />
+      <meta itemprop="author" content="The Justice Firm" />
+      <meta itemprop="datePublished" content="2025-06-12" />
+      <div class="article-eyebrow"><span class="dot" style="background:linear-gradient(180deg,#ffd166,#ff9f1c)"></span><span>Bail</span></div>
+      <h3 class="article-title" itemprop="headline">Anticipatory Bail: When to apply and how courts assess 'reasonable suspicion'</h3>
+      <p class="article-excerpt" itemprop="description">Overview of Section 438 CrPC: tactical considerations, evidentiary thresholds, and drafting tips to secure interim protection before arrest in sensitive matters.</p>
+      <div class="article-footer"><span>Jun 12, 2025 • 5 min</span><button class="article-cta" data-action="open">Read</button></div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Anticipatory Bail: When to apply and how courts assess 'reasonable suspicion'","datePublished":"2025-06-12","author":{"@type":"Organization","name":"The Justice Firm"},"description":"Practical notes on Section 438 CrPC, strategic timing and drafting for anticipatory bail."}
+      </script>
+    </article>
+
+    <!-- 3: Civil — Filing a Plaint (Card 3) -->
+    <article class="article-card" data-tags="civil" data-id="3" tabindex="0"
+      itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="mainEntityOfPage" content="#article-3" />
+      <meta itemprop="author" content="The Justice Firm" />
+      <meta itemprop="datePublished" content="2025-03-18" />
+      <div class="article-eyebrow"><span class="dot" style="background:linear-gradient(180deg,#06d6a0,#007f5f)"></span><span>Civil</span></div>
+      <h3 class="article-title" itemprop="headline">Preparing a Plaint: Avoid delays under CPC (Order VII essentials)</h3>
+      <p class="article-excerpt" itemprop="description">What a well-drafted plaint must include under Order VII CPC, common grounds for rejection and quick fixes to reduce adjournments and avoid procedural rebukes.</p>
+      <div class="article-footer"><span>Mar 18, 2025 • 6 min</span><button class="article-cta" data-action="open">Read</button></div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Preparing a Plaint: Avoid delays under CPC (Order VII essentials)","datePublished":"2025-03-18","author":{"@type":"Organization","name":"The Justice Firm"},"description":"Checklist of essential contents and common pitfalls under Order VII of the Code of Civil Procedure."}
+      </script>
+    </article>
+
+    <!-- 4: Civil — Execution & Interim Relief (Card 4) -->
+    <article class="article-card" data-tags="civil,contract" data-id="4" tabindex="0"
+      itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="mainEntityOfPage" content="#article-4" />
+      <meta itemprop="author" content="The Justice Firm" />
+      <meta itemprop="datePublished" content="2025-07-02" />
+      <div class="article-eyebrow"><span class="dot" style="background:linear-gradient(180deg,#f72585,#b5179e)"></span><span>Civil</span></div>
+      <h3 class="article-title" itemprop="headline">Interim Relief & Execution: Practical notes for creditors and plaintiffs</h3>
+      <p class="article-excerpt" itemprop="description">When to seek interim injunctions, common proof issues at interim stage, and execution remedies under CPC to enforce decrees without undue delay.</p>
+      <div class="article-footer"><span>Jul 02, 2025 • 6 min</span><button class="article-cta" data-action="open">Read</button></div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Interim Relief & Execution: Practical notes for creditors and plaintiffs","datePublished":"2025-07-02","author":{"@type":"Organization","name":"The Justice Firm"},"description":"Guidance on injunctions, interlocutory applications and execution procedures under CPC."}
+      </script>
+    </article>
+
+    <!-- 5: Criminal — Trial Strategy (Card 5) -->
+    <article class="article-card hidden" data-tags="criminal,evidence" data-id="5" tabindex="0"
+      itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="mainEntityOfPage" content="#article-5" />
+      <meta itemprop="author" content="The Justice Firm" />
+      <meta itemprop="datePublished" content="2025-09-14" />
+      <div class="article-eyebrow"><span class="dot" style="background:linear-gradient(180deg,#0b6bff,#0f4acb)"></span><span>Criminal</span></div>
+      <h3 class="article-title" itemprop="headline">Building a Trial Strategy: Witnesses, evidence and cross-examination</h3>
+      <p class="article-excerpt" itemprop="description">How to structure witness lists, use documentary proof sensibly under the Evidence Act, and prepare focused cross-examination to preserve credibility and narrow issues.</p>
+      <div class="article-footer"><span>Sep 14, 2025 • 7 min</span><button class="article-cta">Read</button></div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Building a Trial Strategy: Witnesses, evidence and cross-examination","datePublished":"2025-09-14","author":{"@type":"Organization","name":"The Justice Firm"},"description":"Practical trial planning with focus on witnesses, documentary proof and cross-examination under Indian Evidence law."}
+      </script>
+    </article>
+
+    <!-- 6: Criminal — Plea Bargaining & Sentencing (Card 6) -->
+    <article class="article-card hidden" data-tags="criminal" data-id="6" tabindex="0"
+      itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="mainEntityOfPage" content="#article-6" />
+      <meta itemprop="author" content="The Justice Firm" />
+      <meta itemprop="datePublished" content="2025-08-01" />
+      <div class="article-eyebrow"><span class="dot" style="background:linear-gradient(180deg,#ffd166,#ff9f1c)"></span><span>Criminal</span></div>
+      <h3 class="article-title" itemprop="headline">Plea Bargaining & Sentencing: Options and safeguards under Indian law</h3>
+      <p class="article-excerpt" itemprop="description">When plea bargaining is appropriate, the safeguards courts expect, and how sentencing principles (mitigation, probation) are applied to preserve clients’ interests.</p>
+      <div class="article-footer"><span>Aug 01, 2025 • 6 min</span><button class="article-cta">Read</button></div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Plea Bargaining & Sentencing: Options and safeguards under Indian law","datePublished":"2025-08-01","author":{"@type":"Organization","name":"The Justice Firm"},"description":"Overview of plea bargaining pathways and sentencing considerations in Indian criminal practice."}
+      </script>
+    </article>
+
+    <!-- 7: Contract — Drafting & Remedies (Card 7) -->
+    <article class="article-card hidden" data-tags="contract,civil" data-id="7" tabindex="0"
+      itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="mainEntityOfPage" content="#article-7" />
+      <meta itemprop="author" content="The Justice Firm" />
+      <meta itemprop="datePublished" content="2025-04-10" />
+      <div class="article-eyebrow"><span class="dot" style="background:linear-gradient(180deg,#06d6a0,#007f5f)"></span><span>Contract</span></div>
+      <h3 class="article-title" itemprop="headline">Drafting Contracts: Clauses that avoid common disputes</h3>
+      <p class="article-excerpt" itemprop="description">Essential clauses for Indian commercial contracts — clear scope, payment milestones, termination, dispute resolution and liquidated damages to reduce litigation risk.</p>
+      <div class="article-footer"><span>Apr 10, 2025 • 5 min</span><button class="article-cta">Read</button></div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Drafting Contracts: Clauses that avoid common disputes","datePublished":"2025-04-10","author":{"@type":"Organization","name":"The Justice Firm"},"description":"Model contract clauses for scope, payment, termination and dispute resolution under Indian law."}
+      </script>
+    </article>
+
+    <!-- 8: Evidence — Digital Records & 65B (Card 8) -->
+    <article class="article-card hidden" data-tags="evidence" data-id="8" tabindex="0"
+      itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="mainEntityOfPage" content="#article-8" />
+      <meta itemprop="author" content="The Justice Firm" />
+      <meta itemprop="datePublished" content="2025-02-12" />
+      <div class="article-eyebrow"><span class="dot" style="background:linear-gradient(180deg,#f72585,#b5179e)"></span><span>Evidence</span></div>
+      <h3 class="article-title" itemprop="headline">Electronic Evidence & Section 65B: Practical checklist for admissibility</h3>
+      <p class="article-excerpt" itemprop="description">How to preserve, authenticate and present electronic records for admissibility under Sections 65A/65B Evidence Act — quick procedural checklist for lawyers and clients.</p>
+      <div class="article-footer"><span>Feb 12, 2025 • 5 min</span><button class="article-cta">Read</button></div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Electronic Evidence & Section 65B: Practical checklist for admissibility","datePublished":"2025-02-12","author":{"@type":"Organization","name":"The Justice Firm"},"description":"Checklist to preserve and present electronic records in India, referencing Section 65B of the Evidence Act."}
+      </script>
+    </article>
+
+  </div> <!-- /.tf-grid -->
+
+  <!-- Load more -->
+  <div class="load-more-wrap">
+    <button id="loadMoreBtn" class="btn-load-more" aria-controls="articlesGrid">Load more articles</button>
+  </div>
+
+</div> <!-- /.tf-articles -->
+
+<!-- PREVIEW MODAL -->
+<div id="articlePreview" class="tf-preview-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+  <article class="tf-preview" role="document" aria-labelledby="previewTitle">
+    <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+      <div>
+        <h3 id="previewTitle">Preview Title</h3>
+        <div id="previewMeta" class="preview-meta">Date • Category • read time</div>
+      </div>
+      <button id="previewClose" class="article-cta" aria-label="Close preview">Close</button>
+    </header>
+    <div id="previewBody" class="preview-body"></div>
+  </article>
+</div>
+
+<!-- ---------------- JavaScript: search, filter (animated), load-more, preview ---------------- -->
+<script>
+(function(){
+  const grid = document.getElementById('articlesGrid');
+  const cards = Array.from(grid.querySelectorAll('.article-card'));
+  const search = document.getElementById('articleSearch');
+  const tagContainer = document.getElementById('articleTags');
+  const tagButtons = Array.from(tagContainer.querySelectorAll('.tf-tag-pill'));
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const preview = document.getElementById('articlePreview');
+  const previewBody = document.getElementById('previewBody');
+  const previewTitle = document.getElementById('previewTitle');
+  const previewMeta = document.getElementById('previewMeta');
+  const previewClose = document.getElementById('previewClose');
+  const ARTICLES_PER_PAGE = 4;
+  let visibleCount = ARTICLES_PER_PAGE;
+  let activeTags = new Set();
+
+  // Initialize: hide cards beyond initial count (already have .hidden for 5-8)
+  updateVisibleCount();
+
+  // Tag click handler (toggle)
+  tagButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const tag = btn.getAttribute('data-tag');
+      if(btn.classList.contains('active')){
+        btn.classList.remove('active');
+        activeTags.delete(tag);
+      } else {
+        btn.classList.add('active');
+        activeTags.add(tag);
+      }
+      applyFiltersAnimated();
+    });
+  });
+
+  // Search (debounced)
+  let searchTimer;
+  search.addEventListener('input', ()=>{
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(()=> applyFiltersAnimated(), 170);
+  });
+
+  // Load more
+  loadMoreBtn.addEventListener('click', ()=>{
+    visibleCount += ARTICLES_PER_PAGE;
+    updateVisibleCount();
+    if(visibleCount >= cards.length) loadMoreBtn.disabled = true;
+    // smooth scroll to newly revealed area
+    const lastVisible = grid.querySelectorAll('.article-card:not(.hidden)')[visibleCount - 1];
+    if(lastVisible) lastVisible.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  // Open preview
+  grid.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.article-cta');
+    const card = e.target.closest('.article-card');
+    if(btn && card) openPreview(card);
+  });
+
+  // Keyboard accessibility: Enter on card opens preview
+  grid.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){
+      const card = e.target.closest('.article-card');
+      if(card) openPreview(card);
+    }
+  });
+
+  // Close preview
+  previewClose.addEventListener('click', closePreview);
+  preview.addEventListener('click', (e)=> { if(e.target === preview) closePreview(); });
+  document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closePreview(); });
+
+  // FUNCTIONS
+
+  // Apply search/tag filters with animation
+  function applyFiltersAnimated(){
+    const q = (search.value || '').trim().toLowerCase();
+    const tags = Array.from(activeTags);
+    const matches = [];
+
+    cards.forEach((card, idx)=>{
+      const text = (card.textContent || '').toLowerCase();
+      const cardTags = (card.getAttribute('data-tags') || '').split(',').map(s=>s.trim());
+      const tagMatch = tags.length === 0 || tags.some(t => cardTags.includes(t));
+      const textMatch = q === '' || text.indexOf(q) !== -1;
+      const show = tagMatch && textMatch;
+      if(show) matches.push(card);
+      // animate: if currently visible and should hide — add class 'hidden' after small transition
+      if(show){
+        card.classList.remove('hidden');
+      } else {
+        // add hidden with delay for animation
+        card.classList.add('hidden');
+      }
+    });
+
+    // After filtering, recalc visibleCount for "load more" logic: show up to current visibleCount matching ones
+    // First hide all, then show first N matches
+    const matched = matches;
+    cards.forEach(card => card.classList.add('hidden'));
+    const toShow = matched.slice(0, visibleCount);
+    toShow.forEach(c => c.classList.remove('hidden'));
+    // Update count display
+    document.getElementById('articlesVisible').textContent = Math.min(matched.length, visibleCount);
+    // Enable/disable Load more depending on remaining matches
+    if(matched.length > visibleCount) { loadMoreBtn.disabled = false; }
+    else { loadMoreBtn.disabled = true; }
+  }
+
+  // Update visible count initial
+  function updateVisibleCount(){
+    // reveal first visibleCount non-hidden-by-filter cards (filters may be none)
+    const filtered = cards.filter(c=>{
+      // determine whether c matches current tags & search
+      const q = (search.value || '').trim().toLowerCase();
+      const tags = Array.from(activeTags);
+      const text = (c.textContent || '').toLowerCase();
+      const cardTags = (c.getAttribute('data-tags') || '').split(',').map(s=>s.trim());
+      const tagMatch = tags.length === 0 || tags.some(t => cardTags.includes(t));
+      const textMatch = q === '' || text.indexOf(q) !== -1;
+      return tagMatch && textMatch;
+    });
+    // Hide all first
+    cards.forEach(c => c.classList.add('hidden'));
+    // Show up to visibleCount matches
+    filtered.slice(0, visibleCount).forEach(c=> c.classList.remove('hidden'));
+    // Update meta count
+    document.getElementById('articlesVisible').textContent = Math.min(filtered.length, visibleCount);
+    // Load more button state
+    loadMoreBtn.disabled = visibleCount >= cards.length || filtered.length <= visibleCount;
+  }
+
+  // Preview open
+  function openPreview(card){
+    if(!card) return;
+    const title = card.querySelector('.article-title')?.textContent || '';
+    const meta = card.querySelector('.article-footer span')?.textContent || '';
+    const excerpt = card.querySelector('.article-excerpt')?.textContent || '';
+    // populate preview (in real use replace with fetched full article HTML)
+    previewTitle.textContent = title;
+    previewMeta.textContent = meta;
+    previewBody.innerHTML = '<p style="margin-top:0;color:var(--muted)">' + excerpt + '</p>'
+      + '<p style="color:var(--muted)">This preview uses the card excerpt. Replace preview content with full article HTML from your CMS or server-side render for complete articles.</p>';
+    preview.style.display = 'flex';
+    const panel = preview.querySelector('.tf-preview');
+    setTimeout(()=> panel.classList.add('open'), 10);
+    preview.setAttribute('aria-hidden','false');
+    previewClose.focus();
+  }
+
+  function closePreview(){
+    const panel = preview.querySelector('.tf-preview');
+    panel.classList.remove('open');
+    setTimeout(()=> { preview.style.display='none'; preview.setAttribute('aria-hidden','true'); }, 240);
+  }
+
+})();
+</script>
+
+</section>
+<!-- ================= END ARTICLES & INSIGHTS ================ -->
+     
       <!-- DICTIONARY -->
       <section id="dictionary" aria-labelledby="dictionaryHeading" style="margin-top:24px">
         <h2 id="dictionaryHeading">Legal Word Helper (Dictionary)</h2>
