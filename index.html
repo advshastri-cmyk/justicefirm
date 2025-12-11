@@ -1793,377 +1793,572 @@ style="margin-top:28px;padding:0;font-family:Inter,system-ui,-apple-system,Segoe
 
 </section>
 <!-- ================= END ARTICLES & INSIGHTS ================ -->
-     <!-- ================= PREMIUM LEGAL WORD HELPER (single-file paste) ================= -->
-<section id="dictionary" aria-labelledby="dictionaryHeading" style="margin-top:28px;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;">
+   <!-- PREMIUM LEGAL WORD HELPER — FULL with Floating FAB, Theme Switch & 110 Terms -->
+<section id="premium-dictionary-full" aria-labelledby="premiumDictionaryHeading" style="font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; margin:20px 0;">
 
   <style>
-  /* Premium dictionary styles (self-contained) */
+  /* ---------- THEME VARIABLES (light+dark) ---------- */
   :root{
-    --card:#ffffff;
-    --ink:#071028;
-    --muted:#6b7280;
-    --accent-500:#0b6bff;
-    --accent-600:#0f4acb;
-    --glass: rgba(11,18,32,0.03);
-    --success:#059669;
+    --bg: #0b1020;
+    --panel: rgba(255,255,255,0.04);
+    --muted-dark: #9aa3b2;
+    --text-dark: #ffffff;
+    --accent-1: #5dd0ff;
+    --accent-2: #2b6cff;
+    --radius: 14px;
+    --shadow-dark: 0 16px 42px rgba(0,0,0,0.55);
+
+    /* light theme defaults (overriden when .light-theme present) */
+    --bg-light: #f7fbff;
+    --panel-light: rgba(2,6,23,0.03);
+    --muted-light: #475569;
+    --text-light: #071028;
+    --shadow-light: 0 12px 36px rgba(7,12,25,0.06);
   }
 
-  .dict-wrap{
-    max-width:1100px;margin-inline:auto;padding:26px;border-radius:14px;
-    background:linear-gradient(180deg,#fff,#fbfdff);
-    box-shadow:0 30px 80px rgba(7,12,25,0.06);
-    border:1px solid rgba(11,18,32,0.04);
+  /* Theme root */
+  .pd-wrap{
+    --bg: var(--bg);
+    --panel: var(--panel);
+    --muted: var(--muted-dark);
+    --text: var(--text-dark);
+    --shadow: var(--shadow-dark);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  }
+  .light-theme .pd-wrap{
+    --bg: var(--bg-light);
+    --panel: var(--panel-light);
+    --muted: var(--muted-light);
+    --text: var(--text-light);
+    --shadow: var(--shadow-light);
   }
 
-  .dict-head{display:flex;justify-content:space-between;gap:12px;align-items:start;flex-wrap:wrap;}
-  .dict-title h2{margin:0;font-size:1.35rem;color:var(--ink);font-weight:700;}
-  .dict-title p{margin:6px 0 0;color:var(--muted);max-width:680px;line-height:1.45;font-size:0.96rem;}
-
-  .dict-grid{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px;align-items:start;}
-  @media (max-width:980px){ .dict-grid{grid-template-columns:1fr;} }
-
-  /* Input area */
-  .dict-panel{display:flex;flex-direction:column;gap:12px;}
-  label[for="dictInput"]{font-size:0.9rem;color:var(--muted);font-weight:600;}
-  .dict-input-wrap{display:flex;gap:10px;align-items:center;}
-  .dict-input{
-    flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(11,18,32,0.06);
-    font-size:0.98rem;color:var(--ink);background:linear-gradient(180deg,#fff,#fbfdff);
-    box-shadow:0 8px 20px rgba(7,12,25,0.03);
-    transition:box-shadow .18s ease, transform .12s ease;
+  /* ---------- WRAPPER ---------- */
+  .pd-wrap{
+    max-width:1180px;margin:auto;padding:18px;border-radius:18px;color:var(--text);
+    border:1px solid rgba(255,255,255,0.04);
+    box-shadow:var(--shadow);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   }
-  .dict-input:focus{outline:none;box-shadow:0 8px 30px rgba(11,74,203,0.08);transform:translateY(-2px);}
 
-  .dict-actions{display:flex;gap:10px;flex-wrap:wrap;}
-  .btn {padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;font-size:0.92rem;}
-  .btn-primary{background:linear-gradient(90deg,var(--accent-500),var(--accent-600));color:#fff;box-shadow:0 12px 34px rgba(11,74,203,0.10);}
-  .btn-ghost{background:transparent;border:1px solid rgba(11,18,32,0.06);color:var(--ink);}
+  /* ---------- HEADER ---------- */
+  .pd-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .pd-brand{display:flex;align-items:center;gap:12px}
+  .logo{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#02101c;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));box-shadow:0 6px 22px rgba(43,108,255,0.22)}
+  .pd-title h1{margin:0;font-size:1.12rem;font-weight:800}
+  .pd-title p{margin:4px 0 0;color:var(--muted);font-size:0.9rem}
 
-  .dict-hint{color:var(--muted);font-size:0.92rem;margin-top:6px;}
+  /* theme toggle */
+  .controls{display:flex;gap:8px;align-items:center}
+  .theme-toggle{padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);cursor:pointer;font-weight:700}
+  .mini-help{font-size:0.88rem;color:var(--muted)}
 
-  /* Suggestions chips */
-  .dict-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
-  .chip{padding:8px 12px;border-radius:999px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(11,18,32,0.04);font-weight:600;color:var(--muted);cursor:pointer;transition:transform .12s ease,box-shadow .12s;}
-  .chip:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(7,12,25,0.06);color:var(--accent-600);}
+  /* ---------- GRID ---------- */
+  .pd-grid{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:16px;align-items:start}
+  @media (max-width:980px){ .pd-grid{grid-template-columns:1fr} }
 
-  /* Results card */
-  .dict-results{
-    background:linear-gradient(180deg,#fff,#fbfdff);padding:16px;border-radius:12px;border:1px solid rgba(11,18,32,0.04);
-    box-shadow:0 18px 48px rgba(7,12,25,0.04);
-    min-height:160px;display:flex;flex-direction:column;gap:12px;
+  /* ---------- LEFT PANEL ---------- */
+  .left-panel{padding:16px;border-radius:14px;background:var(--panel);border:1px solid rgba(255,255,255,0.04)}
+  .search-row{display:flex;gap:10px;align-items:center}
+  .search-input{flex:1;padding:14px;border-radius:12px;border:0;background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01));color:var(--text);font-size:1.02rem}
+  .search-input::placeholder{color:rgba(255,255,255,0.45)}
+  .btn-search{padding:12px 14px;border-radius:12px;border:0;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));font-weight:800;color:#02101c;cursor:pointer}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{padding:8px 12px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);cursor:pointer;font-weight:700;transition:transform .14s ease}
+  .chip:hover{transform:translateY(-6px);color:var(--text)}
+
+  /* ---------- RESULT CARD ---------- */
+  .result-card{margin-top:16px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));min-height:150px;border:1px solid rgba(255,255,255,0.04)}
+  .result-title{font-size:1.02rem;font-weight:800;margin-bottom:6px}
+  .result-sub{color:var(--muted);font-size:0.9rem;margin-bottom:8px}
+  .result-body{color:var(--muted);line-height:1.55}
+  .result-actions{display:flex;gap:8px;margin-top:12px}
+  .action-btn{padding:9px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--text);cursor:pointer;font-weight:700}
+
+  /* ---------- RIGHT COLUMN ---------- */
+  .right-col .panel{padding:12px;border-radius:12px;background:var(--panel);border:1px solid rgba(255,255,255,0.04)}
+  .recent-item{padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+
+  /* ---------- FAB (floating mini search) ---------- */
+  .fab{
+    position:fixed;right:18px;bottom:18px;width:64px;height:64px;border-radius:999px;
+    display:grid;place-items:center;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+    box-shadow:0 10px 30px rgba(43,108,255,0.18);cursor:pointer;z-index:9999;border:0;
   }
-  .result-title{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
-  .result-title h3{margin:0;font-size:1.06rem;color:var(--ink);font-weight:700;}
-  .result-meta{color:var(--muted);font-size:0.9rem;}
-  .result-body{color:var(--muted);font-size:0.98rem;line-height:1.6;}
+  .fab svg{width:28px;height:28px}
 
-  .result-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;}
-  .copy-btn{background:transparent;border:1px solid rgba(11,18,32,0.06);padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700;}
-  .speak-btn{background:transparent;border:1px dashed rgba(11,18,32,0.06);padding:8px 10px;border-radius:10px;cursor:pointer;}
+  /* FAB panel (compact overlay) */
+  .overlay{
+    position:fixed;right:18px;bottom:92px;width:360px;border-radius:14px;padding:12px;background:var(--panel);border:1px solid rgba(255,255,255,0.06);box-shadow:0 18px 54px rgba(0,0,0,0.45);z-index:9998;display:none}
+  .overlay.open{display:block}
+  .overlay .mini-search-row{display:flex;gap:8px;align-items:center}
+  .overlay .mini-input{flex:1;padding:10px;border-radius:10px;border:0;background:transparent;color:var(--text)}
+  .overlay .mini-open{padding:8px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));cursor:pointer;color:#02101c;font-weight:800}
 
-  /* Small helper */
-  .no-result{color:#ef4444;font-weight:700;}
-  .accent-note{color:var(--accent-600);font-weight:700;}
+  /* small responsive fab / overlay */
+  @media (max-width:480px){
+    .overlay{right:12px;left:12px;bottom:88px;width:auto}
+    .fab{right:12px;bottom:12px}
+  }
 
-  /* subtle entry animation */
-  .fade-in{animation:fadeIn .28s ease both;}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)}}
+  /* ---------- REDUCED MOTION ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+
+  /* tiny adjustments */
+  @media (max-width:520px){
+    .pd-grid{grid-template-columns:1fr}
+    .right-col{order:2}
+    .left-panel{order:1}
+  }
   </style>
 
-  <div class="dict-wrap" role="region" aria-label="Legal word helper">
+  <!-- MAIN WRAPPER (theme class applied by JS) -->
+  <div id="pdRoot" class="pd-wrap" role="region" aria-label="Premium legal word helper">
 
-    <div class="dict-head">
-      <div class="dict-title">
-        <h2 id="dictionaryHeading">Legal Word Helper (Dictionary)</h2>
-        <p class="muted">Type a simple term like “FIR”, “maintenance”, “custody”, “bail” — get a plain-English meaning with India-focused context.</p>
+    <!-- Header -->
+    <div class="pd-head">
+      <div class="pd-brand">
+        <div class="logo" aria-hidden="true">JL</div>
+        <div class="pd-title">
+          <h1 id="premiumDictionaryHeading">Legal Word Helper</h1>
+          <p class="mini-help">Short, India-focused meanings. Non-legal guidance.</p>
+        </div>
       </div>
 
-      <div style="display:flex;gap:12px;align-items:center;">
-        <!-- small trust indicator -->
-        <div style="display:flex;flex-direction:column;align-items:flex-end;">
-          <div style="font-weight:700;color:var(--ink)">Quick legal help</div>
-          <div style="color:var(--muted);font-size:0.92rem">Non-legal advice. For case-specific counsel contact us.</div>
-        </div>
+      <div class="controls">
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle theme">Toggle theme</button>
+        <div style="width:12px"></div>
       </div>
     </div>
 
-    <div class="dict-grid" id="dictCard">
+    <!-- Grid -->
+    <div class="pd-grid">
 
-      <!-- LEFT: Input -->
-      <div class="dict-panel">
-        <div>
-          <label for="dictInput">Search legal term</label>
-          <div class="dict-input-wrap" style="margin-top:8px;">
-            <input id="dictInput" class="dict-input" type="search" placeholder="e.g. FIR, maintenance, alimony, custody, 65B" aria-label="Search legal term">
-            <button id="dictSearchBtn" class="btn btn-primary" type="button" aria-label="Search term">Search</button>
-          </div>
-
-          <div class="dict-hint">Tip: Hindi / Hinglish like “baarakhasta”, “talak”, “girftari” are recognised for many terms. Press <kbd>Enter</kbd> to search.</div>
-
-          <div class="dict-chips" aria-hidden="false" style="margin-top:12px;">
-            <button class="chip" data-term="FIR">FIR</button>
-            <button class="chip" data-term="bail">Bail</button>
-            <button class="chip" data-term="maintenance">Maintenance</button>
-            <button class="chip" data-term="custody">Custody</button>
-            <button class="chip" data-term="Section 125">Section 125</button>
-            <button class="chip" data-term="Section 65B">Section 65B</button>
-          </div>
+      <!-- LEFT -->
+      <div class="left-panel" role="main">
+        <div class="search-row" role="search">
+          <input id="pdInput" class="search-input" type="search" placeholder="Search — e.g. FIR, custody, maintenance, 65B" aria-label="Search legal term">
+          <button id="pdSearch" class="btn-search" aria-label="Search">Find</button>
         </div>
 
-        <div class="dict-note muted" style="margin-top:10px;color:var(--muted);font-size:0.92rem;">
-          Results are short, plain-English explanations with India references. For personalised advice, contact our team.
+        <div class="chips" role="list" aria-label="Suggested terms">
+          <button class="chip" data-term="FIR">FIR</button>
+          <button class="chip" data-term="bail">Bail</button>
+          <button class="chip" data-term="maintenance">Maintenance</button>
+          <button class="chip" data-term="custody">Custody</button>
+          <button class="chip" data-term="section 65b">65B</button>
+        </div>
+
+        <div id="pdResult" class="result-card" aria-live="polite" aria-atomic="true">
+          <div class="result-title" id="resultTitle">Start by typing a term</div>
+          <div class="result-sub" id="resultMeta">Plain-English · India context</div>
+          <div class="result-body" id="resultBody">Type a legal term above or tap a suggestion. Results are concise.</div>
+
+          <div class="result-actions" role="group" aria-label="Result actions">
+            <button id="copyBtn" class="action-btn">Copy</button>
+            <button id="listenBtn" class="action-btn">Listen</button>
+            <button id="detailsBtn" class="action-btn">More</button>
+          </div>
         </div>
       </div>
 
-      <!-- RIGHT: Results -->
-      <div class="dict-results" id="dictResults" aria-live="polite" aria-atomic="true">
-        <div class="muted">Start by typing a term in the box. Try <strong>“FIR”</strong> or <strong>“custody”</strong>.</div>
-      </div>
+      <!-- RIGHT -->
+      <aside class="right-col" role="complementary">
+        <div class="panel">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:800">Recent</div>
+            <div style="color:var(--muted);font-size:0.9rem">Saved</div>
+          </div>
+          <div id="recent" style="margin-top:12px"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
 
-    </div> <!-- /.dict-grid -->
+  <!-- Floating FAB and Overlay -->
+  <button id="fab" class="fab" aria-label="Open legal helper (quick)">
+    <!-- search icon -->
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" stroke="#02101c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21l-4.35-4.35" stroke="#02101c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 
-  </div> <!-- /.dict-wrap -->
+  <div id="fabOverlay" class="overlay" role="dialog" aria-modal="false" aria-hidden="true">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <div style="font-weight:800">Quick search</div>
+      <button id="fabClose" class="action-btn" aria-label="Close quick search">Close</button>
+    </div>
+    <div class="mini-search-row">
+      <input id="miniInput" class="mini-input" type="search" placeholder="Type a term, e.g. FIR" aria-label="Quick search">
+      <button id="miniSearchBtn" class="mini-open">Go</button>
+    </div>
+    <div style="margin-top:10px;color:var(--muted);font-size:0.92rem">Tap a result to open full helper or press Enter to use result here.</div>
+  </div>
 
+  <!-- ---------- DICTIONARY DATA (110 terms) ---------- -->
   <script>
   (function(){
-    // Dictionary dataset (concise, India-focused)
+
+    // ----- 110 concise India-focused legal terms -----
+    // Keyed by normalized lowercase term
     const DICT = {
-      // English keys plus Hindi/Hinglish aliases included below
-      "fir": {
-        title: "FIR (First Information Report)",
-        short: "A police report that records an allegation of a cognizable offence. Lodge at the police station with jurisdiction — it's the first step that triggers investigation.",
-        law: "Filed under Indian Criminal Procedure; police register FIR for cognizable offences and begin investigation.",
-        aliases: ["fir", "f.i.r", "first information report", "fir ki entry"]
-      },
-
-      "bail": {
-        title: "Bail",
-        short: "Court-ordered release of an accused pending trial, usually on terms. Early (regular) bail and anticipatory bail under Sections 436–439 and 438 CrPC respectively are common remedies.",
-        law: "Relevant provisions: CrPC Sections 436–439 (regular bail) and Section 438 (anticipatory bail).",
-        aliases: ["bail","granting bail","anticiaptory bail","anticipatory bail","baail"]
-      },
-
-      "maintenance": {
-        title: "Maintenance (alimony/support)",
-        short: "Periodic financial support ordered for a spouse or dependent. Under Section 125 CrPC and various family law provisions, courts can award maintenance to prevent destitution.",
-        law: "Commonly sought under Section 125 CrPC (maintenance) and specific family law statutes depending on religion.",
-        aliases:["maintenance","alimony","kharch","pension","maintenance order"]
-      },
-
-      "custody": {
-        title: "Custody",
-        short: "Physical control of a person — police custody is for investigation; judicial custody is detention ordered by a magistrate. Child custody concerns where a child will live and be cared for.",
-        law: "Police custody vs judicial custody (CrPC). Child custody determined by family courts using welfare principle.",
-        aliases:["custody","girftari","giraftari","arrest custody","judicial custody","police custody"]
-      },
-
-      "section 125": {
-        title: "Section 125 CrPC — Maintenance",
-        short: "A quick civil remedy where a spouse/parent can claim monthly maintenance to prevent abandonment and destitution; procedure is summary and enforcement is prompt.",
-        law: "Section 125 of the Code of Criminal Procedure, 1973.",
-        aliases:["section 125","125","sec 125","section125","section125 crpc"]
-      },
-
-      "section 65b": {
-        title: "Section 65B Evidence Act — Electronic evidence",
-        short: "Section 65B sets conditions for admissibility of electronic records (preservation, certification). A 65B certificate often accompanies digital evidence in Indian courts.",
-        law: "Sections 65A and 65B of the Indian Evidence Act (as amended).",
-        aliases:["section 65b","65b","65-b","section 65b evidence","65b evidence"]
-      },
-
-      "contract": {
-        title: "Contract (Indian Contract Act)",
-        short: "A legally enforceable agreement between parties with offer, acceptance, consideration and lawful object. Breach entitles affected party to remedies like damages or specific performance.",
-        law: "Indian Contract Act, 1872 — formation, performance and remedies.",
-        aliases:["contract","agreement","contract ke clauses","agreement ke clauses"]
-      },
-
-      "talaq": {
-        title: "Talaq / Talak (divorce term)",
-        short: "Talaq (talaq/talak) is a term for divorce in certain personal laws. Legal consequences depend on the family's personal law and statutory reforms; modern legal process often involves family courts and statutory divorce procedures.",
-        law: "Varies by personal law and statutory provisions; consult family law rules applicable to the parties.",
-        aliases:["talak","talaq","talaaq","talak"]
-      }
+      "fir": { title:"FIR — First Information Report", short:"Police record of an allegation for cognizable offences; starts investigation.", law:"Registered under CrPC; police must record complaints of cognizable offences.", aliases:["fir","first information report"] },
+      "bail": { title:"Bail", short:"Court-ordered temporary release of an accused during trial, usually on terms.", law:"CrPC Sections 436–439 (regular) & 438 (anticipatory).", aliases:["bail","anticipatory bail"] },
+      "maintenance": { title:"Maintenance", short:"Periodic financial support ordered for spouse/children/dependents.", law:"Section 125 CrPC; family law provisions vary by personal law.", aliases:["maintenance","alimony"] },
+      "custody": { title:"Custody", short:"Physical control of a person — police/judicial custody; child custody decides caregiving.", law:"CrPC (custody) & family court principles (welfare of child).", aliases:["custody","arrest custody","police custody"] },
+      "section 65b": { title:"Section 65B — Electronic Evidence", short:"Conditions for admissibility of electronic records; certification needed.", law:"Indian Evidence Act Sections 65A & 65B.", aliases:["65b","section 65b"] },
+      "contract": { title:"Contract", short:"Legally enforceable agreement with offer, acceptance and consideration.", law:"Indian Contract Act, 1872 governs formation and remedies.", aliases:["contract","agreement"] },
+      "tort": { title:"Tort", short:"Civil wrong (not contract) causing harm; remedy usually damages.", law:"Common law principles apply; remedies include damages and injunctions.", aliases:["tort","civil wrong"] },
+      "affidavit": { title:"Affidavit", short:"Written statement sworn before an authorized officer or magistrate.", law:"Used in courts and statutory procedures as sworn evidence.", aliases:["affidavit","sworn statement"] },
+      "arbitration": { title:"Arbitration", short:"Private dispute resolution by arbitrator(s) outside courts.", law:"Arbitration and Conciliation Act, 1996.", aliases:["arbitration","arbitral"] },
+      "arbitral award": { title:"Arbitral Award", short:"Decision by arbitrator which is binding and enforceable like a court decree.", law:"Enforced under the Arbitration and Conciliation Act.", aliases:["award","arbitral award"] },
+      "appeal": { title:"Appeal", short:"Request to a higher court to review a lower court's decision.", law:"Civil Procedure Code & Criminal Procedure provisions govern appeals.", aliases:["appeal","appellate"] },
+      "acquittal": { title:"Acquittal", short:"Judicial declaration that the accused is not guilty of the charge.", law:"Criminal Procedure outcomes include acquittal or conviction.", aliases:["acquittal","not guilty"] },
+      "adjournment": { title:"Adjournment", short:"Postponement of court proceedings to a later date.", law:"Court discretion based on cause and procedure.", aliases:["adjournment","adjourn"] },
+      "alimony": { title:"Alimony", short:"Maintenance or periodic payments following separation/divorce.", law:"Provided under family law / divorce decrees.", aliases:["alimony","spousal support"] },
+      "annulment": { title:"Annulment", short:"Legal declaration that a marriage or contract is void ab initio.", law:"Family law or contract law depending on context.", aliases:["annulment","void"] },
+      "appealable order": { title:"Appellable Order", short:"A court order that can be appealed to a higher court.", law:"Defined by procedural statutes and limitations.", aliases:["appealable order"] },
+      "arrest": { title:"Arrest", short:"Detention by police of a person suspected of an offence.", law:"CrPC provisions regulate arrest, custody and rights.", aliases:["arrest","giraftari","giraftari"] },
+      "actus reus": { title:"Actus Reus", short:"Guilty physical act required for many crimes.", law:"Criminal law principle paired with mens rea (guilty mind).", aliases:["actus reus"] },
+      "mens rea": { title:"Mens Rea", short:"Mental element (guilty mind) required for criminal liability.", law:"Essential in many offences to prove intent or knowledge.", aliases:["mens rea"] },
+      "bench warrant": { title:"Bench Warrant", short:"Court-issued warrant for arrest for non-appearance.", law:"Issued by magistrate/court for failure to comply.", aliases:["bench warrant"] },
+      "cognizable offence": { title:"Cognizable offence", short:"Offence where police can arrest/investigate without court order.", law:"Classified in law; FIR usually registered for cognizable offences.", aliases:["cognizable"] },
+      "non-cognizable offence": { title:"Non-cognizable offence", short:"Offence where police need court permission to investigate.", law:"Complaints handled with magistrate permission.", aliases:["non-cognizable"] },
+      "committal": { title:"Committal", short:"Sending a case for trial to a higher court or for custody.", law:"CrPC provisions for sending accused to sessions court.", aliases:["committal"] },
+      "contempt of court": { title:"Contempt of Court", short:"Disobedience or disrespect to court orders or authority.", law:"Contempt of Courts Act governs penalties.", aliases:["contempt"] },
+      "caveat": { title:"Caveat", short:"Notice to court to prevent action without informing the caveator.", law:"Used to seek stay on ex parte orders.", aliases:["caveat"] },
+      "charge sheet": { title:"Charge Sheet", short:"Police report filed in court with evidence against accused.", law:"Filed after investigation under CrPC.", aliases:["charge sheet","final report"] },
+      "civil suit": { title:"Civil Suit", short:"Lawsuit between private parties over rights/remedies.", law:"Civil Procedure Code (CPC) governs procedure.", aliases:["civil suit","suit"] },
+      "class action": { title:"Class Action", short:"Single suit brought by a representative on behalf of many.", law:"Allowed under consumer law and CPC in certain contexts.", aliases:["class action"] },
+      "caveat emptor": { title:"Caveat Emptor", short:"'Buyer beware' — buyer responsible for checking goods.", law:"Sales law principle.", aliases:["caveat emptor"] },
+      "charge": { title:"Charge", short:"Formal allegation of criminal offence made against an accused.", law:"Court frames charges under CrPC after committal.", aliases:["charge","framing of charges"] },
+      "cheque bounce": { title:"Cheque Bounce (Section 138 IPC)", short:"Dishonour of cheque leading to criminal liability under negotiable instruments law.", law:"Negotiable Instruments Act Section 138.", aliases:["cheque bounce","section 138"] },
+      "conditional sale": { title:"Conditional Sale", short:"Sale where transfer depends on conditions being met.", law:"Contract law principle in Indian Contract Act.", aliases:["conditional sale"] },
+      "contempt": { title:"Contempt", short:"See 'Contempt of Court' — breach of court order.", law:"Contempt of Courts Act.", aliases:["contempt"] },
+      "consent": { title:"Consent", short:"Voluntary agreement; absence of valid consent vitiates acts.", law:"Criminal & contract law principles.", aliases:["consent"] },
+      "consideration": { title:"Consideration", short:"Something of value exchanged, essential for contract.", law:"Indian Contract Act — requirement for valid contract.", aliases:["consideration"] },
+      "constructive dismissal": { title:"Constructive Dismissal", short:"When employee forced to resign due to employer conduct.", law:"Labour law concept; remedy via labour courts.", aliases:["constructive dismissal"] },
+      "consumer court": { title:"Consumer Court", short:"Forum to resolve consumer disputes and seek compensation.", law:"Consumer Protection Act (provisions for grievances).", aliases:["consumer court"] },
+      "conversion": { title:"Conversion (property)", short:"Wrongful exercise of control over someone else's goods.", law:"Civil remedy via tort/damages.", aliases:["conversion"] },
+      "corporate veil": { title:"Corporate Veil", short:"Legal separation between company and shareholders; can be pierced in fraud.", law:"Company law and judicial exceptions.", aliases:["corporate veil"] },
+      "counter claim": { title:"Counter-Claim", short:"Defendant's claim against plaintiff in the same suit.", law:"CPC allows set-off and counter-claims.", aliases:["counter claim"] },
+      "caveat lector": { title:"Caveat Lector", short:"'Let the reader beware' — not a formal legal term but read with care.", law:"N/A", aliases:["caveat lector"] },
+      "deposition": { title:"Deposition", short:"Testimony given under oath, often pre-trial (in some jurisdictions).", law:"Used as evidence where permitted.", aliases:["deposition","statement"] },
+      "defamation": { title:"Defamation", short:"Publication harming reputation; civil & criminal remedies.", law:"Civil torts and Section 499–500 IPC for criminal defamation.", aliases:["defamation","slander","libel"] },
+      "defendant": { title:"Defendant", short:"Person against whom a civil suit or criminal charge is brought.", law:"Party roles defined by procedure codes.", aliases:["defendant","accused"] },
+      "decree": { title:"Decree", short:"Formal order/judgment of a civil court that determines rights.", law:"Civil Procedure Code defines decree and its execution.", aliases:["decree","judgment"] },
+      "discovery": { title:"Discovery", short:"Exchange of relevant documents/evidence between parties.", law:"Procedure rules allow parties to request documents.", aliases:["discovery"] },
+      "discharge": { title:"Discharge", short:"Release from a legal obligation or dismissal of charges.", law:"Criminal: discharge of accused; civil: discharge of liabilities.", aliases:["discharge"] },
+      "dismissal": { title:"Dismissal", short:"Court rejects a claim or an employee is terminated.", law:"Context-specific: courts or employment law.", aliases:["dismissal"] },
+      "district court": { title:"District Court", short:"Principal civil and criminal trial court in a district.", law:"Part of judiciary hierarchy under state administration.", aliases:["district court"] },
+      "divorce": { title:"Divorce", short:"Legal dissolution of marriage with settlement of rights.", law:"Family law statutes (Hindu, Special Marriage Act, Muslim personal law).", aliases:["divorce","dissolution"] },
+      "distraint": { title:"Distraint", short:"Seizure of debtor's property to secure payment.", law:"Used in execution proceedings.", aliases:["distraint"] },
+      "dismissal with prejudice": { title:"Dismissal with Prejudice", short:"Case dismissed permanently; plaintiff barred from re-filing.", law:"Civil procedure consequence.", aliases:["dismissal with prejudice"] },
+      "easement": { title:"Easement", short:"Right to use another's land for a specific purpose (e.g., right of way).", law:"Property law (transfer and rights).", aliases:["easement","right of way"] },
+      "encumbrance": { title:"Encumbrance", short:"Charge or liability attached to property (mortgage, lien).", law:"Property records and registration show encumbrances.", aliases:["encumbrance"] },
+      "equity": { title:"Equity", short:"Principles of fairness used by courts to supplement strict law.", law:"Equitable remedies include injunctions and specific performance.", aliases:["equity"] },
+      "ex parte": { title:"Ex Parte", short:"Hearing or order made for one party in absence of the other.", law:"Courts may grant ex parte relief in urgent cases, with protections.", aliases:["ex parte"] },
+      "examination-in-chief": { title:"Examination-in-chief", short:"Primary questioning of a party's own witness in court.", law:"Evidence rules govern examination and cross-examination.", aliases:["examination-in-chief"] },
+      "execution": { title:"Execution", short:"Enforcement of decrees/judgments to realize relief (e.g., sale of property).", law:"Execution proceedings under CPC.", aliases:["execution"] },
+      "exemplary damages": { title:"Exemplary Damages", short:"Punitive damages awarded to punish and deter wrongful conduct.", law:"Granted in tort/civil law in special cases.", aliases:["exemplary damages"] },
+      "fiduciary": { title:"Fiduciary", short:"Person with obligation to act in another's best interest (trustee, director).", law:"Trust and company law impose fiduciary duties.", aliases:["fiduciary"] },
+      "force majeure": { title:"Force Majeure", short:"Clause excusing performance due to extraordinary events.", law:"Contract clauses; interpreted by courts based on facts.", aliases:["force majeure"] },
+      "forgery": { title:"Forgery", short:"Fraudulent making or altering of documents to deceive.", law:"Offences under IPC and negotiable instruments law.", aliases:["forgery"] },
+      "foreclosure": { title:"Foreclosure", short:"Lender's right to enforce security and sell mortgaged property.", law:"Mortgage laws and registration statutes.", aliases:["foreclosure"] },
+      "fraud": { title:"Fraud", short:"Deceptive conduct causing loss; civil and criminal consequences.", law:"Tort, contract and criminal law (IPC provisions).", aliases:["fraud"] },
+      "garnishee": { title:"Garnishee", short:"Third party holding debtor's money/property subject to attachment.", law:"Execution and attachment procedures.", aliases:["garnishee"] },
+      "grievance redressal": { title:"Grievance Redressal", short:"Mechanism to resolve consumer or employee complaints.", law:"Consumer Protection Act and labour laws provide forums.", aliases:["grievance redressal"] },
+      "hearing": { title:"Hearing", short:"Court session where parties present arguments and evidence.", law:"Basic procedural element across judicial forums.", aliases:["hearing"] },
+      "habeas corpus": { title:"Habeas Corpus", short:"Writ to secure release of person unlawfully detained.", law:"Constitutional remedy under writ jurisdiction.", aliases:["habeas corpus"] },
+      "immunity": { title:"Immunity", short:"Protection from legal process for certain persons or acts.", law:"Diplomatic immunity, limited statutory immunities.", aliases:["immunity"] },
+      "indemnity": { title:"Indemnity", short:"Contractual promise to compensate for loss/damage.", law:"Contractual indemnity clauses enforceable under Indian Contract Act.", aliases:["indemnity"] },
+      "injunction": { title:"Injunction", short:"Court order restraining a party from a specified act.", law:"Civil courts grant temporary/permanent injunctions for equity.", aliases:["injunction"] },
+      "insolvency": { title:"Insolvency", short:"Inability to pay debts; corporate/individual insolvency processes.", law:"Insolvency and Bankruptcy Code (IBC).", aliases:["insolvency","bankruptcy"] },
+      "intellectual property": { title:"Intellectual Property (IP)", short:"Legal rights over creations (patents, trademarks, copyright).", law:"IP statutes: Patents Act, Trade Marks Act, Copyright Act.", aliases:["ip","intellectual property"] },
+      "interim order": { title:"Interim Order", short:"Temporary court direction until final decision.", law:"Granted to protect rights pending final adjudication.", aliases:["interim order"] },
+      "interlocutory": { title:"Interlocutory", short:"Order or proceeding during the course of a case (not final).", law:"Common term in procedural law.", aliases:["interlocutory"] },
+      "intestate": { title:"Intestate", short:"Dying without a valid will; succession by law governs distribution.", law:"Succession laws apply to intestate estates.", aliases:["intestate"] },
+      "injury": { title:"Injury", short:"Harm to person or property; may give rise to civil remedy.", law:"Tort/damages and criminal provisions depending on cause.", aliases:["injury"] },
+      "judgment": { title:"Judgment", short:"Court's final decision on the merits of a case.", law:"Decree or order that determines rights and obligations.", aliases:["judgment"] },
+      "judicial review": { title:"Judicial Review", short:"Court power to examine constitutionality/legality of actions.", law:"High Courts and Supreme Court exercise judicial review.", aliases:["judicial review"] },
+      "jurisdiction": { title:"Jurisdiction", short:"Court's legal authority to hear and decide a case.", law:"Territorial and subject-matter jurisdiction rules apply.", aliases:["jurisdiction"] },
+      "jus cogens": { title:"Jus Cogens", short:"Peremptory norms of international law from which no derogation is permitted.", law:"International public law principle.", aliases:["jus cogens"] },
+      "karnataka high court order": { title:"(example order term)", short:"Placeholder for jurisdictional order (not a legal doctrine).", law:"Jurisdiction-specific court orders.", aliases:[] },
+      "landlord": { title:"Landlord", short:"Owner/lessor of property who leases to tenant.", law:"Transfer of Property Act and rent control statutes.", aliases:["landlord","lessor"] },
+      "laches": { title:"Laches", short:"Delay or negligence in asserting a right causing prejudice.", law:"Equity doctrine that may bar relief.", aliases:["laches"] },
+      "lease": { title:"Lease", short:"Contract creating a temporary right to use property for rent.", law:"Transfer of Property Act and Rent laws.", aliases:["lease"] },
+      "liability": { title:"Liability", short:"Legal responsibility for obligations or harm.", law:"Civil, criminal and contractual liabilities vary by context.", aliases:["liability"] },
+      "limitation period": { title:"Limitation Period", short:"Time limit within which legal action must be filed.", law:"Limitation Act, 1963 prescribes time bars.", aliases:["limitation"] },
+      "litigation": { title:"Litigation", short:"Process of taking or defending legal action in courts.", law:"Covers civil and commercial disputes.", aliases:["litigation","lawsuit"] },
+      "mandamus": { title:"Mandamus", short:"Writ commanding public authority to perform duty.", law:"Constitutional remedy under writ jurisdiction.", aliases:["mandamus"] },
+      "mens rea": { title:"Mens Rea", short:"Criminal 'guilty mind' or intent required for many offences.", law:"Core element of criminal liability.", aliases:["mens rea"] },
+      "mistrial": { title:"Mistrial", short:"Invalid trial due to error preventing a fair determination.", law:"Trial may be restarted or discharged.", aliases:["mistrial"] },
+      "mortgage": { title:"Mortgage", short:"Security interest in property for loan repayment.", law:"Mortgage law and Transfer of Property Act govern rights.", aliases:["mortgage"] },
+      "negotiable instrument": { title:"Negotiable Instrument", short:"Written document (cheque, promissory note) transferable by endorsement.", law:"Negotiable Instruments Act.", aliases:["negotiable instrument","cheque"] },
+      "negligence": { title:"Negligence", short:"Failure to exercise reasonable care causing harm.", law:"Tort law; negligence leads to compensation.", aliases:["negligence"] },
+      "nominee": { title:"Nominee", short:"Person designated to receive benefits; not the legal heir necessarily.", law:"Insurance & bank rules distinguish nominee and legal heir.", aliases:["nominee"] },
+      "nostro/vostro": { title:"(banking terms)", short:"Banking ledger terminology; not common legal term.", law:"Banking practices.", aliases:[] },
+      "notary": { title:"Notary", short:"Official who authenticates documents and administers oaths.", law:"Notaries Act and state regulations.", aliases:["notary"] },
+      "notice": { title:"Notice", short:"Formal communication to inform of rights, claims or action.", law:"Service of notice is pre-condition in many statutes.", aliases:["notice"] },
+      "novation": { title:"Novation", short:"Replacement of one party/obligation by another with consent.", law:"Contract law principle under Indian Contract Act.", aliases:["novation"] },
+      "obiter dictum": { title:"Obiter Dictum", short:"Judge's remark not essential to decision; persuasive but not binding.", law:"Doctrine in precedent jurisprudence.", aliases:["obiter dictum"] },
+      "offset": { title:"Offset/Set-off", short:"Deduction of one debt against another in claims.", law:"Civil procedure builds set-off/adjustments.", aliases:["set-off","offset"] },
+      "ongoing injunction": { title:"Ongoing Injunction", short:"Continuing court order restraining actions until a further order.", law:"Interim relief in civil suits.", aliases:["injunction"] },
+      "opinion of court": { title:"Judicial Opinion", short:"Court's reasons and ruling in a case.", law:"Judgments and precedents emerge from opinions.", aliases:["opinion"] },
+      "oral agreement": { title:"Oral Agreement", short:"Contract formed by verbal promises; enforceability varies.", law:"Certain contracts require writing (e.g., sale of immovable property).", aliases:["oral agreement"] },
+      "ordinance": { title:"Ordinance", short:"Temporary law promulgated by the President/Governor when Legislature not in session.", law:"Constitutional provision for temporary legislation.", aliases:["ordinance"] },
+      "order nisi": { title:"Order Nisi", short:"Interim order which will become absolute unless cause shown.", law:"Used in certain judicial procedures.", aliases:["order nisi"] },
+      "partnership": { title:"Partnership", short:"Relation between persons carrying on business with a view to profit.", law:"Indian Partnership Act governs rights/duties.", aliases:["partnership"] },
+      "perjury": { title:"Perjury", short:"Willful giving of false evidence under oath.", law:"Criminal offense under IPC and evidence law.", aliases:["perjury"] },
+      "permanent injunction": { title:"Permanent Injunction", short:"Final court order preventing specified act.", law:"Equitable remedy after full trial.", aliases:["permanent injunction"] },
+      "plaintiff": { title:"Plaintiff", short:"Party who files a civil suit claiming relief.", law:"Party roles defined in CPC.", aliases:["plaintiff","claimant"] },
+      "plea bargain": { title:"Plea Bargain", short:"Agreement where accused pleads guilty for lesser charge/penalty.", law:"Criminal Procedure provisions where permitted.", aliases:["plea bargain"] },
+      "power of attorney": { title:"Power of Attorney", short:"Instrument authorising another to act on one's behalf.", law:"POA governed by transfer of property rules and Stamp Law.", aliases:["poa","power of attorney"] },
+      "precedent": { title:"Precedent", short:"Earlier judicial decision that guides later cases.", law:"Doctrine of stare decisis in common law.", aliases:["precedent"] },
+      "preliminary objection": { title:"Preliminary Objection", short:"Procedural challenge to the competence or maintainability of a suit.", law:"Can lead to early dismissal/summary judgment.", aliases:["preliminary objection"] },
+      "probate": { title:"Probate", short:"Court's process of proving a will and appointing executors.", law:"Probate procedure for testamentary documents.", aliases:["probate"] },
+      "probation": { title:"Probation", short:"Supervised release of offender as alternative to imprisonment.", law:"Sentencing option under criminal law and probation rules.", aliases:["probation"] },
+      "proof": { title:"Proof", short:"Evidence to establish facts in dispute.", law:"Evidence Act and procedural rules define proof standards.", aliases:["proof","evidence"] },
+      "promissory note": { title:"Promissory Note", short:"Written promise to pay a certain sum to a specified person.", law:"Negotiable Instruments Act.", aliases:["promissory note"] },
+      "property": { title:"Property", short:"Movable or immovable assets; rules govern transfer and registration.", law:"Transfer of Property Act and Registration Act.", aliases:["property"] },
+      "provisional sentence": { title:"Provisional Sentence", short:"Procedure for summary recovery of debt evidenced by negotiable instrument.", law:"Civil procedure provision in some jurisdictions.", aliases:["provisional sentence"] },
+      "proxy": { title:"Proxy", short:"Authority to vote on behalf of shareholder at meetings.", law:"Company law rules for proxies and corporate governance.", aliases:["proxy"] },
+      "quash": { title:"Quash", short:"Set aside or annul a proceeding or order (quash petition).", law:"High Courts can quash FIRs/proceedings under writ jurisdiction.", aliases:["quash"] },
+      "quasi-judicial": { title:"Quasi-Judicial", short:"Bodies that decide rights with limited judicial powers (e.g., tribunals).", law:"Administrative law defines powers/appeals.", aliases:["quasi-judicial"] },
+      "quorum": { title:"Quorum", short:"Minimum number of members required to conduct business.", law:"Tribunal/board rules prescribe quorum.", aliases:["quorum"] },
+      "rebuttal": { title:"Rebuttal", short:"Evidence to contradict or counter opposing party's case.", law:"Evidence rules permit rebuttal evidence.", aliases:["rebuttal"] },
+      "recognizance": { title:"Recognizance", short:"Bond to perform an act or appear in court, often in criminal matters.", law:"Court may release on recognizance under CrPC.", aliases:["recognizance"] },
+      "remand": { title:"Remand", short:"Sending accused back into custody for further investigation/trial.", law:"Judicial orders for remand to police or judicial custody.", aliases:["remand"] },
+      "remedy": { title:"Remedy", short:"Legal means to enforce rights or redress injury (damages, injunction).", law:"Civil law remedies and equitable relief.", aliases:["remedy"] },
+      "res judicata": { title:"Res Judicata", short:"Matter already adjudicated cannot be re-litigated between same parties.", law:"Bar to re-litigation under CPC.", aliases:["res judicata"] },
+      "respondent": { title:"Respondent", short:"Party who answers an appeal or petition.", law:"Appellate procedure labels parties as appellant/respondent.", aliases:["respondent"] },
+      "revision": { title:"Revision", short:"Superior court's review of subordinate court order for correctness.", law:"Statutory revision powers under CPC/CrPC.", aliases:["revision"] },
+      "riparian rights": { title:"Riparian Rights", short:"Rights of landowners adjacent to watercourses.", law:"Property and environmental law principles.", aliases:["riparian rights"] },
+      "sale deed": { title:"Sale Deed", short:"Instrument effecting transfer of immovable property.", law:"Registration Act & Transfer of Property Act govern formalities.", aliases:["sale deed"] },
+      "search warrant": { title:"Search Warrant", short:"Court order allowing police to search premises and seize evidence.", law:"CrPC and criminal procedure authorize searches with restrictions.", aliases:["search warrant"] },
+      "security interest": { title:"Security Interest", short:"Lender's legal claim over collateral to secure a loan.", law:"Securitisation and IBC/Contract provisions discuss security.", aliases:["security interest"] },
+      "sedition": { title:"Sedition", short:"Acts that incite disaffection against the State; restricted and debated", law:"Section 124A IPC (subject to judicial interpretation).", aliases:["sedition"] },
+      "service of process": { title:"Service of Process", short:"Formal delivery of legal documents to bring party before court.", law:"Essential for jurisdiction and fair trial.", aliases:["service"] },
+      "settlement": { title:"Settlement", short:"Agreement resolving dispute without further litigation.", law:"Enforceable contract; courts may record consent decrees.", aliases:["settlement"] },
+      "specific performance": { title:"Specific Performance", short:"Court order to perform contractual obligation rather than pay damages.", law:"Equitable remedy under Contract Act and CPC.", aliases:["specific performance"] },
+      "statute": { title:"Statute", short:"Law enacted by legislature (Act).", law:"Primary source of law with binding force.", aliases:["statute","act"] },
+      "stay order": { title:"Stay Order", short:"Court order suspending further action or enforcement.", law:"Interim remedy pending appeal or review.", aliases:["stay order"] },
+      "subpoena": { title:"Subpoena", short:"Court order to produce documents or appear to give evidence.", law:"Procedural tool to compel attendance or documents.", aliases:["subpoena"] },
+      "summons": { title:"Summons", short:"Notice to appear before court to answer a claim or charge.", law:"Civil and criminal procedure use summons for service.", aliases:["summons"] },
+      "suicide pact": { title:"Suicide Pact (legal context)", short:"Agreement to commit suicide together; legal consequences vary.", law:"IPC provisions and mental health considerations.", aliases:["suicide pact"] },
+      "suicide attempt": { title:"Suicide Attempt", short:"Attempt to commit suicide; legal and medical response matters.", law:"Mental health law and IPC historically addressed attempts; laws updated.", aliases:["attempted suicide"] },
+      "suit in rem": { title:"Suit In Rem", short:"Action against a thing (property) rather than a person.", law:"Requires notice as per procedural rules.", aliases:["in rem"] },
+      "sum certain": { title:"Sum Certain", short:"Exact amount claimed or owed; relevant for negotiable instruments.", law:"Negotiable Instruments Act reference.", aliases:["sum certain"] },
+      "title": { title:"Title (property)", short:"Legal right to ownership of property.", law:"Transfer/Registration laws apply.", aliases:["title"] },
+      "tortfeasor": { title:"Tortfeasor", short:"Person who commits a tort causing harm to another.", law:"Liability leads to damages.", aliases:["tortfeasor"] },
+      "transfer": { title:"Transfer", short:"Passing property or rights from one person to another.", law:"Transfer of Property Act and Stamp/Registration laws.", aliases:["transfer"] },
+      "tribunal": { title:"Tribunal", short:"Specialised adjudicatory body (tax, consumer, arbitration).", law:"Statutes create tribunals and define jurisdiction.", aliases:["tribunal"] },
+      "trial": { title:"Trial", short:"Court hearing to decide facts and apply law.", law:"Evidence and procedure rules shape trial process.", aliases:["trial"] },
+      "trust": { title:"Trust", short:"Legal arrangement where trustee holds property for beneficiaries.", law:"Trust law and specific statutes govern trusts.", aliases:["trust"] },
+      "ultimatum": { title:"Ultimatum", short:"Final demand before legal action; not formal doctrine.", law:"Often used in negotiations/contract notices.", aliases:["ultimatum"] },
+      "unauthorised absence": { title:"Unauthorised Absence", short:"Employee absence without permission; employment law remedy.", law:"Employment contracts and disciplinary rules.", aliases:["unauthorised absence"] },
+      "unjust enrichment": { title:"Unjust Enrichment", short:"Retaining benefit without legal basis; remedy via restitution.", law:"Equitable principle for restitution.", aliases:["unjust enrichment"] },
+      "vacate": { title:"Vacate (order)", short:"Set aside or cancel a court order or occupancy.", law:"Courts can vacate orders or possession.", aliases:["vacate"] },
+      "vicarious liability": { title:"Vicarious Liability", short:"Employer's responsibility for acts of employees in course of employment.", law:"Tort and employment law principle.", aliases:["vicarious liability"] },
+      "void": { title:"Void", short:"A legal act with no effect from the beginning.", law:"Contracts may be void or voidable.", aliases:["void"] },
+      "voidable": { title:"Voidable", short:"Act valid until annulled by affected party.", law:"Contracts induced by fraud/duress may be voidable.", aliases:["voidable"] },
+      "warrant": { title:"Warrant", short:"Court-issued authorization (arrest or search).", law:"CrPC and judicial procedure prescribe warrants.", aliases:["warrant"] },
+      "will": { title:"Will", short:"Testamentary document expressing distribution after death.", law:"Indian Succession Act and testamentary formalities.", aliases:["will","testament"] },
+      "writ": { title:"Writ", short:"Court order (habeas corpus, mandamus, certiorari, prohibition, quo warranto).", law:"Constitutional remedies under High Courts and Supreme Court.", aliases:["writ"] },
+      "wrongful dismissal": { title:"Wrongful Dismissal", short:"Unlawful termination of employment; remedy via labour courts.", law:"Labour and employment law remedies.", aliases:["wrongful dismissal"] },
+      "wrongful death": { title:"Wrongful Death", short:"Death caused by negligence leading to civil claims.", law:"Tort law and compensation principles.", aliases:["wrongful death"] },
+      "zero liability": { title:"Zero Liability (banking)", short:"Limited liability scheme in fraud contexts; policy terms vary.", law:"Banking/consumer protections.", aliases:["zero liability"] }
     };
 
-    // Map alias -> key
+    // Prepare alias map for quick lookup
     const aliasMap = {};
     Object.keys(DICT).forEach(k => {
-      DICT[k].aliases.forEach(a => aliasMap[a.toLowerCase()] = k);
+      const ent = DICT[k];
+      (ent.aliases||[]).forEach(a => {
+        aliasMap[a.toLowerCase()] = k;
+      });
+      // also index the short title words
+      aliasMap[ent.title.toLowerCase()] = k;
     });
 
-    // Elements
-    const input = document.getElementById('dictInput');
-    const searchBtn = document.getElementById('dictSearchBtn');
-    const results = document.getElementById('dictResults');
-    const chips = Array.from(document.querySelectorAll('.chip'));
+    // ---------- Elements ----------
+    const root = document.getElementById('pdRoot');
+    const input = document.getElementById('pdInput');
+    const searchBtn = document.getElementById('pdSearch');
+    const resultTitle = document.getElementById('resultTitle');
+    const resultBody = document.getElementById('resultBody');
+    const resultMeta = document.getElementById('resultMeta');
+    const copyBtn = document.getElementById('copyBtn');
+    const listenBtn = document.getElementById('listenBtn');
+    const detailsBtn = document.getElementById('detailsBtn');
+    const chips = document.querySelectorAll('.chip');
+    const recentEl = document.getElementById('recent');
+    const themeToggle = document.getElementById('themeToggle');
+    const fab = document.getElementById('fab');
+    const fabOverlay = document.getElementById('fabOverlay');
+    const fabClose = document.getElementById('fabClose');
+    const miniInput = document.getElementById('miniInput');
+    const miniSearchBtn = document.getElementById('miniSearchBtn');
 
-    // Utility: normalize
-    function norm(s){ return (s||"").toString().trim().toLowerCase(); }
+    // ---------- State ----------
+    let recent = JSON.parse(localStorage.getItem('pd_recent') || '[]');
+    let theme = localStorage.getItem('pd_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark');
 
-    // Lookup function: accepts user text, returns best match or null
+    // Apply theme
+    function applyTheme(t){
+      if(t==='light'){ document.documentElement.classList.add('light-theme'); themeToggle.textContent='Light'; themeToggle.setAttribute('aria-pressed','true'); }
+      else { document.documentElement.classList.remove('light-theme'); themeToggle.textContent='Dark'; themeToggle.setAttribute('aria-pressed','false'); }
+      localStorage.setItem('pd_theme', t);
+    }
+    applyTheme(theme);
+
+    // Utility normalize
+    function norm(s){ return (s||'').toString().trim().toLowerCase(); }
+
+    // Lookup with alias and fuzzy attempts
     function lookup(query){
       if(!query) return null;
       const q = norm(query);
-      // direct alias match
-      if(aliasMap[q]) return DICT[aliasMap[q]];
-      // exact key
       if(DICT[q]) return DICT[q];
-      // fuzzy: check keys/aliases includes
-      const keys = Object.keys(DICT);
-      // try startsWith on keys or aliases
-      for(const k of keys){
-        if(k.startsWith(q) || DICT[k].aliases.some(a=>a.includes(q))) return DICT[k];
+      if(aliasMap[q]) return DICT[aliasMap[q]];
+      // try contains match on title/aliases
+      for(const k of Object.keys(DICT)){
+        const ent = DICT[k];
+        if(k.includes(q) || (ent.title && ent.title.toLowerCase().includes(q)) || (ent.aliases||[]).some(a => a.toLowerCase().includes(q))) return ent;
       }
-      // term appears inside title
-      for(const k of keys) if(DICT[k].title.toLowerCase().includes(q)) return DICT[k];
-      // last resort: return null
       return null;
     }
 
-    // Render function
+    // Render the given term object
     function renderTerm(termObj, query){
-      results.innerHTML = ""; // clear
       if(!termObj){
-        const no = document.createElement('div');
-        no.className = 'no-result';
-        no.textContent = "No short definition found for \"" + query + "\".";
-        results.appendChild(no);
-
-        const sug = document.createElement('div');
-        sug.style.color = 'var(--muted)';
-        sug.style.marginTop = '8px';
-        sug.innerHTML = 'Try common words: <strong class="accent-note">FIR</strong>, <strong class="accent-note">bail</strong>, <strong class="accent-note">maintenance</strong>, <strong class="accent-note">custody</strong>';
-        results.appendChild(sug);
+        resultTitle.textContent = `No short definition for "${query}"`;
+        resultBody.innerHTML = `Try <strong>FIR</strong>, <strong>bail</strong>, <strong>custody</strong> or select a suggestion.`;
+        resultMeta.textContent = 'Concise • India-focused';
         return;
       }
-
-      const container = document.createElement('div');
-      container.className = 'fade-in';
-
-      const titleRow = document.createElement('div');
-      titleRow.className = 'result-title';
-      const h = document.createElement('h3');
-      h.textContent = termObj.title;
-      titleRow.appendChild(h);
-      const meta = document.createElement('div');
-      meta.className = 'result-meta';
-      meta.textContent = 'Plain English, India-focused';
-      titleRow.appendChild(meta);
-      container.appendChild(titleRow);
-
-      const body = document.createElement('div');
-      body.className = 'result-body';
-      body.innerHTML = '<strong>Short meaning:</strong> ' + escapeHtml(termObj.short) + '<br><br>'
-                     + '<strong>Legal note:</strong> ' + escapeHtml(termObj.law);
-      container.appendChild(body);
-
-      // actions
-      const actions = document.createElement('div');
-      actions.className = 'result-actions';
-      const copy = document.createElement('button');
-      copy.className = 'copy-btn';
-      copy.textContent = 'Copy definition';
-      copy.setAttribute('aria-label','Copy definition to clipboard');
-      copy.addEventListener('click', ()=> {
-        const text = termObj.title + " — " + termObj.short + " (" + termObj.law + ")";
-        copyToClipboard(text);
-        copy.textContent = 'Copied';
-        setTimeout(()=> copy.textContent = 'Copy definition', 1400);
-      });
-      actions.appendChild(copy);
-
-      const speak = document.createElement('button');
-      speak.className = 'speak-btn';
-      speak.textContent = 'Listen';
-      speak.setAttribute('aria-label','Listen to definition');
-      speak.addEventListener('click', ()=> speakText(termObj.title + ". " + termObj.short));
-      actions.appendChild(speak);
-
-      // alias suggestions
-      const aliasRow = document.createElement('div');
-      aliasRow.style.marginTop = '8px';
-      aliasRow.style.color = 'var(--muted)';
-      aliasRow.innerHTML = 'Also recognized as: <strong>' + termObj.aliases.slice(0,6).map(a=>escapeHtml(a)).join('</strong>, <strong>') + '</strong>';
-      container.appendChild(actions);
-      container.appendChild(aliasRow);
-
-      results.appendChild(container);
+      resultTitle.textContent = termObj.title;
+      resultMeta.textContent = 'Plain-English · India context';
+      resultBody.innerHTML = `<strong>Meaning:</strong> ${escapeHtml(termObj.short)}<br><br><strong>Legal note:</strong> ${escapeHtml(termObj.law)}<div style="margin-top:8px;color:var(--muted);font-size:0.92rem">Aliases: ${(termObj.aliases||[]).slice(0,5).map(a=>'<strong>'+escapeHtml(a)+'</strong>').join(', ')}</div>`;
+      pushRecent((query||termObj.title).toString());
     }
 
-    // safe HTML escape
-    function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+    function escapeHtml(s){ return (s||'').toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
-    // copy util
-    async function copyToClipboard(text){
+    // Search handler
+    function doSearch(q){
+      const query = (q !== undefined) ? q : input.value;
+      const trimmed = (query||'').toString().trim();
+      if(!trimmed){
+        resultTitle.textContent = 'Start with a short word';
+        resultBody.textContent = 'Type a legal term above or pick a suggestion.';
+        resultMeta.textContent = 'Concise definitions';
+        return;
+      }
+      const found = lookup(trimmed);
+      renderTerm(found, trimmed);
+    }
+
+    // Recent management (persisted)
+    function pushRecent(v){
+      const s = (v||'').toString();
+      if(!s) return;
+      recent = [s, ...recent.filter(x=>x!==s)].slice(0,8);
+      localStorage.setItem('pd_recent', JSON.stringify(recent));
+      renderRecent();
+    }
+    function renderRecent(){
+      recentEl.innerHTML = '';
+      if(!recent || recent.length===0){
+        recentEl.innerHTML = `<div style="color:var(--muted)">No recent searches</div>`;
+        return;
+      }
+      recent.forEach(item=>{
+        const d = document.createElement('div');
+        d.className = 'recent-item';
+        d.innerHTML = `<div><strong>${escapeHtml(item)}</strong></div><div style="color:var(--muted);font-size:0.88rem">re-run</div>`;
+        d.onclick = ()=>{ input.value = item; doSearch(item); };
+        recentEl.appendChild(d);
+      });
+    }
+
+    // Copy
+    async function copyDefinition(){
       try{
-        await navigator.clipboard.writeText(text);
+        const txt = resultTitle.textContent + " — " + (resultBody.innerText || '');
+        await navigator.clipboard.writeText(txt);
+        copyBtn.textContent = 'Copied';
+        setTimeout(()=> copyBtn.textContent = 'Copy', 1400);
       }catch(e){
-        const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        copyBtn.textContent = 'Copy failed';
+        setTimeout(()=> copyBtn.textContent = 'Copy', 1400);
       }
     }
 
-    // speech util
-    function speakText(text){
-      if(!('speechSynthesis' in window)){ alert('Speech not supported in this browser'); return; }
-      const u = new SpeechSynthesisUtterance(text);
+    // Speak
+    function speakDefinition(){
+      const txt = resultTitle.textContent + ". " + (resultBody.innerText || '');
+      if(!('speechSynthesis' in window)){ alert('Speech not supported'); return; }
+      const u = new SpeechSynthesisUtterance(txt);
       u.lang = 'en-IN';
       speechSynthesis.cancel();
       speechSynthesis.speak(u);
     }
 
-    // handlers
-    function doSearch(q){
-      q = (q||'').trim();
-      if(!q){
-        results.innerHTML = '<div class="muted">Start by typing a term above. Example: <strong>FIR</strong> or <strong>custody</strong>.</div>';
-        return;
-      }
-      const found = lookup(q);
-      renderTerm(found, q);
+    // Details (simple modal behaviour using alert; you can wire custom modal)
+    function showDetails(){
+      alert(resultTitle.textContent + "\n\n" + (resultBody.innerText || '') + "\n\nFor case-specific legal advice contact a lawyer.");
     }
 
-    // Enter key search
-    input.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter'){ doSearch(input.value); }
-    });
-    searchBtn.addEventListener('click', ()=> doSearch(input.value));
-
-    // chips
-    chips.forEach(c=>{
-      c.addEventListener('click', ()=> {
-        const t = c.getAttribute('data-term') || c.textContent;
-        input.value = t;
-        doSearch(t);
-        input.focus();
-      });
+    // Theme toggle
+    themeToggle.addEventListener('click', ()=> {
+      theme = (theme === 'light') ? 'dark' : 'light';
+      applyTheme(theme);
     });
 
-    // Smart recognition of Hindi/Hinglish by simple replace mapping
-    const HINGLISH_MAP = {
-      'baarakhasta':'maintenance',
-      'barakhasta':'maintenance',
-      'talak':'talaq',
-      'talaq':'talaq',
-      'girftari':'custody',
-      'giraftari':'custody',
-      'girfthari':'custody',
-      'girftari':'custody',
-      'fir':'fir'
-    };
-
-    // optional heuristic: on blur try to map hinglish
-    input.addEventListener('blur', ()=>{
-      const q = norm(input.value);
+    // FAB behaviour
+    fab.addEventListener('click', ()=> {
+      const open = fabOverlay.classList.toggle('open');
+      fabOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if(open){ miniInput.focus(); }
+    });
+    fabClose.addEventListener('click', ()=> { fabOverlay.classList.remove('open'); fabOverlay.setAttribute('aria-hidden','true'); fab.focus(); });
+    miniSearchBtn.addEventListener('click', ()=> {
+      const q = miniInput.value.trim();
       if(!q) return;
-      if(HINGLISH_MAP[q]) { input.value = HINGLISH_MAP[q]; }
+      // run search in main panel and open main helper (scroll into view)
+      input.value = q;
+      doSearch(q);
+      fabOverlay.classList.remove('open');
+      fabOverlay.setAttribute('aria-hidden','true');
+      // briefly highlight result
+      resultTitle.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+    miniInput.addEventListener('keydown', (e)=> { if(e.key==='Enter') miniSearchBtn.click(); });
+
+    // Event bindings
+    searchBtn.addEventListener('click', ()=> doSearch());
+    input.addEventListener('keydown', (e)=> { if(e.key==='Enter') doSearch(); });
+    copyBtn.addEventListener('click', copyDefinition);
+    listenBtn.addEventListener('click', speakDefinition);
+    detailsBtn.addEventListener('click', showDetails);
+    chips.forEach(c => c.addEventListener('click', ()=> { input.value = c.dataset.term || c.textContent; doSearch(c.dataset.term || c.textContent); }));
+
+    // Keyboard shortcut to focus search: Alt+K
+    document.addEventListener('keydown', (e)=> { if(e.altKey && (e.key==='k' || e.key==='K')){ e.preventDefault(); input.focus(); input.select(); } });
+
+    // Persist small hinglish map on blur (quick heuristic)
+    const HINGLISH = { 'baarakhasta':'maintenance','barakhasta':'maintenance','talak':'divorce','talaq':'divorce','girftari':'custody','giraftari':'custody','girfthari':'custody' };
+    input.addEventListener('blur', ()=> {
+      const v = norm(input.value);
+      if(HINGLISH[v]) input.value = HINGLISH[v];
     });
 
-    // small helper for normalization
-    function norm(s){ return (s||'').toString().trim().toLowerCase(); }
-
-    /* Expose for testing if needed */
-    window._LEGAL_DICT = { lookup, DICT };
+    // Initial render
+    renderRecent();
+    // expose for debug
+    window._PREMIUM_DICT = { DICT, lookup };
 
   })();
   </script>
