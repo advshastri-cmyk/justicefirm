@@ -996,28 +996,384 @@ style="margin-top:28px;padding:0;font-family:Inter,system-ui,-apple-system,Segoe
 
 </section>
 <!-- ================= END ARTICLES & INSIGHTS ================ -->
-     
-      <!-- DICTIONARY -->
-      <section id="dictionary" aria-labelledby="dictionaryHeading" style="margin-top:24px">
-        <h2 id="dictionaryHeading">Legal Word Helper (Dictionary)</h2>
-        <p class="muted">Type a simple term like “FIR”, “maintenance”, “custody”, “bail” — get a plain English meaning.</p>
+     <!-- ================= PREMIUM LEGAL WORD HELPER (single-file paste) ================= -->
+<section id="dictionary" aria-labelledby="dictionaryHeading" style="margin-top:28px;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;">
 
-        <div id="dictionaryCard" class="dict-layout" style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
-          <div>
-            <label for="dictInput">Search legal term</label>
-            <div class="dict-input-wrap" style="display:flex;gap:8px;margin-top:8px">
-              <input id="dictInput" type="search" placeholder="e.g. FIR, maintenance, alimony, custody" aria-label="Search legal term" style="flex:1;padding:8px;border-radius:10px;border:1px solid #e2e6ef;background:#fff;color:var(--ink)">
-              <button id="dictSearchBtn" class="btn btn-primary btn--small" type="button">Search</button>
-            </div>
-            <p class="dict-note muted" style="margin-top:8px;color:var(--muted-dark)">Tip: Hindi / Hinglish words like “baarakhasta”, “talak”, “girftari” are also recognised for many terms.</p>
+  <style>
+  /* Premium dictionary styles (self-contained) */
+  :root{
+    --card:#ffffff;
+    --ink:#071028;
+    --muted:#6b7280;
+    --accent-500:#0b6bff;
+    --accent-600:#0f4acb;
+    --glass: rgba(11,18,32,0.03);
+    --success:#059669;
+  }
+
+  .dict-wrap{
+    max-width:1100px;margin-inline:auto;padding:26px;border-radius:14px;
+    background:linear-gradient(180deg,#fff,#fbfdff);
+    box-shadow:0 30px 80px rgba(7,12,25,0.06);
+    border:1px solid rgba(11,18,32,0.04);
+  }
+
+  .dict-head{display:flex;justify-content:space-between;gap:12px;align-items:start;flex-wrap:wrap;}
+  .dict-title h2{margin:0;font-size:1.35rem;color:var(--ink);font-weight:700;}
+  .dict-title p{margin:6px 0 0;color:var(--muted);max-width:680px;line-height:1.45;font-size:0.96rem;}
+
+  .dict-grid{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px;align-items:start;}
+  @media (max-width:980px){ .dict-grid{grid-template-columns:1fr;} }
+
+  /* Input area */
+  .dict-panel{display:flex;flex-direction:column;gap:12px;}
+  label[for="dictInput"]{font-size:0.9rem;color:var(--muted);font-weight:600;}
+  .dict-input-wrap{display:flex;gap:10px;align-items:center;}
+  .dict-input{
+    flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(11,18,32,0.06);
+    font-size:0.98rem;color:var(--ink);background:linear-gradient(180deg,#fff,#fbfdff);
+    box-shadow:0 8px 20px rgba(7,12,25,0.03);
+    transition:box-shadow .18s ease, transform .12s ease;
+  }
+  .dict-input:focus{outline:none;box-shadow:0 8px 30px rgba(11,74,203,0.08);transform:translateY(-2px);}
+
+  .dict-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn {padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;font-size:0.92rem;}
+  .btn-primary{background:linear-gradient(90deg,var(--accent-500),var(--accent-600));color:#fff;box-shadow:0 12px 34px rgba(11,74,203,0.10);}
+  .btn-ghost{background:transparent;border:1px solid rgba(11,18,32,0.06);color:var(--ink);}
+
+  .dict-hint{color:var(--muted);font-size:0.92rem;margin-top:6px;}
+
+  /* Suggestions chips */
+  .dict-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+  .chip{padding:8px 12px;border-radius:999px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(11,18,32,0.04);font-weight:600;color:var(--muted);cursor:pointer;transition:transform .12s ease,box-shadow .12s;}
+  .chip:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(7,12,25,0.06);color:var(--accent-600);}
+
+  /* Results card */
+  .dict-results{
+    background:linear-gradient(180deg,#fff,#fbfdff);padding:16px;border-radius:12px;border:1px solid rgba(11,18,32,0.04);
+    box-shadow:0 18px 48px rgba(7,12,25,0.04);
+    min-height:160px;display:flex;flex-direction:column;gap:12px;
+  }
+  .result-title{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .result-title h3{margin:0;font-size:1.06rem;color:var(--ink);font-weight:700;}
+  .result-meta{color:var(--muted);font-size:0.9rem;}
+  .result-body{color:var(--muted);font-size:0.98rem;line-height:1.6;}
+
+  .result-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;}
+  .copy-btn{background:transparent;border:1px solid rgba(11,18,32,0.06);padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700;}
+  .speak-btn{background:transparent;border:1px dashed rgba(11,18,32,0.06);padding:8px 10px;border-radius:10px;cursor:pointer;}
+
+  /* Small helper */
+  .no-result{color:#ef4444;font-weight:700;}
+  .accent-note{color:var(--accent-600);font-weight:700;}
+
+  /* subtle entry animation */
+  .fade-in{animation:fadeIn .28s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)}}
+  </style>
+
+  <div class="dict-wrap" role="region" aria-label="Legal word helper">
+
+    <div class="dict-head">
+      <div class="dict-title">
+        <h2 id="dictionaryHeading">Legal Word Helper (Dictionary)</h2>
+        <p class="muted">Type a simple term like “FIR”, “maintenance”, “custody”, “bail” — get a plain-English meaning with India-focused context.</p>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;">
+        <!-- small trust indicator -->
+        <div style="display:flex;flex-direction:column;align-items:flex-end;">
+          <div style="font-weight:700;color:var(--ink)">Quick legal help</div>
+          <div style="color:var(--muted);font-size:0.92rem">Non-legal advice. For case-specific counsel contact us.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dict-grid" id="dictCard">
+
+      <!-- LEFT: Input -->
+      <div class="dict-panel">
+        <div>
+          <label for="dictInput">Search legal term</label>
+          <div class="dict-input-wrap" style="margin-top:8px;">
+            <input id="dictInput" class="dict-input" type="search" placeholder="e.g. FIR, maintenance, alimony, custody, 65B" aria-label="Search legal term">
+            <button id="dictSearchBtn" class="btn btn-primary" type="button" aria-label="Search term">Search</button>
           </div>
 
-          <div class="dict-results" id="dictResults" aria-live="polite" aria-atomic="true" style="background:var(--card);padding:14px;border-radius:12px;box-shadow:0 12px 36px rgba(7,12,25,0.04);color:var(--muted-dark)">
-            <div class="muted">Start by typing a term above. Example: <strong>“Section 125”</strong> or <strong>“custody”</strong>.</div>
+          <div class="dict-hint">Tip: Hindi / Hinglish like “baarakhasta”, “talak”, “girftari” are recognised for many terms. Press <kbd>Enter</kbd> to search.</div>
+
+          <div class="dict-chips" aria-hidden="false" style="margin-top:12px;">
+            <button class="chip" data-term="FIR">FIR</button>
+            <button class="chip" data-term="bail">Bail</button>
+            <button class="chip" data-term="maintenance">Maintenance</button>
+            <button class="chip" data-term="custody">Custody</button>
+            <button class="chip" data-term="Section 125">Section 125</button>
+            <button class="chip" data-term="Section 65B">Section 65B</button>
           </div>
         </div>
-      </section>
 
+        <div class="dict-note muted" style="margin-top:10px;color:var(--muted);font-size:0.92rem;">
+          Results are short, plain-English explanations with India references. For personalised advice, contact our team.
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="dict-results" id="dictResults" aria-live="polite" aria-atomic="true">
+        <div class="muted">Start by typing a term in the box. Try <strong>“FIR”</strong> or <strong>“custody”</strong>.</div>
+      </div>
+
+    </div> <!-- /.dict-grid -->
+
+  </div> <!-- /.dict-wrap -->
+
+  <script>
+  (function(){
+    // Dictionary dataset (concise, India-focused)
+    const DICT = {
+      // English keys plus Hindi/Hinglish aliases included below
+      "fir": {
+        title: "FIR (First Information Report)",
+        short: "A police report that records an allegation of a cognizable offence. Lodge at the police station with jurisdiction — it's the first step that triggers investigation.",
+        law: "Filed under Indian Criminal Procedure; police register FIR for cognizable offences and begin investigation.",
+        aliases: ["fir", "f.i.r", "first information report", "fir ki entry"]
+      },
+
+      "bail": {
+        title: "Bail",
+        short: "Court-ordered release of an accused pending trial, usually on terms. Early (regular) bail and anticipatory bail under Sections 436–439 and 438 CrPC respectively are common remedies.",
+        law: "Relevant provisions: CrPC Sections 436–439 (regular bail) and Section 438 (anticipatory bail).",
+        aliases: ["bail","granting bail","anticiaptory bail","anticipatory bail","baail"]
+      },
+
+      "maintenance": {
+        title: "Maintenance (alimony/support)",
+        short: "Periodic financial support ordered for a spouse or dependent. Under Section 125 CrPC and various family law provisions, courts can award maintenance to prevent destitution.",
+        law: "Commonly sought under Section 125 CrPC (maintenance) and specific family law statutes depending on religion.",
+        aliases:["maintenance","alimony","kharch","pension","maintenance order"]
+      },
+
+      "custody": {
+        title: "Custody",
+        short: "Physical control of a person — police custody is for investigation; judicial custody is detention ordered by a magistrate. Child custody concerns where a child will live and be cared for.",
+        law: "Police custody vs judicial custody (CrPC). Child custody determined by family courts using welfare principle.",
+        aliases:["custody","girftari","giraftari","arrest custody","judicial custody","police custody"]
+      },
+
+      "section 125": {
+        title: "Section 125 CrPC — Maintenance",
+        short: "A quick civil remedy where a spouse/parent can claim monthly maintenance to prevent abandonment and destitution; procedure is summary and enforcement is prompt.",
+        law: "Section 125 of the Code of Criminal Procedure, 1973.",
+        aliases:["section 125","125","sec 125","section125","section125 crpc"]
+      },
+
+      "section 65b": {
+        title: "Section 65B Evidence Act — Electronic evidence",
+        short: "Section 65B sets conditions for admissibility of electronic records (preservation, certification). A 65B certificate often accompanies digital evidence in Indian courts.",
+        law: "Sections 65A and 65B of the Indian Evidence Act (as amended).",
+        aliases:["section 65b","65b","65-b","section 65b evidence","65b evidence"]
+      },
+
+      "contract": {
+        title: "Contract (Indian Contract Act)",
+        short: "A legally enforceable agreement between parties with offer, acceptance, consideration and lawful object. Breach entitles affected party to remedies like damages or specific performance.",
+        law: "Indian Contract Act, 1872 — formation, performance and remedies.",
+        aliases:["contract","agreement","contract ke clauses","agreement ke clauses"]
+      },
+
+      "talaq": {
+        title: "Talaq / Talak (divorce term)",
+        short: "Talaq (talaq/talak) is a term for divorce in certain personal laws. Legal consequences depend on the family's personal law and statutory reforms; modern legal process often involves family courts and statutory divorce procedures.",
+        law: "Varies by personal law and statutory provisions; consult family law rules applicable to the parties.",
+        aliases:["talak","talaq","talaaq","talak"]
+      }
+    };
+
+    // Map alias -> key
+    const aliasMap = {};
+    Object.keys(DICT).forEach(k => {
+      DICT[k].aliases.forEach(a => aliasMap[a.toLowerCase()] = k);
+    });
+
+    // Elements
+    const input = document.getElementById('dictInput');
+    const searchBtn = document.getElementById('dictSearchBtn');
+    const results = document.getElementById('dictResults');
+    const chips = Array.from(document.querySelectorAll('.chip'));
+
+    // Utility: normalize
+    function norm(s){ return (s||"").toString().trim().toLowerCase(); }
+
+    // Lookup function: accepts user text, returns best match or null
+    function lookup(query){
+      if(!query) return null;
+      const q = norm(query);
+      // direct alias match
+      if(aliasMap[q]) return DICT[aliasMap[q]];
+      // exact key
+      if(DICT[q]) return DICT[q];
+      // fuzzy: check keys/aliases includes
+      const keys = Object.keys(DICT);
+      // try startsWith on keys or aliases
+      for(const k of keys){
+        if(k.startsWith(q) || DICT[k].aliases.some(a=>a.includes(q))) return DICT[k];
+      }
+      // term appears inside title
+      for(const k of keys) if(DICT[k].title.toLowerCase().includes(q)) return DICT[k];
+      // last resort: return null
+      return null;
+    }
+
+    // Render function
+    function renderTerm(termObj, query){
+      results.innerHTML = ""; // clear
+      if(!termObj){
+        const no = document.createElement('div');
+        no.className = 'no-result';
+        no.textContent = "No short definition found for \"" + query + "\".";
+        results.appendChild(no);
+
+        const sug = document.createElement('div');
+        sug.style.color = 'var(--muted)';
+        sug.style.marginTop = '8px';
+        sug.innerHTML = 'Try common words: <strong class="accent-note">FIR</strong>, <strong class="accent-note">bail</strong>, <strong class="accent-note">maintenance</strong>, <strong class="accent-note">custody</strong>';
+        results.appendChild(sug);
+        return;
+      }
+
+      const container = document.createElement('div');
+      container.className = 'fade-in';
+
+      const titleRow = document.createElement('div');
+      titleRow.className = 'result-title';
+      const h = document.createElement('h3');
+      h.textContent = termObj.title;
+      titleRow.appendChild(h);
+      const meta = document.createElement('div');
+      meta.className = 'result-meta';
+      meta.textContent = 'Plain English, India-focused';
+      titleRow.appendChild(meta);
+      container.appendChild(titleRow);
+
+      const body = document.createElement('div');
+      body.className = 'result-body';
+      body.innerHTML = '<strong>Short meaning:</strong> ' + escapeHtml(termObj.short) + '<br><br>'
+                     + '<strong>Legal note:</strong> ' + escapeHtml(termObj.law);
+      container.appendChild(body);
+
+      // actions
+      const actions = document.createElement('div');
+      actions.className = 'result-actions';
+      const copy = document.createElement('button');
+      copy.className = 'copy-btn';
+      copy.textContent = 'Copy definition';
+      copy.setAttribute('aria-label','Copy definition to clipboard');
+      copy.addEventListener('click', ()=> {
+        const text = termObj.title + " — " + termObj.short + " (" + termObj.law + ")";
+        copyToClipboard(text);
+        copy.textContent = 'Copied';
+        setTimeout(()=> copy.textContent = 'Copy definition', 1400);
+      });
+      actions.appendChild(copy);
+
+      const speak = document.createElement('button');
+      speak.className = 'speak-btn';
+      speak.textContent = 'Listen';
+      speak.setAttribute('aria-label','Listen to definition');
+      speak.addEventListener('click', ()=> speakText(termObj.title + ". " + termObj.short));
+      actions.appendChild(speak);
+
+      // alias suggestions
+      const aliasRow = document.createElement('div');
+      aliasRow.style.marginTop = '8px';
+      aliasRow.style.color = 'var(--muted)';
+      aliasRow.innerHTML = 'Also recognized as: <strong>' + termObj.aliases.slice(0,6).map(a=>escapeHtml(a)).join('</strong>, <strong>') + '</strong>';
+      container.appendChild(actions);
+      container.appendChild(aliasRow);
+
+      results.appendChild(container);
+    }
+
+    // safe HTML escape
+    function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+    // copy util
+    async function copyToClipboard(text){
+      try{
+        await navigator.clipboard.writeText(text);
+      }catch(e){
+        const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      }
+    }
+
+    // speech util
+    function speakText(text){
+      if(!('speechSynthesis' in window)){ alert('Speech not supported in this browser'); return; }
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-IN';
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    }
+
+    // handlers
+    function doSearch(q){
+      q = (q||'').trim();
+      if(!q){
+        results.innerHTML = '<div class="muted">Start by typing a term above. Example: <strong>FIR</strong> or <strong>custody</strong>.</div>';
+        return;
+      }
+      const found = lookup(q);
+      renderTerm(found, q);
+    }
+
+    // Enter key search
+    input.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter'){ doSearch(input.value); }
+    });
+    searchBtn.addEventListener('click', ()=> doSearch(input.value));
+
+    // chips
+    chips.forEach(c=>{
+      c.addEventListener('click', ()=> {
+        const t = c.getAttribute('data-term') || c.textContent;
+        input.value = t;
+        doSearch(t);
+        input.focus();
+      });
+    });
+
+    // Smart recognition of Hindi/Hinglish by simple replace mapping
+    const HINGLISH_MAP = {
+      'baarakhasta':'maintenance',
+      'barakhasta':'maintenance',
+      'talak':'talaq',
+      'talaq':'talaq',
+      'girftari':'custody',
+      'giraftari':'custody',
+      'girfthari':'custody',
+      'girftari':'custody',
+      'fir':'fir'
+    };
+
+    // optional heuristic: on blur try to map hinglish
+    input.addEventListener('blur', ()=>{
+      const q = norm(input.value);
+      if(!q) return;
+      if(HINGLISH_MAP[q]) { input.value = HINGLISH_MAP[q]; }
+    });
+
+    // small helper for normalization
+    function norm(s){ return (s||'').toString().trim().toLowerCase(); }
+
+    /* Expose for testing if needed */
+    window._LEGAL_DICT = { lookup, DICT };
+
+  })();
+  </script>
+
+</section>
+<!-- ================= END PREMIUM LEGAL WORD HELPER ================= -->
+      
       <!-- ================= PREMIUM PAYMENT SECTION — single copy-paste block ================= -->
 <section id="payment" aria-labelledby="paymentHeading"
   style="margin-top:40px;padding:28px;max-width:1100px;margin-inline:auto;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial;">
