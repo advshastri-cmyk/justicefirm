@@ -1,245 +1,221 @@
 <!doctype html>
 <html lang="en-IN">
-<!-- ---------- REPLACE YOUR <head> WITH THIS ---------- -->
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no" />
-  <title>The Justice Firm — Advocates & Legal Consultants (India)</title>
-  <meta name="description" content="The Justice Firm — Family, Criminal & Civil law; Mediation. Based in Allahabad (Prayagraj), Uttar Pradesh." />
-  <meta name="author" content="The Justice Firm">
-  <meta name="robots" content="index,follow">
+<!-- ================= Royal Courtroom — Premium Header (DROP-IN REPLACEMENT) ================= -->
+<style>
+  :root{
+    --nav-bg: linear-gradient(180deg,#061025,#081731);
+    --parchment:#f7f3ec;
+    --deep:#041125;
+    --gold-1:#caa23a;
+    --gold-2:#9b7722;
+    --ink:#071016;
+    --muted:#9aa8bf;
+    --glass: rgba(255,255,255,0.03);
+    --radius:16px;
+    --container:1180px;
+    --ui-z:9999;
+  }
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@700;900&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  /* header shell */
+  .royal-header {
+    position:sticky; top:12px; z-index:var(--ui-z);
+    display:block; margin:20px auto; max-width:var(--container);
+    border-radius:18px; padding:10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    box-shadow: 0 28px 90px rgba(3,6,12,0.6);
+    border:1px solid rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+  }
+  .royal-inner{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:10px 18px; }
 
-  <!-- Fav / theme color (optional) -->
-  <meta name="theme-color" content="#071028">
+  /* brand */
+  .royal-brand{ display:flex; align-items:center; gap:14px; }
+  .royal-badge{
+    width:64px; height:64px; border-radius:12px; display:grid; place-items:center;
+    background: linear-gradient(135deg,var(--gold-1),var(--gold-2));
+    color:var(--deep); font-weight:900; font-family:"Playfair Display", serif; font-size:20px;
+    box-shadow: 0 14px 36px rgba(146,107,35,0.16), inset 0 -6px 10px rgba(255,255,255,0.16);
+    border:1px solid rgba(0,0,0,0.10);
+    transform: translateZ(0);
+  }
+  .royal-brand .titles{ display:flex; flex-direction:column; line-height:1; }
+  .royal-brand .titles .title{ font-family: 'Merriweather', serif; font-weight:700; color:#fff; font-size:1.05rem; letter-spacing:0.2px; text-shadow:0 2px 8px rgba(0,0,0,0.45); }
+  .royal-brand .titles .sub{ font-size:0.85rem; color:var(--muted); margin-top:4px; }
 
-  <style>
-    /* ----------------- Royal Premium Header Styles ----------------- */
-    :root{
-      --bg-900:#041125;           /* deep navy */
-      --bg-800:#071b36;
-      --parchment:#f7f3ec;        /* parchment card */
-      --ink:#071016;
-      --muted:#9aa8bf;
-      --gold-1:#c29a2e;           /* warm gold */
-      --gold-2:#a97a21;
-      --accent:#0f4acb;
-      --radius:14px;
-      --container:1180px;
-      --easing:cubic-bezier(.16,.84,.32,1);
-      --glass: rgba(255,255,255,0.04);
-      --ui-z: 9999;
-    }
+  /* primary nav */
+  .royal-nav{ display:flex; align-items:center; gap:12px; }
+  .royal-nav a{
+    color:var(--muted); padding:8px 12px; border-radius:10px; font-weight:700; font-size:0.95rem;
+    transition: all .18s ease;
+  }
+  .royal-nav a:hover{ color:#fff; background:rgba(255,255,255,0.03); transform:translateY(-2px); box-shadow:0 8px 22px rgba(0,0,0,0.44); }
 
-    /* baseline */
-    html,body{margin:0;padding:0;background:var(--bg-900);color:#e9f1ff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; -webkit-font-smoothing:antialiased}
-    .wrap{max-width:var(--container);margin:0 auto;padding:14px 18px}
-    a{color:inherit;text-decoration:none}
-    .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);border:0;white-space:nowrap}
+  /* CTAs */
+  .royal-cta{ display:flex; align-items:center; gap:10px; }
+  .btn-royal{
+    padding:10px 14px; border-radius:12px; font-weight:800; border:0; cursor:pointer;
+    background: linear-gradient(180deg,var(--gold-1),var(--gold-2)); color:var(--deep);
+    box-shadow: 0 10px 36px rgba(150,105,30,0.14);
+  }
+  .btn-ghost-royal{
+    padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:#fff; font-weight:700;
+  }
 
-    /* header */
-    header.site-header{
-      position:sticky;top:12px;z-index:var(--ui-z);backdrop-filter: blur(6px);
-      display:block;margin:18px 0;padding:10px;border-radius:14px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      box-shadow: 0 18px 50px rgba(4,8,16,0.48);
-      border:1px solid rgba(255,255,255,0.04);
-    }
+  /* small clock */
+  .royal-clock{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace; color:var(--gold-1); font-weight:800; font-size:0.95rem }
 
-    .nav-inner{max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 12px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand-badge{
-      width:56px;height:56px;border-radius:12px;
-      background:linear-gradient(135deg,var(--gold-1),var(--gold-2));
-      display:grid;place-items:center;font-weight:900;color:#071016;font-family:Playfair Display,serif;font-size:18px;
-      box-shadow:0 10px 30px rgba(10,6,3,0.24), inset 0 -6px 12px rgba(255,255,255,0.18);
-      border:1px solid rgba(0,0,0,0.12);
-    }
-    .brand-title{display:flex;flex-direction:column;line-height:1}
-    .brand-title .name{font-family:Merriweather,serif;font-weight:700;font-size:1rem;color:var(--parchment);letter-spacing:0.2px}
-    .brand-title .tag{font-size:0.82rem;color:var(--muted);margin-top:2px}
+  /* goddess accent (parallax) */
+  .goddess-wrap{ position:absolute; right:28px; top:-40px; width:240px; pointer-events:none; opacity:0.14; mix-blend-mode:screen; transition: transform .6s ease, opacity .36s ease; filter: drop-shadow(0 30px 56px rgba(170,120,40,0.12)); }
+  .goddess-wrap.glow{ opacity:0.32; transform: translateY(-8px) scale(1.03); }
 
-    /* nav links */
-    .nav-actions{display:flex;gap:12px;align-items:center}
-    .nav-links{display:flex;gap:8px;align-items:center}
-    .nav-links a{color:var(--muted);padding:8px 12px;border-radius:10px;font-weight:600;font-size:0.95rem;transition:background .18s var(--easing),color .18s var(--easing)}
-    .nav-links a:hover{background:rgba(255,255,255,0.03);color:var(--parchment)}
-    .btn-cta{background:linear-gradient(180deg,var(--gold-1),var(--gold-2));color:#071016;padding:10px 14px;border-radius:10px;font-weight:800;box-shadow:0 10px 36px rgba(169,126,33,0.16);border:1px solid rgba(0,0,0,0.06)}
-    .btn-ghost{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);color:var(--parchment);background:transparent;font-weight:700}
+  /* mobile behavior */
+  .hamburger-royal{ display:none; background:transparent; border:0; color:#fff; width:52px; height:52px; border-radius:12px; align-items:center; justify-content:center; }
+  @media (max-width:920px){
+    .royal-nav{ display:none; }
+    .hamburger-royal{ display:flex; }
+    .goddess-wrap{ display:none; }
+  }
 
-    /* clock */
-    .nav-clock{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;color:var(--gold-1);font-weight:700;font-size:0.95rem}
+  /* mobile drawer (slide) */
+  .royal-drawer-backdrop{ position:fixed; inset:0; display:none; z-index:11000; align-items:stretch; justify-content:flex-end; background: rgba(2,6,23,0.6); }
+  .royal-drawer-backdrop.open{ display:flex; }
+  .royal-drawer{ width:320px; max-width:94vw; background: linear-gradient(180deg,#061426,#071b34); color:#eaf3ff; padding:18px; display:flex; flex-direction:column; gap:12px; box-shadow:-20px 0 60px rgba(0,0,0,0.6); border-left:1px solid rgba(255,255,255,0.03); }
+  .royal-drawer a{ color:var(--muted); display:block; padding:10px 6px; border-radius:8px; }
+  .royal-drawer .contact{ margin-top:auto; display:flex; gap:8px; }
 
-    /* mobile menu */
-    .hamburger{display:none;background:transparent;border:0;color:var(--parchment);width:46px;height:46px;border-radius:10px}
-    @media (max-width:900px){
-      .nav-links{display:none}
-      .hamburger{display:inline-flex;align-items:center;justify-content:center}
-    }
+  /* accessibility / focus */
+  .royal-drawer [tabindex], .royal-drawer a, .btn-royal:focus, .btn-ghost-royal:focus { outline: 3px solid rgba(202,162,58,0.12); outline-offset:2px; }
 
-    /* compact dropdown mobile nav */
-    .mobile-drawer{
-      position:fixed;inset:auto 12px 12px 12px; z-index:calc(var(--ui-z) + 10);
-      background:linear-gradient(180deg,#071020, #071b30); border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 22px 80px rgba(3,8,20,0.6); display:none;flex-direction:column;gap:10px;
-    }
-    .mobile-drawer.open{display:flex}
+  /* polish */
+  .royal-header .brand-badge, .royal-drawer .brand-badge { font-family:'Playfair Display', serif; }
+</style>
 
-    /* goddess accent */
-    .header-goddess{position:absolute;right:26px;top:-48px;width:200px;opacity:0.16;pointer-events:none;filter:drop-shadow(0 22px 48px rgba(194,154,46,0.15));mix-blend-mode:screen;transition:transform .4s ease,opacity .36s ease}
-    .nav-inner:hover ~ .header-goddess, header.site-header:focus-within .header-goddess{opacity:0.28;transform:translateY(-6px) scale(1.02)}
-
-    @media (max-width:720px){
-      .header-goddess{display:none}
-    }
-
-    /* focus & accessibility */
-    a:focus, button:focus { outline: 3px solid rgba(17,65,168,0.12); outline-offset:2px; border-radius:8px }
-    .sr-only{position:absolute!important;height:1px;width:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);border:0;white-space:nowrap}
-
-    /* small refinements for hero positioning if you use hero overlays */
-    .hero-spacer{height:8px}
-
-  </style>
-</head>
-
-  <body>
-<!-- ---------- PASTE THIS INSIDE <body> NEAR TOP ---------- -->
-<header class="site-header" role="banner" aria-label="Main header">
-  <div class="nav-inner" role="navigation" aria-label="Primary">
-    <div class="brand" aria-hidden="false">
-      <div class="brand-badge" aria-hidden="true">JF</div>
-      <div class="brand-title">
-        <div class="name">The Justice Firm</div>
-        <div class="tag">Advocates &amp; Legal Consultants</div>
+<header class="royal-header" role="banner" aria-label="Royal header">
+  <div class="royal-inner" role="navigation" aria-label="Primary navigation">
+    <div class="royal-brand">
+      <div class="royal-badge" aria-hidden="true">JF</div>
+      <div class="titles">
+        <div class="title">The Justice Firm</div>
+        <div class="sub">Advocates &amp; Legal Consultants</div>
       </div>
     </div>
 
-    <nav class="nav-actions" aria-label="Primary navigation">
-      <div class="nav-links" role="menubar" aria-hidden="false">
-        <a href="/" role="menuitem">Home</a>
-        <a href="#practice" role="menuitem">Practice Areas</a>
-        <a href="#team" role="menuitem">Our Team</a>
-        <a href="#insights" role="menuitem">Insights</a>
-        <a href="#contact" role="menuitem" class="btn-ghost">Contact</a>
-      </div>
-
-      <div style="display:flex;align-items:center;gap:12px">
-        <div id="clock" class="nav-clock" aria-live="polite" title="India Standard Time">--:-- IST</div>
-        <a href="tel:+919454183793" class="btn-cta" aria-label="Call The Justice Firm">Book a Consult</a>
-
-        <!-- mobile hamburger -->
-        <button class="hamburger" id="navToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        </button>
-      </div>
+    <nav class="royal-nav" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="#practice">Practice Areas</a>
+      <a href="#team">Our Team</a>
+      <a href="#insights">Insights</a>
+      <a href="#contact" class="btn-ghost-royal">Contact</a>
     </nav>
+
+    <div class="royal-cta" role="group" aria-label="Header actions">
+      <div id="siteClockRoyal" class="royal-clock" aria-live="polite">--:-- IST</div>
+      <button class="btn-royal" onclick="location.href='tel:+919454183793'">Book a Consult</button>
+      <button class="hamburger-royal" id="royalToggle" aria-expanded="false" aria-controls="royalDrawer" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
   </div>
 
-  <!-- decorative goddess (use your image file path or svg) -->
-  <img id="headerGoddess" class="header-goddess" src="goddess.jpg" alt="" onerror="this.style.display='none'">
-
-  <!-- mobile drawer -->
-  <div id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-hidden="true">
-    <a href="/" style="font-weight:700;color:var(--parchment);font-size:1.05rem">Home</a>
-    <a href="#practice" style="color:var(--muted)">Practice Areas</a>
-    <a href="#team" style="color:var(--muted)">Our Team</a>
-    <a href="#insights" style="color:var(--muted)">Insights</a>
-    <a href="#contact" style="font-weight:700;color:var(--parchment)">Contact & Book</a>
-    <div style="height:8px"></div>
-    <div style="font-size:0.9rem;color:var(--muted)">Quick Links</div>
-    <a href="/about" style="color:var(--muted)">About Chamber</a>
-    <a href="/faq" style="color:var(--muted)">FAQs</a>
+  <div class="goddess-wrap" aria-hidden="true">
+    <img src="goddess.jpg" alt="" style="width:100%;height:auto;display:block" onerror="this.style.display='none'">
   </div>
 </header>
 
-<script>
-  /* ---------- Tiny header script: mobile drawer + IST clock + goddess glow ---------- */
-  (function(){
-    // Clock (IST)
-    function nowIST(){ const d=new Date(); const utc = d.getTime() + (d.getTimezoneOffset()*60000); return new Date(utc + (5.5*3600000)); }
-    function pad(n){ return String(n).padStart(2,'0'); }
-    function refreshClock(){ const c = document.getElementById('clock'); if(!c) return; const t = nowIST(); c.textContent = pad(t.getHours()) + ':' + pad(t.getMinutes()) + ' IST'; }
-    refreshClock(); setInterval(refreshClock, 60*1000);
-
-    // Mobile drawer
-    const toggle = document.getElementById('navToggle');
-    const drawer = document.getElementById('mobileDrawer');
-    toggle && toggle.addEventListener('click', ()=>{
-      const open = drawer.classList.toggle('open');
-      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-
-    // Close drawer when clicking outside
-    document.addEventListener('click', (e)=>{
-      if(!drawer || !drawer.classList.contains('open')) return;
-      const inside = drawer.contains(e.target) || (toggle && toggle.contains(e.target));
-      if(!inside){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); toggle && toggle.setAttribute('aria-expanded','false'); }
-    });
-
-    // goddess subtle animation on load for premium feel (reduced-motion aware)
-    const goddess = document.getElementById('headerGoddess');
-    try {
-      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(goddess && !prefersReduced){
-        setTimeout(()=> goddess.classList && goddess.classList.add('glow'), 650);
-      }
-    } catch(e){}
-  })();
-</script>
-    
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="wrap" id="pageWrap">
-    <header class="nav" role="banner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">TJ</div>
-        <div>
-          <div class="brand-name">The Justice Firm</div>
-          <div class="muted" style="font-size:.85rem;color:var(--muted) !important">Advocates & Legal Consultants (India)</div>
-        </div>
-      </div>
-
-      <nav id="main-nav" class="nav-links" role="navigation" aria-label="Main">
-        <a href="#practice">Practice</a>
-        <a href="#team">Team</a>
-        <a href="#articles">Articles</a>
-        <a href="#dictionary">Dictionary</a>
-        <a href="#payment">Payment</a>
-        <a href="contact.html" target="_blank" rel="noopener" class="cta btn--ghost">Contact</a>
-        <span id="clock" aria-live="polite" style="margin-left:8px"></span>
-      </nav>
-
-      <button id="navToggle" class="nav-toggle round" aria-expanded="false" aria-controls="mobileNavPanel" aria-label="Open menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-    </header>
-
-    <!-- Mobile nav panel -->
-    <div id="mobileNavPanel" class="mobile-nav-panel" aria-hidden="true" style="display:none;position:fixed;inset:0;background:linear-gradient(180deg, rgba(10,18,34,0.96), rgba(8,12,20,0.96));color:#fff;padding:18px;z-index:1200;overflow:auto">
-      <div style="display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:12px">
-        <div class="logo" style="width:44px;height:44px">TJ</div>
+<div id="royalDrawerBackdrop" class="royal-drawer-backdrop" aria-hidden="true">
+  <aside id="royalDrawer" class="royal-drawer" role="dialog" aria-modal="true" aria-labelledby="royalDrawerTitle" tabindex="-1">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="brand-badge" style="width:44px;height:44px">JF</div>
         <div style="font-weight:700">The Justice Firm</div>
-        <button id="mobileNavClose" class="close" aria-label="Close menu" style="margin-left:auto;background:transparent;border:0;color:#fff;font-size:20px">✕</button>
       </div>
-      <a href="#practice" class="mobile-link">Practice</a>
-      <a href="#team" class="mobile-link">Team</a>
-      <a href="#articles" class="mobile-link">Articles</a>
-      <a href="#dictionary" class="mobile-link">Dictionary</a>
-      <a href="#payment" class="mobile-link">Payment</a>
-      <a href="contact.html" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;display:inline-flex;justify-content:center;margin-top:12px">Contact / Book</a>
-
-      <div style="margin-top:20px;color:rgba(255,255,255,0.9);font-size:.95rem">
-        <div><strong>Call:</strong> <a href="tel:+919454183793" style="color:#fff">+91 94541 83793</a></div>
-        <div style="margin-top:6px"><a href="mailto:adv.shastri@gmail.com" style="color:#fff">adv.shastri@gmail.com</a></div>
-      </div>
+      <button id="royalClose" aria-label="Close menu" style="background:transparent;border:0;color:#eaf3ff;font-size:22px">✕</button>
     </div>
 
-    <main id="main-content" tabindex="-1">
+    <nav aria-label="Mobile primary">
+      <a href="/">Home</a>
+      <a href="#practice">Practice Areas</a>
+      <a href="#team">Our Team</a>
+      <a href="#insights">Insights</a>
+      <a href="#contact" style="font-weight:700;color:#fff">Contact & Book</a>
+    </nav>
+
+    <div class="contact" aria-hidden="false">
+      <a href="tel:+919454183793" class="btn-royal" style="flex:1;display:inline-flex;justify-content:center">Call</a>
+      <a href="https://wa.me/919454183793" target="_blank" rel="noopener" class="btn-ghost-royal" style="flex:1;display:inline-flex;justify-content:center">WhatsApp</a>
+    </div>
+  </aside>
+</div>
+
+<script>
+  (function(){
+    /* Clock (IST) */
+    function nowIST(){ const d=new Date(); const utc = d.getTime() + (d.getTimezoneOffset()*60000); return new Date(utc + (5.5*3600000)); }
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function setClock(){
+      const el = document.getElementById('siteClockRoyal');
+      if(!el) return;
+      const t = nowIST(); el.textContent = pad(t.getHours()) + ':' + pad(t.getMinutes()) + ' IST';
+    }
+    setClock(); setInterval(setClock, 60000);
+
+    /* Drawer controls with focus trap */
+    const toggle = document.getElementById('royalToggle');
+    const backdrop = document.getElementById('royalDrawerBackdrop');
+    const drawer = document.getElementById('royalDrawer');
+    const closeBtn = document.getElementById('royalClose');
+    const goddess = document.querySelector('.goddess-wrap');
+
+    function focusable(el){
+      return Array.from(el.querySelectorAll('a,button,input,textarea,[tabindex]:not([tabindex="-1"])')).filter(x=>!x.disabled && x.offsetParent !== null);
+    }
+
+    let lastFocus = null;
+    let handler = null;
+
+    function open(){
+      lastFocus = document.activeElement;
+      backdrop.classList.add('open');
+      backdrop.setAttribute('aria-hidden','false');
+      drawer.focus();
+      document.body.style.overflow = 'hidden';
+      toggle && toggle.setAttribute('aria-expanded','true');
+
+      handler = function(e){
+        if(e.key === 'Escape'){ close(); return; }
+        if(e.key !== 'Tab') return;
+        const nodes = focusable(drawer);
+        if(nodes.length === 0) return;
+        const first = nodes[0], last = nodes[nodes.length-1];
+        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      };
+      document.addEventListener('keydown', handler);
+    }
+
+    function close(){
+      backdrop.classList.remove('open');
+      backdrop.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      toggle && toggle.setAttribute('aria-expanded','false');
+      if(handler) document.removeEventListener('keydown', handler);
+      try{ lastFocus && lastFocus.focus(); } catch(e){}
+    }
+
+    toggle && toggle.addEventListener('click', ()=> { backdrop.classList.contains('open') ? close() : open(); });
+    closeBtn && closeBtn.addEventListener('click', close);
+    backdrop && backdrop.addEventListener('click', (e)=> { if(e.target === backdrop) close(); });
+
+    // goddess subtle glow (respect reduced-motion)
+    try{
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(goddess && !reduce) setTimeout(()=> goddess.classList.add('glow'), 650);
+    }catch(e){}
+  })();
+</script>
+
+<!-- Paste main start after this -->
+<main id="main-content" tabindex="-1">
 <!-- ================= PREMIUM HERO — single copy-paste block ================= -->
 <section class="hero" aria-label="Hero — The Justice Firm" style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;">
   <style>
