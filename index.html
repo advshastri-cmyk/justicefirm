@@ -14,7 +14,7 @@
   <style>
     /* ==========================
        Palette B — Deep Indigo & Antique Gold
-       (Applied site-wide)
+       Full page CSS (condensed & guarded)
        ========================== */
 
     :root{
@@ -24,7 +24,7 @@
       --text:    #e7eef9;
       --ink:     #0b1422;
       --muted:   #9aaec6;
-      --muted-dark: #5b6b78; /* used on light surfaces */
+      --muted-dark: #5b6b78;
       --accent:  #1141a8;
       --accent-2:#0b2f7a;
       --gold:    #b68b17;
@@ -36,7 +36,6 @@
       --max-mobile-padding:18px;
     }
 
-    /* Reset + baseline */
     *,*::before,*::after{box-sizing:border-box}
     html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg-900),var(--bg-700));color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; -webkit-font-smoothing:antialiased;line-height:1.45}
     a{color:inherit;text-decoration:none}
@@ -81,9 +80,10 @@
       overflow:visible;
       color: var(--text);
     }
-    .hero-card{background:linear-gradient(180deg, rgba(247,249,252,0.98), rgba(247,249,252,0.96));padding:24px;border-radius:12px;box-shadow:0 22px 60px rgba(7,12,25,0.06);position:relative;z-index:2;color:var(--ink)}
+    .hero::before{ content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(3,8,20,0.55), rgba(7,12,24,0.72)); z-index:0; pointer-events:none; border-radius:16px }
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,252,255,0.96));padding:24px;border-radius:12px;box-shadow:0 22px 60px rgba(7,12,25,0.06);position:relative;z-index:2;color:var(--ink)}
     .eyebrow{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700;display:inline-block}
-    .headline{font-family:Merriweather,serif;font-size:26px;margin:12px 0}
+    .headline{font-family:Merriweather,serif;font-size:26px;margin:12px 0;color:var(--ink)}
     .lead{color:var(--muted);margin-bottom:16px}
     .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
 
@@ -98,7 +98,6 @@
     #calendar td.today{background:var(--gold);color:#000;font-weight:700;border-radius:50%}
 
     section{margin:30px 0}
-    /* Use light heading on the dark page; override inside light cards where needed */
     h2{font-family:Merriweather,serif;font-size:1.22rem;margin:0 0 10px;position:relative;color:var(--text)}
     h2::after{content:"";display:block;width:48px;height:4px;background:var(--gold);border-radius:4px;margin-top:8px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
@@ -111,15 +110,14 @@
     .practice-thumb { width:140px; min-width:140px; height:140px; object-fit:cover; display:block }
     .practice-body { padding:14px; display:flex; flex-direction:column; gap:8px; }
 
-    /* Team premium (dark textured section) */
+    /* team section (cleaned) */
     .team-section-premium {
       position: relative;
       padding: 56px 18px;
       color: var(--text);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, system-ui, sans-serif;
       overflow: hidden;
       isolation: isolate;
-      -webkit-font-smoothing: antialiased;
     }
     .team-section-premium::before {
       content: "";
@@ -131,211 +129,47 @@
         radial-gradient(900px 500px at 90% 80%, rgba(20,255,220,0.03), transparent 8%),
         linear-gradient(180deg, rgba(4,7,15,0.9) 0%, rgba(8,12,20,0.96) 100%);
       filter: blur(26px) saturate(1.05);
-      animation: bgShift 12s linear infinite alternate;
-      pointer-events: none;
     }
-    @keyframes bgShift {
-      0% { transform: translate3d(-1.8%, -1%, 0) rotate(0.01deg); }
-      50% { transform: translate3d(2%, 1.2%, 0) rotate(-0.02deg); }
-      100% { transform: translate3d(-0.8%, -0.4%, 0) rotate(0.01deg); }
-    }
-    .team-section-premium::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,0.01) 1px, transparent 1px);
-      background-size: 12px 12px;
-      opacity: 0.45;
-      mix-blend-mode: overlay;
-    }
-
     .team-wrap { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; }
-
-    .team-header { margin-bottom: 26px; }
     .team-header h2 { margin: 0; color: #fff; font-weight: 700; letter-spacing: -.02em; font-size: 1.95rem; }
     .team-header .muted { margin: 6px 0 0; color: #98a9c0; font-size: .95rem; }
-
     .team-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
     @media (min-width: 720px) { .team-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
     @media (min-width: 1100px) { .team-grid { grid-template-columns: repeat(4, 1fr); gap: 28px; } }
-
-    .member {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      border-radius: 14px;
-      overflow: visible;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.04);
-      box-shadow: 0 8px 30px rgba(2,6,23,0.55);
-      transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .45s;
-      transform-origin: center;
-      min-height: 260px;
-      outline: none;
-      will-change: transform;
-      backface-visibility: hidden;
-    }
+    .member { position: relative; display: flex; flex-direction: column; border-radius: 14px; overflow: visible; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.04); box-shadow: 0 8px 30px rgba(2,6,23,0.55); transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .45s; transform-origin: center; min-height: 260px; outline: none; will-change: transform; backface-visibility: hidden; text-align:center; padding:14px 12px; }
     .member:focus, .member:hover { transform: translateY(-6px); box-shadow: 0 22px 60px rgba(2,8,26,0.78); z-index: 3; cursor: pointer; }
-
-    .member-figure {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/3;
-      overflow: hidden;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(180deg, rgba(10,14,20,0.35), rgba(6,8,14,0.5));
-    }
-    .member-figure img {
-      width: 110%;
-      height: 110%;
-      object-fit: cover;
-      object-position: var(--focus-pos, center center);
-      display: block;
-      transform: scale(1);
-      transition: transform .9s cubic-bezier(.15,.9,.2,1), filter .7s;
-      filter: contrast(1.01) saturate(.96) brightness(.96);
-      will-change: transform;
-    }
+    .member-figure { position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(180deg, rgba(10,14,20,0.35), rgba(6,8,14,0.5)); margin-bottom:10px; }
+    .member-figure img { width: 110%; height: 110%; object-fit: cover; object-position: center center; display: block; transform: scale(1); transition: transform .9s cubic-bezier(.15,.9,.2,1), filter .7s; filter: contrast(1.01) saturate(.96) brightness(.96); }
     .member:hover .member-figure img { transform: scale(1.08); }
-
-    .sheen {
-      pointer-events: none;
-      position: absolute;
-      left: -30%;
-      top: -50%;
-      width: 160%;
-      height: 220%;
-      background: linear-gradient(120deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 20%, rgba(255,255,255,0.0) 50%);
-      transform: rotate(22deg) translateX(-40%);
-      mix-blend-mode: screen;
-      filter: blur(18px) saturate(1.05);
-      transition: transform 1.6s linear, opacity .6s;
-      opacity: 0.12;
-    }
-    .member:hover .sheen { transform: translateX(30%) rotate(22deg); opacity: 0.22; }
-
-    .initials {
-      position: absolute;
-      inset: 0;
-      display: none;
-      place-items: center;
-      font-weight: 700;
-      color: var(--text);
-      background: linear-gradient(180deg, rgba(34,41,60,0.92), rgba(17,22,34,0.96));
-      font-size: 1.125rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      -webkit-backdrop-filter: blur(6px);
-      backdrop-filter: blur(6px);
-      border-radius: 12px;
-    }
-
-    .bio {
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      justify-content: center;
-      align-items: flex-start;
-      margin-top: 10px;
-      color: var(--text);
-    }
+    .initials { position: absolute; inset: 0; display: none; place-items: center; font-weight: 700; color: var(--text); background: linear-gradient(180deg, rgba(34,41,60,0.92), rgba(17,22,34,0.96)); font-size: 1.125rem; letter-spacing: 0.06em; text-transform: uppercase; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border-radius: 12px; }
+    .bio { padding: 8px 6px 6px; display:flex; flex-direction:column; gap:6px; justify-content:center; align-items:center; margin-top: 6px; }
     .bio h3 { margin: 0; font-size: 1rem; color: #fff; line-height: 1.15; }
     .role { margin: 0; color: #b7c7da; font-size: .9rem; }
     .meta { margin: 0; color: #8ea4bf; font-size: .82rem; }
 
-    .member::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 10%;
-      width: 80%;
-      height: 14px;
-      filter: blur(18px);
-      background: radial-gradient(closest-side, rgba(28,120,255,0.05), transparent 60%);
-      opacity: 0.6;
-      pointer-events: none;
-      transition: opacity .4s;
-    }
-
     /* modal */
     .modal[hidden]{display:none}
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(2,6,20,0.64);
-      backdrop-filter: blur(6px);
-      transition: opacity .35s ease;
-    }
-    .modal-panel {
-      position: relative;
-      z-index: 3;
-      max-width: 760px;
-      width: calc(100% - 40px);
-      margin: 16px;
-      border-radius: 12px;
-      transform: translateY(10px) scale(.995);
-      transition: transform .36s cubic-bezier(.2,.9,.2,1), opacity .36s;
-      box-shadow: 0 24px 80px rgba(4,8,20,0.75);
-    }
-    .modal-content {
-      background: linear-gradient(180deg, rgba(10,14,22,0.98), rgba(6,8,14,0.99));
-      padding: 22px;
-      color: #eaf3ff;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .modal-close {
-      position: absolute;
-      right: 12px;
-      top: 10px;
-      background: transparent;
-      border: none;
-      color: #cfe6ff;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .modal-head h3 { margin: 0 0 6px 0; font-size: 1.2rem; color: #fff; }
-    .modal-sub { margin: 0 0 12px 0; color: #9fb0c9; font-size: .95rem; }
-    .modal-quote {
-      margin: 8px 0 12px 0;
-      padding-left: 12px;
-      border-left: 3px solid rgba(77,124,255,0.18);
-      color: #cfe2fc;
-      font-style: italic;
-    }
-    .modal-body {
-      color: #dfeafc;
-      font-size: 0.98rem;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .modal-body p { margin: 0 0 14px 0; text-align: left; opacity: 0.95; }
+    .modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .modal-backdrop { position:absolute; inset:0; background:rgba(2,6,20,0.64); backdrop-filter: blur(6px); }
+    .modal-panel { position: relative; z-index: 3; max-width: 760px; width: calc(100% - 40px); margin: 16px; border-radius: 12px; transform: translateY(10px) scale(.995); transition: transform .36s cubic-bezier(.2,.9,.2,1), opacity .36s; box-shadow: 0 24px 80px rgba(4,8,20,0.75); }
+    .modal-content { background: linear-gradient(180deg, rgba(10,14,22,0.98), rgba(6,8,14,0.99)); padding: 22px; color: #eaf3ff; border-radius: 12px; overflow: hidden; }
+    .modal-close { position:absolute; right:12px; top:10px; background:transparent; border:none; color:#cfe6ff; font-size:28px; line-height:1; cursor:pointer; padding:6px; }
+    .modal-head h3 { margin: 0 0 6px 0; font-size:1.2rem; color:#fff; }
+    .modal-sub { margin: 0 0 12px 0; color: #9fb0c9; font-size:.95rem; }
+    .modal-quote { margin: 8px 0 12px 0; padding-left: 12px; border-left: 3px solid rgba(77,124,255,0.18); color: #cfe2fc; font-style: italic; }
+    .modal-body { color: #dfeafc; font-size: 0.98rem; line-height: 1.6; max-width: 700px; margin: 0 auto; }
     .modal-foot { display:flex; justify-content:flex-end; gap:10px; margin-top: 6px; }
     .btn { border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight:600; }
     .btn-primary { background: linear-gradient(180deg,var(--accent),var(--accent-2)); color: white; box-shadow: 0 8px 24px rgba(17,65,168,0.18); }
-    .btn-primary:focus { outline: 2px solid rgba(17,65,168,0.22); }
 
-    /* readable muted on light surfaces */
-    .card .muted, .panel .muted, .dict-results .muted, .practice-body .muted { color: var(--muted-dark); }
+    /* small helpers */
+    .btn--ghost { background:transparent; color:var(--ink); border:1px solid rgba(17,65,168,0.08); box-shadow:none; padding:10px 12px; border-radius:10px; }
+    .btn--small { padding:8px 10px; font-size:.88rem; border-radius:10px; font-weight:600; }
+    .tag-chip{border-radius:999px;border:1px solid #dde4f3;padding:6px 10px;font-size:.85rem;background:#fff;cursor:pointer}
 
-    /* responsive */
+    footer a { color: var(--gold); text-decoration: none; }
+    .member-figure .initials{ display: none; }
+
     @media (max-width: 1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:12px} }
     @media (max-width:720px){
       .nav-toggle.round{display:flex}
@@ -347,19 +181,9 @@
       .logo{width:40px;height:40px}
       .wrap{padding:16px}
     }
-
     @media (prefers-reduced-motion: reduce){
       *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
     }
-
-    /* small helper classes */
-    .btn--ghost { background:transparent; color:var(--ink); border:1px solid rgba(17,65,168,0.08); box-shadow:none; padding:10px 12px; border-radius:10px; }
-    .btn--small { padding:8px 10px; font-size:.88rem; border-radius:10px; font-weight:600; }
-    .tag-chip{border-radius:999px;border:1px solid #dde4f3;padding:6px 10px;font-size:.85rem;background:#fff;cursor:pointer}
-
-    footer a { color: var(--gold); text-decoration: none; }
-
-    .member-figure .initials{ display: none; }
   </style>
 </head>
 <body>
@@ -390,7 +214,6 @@
       </button>
     </header>
 
-    <!-- Mobile nav panel -->
     <div id="mobileNavPanel" class="mobile-nav-panel" aria-hidden="true" style="display:none;position:fixed;inset:0;background:linear-gradient(180deg, rgba(10,18,34,0.96), rgba(8,12,20,0.96));color:#fff;padding:18px;z-index:1200;overflow:auto">
       <div style="display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:12px">
         <div class="logo" style="width:44px;height:44px">TJ</div>
@@ -411,223 +234,67 @@
     </div>
 
     <main id="main-content" tabindex="-1">
-     <!-- HERO (replace existing hero section with this block) -->
-<section class="hero" data-reveal aria-label="Hero — The Justice Firm">
-  <style>
-    /* HERO — Premium redesign */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 22px;
-      align-items: start;
-      margin: 18px 0;
-      padding: 26px;
-      border-radius: 16px;
-      position: relative;
-      overflow: hidden;
-      color: var(--text);
-      background-image: url('hero_bg.jpg');
-      background-size: cover;
-      background-position: center center;
-      box-shadow: 0 24px 90px rgba(2,6,20,0.6);
-    }
 
-    /* dark overlay to ensure text visibility */
-    .hero::before{
-      content:"";
-      position:absolute;inset:0;
-      background: linear-gradient(180deg, rgba(3,8,20,0.55), rgba(7,12,24,0.72));
-      z-index:0;
-      pointer-events:none;
-    }
+      <!-- HERO -->
+      <section class="hero" data-reveal aria-label="Hero — The Justice Firm">
+        <div class="hero-card" data-reveal>
+          <span class="eyebrow" aria-hidden="true">Trusted in Indian Courts</span>
+          <h1 class="headline">Practical counsel for Family, Criminal &amp; Civil disputes.</h1>
+          <p class="lead">Confidential, strategic and results-focused representation across Allahabad and Uttar Pradesh.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="contact.html" target="_blank" rel="noopener">Book Consultation</a>
+            <a class="btn btn--ghost" href="#practice">Explore Practice</a>
+          </div>
+          <p class="muted linkline" style="margin-top:12px;font-size:.95rem"><strong style="color:var(--ink);font-weight:700">+91 94541 83793</strong> · <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a></p>
+        </div>
 
-    .hero-card, .panel {
-      position: relative;
-      z-index: 2;
-    }
+        <aside class="panel" data-reveal aria-labelledby="nextSlotLabel">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+            <div>
+              <h4 id="nextSlotLabel" style="margin:0;color:var(--ink);font-size:1rem">Next Available Slot</h4>
+              <div class="muted" id="nextSlot" style="margin-top:6px;color:var(--muted-dark)">Loading…</div>
+            </div>
+            <div id="clock-nav" aria-live="polite">--:--:-- IST</div>
+          </div>
 
-    /* hero-card: glass / light surface so headline is crisp */
-    .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,252,255,0.96));
-      color: var(--ink);
-      padding: 28px;
-      border-radius: 14px;
-      box-shadow: 0 18px 50px rgba(7,12,25,0.12);
-      border: 1px solid rgba(6,12,28,0.06);
-      max-width: 800px;
-    }
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn--ghost" id="requestSlotBtn" type="button" style="min-width:110px">Request Slot</button>
+            <a class="btn btn--ghost" href="contact.html" target="_blank" rel="noopener" style="min-width:110px">Contact</a>
+          </div>
 
-    .eyebrow{
-      display:inline-block;
-      font-weight:700;
-      font-size:.88rem;
-      padding:8px 12px;
-      border-radius:999px;
-      background: linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:#fff;
-      letter-spacing:0.02em;
-    }
+          <div id="calendar-section" aria-label="Court calendar">
+            <h4 style="margin:8px 0 6px 0;color:var(--ink);font-size:.98rem">Court Calendar</h4>
+            <div id="calendar" role="table" aria-live="polite" aria-atomic="true"></div>
+          </div>
+        </aside>
+      </section>
 
-    .headline{
-      font-family: 'Merriweather', serif;
-      font-size: 30px;
-      line-height: 1.12;
-      margin: 12px 0 8px;
-      color: var(--ink);
-      font-weight:700;
-      letter-spacing:-0.01em;
-    }
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="aboutHeading" class="card" style="padding:22px;">
+        <h2 id="aboutHeading">About Us — Clarity, Compassion, and Discipline</h2>
+        <p class="muted" style="margin-top:8px">We are a boutique law practice based in Allahabad (Prayagraj), combining rigorous legal analysis with humane client care. Our approach balances strategic clarity, empathetic client communication, and disciplined courtroom advocacy.</p>
 
-    .headline::after{
-      content:"";
-      display:block;
-      width:56px;
-      height:4px;
-      background:var(--gold);
-      border-radius:4px;
-      margin-top:10px;
-      box-shadow: 0 6px 18px rgba(182,139,23,0.12);
-    }
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px;align-items:start">
+          <div>
+            <p style="margin:0 0 10px">Our mission: to help clients resolve disputes efficiently while protecting rights and dignity. We prefer negotiated settlements when appropriate, and yet we are prepared to litigate vigorously when justice requires it.</p>
+            <ul style="margin-top:10px;">
+              <li>Practical advice tailored to Indian courts and procedures</li>
+              <li>Clear fee estimates and responsive communication</li>
+              <li>Support through each procedural step — paperwork, hearing prep and post-order compliance</li>
+            </ul>
+          </div>
 
-    .lead{
-      margin-top:12px;
-      color:var(--muted-dark);
-      font-size:1rem;
-    }
-
-    .hero-cta { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; align-items:center; }
-
-    /* Buttons (use existing btn classes but improve sizes) */
-    .btn { font-weight:700; padding:10px 14px; border-radius:12px; cursor:pointer; border:0; }
-    .btn-primary {
-      background: linear-gradient(180deg,var(--accent),var(--accent-2));
-      color:#fff;
-      box-shadow: 0 12px 36px rgba(17,65,168,0.16);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 22px 56px rgba(17,65,168,0.22); }
-    .btn--ghost {
-      background: transparent;
-      border: 1px solid rgba(8,12,20,0.06);
-      color: var(--ink);
-      backdrop-filter: blur(4px);
-    }
-
-    .hero .muted.linkline {
-      margin-top:12px;
-      font-size:.95rem;
-      color:var(--muted-dark);
-    }
-    .hero .muted.linkline a { color: var(--accent); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
-
-    /* Aside panel: compact, light, readable */
-    .panel {
-      background: linear-gradient(180deg,#fff,#fbfdff);
-      padding:18px;
-      border-radius:12px;
-      box-shadow: var(--shadow-2);
-      color: var(--ink);
-      min-width:240px;
-    }
-    #clock-nav { font-weight:700; color:var(--gold); font-size:0.95rem; text-align:right; }
-
-    #calendar-section { background: linear-gradient(180deg,#fff,#fbfdff); border-radius:10px; padding:10px; margin-top:12px; box-shadow:0 12px 36px rgba(7,12,25,0.03); }
-    #calendar { width:100%; overflow-x:auto; font-size:.95rem; color:var(--muted-dark); }
-    #calendar table caption { font-weight:700; color:var(--ink); }
-
-    /* Responsiveness */
-    @media (max-width:1024px){ .hero{grid-template-columns:1fr 320px} .panel{padding:14px} }
-    @media (max-width:720px){
-      .hero { grid-template-columns: 1fr; padding:20px; gap:12px; }
-      .hero-card { padding:20px; }
-      .headline { font-size:22px; }
-      .panel { order:2; width:100%; max-width:none; }
-      .hero-card { order:1; width:100%; }
-      .hero-cta { justify-content:flex-start; }
-    }
-
-    /* small helpers */
-    .eyebrow small { opacity:0.9; color:rgba(255,255,255,0.92); }
-  </style>
-
-  <div class="hero-card" data-reveal>
-    <span class="eyebrow" aria-hidden="true">Trusted in Indian Courts</span>
-
-    <h1 class="headline">Practical counsel for Family, Criminal &amp; Civil disputes.</h1>
-
-    <p class="lead">Confidential, strategic and results-focused representation across Allahabad and Uttar Pradesh.</p>
-
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="contact.html" target="_blank" rel="noopener">Book Consultation</a>
-      <a class="btn btn--ghost" href="#practice">Explore Practice</a>
-    </div>
-
-    <p class="muted linkline" style="margin-top:12px;font-size:.95rem">
-      <strong style="color:var(--ink);font-weight:700">+91 94541 83793</strong> · <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
-    </p>
-  </div>
-
-  <aside class="panel" data-reveal aria-labelledby="nextSlotLabel">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-      <div>
-        <h4 id="nextSlotLabel" style="margin:0;color:var(--ink);font-size:1rem">Next Available Slot</h4>
-        <div class="muted" id="nextSlot" style="margin-top:6px;color:var(--muted-dark)">Loading…</div>
-      </div>
-      <div id="clock-nav" aria-live="polite">--:--:-- IST</div>
-    </div>
-
-    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn btn--ghost" id="requestSlotBtn" type="button" style="min-width:110px">Request Slot</button>
-      <a class="btn btn--ghost" href="contact.html" target="_blank" rel="noopener" style="min-width:110px">Contact</a>
-    </div>
-
-    <div id="calendar-section" aria-label="Court calendar">
-      <h4 style="margin:8px 0 6px 0;color:var(--ink);font-size:.98rem">Court Calendar</h4>
-      <div id="calendar" role="table" aria-live="polite" aria-atomic="true"></div>
-    </div>
-  </aside>
-</section>
-
-     <!-- ABOUT / PHILOSOPHY -->
-<section id="about" aria-labelledby="aboutHeading" class="card" style="padding:22px;">
-  <h2 id="aboutHeading">About Us — Clarity, Compassion, and Discipline</h2>
-
-  <!-- this will now use var(--muted-dark) from CSS above -->
-  <p class="muted" style="margin-top:8px">
-    We are a boutique law practice based in Allahabad (Prayagraj), combining rigorous legal analysis with humane client care.
-    Our approach balances strategic clarity, empathetic client communication, and disciplined courtroom advocacy.
-  </p>
-
-  <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px;align-items:start">
-    <div>
-      <!-- inherits var(--ink) from #about now -->
-      <p style="margin:0 0 10px">
-        Our mission: to help clients resolve disputes efficiently while protecting rights and dignity.
-        We prefer negotiated settlements when appropriate, and yet we are prepared to litigate vigorously when justice requires it.
-      </p>
-
-      <!-- remove old color:var(--muted); let CSS handle it -->
-      <ul style="margin-top:10px;">
-        <li>Practical advice tailored to Indian courts and procedures</li>
-        <li>Clear fee estimates and responsive communication</li>
-        <li>Support through each procedural step — paperwork, hearing prep and post-order compliance</li>
-      </ul>
-    </div>
-
-    <aside style="background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:10px;box-shadow:var(--shadow-2)">
-      <strong style="display:block;margin-bottom:8px;color:var(--ink)">Quick facts</strong>
-      <div class="muted" style="color:var(--muted-dark)">
-        Founded: 2010 · Principal Counsel: Adv. Ganga S. Shastri · Practice: Family, Criminal, Civil & Constitutional advisory
-      </div>
-    </aside>
-  </div>
-</section>
+          <aside style="background:linear-gradient(180deg,#fff,#fbfdff);padding:14px;border-radius:10px;box-shadow:var(--shadow-2)">
+            <strong style="display:block;margin-bottom:8px;color:var(--ink)">Quick facts</strong>
+            <div class="muted" style="color:var(--muted-dark)">Founded: 2010 · Principal Counsel: Adv. Ganga S. Shastri · Practice: Family, Criminal, Civil & Constitutional advisory</div>
+          </aside>
+        </div>
+      </section>
 
       <!-- PRACTICE -->
       <section id="practice">
         <h2>Practice Areas</h2>
         <p class="muted">Family, Criminal, Civil Litigation & Mediation.</p>
-
         <div class="practice-grid">
           <article class="practice-card" data-reveal>
             <img class="practice-thumb" src="fam.jpg" alt="Family & Matrimonial" loading="lazy" decoding="async">
@@ -658,510 +325,166 @@
         </div>
       </section>
 
-    <!-- TEAM -->
-<section id="team" aria-labelledby="teamHeading" class="team-section-premium">
-<style>
-/* =======================
-   TEAM SECTION FIX / CLEANUP
-   ======================= */
+      <!-- TEAM -->
+      <section id="team" aria-labelledby="teamHeading" class="team-section-premium">
+        <div class="team-wrap">
+          <header class="team-header">
+            <h2 id="teamHeading">Our Team</h2>
+            <p class="muted">Experienced advocates &amp; legal consultants.</p>
+          </header>
 
-.team-section-premium {
-  position: relative;
-  padding: 56px 18px;
-  color: var(--text);
-  font-family: Inter, system-ui, sans-serif;
-  overflow: hidden;
-  isolation: isolate;
-}
+          <div class="team-grid" role="list">
+            <!-- 1: Ganga -->
+            <article class="member" role="listitem" tabindex="0"
+              data-title="Adv. Ganga Shankar Shastri"
+              data-subtitle="Founder & Lead Counsel"
+              data-quote="Justice is served best when clarity meets conscience."
+              data-content="Adv. Ganga Shankar Shastri holds Bachelor's degrees in Information Technology and Law. He has appeared in district and High Court matters across family, criminal and civil jurisdictions. Known for clear strategy and calm courtroom manner.\n\n15+ years of practice; advised clients across Uttar Pradesh on sensitive family and property matters.">
+              <figure class="member-figure">
+                <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri">
+                <div class="initials">GS</div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Ganga Shankar Shastri</h3>
+                <p class="role">Founder &amp; Lead Counsel</p>
+                <p class="meta">High Court • 15+ years</p>
+              </div>
+            </article>
 
-/* Subtle animated texture */
-.team-section-premium::before {
-  content:"";
-  position:absolute; inset:0;
-  background:linear-gradient(180deg,rgba(4,7,15,0.9),rgba(8,12,20,0.96));
-  z-index:0;
-}
+            <!-- 2: Minakshi (STRONGER BIO) -->
+            <article class="member" role="listitem" tabindex="0"
+              data-title="Adv. Minakshi Shastri"
+              data-subtitle="Senior Associate – Civil & Corporate"
+              data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
+              data-content="Adv. Minakshi Shastri holds an LL.M. and completed postgraduate studies at the Indian Institute of Human Rights. She specialises in property and corporate litigation, drafting precise pleadings and handling complex title disputes.\n\nPraised for meticulous preparation and client-focused guidance; frequently commended by peers for strategic settlement negotiation and courtroom clarity.">
+              <figure class="member-figure">
+                <img src="minakshi.jpg" alt="Adv. Minakshi Shastri">
+                <div class="initials">MS</div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Minakshi Shastri</h3>
+                <p class="role">Senior Associate – Civil &amp; Corporate</p>
+                <p class="meta">Property Litigation • LL.M.</p>
+              </div>
+            </article>
 
-.team-wrap {
-  position: relative;
-  z-index: 2;
-  max-width: 1180px;
-  margin: 0 auto;
-}
+            <!-- 3: Shivani -->
+            <article class="member" role="listitem" tabindex="0"
+              data-title="Adv. Shivani Shastri"
+              data-subtitle="Consulting Advocate – Constitutional Affairs"
+              data-quote="Progress in law begins with the courage to question, learn, and refine."
+              data-content="Adv. Shivani Shastri holds an LL.M. and is pursuing doctoral research. She focuses on research, advisory opinions and constitutional law matters, bringing academic rigour to complex legal questions.">
+              <figure class="member-figure">
+                <img src="shivani.jpg" alt="Adv. Shivani Shastri">
+                <div class="initials">SS</div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Shivani Shastri</h3>
+                <p class="role">Consulting Advocate – Constitutional Affairs</p>
+                <p class="meta">Research &amp; Advisory</p>
+              </div>
+            </article>
 
-.team-header h2 {
-  margin: 0;
-  color: #fff;
-  font-weight: 700;
-  font-size: 2rem;
-}
-.team-header .muted {
-  margin-top: 6px;
-  color: #98a9c0;
-}
+            <!-- 4: Sanjay -->
+            <article class="member" role="listitem" tabindex="0"
+              data-title="Adv. Sanjay Kumar"
+              data-subtitle="Associate Counsel – Criminal Defence"
+              data-content="Practical criminal defence experience, from bail petitions to trial.">
+              <figure class="member-figure">
+                <img src="sanjay.jpg" alt="Adv. Sanjay Kumar">
+                <div class="initials">SK</div>
+              </figure>
+              <div class="bio">
+                <h3>Adv. Sanjay Kumar</h3>
+                <p class="role">Associate Counsel – Criminal Defence</p>
+                <p class="meta">Criminal Practice</p>
+              </div>
+            </article>
+          </div>
+        </div>
 
-.team-grid {
-  display: grid;
-  gap: 26px;
-  margin-top: 26px;
-}
-@media (min-width:720px){
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width:1100px){
-  .team-grid { grid-template-columns: repeat(4, 1fr); }
-}
+        <!-- PROFILE MODAL (important — prevents JS errors / freezing) -->
+        <div id="profileModal" class="modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+          <div class="modal-backdrop" data-close></div>
+          <div class="modal-panel" role="document">
+            <div class="modal-content">
+              <button class="modal-close" data-close aria-label="Close profile">✕</button>
+              <div class="modal-head">
+                <h3 id="profileModalTitle">Name</h3>
+                <div id="profileModalSub" class="modal-sub">Role</div>
+              </div>
+              <div id="profileModalQuote" class="modal-quote" style="display:none"></div>
+              <div id="modalDesc" class="modal-body"><p><em>Bio coming soon.</em></p></div>
+              <div class="modal-foot">
+                <button class="btn btn--ghost" data-close>Close</button>
+                <a class="btn btn-primary" href="contact.html" target="_blank" rel="noopener">Book Consultation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-.member {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding:14px 14px 18px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.06);
-  box-shadow:0 10px 30px rgba(0,0,0,0.45);
-  transition:transform .35s, box-shadow .35s;
-  text-align:center;
-  cursor:pointer;
-}
-.member:hover { transform:translateY(-4px); box-shadow:0 20px 50px rgba(0,0,0,0.75); }
-
-/* Fix CUT photos: consistent proportions */
-.member-figure {
-  width: 100%;
-  max-width: 220px;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border-radius: 14px;
-  margin: 8px auto 10px;
-  display: flex;
-  align-items:center;
-  justify-content:center;
-  background:#101623;
-}
-
-.member-figure img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position:center;
-}
-
-.member-figure .initials {
-  display:grid; place-items:center;
-  width:100%; height:100%;
-  font-weight:700; font-size:1.1rem;
-}
-
-/* Bio text */
-.bio { display:flex; flex-direction:column; gap:4px; }
-.bio h3 { margin:0; color:#fff; font-size:1rem; font-weight:600; }
-.role { margin:0; font-size:.9rem; color:#b7c7da; }
-.meta { margin:0; font-size:.82rem; color:#8ea4bf; }
-
-/* Mobile small width */
-@media(max-width:720px){
-  .member { max-width: 320px; margin-inline:auto; }
-}
-</style>
-
-<div class="team-wrap">
-  <header class="team-header">
-    <h2 id="teamHeading">Our Team</h2>
-    <p class="muted">Experienced advocates &amp; legal consultants.</p>
-  </header>
-
-  <div class="team-grid" role="list">
-
-    <!-- 1: Ganga -->
-    <article class="member" role="listitem" tabindex="0"
-      data-title="Adv. Ganga Shankar Shastri"
-      data-subtitle="Founder & Lead Counsel"
-      data-quote="Justice is served best when clarity meets conscience."
-      data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law...\n\n15+ years experience...">
-      <figure class="member-figure">
-        <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri">
-        <div class="initials">GS</div>
-      </figure>
-      <div class="bio">
-        <h3>Adv. Ganga Shankar Shastri</h3>
-        <p class="role">Founder &amp; Lead Counsel</p>
-        <p class="meta">High Court • 15+ years</p>
-      </div>
-    </article>
-
-    <!-- 2: Minakshi -->
-    <article class="member" role="listitem" tabindex="0"
-      data-title="Adv. Minakshi Shastri"
-      data-subtitle="Senior Associate – Civil & Corporate"
-      data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
-      data-content="LL.M. • Property & Corporate litigation expert...">
-      <figure class="member-figure">
-        <img src="minakshi.jpg" alt="Adv. Minakshi Shastri">
-        <div class="initials">MS</div>
-      </figure>
-      <div class="bio">
-        <h3>Adv. Minakshi Shastri</h3>
-        <p class="role">Senior Associate – Civil &amp; Corporate</p>
-        <p class="meta">Property Litigation</p>
-      </div>
-    </article>
-
-    <!-- 3: Shivani -->
-    <article class="member" role="listitem" tabindex="0"
-      data-title="Adv. Shivani Shastri"
-      data-subtitle="Consulting Advocate – Constitutional Affairs"
-      data-quote="Progress in law begins with the courage to question, learn, and refine."
-      data-content="LL.M., pursuing Ph.D. • Research & Advisory...">
-      <figure class="member-figure">
-        <img src="shivani.jpg" alt="Adv. Shivani Shastri">
-        <div class="initials">SS</div>
-      </figure>
-      <div class="bio">
-        <h3>Adv. Shivani Shastri</h3>
-        <p class="role">Consulting Advocate – Constitutional Affairs</p>
-        <p class="meta">Research &amp; Advisory</p>
-      </div>
-    </article>
-
-    <!-- 4: Sanjay -->
-    <article class="member" role="listitem" tabindex="0"
-      data-title="Adv. Sanjay Kumar"
-      data-subtitle="Associate Counsel – Criminal Defence"
-      data-content="Criminal Defence • Practical courtroom experience">
-      <figure class="member-figure">
-        <img src="sanjay.jpg" alt="Adv. Sanjay Kumar">
-        <div class="initials">SK</div>
-      </figure>
-      <div class="bio">
-        <h3>Adv. Sanjay Kumar</h3>
-        <p class="role">Associate Counsel – Criminal Defence</p>
-        <p class="meta">Criminal Practice</p>
-      </div>
-    </article>
-
-  </div>
-</div>
-
-<!-- Modal stays unchanged (keep yours below this) -->
-</section>
-<!-- TESTIMONIALS -->
-<section id="testimonials" aria-labelledby="testimonialsHeading" class="card" style="padding:26px 22px;background:var(--card);color:var(--ink);margin-top:26px;">
-  <!-- Local styling just for testimonials -->
-  <style>
-    /* HEADINGS */
-    #testimonials h2 {
-      color: var(--ink);
-      margin: 0 0 4px;
-    }
-    #testimonials > p.muted {
-      margin-top: 6px;
-      color: var(--muted-dark) !important;
-    }
-
-    /* GRID / SLIDER LAYOUT */
-    #testimonials .testimonials-track {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    /* Cards */
-    #testimonials .testimonial-card {
-      position: relative;
-      padding: 18px 18px 16px;
-      border-radius: 12px;
-      background: #ffffff;
-      box-shadow: var(--shadow-2);
-      border: 1px solid rgba(15,23,42,0.04);
-      overflow: hidden;
-      transition: transform .25s var(--easing), box-shadow .25s var(--easing), border-color .25s var(--easing);
-    }
-    #testimonials .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 52px rgba(15,23,42,0.16);
-      border-color: rgba(17,65,168,0.25); /* soft glow (D) */
-    }
-
-    /* Quote icon (A) */
-    #testimonials .quote-icon {
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      opacity: 0.12;
-    }
-
-    /* Text */
-    #testimonials blockquote {
-      margin: 0;
-      color: #111827;
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
-
-    #testimonials figcaption {
-      margin-top: 10px;
-      color: #4b5563;
-      font-size: 0.86rem;
-      font-weight: 500;
-    }
-
-    /* Star rating (C) */
-    #testimonials .stars {
-      display: inline-flex;
-      gap: 3px;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    #testimonials .stars svg {
-      width: 14px;
-      height: 14px;
-      flex: 0 0 auto;
-    }
-
-    /* --- MOBILE SLIDER (B) --- */
-    @media (max-width: 720px) {
-      #testimonials .testimonials-track {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 14px;
-        padding-bottom: 6px;
-      }
-      #testimonials .testimonial-card {
-        min-width: 82%;
-        max-width: 82%;
-        scroll-snap-align: start;
-      }
-      #testimonials .testimonials-track::-webkit-scrollbar {
-        display: none;
-      }
-    }
-
-    /* Slider dots */
-    #testimonials .testimonial-dots {
-      display: none;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 10px;
-    }
-    #testimonials .testimonial-dots button {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      border: 0;
-      background: rgba(148,163,184,0.7);
-      padding: 0;
-      cursor: pointer;
-      transition: width .2s ease, background .2s ease, opacity .2s ease;
-      opacity: 0.7;
-    }
-    #testimonials .testimonial-dots button[aria-current="true"] {
-      width: 18px;
-      background: var(--accent);
-      opacity: 1;
-    }
-
-    @media (max-width: 720px) {
-      #testimonials .testimonial-dots {
-        display: flex;
-      }
-    }
-  </style>
-
-  <h2 id="testimonialsHeading">What Clients Say</h2>
-  <p class="muted">Short, verifiable testimonials from clients and peers.</p>
-
-  <div class="testimonials-track" id="testimonialsTrack">
-    <!-- 1 -->
-    <figure class="testimonial-card">
-      <span class="quote-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" role="img">
-          <path d="M7.5 5.5C5.6 7 4 9.7 4 13.2c0 2.9 1.5 4.6 3.7 5.3.4.1.8-.2.8-.7v-1.6c0-.3-.2-.6-.5-.7-1-.3-1.6-1.2-1.6-2.4 0-2.1 1.2-4 3-5.2.3-.2.4-.5.4-.8V6c0-.6-.6-.9-1.1-.5zm9 0c-1.9 1.5-3.5 4.2-3.5 7.7 0 2.9 1.5 4.6 3.7 5.3.4.1.8-.2.8-.7v-1.6c0-.3-.2-.6-.5-.7-1-.3-1.6-1.2-1.6-2.4 0-2.1 1.2-4 3-5.2.3-.2.4-.5.4-.8V6c0-.6-.6-.9-1.1-.5z" fill="#0b172a"/>
-        </svg>
-      </span>
-
-      <div class="stars" aria-hidden="true">
-        <!-- 5 stars -->
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-      </div>
-
-      <blockquote>
-        “Adv. Ganga Shankar Shastri handled our family case with utmost sensitivity and clarity — we got a fair outcome quickly.”
-      </blockquote>
-      <figcaption>— Ritu K., Allahabad</figcaption>
-    </figure>
-
-    <!-- 2 -->
-    <figure class="testimonial-card">
-      <span class="quote-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" role="img">
-          <path d="M7.5 5.5C5.6 7 4 9.7 4 13.2c0 2.9 1.5 4.6 3.7 5.3.4.1.8-.2.8-.7v-1.6c0-.3-.2-.6-.5-.7-1-.3-1.6-1.2-1.6-2.4 0-2.1 1.2-4 3-5.2.3-.2.4-.5.4-.8V6c0-.6-.6-.9-1.1-.5zm9 0c-1.9 1.5-3.5 4.2-3.5 7.7 0 2.9 1.5 4.6 3.7 5.3.4.1.8-.2.8-.7v-1.6c0-.3-.2-.6-.5-.7-1-.3-1.6-1.2-1.6-2.4 0-2.1 1.2-4 3-5.2.3-.2.4-.5.4-.8V6c0-.6-.6-.9-1.1-.5z" fill="#0b172a"/>
-        </svg>
-      </span>
-
-      <div class="stars" aria-hidden="true">
-        <!-- 4.5 feel: 4 full + 1 lighter -->
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fde68a" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-      </div>
-
-      <blockquote>
-        “Professional, calm and practical advice. Highly recommended for property disputes.”
-      </blockquote>
-      <figcaption>— Ramesh P., Lucknow</figcaption>
-    </figure>
-
-    <!-- 3 -->
-    <figure class="testimonial-card">
-      <span class="quote-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" role="img">
-          <path d="M7.5 5.5C5.6 7 4 9.7 4 13.2c0 2.9 1.5 4.6 3.7 5.3.4.1.8-.2.8-.7v-1.6c0-.3-.2-.6-.5-.7-1-.3-1.6-1.2-1.6-2.4 0-2.1 1.2-4 3-5.2.3-.2.4-.5.4-.8V6c0-.6-.6-.9-1.1-.5zm9 0c-1.9 1.5-3.5 4.2-3.5 7.7 0 2.9 1.5 4.6 3.7 5.3.4.1.8-.2.8-.7v-1.6c0-.3-.2-.6-.5-.7-1-.3-1.6-1.2-1.6-2.4 0-2.1 1.2-4 3-5.2.3-.2.4-.5.4-.8V6c0-.6-.6-.9-1.1-.5z" fill="#0b172a"/>
-        </svg>
-      </span>
-
-      <div class="stars" aria-hidden="true">
-        <!-- 5 stars -->
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-        <svg viewBox="0 0 24 24"><path fill="#fbbf24" d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.2L12 15.9 7.4 17.4l.9-5.2L4.5 8.5l5.2-.8z"/></svg>
-      </div>
-
-      <blockquote>
-        “Clear guidance during a criminal matter — responsive even outside office hours.”
-      </blockquote>
-      <figcaption>— Sakshi M., Kanpur</figcaption>
-    </figure>
-  </div>
-
-  <!-- Slider dots (mobile) -->
-  <div class="testimonial-dots" id="testimonialDots" aria-hidden="true">
-    <button type="button" data-index="0" aria-current="true"></button>
-    <button type="button" data-index="1"></button>
-    <button type="button" data-index="2"></button>
-  </div>
-
-  <!-- Tiny slider JS – safe and self-contained -->
-  <script>
-    (function(){
-      const track = document.getElementById('testimonialsTrack');
-      const dotsWrap = document.getElementById('testimonialDots');
-      if (!track || !dotsWrap) return;
-      const cards = Array.from(track.children);
-      const dots = Array.from(dotsWrap.querySelectorAll('button[data-index]'));
-      if (cards.length === 0 || dots.length === 0) return;
-
-      function setActiveDot(idx){
-        dots.forEach((d,i)=> d.setAttribute('aria-current', i === idx ? 'true' : 'false'));
-      }
-
-      // Click on dots -> scroll card into view
-      dots.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const i = parseInt(btn.dataset.index || '0', 10);
-          const card = cards[i];
-          if (!card) return;
-          card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-          setActiveDot(i);
-        });
-      });
-
-      // On scroll, update active dot (approximate)
-      let ticking = false;
-      track.addEventListener('scroll', () => {
-        if (window.innerWidth > 720) return;
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(() => {
-          let closestIdx = 0;
-          let smallest = Infinity;
-          const rectTrack = track.getBoundingClientRect();
-          cards.forEach((card, i) => {
-            const r = card.getBoundingClientRect();
-            const center = r.left + r.width / 2;
-            const dist = Math.abs(center - (rectTrack.left + rectTrack.width / 2));
-            if (dist < smallest) { smallest = dist; closestIdx = i; }
-          });
-          setActiveDot(closestIdx);
-          ticking = false;
-        });
-      });
-    })();
-  </script>
-</section>  
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" aria-labelledby="testimonialsHeading" class="card" style="padding:26px 22px;background:var(--card);color:var(--ink);margin-top:26px;">
+        <h2 id="testimonialsHeading">What Clients Say</h2>
+        <p class="muted">Short, verifiable testimonials from clients and peers.</p>
+        <div class="testimonials-track" id="testimonialsTrack" style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+          <figure class="testimonial-card">
+            <blockquote>“Adv. Ganga Shankar Shastri handled our family case with utmost sensitivity and clarity — we got a fair outcome quickly.”</blockquote>
+            <figcaption>— Ritu K., Allahabad</figcaption>
+          </figure>
+          <figure class="testimonial-card">
+            <blockquote>“Professional, calm and practical advice. Highly recommended for property disputes.”</blockquote>
+            <figcaption>— Ramesh P., Lucknow</figcaption>
+          </figure>
+          <figure class="testimonial-card">
+            <blockquote>“Clear guidance during a criminal matter — responsive even outside office hours.”</blockquote>
+            <figcaption>— Sakshi M., Kanpur</figcaption>
+          </figure>
+        </div>
+      </section>
 
       <!-- ARTICLES -->
-<section id="articles" aria-labelledby="articlesHeading" class="card"
-         style="margin-top:24px;padding:24px;background:var(--card);color:var(--ink);border-radius:12px;box-shadow:var(--shadow-2);">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
-    <div>
-      <h2 id="articlesHeading" style="color:var(--ink);margin-bottom:4px;">Articles & Insights</h2>
-      <p class="muted" style="margin-top:6px;color:var(--muted-dark);">
-        Short guides, practical steps and case insights — written for clients and families.
-      </p>
-    </div>
-
-    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-      <label for="articleSearch" class="muted"
-             style="font-size:.88rem;margin-right:6px;color:var(--muted-dark);">
-        Search
-      </label>
-      <input id="articleSearch" type="search" placeholder="Search articles…" aria-label="Search articles"
-             style="padding:8px;border-radius:10px;border:1px solid #e2e6ef;min-width:180px;background:#fff;color:var(--ink);">
-      <div id="articleTags" role="list" aria-label="Filter by tag"
-           style="display:flex;gap:8px;flex-wrap:wrap;margin-left:6px;"></div>
-    </div>
-  </div>
-
-  <div id="articlesMeta"
-       style="display:flex;gap:12px;align-items:center;margin-top:10px;flex-wrap:wrap;">
-    <div class="muted" id="articlesCount" aria-live="polite"
-         style="color:var(--muted-dark);">
-      Showing <strong id="articlesVisible">0</strong> articles
-    </div>
-    <div style="margin-left:auto" class="muted">
-      <span style="color:var(--muted-dark);">Sort:</span>
-      <select id="articlesSort" aria-label="Sort articles"
-              style="padding:6px;border-radius:8px;border:1px solid #e6ebf5;margin-left:8px;background:#fff;color:var(--ink);">
-        <option value="newest">Newest</option>
-        <option value="oldest">Oldest</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- list rendered by JS -->
-  <div id="articlesGrid" style="margin-top:12px;"></div>
-
-  <!-- Preview modal -->
-  <div id="articlePreview"
-       style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);z-index:1400;align-items:center;justify-content:center;padding:18px;">
-    <article role="dialog" aria-modal="true" aria-labelledby="previewTitle"
-             style="max-width:820px;width:100%;background:var(--card);padding:18px;border-radius:10px;box-shadow:var(--shadow-2);overflow:auto;max-height:80vh;">
-      <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
-        <div>
-          <h3 id="previewTitle" style="margin:0;color:var(--ink);">Title</h3>
-          <div class="muted" id="previewMeta"
-               style="margin-top:6px;font-size:.95rem;color:var(--muted-dark);"></div>
+      <section id="articles" aria-labelledby="articlesHeading" class="card" style="margin-top:24px;padding:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div>
+            <h2 id="articlesHeading" style="color:var(--ink);margin-bottom:4px;">Articles & Insights</h2>
+            <p class="muted" style="margin-top:6px;color:var(--muted-dark);">Short guides, practical steps and case insights — written for clients and families.</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <label for="articleSearch" class="muted" style="font-size:.88rem;margin-right:6px;color:var(--muted-dark);">Search</label>
+            <input id="articleSearch" type="search" placeholder="Search articles…" aria-label="Search articles" style="padding:8px;border-radius:10px;border:1px solid #e2e6ef;min-width:180px;background:#fff;color:var(--ink);">
+            <div id="articleTags" role="list" aria-label="Filter by tag" style="display:flex;gap:8px;flex-wrap:wrap;margin-left:6px;"></div>
+          </div>
         </div>
-        <button id="previewClose" class="btn btn--ghost" aria-label="Close preview">Close</button>
-      </header>
-      <div id="previewBody" style="margin-top:12px;color:var(--muted-dark);"></div>
-    </article>
-  </div>
-</section>
+
+        <div id="articlesMeta" style="display:flex;gap:12px;align-items:center;margin-top:10px;flex-wrap:wrap;">
+          <div class="muted" id="articlesCount" aria-live="polite" style="color:var(--muted-dark);">Showing <strong id="articlesVisible">0</strong> articles</div>
+          <div style="margin-left:auto" class="muted">
+            <span style="color:var(--muted-dark);">Sort:</span>
+            <select id="articlesSort" aria-label="Sort articles" style="padding:6px;border-radius:8px;border:1px solid #e6ebf5;margin-left:8px;background:#fff;color:var(--ink);">
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="articlesGrid" style="margin-top:12px;"></div>
+
+        <!-- Preview modal -->
+        <div id="articlePreview" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);z-index:1400;align-items:center;justify-content:center;padding:18px;">
+          <article role="dialog" aria-modal="true" aria-labelledby="previewTitle" style="max-width:820px;width:100%;background:var(--card);padding:18px;border-radius:10px;box-shadow:var(--shadow-2);overflow:auto;max-height:80vh;">
+            <header style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+              <div>
+                <h3 id="previewTitle" style="margin:0;color:var(--ink);">Title</h3>
+                <div class="muted" id="previewMeta" style="margin-top:6px;font-size:.95rem;color:var(--muted-dark);"></div>
+              </div>
+              <button id="previewClose" class="btn btn--ghost" aria-label="Close preview">Close</button>
+            </header>
+            <div id="previewBody" style="margin-top:12px;color:var(--muted-dark);"></div>
+          </article>
+        </div>
+      </section>
 
       <!-- DICTIONARY -->
       <section id="dictionary" aria-labelledby="dictionaryHeading">
@@ -1185,236 +508,81 @@
       </section>
 
       <!-- PAYMENT -->
-<section id="payment" aria-labelledby="paymentHeading"
-         style="margin-top:32px;padding:32px;background:var(--card);color:var(--ink);
-                border-radius:12px;box-shadow:var(--shadow-2);max-width:1100px;margin-inline:auto;">
+      <section id="payment" aria-labelledby="paymentHeading" style="margin-top:32px;padding:32px;background:var(--card);color:var(--ink);border-radius:12px;box-shadow:var(--shadow-2);max-width:1100px;margin-inline:auto;">
+        <h2 id="paymentHeading" style="margin:0;color:var(--ink);">Secure Payment</h2>
+        <p class="muted" style="margin-top:6px;color:var(--muted-dark);max-width:540px;">Fast, secure payments for legal services — UPI or bank transfer. 100% trusted & encrypted.</p>
 
-  <!-- Local styles: button glow, steps, QR modal -->
-  <style>
-    /* Button glow (C) – only inside payment */
-    #payment .btn-primary {
-      background: linear-gradient(180deg, var(--accent), var(--accent-2));
-      color: #fff;
-      box-shadow: 0 10px 30px rgba(17,65,168,0.28);
-      border-radius: var(--btn-radius, 10px);
-      border: 0;
-      transition: box-shadow .25s ease, transform .2s ease, filter .2s ease;
-    }
-    #payment .btn-primary:hover {
-      box-shadow: 0 0 0 1px rgba(182,139,23,0.4),
-                  0 18px 42px rgba(17,65,168,0.45);
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-    }
+        <div class="payment-steps" aria-label="How to pay" style="display:flex;gap:10px;margin-top:14px">
+          <div class="step-pill"><span style="font-weight:600">1</span> Choose UPI or Bank</div>
+          <div class="step-pill"><span style="font-weight:600">2</span> Make payment &amp; note reference</div>
+          <div class="step-pill"><span style="font-weight:600">3</span> Share screenshot / reference on WhatsApp</div>
+        </div>
 
-    #payment .btn--ghost {
-      border-radius: var(--btn-radius, 10px);
-      border: 1px solid rgba(15,23,42,0.14);
-      background: #f8fafc;
-      color: var(--ink);
-      transition: background .2s ease, border-color .2s ease, transform .2s ease;
-    }
-    #payment .btn--ghost:hover {
-      background: #edf2ff;
-      border-color: rgba(17,65,168,0.45);
-      transform: translateY(-1px);
-    }
+        <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:stretch;">
+          <div style="background:#ffffff;border-radius:14px;box-shadow:var(--shadow-2);padding:18px;text-align:center;color:#020617;">
+            <h4 style="margin:0 0 6px;font-size:1.1rem;font-weight:600;">UPI — Instant Payment</h4>
+            <p style="margin:0;color:#4a5568;font-size:.9rem;">Scan &amp; pay (recommended for quick confirmation)</p>
+            <div id="paymentQrFrame" style="margin:14px auto;width:160px;height:160px;border-radius:10px;overflow:hidden;background:#f1f5f9;display:flex;align-items:center;justify-content:center;border:1px solid #e6ebf5;cursor:pointer;" aria-label="Tap to enlarge QR" role="button">
+              <img src="upi_qr.jpg" alt="UPI QR — The Justice Firm" loading="lazy" style="width:100%;height:100%;object-fit:contain;">
+            </div>
+            <div style="margin-top:8px;font-size:0.92rem;color:#1f2937;">UPI ID: <strong id="upi-id" style="color:#000;">adv.shastri@oksbi</strong></div>
+            <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <button id="copyUpiBtn" class="btn btn--ghost btn--small" style="min-width:90px;">Copy UPI</button>
+              <button id="downloadQR" class="btn btn--ghost btn--small" style="min-width:90px;">Download QR</button>
+            </div>
+          </div>
 
-    /* Steps row (D) */
-    #payment .payment-steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-      font-size: 0.88rem;
-      color: var(--muted-dark);
-    }
-    #payment .step-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #eef2ff;
-      border: 1px solid #dde3ff;
-      white-space: nowrap;
-    }
-    #payment .step-pill span {
-      font-weight: 600;
-      font-size: 0.8rem;
-      color: var(--accent-2);
-    }
+          <div style="background:#ffffff;border-radius:14px;box-shadow:var(--shadow-2);padding:18px;text-align:center;color:#020617;">
+            <h4 style="margin:0;font-size:1.1rem;font-weight:600;">Bank Transfer</h4>
+            <div style="margin-top:10px;font-size:0.95rem;line-height:1.45;color:#1f2937;">
+              The Justice Firm — Canara Bank<br>
+              A/c: <strong>5328127000035</strong><br>
+              IFSC: <strong>CNRB0005131</strong>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <a class="btn btn--ghost btn--small" id="downloadReceipt" href="#" style="min-width:110px;">Receipt</a>
+              <a class="btn btn-primary btn--small" href="https://wa.me/919454183793" target="_blank" rel="noopener" style="min-width:110px;">Need Help</a>
+            </div>
+          </div>
+        </div>
 
-    /* QR modal (F) */
-    #paymentQrModal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(2,6,23,0.75);
-      backdrop-filter: blur(4px);
-      z-index: 1800;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-    #paymentQrModal article {
-      background: #ffffff;
-      border-radius: 14px;
-      padding: 16px;
-      max-width: 360px;
-      width: 100%;
-      box-shadow: 0 24px 80px rgba(15,23,42,0.6);
-      text-align: center;
-    }
-    #paymentQrModal img {
-      width: 220px;
-      height: 220px;
-      max-width: 100%;
-      border-radius: 12px;
-      border: 1px solid #e5e7eb;
-      background: #f9fafb;
-      object-fit: contain;
-    }
-    #paymentQrModal button {
-      margin-top: 12px;
-    }
+        <div style="margin-top:18px;text-align:center;font-size:0.88rem;color:var(--muted-dark);">
+          Payment issues or confirmation?<br>
+          📞 <a href="tel:+919454183793" style="color:var(--accent)">+91 94541 83793</a> &nbsp;•&nbsp;
+          ✉️ <a href="mailto:adv.shastri@gmail.com" style="color:var(--accent)">adv.shastri@gmail.com</a>
+        </div>
 
-    @media (max-width: 720px) {
-      #payment {
-        padding: 24px 18px;
-      }
-      #payment .payment-steps {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+        <div id="paymentQrModal" aria-hidden="true" role="dialog" aria-label="UPI QR enlarged" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.75);backdrop-filter:blur(4px);z-index:1800;align-items:center;justify-content:center;padding:18px;">
+          <article style="background:#ffffff;border-radius:14px;padding:16px;max-width:360px;width:100%;box-shadow:0 24px 80px rgba(15,23,42,0.6);text-align:center;">
+            <h3 style="margin:0 0 8px;font-size:1.05rem;color:#111827;">Scan to Pay (UPI)</h3>
+            <p style="margin:0 0 10px;font-size:.9rem;color:#4b5563;">Use any UPI app to scan this code and complete payment.</p>
+            <img id="paymentQrLarge" src="upi_qr.jpg" alt="Enlarged UPI QR — The Justice Firm" style="width:220px;height:220px;max-width:100%;border-radius:12px;border:1px solid #e5e7eb;background:#f9fafb;object-fit:contain;">
+            <button id="paymentQrClose" class="btn btn--ghost btn--small" type="button" style="margin-top:12px;">Close</button>
+          </article>
+        </div>
+      </section>
 
-  <h2 id="paymentHeading" style="margin:0;color:var(--ink);">Secure Payment</h2>
-  <p class="muted" style="margin-top:6px;color:var(--muted-dark);max-width:540px;">
-    Fast, secure payments for legal services — UPI or bank transfer. 100% trusted & encrypted.
-  </p>
-
-  <!-- Simple 3-step guide (D) -->
-  <div class="payment-steps" aria-label="How to pay">
-    <div class="step-pill"><span>1</span> Choose UPI or Bank</div>
-    <div class="step-pill"><span>2</span> Make payment &amp; note reference</div>
-    <div class="step-pill"><span>3</span> Share screenshot / reference on WhatsApp</div>
-  </div>
-
-  <!-- Payment Grid -->
-  <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-              gap:20px;align-items:stretch;">
-
-    <!-- UPI CARD -->
-    <div style="background:#ffffff;border-radius:14px;box-shadow:var(--shadow-2);
-                padding:18px;text-align:center;color:#020617;">
-
-      <h4 style="margin:0 0 6px;font-size:1.1rem;font-weight:600;">UPI — Instant Payment</h4>
-      <p style="margin:0;color:#4a5568;font-size:.9rem;">Scan &amp; pay (recommended for quick confirmation)</p>
-
-      <div id="paymentQrFrame"
-           style="margin:14px auto;width:160px;height:160px;border-radius:10px;overflow:hidden;
-                  background:#f1f5f9;display:flex;align-items:center;justify-content:center;
-                  border:1px solid #e6ebf5;cursor:pointer;"
-           aria-label="Tap to enlarge QR" role="button">
-        <img src="upi_qr.jpg" alt="UPI QR — The Justice Firm" loading="lazy"
-             style="width:100%;height:100%;object-fit:contain;">
+      <!-- CONTACT BOOKING (modal triggered earlier) -->
+      <div id="bookingModal" aria-hidden="true" aria-labelledby="bookingModalTitle" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:1200;padding:18px">
+        <div role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle" style="background:var(--card);padding:20px;border-radius:12px;max-width:420px;width:100%">
+          <h3 id="bookingModalTitle">Request Consultation</h3>
+          <p class="muted" style="color:var(--muted-dark)">Choose a date — we will confirm via email.</p>
+          <form id="bookingForm" action="https://formspree.io/f/myzqwkvv" method="POST">
+            <label for="bk-client">Full name</label>
+            <input id="bk-client" name="client" placeholder="Full name" required style="margin-top:10px;width:100%;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
+            <label for="bk-email">Email</label>
+            <input id="bk-email" name="email" type="email" placeholder="Email" required style="margin-top:10px;width:100%;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
+            <label for="bk-date">Date</label>
+            <input id="bk-date" name="date" type="date" required style="margin-top:10px;width:100%;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
+            <input type="text" name="_gotcha" style="display:none" aria-hidden="true" tabindex="-1">
+            <div id="bookingMessage" class="form-message" role="status" aria-live="polite" aria-atomic="true" style="margin-top:12px"></div>
+            <div style="display:flex;gap:8px;margin-top:14px">
+              <button class="btn btn-primary" type="submit">Request</button>
+              <button class="btn btn--ghost" type="button" id="cancelBookingBtn">Cancel</button>
+            </div>
+          </form>
+        </div>
       </div>
-
-      <div style="margin-top:8px;font-size:0.92rem;color:#1f2937;">
-        UPI ID: <strong style="color:#000;">adv.shastri@oksbi</strong>
-      </div>
-
-      <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-        <button id="copyUpiBtn" class="btn btn--ghost btn--small" style="min-width:90px;">Copy UPI</button>
-        <button id="downloadQR" class="btn btn--ghost btn--small" style="min-width:90px;">Download QR</button>
-      </div>
-    </div>
-
-    <!-- BANK CARD -->
-    <div style="background:#ffffff;border-radius:14px;box-shadow:var(--shadow-2);
-                padding:18px;text-align:center;color:#020617;">
-
-      <h4 style="margin:0;font-size:1.1rem;font-weight:600;">Bank Transfer</h4>
-
-      <div style="margin-top:10px;font-size:0.95rem;line-height:1.45;color:#1f2937;">
-        The Justice Firm — Canara Bank<br>
-        A/c: <strong>5328127000035</strong><br>
-        IFSC: <strong>CNRB0005131</strong>
-      </div>
-
-      <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-        <a class="btn btn--ghost btn--small" id="downloadReceipt"
-           href="#" style="min-width:110px;">Receipt</a>
-        <a class="btn btn-primary btn--small" href="https://wa.me/919454183793"
-           target="_blank" rel="noopener" style="min-width:110px;">Need Help</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Support Info -->
-  <div style="margin-top:18px;text-align:center;font-size:0.88rem;color:var(--muted-dark);">
-    Payment issues or confirmation?<br>
-    📞 <a href="tel:+919454183793" style="color:var(--accent)">+91 94541 83793</a> &nbsp;•&nbsp;
-    ✉️ <a href="mailto:adv.shastri@gmail.com" style="color:var(--accent)">adv.shastri@gmail.com</a>
-  </div>
-
-  <!-- QR Enlarge Modal (F) -->
-  <div id="paymentQrModal" aria-hidden="true" role="dialog" aria-label="UPI QR enlarged">
-    <article>
-      <h3 style="margin:0 0 8px;font-size:1.05rem;color:#111827;">Scan to Pay (UPI)</h3>
-      <p style="margin:0 0 10px;font-size:.9rem;color:#4b5563;">Use any UPI app to scan this code and complete payment.</p>
-      <img id="paymentQrLarge" src="upi_qr.jpg" alt="Enlarged UPI QR — The Justice Firm">
-      <button id="paymentQrClose" class="btn btn--ghost btn--small" type="button"
-              style="margin-top:12px;">Close</button>
-    </article>
-  </div>
-
-  <!-- Small script: QR popup behaviour -->
-  <script>
-    (function(){
-      const frame = document.getElementById('paymentQrFrame');
-      const modal = document.getElementById('paymentQrModal');
-      const closeBtn = document.getElementById('paymentQrClose');
-      const largeImg = document.getElementById('paymentQrLarge');
-      if (!frame || !modal || !largeImg) return;
-
-      function openModal(){
-        modal.style.display = 'flex';
-        modal.setAttribute('aria-hidden','false');
-        largeImg.focus && largeImg.focus();
-      }
-      function closeModal(){
-        modal.style.display = 'none';
-        modal.setAttribute('aria-hidden','true');
-        frame.focus && frame.focus();
-      }
-
-      frame.addEventListener('click', openModal);
-      frame.addEventListener('keydown', function(e){
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openModal();
-        }
-      });
-
-      closeBtn && closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', function(e){
-        if (e.target === modal) closeModal();
-      });
-      window.addEventListener('keydown', function(e){
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-          closeModal();
-        }
-      });
-    })();
-  </script>
-</section>
-
-      <!-- CONTACT (kept on separate page as contact.html) -->
-      <section id="contact" aria-hidden="true" style="display:none"></section>
 
     </main>
 
@@ -1443,28 +611,6 @@
   <!-- Back to top -->
   <button id="backTop" aria-label="Back to top" title="Back to top" style="position:fixed;right:18px;bottom:96px;display:none;background:var(--accent);color:#fff;width:46px;height:46px;border-radius:999px;align-items:center;justify-content:center;box-shadow:var(--btn-shadow);border:0;cursor:pointer;font-size:1.1rem;z-index:1600">↑</button>
 
-  <!-- Booking Modal (renamed title id to avoid collision) -->
-  <div id="bookingModal" aria-hidden="true" aria-labelledby="bookingModalTitle" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;z-index:1200;padding:18px">
-    <div role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle" style="background:var(--card);padding:20px;border-radius:12px;max-width:420px;width:100%">
-      <h3 id="bookingModalTitle">Request Consultation</h3>
-      <p class="muted" style="color:var(--muted-dark)">Choose a date — we will confirm via email.</p>
-      <form id="bookingForm" action="https://formspree.io/f/myzqwkvv" method="POST">
-        <label for="bk-client">Full name</label>
-        <input id="bk-client" name="client" placeholder="Full name" required style="margin-top:10px;width:100%;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
-        <label for="bk-email">Email</label>
-        <input id="bk-email" name="email" type="email" placeholder="Email" required style="margin-top:10px;width:100%;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
-        <label for="bk-date">Date</label>
-        <input id="bk-date" name="date" type="date" required style="margin-top:10px;width:100%;padding:10px;border-radius:8px;border:1px solid #e6ebf5">
-        <input type="text" name="_gotcha" style="display:none" aria-hidden="true" tabindex="-1">
-        <div id="bookingMessage" class="form-message" role="status" aria-live="polite" aria-atomic="true" style="margin-top:12px"></div>
-        <div style="display:flex;gap:8px;margin-top:14px">
-          <button class="btn btn-primary" type="submit">Request</button>
-          <button class="btn btn--ghost" type="button" id="cancelBookingBtn">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <!-- Chat widget -->
   <div id="ljf-chat" aria-live="polite" aria-atomic="true" style="position:fixed;left:18px;bottom:22px;z-index:1600">
     <button id="ljf-toggle" class="chat-toggle" aria-expanded="false" aria-label="Open chat" style="width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#fff;border:0;box-shadow:0 12px 36px rgba(17,65,168,0.18);">
@@ -1487,12 +633,12 @@
 
   <script>
     (function(){
-      // small utilities
+      // safe query helpers
       const $ = s => document.querySelector(s);
       const $$ = s => Array.from(document.querySelectorAll(s));
       const bodyEl = document.body;
 
-      // MOBILE NAV toggle
+      // MOBILE NAV
       const navToggle = document.getElementById('navToggle');
       const mobilePanel = document.getElementById('mobileNavPanel');
       const mobileClose = document.getElementById('mobileNavClose');
@@ -1516,7 +662,7 @@
       }
       setInterval(updateClock, 1000); updateClock();
 
-      // calendar generator
+      // calendar generator (uses IST zone)
       function generateCalendar(containerId='calendar'){
         const el = document.getElementById(containerId);
         if(!el) return;
@@ -1545,6 +691,7 @@
       // next slot sample
       (function setNextSlot(){
         const el = document.getElementById('nextSlot');
+        if(!el) return;
         const now = new Date();
         const inIST = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
         const next = new Date(inIST);
@@ -1552,20 +699,15 @@
         if (hour >= 16) next.setDate(next.getDate() + 1);
         next.setHours(11,0,0,0);
         const opt = { weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit', timeZone:'Asia/Kolkata', hour12:false };
-        if (el) el.textContent = next.toLocaleString('en-IN', opt) + ' IST';
+        el.textContent = next.toLocaleString('en-IN', opt) + ' IST';
       })();
 
-      // HELPERS
-      function getInitials(name){
-        if(!name) return '';
-        const parts = name.trim().split(/\s+/).filter(Boolean);
-        if(parts.length === 1) return parts[0].slice(0,2).toUpperCase();
-        return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
-      }
+      // Helpers
+      function getInitials(name){ if(!name) return ''; const parts = name.trim().split(/\s+/).filter(Boolean); if(parts.length === 1) return parts[0].slice(0,2).toUpperCase(); return (parts[0][0] + parts[parts.length-1][0]).toUpperCase(); }
       function safeParseJSON(s){ if(!s) return null; try { return JSON.parse(s); } catch(e) { return null; } }
       function escapeHtml(str){ return String(str).replace(/[&<>"']/g, function (m) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;' })[m]; }); }
 
-      // MEMBER IMAGE fallback & focus positions
+      // MEMBER image fallback and initials
       document.querySelectorAll('.member').forEach(member => {
         const fig = member.querySelector('.member-figure');
         if(!fig) return;
@@ -1575,9 +717,6 @@
         if(initialsEl) initialsEl.textContent = getInitials(name);
 
         if(img){
-          const focus = img.getAttribute('data-focus') || '50% 50%';
-          fig.style.setProperty('--focus-pos', focus);
-          img.style.objectPosition = focus;
           img.style.objectFit = 'cover';
           function update(){
             if(img.complete && img.naturalWidth && img.naturalWidth > 0){
@@ -1596,46 +735,15 @@
         }
       });
 
-      // small pointer parallax (non-intrusive)
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (window.matchMedia('(pointer: fine)').matches && !prefersReduced) {
-        document.querySelectorAll('.member').forEach(member => {
-          const img = member.querySelector('.member-figure img');
-          let raf = null;
-          function onMove(e){
-            if(raf) cancelAnimationFrame(raf);
-            raf = requestAnimationFrame(()=> {
-              const rect = member.getBoundingClientRect();
-              const cx = rect.left + rect.width / 2;
-              const cy = rect.top + rect.height / 2;
-              const dx = (e.clientX - cx) / rect.width;
-              const dy = (e.clientY - cy) / rect.height;
-              const tx = dx * 8; const ty = dy * 8;
-              const rx = dy * -2.8; const ry = dx * 5;
-              if(img && img.style.display !== 'none') img.style.transform = `translate(${tx}px, ${ty}px) scale(1.06) rotateX(${rx}deg) rotateY(${ry}deg)`;
-              member.style.transform = `translateY(-6px) rotateX(${rx / 6}deg) rotateY(${ry / 8}deg)`;
-            });
-          }
-          function onLeave(){ const imgEl = member.querySelector('.member-figure img'); if(imgEl) imgEl.style.transform = ''; member.style.transform = ''; }
-          member.addEventListener('pointermove', onMove);
-          member.addEventListener('pointerleave', onLeave);
-          member.addEventListener('pointercancel', onLeave);
-          member.addEventListener('blur', onLeave);
-        });
-      }
-
-      // MODAL (single consolidated logic) - supports both data-bio JSON and data-* attributes
+      // Accessible modal helpers (works with profileModal)
       const modal = document.getElementById('profileModal');
-      const modalPanel = modal && modal.querySelector('.modal-panel');
       const modalTitle = modal && document.getElementById('profileModalTitle');
       const modalSub = modal && document.getElementById('profileModalSub');
       const modalQuote = modal && document.getElementById('profileModalQuote');
       const modalBody = modal && document.getElementById('modalDesc');
-      const closeables = modal ? Array.from(modal.querySelectorAll('[data-close]')) : [];
 
       function contentToParagraphs(text){
         if(!text) return '<p><em>Bio coming soon.</em></p>';
-        // Convert literal \n to paragraphs and <br> for single newline
         const normal = String(text).replace(/\r/g,'').replace(/\\n/g, '\n');
         const paras = normal.split(/\n{2,}/).map(p => p.trim()).filter(Boolean);
         return paras.map(p => `<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('');
@@ -1643,6 +751,7 @@
 
       let lastFocused = null;
       function openModalWithData(data, opener){
+        if(!modal) return;
         lastFocused = opener || document.activeElement;
         if(modalTitle) modalTitle.textContent = data.title || '';
         if(modalSub) modalSub.textContent = data.subtitle || '';
@@ -1651,20 +760,19 @@
           else { modalQuote.style.display = 'none'; modalQuote.textContent = ''; }
         }
         if(modalBody) modalBody.innerHTML = contentToParagraphs(data.content || '');
-        modal && modal.removeAttribute('hidden');
+        modal.removeAttribute('hidden');
+        modal.setAttribute('aria-hidden','false');
         document.documentElement.style.overflow = 'hidden';
         setTimeout(()=> {
           const focusTarget = modal.querySelector('.modal-close') || modal.querySelector('button, [tabindex]');
           if(focusTarget) focusTarget.focus();
           trapFocus(modal);
         }, 50);
-        modal && modal.classList.add('open');
-        modal && modal.setAttribute('aria-hidden', 'false');
       }
       function closeModal(){
         if(!modal) return;
-        modal.classList.remove('open');
-        modal.setAttribute('hidden', '');
+        modal.setAttribute('hidden','');
+        modal.setAttribute('aria-hidden','true');
         releaseTrap(modal);
         document.documentElement.style.overflow = '';
         if(lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
@@ -1688,13 +796,12 @@
         if(container && container._trapHandler){ container.removeEventListener('keydown', container._trapHandler); delete container._trapHandler; }
       }
 
-      // bind members to open modal (supports both data-bio JSON and data-title/data-content)
+      // bind members - robust (guards avoid errors)
       document.querySelectorAll('.member').forEach(member => {
         function buildDataFromMember(m){
           const raw = m.getAttribute('data-bio');
           let parsed = raw ? safeParseJSON(raw) : null;
           if(parsed) return parsed;
-          // fallback to attributes
           return {
             title: m.getAttribute('data-title') || m.querySelector('h3')?.textContent || '',
             subtitle: m.getAttribute('data-subtitle') || m.querySelector('.role')?.textContent || '',
@@ -1707,22 +814,16 @@
           openModalWithData(data, member);
         });
         member.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            const data = buildDataFromMember(member);
-            openModalWithData(data, member);
-          }
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const data = buildDataFromMember(member); openModalWithData(data, member); }
         });
       });
 
-      // close modal handlers
-      closeables.forEach(btn => btn.addEventListener('click', closeModal));
-      if (modal){
-        modal.addEventListener('click', (e) => {
-          if (e.target.classList.contains('modal-backdrop') || e.target.matches('[data-close]')) closeModal();
-        });
+      // modal close buttons (profile modal)
+      if (modal) {
+        Array.from(modal.querySelectorAll('[data-close]')).forEach(btn => btn.addEventListener('click', closeModal));
+        modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) closeModal(); });
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal(); });
       }
-      window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal && !modal.hasAttribute('hidden')) closeModal(); });
 
       // BOOKING modal
       const bookingModal = document.getElementById('bookingModal');
@@ -1734,7 +835,7 @@
       cancelBookingBtn && cancelBookingBtn.addEventListener('click', closeBooking);
       bookingModal && bookingModal.addEventListener('click', (e)=>{ if(e.target === bookingModal) closeBooking(); });
 
-      // ARTICLES client-side
+      // ARTICLES client-side rendering
       (function(){
         const articles = [
           { id:'sec125', title:'Section 125 CrPC: Maintenance — What you must know', date:'2024-09-12', tags:['Family','Maintenance'], thumb:'fam.jpg', excerpt:'A concise guide to maintenance claims under Section 125 CrPC — eligibility, documents, and the process in UP courts.', url:'articles/sec125.html', body:`<p>This guide explains entitlement, typical timelines and documents required to file a maintenance application under Section 125 CrPC. Practical tips and court approach.</p>`},
@@ -1788,7 +889,7 @@
           return `${minutes} min read`;
         }
 
-        function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); }); }
+        function escapeHtmlLocal(s){ return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); }); }
 
         function renderArticles(list){
           if(!grid || !articlesCount) return;
@@ -1802,13 +903,13 @@
             row.setAttribute('tabindex','0');
             row.style.display = 'flex'; row.style.gap = '12px'; row.style.alignItems = 'flex-start'; row.style.marginBottom = '12px';
             row.innerHTML = `
-              <img class="article-thumb" loading="lazy" alt="${escapeHtml(article.title)}" src="${article.thumb}" style="width:120px;height:84px;object-fit:cover;border-radius:8px;flex:0 0 120px">
+              <img class="article-thumb" loading="lazy" alt="${escapeHtmlLocal(article.title)}" src="${article.thumb}" style="width:120px;height:84px;object-fit:cover;border-radius:8px;flex:0 0 120px">
               <div style="flex:1">
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-                  <div class="article-title" style="font-weight:700;color:var(--ink)">${escapeHtml(article.title)}</div>
+                  <div class="article-title" style="font-weight:700;color:var(--ink)">${escapeHtmlLocal(article.title)}</div>
                   <div class="muted" style="font-size:.92rem;color:var(--muted-dark)">${new Date(article.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</div>
                 </div>
-                <div class="article-excerpt muted" style="margin-top:6px;color:var(--muted-dark)">${escapeHtml(article.excerpt)}</div>
+                <div class="article-excerpt muted" style="margin-top:6px;color:var(--muted-dark)">${escapeHtmlLocal(article.excerpt)}</div>
                 <div style="display:flex;gap:8px;align-items:center;margin-top:10px">
                   <a class="read-more btn btn--ghost btn--small" href="${article.url}" target="_blank" rel="noopener">Read more →</a>
                   <button class="btn btn--small" data-preview="${article.id}" type="button">Preview</button>
@@ -1928,7 +1029,7 @@
           { q: ['book','appointment','slot','consultation'], a: 'To book consultation: share your name, phone and matter type here, or use the contact form. Our team will confirm a time shortly.' },
           { q: ['documents','papers','docs','document'], a: 'Documents depend on case. Property: title deed, tax receipt; Family: marriage certificate, ID proof, earlier orders. Criminal: FIR copy, notices, arrest memo.' },
           { q: ['bail','arrest'], a: 'If someone is arrested: stay calm, do not sign anything blindly, and contact a lawyer urgently. You can WhatsApp us for immediate help.' },
-          { q: ['timing','timings','hours','open'], a: 'Office hours: Mon–Sun 9:00 AM – 9:00 PM (with prior appointment). For urgent matters, send a WhatsApp message anytime.' }
+          { q: ['timing','timings','hours','open'], a: 'Office hours: Mon–Sat 10:00 AM – 6:00 PM (with prior appointment). For urgent matters, send a WhatsApp message anytime.' }
         ];
 
         function appendMessage(text, who='bot'){
@@ -1987,7 +1088,7 @@
         });
       })();
 
-      // FAB toggle (fixed close-on-outside-click behaviour)
+      // FAB toggle (close-on-outside-click)
       (function(){
         const fab = document.getElementById('fab');
         const fabToggle = document.getElementById('fabToggle');
@@ -2003,11 +1104,10 @@
           const icon = document.getElementById('fabIcon');
           if(icon) icon.style.transform = newState ? 'rotate(45deg) scale(1.02)' : 'rotate(0deg) scale(1)';
         }
-        // stop propagation on the toggle so the document click handler won't close immediately
         fabToggle.addEventListener('click', (e)=> { e.stopPropagation(); toggleFab(); });
         document.addEventListener('click', (e)=> {
           if(!fab) return;
-          if(fab.contains(e.target)) return; // click inside fab — ignore
+          if(fab.contains(e.target)) return;
           if(fab.getAttribute('aria-expanded') === 'true') toggleFab(false);
         });
       })();
@@ -2021,7 +1121,7 @@
         backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
       })();
 
-      // copy UPI, download actions
+      // copy UPI, download actions & receipt
       (function(){
         const copyBtn = document.getElementById('copyUpiBtn');
         const upiEl = document.getElementById('upi-id');
@@ -2058,7 +1158,8 @@
 
         receipt && receipt.addEventListener('click', (e)=>{
           e.preventDefault();
-          const txt = `Receipt — The Justice Firm\nDate: ${new Date().toLocaleDateString('en-IN')}\nPaid to: The Justice Firm\nUPI ID: ${(document.getElementById('upi-id') && document.getElementById('upi-id').textContent) || ''}\nReference: (enter transaction id)\n\nThank you.`;
+          const upiText = (document.getElementById('upi-id') && document.getElementById('upi-id').textContent) || '';
+          const txt = `Receipt — The Justice Firm\nDate: ${new Date().toLocaleDateString('en-IN')}\nPaid to: The Justice Firm\nUPI ID: ${upiText}\nReference: (enter transaction id)\n\nThank you.`;
           const blob = new Blob([txt], { type: 'text/plain' });
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
