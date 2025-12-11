@@ -445,15 +445,127 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="margin-top:40px;padding:36px 0">
-      <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <div>
-          <div style="font-weight:800;font-family:'Playfair Display',serif">The Justice Firm</div>
-          <div class="muted">Advocates & Legal Consultants — Allahabad (Prayagraj)</div>
-        </div>
-        <div class="muted">© <span id="year"></span> The Justice Firm — All rights reserved</div>
+    
+    <!-- ===== FIXED: PREMIUM FOOTER + NAV FALLBACKS ===== -->
+<footer style="margin-top:40px;padding:48px 0;background:linear-gradient(180deg,#fbfdff,#f7f9fc);border-top:1px solid rgba(11,18,32,0.03)">
+  <div class="container" style="display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start;max-width:var(--max-w);margin-inline:auto">
+    <div>
+      <div style="font-weight:800;font-family:'Playfair Display',serif;font-size:1.08rem">The Justice Firm</div>
+      <div class="muted" style="margin-top:6px">Advocates & Legal Consultants — Allahabad (Prayagraj)</div>
+
+      <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+        <a class="btn btn-ghost" href="practice.html" aria-label="Practice areas">Practice areas</a>
+        <a class="btn btn-ghost" href="articles.html" aria-label="Articles & Insights">Articles</a>
+        <a class="btn btn-ghost" href="team.html" aria-label="Our team">Team</a>
+        <a class="btn btn-ghost" href="contact.html" aria-label="Contact">Contact</a>
       </div>
-    </footer>
+
+      <div style="margin-top:18px;color:var(--muted);line-height:1.6;font-size:0.95rem">
+        <strong>Disclaimer:</strong> The content on this website is for general informational purposes only and does not constitute legal advice. Viewing the site or contacting the firm does not create a lawyer-client relationship. For advice specific to your matter, please book a consultation. The Justice Firm is not responsible for actions taken based solely on the website content.
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end">
+      <div style="text-align:right">
+        <div style="font-weight:800">Get in touch</div>
+        <div class="muted" style="margin-top:6px">📞 <a href="tel:+919454183793">+91 94541 83793</a> · ✉️ <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a></div>
+      </div>
+
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="btn btn-ghost" href="privacy.html">Privacy</a>
+        <a class="btn btn-ghost" href="terms.html">Terms</a>
+        <a class="btn btn-ghost" href="sitemap.xml">Sitemap</a>
+      </div>
+
+      <div class="muted" style="font-size:0.92rem;margin-top:6px">© <span id="year-footer"></span> The Justice Firm — All rights reserved</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Minimal contact anchor (ensures header #contact works if original contact section is on another page) -->
+<!-- If you already have a full contact section with id="contact", this block will not duplicate it (script below checks). -->
+<section id="contact-fallback" aria-hidden="true" style="display:none">
+  <div id="contact-anchor" style="height:1px;overflow:hidden"></div>
+</section>
+
+<script>
+/* ===== NAV / HEADER LINK FIXES & SMOOTH SCROLL =====
+   - Smooth-scrolls to local sections if present (by id)
+   - If target id not present, navigates to a logical page fallback (practice.html, contact.html, articles.html, team.html)
+   - Ensures #contact anchor exists so header links never break
+*/
+(function () {
+  // set footer year (separate id to avoid collisions)
+  try { document.getElementById('year-footer').textContent = new Date().getFullYear(); } catch(e){}
+
+  const navLinks = Array.from(document.querySelectorAll('header .links a[href^="#"], header .links a[href*="practice"] , header .links a[href*="team"] , header .links a[href*="articles"]'));
+  // canonical fallbacks for anchors that might be on other pages
+  const FALLBACK = {
+    'practice': 'practice.html',
+    'articles': 'articles.html',
+    'team': 'team.html',
+    'contact': 'contact.html'
+  };
+
+  // make sure #contact exists (if user didn't include contact section on same page)
+  if(!document.querySelector('#contact') && !document.querySelector('[id="contact-fallback"]')) {
+    const el = document.getElementById('contact-fallback');
+    if(el) el.style.display = 'block';
+  } else {
+    // hide fallback if a real contact exists
+    const fb = document.getElementById('contact-fallback');
+    if(fb) fb.style.display = 'none';
+  }
+
+  function scrollToId(id){
+    const target = document.getElementById(id);
+    if(!target) return false;
+    // prefer smooth scroll to top of element, with some offset for sticky header
+    const headerOffset = Math.min(96, Math.ceil(window.innerWidth * 0.06)); // dynamic offset
+    const rect = target.getBoundingClientRect();
+    const top  = window.pageYOffset + rect.top - headerOffset - 12;
+    window.scrollTo({ top, behavior: 'smooth' });
+    return true;
+  }
+
+  navLinks.forEach(a => {
+    a.addEventListener('click', function (ev) {
+      // normalize target id (strip leading #)
+      const href = (this.getAttribute('href') || '').trim();
+      if(!href) return;
+      if(href.startsWith('#')) {
+        const id = href.slice(1);
+        const ok = scrollToId(id);
+        if(!ok) {
+          // fallback to logical page (if available)
+          const fallback = FALLBACK[id] || FALLBACK[Object.keys(FALLBACK).find(k => href.includes(k))];
+          if(fallback) {
+            // open same page anchor if matches (nicer UX) else navigate
+            window.location.href = fallback + (fallback.indexOf('#') === -1 && id ? ('#' + id) : '');
+          } else {
+            // last resort: allow default (might be external anchor)
+            // nothing
+          }
+        }
+        ev.preventDefault();
+      } else {
+        // external link / file - let browser handle
+      }
+    });
+  });
+
+  // also add a click handler for any other in-page anchor links to smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function (e) {
+      const id = (this.getAttribute('href') || '').slice(1);
+      if(!id) return;
+      const ok = scrollToId(id);
+      if(ok) e.preventDefault();
+    });
+  });
+})();
+</script>
+
   </main>
 
   <!-- PROFILE MODAL -->
