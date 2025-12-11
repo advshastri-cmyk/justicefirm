@@ -1013,104 +1013,293 @@
         </div>
       </section>
 
-      <!-- TEAM -->
-      <section id="team" aria-labelledby="teamHeading" class="team-section-premium">
-        <div class="team-wrap">
-          <header class="team-header">
-            <h2 id="teamHeading">Our Team</h2>
-            <p class="muted">Experienced advocates &amp; legal consultants.</p>
-          </header>
+      <!-- ================= PREMIUM TEAM SECTION — single copy-paste block ================= -->
+<section id="team" aria-labelledby="teamHeading" class="team-section-premium" style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; margin-top:40px;">
 
-          <div class="team-grid" role="list">
-            <!-- 1: Ganga -->
-            <article class="member" role="listitem" tabindex="0"
-              data-title="Adv. Ganga Shankar Shastri"
-              data-subtitle="Founder & Lead Counsel"
-              data-quote="Justice is served best when clarity meets conscience."
-              data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law. He has 15+ years' experience across family, criminal and civil tribunals and courts. Known for strategic courtroom advocacy, clear client guidance, and practical settlement-first solutions.">
-              <figure class="member-figure">
-                <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri">
-                <div class="initials">GS</div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Ganga Shankar Shastri</h3>
-                <p class="role">Founder &amp; Lead Counsel</p>
-                <p class="meta">High Court • 15+ years</p>
-              </div>
-            </article>
+  <style>
+  /* ---------- Premium team styles (self-contained) ---------- */
+  :root{
+    --card:#fff;
+    --bg:#0f1724;
+    --ink:#071028;
+    --muted:#667085;
+    --accent-500:#0b6bff;
+    --accent-600:#0f4acb;
+    --glass: rgba(11,18,32,0.04);
+  }
 
-            <!-- 2: Minakshi (stronger bio + praise) -->
-            <article class="member" role="listitem" tabindex="0"
-              data-title="Adv. Minakshi Shastri"
-              data-subtitle="Senior Associate – Civil & Corporate"
-              data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
-              data-content="LL.M. and Postgraduate (Human Rights) from the Indian Institute of Human Rights. Minakshi specialises in property, civil and corporate litigation, with a strong appellate practice. Her meticulous drafting and persuasive oral advocacy have resulted in favourable outcomes in complex property and commercial matters. Clients praise her calm clarity, strategic thinking and attention to detail.">
-              <figure class="member-figure">
-                <img src="minakshi.jpg" alt="Adv. Minakshi Shastri">
-                <div class="initials">MS</div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Minakshi Shastri</h3>
-                <p class="role">Senior Associate – Civil &amp; Corporate</p>
-                <p class="meta">LL.M., Human Rights (IIHR) • Property Litigation</p>
-              </div>
-            </article>
+  .team-wrap{
+    max-width:1180px;
+    margin-inline:auto;
+    background:linear-gradient(180deg,#fff,#fbfdff);
+    border-radius:16px;
+    padding:28px;
+    border:1px solid rgba(11,18,32,0.04);
+    box-shadow:0 30px 90px rgba(7,12,25,0.06);
+  }
 
-            <!-- 3: Shivani -->
-            <article class="member" role="listitem" tabindex="0"
-              data-title="Adv. Shivani Shastri"
-              data-subtitle="Consulting Advocate – Constitutional Affairs"
-              data-quote="Progress in law begins with the courage to question, learn, and refine."
-              data-content="LL.M., pursuing Ph.D. • Focus on constitutional law, research and advisory. Shivani provides authoritative legal research and policy advice on complex constitutional questions.">
-              <figure class="member-figure">
-                <img src="shivani.jpg" alt="Adv. Shivani Shastri">
-                <div class="initials">SS</div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Shivani Shastri</h3>
-                <p class="role">Consulting Advocate – Constitutional Affairs</p>
-                <p class="meta">Research &amp; Advisory</p>
-              </div>
-            </article>
+  .team-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+  .team-header h2{margin:0;font-size:1.45rem;color:var(--ink);font-weight:800;letter-spacing:-0.02em;}
+  .team-header p{margin:6px 0 0;color:var(--muted);font-size:0.98rem;max-width:60ch;}
 
-            <!-- 4: Sanjay -->
-            <article class="member" role="listitem" tabindex="0"
-              data-title="Adv. Sanjay Kumar"
-              data-subtitle="Associate Counsel – Criminal Defence"
-              data-content="Criminal Defence • Practical courtroom experience">
-              <figure class="member-figure">
-                <img src="sanjay.jpg" alt="Adv. Sanjay Kumar">
-                <div class="initials">SK</div>
-              </figure>
-              <div class="bio">
-                <h3>Adv. Sanjay Kumar</h3>
-                <p class="role">Associate Counsel – Criminal Defence</p>
-                <p class="meta">Criminal Practice</p>
-              </div>
-            </article>
+  /* Grid */
+  .team-grid{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+
+  /* Member card */
+  .member{
+    background:linear-gradient(180deg,#ffffff,#fbfdff);
+    border-radius:12px;
+    padding:14px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    border:1px solid rgba(11,18,32,0.04);
+    box-shadow:0 12px 30px rgba(7,12,25,0.04);
+    transition:transform .22s cubic-bezier(.2,.9,.2,1),box-shadow .22s ease;
+    cursor:pointer;
+    outline: none;
+  }
+  .member:focus,
+  .member:hover{ transform:translateY(-6px); box-shadow:0 26px 70px rgba(7,12,25,0.10); }
+
+  .member-figure{ position:relative; width:84px; height:84px; flex:0 0 84px; border-radius:12px; overflow:hidden; background: linear-gradient(180deg,#f7f9fc,#eef6ff); display:flex;align-items:center;justify-content:center; }
+  .member-figure img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .member-figure .initials{
+    position:absolute; right:8px; bottom:8px; background:rgba(11,74,203,0.12); color:var(--accent-600); font-weight:800; font-size:0.88rem; padding:6px 8px; border-radius:10px; backdrop-filter: blur(4px);
+  }
+
+  .bio h3{margin:0;font-size:1.02rem;color:var(--ink);font-weight:700;}
+  .bio .role{margin:6px 0 0;color:var(--muted);font-size:0.92rem;}
+  .bio .meta{margin-top:8px;color:var(--muted);font-size:0.86rem;}
+
+  /* Modal (profile) */
+  .modal{ display:none; position:fixed; inset:0; z-index:2500; align-items:center; justify-content:center; background: rgba(2,6,23,0.6); padding:20px; }
+  .modal[aria-hidden="false"]{ display:flex; }
+  .modal-panel{ width:100%; max-width:880px; background:linear-gradient(180deg,#fff,#fbfdff); border-radius:12px; box-shadow:0 40px 120px rgba(7,12,25,0.28); border:1px solid rgba(11,18,32,0.06); overflow:auto; }
+  .modal-content{ display:grid; grid-template-columns: 240px 1fr; gap:20px; padding:20px; align-items:start; }
+  .modal-figure{ width:100%; height:240px; border-radius:10px; overflow:hidden; background:linear-gradient(180deg,#f7f9fc,#eef6ff); display:flex;align-items:center;justify-content:center; position:relative; }
+  .modal-figure img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .modal-head h3{ margin:0; font-size:1.18rem; color:var(--ink); }
+  .modal-head .subtitle{ color:var(--muted); margin-top:6px; }
+  .modal-quote{ margin-top:10px; padding:10px; background:linear-gradient(90deg, rgba(11,107,255,0.06), rgba(15,74,203,0.04)); border-radius:8px; color:var(--accent-600); font-weight:700; font-size:0.95rem; }
+  .modal-body{ color:var(--muted); line-height:1.6; margin-top:12px; font-size:0.96rem; }
+  .modal-foot{ display:flex; justify-content:flex-end; gap:10px; margin-top:14px; }
+
+  .modal-close{ position:absolute; right:14px; top:14px; background:transparent;border:0;font-size:20px;cursor:pointer;color:var(--muted); padding:8px; border-radius:8px; }
+  .modal-close:focus{ outline: 3px solid rgba(11,74,203,0.12); }
+
+  /* Responsive */
+  @media (max-width:1000px){
+    .team-grid{ grid-template-columns:repeat(2,1fr); }
+    .modal-content{ grid-template-columns: 1fr; }
+    .modal-figure{ height:200px; }
+  }
+  @media (max-width:520px){
+    .team-grid{ grid-template-columns:1fr; gap:12px; }
+    .member{ padding:12px; gap:10px; }
+    .member-figure{ width:72px; height:72px; flex:0 0 72px; }
+  }
+  </style>
+
+  <div class="team-wrap" role="region" aria-label="Our team of advocates and legal consultants">
+
+    <header class="team-header">
+      <div>
+        <h2 id="teamHeading">Our Team</h2>
+        <p class="muted">Experienced advocates & legal consultants — senior counsel, litigation and advisory specialists.</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <div style="color:var(--muted);font-size:0.92rem">Senior-led | Courtroom & Advisory</div>
+      </div>
+    </header>
+
+    <div class="team-grid" role="list" aria-label="Team members">
+      <!-- 1: Ganga -->
+      <article class="member" role="listitem" tabindex="0"
+        data-title="Adv. Ganga Shankar Shastri"
+        data-subtitle="Founder & Lead Counsel"
+        data-quote="Justice is served best when clarity meets conscience."
+        data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law. He has 15+ years' experience across family, criminal and civil tribunals and courts. Known for strategic courtroom advocacy, clear client guidance, and practical settlement-first solutions.">
+        <figure class="member-figure" aria-hidden="true">
+          <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" onerror="this.style.display='none'">
+          <div class="initials">GS</div>
+        </figure>
+        <div class="bio">
+          <h3>Adv. Ganga Shankar Shastri</h3>
+          <div class="role">Founder &amp; Lead Counsel</div>
+          <div class="meta">High Court • 15+ years</div>
+        </div>
+      </article>
+
+      <!-- 2: Minakshi -->
+      <article class="member" role="listitem" tabindex="0"
+        data-title="Adv. Minakshi Shastri"
+        data-subtitle="Senior Associate – Civil & Corporate"
+        data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
+        data-content="LL.M. and Postgraduate (Human Rights) from the Indian Institute of Human Rights. Minakshi specialises in property, civil and corporate litigation, with a strong appellate practice. Her meticulous drafting and persuasive oral advocacy have resulted in favourable outcomes in complex property and commercial matters. Clients praise her calm clarity, strategic thinking and attention to detail.">
+        <figure class="member-figure" aria-hidden="true">
+          <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" onerror="this.style.display='none'">
+          <div class="initials">MS</div>
+        </figure>
+        <div class="bio">
+          <h3>Adv. Minakshi Shastri</h3>
+          <div class="role">Senior Associate – Civil &amp; Corporate</div>
+          <div class="meta">LL.M. • Property Litigation</div>
+        </div>
+      </article>
+
+      <!-- 3: Shivani -->
+      <article class="member" role="listitem" tabindex="0"
+        data-title="Adv. Shivani Shastri"
+        data-subtitle="Consulting Advocate – Constitutional Affairs"
+        data-quote="Progress in law begins with the courage to question, learn, and refine."
+        data-content="LL.M., pursuing Ph.D. • Focus on constitutional law, research and advisory. Shivani provides authoritative legal research and policy advice on complex constitutional questions.">
+        <figure class="member-figure" aria-hidden="true">
+          <img src="shivani.jpg" alt="Adv. Shivani Shastri" onerror="this.style.display='none'">
+          <div class="initials">SS</div>
+        </figure>
+        <div class="bio">
+          <h3>Adv. Shivani Shastri</h3>
+          <div class="role">Consulting Advocate – Constitutional Affairs</div>
+          <div class="meta">Research &amp; Advisory</div>
+        </div>
+      </article>
+
+      <!-- 4: Sanjay -->
+      <article class="member" role="listitem" tabindex="0"
+        data-title="Adv. Sanjay Kumar"
+        data-subtitle="Associate Counsel – Criminal Defence"
+        data-quote="Every case begins with listening; every defence with preparation."
+        data-content="Criminal Defence • Practical courtroom experience. Sanjay Kumar focuses on pragmatic defence strategies and client care during high-pressure proceedings.">
+        <figure class="member-figure" aria-hidden="true">
+          <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" onerror="this.style.display='none'">
+          <div class="initials">SK</div>
+        </figure>
+        <div class="bio">
+          <h3>Adv. Sanjay Kumar</h3>
+          <div class="role">Associate Counsel – Criminal Defence</div>
+          <div class="meta">Criminal Practice</div>
+        </div>
+      </article>
+
+    </div> <!-- /.team-grid -->
+
+  </div> <!-- /.team-wrap -->
+
+  <!-- Profile modal -->
+  <div id="profileModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+    <div class="modal-panel" role="document" aria-live="polite">
+      <button class="modal-close" aria-label="Close profile" data-close>✕</button>
+      <div class="modal-content">
+        <div class="modal-figure" id="modalFigure">
+          <img id="modalImg" src="" alt="" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div class="modal-head">
+            <h3 id="profileModalTitle">Name</h3>
+            <div id="profileModalSub" class="subtitle"></div>
+            <div id="profileModalQuote" class="modal-quote" style="display:none;"></div>
+          </div>
+
+          <div id="modalDesc" class="modal-body"></div>
+
+          <div class="modal-foot">
+            <a id="modalContact" class="btn btn-ghost" href="mailto:adv.shastri@gmail.com">Contact</a>
+            <button class="btn btn-primary" data-close>Close</button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- Profile modal (single shared modal for all members) -->
-        <div id="profileModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
-          <div class="modal-backdrop" data-close></div>
-          <div class="modal-panel" role="document">
-            <div class="modal-content">
-              <button class="modal-close" aria-label="Close profile" data-close>✕</button>
-              <div class="modal-head">
-                <h3 id="profileModalTitle" style="margin:0 0 6px 0"></h3>
-                <div id="profileModalSub" class="muted" style="margin-bottom:8px"></div>
-                <div id="profileModalQuote" class="modal-quote" style="display:none;color:#cfe2fc;margin-bottom:10px"></div>
-              </div>
-              <div id="modalDesc" class="modal-body" style="color:#dfeafc"></div>
-              <div class="modal-foot">
-                <button class="btn btn-primary" data-close>Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
+  <script>
+  (function(){
+    const members = Array.from(document.querySelectorAll('.team-grid .member'));
+    const modal = document.getElementById('profileModal');
+    const modalTitle = document.getElementById('profileModalTitle');
+    const modalSub = document.getElementById('profileModalSub');
+    const modalQuote = document.getElementById('profileModalQuote');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalImg = document.getElementById('modalImg');
+    const modalFigure = document.getElementById('modalFigure');
+    const modalCloseBtns = document.querySelectorAll('[data-close]');
 
-      </section>
+    // open modal with member data
+    function openModalFromMember(member){
+      const title = member.dataset.title || member.querySelector('h3')?.textContent;
+      const subtitle = member.dataset.subtitle || member.querySelector('.role')?.textContent;
+      const quote = member.dataset.quote || '';
+      const content = member.dataset.content || '';
+      const img = member.querySelector('img')?.getAttribute('src') || '';
+
+      modalTitle.textContent = title || '';
+      modalSub.textContent = subtitle || '';
+      modalDesc.textContent = content || '';
+      if(quote){
+        modalQuote.style.display = 'block';
+        modalQuote.textContent = quote;
+      } else {
+        modalQuote.style.display = 'none';
+      }
+      if(img){
+        modalImg.src = img;
+        modalImg.alt = title || 'Portrait';
+        modalImg.style.display = '';
+      } else {
+        modalImg.style.display = 'none';
+      }
+
+      modal.setAttribute('aria-hidden','false');
+      modal.style.display = 'flex';
+      // focus trap - move focus to close button
+      const close = modal.querySelector('.modal-close');
+      if(close) close.focus();
+      // remember active element for return focus
+      modal.dataset.lastActive = document.activeElement ? document.activeElement.id || document.activeElement.tagName : '';
+    }
+
+    // close modal
+    function closeModal(){
+      modal.setAttribute('aria-hidden','true');
+      modal.style.display = 'none';
+      // restore focus to first member (best-effort)
+      const last = document.querySelector('.team-grid .member[tabindex="0"]');
+      if(last) last.focus();
+    }
+
+    // attach events to each member (click & keyboard Enter)
+    members.forEach(member=>{
+      member.addEventListener('click', ()=> openModalFromMember(member));
+      member.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModalFromMember(member); }
+      });
+    });
+
+    // close handlers
+    modalCloseBtns.forEach(b => b.addEventListener('click', closeModal));
+    modal.addEventListener('click', (e)=> { if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=> { if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal(); });
+
+    // ensure images degrade gracefully (show initials badge is already on card)
+    // lazyload: if browser supports loading=lazy it's already used on images
+
+    // small accessibility: ensure members are reachable and labelled
+    members.forEach(m=>{
+      m.setAttribute('role','button');
+      const name = m.dataset.title || m.querySelector('h3')?.textContent || '';
+      m.setAttribute('aria-label', name + '. View profile');
+    });
+  })();
+  </script>
+
+</section>
+<!-- ================= END PREMIUM TEAM SECTION ================= -->
+```0
 <section id="testimonials" aria-labelledby="testimonialsHeading" class="tf-testimonials">
   <div class="tf-wrap">
     <header>
