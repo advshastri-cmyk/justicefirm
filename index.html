@@ -1018,63 +1018,326 @@ style="margin-top:28px;padding:0;font-family:Inter,system-ui,-apple-system,Segoe
         </div>
       </section>
 
-      <!-- PAYMENT -->
-      <section id="payment" aria-labelledby="paymentHeading" style="margin-top:32px;padding:28px;background:var(--card);color:var(--ink);border-radius:12px;box-shadow:0 14px 40px rgba(7,12,25,0.04);max-width:1100px;margin-inline:auto;">
-        <h2 id="paymentHeading" style="margin:0;color:var(--ink);">Secure Payment</h2>
-        <p class="muted" style="margin-top:6px;color:var(--muted-dark);max-width:540px;">
-          Fast, secure payments for legal services — UPI or bank transfer. 100% trusted & encrypted.
-        </p>
+      <!-- ================= PREMIUM PAYMENT SECTION — single copy-paste block ================= -->
+<section id="payment" aria-labelledby="paymentHeading"
+  style="margin-top:40px;padding:28px;max-width:1100px;margin-inline:auto;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial;">
 
-        <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:stretch;">
-          <div style="background:#ffffff;border-radius:14px;box-shadow:0 12px 36px rgba(7,12,25,0.04);padding:18px;text-align:center;color:#020617;">
-            <h4 style="margin:0 0 6px;font-size:1.1rem;font-weight:600;">UPI — Instant Payment</h4>
-            <p style="margin:0;color:#4a5568;font-size:.9rem;">Scan &amp; pay (recommended for quick confirmation)</p>
+  <style>
+  /* Premium payment section — self-contained */
+  :root{
+    --bg:#0b1220;            /* deep navy accent */
+    --glass: rgba(255,255,255,0.06);
+    --card:#ffffff;
+    --muted:#6b7280;
+    --ink:#071028;
+    --accent-500:#0b6bff;
+    --accent-600:#0f4acb;
+    --success:#059669;
+  }
 
-            <div id="paymentQrFrame" style="margin:14px auto;width:160px;height:160px;border-radius:10px;overflow:hidden;background:#f1f5f9;display:flex;align-items:center;justify-content:center;border:1px solid #e6ebf5;cursor:pointer;" aria-label="Tap to enlarge QR" role="button">
-              <img src="upi_qr.jpg" alt="UPI QR — The Justice Firm" loading="lazy" style="width:100%;height:100%;object-fit:contain;">
-            </div>
+  .pay-wrap{
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,252,255,0.99));
+    border-radius:18px;
+    box-shadow: 0 30px 80px rgba(7,12,25,0.08);
+    padding:28px;
+    border:1px solid rgba(11,20,40,0.04);
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:22px;
+    align-items:start;
+  }
 
-            <div style="margin-top:8px;font-size:0.92rem;color:#1f2937;">UPI ID: <strong style="color:#000;" id="upi-id">adv.shastri@oksbi</strong></div>
+  /* Header */
+  .pay-head{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+  }
+  .pay-brand {
+    width:56px;height:56px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent-500),var(--accent-600));
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;
+    box-shadow: 0 8px 30px rgba(11,74,203,0.12);
+    flex-shrink:0;
+  }
+  .pay-title h2{margin:0;font-size:1.35rem;color:var(--ink);letter-spacing:-0.01em;}
+  .pay-title p{margin:6px 0 0;color:var(--muted);font-size:0.96rem;max-width:640px;line-height:1.45;}
 
-            <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-              <button id="copyUpiBtn" class="btn btn--ghost btn--small" style="min-width:90px;">Copy UPI</button>
-              <button id="downloadQR" class="btn btn--ghost btn--small" style="min-width:90px;">Download QR</button>
-            </div>
+  /* Left column: description & trust badges */
+  .pay-left { display:flex;flex-direction:column;gap:18px; }
+
+  .pay-badges { display:flex;gap:10px;flex-wrap:wrap;align-items:center; }
+  .badge {
+    display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+    background:linear-gradient(180deg, rgba(11,74,203,0.06), rgba(11,74,203,0.02));
+    color:var(--accent-600);font-weight:700;font-size:0.9rem;border:1px solid rgba(11,74,203,0.06);
+  }
+  .badge small{font-weight:600;color:var(--muted);font-size:.78rem;}
+
+  /* Right column: payment cards */
+  .pay-right { display:flex;flex-direction:column;gap:14px; }
+
+  .method {
+    background: linear-gradient(180deg,#fff,#fbfdff);
+    border-radius:14px;padding:16px;border:1px solid rgba(11,18,32,0.04);
+    box-shadow: 0 14px 40px rgba(7,12,25,0.04);display:flex;flex-direction:column;gap:12px;
+  }
+  .method h4{margin:0;font-size:1.02rem;color:var(--ink);font-weight:700;}
+  .method p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.4;}
+
+  /* QR frame */
+  .qr-frame{
+    margin:10px auto 0;width:180px;height:180px;border-radius:14px;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#f7f9fc,#eef5ff);
+    border:1px solid rgba(14,22,40,0.04);cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .qr-frame:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,74,203,0.08);}
+
+  .upi-id {text-align:center;font-weight:700;color:var(--ink);font-size:.95rem;margin-top:6px;}
+
+  .method .controls { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px; }
+  .btn { padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;font-size:0.92rem; }
+  .btn-ghost { background:transparent;border:1px solid rgba(11,18,32,0.06);color:var(--ink); }
+  .btn-primary { background:linear-gradient(90deg,var(--accent-500),var(--accent-600));color:#fff;box-shadow:0 10px 30px rgba(11,74,203,0.12); }
+
+  /* Bank card specifics */
+  .bank-details { font-size:0.95rem;color:var(--ink);line-height:1.45;text-align:left; }
+  .bank-field{display:flex;gap:6px;align-items:center;justify-content:space-between;padding:6px 10px;border-radius:8px;background:rgba(11,18,32,0.02);border:1px solid rgba(11,18,32,0.03);}
+
+  /* Footer contact */
+  .pay-contact { text-align:center;color:var(--muted);font-size:0.92rem;margin-top:6px;grid-column:1/-1; }
+  .pay-contact a{color:var(--accent-600);font-weight:700;text-decoration:none;}
+
+  /* Modal enlarge */
+  .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(2,6,23,0.7);z-index:2000;align-items:center;justify-content:center;padding:20px;}
+  .modal-card{background:#fff;padding:18px;border-radius:12px;max-width:420px;width:100%;text-align:center;box-shadow:0 30px 90px rgba(7,12,25,0.28);}
+  .modal-card img{width:260px;height:260px;object-fit:contain;border-radius:10px;border:1px solid #eef2ff;background:#fbfdff;}
+
+  /* small print */
+  .secure-note { font-size:0.86rem;color:var(--muted);display:flex;gap:8px;align-items:center;justify-content:center;margin-top:8px; }
+  .secure-note svg{opacity:.95;}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .pay-wrap{grid-template-columns:1fr; padding:20px;}
+    .pay-right{order:2;}
+  }
+  </style>
+
+  <div class="pay-wrap" role="region" aria-label="Secure payments and instructions">
+
+    <!-- LEFT: Intro + badges -->
+    <div class="pay-left">
+      <div class="pay-head">
+        <div class="pay-brand" aria-hidden="true">JF</div>
+        <div class="pay-title">
+          <h2 id="paymentHeading">Secure Payment</h2>
+          <p>Fast, secure payments for legal services — UPI, bank transfer or online assistance. Encrypted transactions &amp; immediate confirmations for your peace of mind.</p>
+        </div>
+      </div>
+
+      <div class="pay-badges" aria-hidden="true">
+        <div class="badge" title="Encrypted payments">
+          <!-- lock icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10v-2a6 6 0 0112 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+          <div><span>Encrypted</span><br><small style="display:block;color:var(--muted)">TLS &amp; bank-grade security</small></div>
+        </div>
+
+        <div class="badge" title="Instant confirmation">
+          <!-- lightning -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/></svg>
+          <div><span>Instant</span><br><small style="display:block;color:var(--muted)">UPI confirmations</small></div>
+        </div>
+
+        <div class="badge" title="Trusted">
+          <!-- family icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zM6 20v-2a4 4 0 014-4h0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><span>Trusted</span><br><small style="display:block;color:var(--muted)">Families &amp; businesses</small></div>
+        </div>
+      </div>
+
+      <!-- optional short instructions -->
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:680px;">
+        <div style="font-weight:700;color:var(--ink)">How to pay quickly</div>
+        <ol style="margin:0;padding-left:18px;color:var(--muted);line-height:1.6">
+          <li>Open your UPI app → Scan the QR or copy the UPI ID.</li>
+          <li>Enter the amount &amp; add your case reference in remarks.</li>
+          <li>Send a screenshot to confirm payment — we will acknowledge within 10 minutes.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- RIGHT: Payment methods -->
+    <div class="pay-right" aria-hidden="false">
+
+      <!-- UPI Card -->
+      <div class="method" aria-labelledby="upiHeading">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div>
+            <h4 id="upiHeading">UPI — Instant Payment</h4>
+            <p>Scan to pay for fastest confirmation. Works with all major UPI apps (PhonePe, Google Pay, BHIM).</p>
           </div>
-
-          <div style="background:#ffffff;border-radius:14px;box-shadow:0 12px 36px rgba(7,12,25,0.04);padding:18px;text-align:center;color:#020617;">
-            <h4 style="margin:0;font-size:1.1rem;font-weight:600;">Bank Transfer</h4>
-
-            <div style="margin-top:10px;font-size:0.95rem;line-height:1.45;color:#1f2937;">
-              The Justice Firm — Canara Bank<br>
-              A/c: <strong>5328127000035</strong><br>
-              IFSC: <strong>CNRB0005131</strong>
-            </div>
-
-            <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-              <a class="btn btn--ghost btn--small" id="downloadReceipt" href="#" style="min-width:110px;">Receipt</a>
-              <a class="btn btn-primary btn--small" href="https://wa.me/919454183793" target="_blank" rel="noopener" style="min-width:110px;">Need Help</a>
-            </div>
+          <!-- small secure icon -->
+          <div style="display:flex;align-items:center;gap:8px;color:var(--success);font-weight:700;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2 4h4l-3 3 1 5-7-4-7 4 1-5-3-3h4l2-4z" fill="currentColor"/></svg>
           </div>
         </div>
 
-        <div style="margin-top:18px;text-align:center;font-size:0.88rem;color:var(--muted-dark);">
-          Payment issues or confirmation?<br>
-          📞 <a href="tel:+919454183793" style="color:var(--accent)">+91 94541 83793</a> &nbsp;•&nbsp;
-          ✉️ <a href="mailto:adv.shastri@gmail.com" style="color:var(--accent)">adv.shastri@gmail.com</a>
+        <!-- QR -->
+        <div id="paymentQrFrame" class="qr-frame" role="button" aria-label="Enlarge QR code (click)">
+          <!-- replace src with your QR image path -->
+          <img id="paymentQrImg" src="upi_qr.jpg" alt="UPI QR — The Justice Firm" style="width:100%;height:100%;object-fit:contain;">
         </div>
 
-        <!-- QR enlarge modal -->
-        <div id="paymentQrModal" aria-hidden="true" role="dialog" aria-label="UPI QR enlarged" style="display:none;position:fixed;inset:0;background:rgba(2,6,23,0.75);backdrop-filter:blur(4px);z-index:1800;align-items:center;justify-content:center;padding:18px;">
-          <article style="background:#fff;border-radius:14px;padding:16px;max-width:360px;width:100%;box-shadow:0 24px 80px rgba(15,23,42,0.6);text-align:center;">
-            <h3 style="margin:0 0 8px;font-size:1.05rem;color:#111827;">Scan to Pay (UPI)</h3>
-            <p style="margin:0 0 10px;font-size:.9rem;color:#4b5563;">Use any UPI app to scan this code and complete payment.</p>
-            <img id="paymentQrLarge" src="upi_qr.jpg" alt="Enlarged UPI QR — The Justice Firm" style="width:220px;height:220px;max-width:100%;border-radius:12px;border:1px solid #e5e7eb;background:#f9fafb;object-fit:contain;">
-            <button id="paymentQrClose" class="btn btn--ghost btn--small" type="button" style="margin-top:12px;">Close</button>
-          </article>
-        </div>
-      </section>
+        <div class="upi-id" aria-live="polite">UPI ID: <span id="upi-id" style="margin-left:8px;color:var(--ink);">adv.shastri@oksbi</span></div>
 
+        <div class="method-controls" style="display:flex;justify-content:center;">
+          <div class="method-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button id="copyUpiBtn" class="btn btn-ghost" type="button" aria-label="Copy UPI ID">Copy UPI</button>
+            <button id="downloadQR" class="btn btn-ghost" type="button" aria-label="Download QR image">Download QR</button>
+            <a class="btn btn-primary" href="https://wa.me/919454183793?text=I%20have%20made%20a%20payment%20for%20[case%20ref]" target="_blank" rel="noopener" aria-label="Contact on WhatsApp">Confirm via WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="secure-note" aria-hidden="false">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 1l3 4h4l-3 3 1 5-5-3-5 3 1-5-3-3h4l3-4z" fill="currentColor"/></svg>
+          <div>Payments processed by your bank / UPI provider. We never request OTPs or bank passwords.</div>
+        </div>
+      </div>
+
+      <!-- Bank transfer -->
+      <div class="method" aria-labelledby="bankHeading">
+        <h4 id="bankHeading">Bank Transfer</h4>
+
+        <div class="bank-details" role="list" aria-label="Bank account details">
+          <div class="bank-field" role="listitem"><div>Account name</div><div style="font-weight:700">The Justice Firm</div></div>
+          <div class="bank-field" role="listitem"><div>Bank</div><div style="font-weight:700">Canara Bank</div></div>
+          <div class="bank-field" role="listitem"><div>Account No.</div><div style="font-weight:700">5328127000035</div></div>
+          <div class="bank-field" role="listitem"><div>IFSC</div><div style="font-weight:700">CNRB0005131</div></div>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap;">
+          <a id="downloadReceipt" class="btn btn-ghost" href="#" role="button" aria-label="Download sample receipt">Download receipt</a>
+          <a href="https://wa.me/919454183793" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Get help on WhatsApp">Need Help</a>
+        </div>
+        <div style="text-align:center;margin-top:6px;color:var(--muted);font-size:0.9rem;">Enter case reference in remarks to speed reconciliation.</div>
+      </div>
+
+    </div> <!-- /.pay-right -->
+
+    <!-- Footer contact (spans full width) -->
+    <div class="pay-contact" role="contentinfo">
+      Payment issues or confirmation? &nbsp;
+      📞 <a href="tel:+919454183793">+91 94541 83793</a> &nbsp;•&nbsp;
+      ✉️ <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
+    </div>
+
+  </div> <!-- /.pay-wrap -->
+
+  <!-- QR enlarge modal -->
+  <div id="paymentQrModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="UPI QR enlarged">
+    <div class="modal-card">
+      <h3 style="margin:0 0 8px;font-size:1.05rem;color:var(--ink)">Scan to Pay — UPI</h3>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:.95rem;">Open any UPI app and scan this code, or download it for later.</p>
+      <img id="paymentQrLarge" src="upi_qr.jpg" alt="Enlarged UPI QR — The Justice Firm">
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;">
+        <button id="modalDownload" class="btn btn-primary" type="button">Download QR</button>
+        <button id="paymentQrClose" class="btn btn-ghost" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    // Elements
+    const qrFrame = document.getElementById('paymentQrFrame');
+    const qrImg = document.getElementById('paymentQrImg');
+    const copyBtn = document.getElementById('copyUpiBtn');
+    const downloadBtn = document.getElementById('downloadQR');
+    const modal = document.getElementById('paymentQrModal');
+    const modalClose = document.getElementById('paymentQrClose');
+    const modalDownload = document.getElementById('modalDownload');
+    const paymentQrLarge = document.getElementById('paymentQrLarge');
+    const upiIdEl = document.getElementById('upi-id');
+
+    // Ensure image exists — if not, make UI degrade gracefully
+    function safeSrc(el){
+      return el && el.getAttribute ? el.getAttribute('src') : null;
+    }
+
+    // Open modal
+    function openModal(){
+      if(!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      // focus trap: set focus to close button
+      modalClose.focus();
+    }
+    function closeModal(){
+      if(!modal) return;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    // Copy UPI
+    copyBtn.addEventListener('click', async ()=>{
+      const upi = upiIdEl.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(upi);
+        copyBtn.textContent = 'Copied';
+        setTimeout(()=> copyBtn.textContent = 'Copy UPI', 1800);
+      } catch(err){
+        // fallback: select text
+        const tmp = document.createElement('textarea');
+        tmp.value = upi; document.body.appendChild(tmp);
+        tmp.select(); document.execCommand('copy'); document.body.removeChild(tmp);
+        copyBtn.textContent = 'Copied';
+        setTimeout(()=> copyBtn.textContent = 'Copy UPI', 1800);
+      }
+    });
+
+    // Download QR (creates a download link)
+    function triggerDownload(imgEl, filename='upi-qr.png'){
+      const src = safeSrc(imgEl);
+      if(!src){ alert('QR image not available'); return; }
+      // If src is data URL or same-origin, we can download directly
+      // For cross-origin images browser security may block canvas extraction — attempt simple anchor first
+      const a = document.createElement('a');
+      a.href = src;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    downloadBtn.addEventListener('click', ()=> triggerDownload(qrImg, 'the-justice-firm-upi-qr.png'));
+    modalDownload.addEventListener('click', ()=> triggerDownload(paymentQrLarge, 'the-justice-firm-upi-qr.png'));
+
+    // QR frame click => open modal
+    qrFrame.addEventListener('click', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=> { if(e.target === modal) closeModal(); });
+
+    // keyboard: Esc to close modal
+    document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeModal(); });
+
+    // If image fails to load, replace with placeholder and disable download
+    [qrImg, paymentQrLarge].forEach(img=>{
+      img.addEventListener('error', ()=>{
+        img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="100%" height="100%" fill="#f3f6fb"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#94a3b8" font-size="18">QR image not available</text></svg>'
+        );
+      });
+    });
+
+    // Accessibility: ensure buttons have focus outlines (if CSS removed)
+    // No-op here — just ensure initial state
+  })();
+  </script>
+
+</section>
+<!-- ================= end premium payment section ================= -->
       <!-- CONTACT placeholder -->
       <section id="contact" aria-hidden="true" style="display:none"></section>
     </main>
