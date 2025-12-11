@@ -250,22 +250,243 @@
     </div>
 
     <main id="main-content" tabindex="-1">
-      <!-- HERO -->
-      <section class="hero" aria-label="Hero — The Justice Firm">
-        <div class="hero-card" data-reveal>
-          <span class="eyebrow" aria-hidden="true">Trusted in Indian Courts</span>
-          <h1 class="headline">Practical counsel for Family, Criminal &amp; Civil disputes.</h1>
-          <p class="lead">Confidential, strategic and results-focused representation across Allahabad and Uttar Pradesh.</p>
+<!-- ================= PREMIUM HERO — single copy-paste block ================= -->
+<section class="hero" aria-label="Hero — The Justice Firm" style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;">
+  <style>
+  :root{
+    --bg:#0f1724;
+    --card:#ffffff;
+    --muted:#94a3b8;
+    --ink:#071028;
+    --accent-500:#0b6bff;
+    --accent-600:#0f4acb;
+    --glass: rgba(255,255,255,0.04);
+  }
 
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="contact.html" target="_blank" rel="noopener">Book Consultation</a>
-            <a class="btn btn--ghost" href="#practice">Explore Practice</a>
-          </div>
+  /* full-bleed container */
+  .hero{
+    background:
+      radial-gradient(800px 300px at 10% 20%, rgba(11,74,203,0.06), transparent 12%),
+      radial-gradient(600px 220px at 90% 80%, rgba(15,74,203,0.04), transparent 14%),
+      linear-gradient(180deg,#fcfdff 0%, #eef6ff 100%);
+    padding:56px 18px;
+    display:flex;
+    justify-content:center;
+  }
 
-          <p class="muted linkline" style="margin-top:12px;font-size:.95rem">
-            <strong style="color:var(--ink);font-weight:700">+91 94541 83793</strong> · <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
-          </p>
+  /* card */
+  .hero-card{
+    width:100%;
+    max-width:1200px;
+    border-radius:18px;
+    background: linear-gradient(180deg,#ffffff, #fbfdff);
+    box-shadow: 0 30px 90px rgba(7,12,25,0.09);
+    border:1px solid rgba(11,18,32,0.04);
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:28px;
+    padding:36px;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* Left: copy */
+  .hero-copy { padding-right:6px; }
+  .eyebrow{
+    display:inline-block;
+    font-weight:700;
+    color:var(--accent-600);
+    background:linear-gradient(90deg, rgba(11,107,255,0.08), rgba(15,74,203,0.04));
+    padding:8px 12px;
+    border-radius:999px;
+    font-size:.9rem;
+    letter-spacing:0.02em;
+  }
+
+  .headline{
+    margin:14px 0 8px;
+    font-size:2.05rem;
+    line-height:1.06;
+    color:var(--ink);
+    font-weight:800;
+    letter-spacing:-0.02em;
+  }
+  @media (max-width:760px){ .headline{font-size:1.6rem;} }
+
+  .lead{
+    margin:0 0 18px;
+    color:var(--muted);
+    font-size:1.02rem;
+    line-height:1.6;
+    max-width:62ch;
+  }
+
+  /* CTA group */
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;justify-content:center;
+    padding:12px 16px;border-radius:12px;border:0;font-weight:800;font-size:0.98rem;cursor:pointer;
+    text-decoration:none;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--accent-500),var(--accent-600));
+    color:#fff;box-shadow:0 12px 36px rgba(11,74,203,0.14);
+  }
+  .btn-ghost{
+    background:transparent;border:1px solid rgba(11,18,32,0.06);color:var(--ink);
+  }
+  .btn:focus{outline:3px solid rgba(11,74,203,0.12);outline-offset:3px}
+
+  /* contact line */
+  .linkline{margin-top:12px;color:var(--muted);font-size:0.95rem;}
+  .linkline a{color:var(--accent-600);font-weight:700;text-decoration:none;}
+
+  /* Right: visual / credibility */
+  .hero-visual{
+    display:flex;flex-direction:column;align-items:center;gap:16px;
+    justify-content:center;padding:8px;
+  }
+  .visual-card{
+    width:100%;
+    max-width:360px;
+    border-radius:14px;
+    padding:18px;
+    background:linear-gradient(180deg,#fff,#f8fbff);
+    box-shadow: 0 18px 50px rgba(7,12,25,0.06);
+    border:1px solid rgba(11,18,32,0.04);
+    display:flex;flex-direction:column;gap:12px;align-items:center;
+  }
+  .scales{
+    width:120px;height:120px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(11,107,255,0.08), rgba(15,74,203,0.06));
+    box-shadow:0 14px 40px rgba(11,74,203,0.06);
+  }
+
+  .cred-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;}
+  .cred{font-size:.9rem;color:var(--muted);display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:10px;background:rgba(11,18,32,0.02);}
+
+  /* small stats */
+  .hero-stats{display:flex;gap:12px;margin-top:6px;align-items:center;justify-content:center;}
+  .stat{display:flex;flex-direction:column;align-items:center;padding:8px 12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(11,18,32,0.03);}
+  .stat strong{font-size:1.05rem;color:var(--ink);display:block}
+  .stat span{font-size:0.82rem;color:var(--muted)}
+
+  /* subtle floating shapes */
+  .hero-deco{
+    position:absolute;right:-80px;top:-40px;opacity:0.06;pointer-events:none;
+    transform:rotate(12deg);filter:blur(6px);
+  }
+
+  /* responsive */
+  @media (max-width:980px){
+    .hero-card{grid-template-columns:1fr; padding:22px}
+    .hero-visual{order:-1;margin-bottom:10px}
+    .hero-card{gap:14px}
+    .hero-visual .visual-card{max-width:100%}
+  }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    .fade-up, .fade-in { transition:none !important; transform:none !important; opacity:1 !important; }
+  }
+
+  /* entrance */
+  .fade-up{
+    transform:translateY(8px);
+    opacity:0;
+    transition:transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s ease;
+  }
+  .fade-up.visible{ transform:none; opacity:1; }
+  </style>
+
+  <div class="hero-card" role="region" aria-label="The Justice Firm introduction">
+
+    <!-- LEFT COPY -->
+    <div class="hero-copy fade-up" data-reveal>
+      <span class="eyebrow" aria-hidden="true">Trusted in Indian Courts</span>
+
+      <h1 class="headline" style="margin-top:12px;">Practical counsel for Family, Criminal &amp; Civil disputes.</h1>
+
+      <p class="lead">Confidential, strategic and results-focused representation across Allahabad and Uttar Pradesh — settlements, litigation, and mediation handled with care and precision.</p>
+
+      <div class="hero-cta" style="margin-top:6px;">
+        <a class="btn btn-primary" href="contact.html" target="_blank" rel="noopener" aria-label="Book consultation">Book Consultation</a>
+        <a class="btn btn-ghost" href="#practice" aria-label="Explore practice areas">Explore practice</a>
+      </div>
+
+      <p class="muted linkline" style="margin-top:12px;font-size:.95rem">
+        <strong style="color:var(--ink);font-weight:700">📞 +91 94541 83793</strong>
+         &nbsp; · &nbsp;
+        <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
+      </p>
+    </div>
+
+    <!-- RIGHT VISUAL -->
+    <aside class="hero-visual fade-up" data-reveal>
+      <div class="visual-card" role="img" aria-label="Scales of justice emblem">
+        <div class="scales" aria-hidden="true">
+          <!-- tasteful scales SVG -->
+          <svg width="72" height="72" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3v2" stroke="#0b4acb" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M6 7h12" stroke="#0b4acb" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M7 7l-1.5 8h13L17 7" stroke="#0b4acb" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="8" cy="16" r="1.8" fill="#0b6bff"/>
+            <circle cx="16" cy="16" r="1.8" fill="#0f4acb"/>
+          </svg>
         </div>
+
+        <div style="text-align:center;">
+          <div style="font-weight:700;color:var(--ink);font-size:1rem;">The Justice Firm</div>
+          <div style="color:var(--muted);font-size:0.92rem;margin-top:6px;max-width:260px;">Senior advocates and counsel with decades of experience in family, criminal and civil law.</div>
+        </div>
+
+        <div class="hero-stats" aria-hidden="true">
+          <div class="stat"><strong>95%</strong><span>Client satisfaction</span></div>
+          <div class="stat"><strong>500+</strong><span>Cases handled</span></div>
+        </div>
+
+        <div class="cred-row" style="margin-top:8px;">
+          <div class="cred">Allahabad • Lucknow</div>
+          <div class="cred">Mediation & Litigation</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- decorative -->
+    <svg class="hero-deco" width="420" height="360" viewBox="0 0 420 360" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0" stop-color="#0b6bff" stop-opacity="0.12"/>
+          <stop offset="1" stop-color="#0f4acb" stop-opacity="0.06"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="420" height="360" rx="40" fill="url(#g1)"/>
+    </svg>
+
+  </div>
+
+  <script>
+  // simple reveal animation on load/scroll into view
+  (function(){
+    const reveals = document.querySelectorAll('[data-reveal]');
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, {threshold: 0.15});
+    reveals.forEach(r=>{ r.classList.add('fade-up'); obs.observe(r); });
+
+    // optional small keyboard UX: focus primary CTA on hero load for immediate access (non-invasive)
+    window.addEventListener('load', ()=> {
+      const btn = document.querySelector('.hero .btn-primary');
+      if(btn) btn.setAttribute('tabindex','0');
+    });
+  })();
+  </script>
+</section>
+<!-- ================= END PREMIUM HERO ================= -->
+```0
 
         <!-- decorative goddes image — uses file name you gave: goddes.jpg -->
         <img id="goddes" src="goddes.jpg" alt="Statue of Lady Justice — decorative" aria-hidden="true">
