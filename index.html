@@ -720,6 +720,227 @@
 
   /* small accessibility niceties */
   (function(){ document.addEventListener('keydown', e=>{ if(e.key==='Tab') document.documentElement.classList.add('show-focus'); }); })();
-  </script>
+  
+  <!-- START: Floating Chatbot + Contact Toggle + Back-to-top -->
+<style>
+/* Floating UI: chat, contact toggle, back-to-top */
+.fab {
+  position:fixed;z-index:4400;display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px;box-shadow:0 12px 40px rgba(7,12,25,0.18);cursor:pointer;border:0;font-weight:800
+}
+.fab:focus{outline:3px solid rgba(11,107,255,0.14);outline-offset:3px}
+.fab-chat{left:18px;bottom:18px;background:linear-gradient(90deg,#2b6cff,var(--gold-500));color:#fff}
+.fab-contact{right:18px;bottom:18px;background:linear-gradient(90deg,var(--gold-500),var(--gold-600));color:#fff}
+
+/* Contact expanded panel */
+.contact-panel{position:fixed;right:18px;bottom:86px;z-index:4300;width:260px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 30px 80px rgba(7,12,25,0.18);padding:12px;border:1px solid rgba(11,18,32,0.04);display:none;flex-direction:column;gap:10px}
+.contact-panel.open{display:flex}
+.contact-panel a{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);padding:8px;border-radius:8px}
+.contact-panel .muted{font-size:0.88rem;color:var(--muted)}
+
+/* Chat panel */
+.chat-panel{position:fixed;left:18px;bottom:86px;z-index:4500;width:360px;max-width:calc(100% - 48px);height:520px;border-radius:14px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 40px 120px rgba(7,12,25,0.2);display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(11,18,32,0.05)}
+.chat-panel.open{display:flex}
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid rgba(11,18,32,0.04)}
+.chat-body{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg,#fbfdff,#f8fbff)}
+.chat-footer{padding:10px;border-top:1px solid rgba(11,18,32,0.04);display:flex;gap:8px;align-items:center}
+
+/* messages */
+.msg{max-width:78%;padding:10px 12px;border-radius:12px;font-size:0.95rem;line-height:1.4}
+.msg.bot{background:linear-gradient(180deg,#eef6ff,#f2f9ff);align-self:flex-start;color:var(--ink)}
+.msg.user{background:linear-gradient(180deg,#0b6bff,#0f4acb);color:#fff;align-self:flex-end}
+.suggestions{display:flex;gap:8px;flex-wrap:wrap;padding:8px}
+.suggestion{padding:8px 10px;border-radius:10px;border:1px solid rgba(11,18,32,0.05);cursor:pointer;background:linear-gradient(180deg,#fff,#fbfdff)}
+/* mobile tweaks */
+@media (max-width:520px){
+  .chat-panel{width:92%;height:60vh;left:4%;bottom:86px}
+  .contact-panel{right:12px;width:220px}
+}
+#backToTop{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:4400;background:rgba(11,18,32,0.9);color:#fff;padding:8px 10px;border-radius:999px;display:none;font-weight:700}
+</style>
+
+<!-- Chat & Contact HTML -->
+<button id="openChat" class="fab fab-chat" aria-label="Open chat" title="Ask help">💬</button>
+
+<div id="chatPanel" class="chat-panel" role="dialog" aria-label="Site assistant" aria-hidden="true">
+  <div class="chat-header">
+    <div style="display:flex;gap:10px;align-items:center">
+      <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(90deg,#2b6cff,var(--gold-500));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800">JF</div>
+      <div>
+        <div style="font-weight:800">The Justice Firm — Assistant</div>
+        <div class="muted" style="font-size:0.88rem">Quick legal help & booking</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="clearChat" class="btn btn-ghost" aria-label="Clear chat">Clear</button>
+      <button id="closeChat" class="btn btn-ghost" aria-label="Close chat">Close</button>
+    </div>
+  </div>
+
+  <div id="chatBody" class="chat-body" tabindex="0" aria-live="polite"></div>
+
+  <div class="suggestions" id="chatSuggestions" style="padding:10px 12px;border-top:1px solid rgba(11,18,32,0.03)">
+    <button class="suggestion" data-q="How do I get bail?">How do I get bail?</button>
+    <button class="suggestion" data-q="Procedure for custody">Custody procedure</button>
+    <button class="suggestion" data-q="Fees & consultation">Fees & consultation</button>
+    <button class="suggestion" data-q="Book a slot">Book a slot</button>
+  </div>
+
+  <form id="chatForm" class="chat-footer" onsubmit="return false;">
+    <input id="chatInput" type="text" aria-label="Type message" placeholder="Type your question or choose a suggestion…" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(11,18,32,0.06)">
+    <button id="sendChat" class="btn btn-primary" aria-label="Send message">Send</button>
+  </form>
+</div>
+
+<!-- Contact toggle -->
+<button id="contactToggle" class="fab fab-contact" aria-expanded="false" aria-controls="contactPanel" title="Contact">☎</button>
+<div id="contactPanel" class="contact-panel" role="region" aria-hidden="true">
+  <div style="font-weight:800">Quick contact</div>
+  <a href="tel:+919454183793" aria-label="Call us">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 5h4l2 5-2 2 4 9 5-2v-4" stroke="#0b4acb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Call +91 94541 83793
+  </a>
+  <a href="mailto:adv.shastri@gmail.com" aria-label="Email us">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l9 6 9-6" stroke="#0b4acb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Email adv.shastri@gmail.com
+  </a>
+  <a href="https://wa.me/919454183793" aria-label="WhatsApp" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.5a8.4 8.4 0 1 1-1.9-5.2L21 21z" stroke="#0b4acb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    WhatsApp
+  </a>
+  <div class="muted" style="font-size:0.82rem">We reply during office hours — urgent matters by phone.</div>
+</div>
+
+<!-- back to top -->
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+/* Chat & Contact JS — lightweight local assistant with canned replies */
+(function(){
+  const openChatBtn = document.getElementById('openChat');
+  const chatPanel = document.getElementById('chatPanel');
+  const closeChatBtn = document.getElementById('closeChat');
+  const sendBtn = document.getElementById('sendChat');
+  const chatInput = document.getElementById('chatInput');
+  const chatBody = document.getElementById('chatBody');
+  const suggestions = document.getElementById('chatSuggestions');
+  const clearChat = document.getElementById('clearChat');
+
+  const contactToggle = document.getElementById('contactToggle');
+  const contactPanel = document.getElementById('contactPanel');
+
+  const back = document.getElementById('backToTop');
+
+  // small helper to append message
+  function appendMsg(text, who='bot'){
+    const m = document.createElement('div'); m.className = 'msg ' + who; m.textContent = text;
+    chatBody.appendChild(m); chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  // canned Q&A (expand as needed)
+  const KB = {
+    "how do i get bail?": "If arrested, first ask for lawyer. For regular bail, file bail application before the court having jurisdiction. For anticipatory bail (pre-arrest), an application under Section 438 CrPC may be filed. We can assist—book a consultation.",
+    "procedure for custody": "Custody differs by police custody, judicial custody and child custody. Child custody disputes go to family court; courts consider child's welfare, parents' fitness and evidence. We provide custody guidance—book a meeting.",
+    "fees & consultation": "Our initial consultation fee is disclosed on request; serious matters may require fixed retainers. Use 'Book a slot' to request a consultation and we'll confirm fees.",
+    "book a slot": "To request a slot, press 'Book a slot' below — or click 'Request Slot' on the site. Would you like me to open the booking form?"
+  };
+
+  function botAnswer(q){
+    q = (q||'').toString().trim().toLowerCase();
+    if(KB[q]) return KB[q];
+    // fallback heuristic: check for keywords
+    if(q.includes('bail')) return KB['how do i get bail?'];
+    if(q.includes('custody')) return KB['procedure for custody'];
+    if(q.includes('fee')||q.includes('consult')) return KB['fees & consultation'];
+    if(q.includes('book')||q.includes('slot')) return KB['book a slot'];
+    return "Thanks — I received your message. For detailed legal advice we recommend booking a consultation. Would you like to request a slot?";
+  }
+
+  // persist chat to localStorage
+  const STORAGE_KEY = 'jf_chat_history_v1';
+  function saveHistory(){
+    const msgs = Array.from(chatBody.querySelectorAll('.msg')).map(el => ({who: el.classList.contains('bot')? 'bot' : 'user', text: el.textContent}));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(msgs));
+  }
+  function loadHistory(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    try{
+      const arr = JSON.parse(raw);
+      arr.forEach(m => {
+        const div = document.createElement('div'); div.className = 'msg ' + (m.who==='bot'? 'bot': 'user'); div.textContent = m.text; chatBody.appendChild(div);
+      });
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }catch(e){}
+  }
+
+  // open/close chat
+  openChatBtn.addEventListener('click', ()=>{
+    const isOpen = chatPanel.classList.toggle('open');
+    chatPanel.setAttribute('aria-hidden', !isOpen);
+    if(isOpen){ chatInput.focus(); loadHistory(); }
+  });
+  closeChatBtn.addEventListener('click', ()=>{ chatPanel.classList.remove('open'); chatPanel.setAttribute('aria-hidden','true'); });
+
+  // send message
+  function sendMessage(text){
+    if(!text) return;
+    const t = text.trim();
+    if(!t) return;
+    const userMsg = document.createElement('div'); userMsg.className='msg user'; userMsg.textContent = t; chatBody.appendChild(userMsg);
+    chatInput.value='';
+    chatBody.scrollTop = chatBody.scrollHeight;
+    // bot typersim
+    setTimeout(()=>{ const ans = botAnswer(t); appendMsg(ans,'bot'); saveHistory(); }, 400);
+    saveHistory();
+  }
+
+  sendBtn.addEventListener('click', ()=> sendMessage(chatInput.value));
+  chatInput.addEventListener('keydown', (e)=> { if(e.key === 'Enter'){ e.preventDefault(); sendMessage(chatInput.value); }});
+
+  // suggestions click
+  suggestions.addEventListener('click', (e)=>{
+    const b = e.target.closest('.suggestion');
+    if(!b) return;
+    const q = b.dataset.q;
+    chatInput.value = q;
+    chatInput.focus();
+    // optional: auto-send
+    sendMessage(q);
+  });
+
+  // clear chat
+  clearChat.addEventListener('click', ()=>{
+    if(confirm('Clear chat history?')){ chatBody.innerHTML=''; localStorage.removeItem(STORAGE_KEY); chatInput.focus(); }
+  });
+
+  // contact toggle
+  contactToggle.addEventListener('click', ()=>{
+    const isOpen = contactPanel.classList.toggle('open');
+    contactToggle.setAttribute('aria-expanded', isOpen? 'true' : 'false');
+    contactPanel.setAttribute('aria-hidden', !isOpen);
+  });
+
+  // back-to-top behaviour
+  window.addEventListener('scroll', ()=>{
+    if(window.scrollY > 240) back.style.display = 'block'; else back.style.display = 'none';
+  });
+  back.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // keyboard accessibility: Esc closes open panels
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){
+      if(chatPanel.classList.contains('open')) { chatPanel.classList.remove('open'); chatPanel.setAttribute('aria-hidden','true'); }
+      if(contactPanel.classList.contains('open')) { contactPanel.classList.remove('open'); contactPanel.setAttribute('aria-hidden','true'); }
+    }
+  });
+
+  // load persisted chat automatically if present (but don't open panel)
+  (function init(){
+    // preload history into a hidden chat body so user sees old messages when opening chat later
+    loadHistory();
+  })();
+})();
+</script>
+<!-- END: Floating Chatbot + Contact Toggle + Back-to-top -->
 </body>
 </html>
