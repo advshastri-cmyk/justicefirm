@@ -1245,7 +1245,7 @@
 
   </div>
 </section>
-      <!-- ================= PREMIUM TEAM SECTION — single copy-paste block ================= -->
+   <!-- ================= PREMIUM TEAM SECTION — UPDATED (replace the old team block) ================= -->
 <section id="team" aria-labelledby="teamHeading" class="team-section-premium" style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; margin-top:40px;">
 
   <style>
@@ -1282,11 +1282,11 @@
     gap:18px;
   }
 
-  /* Member card */
+  /* Member card (more compact & flexible) */
   .member{
     background:linear-gradient(180deg,#ffffff,#fbfdff);
     border-radius:12px;
-    padding:14px;
+    padding:12px;
     display:flex;
     gap:12px;
     align-items:flex-start;
@@ -1295,27 +1295,83 @@
     transition:transform .22s cubic-bezier(.2,.9,.2,1),box-shadow .22s ease;
     cursor:pointer;
     outline: none;
+    min-height: 110px; /* reduced so images won't be forced to crop */
   }
   .member:focus,
   .member:hover{ transform:translateY(-6px); box-shadow:0 26px 70px rgba(7,12,25,0.10); }
 
-  .member-figure{ position:relative; width:84px; height:84px; flex:0 0 84px; border-radius:12px; overflow:hidden; background: linear-gradient(180deg,#f7f9fc,#eef6ff); display:flex;align-items:center;justify-content:center; }
-  .member-figure img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .member-figure .initials{
-    position:absolute; right:8px; bottom:8px; background:rgba(11,74,203,0.12); color:var(--accent-600); font-weight:800; font-size:0.88rem; padding:6px 8px; border-radius:10px; backdrop-filter: blur(4px);
+  /* Avatar container — keep it square but not excessive */
+  .member-figure{
+    position:relative;
+    width:84px;
+    height:84px;
+    flex:0 0 84px;
+    border-radius:12px;
+    overflow:hidden;
+    background: linear-gradient(180deg,#f7f9fc,#eef6ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
 
+  /* Avatar image: use contain so whole head shows; center top priority */
+  .member-figure img{
+    width:100%;
+    height:100%;
+    object-fit:contain; /* <-- ensures whole portrait (head) is visible */
+    object-position:center top; /* tries to keep the face toward top center */
+    display:block;
+    background: transparent;
+  }
+
+  /* If image missing: show centered initials clearly */
+  .member-figure .initials{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    font-weight:800;
+    color:var(--accent-600);
+    font-size:1rem;
+    background: linear-gradient(180deg, rgba(11,74,203,0.05), rgba(11,74,203,0.02));
+    border-radius:12px;
+  }
+
+  /* Bio text */
   .bio h3{margin:0;font-size:1.02rem;color:var(--ink);font-weight:700;}
   .bio .role{margin:6px 0 0;color:var(--muted);font-size:0.92rem;}
   .bio .meta{margin-top:8px;color:var(--muted);font-size:0.86rem;}
 
-  /* Modal (profile) */
+  /* Modal (profile) — improved responsive image handling */
   .modal{ display:none; position:fixed; inset:0; z-index:2500; align-items:center; justify-content:center; background: rgba(2,6,23,0.6); padding:20px; }
   .modal[aria-hidden="false"]{ display:flex; }
-  .modal-panel{ width:100%; max-width:880px; background:linear-gradient(180deg,#fff,#fbfdff); border-radius:12px; box-shadow:0 40px 120px rgba(7,12,25,0.28); border:1px solid rgba(11,18,32,0.06); overflow:auto; }
-  .modal-content{ display:grid; grid-template-columns: 240px 1fr; gap:20px; padding:20px; align-items:start; }
-  .modal-figure{ width:100%; height:240px; border-radius:10px; overflow:hidden; background:linear-gradient(180deg,#f7f9fc,#eef6ff); display:flex;align-items:center;justify-content:center; position:relative; }
-  .modal-figure img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .modal-panel{ width:100%; max-width:920px; background:linear-gradient(180deg,#fff,#fbfdff); border-radius:12px; box-shadow:0 40px 120px rgba(7,12,25,0.28); border:1px solid rgba(11,18,32,0.06); overflow:auto; }
+  .modal-content{
+    display:grid;
+    grid-template-columns: 260px 1fr;
+    gap:20px;
+    padding:20px;
+    align-items:start;
+  }
+
+  /* make modal figure taller but responsive */
+  .modal-figure{
+    width:100%;
+    height:320px; /* a little bigger to show full portrait */
+    border-radius:10px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#f7f9fc,#eef6ff);
+    display:flex;align-items:center;justify-content:center; position:relative;
+  }
+  .modal-figure img{
+    width:100%;
+    height:100%;
+    object-fit:contain; /* show whole portrait without aggressive crop */
+    object-position:center top;
+    display:block;
+    background:transparent;
+  }
+
   .modal-head h3{ margin:0; font-size:1.18rem; color:var(--ink); }
   .modal-head .subtitle{ color:var(--muted); margin-top:6px; }
   .modal-quote{ margin-top:10px; padding:10px; background:linear-gradient(90deg, rgba(11,107,255,0.06), rgba(15,74,203,0.04)); border-radius:8px; color:var(--accent-600); font-weight:700; font-size:0.95rem; }
@@ -1329,12 +1385,13 @@
   @media (max-width:1000px){
     .team-grid{ grid-template-columns:repeat(2,1fr); }
     .modal-content{ grid-template-columns: 1fr; }
-    .modal-figure{ height:200px; }
+    .modal-figure{ height:220px; }
   }
   @media (max-width:520px){
     .team-grid{ grid-template-columns:1fr; gap:12px; }
     .member{ padding:12px; gap:10px; }
     .member-figure{ width:72px; height:72px; flex:0 0 72px; }
+    .modal-figure{ height:200px; }
   }
   </style>
 
@@ -1358,8 +1415,8 @@
         data-quote="Justice is served best when clarity meets conscience."
         data-content="Adv. Ganga Shankar Shastri holds a Bachelor's degree in Information Technology and a Bachelor's degree in Law. He has 15+ years' experience across family, criminal and civil tribunals and courts. Known for strategic courtroom advocacy, clear client guidance, and practical settlement-first solutions.">
         <figure class="member-figure" aria-hidden="true">
-          <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" onerror="this.style.display='none'">
-          <div class="initials">GS</div>
+          <img src="ganga.jpg" alt="Adv. Ganga Shankar Shastri" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='grid'">
+          <div class="initials" style="display:none;">GS</div>
         </figure>
         <div class="bio">
           <h3>Adv. Ganga Shankar Shastri</h3>
@@ -1375,8 +1432,8 @@
         data-quote="Clarity, compassion, and discipline — the pillars of enduring advocacy."
         data-content="LL.M. and Postgraduate (Human Rights) from the Indian Institute of Human Rights. Minakshi specialises in property, civil and corporate litigation, with a strong appellate practice. Her meticulous drafting and persuasive oral advocacy have resulted in favourable outcomes in complex property and commercial matters. Clients praise her calm clarity, strategic thinking and attention to detail.">
         <figure class="member-figure" aria-hidden="true">
-          <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" onerror="this.style.display='none'">
-          <div class="initials">MS</div>
+          <img src="minakshi.jpg" alt="Adv. Minakshi Shastri" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='grid'">
+          <div class="initials" style="display:none;">MS</div>
         </figure>
         <div class="bio">
           <h3>Adv. Minakshi Shastri</h3>
@@ -1392,8 +1449,8 @@
         data-quote="Progress in law begins with the courage to question, learn, and refine."
         data-content="LL.M., pursuing Ph.D. • Focus on constitutional law, research and advisory. Shivani provides authoritative legal research and policy advice on complex constitutional questions.">
         <figure class="member-figure" aria-hidden="true">
-          <img src="shivani.jpg" alt="Adv. Shivani Shastri" onerror="this.style.display='none'">
-          <div class="initials">SS</div>
+          <img src="shivani.jpg" alt="Adv. Shivani Shastri" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='grid'">
+          <div class="initials" style="display:none;">SS</div>
         </figure>
         <div class="bio">
           <h3>Adv. Shivani Shastri</h3>
@@ -1409,8 +1466,8 @@
         data-quote="Every case begins with listening; every defence with preparation."
         data-content="Criminal Defence • Practical courtroom experience. Sanjay Kumar focuses on pragmatic defence strategies and client care during high-pressure proceedings.">
         <figure class="member-figure" aria-hidden="true">
-          <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" onerror="this.style.display='none'">
-          <div class="initials">SK</div>
+          <img src="sanjay.jpg" alt="Adv. Sanjay Kumar" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='grid'">
+          <div class="initials" style="display:none;">SK</div>
         </figure>
         <div class="bio">
           <h3>Adv. Sanjay Kumar</h3>
@@ -1458,10 +1515,8 @@
     const modalQuote = document.getElementById('profileModalQuote');
     const modalDesc = document.getElementById('modalDesc');
     const modalImg = document.getElementById('modalImg');
-    const modalFigure = document.getElementById('modalFigure');
     const modalCloseBtns = document.querySelectorAll('[data-close]');
 
-    // open modal with member data
     function openModalFromMember(member){
       const title = member.dataset.title || member.querySelector('h3')?.textContent;
       const subtitle = member.dataset.subtitle || member.querySelector('.role')?.textContent;
@@ -1488,23 +1543,18 @@
 
       modal.setAttribute('aria-hidden','false');
       modal.style.display = 'flex';
-      // focus trap - move focus to close button
-      const close = modal.querySelector('.modal-close');
-      if(close) close.focus();
-      // remember active element for return focus
-      modal.dataset.lastActive = document.activeElement ? document.activeElement.id || document.activeElement.tagName : '';
+      modal.querySelector('.modal-close')?.focus();
     }
 
-    // close modal
     function closeModal(){
       modal.setAttribute('aria-hidden','true');
       modal.style.display = 'none';
-      // restore focus to first member (best-effort)
-      const last = document.querySelector('.team-grid .member[tabindex="0"]');
-      if(last) last.focus();
+      // return focus to the clicked member if possible
+      const focused = document.activeElement;
+      const firstMember = document.querySelector('.team-grid .member');
+      if(firstMember) firstMember.focus();
     }
 
-    // attach events to each member (click & keyboard Enter)
     members.forEach(member=>{
       member.addEventListener('click', ()=> openModalFromMember(member));
       member.addEventListener('keydown', (e)=>{
@@ -1512,15 +1562,10 @@
       });
     });
 
-    // close handlers
     modalCloseBtns.forEach(b => b.addEventListener('click', closeModal));
     modal.addEventListener('click', (e)=> { if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e)=> { if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal(); });
 
-    // ensure images degrade gracefully (show initials badge is already on card)
-    // lazyload: if browser supports loading=lazy it's already used on images
-
-    // small accessibility: ensure members are reachable and labelled
     members.forEach(m=>{
       m.setAttribute('role','button');
       const name = m.dataset.title || m.querySelector('h3')?.textContent || '';
