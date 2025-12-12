@@ -1394,12 +1394,72 @@ style="margin-top:28px;padding:0;font-family:Inter,system-ui,-apple-system,Segoe
 .article-card{background:#fff;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;border:1px solid rgba(12,18,32,0.05);box-shadow:0 12px 34px rgba(7,12,25,0.05);cursor:pointer;transform:translateY(0);opacity:1;transition:transform .28s cubic-bezier(.2,.9,.2,1),opacity .28s ease,box-shadow .28s ease;}
 .article-card.hidden { transform: translateY(10px); opacity:0; pointer-events:none; height:0; padding:0 18px; margin:0; border:0; box-shadow:none; overflow:hidden; }
 .article-card:hover{transform:translateY(-6px);box-shadow:0 22px 60px rgba(7,12,25,0.12);}
+/* ------------------------------------------
+   ARTICLE BLOCK — Premium Design Upgrade
+------------------------------------------- */
 
-/* Eyebrow, title, excerpt */
-.article-eyebrow{display:flex;gap:8px;align-items:center;font-size:.85rem;color:var(--muted);}
-.article-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,var(--accent-500),var(--accent-600));}
-.article-title{margin:0;font-size:1.06rem;font-weight:600;color:var(--ink);line-height:1.28;}
-.article-excerpt{margin:0;color:var(--muted);font-size:.94rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+/* Eyebrow (category, date, tag) */
+.article-eyebrow{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  font-size:.82rem;
+  font-weight:500;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+
+/* Dot indicator */
+.article-eyebrow .dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:linear-gradient(180deg,var(--accent-500),var(--accent-600));
+  box-shadow:0 0 4px rgba(0,0,0,0.15);
+}
+
+/* Article Title */
+.article-title{
+  margin:6px 0 4px;
+  font-size:1.18rem;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.32;
+  letter-spacing:-0.2px;
+  transition:color .2s ease;
+}
+
+.article-title:hover{
+  color:var(--accent-600);
+}
+
+/* Excerpt */
+.article-excerpt{
+  margin:0;
+  font-size:.95rem;
+  color:var(--muted);
+  line-height:1.55;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* Better responsiveness for very small screens */
+@media (max-width: 420px){
+  .article-title{
+    font-size:1.05rem;
+  }
+  .article-excerpt{
+    font-size:.92rem;
+  }
+}
+
+/* SEO boost: smoother readability */
+.article-block{
+  max-width:680px;
+}
 
 /* Footer */
 .article-footer{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.88rem;margin-top:auto;}
