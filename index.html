@@ -999,301 +999,242 @@
     </div>
   </div>
 </section>
-     <!-- ========================= PRACTICE SECTION ========================= -->
-<section id="practice" aria-labelledby="practiceHeading" style="--max-width:1180px; margin:40px auto; padding:0 16px;">
+    <!-- Premium — Practice Areas (replace your existing #practice section with this) --><section id="practice" aria-labelledby="practiceHeading" style="--max-width:1180px; margin:48px auto; padding:0 20px;">  <style>
+    /* Import premium fonts (heading serif + modern sans) */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+    :root{
+      --bg: #f8fafb;
+      --card:#ffffff;
+      --ink:#0b1220;
+      --muted:#6b7280;
+      --accent:#b88a2a; /* warm gold */
+      --accent-2:#e9d8a6; /* soft gold */
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+      --max-width:1180px;
+    }
+
+    /* Container */
+    #practice{
+      max-width:var(--max-width);
+      color:var(--ink);
+      font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:transparent;
+    }
+
+    /* Heading */
+    #practice header{margin-bottom:18px}
+    #practiceHeading{
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      line-height:1.02;
+      color:#f5f7fa; /* improved contrast on dark backgrounds */
+      letter-spacing: -0.6px;
+      margin:0 0 6px 0;
+      font-weight:700;
+    }
+    #practice .muted{
+      margin:0;
+      color:#e1e5eb; /* softer light grey for dark backgrounds */
+      font-size:0.98rem;
+      font-weight:400;
+      opacity:.95;
+    }
+
+    /* Grid */
+    .practice-grid{
+      display:grid;
+      gap:22px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      align-items:stretch;
+      margin-top:18px;
+    }
+
+    /* Card */
+    .practice-card{
+      display:flex;
+      flex-direction:column;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), var(--card));
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(11,18,32,0.06);
+      box-shadow: 0 10px 30px rgba(11,18,32,0.04);
+      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
+      min-height:340px;
+    }
+    .practice-card:hover{
+      transform: translateY(-8px) scale(1.003);
+      box-shadow: 0 26px 60px rgba(11,18,32,0.08);
+    }
+
+    /* Thumbnail top with subtle overlay */
+    .practice-thumb-wrap{position:relative; aspect-ratio:4/3; overflow:hidden}
+    .practice-thumb{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02); transition:transform .7s ease}
+    .practice-card:hover .practice-thumb{transform:scale(1.06)}
+
+    /* Decorative top bar (gold) */
+    .practice-accent{
+      position:absolute; left:14px; top:14px; padding:6px 10px; border-radius:999px; font-weight:700; font-size:0.82rem; background: linear-gradient(90deg,var(--accent-2),var(--accent)); color:#2c1f09; box-shadow: 0 6px 18px rgba(184,138,42,0.12);
+    }
+
+    .practice-body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:12px; flex:1}
+    .practice-body h3{margin:0; font-family:'Playfair Display', serif; font-weight:700; font-size:1.05rem; color:var(--ink); letter-spacing:-0.3px}
+    .practice-body p{margin:0; color:#40464f; font-size:0.96rem; line-height:1.5}
+
+    .practice-tag{font-size:0.78rem; padding:6px 10px; border-radius:999px; background:transparent; color:var(--ink); border:1px solid rgba(11,18,32,0.06); font-weight:600}
+
+    .meta{margin-top:auto; display:flex; gap:12px; align-items:center}
+    .btn{padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:700; font-size:0.92rem; display:inline-flex; align-items:center; justify-content:center; min-width:110px}
+
+    .btn--ghost{background:transparent; border:1px solid rgba(11,18,32,0.06); color:var(--ink);}
+    .btn--primary{background: linear-gradient(180deg,var(--accent-2),var(--accent)); color:#2c1f09; box-shadow: 0 6px 18px rgba(184,138,42,0.08); border: none}
+
+    /* Subtle details */
+    .practice-foot{display:flex; gap:10px; align-items:center; color:var(--muted); font-size:0.9rem}
+    .practice-foot .dot{width:6px;height:6px;border-radius:999px;background:rgba(11,18,32,0.06);display:inline-block}
+
+    /* Responsive adjustments */
+    @media (max-width:780px){
+      .practice-card{min-height:unset}
+      .practice-thumb-wrap{aspect-ratio:16/9}
+      #practiceHeading{font-size:1.6rem}
+      .practice-grid{gap:14px}
+      .practice-body{padding:14px}
+    }
   
-  <style>
-    /* Scoped styles – only for #practice */
-    #practice { 
-      font-family: Inter, system-ui, sans-serif;
-      color: #0f1724;
-      max-width: var(--max-width);
-    }
-
-    #practiceHeading {
-      font-family: "Merriweather", serif;
-      font-size: clamp(1.4rem, 2.6vw, 2rem);
-      font-weight: 700;
-      color: #14213d;
-      margin-bottom: 6px;
-    }
-
-    #practice .muted {
-      margin: 6px 0 20px;
-      color: #6b7280;
-      font-size: 1rem;
-    }
-
-    .practice-grid {
-      display: grid;
-      gap: 18px;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .practice-card {
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(180deg, #ffffff, #fafafa);
+    /* Semi-transparent dark overlay behind heading */
+    .practice-header{
+      background: rgba(0,0,0,0.35);
+      padding: 16px 20px;
       border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.05);
-      transition: transform .22s ease, box-shadow .22s ease;
-      min-height: 340px;
-    }
-    .practice-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 48px rgba(0,0,0,0.08);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      margin-bottom: 22px;
     }
 
-    /* Thumbnail */
-    .practice-thumb-wrap {
-      width: 100%;
-      position: relative;
-      aspect-ratio: 4 / 3;
-      background: #f3f4f6;
-    }
-    .practice-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+  </style>  <!-- Heading -->  <header class="practice-header">
+    <h2 id="practiceHeading">Practice Areas — International & Domestic</h2>
+    <p class="muted">Family • Criminal • Civil & Property • Constitutional Advisory • Mediation & Arbitration</p>
+  </header>  <!-- Grid -->  <div class="practice-grid"><!-- Family -->
+<article class="practice-card">
+  <figure class="practice-thumb-wrap">
+    <span class="practice-accent">Family</span>
+    <img class="practice-thumb" src="fam.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy">
+    <div class="practice-fallback" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,#f7f7f8,#ffffff)">
+      <svg fill="none" stroke="#97a0ac" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/><path d="M20 21a6 6 0 0 0-12 0"/></svg>
+    </div>
+  </figure>
 
-    /* fallback SVG */
-    .practice-fallback {
-      position: absolute;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg,#f3f4f6,#ffffff);
-    }
-    .practice-fallback svg {
-      width: 44px;
-      height: 44px;
-      opacity: .6;
-    }
+  <div class="practice-body">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <h3>Family & Matrimonial</h3>
+      <span class="practice-tag">Family Law</span>
+    </div>
+    <p>Expert counsel on divorce, child custody, domestic violence, maintenance and sensitive dispute resolution with cross-border experience.</p>
 
-    .practice-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-    }
+    <div class="meta">
+      <a class="btn btn--ghost" href="contact.html" target="_blank">Request Consult</a>
+      <a class="btn btn--primary" href="services/family.html">Explore Services</a>
+    </div>
+  </div>
+</article>
 
-    .practice-body h3 {
-      margin: 0;
-      font-family: "Merriweather", serif;
-      font-size: 1.05rem;
-      color: #0f1724;
-      letter-spacing: -.2px;
-    }
+<!-- Criminal -->
+<article class="practice-card">
+  <figure class="practice-thumb-wrap">
+    <span class="practice-accent">Criminal</span>
+    <img class="practice-thumb" src="crim.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy">
+    <div class="practice-fallback" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,#f7f7f8,#ffffff)">
+      <svg fill="none" stroke="#97a0ac" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/></svg>
+    </div>
+  </figure>
 
-    .practice-body p {
-      margin: 0;
-      font-size: 0.94rem;
-      color: #555;
-      line-height: 1.45;
-    }
+  <div class="practice-body">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <h3>Criminal Defence</h3>
+      <span class="practice-tag">Criminal</span>
+    </div>
+    <p>Bail, anticipatory bail, trials and appellate strategy delivered with a focus on procedural rigour and client protections.</p>
 
-    .practice-tag {
-      font-size: .78rem;
-      padding: 5px 9px;
-      background: rgba(0,0,0,0.05);
-      border-radius: 999px;
-      color: #555;
-    }
+    <div class="meta">
+      <a class="btn btn--ghost" href="contact.html" target="_blank">Request Consult</a>
+      <a class="btn btn--primary" href="services/criminal.html">Explore Services</a>
+    </div>
+  </div>
+</article>
 
-    .meta {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
+<!-- Civil & Property (uses proper.jpg uploaded) -->
+<article class="practice-card">
+  <figure class="practice-thumb-wrap">
+    <span class="practice-accent">Civil</span>
+    <img class="practice-thumb" src="proper.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy">
+    <div class="practice-fallback" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,#f7f7f8,#ffffff)">
+      <svg fill="none" stroke="#97a0ac" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/></svg>
+    </div>
+  </figure>
 
-    .btn {
-      padding: 9px 12px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: .9rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
+  <div class="practice-body">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <h3>Civil & Property</h3>
+      <span class="practice-tag">Civil Litigation</span>
+    </div>
+    <p>Partition, recovery, injunctions and complex property disputes — litigation and negotiated settlements tailored to preserve client value.</p>
 
-    .btn--ghost {
-      background: transparent;
-      border: 1px solid rgba(0,0,0,0.08);
-      color: #374151;
-    }
+    <div class="meta">
+      <a class="btn btn--ghost" href="contact.html" target="_blank">Request Consult</a>
+      <a class="btn btn--primary" href="services/civil.html">Explore Services</a>
+    </div>
+  </div>
+</article>
 
-    .btn--primary {
-      background: linear-gradient(180deg, #f4d88a, #d9b447);
-      color: #3a2a15;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
+<!-- Constitutional & Advisory -->
+<article class="practice-card">
+  <figure class="practice-thumb-wrap">
+    <span class="practice-accent">Advisory</span>
+    <img class="practice-thumb" src="const.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy">
+    <div class="practice-fallback" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,#f7f7f8,#ffffff)">
+      <svg fill="none" stroke="#97a0ac" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
+    </div>
+  </figure>
 
-    @media (max-width:720px) {
-      .practice-card { min-height: auto; }
-      .practice-thumb-wrap { aspect-ratio: 16/9; }
-      #practiceHeading { font-size: 1.55rem; }
-    }
-  </style>
+  <div class="practice-body">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <h3>Constitutional & Advisory</h3>
+      <span class="practice-tag">Policy & Compliance</span>
+    </div>
+    <p>Writs, constitutional challenges, regulatory compliance and policy advisory for institutions and high-value stakeholders.</p>
 
-  <!-- Heading -->
-  <header>
-    <h2 id="practiceHeading">Practice Areas</h2>
-    <p class="muted">Family · Criminal · Civil Litigation · Constitutional Advisory · Mediation & Arbitration</p>
-  </header>
+    <div class="meta">
+      <a class="btn btn--ghost" href="contact.html" target="_blank">Request Consult</a>
+      <a class="btn btn--primary" href="services/advisory.html">Explore Services</a>
+    </div>
+  </div>
+</article>
 
-  <!-- Grid -->
-  <div class="practice-grid">
-    
-    <!-- 1. Family -->
-    <article class="practice-card">
-      <figure class="practice-thumb-wrap">
-        <img class="practice-thumb" src="fam.jpg" alt="Family & Matrimonial"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<!-- Mediation & Arbitration (uses media.jpg uploaded) -->
+<article class="practice-card">
+  <figure class="practice-thumb-wrap">
+    <span class="practice-accent">ADR</span>
+    <img class="practice-thumb" src="media.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy">
+    <div class="practice-fallback" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,#f7f7f8,#ffffff)">
+      <svg fill="none" stroke="#97a0ac" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 3v18"/></svg>
+    </div>
+  </figure>
 
-        <!-- fallback SVG -->
-        <div class="practice-fallback">
-          <svg fill="none" stroke="#6b7280" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/>
-            <path d="M20 21a6 6 0 0 0-12 0"/>
-            <path d="M16 10a3 3 0 1 0-3-3"/>
-          </svg>
-        </div>
-      </figure>
+  <div class="practice-body">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <h3>Mediation & Arbitration</h3>
+      <span class="practice-tag">ADR</span>
+    </div>
+    <p>Commercial and family mediation, arbitration representation and enforceable settlement structures designed to limit disruption.</p>
 
-      <div class="practice-body">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <h3>Family & Matrimonial</h3>
-          <span class="practice-tag">Family</span>
-        </div>
-        <p>Divorce, custody, maintenance, DV Act, Section 125 CrPC, mediation & sensitive dispute resolution.</p>
-
-        <div class="meta">
-          <a class="btn btn--ghost" href="contact.html" target="_blank">Consult</a>
-          <a class="btn btn--primary" href="services/family.html">Learn more</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- 2. Criminal -->
-    <article class="practice-card">
-      <figure class="practice-thumb-wrap">
-        <img class="practice-thumb" src="crim.jpg" alt="Criminal Defence"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-
-        <div class="practice-fallback">
-          <svg fill="none" stroke="#6b7280" stroke-width="1.6" viewBox="0 0 24 24">
-            <rect x="3" y="11" width="18" height="10" rx="2"/>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-          </svg>
-        </div>
-      </figure>
-
-      <div class="practice-body">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <h3>Criminal Defence</h3>
-          <span class="practice-tag">Criminal</span>
-        </div>
-        <p>Bail, anticipatory bail, criminal trials, appeals & strategic defence planning.</p>
-
-        <div class="meta">
-          <a class="btn btn--ghost" href="contact.html" target="_blank">Consult</a>
-          <a class="btn btn--primary" href="services/criminal.html">Learn more</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- 3. Civil & Property -->
-    <article class="practice-card">
-      <figure class="practice-thumb-wrap">
-        <img class="practice-thumb" src="prop.jpg" alt="Civil & Property"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-
-        <div class="practice-fallback">
-          <svg fill="none" stroke="#6b7280" stroke-width="1.6" viewBox="0 0 24 24">
-            <path d="M3 11l9-7 9 7"/>
-            <rect x="6" y="11" width="12" height="10" rx="2"/>
-          </svg>
-        </div>
-      </figure>
-
-      <div class="practice-body">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <h3>Civil & Property</h3>
-          <span class="practice-tag">Civil</span>
-        </div>
-        <p>Partition, recovery, injunctions, property disputes & enforcement strategy.</p>
-
-        <div class="meta">
-          <a class="btn btn--ghost" href="contact.html" target="_blank">Consult</a>
-          <a class="btn btn--primary" href="services/civil.html">Learn more</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- 4. Constitutional & Advisory -->
-    <article class="practice-card">
-      <figure class="practice-thumb-wrap">
-        <img class="practice-thumb" src="const.jpg" alt="Constitutional & Advisory"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-
-        <div class="practice-fallback">
-          <svg fill="none" stroke="#6b7280" stroke-width="1.6" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="9"/>
-            <path d="M12 7v5l3 2"/>
-          </svg>
-        </div>
-      </figure>
-
-      <div class="practice-body">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <h3>Constitutional & Advisory</h3>
-          <span class="practice-tag">Advisory</span>
-        </div>
-        <p>Writs, constitutional matters, policy advisory & regulatory compliance guidance.</p>
-
-        <div class="meta">
-          <a class="btn btn--ghost" href="contact.html" target="_blank">Consult</a>
-          <a class="btn btn--primary" href="services/advisory.html">Learn more</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- 5. Mediation & Arbitration -->
-    <article class="practice-card">
-      <figure class="practice-thumb-wrap">
-        <img class="practice-thumb" src="medi.jpg" alt="Mediation & Arbitration"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-
-        <div class="practice-fallback">
-          <svg fill="none" stroke="#6b7280" stroke-width="1.6" viewBox="0 0 24 24">
-            <path d="M12 3v18"/>
-            <path d="M6 7l6 4 6-4"/>
-            <path d="M6 17l6-4 6 4"/>
-          </svg>
-        </div>
-      </figure>
-
-      <div class="practice-body">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <h3>Mediation & Arbitration</h3>
-          <span class="practice-tag">ADR</span>
-        </div>
-        <p>Commercial & family mediation, arbitration representation & enforceable settlement solutions.</p>
-
-        <div class="meta">
-          <a class="btn btn--ghost" href="contact.html" target="_blank">Consult</a>
-          <a class="btn btn--primary" href="services/adr.html">Learn more</a>
-        </div>
-      </div>
-    </article>
+    <div class="meta">
+      <a class="btn btn--ghost" href="contact.html" target="_blank">Request Consult</a>
+      <a class="btn btn--primary" href="services/adr.html">Explore Services</a>
+    </div>
+  </div>
+</article>
 
   </div>
 </section>
