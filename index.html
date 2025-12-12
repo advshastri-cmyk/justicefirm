@@ -201,6 +201,58 @@
     .tag-chip{border-radius:999px;border:1px solid #dde4f3;padding:6px 10px;font-size:.85rem;background:#fff;cursor:pointer}
 
     footer { margin-top:28px; padding:18px; background:linear-gradient(180deg,#03102a,#041733); border-radius:14px; color:#fff; display:flex; justify-content:space-between; align-items:center; gap:12px }
+    /* NAV mobile fix — paste this at the end of your existing <style> */
+@media (max-width:820px) {
+  /* allow header items to wrap and avoid overflow */
+  .nav {
+    padding:10px;
+    gap:8px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap; /* allow wrapping so items don't overflow */
+  }
+
+  /* brand can shrink; prevent long name from pushing everything */
+  .brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+    flex: 0 1 auto;
+  }
+  .brand > div { min-width:0; } /* inner wrapper safe-guard */
+
+  .brand-name {
+    font-size:1rem;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width: calc(100vw - 160px); /* leaves room for toggle and small nav */
+    flex: 1 1 auto;
+    display:inline-block;
+  }
+
+  /* hide desktop horizontal nav on mobile (we use mobile panel instead) */
+  .nav-links {
+    display:none;
+  }
+
+  /* show the hamburger/toggle on mobile */
+  .nav-toggle { display:inline-flex; align-items:center; justify-content:center; background:transparent; border:0; padding:6px; }
+  .nav-toggle.round { display:inline-flex; width:44px; height:44px; border-radius:999px; }
+
+  /* ensure page container padding reduced on narrow screens (avoids side overflow) */
+  .wrap {
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  /* small tweak: make sure the toggle sits to the right */
+  header.nav > .nav-toggle { margin-left:auto; }
+
+  /* keep mobile nav panel full-screen and above everything */
+  #mobileNavPanel { z-index:12000; }
+}
   </style>
 </head>
 <body>
