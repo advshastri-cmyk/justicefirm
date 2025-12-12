@@ -203,6 +203,8 @@
   </style>
 </head>
 <body>
+ 
+
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="wrap" id="pageWrap">
     <header class="nav" role="banner">
@@ -228,7 +230,84 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </header>
+   <!-- PASTE NEW NAV SCRIPT HERE (replace the old script) -->
+<script>
+(function(){
+  const toggle = document.getElementById('navToggle');
+  const desktopNav = document.getElementById('main-nav');
+  const mobilePanel = document.getElementById('mobileNavPanel');
+  const mobileClose = document.getElementById('mobileNavClose');
 
+  if(!toggle) return;
+
+  function openMobile(){
+    if(!mobilePanel) return;
+    mobilePanel.style.display = 'block';
+    mobilePanel.setAttribute('aria-hidden','false');
+    document.documentElement.style.overflow = 'hidden'; // prevent background scroll
+    toggle.setAttribute('aria-expanded','true');
+    setTimeout(()=> mobileClose?.focus(), 60);
+  }
+  function closeMobile(){
+    if(!mobilePanel) return;
+    mobilePanel.style.display = 'none';
+    mobilePanel.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow = '';
+    toggle.setAttribute('aria-expanded','false');
+    toggle.focus();
+  }
+
+  function openDesktop(){
+    if(!desktopNav) return;
+    desktopNav.classList.add('open');
+    desktopNav.style.display = 'flex';
+    toggle.setAttribute('aria-expanded','true');
+  }
+  function closeDesktop(){
+    if(!desktopNav) return;
+    desktopNav.classList.remove('open');
+    desktopNav.style.display = '';
+    toggle.setAttribute('aria-expanded','false');
+  }
+
+  toggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    if(window.innerWidth <= 820){
+      if(mobilePanel && mobilePanel.style.display === 'block') closeMobile();
+      else openMobile();
+    } else {
+      if(desktopNav && desktopNav.classList.contains('open')) closeDesktop();
+      else openDesktop();
+    }
+  });
+
+  mobileClose?.addEventListener('click', (e)=>{ e.stopPropagation(); closeMobile(); });
+
+  document.addEventListener('click', (e)=>{
+    if(window.innerWidth <= 820 && mobilePanel && mobilePanel.style.display === 'block'){
+      if(!e.target.closest('#mobileNavPanel') && !e.target.closest('#navToggle')) closeMobile();
+    }
+  });
+
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape'){
+      if(mobilePanel && mobilePanel.style.display === 'block') closeMobile();
+      if(desktopNav && desktopNav.classList.contains('open') && window.innerWidth > 820) closeDesktop();
+    }
+  });
+
+  window.addEventListener('resize', ()=> {
+    if(window.innerWidth > 820){
+      if(mobilePanel){ mobilePanel.style.display = 'none'; mobilePanel.setAttribute('aria-hidden','true'); }
+      if(desktopNav) desktopNav.style.display = '';
+    } else {
+      if(desktopNav && !desktopNav.classList.contains('open')) desktopNav.style.display = 'none';
+    }
+  });
+
+  if(window.innerWidth <= 820 && desktopNav) desktopNav.style.display = 'none';
+})();
+</script>
     <!-- Mobile nav panel -->
     <div id="mobileNavPanel" class="mobile-nav-panel" aria-hidden="true" style="display:none;position:fixed;inset:0;background:linear-gradient(180deg, rgba(10,18,34,0.96), rgba(8,12,20,0.96));color:#fff;padding:18px;z-index:1200;overflow:auto">
       <div style="display:flex;align-items:center;gap:12px;justify-content:flex-start;margin-bottom:12px">
@@ -486,7 +565,7 @@
   </script>
 </section>
 <!-- ================= END PREMIUM HERO ================= -->
-<!-- FIXED: PREMIUM SLOT BOOKING — Section (paste into your page, replaces previous) -->
+<!-- PREMIUM SLOT BOOKING — Section (paste into your page) -->
 <section id="slot-booking-premium-no-otp" aria-label="Slot booking" style="margin-top:18px;">
   <style>
     :root{
@@ -496,55 +575,33 @@
       --ui-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       --serif: "Georgia","Merriweather", serif;
     }
-
-    /* core reset */
-    #slot-booking-premium-no-otp, #slot-booking-premium-no-otp * { box-sizing: border-box; }
-
+    /* base */
+    #slot-booking-premium-no-otp{font-family:var(--ui-font);display:block}
     /* container */
-    .slot-wrap{
-      max-width:var(--max-width);
-      margin:18px auto;
-      padding:18px;
-      border-radius:var(--radius);
-      background: linear-gradient(180deg,var(--card), #f7f6f3);
-      box-shadow: var(--shadow-strong);
-      border:1px solid rgba(10,7,5,0.06);
-      display:grid;
-      grid-template-columns: minmax(200px,360px) 1fr; /* allow smaller left col */
-      gap:18px;
-      align-items:start;
-      position:relative;
-      width: calc(100% - 32px); /* keep it within viewport on small screens */
-      max-width: calc(var(--max-width));
-    }
-
-    /* decorative */
+    .slot-wrap{max-width:var(--max-width);margin:18px auto;padding:18px;border-radius:var(--radius);
+      background: linear-gradient(180deg,var(--card), #f7f6f3); box-shadow: var(--shadow-strong);
+      border:1px solid rgba(10,7,5,0.06); display:grid; grid-template-columns: minmax(260px,360px) 1fr; gap:18px; align-items:start; position:relative;}
     .gear-decor{position:absolute;left:-26px;top:-26px;opacity:0.08;transform:rotate(-12deg);pointer-events:none}
     @media (max-width:980px){ .gear-decor{display:none} .slot-wrap{grid-template-columns:1fr;padding:14px} }
 
-    /* left column - portrait */
-    .slot-image{border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(10,7,5,0.02), rgba(10,7,5,0.01));border:1px solid rgba(10,7,5,0.04);box-shadow: inset 0 -18px 40px rgba(0,0,0,0.04);display:flex;flex-direction:column;min-height:260px;max-width:100%}
-    .slot-frame{padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;flex-direction:column;height:100%;min-height:0;min-width:0}
-    .portrait{flex:1;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#eae3d6,#f1eadf);display:block;border:3px solid rgba(168,132,74,0.06);box-shadow:0 10px 30px rgba(0,0,0,0.06);position:relative;min-height:160px}
-    /* make image responsive and never overflow */
-    .portrait img{ width:100%; height:100%; object-fit:cover; object-position:center top; display:block; max-width:100%; }
-    /* fallback svg only visible when image fails (class toggled by onerror) */
-    .portrait svg{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); max-width:140px; max-height:140px; display:none; opacity:0.95; }
+    /* left column */
+    .slot-image{border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(10,7,5,0.02), rgba(10,7,5,0.01));border:1px solid rgba(10,7,5,0.04);box-shadow: inset 0 -18px 40px rgba(0,0,0,0.04);min-height:320px;display:flex;flex-direction:column}
+    .slot-frame{padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;flex-direction:column;height:100%}
+    .portrait{flex:1;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#eae3d6,#f1eadf);display:grid;place-items:center;border:3px solid rgba(168,132,74,0.06);box-shadow:0 10px 30px rgba(0,0,0,0.06);min-height:220px;position:relative}
+    .portrait img{ width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+    .portrait svg{ position:absolute; max-width:140px; max-height:140px; display:none; opacity:0.95; }
     .portrait.noimg svg{ display:block; }
     .portrait.noimg img{ display:none; }
-
     .image-caption{padding:12px 10px;font-size:0.92rem;color:var(--muted);text-align:left;border-top:1px solid rgba(10,7,5,0.02); background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);}
 
-    /* right column - panel */
-    .slot-panel{display:flex;flex-direction:column;gap:14px;min-width:0} /* IMPORTANT: min-width:0 prevents overflow */
-    .slot-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px;border-radius:12px;background:linear-gradient(160deg,#2b231a,#2a2317);color:#fff;box-shadow: inset 0 -6px 12px rgba(0,0,0,0.35);border:1px solid rgba(0,0,0,0.35);flex-wrap:wrap}
+    /* right column */
+    .slot-panel{display:flex;flex-direction:column;gap:14px}
+    .slot-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px;border-radius:12px;background:linear-gradient(160deg,#2b231a,#2a2317);color:#fff;box-shadow: inset 0 -6px 12px rgba(0,0,0,0.35);border:1px solid rgba(0,0,0,0.35);}
     .slot-title{margin:0;font-size:1.12rem;font-weight:700;letter-spacing:0.4px;font-family:var(--serif);}
     .slot-sub{margin-top:6px;color:rgba(255,255,255,0.9);font-size:0.94rem;max-width:62ch;line-height:1.45;font-weight:500}
-    .mini-clock{font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', monospace;padding:8px 12px;border-radius:10px;background:var(--brass-1);color:#2b1f16;font-weight:800;border:1px solid rgba(0,0,0,0.06);font-size:0.92rem;box-shadow:0 8px 20px rgba(160,120,40,0.12), inset 0 -4px 8px rgba(255,255,255,0.18);flex:0 0 auto}
+    .mini-clock{font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', monospace;padding:8px 12px;border-radius:10px;background:var(--brass-1);color:#2b1f16;font-weight:800;border:1px solid rgba(0,0,0,0.06);font-size:0.92rem;box-shadow:0 8px 20px rgba(160,120,40,0.12), inset 0 -4px 8px rgba(255,255,255,0.18);}
 
-    /* next slot area should wrap its contents on small screens */
-    .next-slot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:14px;border-radius:12px;background: linear-gradient(180deg, rgba(200,160,80,0.06), rgba(20,10,6,0.02));border:1px solid rgba(10,7,5,0.04);box-shadow: 0 10px 30px rgba(0,0,0,0.06);}
-    .next-slot > div:first-child{min-width:0} /* allow text to wrap */
+    .next-slot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border-radius:12px;background: linear-gradient(180deg, rgba(200,160,80,0.06), rgba(20,10,6,0.02));border:1px solid rgba(10,7,5,0.04);box-shadow: 0 10px 30px rgba(0,0,0,0.06);}
     .when{font-weight:800;color:var(--leather);font-family:var(--serif);font-size:1.02rem}
     .tz{color:var(--muted);font-size:0.92rem}
 
@@ -552,21 +609,19 @@
     .btn-primary{background: linear-gradient(180deg,#f6e1a3,#e1b84b);color:#2d1f15;border:1px solid rgba(0,0,0,0.06);box-shadow: 0 8px 20px rgba(160,120,40,0.14), inset 0 -6px 8px rgba(255,255,255,0.25);}
     .btn-ghost{background:transparent;border:1px solid rgba(10,7,5,0.08);color:var(--leather);box-shadow:none;font-weight:700;padding:9px 12px}
 
-    /* week strip: horizontal scroll allowed, but compact day-cards */
-    .week-strip{display:flex;gap:10px;overflow:auto;padding:8px 6px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
-    .day-card{min-width:100px;flex:0 0 auto;border-radius:10px;padding:10px;border:1px solid rgba(10,7,5,0.04);background: linear-gradient(180deg,#f8f3ea,#efe8d8);box-shadow: 0 8px 20px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:6px;align-items:flex-start;font-size:0.88rem;color:var(--ink);scroll-snap-align:start}
-    .day-name{font-weight:800;color:var(--leather);font-size:0.92rem}
-    .day-date{color:var(--muted);font-size:0.82rem}
+    .week-strip{display:flex;gap:10px;overflow:auto;padding:8px 6px;scroll-snap-type:x proximity}
+    .day-card{min-width:132px;border-radius:10px;padding:12px;border:1px solid rgba(10,7,5,0.04);background: linear-gradient(180deg,#f8f3ea,#efe8d8);box-shadow: 0 12px 30px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:8px;align-items:flex-start;font-size:0.92rem;color:var(--ink);scroll-snap-align:start}
+    .day-name{font-weight:800;color:var(--leather);font-size:0.95rem}
+    .day-date{color:var(--muted);font-size:0.86rem}
     .slots-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-    .slot-pill{padding:7px 9px;border-radius:8px;background:linear-gradient(180deg,#fff7ea,#fff0d2);color:var(--accent);font-weight:800;font-size:0.82rem;border:1px solid rgba(170,120,40,0.08);cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,0.06);transition:transform .12s ease, box-shadow .12s ease;font-family:var(--serif);}
+    .slot-pill{padding:8px 10px;border-radius:8px;background:linear-gradient(180deg,#fff7ea,#fff0d2);color:var(--accent);font-weight:800;font-size:0.88rem;border:1px solid rgba(170,120,40,0.08);cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,0.06);transition:transform .12s ease, box-shadow .12s ease;font-family:var(--serif);}
     .slot-pill:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(0,0,0,0.08); }
     .slot-pill.booked{background:#efeeee;color:var(--muted);border:1px solid rgba(200,60,60,0.06);text-decoration:line-through;cursor:not-allowed;box-shadow:none}
 
-    .calendar-legend{display:flex;gap:12px;margin-top:10px;align-items:center;flex-wrap:wrap}
+    .calendar-legend{display:flex;gap:12px;margin-top:10px;align-items:center}
     .legend-item{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:0.9rem}
     .legend-swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
 
-    /* modal */
     .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(2,6,23,0.6);z-index:2200;align-items:center;justify-content:center;padding:18px}
     .modal-card{background:linear-gradient(180deg,#fffaf2,#f5efe3);padding:18px;border-radius:12px;max-width:540px;width:100%;box-shadow:0 30px 100px rgba(7,12,25,0.32);border:1px solid rgba(10,7,5,0.04)}
     .modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:8px;border-bottom:1px dashed rgba(10,7,5,0.02);margin-bottom:10px}
@@ -575,24 +630,7 @@
     .form-control{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(10,7,5,0.06);font-size:0.95rem;background:#fffafa;color:var(--ink);box-sizing:border-box}
     .sound-row{display:flex;gap:10px;align-items:center;justify-content:flex-end}
 
-    /* responsive tweaks — tighten up on small screens */
-    @media (max-width:980px){
-      .slot-wrap{grid-template-columns:1fr;padding:14px; gap:12px}
-      .slot-image{min-height:180px}
-      .slot-frame{padding:12px}
-      .day-card{min-width:96px;padding:10px}
-      .slot-pill{padding:7px 8px;font-size:0.8rem}
-      .mini-clock{margin-top:8px}
-    }
-    @media (max-width:480px){
-      .slot-wrap{padding:12px; gap:10px}
-      .slot-image{min-height:150px}
-      .slot-frame{padding:10px}
-      .day-card{min-width:88px;padding:8px}
-      .slot-pill{padding:6px 8px;font-size:0.78rem}
-      .next-slot{padding:12px;gap:8px}
-    }
-
+    @media (max-width:480px){ .day-card{min-width:120px} .slot-title{font-size:1.02rem} .slot-sub{font-size:0.9rem} }
     @media (prefers-reduced-motion: reduce){ .slot-pill,.btn-primary{transition:none} }
   </style>
 
@@ -611,7 +649,7 @@
       <div class="slot-image" aria-hidden="false">
         <div class="slot-frame">
           <div class="portrait" role="img" aria-label="Lady Justice portrait">
-            <!-- corrected filename 'goddes.jpg' -->
+            <!-- NOTE: corrected filename to 'goddes.jpg' as requested -->
             <img src="goddes.jpg" alt="Lady Justice" loading="lazy" onerror="this.closest('.portrait').classList.add('noimg')">
             <svg width="120" height="120" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <g fill="none" stroke="#b78f3a" stroke-width="0.8">
@@ -636,15 +674,15 @@
     <!-- right: controls -->
     <div class="slot-panel">
       <div class="slot-head" role="banner">
-        <div style="min-width:0">
+        <div>
           <div class="slot-title">Next Available Slot</div>
           <div class="slot-sub">Request a consultation, courtroom attendance or priority booking — we'll confirm within business hours.</div>
         </div>
-        <div class="mini-clock" id="miniClock" aria-live="polite">--:--:-- IST</div>
+        <div class="mini-clock" id="miniClock">--:--:-- IST</div>
       </div>
 
       <div class="next-slot" aria-live="polite">
-        <div style="min-width:0">
+        <div>
           <div style="font-size:0.86rem;color:var(--muted)">Upcoming</div>
           <div class="when" id="nextSlotLite">Loading…</div>
           <div class="tz">India Standard Time (UTC+5:30)</div>
@@ -657,12 +695,11 @@
       </div>
 
       <div>
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;justify-content:space-between;align-items:center">
           <div style="font-weight:800;color:var(--leather)">This Week</div>
           <div style="color:var(--muted);font-size:0.9rem" id="weekRangeLite">—</div>
         </div>
 
-        <!-- WEEK STRIP: horizontal scroll on small screens; compact cards to avoid overflow -->
         <div class="week-strip" id="weekStrip" role="list" aria-label="Weekly slot overview"></div>
 
         <div class="calendar-legend" aria-hidden="true">
@@ -670,7 +707,7 @@
           <div class="legend-item"><span class="legend-swatch" style="background:#efeeee;border:1px solid rgba(200,60,60,0.06)"></span>Booked</div>
         </div>
 
-        <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between">
           <div style="color:var(--muted)">Micro-interactions</div>
           <div class="sound-row">
             <label style="font-size:0.9rem;color:var(--muted);margin-right:6px">Brass sound</label>
@@ -712,7 +749,6 @@
     </div>
   </div>
 
-  <!-- (existing script kept unchanged) -->
   <script>
   (function(){
     /* Config */
@@ -741,16 +777,42 @@
     const booked = new Set();
     let prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let soundEnabled = localStorage.getItem('pd_sound') === '1' && !prefersReduced;
-    if (soundToggle) {
-      soundToggle.textContent = soundEnabled ? 'Enabled' : 'Enable';
-      soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
+    soundToggle.textContent = soundEnabled ? 'Enabled' : 'Enable';
+    soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
+
+    /* Audio: brass click (keeps as demo micro-interaction) */
+    let audioCtx = null;
+    function initAudio(){ if(audioCtx) return; try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }catch(e){ audioCtx = null; } }
+    function playBrassClick(){
+      if(!soundEnabled || prefersReduced) return;
+      initAudio();
+      if(!audioCtx) return;
+      const t = audioCtx.currentTime;
+      const noise = audioCtx.createBufferSource();
+      const buffer = audioCtx.createBuffer(1, audioCtx.sampleRate * 0.04, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i=0;i<data.length;i++) data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.02));
+      noise.buffer = buffer;
+      const noiseFilter = audioCtx.createBiquadFilter();
+      noiseFilter.type = 'bandpass'; noiseFilter.frequency.value = 2500;
+      noise.connect(noiseFilter);
+      const osc = audioCtx.createOscillator();
+      osc.type = 'sawtooth'; osc.frequency.setValueAtTime(800, t); osc.frequency.exponentialRampToValueAtTime(300, t + 0.06);
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.001, t); gain.gain.exponentialRampToValueAtTime(0.14, t + 0.01); gain.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+      noiseFilter.connect(gain); osc.connect(gain); gain.connect(audioCtx.destination);
+      noise.start(t); osc.start(t); noise.stop(t + 0.12); osc.stop(t + 0.12);
     }
 
-    /* Audio omitted for brevity (same as before) */
-    /* ... keep your existing audio functions and handlers ... */
+    soundToggle.addEventListener('click', ()=> {
+      soundEnabled = !soundEnabled;
+      localStorage.setItem('pd_sound', soundEnabled ? '1' : '0');
+      soundToggle.textContent = soundEnabled ? 'Enabled' : 'Enable';
+      soundToggle.setAttribute('aria-pressed', soundEnabled ? 'true' : 'false');
+      if(soundEnabled) playBrassClick();
+    });
 
-    /* Time helpers and rest of original JS kept unchanged (tick, renderWeek, selectSlot, etc.) */
-    // For compatibility ensure the functions exist even if elements are missing:
+    /* Time helpers */
     function pad(n){ return String(n).padStart(2,'0'); }
     function nowIST(){ const d=new Date(); const utc = d.getTime() + (d.getTimezoneOffset()*60000); return new Date(utc + (5.5*3600000)); }
     function formatShort(dt){ const opts = {weekday:'short', day:'numeric', month:'short'}; const datePart = dt.toLocaleDateString('en-IN', opts); const timePart = pad(dt.getHours()) + ':' + pad(dt.getMinutes()); return `${datePart} • ${timePart}`; }
@@ -763,20 +825,128 @@
       return slots;
     }
 
-    function tick(){ if(miniClock) { const t=nowIST(); miniClock.textContent = pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())+' IST'; } }
+    /* Clock */
+    function tick(){ const t=nowIST(); miniClock.textContent = pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())+' IST'; }
     setInterval(tick,1000); tick();
 
-    /* The rest of your original renderWeek, computeAndShowNext, seedDemo, modal handlers and form submit logic
-       are intact and should continue to work. I intentionally left them unchanged to avoid breaking behavior.
-       If you want, I can inline them here again with minor improvements (debouncing, aria focus traps). */
-
-    // call any initialization functions present in your original script:
-    if (typeof renderWeek === 'function') {
-      try { renderWeek(); } catch(e){ /* original renderWeek might be defined below in your code — ignore if not */ }
+    /* Week & next slot */
+    function computeAndShowNext(){
+      const ist = nowIST();
+      for(let d=0; d<21; d++){
+        const day=new Date(ist); day.setDate(ist.getDate()+d);
+        if(!DAYS_OPEN.includes(day.getDay())) continue;
+        const slots = generateSlotsForDay(day);
+        for(const s of slots){
+          const sCopy = new Date(s);
+          if(d===0 && sCopy <= ist) continue;
+          const iso = toISOLocal(sCopy);
+          if(!booked.has(iso)){ nextSlotLite.textContent = formatShort(sCopy); return sCopy; }
+        }
+      }
+      nextSlotLite.textContent = 'No slots in next 21 days'; return null;
     }
+
+    function renderWeek(){
+      weekStrip.innerHTML = '';
+      const ist = nowIST();
+      const start = startOfWeek(ist);
+      const weekDays=[];
+      for(let i=0;i<7;i++){ const d=new Date(start); d.setDate(start.getDate()+i); weekDays.push(d); }
+      const r0=weekDays[0].toLocaleDateString('en-IN',{day:'numeric',month:'short'}), r6=weekDays[6].toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+      weekRangeLite.textContent = `${r0} — ${r6}`;
+
+      weekDays.forEach(day=>{
+        const card=document.createElement('div'); card.className='day-card';
+        const dayName = day.toLocaleDateString('en-IN',{weekday:'short'}); const dateNum=day.toLocaleDateString('en-IN',{day:'numeric','month':'short'});
+        card.innerHTML = `<div class="day-name">${dayName}</div><div class="day-date">${dateNum}</div>`;
+        const slotRow=document.createElement('div'); slotRow.className='slots-row';
+        if(DAYS_OPEN.includes(day.getDay())){
+          const slots = generateSlotsForDay(day);
+          slots.slice(0,6).forEach(s=>{
+            const iso=toISOLocal(s);
+            const pill=document.createElement('button'); pill.type='button';
+            const isBooked = booked.has(iso);
+            pill.className = 'slot-pill' + (isBooked ? ' booked' : '');
+            pill.textContent = pad(s.getHours())+':'+pad(s.getMinutes()) + (isBooked ? ' • Booked' : '');
+            if(!isBooked){ pill.addEventListener('click', ()=> selectSlot(iso)); }
+            else pill.disabled=true;
+            pill.addEventListener('click', ()=> playBrassClick());
+            slotRow.appendChild(pill);
+          });
+        } else {
+          const closed = document.createElement('div'); closed.style.color='var(--muted)'; closed.style.fontSize='.9rem'; closed.textContent='Closed';
+          slotRow.appendChild(closed);
+        }
+        card.appendChild(slotRow); weekStrip.appendChild(card);
+      });
+      computeAndShowNext();
+    }
+
+    /* Selection & modal */
+    function selectSlot(iso){
+      const dt = new Date(iso);
+      chosenSlot.value = formatShort(dt);
+      chosenSlot.dataset.iso = iso;
+      openModal();
+      playBrassClick();
+    }
+    function openModal(){ slotModal.style.display='flex'; slotModal.setAttribute('aria-hidden','false'); setTimeout(()=>clientName.focus(),120); bookingStatus.textContent=''; }
+    function closeModal(){ slotModal.style.display='none'; slotModal.setAttribute('aria-hidden','true'); slotForm.reset(); chosenSlot.value=''; delete chosenSlot.dataset.iso; }
+
+    quickRequest.addEventListener('click', ()=>{
+      const next = computeAndShowNext();
+      if(!next){ alert('No slots available soon'); return; }
+      chosenSlot.value = formatShort(next);
+      chosenSlot.dataset.iso = toISOLocal(next);
+      openModal();
+      playBrassClick();
+    });
+
+    modalCancel.addEventListener('click', closeModal);
+    slotModal.addEventListener('click', (e)=> { if(e.target === slotModal) closeModal(); });
+    document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeModal(); });
+
+    /* Demo booked seeds */
+    (function seedDemo(){
+      if(booked.size) return;
+      const now = nowIST();
+      const demo1 = new Date(now); demo1.setDate(now.getDate()+1); demo1.setHours(11,0,0,0);
+      const demo2 = new Date(now); demo2.setDate(now.getDate()+2); demo2.setHours(14,30,0,0);
+      booked.add(toISOLocal(demo1)); booked.add(toISOLocal(demo2));
+    })();
+
+    /* Form submit */
+    slotForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const iso = chosenSlot.dataset.iso;
+      if(!iso){ bookingStatus.textContent = 'Please select a slot first.'; return; }
+      const nameVal = clientName.value.trim();
+      const phoneVal = clientPhone.value.trim();
+      const noteVal = clientNote.value.trim();
+      if(!nameVal || !phoneVal){ bookingStatus.textContent = 'Name and phone required.'; return; }
+
+      booked.add(iso);
+      renderWeek();
+      playBrassClick();
+
+      const msg = encodeURIComponent(`Requesting slot: ${chosenSlot.value}\nName: ${nameVal}\nPhone: ${phoneVal}\nNote: ${noteVal}`);
+      window.open(`https://wa.me/${USER_WHATSAPP}?text=${msg}`, '_blank');
+
+      bookingStatus.textContent = 'Request sent. We will contact you to confirm.';
+      setTimeout(()=> { closeModal(); }, 800);
+    });
+
+    /* Boot */
+    renderWeek();
+    setInterval(()=> { tick(); computeAndShowNext(); }, 30000);
+
+    /* small tick function for clock update */
+    function tick(){ const t=nowIST(); miniClock.textContent = pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())+' IST'; }
+
   })();
   </script>
 </section>
+<!-- ================= END REPLACEMENT CALENDAR ================= -->
 ```0
        <!-- IMPROVED ABOUT SECTION — paste only this section into your page -->
 <section id="about" aria-labelledby="aboutHeading" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; --container-gap:22px;">
