@@ -517,81 +517,29 @@
     <button id="chat-toggle" onclick="toggleChat()" class="fixed bottom-6 right-6 p-4 bg-gold-600 hover:bg-gold-500 text-white rounded-full shadow-2xl z-40 transition-transform hover:scale-105">
         <i data-lucide="message-square" class="w-6 h-6"></i>
     </button>
-<script>
-const teamMembers = [
-  {
-    name: "Adv. Ganga Shankar Shastri",
-    role: "Founder & Lead Counsel",
-    image: "ganga.jpg",
-    bio: "15+ years of experience across High Court and District Courts. Known for strategic courtroom advocacy and practical settlement-first solutions in family and property disputes."
-  },
-  {
-    name: "Adv. Minakshi Shastri",
-    role: "Senior Associate",
-    image: "minakshi.jpg",
-    bio: "LL.M. & Postgraduate in Human Rights. Specialises in property litigation, corporate disputes, and appellate practice. Praised for meticulous drafting."
-  },
-  {
-    name: "Adv. Shivani Shastri",
-    role: "Consulting Advocate",
-    image: "shivani.jpg",
-    bio: "LL.M., pursuing Ph.D. Focuses on constitutional law, research, and policy advisory. Provides authoritative opinions on complex regulatory matters."
-  },
-  {
-    name: "Adv. Sanjay Kumar",
-    role: "Associate Counsel",
-    image: "ganga.jpg",
-    bio: "Focuses on pragmatic defence strategies in criminal trials. Experienced in bail matters and handling high-pressure courtroom proceedings."
-  }
-];  // ✅ ARRAY ENDS HERE — PERFECT
+     <!-- Team Member Modal -->
+    <div id="team-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4" onclick="closeTeamModal()">
+        <div class="bg-navy-900 border border-gold-500/20 max-w-lg w-full p-8 rounded relative animate-fade-in shadow-2xl" onclick="event.stopPropagation()">
+            <button onclick="closeTeamModal()" class="absolute top-4 right-4 text-slate-500 hover:text-white"><i data-lucide="x"></i></button>
+            <h2 id="modal-name" class="text-2xl md:text-3xl font-serif text-gold-400 mb-2"></h2>
+            <p id="modal-role" class="text-white text-xs uppercase tracking-widest mb-6"></p>
+            <p id="modal-bio" class="text-slate-300 leading-relaxed text-sm md:text-base"></p>
+            <div class="mt-8 pt-6 border-t border-white/5 flex gap-4">
+                <a href="#contact" onclick="closeTeamModal()" class="flex-1 bg-gold-600 text-white py-3 rounded hover:bg-gold-500 text-center text-sm font-medium transition-colors uppercase tracking-wider">Book Consultation</a>
+            </div>
+        </div>
+    </div>
 
-const teamGrid = document.getElementById("team-grid");
-const modal = document.getElementById("team-modal");
-const modalName = document.getElementById("modal-name");
-const modalRole = document.getElementById("modal-role");
-const modalBio = document.getElementById("modal-bio");
-
-function openTeamModal(member) {
-  modalName.textContent = member.name;
-  modalRole.textContent = member.role;
-  modalBio.textContent = member.bio;
-  modal.classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-}
-
-function closeTeamModal() {
-  modal.classList.add("hidden");
-  document.body.style.overflow = "";
-}
-
-teamMembers.forEach(member => {
-  const card = document.createElement("div");
-
-  card.className =
-    "group cursor-pointer bg-white/5 backdrop-blur-xl " +
-    "border border-white/10 rounded-2xl p-6 text-center " +
-    "transition hover:-translate-y-1 hover:border-gold-500/40";
-
-  card.innerHTML = `
-    <img src="${member.image}"
-         class="w-28 h-28 mx-auto rounded-full object-cover
-                border-2 border-gold-500/40 mb-4
-                grayscale group-hover:grayscale-0 transition">
-
-    <h3 class="text-lg font-serif text-white">
-      ${member.name}
-    </h3>
-
-    <p class="text-xs uppercase tracking-widest text-slate-400 mt-1">
-      ${member.role}
-    </p>
-  `;
-
-  card.addEventListener("click", () => openTeamModal(member));
-  teamGrid.appendChild(card);
-});
-</script>
-    
+    <!-- Scripts -->
+    <script>
+        // -- Data --
+        const teamMembers = [
+            { name: "Adv. Ganga Shankar Shastri", role: "Founder & Lead Counsel", bio: "15+ years of experience across High Court and District Courts. Known for strategic courtroom advocacy and practical settlement-first solutions in family and property disputes." },
+            { name: "Adv. Minakshi Shastri", role: "Senior Associate", bio: "LL.M. & Postgraduate in Human Rights. Specialises in property litigation, corporate disputes, and appellate practice. Praised for meticulous drafting." },
+            { name: "Adv. Shivani Shastri", role: "Consulting Advocate", bio: "LL.M., pursuing Ph.D. Focuses on constitutional law, research, and policy advisory. Provides authoritative opinions on complex regulatory matters." },
+            { name: "Adv. Sanjay Kumar", role: "Associate Counsel", bio: "Focuses on pragmatic defence strategies in criminal trials. Experienced in bail matters and handling high-pressure courtroom proceedings." }
+        ];
+        
         const glossaryTerms = [
             { term: "Ad Interim", def: "In the meantime; temporarily." },
             { term: "Anticipatory Bail", def: "Bail granted before arrest in anticipation of accusation." },
