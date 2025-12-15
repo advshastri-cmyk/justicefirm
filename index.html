@@ -544,10 +544,18 @@
      AI LEGAL CHATBOT (FREE • LOCKED)
 ======================================================= -->
 <div id="chatbot"
-     class="fixed bottom-6 right-6 w-[380px] h-[520px]
-            glass-panel rounded-lg shadow-2xl
-            border border-gold-500/30
-            hidden flex flex-col z-50">
+     class="
+       fixed z-50 hidden flex flex-col glass-panel
+       border border-gold-500/30 shadow-2xl
+
+       /* Mobile: FULL SCREEN */
+       inset-0 w-full h-full rounded-none
+
+       /* Desktop: FLOATING PANEL */
+       md:inset-auto md:bottom-6 md:right-6
+       md:w-[380px] md:h-[520px]
+       md:rounded-lg
+     ">
 
   <!-- Header -->
   <div class="p-4 border-b border-gold-500/20 bg-navy-900">
