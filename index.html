@@ -594,7 +594,7 @@
   <div class="p-3 border-t border-gold-500/20 bg-navy-900 space-y-2">
     <input id="gemini-key"
            type="password"
-           placeholder="Enter your free Gemini API key"
+           placeholder="AIzaSyDpssACM71Ozu_k3r6zPj1EuEtoykqLOcE"
            class="w-full bg-obsidian border border-slate-700
                   p-2 text-xs text-white outline-none">
 
@@ -776,7 +776,7 @@ async function sendChatMessage() {
   input.value = "";
   box.scrollTop = box.scrollHeight;
 
-  const apiKey = document.getElementById("AIzaSyDpssACM71Ozu_k3r6zPj1EuEtoykqLOcE").value;
+  const apiKey = document.getElementById("gemini-key").value;
   const lang = detectLanguage(msg);
 
   let systemPrompt =
