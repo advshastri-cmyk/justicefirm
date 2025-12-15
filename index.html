@@ -651,7 +651,7 @@ const teamMembers = [
     name: "Adv. Sanjay Kumar",
     role: "Associate Counsel",
     bio: "Focused on criminal trials, bail matters, and pragmatic defence strategies.",
-    image: ""  // intentionally blank
+    image: ""
   }
 ];
 
@@ -664,19 +664,27 @@ teamMembers.forEach((m, index) => {
   card.onclick = () => openTeamModal(index);
 
   card.innerHTML = `
-    <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden
-                bg-slate-800 flex items-center justify-center">
+    <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-slate-800 flex items-center justify-center">
       ${
         m.image
-          ? '<img src="${m.image}" class="w-full h-full object-cover object-[center_20%]">'
-          : `<i data-lucide="user" class="text-slate-500 w-12 h-12"></i>`
+          ? `<img src="${m.image}"
+                  class="w-full h-full object-cover"
+                  style="object-position:center 20%;"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+          : ''
       }
+      <span class="${m.image ? 'hidden' : ''} w-full h-full flex items-center justify-center text-slate-500">
+        <i data-lucide="user" class="w-12 h-12"></i>
+      </span>
     </div>
     <h3 class="font-serif text-white">${m.name}</h3>
     <p class="text-gold-400 text-xs uppercase mt-2">${m.role}</p>
   `;
+
   teamGrid.appendChild(card);
 });
+
+lucide.createIcons();
 </script>
 
 <!-- ======================================================
