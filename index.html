@@ -406,7 +406,6 @@
 ======================================================= -->
 <section id="team" class="py-28 px-6 bg-obsidian">
   <div class="max-w-7xl mx-auto">
-
     <div class="text-center mb-20">
       <span class="text-gold-400 text-xs uppercase tracking-widest">
         Our Chambers
@@ -628,65 +627,65 @@
      TEAM DATA & LOGIC
 ======================================================= -->
 <script>
-const teamMembers = [
-  {
-    name: "Adv. Ganga Shankar Shastri",
-    role: "Founder & Lead Counsel",
-    bio: "15+ years of experience before District Courts and High Courts, specialising in criminal defence and property litigation.",
-    image: "images/ganga.jpg"
-  },
-  {
-    name: "Adv. Minakshi Shastri",
-    role: "Senior Associate",
-    bio: "LL.M. with extensive experience in civil disputes, appellate drafting, and legal research.",
-    image: "images/minakshi.jpg"
-  },
-  {
-    name: "Adv. Shivani Shastri",
-    role: "Consulting Advocate",
-    bio: "LL.M., pursuing Ph.D., focusing on constitutional law, policy research, and advisory opinions.",
-    image: "images/shivani.jpg"
-  },
-  {
-    name: "Adv. Sanjay Kumar",
-    role: "Associate Counsel",
-    bio: "Focused on criminal trials, bail matters, and pragmatic defence strategies.",
-    image: ""
-  }
-];
+document.addEventListener("DOMContentLoaded", () => {
 
-const teamGrid = document.getElementById("team-grid");
+  const teamMembers = [
+    {
+      name: "Adv. Ganga Shankar Shastri",
+      role: "Founder & Lead Counsel",
+      bio: "15+ years of experience before District Courts and High Courts, specialising in criminal defence and property litigation.",
+      image: "images/ganga.jpg"
+    },
+    {
+      name: "Adv. Minakshi Shastri",
+      role: "Senior Associate",
+      bio: "LL.M. with extensive experience in civil disputes, appellate drafting, and legal research.",
+      image: "images/minakshi.jpg"
+    },
+    {
+      name: "Adv. Shivani Shastri",
+      role: "Consulting Advocate",
+      bio: "LL.M., pursuing Ph.D., focusing on constitutional law, policy research, and advisory opinions.",
+      image: "images/shivani.jpg"
+    },
+    {
+      name: "Adv. Sanjay Kumar",
+      role: "Associate Counsel",
+      bio: "Focused on criminal trials, bail matters, and pragmatic defence strategies.",
+      image: null
+    }
+  ];
 
-teamMembers.forEach((m, index) => {
-  const card = document.createElement("div");
-  card.className =
-    "group cursor-pointer bg-navy-900/40 border border-white/5 p-6 text-center hover:border-gold-500/30 transition-all";
-  card.onclick = () => openTeamModal(index);
+  const teamGrid = document.getElementById("team-grid");
 
-  card.innerHTML = `
-    <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-slate-800 flex items-center justify-center">
-      ${
-        m.image
-          ? `<img src="${m.image}"
-                  class="w-full h-full object-cover"
-                  style="object-position:center 20%;"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
-          : ''
-      }
-      <span class="${m.image ? 'hidden' : ''} w-full h-full flex items-center justify-center text-slate-500">
-        <i data-lucide="user" class="w-12 h-12"></i>
-      </span>
-    </div>
-    <h3 class="font-serif text-white">${m.name}</h3>
-    <p class="text-gold-400 text-xs uppercase mt-2">${m.role}</p>
-  `;
+  teamMembers.forEach((m, index) => {
+    const card = document.createElement("div");
+    card.className =
+      "group bg-navy-900/40 border border-white/5 p-6 text-center hover:border-gold-500/30 transition-all cursor-pointer";
 
-  teamGrid.appendChild(card);
+    card.onclick = () => openTeamModal(index);
+
+    const avatar = m.image
+      ? `<img src="${m.image}"
+              class="w-full h-full object-cover"
+              style="object-position:center 20%;"
+              loading="lazy">`
+      : `<i data-lucide="user" class="w-12 h-12 text-slate-500"></i>`;
+
+    card.innerHTML = `
+      <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-slate-800 flex items-center justify-center">
+        ${avatar}
+      </div>
+      <h3 class="font-serif text-white">${m.name}</h3>
+      <p class="text-gold-400 text-xs uppercase mt-2">${m.role}</p>
+    `;
+
+    teamGrid.appendChild(card);
+  });
+
+  lucide.createIcons();
 });
-
-lucide.createIcons();
 </script>
-
 <!-- ======================================================
      TEAM MODAL LOGIC
 ======================================================= -->
