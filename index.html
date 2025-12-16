@@ -1,3 +1,6 @@
+<!-- ======================================================
+     PART 1 — HEAD → DAILY LEGAL INSIGHT
+======================================================= -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -111,7 +114,7 @@
   </script>
 
   <!-- ======================================================
-       GLOBAL STYLES
+       GLOBAL STYLES (UPDATED – MOBILE SAFE)
   ======================================================= -->
   <style>
     body {
@@ -133,7 +136,10 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .modal-open {
+    /* Prevent background scroll when modal/chat is open */
+    body.modal-open {
+      position: fixed;
+      width: 100%;
       overflow: hidden;
     }
 
@@ -151,7 +157,7 @@
 <body class="font-sans selection:bg-gold-600/30 selection:text-white">
 
 <!-- ======================================================
-     NAVIGATION
+     NAVIGATION (AI BUTTON FIXED)
 ======================================================= -->
 <nav id="navbar"
      class="fixed top-0 w-full z-50 bg-obsidian/95 backdrop-blur-md
@@ -186,14 +192,16 @@
       <a href="#practice" class="hover:text-gold-400 transition-colors">Practice</a>
       <a href="#team" class="hover:text-gold-400 transition-colors">Team</a>
       <a href="#booking" class="hover:text-gold-400 transition-colors">Consultation</a>
-      <a href="#contact"
-         class="px-6 py-3 bg-gold-600 hover:bg-gold-500
-                text-white rounded-sm transition-all">
-        Book Appointment
-      </a>
+
+      <!-- FIXED: AI button now opens chatbot -->
+      <button onclick="toggleChatbot()"
+              class="px-6 py-3 border border-gold-500/50
+                     hover:bg-gold-600 text-white rounded-sm transition-all">
+        AI Legal Assistant
+      </button>
     </div>
 
-    <!-- Mobile Toggle (JS later) -->
+    <!-- Mobile Toggle -->
     <button class="md:hidden text-white" aria-label="Open Menu">
       <i data-lucide="menu"></i>
     </button>
@@ -240,12 +248,14 @@
                 text-white uppercase tracking-wider text-sm">
         Book Consultation
       </a>
-      <a href="#chatbot"
+
+      <!-- FIXED -->
+      <button onclick="toggleChatbot()"
          class="px-8 py-4 border border-slate-600
                 hover:border-gold-500 text-white
                 hover:text-gold-400 uppercase tracking-wider text-sm">
         Ask Legal Assistant
-      </a>
+      </button>
     </div>
 
   </div>
@@ -289,7 +299,7 @@
 </section>
 
 <!-- ======================================================
-     DAILY LEGAL INSIGHT (SHELL)
+     DAILY LEGAL INSIGHT
 ======================================================= -->
 <section class="border-t border-white/5 bg-navy-900/40">
   <div class="max-w-7xl mx-auto px-6 py-4 flex gap-4 items-center">
@@ -298,8 +308,14 @@
       “Justice delayed is justice denied.”
     </p>
   </div>
-          </section>
-          <!-- ======================================================
+</section>
+<!-- ======================================================
+     END PART 1
+  <!-- ======================================================
+     PART 2 — PRACTICE AREAS → TEAM → TEAM MODAL
+======================================================= -->
+
+<!-- ======================================================
      PRACTICE AREAS
 ======================================================= -->
 <section id="practice" class="py-24 px-6 bg-navy-900/20">
@@ -402,10 +418,11 @@
 </section>
 
 <!-- ======================================================
-     TEAM SECTION
+     TEAM SECTION (INTERACTION FIXED)
 ======================================================= -->
 <section id="team" class="py-28 px-6 bg-obsidian">
   <div class="max-w-7xl mx-auto">
+
     <div class="text-center mb-20">
       <span class="text-gold-400 text-xs uppercase tracking-widest">
         Our Chambers
@@ -421,7 +438,7 @@
 
     <div id="team-grid"
          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Populated via JS in Part 3 -->
+      <!-- Injected via JS -->
     </div>
 
   </div>
@@ -446,16 +463,13 @@
     </button>
 
     <h3 id="modal-name"
-        class="text-2xl font-serif text-gold-400 mb-2">
-    </h3>
+        class="text-2xl font-serif text-gold-400 mb-2"></h3>
 
     <p id="modal-role"
-       class="text-xs uppercase tracking-widest text-white mb-6">
-    </p>
+       class="text-xs uppercase tracking-widest text-white mb-6"></p>
 
     <p id="modal-bio"
-       class="text-slate-300 text-sm leading-relaxed">
-    </p>
+       class="text-slate-300 text-sm leading-relaxed"></p>
 
     <div class="mt-8 pt-6 border-t border-white/5">
       <a href="#contact"
@@ -469,6 +483,92 @@
 
   </div>
 </div>
+
+<!-- ======================================================
+     TEAM DATA & LOGIC (SCOPE BUG FIXED)
+======================================================= -->
+<script>
+/* FIX: teamMembers moved to global scope */
+const teamMembers = [
+  {
+    name: "Adv. Ganga Shankar Shastri",
+    role: "Founder & Lead Counsel",
+    bio: "15+ years of experience before District Courts and High Courts, specialising in criminal defence and property litigation.",
+    image: "./ganga.jpg"
+  },
+  {
+    name: "Adv. Minakshi Shastri",
+    role: "Senior Associate",
+    bio: "LL.M. with extensive experience in civil disputes, appellate drafting, and legal research.",
+    image: "./minakshi.jpg"
+  },
+  {
+    name: "Adv. Shivani Shastri",
+    role: "Consulting Advocate",
+    bio: "LL.M., pursuing Ph.D., focusing on constitutional law, policy research, and advisory opinions.",
+    image: "./shivani.jpg"
+  },
+  {
+    name: "Adv. Sanjay Kumar",
+    role: "Associate Counsel",
+    bio: "Focused on criminal trials, bail matters, and pragmatic defence strategies.",
+    image: null
+  }
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const teamGrid = document.getElementById("team-grid");
+
+  teamMembers.forEach((m, index) => {
+    const card = document.createElement("div");
+    card.className =
+      "group bg-navy-900/40 border border-white/5 p-6 text-center hover:border-gold-500/30 transition-all cursor-pointer";
+
+    card.onclick = () => openTeamModal(index);
+
+    const avatar = m.image
+      ? `<img src="${m.image}"
+              class="w-full h-full object-cover"
+              style="object-position:center 20%;"
+              loading="lazy">`
+      : `<i data-lucide="user" class="w-12 h-12 text-slate-500"></i>`;
+
+    card.innerHTML = `
+      <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-slate-800 flex items-center justify-center">
+        ${avatar}
+      </div>
+      <h3 class="font-serif text-white">${m.name}</h3>
+      <p class="text-gold-400 text-xs uppercase mt-2">${m.role}</p>
+    `;
+
+    teamGrid.appendChild(card);
+  });
+
+  lucide.createIcons();
+});
+
+function openTeamModal(index) {
+  const m = teamMembers[index];
+  document.getElementById("modal-name").innerText = m.name;
+  document.getElementById("modal-role").innerText = m.role;
+  document.getElementById("modal-bio").innerText = m.bio;
+  document.getElementById("team-modal").classList.remove("hidden");
+  document.body.classList.add("modal-open");
+}
+
+function closeTeamModal() {
+  document.getElementById("team-modal").classList.add("hidden");
+  document.body.classList.remove("modal-open");
+}
+</script>
+
+<!-- ======================================================
+     END PART 2
+======================================================= -->
+  <!-- ======================================================
+     PART 3 — BOOKING → TESTIMONIALS → AI CHATBOT UI
+======================================================= -->
 
 <!-- ======================================================
      BOOKING CALENDAR
@@ -487,13 +587,12 @@
 
     <div class="border border-white/5 rounded overflow-hidden">
       <!-- Calendly Inline Widget -->
-<div class="calendly-inline-widget"
-     data-url="https://calendly.com/adv-shastri/30min"
-     style="min-width:320px;height:650px;">
-</div>
-
-<script src="https://assets.calendly.com/assets/external/widget.js"
-        async></script>
+      <div class="calendly-inline-widget"
+           data-url="https://calendly.com/adv-shastri/30min"
+           style="min-width:320px;height:650px;">
+      </div>
+      <script src="https://assets.calendly.com/assets/external/widget.js"
+              async></script>
     </div>
 
     <p class="text-[11px] text-slate-500 italic mt-4 text-center">
@@ -539,8 +638,9 @@
 
   </div>
 </section>
+
 <!-- ======================================================
-     AI LEGAL CHATBOT (FREE • LOCKED)
+     AI LEGAL CHATBOT (SERVER-SIDE READY)
 ======================================================= -->
 <div id="chatbot"
      class="
@@ -564,7 +664,7 @@
           AI Legal Assistant
         </h3>
         <p class="text-[10px] text-slate-400 italic">
-          Legal information only • English / हिंदी / Hinglish
+          General legal information only • English / हिंदी / Hinglish
         </p>
         <span id="case-category-label"
               class="text-[10px] text-gold-400 uppercase tracking-widest">
@@ -585,18 +685,20 @@
                 p-3 rounded text-slate-200">
       नमस्ते। I am the AI Legal Assistant for The Justice Firm.
       <br><br>
-      I can provide general legal information related to
-      Criminal, Family, Civil, and Constitutional law in India.
+      I provide <strong>general legal information only</strong>
+      under Indian law.
     </div>
   </div>
 
   <!-- Input -->
   <div class="p-3 border-t border-gold-500/20 bg-navy-900 space-y-2">
-    <input id="gemini-key"
-           type="password"
-           placeholder="AIzaSyDpssACM71Ozu_k3r6zPj1EuEtoykqLOcE"
-           class="w-full bg-obsidian border border-slate-700
-                  p-2 text-xs text-white outline-none">
+
+    <!-- Consent Gate -->
+    <label class="flex items-center gap-2 text-[11px] text-slate-400">
+      <input type="checkbox" id="legal-consent"
+             class="accent-gold-500">
+      I understand this is general legal information, not legal advice
+    </label>
 
     <div class="flex gap-2">
       <input id="chat-input"
@@ -624,89 +726,34 @@
 </button>
 
 <!-- ======================================================
-     TEAM DATA & LOGIC
+     CHATBOT TOGGLE LOGIC (MOBILE SAFE)
 ======================================================= -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+function toggleChatbot() {
+  const chatbot = document.getElementById("chatbot");
+  const toggleBtn = document.getElementById("chatbot-toggle");
+  const floatingCTAs = document.querySelector(".fixed.bottom-6.left-6");
 
-  const teamMembers = [
-    {
-      name: "Adv. Ganga Shankar Shastri",
-      role: "Founder & Lead Counsel",
-      bio: "15+ years of experience before District Courts and High Courts, specialising in criminal defence and property litigation.",
-      image: "./ganga.jpg"
-    },
-    {
-      name: "Adv. Minakshi Shastri",
-      role: "Senior Associate",
-      bio: "LL.M. with extensive experience in civil disputes, appellate drafting, and legal research.",
-      image: "./minakshi.jpg"
-    },
-    {
-      name: "Adv. Shivani Shastri",
-      role: "Consulting Advocate",
-      bio: "LL.M., pursuing Ph.D., focusing on constitutional law, policy research, and advisory opinions.",
-      image: "./shivani.jpg"
-    },
-    {
-      name: "Adv. Sanjay Kumar",
-      role: "Associate Counsel",
-      bio: "Focused on criminal trials, bail matters, and pragmatic defence strategies.",
-      image: null
-    }
-  ];
+  chatbot.classList.toggle("hidden");
+  toggleBtn.classList.toggle("hidden");
 
-  const teamGrid = document.getElementById("team-grid");
+  if (floatingCTAs) {
+    floatingCTAs.classList.toggle("hidden");
+  }
 
-  teamMembers.forEach((m, index) => {
-    const card = document.createElement("div");
-    card.className =
-      "group bg-navy-900/40 border border-white/5 p-6 text-center hover:border-gold-500/30 transition-all cursor-pointer";
-
-    card.onclick = () => openTeamModal(index);
-
-    const avatar = m.image
-      ? `<img src="${m.image}"
-              class="w-full h-full object-cover"
-              style="object-position:center 20%;"
-              loading="lazy">`
-      : `<i data-lucide="user" class="w-12 h-12 text-slate-500"></i>`;
-
-    card.innerHTML = `
-      <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-slate-800 flex items-center justify-center">
-        ${avatar}
-      </div>
-      <h3 class="font-serif text-white">${m.name}</h3>
-      <p class="text-gold-400 text-xs uppercase mt-2">${m.role}</p>
-    `;
-
-    teamGrid.appendChild(card);
-  });
-
-  lucide.createIcons();
-});
-</script>
-<!-- ======================================================
-     TEAM MODAL LOGIC
-======================================================= -->
-<script>
-function openTeamModal(index) {
-  const m = teamMembers[index];
-  document.getElementById("modal-name").innerText = m.name;
-  document.getElementById("modal-role").innerText = m.role;
-  document.getElementById("modal-bio").innerText = m.bio;
-  document.getElementById("team-modal").classList.remove("hidden");
-  document.body.classList.add("modal-open");
-}
-
-function closeTeamModal() {
-  document.getElementById("team-modal").classList.add("hidden");
-  document.body.classList.remove("modal-open");
+  document.body.classList.toggle("modal-open");
 }
 </script>
 
 <!-- ======================================================
-     CHATBOT CORE LOGIC
+     END PART 3
+======================================================= -->
+  <!-- ======================================================
+     PART 4 — CHATBOT LOGIC → CONTACT → FOOTER → FINAL INIT
+======================================================= -->
+
+<!-- ======================================================
+     CHATBOT CORE LOGIC (SERVER-SIDE GEMINI)
 ======================================================= -->
 <script>
 let chatTranscript = [];
@@ -745,15 +792,17 @@ function saveToTranscript(sender, message) {
     time: new Date().toLocaleString()
   });
 }
-</script>
 
-<!-- ======================================================
-     CHATBOT SEND MESSAGE (GEMINI)
-======================================================= -->
-<script>
 async function sendChatMessage() {
   const input = document.getElementById("chat-input");
+  const consent = document.getElementById("legal-consent");
   const msg = input.value.trim();
+
+  if (!consent.checked) {
+    alert("Please confirm that you understand this is not legal advice.");
+    return;
+  }
+
   if (!msg) return;
 
   if (!isLegalQuery(msg)) {
@@ -763,7 +812,7 @@ async function sendChatMessage() {
 
   saveToTranscript("User", msg);
 
-  const detectedCaseCategory = detectCaseCategory(msg);
+  detectedCaseCategory = detectCaseCategory(msg);
   document.getElementById("case-category-label").innerText =
     detectedCaseCategory;
 
@@ -777,76 +826,48 @@ async function sendChatMessage() {
   input.value = "";
   box.scrollTop = box.scrollHeight;
 
-  /* ---------- API KEY HANDLING (SINGLE SOURCE) ---------- */
-  const keyInput = document.getElementById("gemini-key");
-  const apiKey = keyInput.value.trim() || localStorage.getItem("gemini_api_key");
-
-  if (!apiKey) {
-    alert("Please paste your Gemini API key first");
-    return;
-  }
-
-  localStorage.setItem("gemini_api_key", apiKey);
-  keyInput.value = "";
-  keyInput.blur();
-  /* ----------------------------------------------------- */
-
   const lang = detectLanguage(msg);
 
-  let systemPrompt =
-    "You are a legal information assistant for an Indian law firm. " +
-    "Only provide general legal information. Never give legal advice. ";
-
-  if (lang === "hi") {
-    systemPrompt += "Respond in simple Hindi. ";
-  } else if (lang === "hinglish") {
-    systemPrompt += "Respond in Hinglish (Hindi + English mix). ";
-  } else {
-    systemPrompt += "Respond in clear English. ";
-  }
-
-  systemPrompt +=
-    "Always recommend booking a consultation.\n\nUser: " + msg;
-
-  /* ---------- GEMINI API CALL ---------- */
-  const response = await fetch(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" +
-      apiKey,
-    {
+  try {
+    const response = await fetch("/api/legal-chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: systemPrompt }] }]
+        message: msg,
+        language: lang,
+        category: detectedCaseCategory
       })
-    }
-  );
+    });
 
-  const data = await response.json();
-  const reply =
-    data.candidates?.[0]?.content?.parts?.[0]?.text ||
-    "Please book a consultation for personalised legal advice.";
+    const data = await response.json();
+    const reply =
+      data.reply ||
+      "Please book a consultation for personalised legal advice.";
 
-  saveToTranscript("AI Assistant", reply);
+    saveToTranscript("AI Assistant", reply);
 
-  box.innerHTML += `
-    <div class="bg-navy-800 border border-slate-700 p-3 rounded text-slate-200 mt-2">
-      ${reply.replace(/\n/g, "<br>")}
-      <hr class="my-2 border-white/10">
-      <a href="#contact" class="text-gold-400 underline text-xs">
-        Book a confidential consultation
-      </a>
-      <p class="text-[10px] text-slate-500 mt-2 italic">
-        General legal information only. Not legal advice.
-      </p>
-    </div>`;
-  box.scrollTop = box.scrollHeight;
+    box.innerHTML += `
+      <div class="bg-navy-800 border border-slate-700 p-3 rounded text-slate-200 mt-2">
+        ${reply.replace(/\n/g, "<br>")}
+        <hr class="my-2 border-white/10">
+        <a href="#booking" class="text-gold-400 underline text-xs">
+          Book a confidential consultation
+        </a>
+        <p class="text-[10px] text-slate-500 mt-2 italic">
+          General legal information only. Not legal advice.
+        </p>
+      </div>`;
+    box.scrollTop = box.scrollHeight;
+
+  } catch (e) {
+    box.innerHTML += `
+      <div class="bg-navy-800 border border-red-500/30 p-3 rounded text-slate-200 mt-2">
+        AI service is currently unavailable. Please book a consultation.
+      </div>`;
+  }
 }
+</script>
 
-function toggleChatbot() {
-  document.getElementById("chatbot").classList.toggle("hidden");
-  document.getElementById("chatbot-toggle").classList.toggle("hidden");
-}
-    </script>
 <!-- ======================================================
      EMAIL CHAT TRANSCRIPT (FORMFREE)
 ======================================================= -->
@@ -906,7 +927,7 @@ async function emailTranscript() {
 </script>
 
 <!-- ======================================================
-     TRANSCRIPT BUTTON (CHATBOT FOOTER INJECTION)
+     TRANSCRIPT BUTTON IN CHAT FOOTER
 ======================================================= -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -947,14 +968,11 @@ document.addEventListener("DOMContentLoaded", () => {
       As per the rules of the Bar Council of India, advocates are
       prohibited from advertising or soliciting work.
       This website is intended solely to provide general
-      information about the firm, its areas of practice,
-      and legal processes.
+      information about the firm and legal processes.
       <br><br>
       The AI Legal Assistant provides general legal information
-      only and does not constitute legal advice, solicitation,
-      or an advocate–client relationship.
-      For personalised legal advice, a formal consultation
-      with an advocate is required.
+      only and does not constitute legal advice or an
+      advocate–client relationship.
     </p>
   </div>
 </section>
@@ -1000,6 +1018,9 @@ document.addEventListener("DOMContentLoaded", () => {
       action="https://formspree.io/f/myzqwkvv"
       method="POST"
       class="bg-navy-900/50 p-8 border border-slate-800 space-y-6">
+
+      <input type="hidden" name="_subject"
+             value="New Legal Inquiry – The Justice Firm">
 
       <div>
         <label class="block text-xs uppercase text-slate-500 mb-2">
@@ -1055,6 +1076,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <div class="text-slate-500">
       © 2024 The Justice Firm. All Rights Reserved.
+      <br>
+      This website does not advertise or solicit work.
     </div>
 
     <div class="flex gap-6 text-slate-500">
@@ -1085,10 +1108,10 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- ======================================================
      FLOATING CTAs
 ======================================================= -->
-<div class="fixed bottom-6 left-6 z-50 flex flex-col gap-4">
+<div class="fixed bottom-6 left-6 z-40 flex flex-col gap-4">
 
   <!-- WhatsApp -->
-  <a href="https://wa.me/919454183793?text=Hello%20The%20Justice%20Firm%2C%0A%0AI%20would%20like%20to%20request%20a%20confidential%20legal%20consultation.%0A%0ARegards."
+  <a href="https://wa.me/919454183793"
      target="_blank"
      aria-label="Chat on WhatsApp"
      class="w-14 h-14 rounded-full bg-[#25D366]
@@ -1114,4 +1137,10 @@ lucide.createIcons();
 </script>
 
 </body>
-      </html>
+</html>
+
+<!-- ======================================================
+     END PART 4 — COMPLETE FILE
+======================================================= -->
+
+======================================================= -->
