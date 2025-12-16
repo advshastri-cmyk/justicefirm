@@ -744,9 +744,6 @@ function closeTeamModal() {
   </div>
      </section>
 <!-- ======================================================
-     AI LEGAL CHATBOT (SERVER-SIDE READY)
-======================================================= -->
-<!-- ======================================================
      AI LEGAL CHATBOT (CLEAN & PREMIUM)
 ======================================================= -->
 <div id="chatbot"
@@ -832,7 +829,7 @@ function closeTeamModal() {
 </button>
 
 <!-- ======================================================
-     CHATBOT TOGGLE LOGIC (MOBILE SAFE)
+     CHATBOT TOGGLE LOGIC
 ======================================================= -->
 <script>
 function toggleChatbot() {
@@ -850,15 +847,9 @@ function toggleChatbot() {
   document.body.classList.toggle("modal-open");
 }
 </script>
-<!-- ======================================================
-     END PART 3
-======================================================= -->
-  <!-- ======================================================
-     PART 4 — CHATBOT LOGIC → CONTACT → FOOTER → FINAL INIT
-======================================================= -->
 
 <!-- ======================================================
-     CHATBOT CORE LOGIC (SERVER-SIDE GEMINI)
+     CHATBOT CORE LOGIC (SERVER-SIDE READY)
 ======================================================= -->
 <script>
 let chatTranscript = [];
@@ -904,6 +895,12 @@ async function sendChatMessage() {
     return;
   }
 
+  chatTranscript.push({
+    sender: "User",
+    message: msg,
+    time: new Date().toLocaleString()
+  });
+
   detectedCaseCategory = detectCaseCategory(msg);
   document.getElementById("case-category-label").innerText =
     detectedCaseCategory;
@@ -932,6 +929,12 @@ async function sendChatMessage() {
 
     const data = await response.json();
     const reply = data.reply || "Please book a consultation.";
+
+    chatTranscript.push({
+      sender: "AI Assistant",
+      message: reply,
+      time: new Date().toLocaleString()
+    });
 
     box.innerHTML += `
       <div class="bg-navy-800 ring-1 ring-white/10 p-3 rounded text-slate-200 mt-2">
