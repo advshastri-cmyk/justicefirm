@@ -851,7 +851,7 @@ function toggleChatbot() {
 <!-- ======================================================
      CHATBOT CORE LOGIC (SERVER-SIDE READY)
 ======================================================= -->
-<script>
+     <script>
 let chatTranscript = [];
 let detectedCaseCategory = "General Legal";
 
@@ -938,17 +938,19 @@ async function sendChatMessage() {
 
     box.innerHTML += `
       <div class="bg-navy-800 ring-1 ring-white/10 p-3 rounded text-slate-200 mt-2">
-        ${reply.replace(/\n/g,"<br>")}
-        <div class="my-3">
-          <div class="h-px w-full bg-gradient-to-r from-transparent via-gold-500/30 to-transparent"></div>
-        </div>
-        <a href="#booking" class="text-gold-400 underline text-xs">
+        ${reply.replace(/\n/g, "<br>")}
+
+        <a href="#booking" class="block mt-3 text-gold-400 underline text-xs">
           Book a confidential consultation
         </a>
+
+        <p class="text-[10px] text-slate-500 mt-2 italic">
+          General legal information only. Not legal advice.
+        </p>
       </div>`;
     box.scrollTop = box.scrollHeight;
 
-  } catch {
+  } catch (error) {
     box.innerHTML += `
       <div class="bg-navy-800 ring-1 ring-gold-500/30 p-3 rounded text-slate-200 mt-2">
         AI Legal Assistant is currently unavailable.
