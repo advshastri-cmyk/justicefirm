@@ -643,14 +643,116 @@ function closeTeamModal() {
 
   </div>
 </section>
+<!-- ======================================================
+     PAYMENT / CLIENT REMITTANCE (ULTRA-PREMIUM)
+======================================================= -->
+<section id="payment"
+  class="py-20 md:py-28 px-6 bg-navy-900/40 border-t border-gold-500/10">
 
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-20">
+      <span class="text-gold-400 text-xs uppercase tracking-[0.35em]">
+        Client Accounts
+      </span>
+      <h2 class="text-3xl md:text-4xl font-serif text-white mt-4">
+        Secure Remittance
+      </h2>
+
+      <div class="mt-6 flex justify-center">
+        <div class="h-px w-32 bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Bank Details Card -->
+      <div class="glass-panel ring-1 ring-white/10 p-10 relative">
+
+        <div class="flex items-center gap-5 mb-10">
+          <div
+            class="w-14 h-14 rounded-full bg-gold-500/10 ring-1 ring-gold-500/30
+                   flex items-center justify-center text-gold-400">
+            <i data-lucide="landmark" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-serif text-white">
+              Direct Bank Transfer
+            </h3>
+            <p class="text-xs text-slate-400 uppercase tracking-widest mt-1">
+              NEFT / RTGS / IMPS
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-slate-300 text-sm md:text-base">
+
+          <div class="flex justify-between py-2 border-b border-white/5">
+            <span>Beneficiary</span>
+            <span class="text-white font-medium">The Justice Firm</span>
+          </div>
+
+          <div class="flex justify-between py-2 border-b border-white/5">
+            <span>Bank</span>
+            <span class="text-white">Canara Bank</span>
+          </div>
+
+          <div class="flex justify-between py-2 border-b border-white/5">
+            <span>Account No.</span>
+            <span class="text-white font-mono tracking-wider">
+              5328127000035
+            </span>
+          </div>
+
+          <div class="flex justify-between pt-2">
+            <span>IFSC Code</span>
+            <span class="text-white font-mono tracking-wider">
+              CNRB0005131
+            </span>
+          </div>
+        </div>
+
+        <p class="mt-8 text-[11px] text-slate-500 italic leading-relaxed">
+          Payments are accepted only towards professional fees and
+          expenses in accordance with applicable laws and professional
+          conduct rules.
+        </p>
+      </div>
+
+      <!-- UPI QR -->
+      <div class="flex flex-col items-center">
+
+        <div
+          class="p-6 bg-white rounded-xl shadow-2xl ring-1 ring-black/5">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=adv.shastri@oksbi&pn=TheJusticeFirm&cu=INR"
+            alt="UPI QR Code"
+            class="w-52 h-52 mix-blend-multiply">
+        </div>
+
+        <p class="mt-6 text-slate-400 text-sm uppercase tracking-widest">
+          Scan to Pay via UPI
+        </p>
+
+        <p class="text-[11px] text-slate-500 italic mt-2 text-center">
+          UPI payments subject to confirmation
+        </p>
+      </div>
+
+    </div>
+  </div>
+     </section>
 <!-- ======================================================
      AI LEGAL CHATBOT (SERVER-SIDE READY)
+======================================================= -->
+<!-- ======================================================
+     AI LEGAL CHATBOT (CLEAN & PREMIUM)
 ======================================================= -->
 <div id="chatbot"
      class="
        fixed z-50 hidden flex flex-col glass-panel
-       border border-gold-500/30 shadow-2xl
+       ring-1 ring-gold-500/30 shadow-2xl
 
        /* Mobile: FULL SCREEN */
        inset-0 w-full h-full rounded-none
@@ -662,7 +764,7 @@ function closeTeamModal() {
      ">
 
   <!-- Header -->
-  <div class="p-4 border-b border-gold-500/20 bg-navy-900">
+  <div class="p-4 ring-1 ring-gold-500/20 bg-navy-900">
     <div class="flex items-center justify-between">
       <div>
         <h3 class="font-serif text-gold-400 text-lg">
@@ -686,8 +788,7 @@ function closeTeamModal() {
   <!-- Messages -->
   <div id="chat-messages"
        class="flex-1 overflow-y-auto p-4 space-y-4 text-sm bg-obsidian/60">
-    <div class="bg-navy-800 border border-slate-700
-                p-3 rounded text-slate-200">
+    <div class="bg-navy-800 ring-1 ring-white/10 p-3 rounded text-slate-200">
       नमस्ते। I am the AI Legal Assistant for The Justice Firm.
       <br><br>
       I provide <strong>general legal information only</strong>
@@ -696,7 +797,7 @@ function closeTeamModal() {
   </div>
 
   <!-- Input -->
-  <div class="p-3 border-t border-gold-500/20 bg-navy-900 space-y-2">
+  <div class="p-3 ring-1 ring-gold-500/20 bg-navy-900 space-y-2">
 
     <!-- Consent Gate -->
     <label class="flex items-center gap-2 text-[11px] text-slate-400">
@@ -708,7 +809,7 @@ function closeTeamModal() {
     <div class="flex gap-2">
       <input id="chat-input"
              placeholder="Ask a legal question…"
-             class="flex-1 bg-obsidian border border-slate-700
+             class="flex-1 bg-obsidian ring-1 ring-slate-700/60
                     p-2 text-sm text-white outline-none">
       <button onclick="sendChatMessage()"
               class="bg-gold-600 hover:bg-gold-500
@@ -749,7 +850,6 @@ function toggleChatbot() {
   document.body.classList.toggle("modal-open");
 }
 </script>
-
 <!-- ======================================================
      END PART 3
 ======================================================= -->
@@ -771,8 +871,7 @@ const LEGAL_KEYWORDS = [
 ];
 
 function isLegalQuery(text) {
-  const t = text.toLowerCase();
-  return LEGAL_KEYWORDS.some(k => t.includes(k));
+  return LEGAL_KEYWORDS.some(k => text.toLowerCase().includes(k));
 }
 
 function detectLanguage(text) {
@@ -790,14 +889,6 @@ function detectCaseCategory(text) {
   return "General Legal";
 }
 
-function saveToTranscript(sender, message) {
-  chatTranscript.push({
-    sender,
-    message,
-    time: new Date().toLocaleString()
-  });
-}
-
 async function sendChatMessage() {
   const input = document.getElementById("chat-input");
   const consent = document.getElementById("legal-consent");
@@ -807,15 +898,11 @@ async function sendChatMessage() {
     alert("Please confirm that you understand this is not legal advice.");
     return;
   }
-
   if (!msg) return;
-
   if (!isLegalQuery(msg)) {
     alert("Please ask a question related to Indian law.");
     return;
   }
-
-  saveToTranscript("User", msg);
 
   detectedCaseCategory = detectCaseCategory(msg);
   document.getElementById("case-category-label").innerText =
@@ -832,54 +919,43 @@ async function sendChatMessage() {
   input.value = "";
   box.scrollTop = box.scrollHeight;
 
-  const lang = detectLanguage(msg);
-
   try {
     const response = await fetch("api/legal-chat.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         message: msg,
-        language: lang,
+        language: detectLanguage(msg),
         category: detectedCaseCategory
       })
     });
 
     const data = await response.json();
-    const reply =
-      data.reply ||
-      "Please book a consultation for personalised legal advice.";
-
-    saveToTranscript("AI Assistant", reply);
+    const reply = data.reply || "Please book a consultation.";
 
     box.innerHTML += `
       <div class="bg-navy-800 ring-1 ring-white/10 p-3 rounded text-slate-200 mt-2">
-        ${reply.replace(/\n/g, "<br>")}
-
+        ${reply.replace(/\n/g,"<br>")}
         <div class="my-3">
           <div class="h-px w-full bg-gradient-to-r from-transparent via-gold-500/30 to-transparent"></div>
         </div>
-
         <a href="#booking" class="text-gold-400 underline text-xs">
           Book a confidential consultation
         </a>
-        <p class="text-[10px] text-slate-500 mt-2 italic">
-          General legal information only. Not legal advice.
-        </p>
       </div>`;
     box.scrollTop = box.scrollHeight;
 
-  } catch (e) {
+  } catch {
     box.innerHTML += `
       <div class="bg-navy-800 ring-1 ring-gold-500/30 p-3 rounded text-slate-200 mt-2">
         AI Legal Assistant is currently unavailable.
         <br><br>
-        Please book a consultation for personalised legal advice.
+        Please book a consultation.
       </div>`;
     box.scrollTop = box.scrollHeight;
   }
 }
-         </script>
+</script>
 <!-- ======================================================
      EMAIL CHAT TRANSCRIPT (FORMFREE)
 ======================================================= -->
