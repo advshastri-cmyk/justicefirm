@@ -311,7 +311,9 @@
 </section>
 <!-- ======================================================
      END PART 1
-  <!-- ======================================================
+======================================================= -->
+
+<!-- ======================================================
      PART 2 — PRACTICE AREAS → TEAM → TEAM MODAL
 ======================================================= -->
 
@@ -829,7 +831,7 @@ async function sendChatMessage() {
   const lang = detectLanguage(msg);
 
   try {
-    const response = await fetch("/api/legal-chat", {
+    const response = await fetch("api/legal-chat.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1070,7 +1072,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- ======================================================
      FOOTER
 ======================================================= -->
-<footer class="bg-obsidian border-t border-slate-900 py-12 px-6">
+<footer class="bg-obsidian py-12 px-6">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row
               justify-between items-center gap-8 text-sm">
 
@@ -1108,7 +1110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- ======================================================
      FLOATING CTAs
 ======================================================= -->
-<div class="fixed bottom-6 left-6 z-40 flex flex-col gap-4">
+<div class="fixed bottom-6 left-6 z-30 flex flex-col gap-4">
 
   <!-- WhatsApp -->
   <a href="https://wa.me/919454183793"
