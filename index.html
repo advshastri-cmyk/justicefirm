@@ -917,7 +917,7 @@ async function sendChatMessage() {
   box.scrollTop = box.scrollHeight;
 
   try {
-    const response = await fetch("api/legal-chat.php", {
+    const response = await fetch("https://justiceapi.wuaze.com/api/legal-chat.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
