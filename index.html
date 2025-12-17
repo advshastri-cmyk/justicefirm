@@ -207,13 +207,55 @@
     </div>
 
     <!-- Mobile Toggle -->
-    <button class="md:hidden text-white" aria-label="Open Menu">
-      <i data-lucide="menu"></i>
-    </button>
+<button onclick="toggleMobileMenu()"
+        id="mobile-menu-btn"
+        class="md:hidden text-white"
+        aria-label="Open Menu"
+        aria-expanded="false">
+  <i id="mobile-menu-icon" data-lucide="menu"></i>
+</button>
 
   </div>
 </nav>
 
+<!-- ======================================================
+     MOBILE MENU
+======================================================= -->
+<div id="mobile-menu"
+     class="hidden md:hidden fixed top-20 inset-x-0 z-40
+            bg-obsidian/95 backdrop-blur-md
+            border-b border-white/5">
+
+  <div class="w-12 h-1 bg-slate-600/50 rounded-full mx-auto my-4"></div>
+
+  <div class="flex flex-col px-6 py-6 gap-6 text-sm tracking-wide">
+
+    <a href="#practice"
+       onclick="toggleMobileMenu(true)"
+       class="hover:text-gold-400">
+      Practice
+    </a>
+
+    <a href="#team"
+       onclick="toggleMobileMenu(true)"
+       class="hover:text-gold-400">
+      Team
+    </a>
+
+    <a href="#booking"
+       onclick="toggleMobileMenu(true)"
+       class="hover:text-gold-400">
+      Consultation
+    </a>
+
+    <button onclick="toggleChatbot(); toggleMobileMenu(true)"
+            class="mt-4 px-6 py-3 border border-gold-500/50
+                   hover:bg-gold-600 text-white text-center">
+      AI Legal Assistant
+    </button>
+
+  </div>
+</div>
 <!-- ======================================================
      HERO
 ======================================================= -->
@@ -1227,6 +1269,58 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- ======================================================
      FINAL INIT
 ======================================================= -->
+<script>
+let mobileMenuOpen = false;
+let touchStartY = 0;
+
+function toggleMobileMenu(forceClose = false) {
+  const menu = document.getElementById("mobile-menu");
+  const btn  = document.getElementById("mobile-menu-btn");
+  const icon = document.getElementById("mobile-menu-icon");
+
+  if (!menu || !btn || !icon) return;
+
+  if (forceClose) {
+    menu.classList.add("hidden");
+    mobileMenuOpen = false;
+  } else {
+    menu.classList.toggle("hidden");
+    mobileMenuOpen = !menu.classList.contains("hidden");
+  }
+
+  btn.setAttribute("aria-expanded", mobileMenuOpen);
+
+  icon.setAttribute(
+    "data-lucide",
+    mobileMenuOpen ? "x" : "menu"
+  );
+  lucide.createIcons();
+
+  document.body.classList.toggle("modal-open", mobileMenuOpen);
+}
+
+/* Auto close on scroll */
+window.addEventListener("scroll", () => {
+  if (mobileMenuOpen) toggleMobileMenu(true);
+});
+
+/* Swipe down close */
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenu = document.getElementById("mobile-menu");
+  if (!mobileMenu) return;
+
+  mobileMenu.addEventListener("touchstart", e => {
+    touchStartY = e.touches[0].clientY;
+  });
+
+  mobileMenu.addEventListener("touchmove", e => {
+    if (e.touches[0].clientY - touchStartY > 60) {
+      toggleMobileMenu(true);
+    }
+  });
+});
+</script>
+
 <script>
 lucide.createIcons();
 </script>
