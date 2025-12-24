@@ -1291,45 +1291,59 @@ document.addEventListener("DOMContentLoaded", () => {
     </form>
   </div>
 </section>
-
 <!-- ======================================================
-     FOOTER
+     FOOTER - ULTRA PREMIUM STYLE WITH BACK TO TOP
 ======================================================= -->
-<footer class="bg-obsidian py-12 px-6">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row
-              justify-between items-center gap-8 text-sm">
+<footer class="bg-obsidian py-16 px-6 border-t border-white/10 relative">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 text-sm">
 
-    <div class="text-slate-500">
-      © 2024 The Justice Firm. All Rights Reserved.
-      <br>
-      This website does not advertise or solicit work.
+    <!-- Left: Firm Info -->
+    <div class="text-slate-400 leading-relaxed text-center md:text-left">
+      <p class="font-serif text-gold-400 text-lg mb-2">The Justice Firm</p>
+      <p class="text-slate-400">
+        © 2024 The Justice Firm. All Rights Reserved.
+      </p>
+      <p class="text-slate-500 mt-2 text-xs italic">
+        This website does not advertise or solicit work.
+      </p>
     </div>
 
-    <div class="flex gap-6 text-slate-500">
+    <!-- Right: Social Links -->
+    <div class="flex gap-8 text-slate-400">
       <a href="https://twitter.com/TheJustice96756"
          target="_blank"
          aria-label="Twitter"
-         class="hover:text-gold-400">
-        <i data-lucide="twitter"></i>
+         class="hover:text-gold-400 transition-colors duration-300">
+        <i data-lucide="twitter" class="w-5 h-5"></i>
       </a>
 
       <a href="https://wa.me/919454183793"
          target="_blank"
          aria-label="WhatsApp"
-         class="hover:text-gold-400">
-        <i data-lucide="message-circle"></i>
+         class="hover:text-gold-400 transition-colors duration-300">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
       </a>
 
       <a href="https://www.linkedin.com"
          target="_blank"
          aria-label="LinkedIn"
-         class="hover:text-gold-400">
-        <i data-lucide="linkedin"></i>
+         class="hover:text-gold-400 transition-colors duration-300">
+        <i data-lucide="linkedin" class="w-5 h-5"></i>
       </a>
     </div>
   </div>
-</footer>
 
+  <!-- Decorative Divider -->
+  <div class="mt-12 flex justify-center">
+    <span class="inline-block w-32 h-0.5 bg-gold-400 rounded-full"></span>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});"
+          class="absolute right-6 bottom-6 bg-gold-400 text-obsidian px-4 py-2 rounded-full shadow-lg hover:bg-gold-300 transition duration-300 text-sm font-semibold">
+    ↑ Back to Top
+  </button>
+</footer>
 <!-- ======================================================
      FLOATING CTAs
 ======================================================= -->
