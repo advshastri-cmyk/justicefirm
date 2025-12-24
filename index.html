@@ -1345,29 +1345,78 @@ document.addEventListener("DOMContentLoaded", () => {
   </button>
 </footer>
 <!-- ======================================================
-     FLOATING CTAs
+     FLOATING CTAs - ULTRA PREMIUM STYLE WITH TOOLTIP + BOUNCE + STAGGERED PULSE
 ======================================================= -->
-<div class="fixed bottom-6 left-6 z-30 flex flex-col gap-4">
+<style>
+  /* Bounce animation */
+  @keyframes bounceIn {
+    0%   { transform: scale(0.8) translateY(20px); opacity: 0; }
+    50%  { transform: scale(1.05) translateY(-10px); opacity: 1; }
+    70%  { transform: scale(0.95) translateY(5px); }
+    100% { transform: scale(1) translateY(0); }
+  }
+  .animate-bounceIn {
+    animation: bounceIn 0.8s ease-out;
+  }
+
+  /* Pulse glow for WhatsApp (green) */
+  @keyframes pulseGlowGreen {
+    0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    50%  { box-shadow: 0 0 20px 6px rgba(37, 211, 102, 0.4); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  }
+  .animate-pulseGlowGreen {
+    animation: pulseGlowGreen 3s infinite;
+  }
+
+  /* Pulse glow for Call (gold) */
+  @keyframes pulseGlowGold {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6); }
+    50%  { box-shadow: 0 0 20px 6px rgba(255, 215, 0, 0.4); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6); }
+  }
+  .animate-pulseGlowGold {
+    animation: pulseGlowGold 3s infinite;
+    animation-delay: 1.5s; /* staggered delay */
+  }
+</style>
+
+<div class="fixed bottom-6 right-6 z-30 flex flex-col gap-4">
 
   <!-- WhatsApp -->
-  <a href="https://wa.me/919454183793"
-     target="_blank"
-     aria-label="Chat on WhatsApp"
-     class="w-14 h-14 rounded-full bg-[#25D366]
-            flex items-center justify-center shadow-2xl">
-    <i data-lucide="message-circle" class="text-white"></i>
-  </a>
+  <div class="relative group animate-bounceIn animate-pulseGlowGreen">
+    <a href="https://wa.me/919454183793"
+       target="_blank"
+       aria-label="Chat on WhatsApp"
+       class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366]
+              flex items-center justify-center transition duration-300">
+      <i data-lucide="message-circle" class="text-white w-6 h-6"></i>
+    </a>
+    <!-- Tooltip -->
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 
+                 bg-obsidian text-slate-200 text-xs px-3 py-1 rounded-md 
+                 opacity-0 group-hover:opacity-100 transition duration-300 shadow-lg">
+      Chat on WhatsApp
+    </span>
+  </div>
 
   <!-- Call -->
-  <a href="tel:+919454183793"
-     aria-label="Call Now"
-     class="w-14 h-14 rounded-full bg-gold-600
-            flex items-center justify-center shadow-2xl">
-    <i data-lucide="phone-call" class="text-white"></i>
-  </a>
+  <div class="relative group animate-bounceIn animate-pulseGlowGold">
+    <a href="tel:+919454183793"
+       aria-label="Call Now"
+       class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gold-500
+              flex items-center justify-center transition duration-300">
+      <i data-lucide="phone-call" class="text-white w-6 h-6"></i>
+    </a>
+    <!-- Tooltip -->
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 
+                 bg-obsidian text-slate-200 text-xs px-3 py-1 rounded-md 
+                 opacity-0 group-hover:opacity-100 transition duration-300 shadow-lg">
+      Call Now
+    </span>
+  </div>
 
 </div>
-
 <!-- ======================================================
      FINAL INIT
 ======================================================= -->
