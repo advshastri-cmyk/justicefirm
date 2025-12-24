@@ -627,35 +627,40 @@ function closeTeamModal() {
   <!-- ======================================================
      PART 3 — BOOKING → TESTIMONIALS → AI CHATBOT UI
 ======================================================= -->
-
 <!-- ======================================================
-     BOOKING CALENDAR
+     BOOKING CALENDAR - ULTRA PREMIUM STYLE
 ======================================================= -->
-<section id="booking" class="py-24 px-6 bg-navy-900/30">
+<section id="booking" class="py-32 px-6 bg-gradient-to-b from-obsidian to-navy-950 border-t border-white/10">
   <div class="max-w-5xl mx-auto">
 
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-serif text-white mb-4">
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-serif text-gold-400 mb-6 tracking-wide">
         Schedule a Consultation
       </h2>
-      <p class="text-slate-400">
-        Request a confidential appointment at your convenience.
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        Request a confidential appointment at your convenience. Our team ensures discretion and professionalism.
       </p>
     </div>
 
-    <div class="border border-white/5 rounded overflow-hidden">
-      <!-- Calendly Inline Widget -->
+    <!-- Calendly Widget Container -->
+    <div class="bg-navy-900/40 border border-white/10 rounded-2xl shadow-xl overflow-hidden">
       <div class="calendly-inline-widget"
            data-url="https://calendly.com/adv-shastri/30min"
            style="min-width:320px;height:650px;">
       </div>
-      <script src="https://assets.calendly.com/assets/external/widget.js"
-              async></script>
+      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </div>
 
-    <p class="text-[11px] text-slate-500 italic mt-4 text-center">
-      Appointments are subject to confirmation.
+    <!-- Disclaimer -->
+    <p class="text-[12px] text-slate-500 italic mt-6 text-center">
+      Appointments are subject to confirmation. All consultations are handled with utmost confidentiality.
     </p>
+
+    <!-- Decorative Divider -->
+    <div class="mt-16 flex justify-center">
+      <span class="inline-block w-32 h-0.5 bg-gold-400 rounded-full"></span>
+    </div>
 
   </div>
 </section>
