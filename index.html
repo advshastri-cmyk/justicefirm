@@ -1101,6 +1101,27 @@ async function sendChatMessage() {
 <!-- ======================================================
      EMAIL CHAT TRANSCRIPT (FORMFREE)
 ======================================================= -->
+     <form id="transcriptForm">
+  <label>Email:</label><br>
+  <input 
+    type="email" 
+    id="email" 
+    required 
+    placeholder="Enter your email"><br><br>
+
+  <label>Mobile (10 digits, starts with 6-9):</label><br>
+  <input 
+    type="tel" 
+    id="mobile" 
+    pattern="[6-9][0-9]{9}" 
+    minlength="10" 
+    maxlength="10" 
+    required 
+    placeholder="Enter your mobile number"><br><br>
+
+  <button type="submit">Send Transcript</button>
+</form>
+
 <script>
   const chatTranscript = [
     { time: "16:00", sender: "User", message: "Hello" },
@@ -1108,16 +1129,11 @@ async function sendChatMessage() {
   ];
   const detectedCaseCategory = "Legal";
 
-  async function emailTranscript() {
-    if (chatTranscript.length === 0) {
-      alert("No conversation available to email.");
-      return;
-    }
+  document.getElementById("transcriptForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-    const email = prompt("Enter your email:");
-    const mobile = prompt("Enter your 10-digit mobile number:");
-
-    if (!email || !mobile) return;
+    const email = document.getElementById("email").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
 
     // ✅ Strong Email Validation
     if (!isValidEmail(email)) {
@@ -1164,7 +1180,7 @@ async function sendChatMessage() {
     } catch (error) {
       alert("Network error. Please try again later.");
     }
-  }
+  });
 
   // 📧 Strong Email Regex
   function isValidEmail(email) {
