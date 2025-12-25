@@ -1102,60 +1102,87 @@ async function sendChatMessage() {
      EMAIL CHAT TRANSCRIPT (FORMFREE)
 ======================================================= -->
 <script>
-async function emailTranscript() {
-  if (chatTranscript.length === 0) {
-    alert("No conversation available to email.");
-    return;
-  }
+  const chatTranscript = [
+    { time: "16:00", sender: "User", message: "Hello" },
+    { time: "16:01", sender: "Bot", message: "Hi there!" }
+  ];
+  const detectedCaseCategory = "Legal";
 
-  const email = prompt(
-    "Enter your email to receive this chat transcript:"
-  );
-  if (!email) return;
+  async function emailTranscript() {
+    if (chatTranscript.length === 0) {
+      alert("No conversation available to email.");
+      return;
+    }
 
-  let formattedTranscript =
-    "Case Category: " + detectedCaseCategory + "\n";
-  formattedTranscript +=
-    "====================================\n\n";
+    const email = prompt("Enter your email:");
+    const mobile = prompt("Enter your 10-digit mobile number:");
 
-  formattedTranscript += chatTranscript
-    .map(entry =>
-      `[${entry.time}] ${entry.sender}: ${entry.message}`
-    )
-    .join("\n\n");
+    if (!email || !mobile) return;
 
-  try {
-    const response = await fetch(
-      "https://formspree.io/f/myzqwkvv",
-      {
+    // ✅ Strong Email Validation
+    if (!isValidEmail(email)) {
+      alert("Invalid email format. Please enter a valid email.");
+      return;
+    }
+
+    // ✅ Strong Mobile Validation (India style: 10 digits, starts with 6-9)
+    if (!isValidMobile(mobile)) {
+      alert("Mobile number must be 10 digits and start with 6-9.");
+      return;
+    }
+
+    // ✅ Sanitize inputs
+    const safeCategory = sanitizeInput(detectedCaseCategory);
+
+    let formattedTranscript =
+      "Case Category: " + safeCategory + "\n";
+    formattedTranscript += "====================================\n\n";
+    formattedTranscript += chatTranscript
+      .map(entry =>
+        `[${entry.time}] ${sanitizeInput(entry.sender)}: ${sanitizeInput(entry.message)}`
+      )
+      .join("\n\n");
+
+    try {
+      const response = await fetch("http://localhost:3000/send-transcript", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          _replyto: email,
-          subject:
-            "Legal Chat Transcript (" +
-            detectedCaseCategory +
-            ") – The Justice Firm",
+          email: email,
+          mobile: mobile,
+          subject: "Legal Chat Transcript (" + safeCategory + ") – The Justice Firm",
           message: formattedTranscript
         })
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert("Transcript sent successfully.");
+      } else {
+        alert("Error: " + result.error);
       }
-    );
-
-    if (response.ok) {
-      alert(
-        "Transcript sent successfully. Please check your email."
-      );
-    } else {
-      alert(
-        "Unable to send transcript. Please try again later."
-      );
+    } catch (error) {
+      alert("Network error. Please try again later.");
     }
-  } catch (error) {
-    alert("Network error. Please try again later.");
   }
-}
-</script>
 
+  // 📧 Strong Email Regex
+  function isValidEmail(email) {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
+  }
+
+  // 📱 Strong Mobile Regex (India style)
+  function isValidMobile(mobile) {
+    const re = /^[6-9][0-9]{9}$/;
+    return re.test(mobile);
+  }
+
+  // 🛡️ Sanitize Input
+  function sanitizeInput(input) {
+    return input.replace(/[<>]/g, "");
+  }
+</script>
 <!-- ======================================================
      TRANSCRIPT BUTTON IN CHAT FOOTER
 ======================================================= -->
