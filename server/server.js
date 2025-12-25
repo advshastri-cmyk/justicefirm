@@ -1,6 +1,7 @@
 // /server/server.js
 const express = require("express");
 const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,7 +19,7 @@ function isValidMobile(mobile) {
 }
 
 // 📩 API Endpoint
-app.post("/send-transcript", (req, res) => {
+app.post("/send-transcript", async (req, res) => {
   const { email, mobile, subject, message } = req.body;
 
   // Backend Validation with Regex only
@@ -29,14 +30,33 @@ app.post("/send-transcript", (req, res) => {
     return res.status(400).json({ error: "Invalid mobile number" });
   }
 
-  // अगर regex पास हो गया तो success response
-  console.log("Transcript received:");
-  console.log("Email:", email);
-  console.log("Mobile:", mobile);
-  console.log("Subject:", subject);
-  console.log("Message:", message);
+  try {
+    // ✅ Gmail Transporter
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "adv.shastri@gmail.com",      // apna Gmail address yahan dalen
+        pass: "eiuxaofilpjzmlch"         // yahan 16-digit App Password paste karein
+      }
+    });
 
-  return res.json({ success: true, message: "Transcript processed successfully" });
+    // Email Options
+    let mailOptions = {
+      from: '"The Justice Firm" <yourgmail@gmail.com>',
+      to: email,
+      subject: subject,
+      text: message
+    };
+
+    // Send Email
+    await transporter.sendMail(mailOptions);
+
+    console.log("Transcript emailed successfully to:", email);
+    return res.json({ success: true, message: "Transcript emailed successfully" });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return res.status(500).json({ error: "Failed to send email" });
+  }
 });
 
 // 🚀 Start Server
