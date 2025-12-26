@@ -1,190 +1,179 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact — The Justice Firm | Advocates & Legal Consultants</title>
-  <meta name="description" content="Contact The Justice Firm for legal consultation in Family, Criminal, Civil and Mediation matters. Allahabad based law firm." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <title>Contact — JusticeFirms Journal</title>
+  <meta name="description" content="Book a confidential consultation with experienced advocates at JusticeFirms. Specializing in Criminal, Family, Cyber, NDPS, POCSO and more." />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact — JusticeFirms Journal" />
+  <meta property="og:description" content="Get expert legal guidance today." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1589829545856-d10d557cf95a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" />
+  <meta property="og:url" content="https://justicefirms.com/contact" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { 
+            gold: '#D4AF37', 
+            deepgold: '#B89A2E',
+            charcoal: '#0B0C0E', 
+            cream: '#FDFDFB', 
+            muted: '#5F6368' 
+          },
+          fontFamily: { 
+            serif: ['Playfair Display','serif'], 
+            sans: ['Inter','sans-serif'],
+            devanagari: ['Noto Sans Devanagari', 'sans-serif']
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+
+  <!-- Custom Gradient Background -->
   <style>
-    :root{
-      --bg:#f7f8fa; --card:#ffffff; --ink:#0f1724; --muted:#6b7280;
-      --accent:#0b5cff; --gold:#d4af37; --radius:12px; --shadow:0 14px 50px rgba(15,23,36,0.08);
+    .bg-gradient-hero {
+      background: linear-gradient(rgba(11,12,14,0.9), rgba(11,12,14,0.8)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui;background:linear-gradient(180deg,var(--bg),#eef3fb);color:var(--ink);line-height:1.6}
-
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    /* nav */
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;margin:18px;border-radius:999px;background:#fff;box-shadow:var(--shadow);}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand-logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#2e6df6);display:grid;place-items:center;color:white;font-weight:700}
-    .nav-links{display:flex;gap:12px}
-    .nav-links a{color:var(--muted);font-weight:600}
-    .cta{background:linear-gradient(90deg,var(--accent),#2e6df6);color:white;padding:10px 14px;border-radius:10px;font-weight:700}
-
-    .wrap{max-width:1100px;margin:22px auto;padding:0 18px}
-
-    /* hero */
-    .hero{background:linear-gradient(180deg,#fff,#f9faff);padding:26px;border-radius:14px;box-shadow:var(--shadow);margin-bottom:22px}
-    .eyebrow{display:inline-block;background:var(--accent);color:white;padding:6px 10px;border-radius:999px;font-size:.82rem;font-weight:700}
-    h1{font-family:Merriweather,serif;margin:12px 0}
-
-    /* grid */
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-    .card{background:#fff;padding:20px;border-radius:12px;box-shadow:var(--shadow)}
-
-    /* contact details */
-    .detail{margin-bottom:16px}
-    .detail strong{display:block;font-size:1rem}
-    .muted{color:var(--muted)}
-
-    /* form */
-    .form-group{margin-bottom:14px}
-    input,select,textarea{
-      width:100%;padding:12px;border-radius:10px;border:1px solid #d0d7df;
-      font-size:1rem;background:white;
-    }
-    button{cursor:pointer;border:none}
-
-    .btn{background:var(--accent);color:white;padding:12px 18px;border-radius:10px;font-weight:700;width:100%}
-    .btn:hover{opacity:.9}
-
-    /* hours */
-    .hours{margin-top:14px;padding:14px;background:#f3f6ff;border-radius:10px}
-
-    footer{margin-top:22px;padding:22px;background:linear-gradient(180deg,#02112b,#041735);color:white;border-radius:12px}
-
-    /* responsive */
-    @media(max-width:780px){.grid{grid-template-columns:1fr}}
-    @media(max-width:620px){.nav-links{display:none}}
   </style>
 </head>
 
-<body>
+<body class="antialiased bg-cream dark:bg-charcoal text-charcoal dark:text-white transition-colors duration-400">
 
-  <!-- nav -->
-  <nav class="nav">
-    <div class="brand">
-      <div class="brand-logo">TJ</div>
-      <div>
-        <div style="font-weight:700">The Justice Firm</div>
-        <small style="color:var(--muted)">Advocates & Legal Consultants</small>
+  <!-- Premium Header -->
+  <header class="bg-charcoal/95 dark:bg-black backdrop-blur-lg fixed w-full z-50 border-b border-gold/10 transition-colors duration-400">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+      <a href="https://blog.justicefirms.com" class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center border border-gold/30">
+          <span class="font-serif text-xl text-gold">JF</span>
+        </div>
+        <div class="font-serif text-xl text-gold">JusticeFirms Journal</div>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="https://blog.justicefirms.com" class="text-white/90 hover:text-gold transition">← Back to Journal</a>
+        <a href="https://justicefirms.com/contact" class="px-6 py-3 rounded-full bg-gold text-charcoal font-semibold hover:bg-deepgold transition">Book Consultation</a>
       </div>
     </div>
+  </header>
 
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="team.html">Team</a>
-      <a href="contact.html" style="font-weight:800;color:var(--ink)">Contact</a>
-    </div>
-
-    <div><a class="cta" href="#contactForm">Book Consultation</a></div>
-  </nav>
-
-  <main class="wrap">
-
-    <!-- hero -->
-    <header class="hero">
-      <span class="eyebrow">Get in touch with us</span>
-      <h1>Contact & Consultation</h1>
-      <p class="muted">We respond within 24 business hours. For urgent matters (bail, injunction, DV, etc.), please call directly.</p>
-    </header>
-
-    <div class="grid">
-
-      <!-- contact info -->
-      <div class="card">
-        <h2>Office Information</h2>
-
-        <div class="detail">
-          <strong>📞 Phone</strong>
-          <div class="muted">+91 94541 83793</div>
-        </div>
-
-        <div class="detail">
-          <strong>✉️ Email</strong>
-          <a href="mailto:adv.shastri@gmail.com">adv.shastri@gmail.com</a>
-        </div>
-
-        <div class="detail">
-          <strong>📍 Office Address</strong>
-          <div class="muted">Rajrooppur, Allahabad, Uttar Pradesh<br>India — 211004</div>
-          <a href="https://maps.app.goo.gl/" target="_blank">Open in Google Maps →</a>
-        </div>
-
-        <div class="detail hours">
-          <strong>⏱ Working Hours</strong>
-          <div class="muted">Mon–Sat: 10 AM – 6 PM<br>Sunday: Closed</div>
-        </div>
-
-        <div class="detail" style="margin-top:16px">
-          <strong>💳 UPI Payment (optional)</strong>
-          <img src="upi_qr.jpg" alt="UPI QR" style="width:140px;border-radius:8px;margin:10px 0">
-          <div class="muted">UPI ID: <strong>adv.shastri@oksbi</strong></div>
-        </div>
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center bg-gradient-hero pt-20">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <p class="text-gold uppercase tracking-widest text-sm mb-6">CONFIDENTIAL CONSULTATION</p>
+      <h1 class="font-serif text-5xl md:text-7xl text-white leading-tight mb-8">
+        Your Case Deserves<br><span class="text-gold">Expert Attention</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12">
+        Speak directly with senior advocates specializing in Criminal Law, Family Disputes, Cyber Crime, NDPS, POCSO, and more.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="tel:+919454183793" class="px-10 py-5 rounded-full bg-gold text-charcoal font-bold text-lg hover:bg-deepgold transition shadow-xl">
+          Call Now: +91 94541 83793
+        </a>
+        <a href="#form" class="px-10 py-5 rounded-full border-2 border-gold text-gold font-bold text-lg hover:bg-gold hover:text-charcoal transition">
+          Fill Consultation Form
+        </a>
       </div>
+    </div>
+  </section>
 
-      <!-- form -->
-      <div class="card" id="contactForm">
-        <h2>Send Your Query</h2>
-
-        <form action="mailto:adv.shastri@gmail.com" method="post" enctype="text/plain">
-
-          <div class="form-group">
-            <label>Your Name *</label>
-            <input type="text" name="Client Name" required>
+  <!-- Contact Details & Form Section -->
+  <section id="form" class="py-20 bg-cream dark:bg-charcoal">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- Contact Info Card -->
+        <div class="bg-white dark:bg-charcoal/50 rounded-3xl shadow-2xl p-10">
+          <h2 class="font-serif text-4xl mb-8">Office Information</h2>
+          
+          <div class="space-y-8">
+            <div>
+              <strong class="block text-lg mb-1">📞 Phone</strong>
+              <a href="tel:+919454183793" class="text-xl text-gold">+91 94541 83793</a>
+            </div>
+            
+            <div>
+              <strong class="block text-lg mb-1">✉️ Email</strong>
+              <a href="mailto:adv.shastri@gmail.com" class="text-xl text-gold">adv.shastri@gmail.com</a>
+            </div>
+            
+            <div>
+              <strong class="block text-lg mb-1">📍 Office Address</strong>
+              <p class="text-muted">Rajrooppur, Allahabad<br>Uttar Pradesh, India — 211004</p>
+              <a href="https://maps.app.goo.gl/your-maps-link" target="_blank" class="text-gold hover:underline mt-2 inline-block">Open in Google Maps →</a>
+            </div>
+            
+            <div class="p-6 bg-cream dark:bg-charcoal/30 rounded-2xl">
+              <strong class="block text-lg mb-2">⏱ Working Hours</strong>
+              <p class="text-muted">Monday – Saturday: 10 AM – 6 PM<br>Sunday: Closed</p>
+            </div>
+            
+            <div>
+              <strong class="block text-lg mb-3">💳 UPI Payment (for fees)</strong>
+              <img src="upi_qr.jpg" alt="UPI QR Code" class="w-48 rounded-xl shadow-lg mx-auto">
+              <p class="text-center text-muted mt-3">UPI ID: <strong>adv.shastri@oksbi</strong></p>
+            </div>
           </div>
-
-          <div class="form-group">
-            <label>Email *</label>
-            <input type="email" name="Client Email" required>
-          </div>
-
-          <div class="form-group">
-            <label>Phone *</label>
-            <input type="text" name="Client Phone" required>
-          </div>
-
-          <div class="form-group">
-            <label>Type of Matter</label>
-            <select name="Matter Type">
-              <option>Family / Matrimonial</option>
-              <option>Criminal</option>
-              <option>Civil / Property</option>
-              <option>Mediation</option>
+        </div>
+        
+        <!-- Consultation Form with Formspree -->
+        <div class="bg-white dark:bg-charcoal/50 rounded-3xl shadow-2xl p-10">
+          <h2 class="font-serif text-4xl mb-4 text-center">Request a Callback</h2>
+          <p class="text-center text-muted mb-10 max-w-md mx-auto">
+            Share brief details. Our team will contact you within 2 hours (9 AM – 9 PM).
+          </p>
+          
+          <!-- Formspree Form -->
+          <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <input type="text" name="name" placeholder="Your Full Name *" required class="px-6 py-4 rounded-full border border-charcoal/20 dark:border-gold/30 bg-cream dark:bg-charcoal/50 focus:outline-none focus:border-gold" />
+              <input type="tel" name="phone" placeholder="Mobile Number *" required class="px-6 py-4 rounded-full border border-charcoal/20 dark:border-gold/30 bg-cream dark:bg-charcoal/50 focus:outline-none focus:border-gold" />
+            </div>
+            
+            <input type="email" name="email" placeholder="Email Address (optional)" class="px-6 py-4 rounded-full border border-charcoal/20 dark:border-gold/30 bg-cream dark:bg-charcoal/50 focus:outline-none focus:border-gold" />
+            
+            <select name="case_type" required class="px-6 py-4 rounded-full border border-charcoal/20 dark:border-gold/30 bg-cream dark:bg-charcoal/50 focus:outline-none focus:border-gold">
+              <option value="">Select Case Type *</option>
+              <option>Criminal / Bail / 498A</option>
+              <option>Divorce / Maintenance / Custody</option>
+              <option>Cyber Crime / Online Fraud</option>
+              <option>NDPS / POCSO</option>
+              <option>Property / Civil Dispute</option>
               <option>Other</option>
             </select>
-          </div>
-
-          <div class="form-group">
-            <label>Your Message *</label>
-            <textarea name="Query Details" rows="5" required></textarea>
-          </div>
-
-          <button class="btn" type="submit">Send Request</button>
-
-        </form>
-      </div>
-
-    </div>
-
-    <footer>
-      <div style="display:flex;justify-content:space-between;flex-wrap:wrap">
-        <div>
-          <div style="font-weight:700">The Justice Firm</div>
-          <div class="muted">Advocates & Legal Consultants — Based in India</div>
+            
+            <textarea name="message" rows="6" placeholder="Brief description of your matter (highly recommended)" class="px-6 py-4 rounded-2xl border border-charcoal/20 dark:border-gold/30 bg-cream dark:bg-charcoal/50 focus:outline-none focus:border-gold resize-none"></textarea>
+            
+            <div class="text-center">
+              <button type="submit" class="px-12 py-5 rounded-full bg-gold text-charcoal font-bold text-xl hover:bg-deepgold transition shadow-xl">
+                Submit Request — We'll Call You
+              </button>
+            </div>
+          </form>
+          
+          <p class="text-center text-sm text-muted mt-8">
+            Your information is 100% confidential • No obligation • Response within 2 hours
+          </p>
         </div>
-        <div class="muted">© 2025 The Justice Firm</div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-  </main>
-
+  <!-- Footer -->
+  <footer class="bg-charcoal text-white/70 py-12 border-t border-gold/10">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="mb-4">© 2025 JusticeFirms Journal • All rights reserved</p>
+      <p class="text-sm">Confidentiality assured • Experienced advocates • Pan-India practice</p>
+    </div>
+  </footer>
 </body>
 </html>
