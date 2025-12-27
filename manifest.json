@@ -21,9 +21,9 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/android-icon-36x36.png",
-      "sizes": "36x36",
-      "type": "image/png"
+  "src": "/android-icon-36x36.png",
+  "sizes": "1024x1024", 
+  "type": "image/png"
     },
     {
       "src": "/android-icon-48x48.png",
