@@ -363,26 +363,26 @@
 <!-- ======================================================
      DAILY LEGAL INSIGHT
 =======section================================================ -->
-<section class="quote-section relative overflow-hidden bg-gradient-to-b from-slate-950 via-black to-slate-950 py-40 isolate">
-  <!-- Subtle Luxury Background Overlay (replace URL with your hosted version) -->
-  <div class="absolute inset-0 opacity-15 bg-cover bg-center pointer-events-none" 
-       style="background-image: url('https://png.pngtree.com/background/20250722/original/pngtree-modern-black-and-gold-mesh-luxury-background-picture-image_16819417.jpg');">
+<section class="quote-section relative overflow-hidden bg-gradient-to-b from-slate-950 via-black to-slate-950 py-24 isolate">
+  <!-- Clean Luxury Background (Direct Link – No Watermark) -->
+  <div class="absolute inset-0 opacity-10 bg-cover bg-center pointer-events-none" 
+       style="background-image: url('https://www.creativefabrica.com/wp-content/uploads/2023/01/14/Black-Luxury-Abstract-Background-Design-Graphics-57593582-1.jpg');">
   </div>
 
-  <div class="max-w-5xl mx-auto px-6 sm:px-8 text-center relative z-10">
-    <!-- Premium Gold Scales Icon (replace src with your chosen hosted SVG/PNG) -->
-    <img src="https://png.pngtree.com/png-clipart/20250711/original/pngtree-gold-scales-of-justice-isolated-on-transparent-background-png-image_21230715.png" 
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <!-- Premium Gold Scales Icon (Direct Link – Transparent, No Watermark) -->
+    <img src="https://png.pngtree.com/png-vector/20250826/ourmid/pngtree-ornate-golden-balance-scales-symbolizing-justice-and-fairness-png-image_17315638.webp" 
          alt="Scales of Justice" 
-         class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-12 object-contain drop-shadow-2xl">
+         class="w-20 h-20 md:w-28 md:h-28 mx-auto mb-8 object-contain drop-shadow-2xl">
 
     <div class="quote-carousel">
-      <blockquote id="quote-text" class="text-3xl sm:text-4xl lg:text-5xl font-serif italic text-white leading-relaxed mb-8 transition-opacity duration-1500 ease-in-out"></blockquote>
-      <p id="quote-author" class="text-lg sm:text-xl text-amber-400 font-light tracking-wider"></p>
+      <blockquote id="quote-text" class="text-2xl md:text-4xl font-serif italic text-white leading-relaxed mb-6 transition-opacity duration-1500"></blockquote>
+      <p id="quote-author" class="text-lg text-amber-400 font-light tracking-wide"></p>
     </div>
   </div>
 
-  <!-- Elegant Bottom Accent Line -->
-  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent opacity-70"></div>
+  <!-- Subtle Bottom Gold Line -->
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent opacity-60"></div>
 </section>
 
 <script>
@@ -391,12 +391,17 @@
     { text: "Justice delayed is justice denied.", author: "Traditional maxim" },
     { text: "We win justice quickest by rendering justice.", author: "Mahatma Gandhi" },
     { text: "Justice should become cheap and expeditious.", author: "Mahatma Gandhi" },
-    { text: "Equal justice under law.", author: "Inscribed on Supreme Court of India" },
+    { text: "Equal justice under law.", author: "Supreme Court of India" },
     { text: "Law and order are the medicine of the body politic.", author: "Dr. B.R. Ambedkar" },
-    { text: "Justice is another name for liberty, equality, fraternity.", author: "Dr. B.R. Ambedkar" },
-    { text: "Let justice be done though the heavens fall.", author: "Fiat justitia ruat caelum" },
+    { text: "Justice is liberty, equality, fraternity.", author: "Dr. B.R. Ambedkar" },
+    { text: "Let justice be done though the heavens fall.", author: "Ancient maxim" },
     { text: "Dharma protects those who protect it.", author: "Dharmo rakshati rakshitah" },
-    { text: "Political tyranny is nothing compared to social tyranny.", author: "Dr. B.R. Ambedkar" }
+    { text: "Social tyranny worse than political tyranny.", author: "Dr. B.R. Ambedkar" },
+    { text: "Law is the king of kings.", author: "Ancient Indian wisdom" },
+    { text: "Truth alone triumphs.", author: "Satymeva Jayate – Indian motto" },
+    { text: "The law grinds the poor, rich rule the law.", author: "Traditional critique" },
+    { text: "Non-violence is the law of our species.", author: "Mahatma Gandhi" },
+    { text: "Rights flow from duties well done.", author: "Mahatma Gandhi" }
   ];
 
   let currentIndex = 0;
@@ -417,10 +422,7 @@
     currentIndex = (currentIndex + 1) % quotes.length;
   }
 
-  // Start with first quote
   rotateQuote();
-
-  // Auto-rotate every 10 seconds
   setInterval(rotateQuote, 10000);
 </script>
 <!-- ======================================================
