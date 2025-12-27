@@ -45,5 +45,15 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "lang": "en",
+  "dir": "auto",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "categories": [
+    "business",
+    "government",
+    "productivity"
   ]
 }
