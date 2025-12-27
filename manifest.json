@@ -1,12 +1,24 @@
 {
-  "name": "Justice Firms",
+  "name": "The Justice Firm | Advocates & Consultants",
   "short_name": "JusticeFirms",
-  "description": "Professional Legal Services and Consultancy",
+  "description": "Premium Legal Services and Consultancy specializing in Criminal, Family, and Civil Law.",
   "start_url": "/",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui"
+  ],
   "background_color": "#ffffff",
   "theme_color": "#1a1a1a",
   "orientation": "portrait",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": [
+    "business",
+    "government",
+    "productivity"
+  ],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/android-icon-36x36.png",
@@ -46,31 +58,34 @@
       "purpose": "any maskable"
     }
   ],
-"shortcuts": [
-  {
-    "name": "Contact Us",
-    "short_name": "Contact",
-    "description": "Get in touch with our legal experts",
-    "url": "/contact.html",
-    "icons": [{ "src": "/android-icon-96x96.png", "sizes": "96x96" }]
-  },
-  {
-    "name": "Our Services",
-    "short_name": "Services",
-    "description": "View our legal practice areas",
-    "url": "/services.html",
-    "icons": [{ "src": "/android-icon-96x96.png", "sizes": "96x96" }]
-  }
-]
-  
-  "lang": "en",
-  "dir": "auto",
-  "display_override": [
-    "window-controls-overlay"
+  "shortcuts": [
+    {
+      "name": "Book Appointment",
+      "short_name": "Book Now",
+      "url": "/contact.html",
+      "icons": [{ "src": "/android-icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Legal Services",
+      "short_name": "Services",
+      "url": "/services.html",
+      "icons": [{ "src": "/android-icon-96x96.png", "sizes": "96x96" }]
+    }
   ],
-  "categories": [
-    "business",
-    "government",
-    "productivity"
+  "screenshots": [
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "The Justice Firm Desktop"
+    },
+    {
+      "src": "/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "The Justice Firm Mobile"
+    }
   ]
 }
