@@ -46,6 +46,23 @@
       "purpose": "any maskable"
     }
   ],
+"shortcuts": [
+  {
+    "name": "Contact Us",
+    "short_name": "Contact",
+    "description": "Get in touch with our legal experts",
+    "url": "/contact.html",
+    "icons": [{ "src": "/android-icon-96x96.png", "sizes": "96x96" }]
+  },
+  {
+    "name": "Our Services",
+    "short_name": "Services",
+    "description": "View our legal practice areas",
+    "url": "/services.html",
+    "icons": [{ "src": "/android-icon-96x96.png", "sizes": "96x96" }]
+  }
+]
+  
   "lang": "en",
   "dir": "auto",
   "display_override": [
