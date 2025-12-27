@@ -2,7 +2,7 @@ const CACHE_NAME = 'justice-firms-v1';
 const ASSETS = [
   '/',
   '/index.html',
-  '/favicon-192x192.png',
+  '/android-icon-192x192.png',
   '/favicon-512x512.png'
 ];
 
