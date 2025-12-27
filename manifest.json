@@ -49,13 +49,25 @@
       "src": "/android-icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/favicon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
@@ -77,15 +89,15 @@
       "src": "/favicon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "form_factor": "wide",
-      "label": "The Justice Firm Desktop"
+      "form_factor": "narrow",
+      "label": "Justice Firms Mobile View"
     },
     {
-      "src": "/android-icon-192x192.png",
-      "sizes": "192x192",
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "form_factor": "narrow",
-      "label": "The Justice Firm Mobile"
+      "form_factor": "wide",
+      "label": "Justice Firms Desktop View"
     }
   ]
 }
