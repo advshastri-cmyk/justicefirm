@@ -75,24 +75,71 @@
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": "The Justice Firm",
-  "description": "Premier Advocates & Legal Consultants specializing in Criminal, Family, Civil, and Constitutional matters in Prayagraj, Uttar Pradesh, INDIA.",
+  "alternateName": "The Justice Firm | Advocates & Legal Consultants",
+  "description": "Premier law firm in Prayagraj, Uttar Pradesh, INDIA specializing in Criminal Law, Family Law, Civil Litigation, and Constitutional matters with a commitment to justice and client success.",
   "url": "https://justicefirms.com",
   "logo": "https://justicefirms.com/logo-gold-scales.png",
   "image": "https://justicefirms.com/og-image-gold-scales.jpg",
   "priceRange": "$$",
+  "currenciesAccepted": "INR",
+  "paymentAccepted": "Cash, Bank Transfer, UPI",
   "telephone": "+91-9454183793",
   "email": "adv.shastri@gmail.com",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9454183793",
+    "contactType": "Customer Service",
+    "areaServed": "IN",
+    "availableLanguage": ["English", "Hindi"]
+  },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Prayagraj",
     "addressRegion": "Uttar Pradesh",
+    "postalCode": "211001",  <!-- Agar zip code jaante hain toh daalen, warna remove kar den -->
     "addressCountry": "IN"
   },
-  "areaServed": {
-    "@type": "AdministrativeArea",
-    "name": "Uttar Pradesh"
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "Uttar Pradesh"
+    },
+    {
+      "@type": "City",
+      "name": "Prayagraj"
+    }
+  ],
+  "serviceType": [
+    "Criminal Law",
+    "Family Law",
+    "Civil Litigation",
+    "Constitutional Law",
+    "Bail Applications",
+    "Divorce Cases",
+    "Property Disputes"
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "10:00",
+    "closes": "18:00"
   },
-  "openingHours": "Mo-Sa 10:00-18:00"
+  "founder": {
+    "@type": "Person",
+    "name": "Advocate Shankar Shastri"  <!-- Apna naam daalen -->
+  },
+  "sameAs": [
+    "https://www.facebook.com/thejusticefirm",
+    "https://www.linkedin.com/company/the-justice-firm",
+    "https://twitter.com/justicefirm"  <!-- Agar social profiles hain toh daalen, warna remove -->
+  ]
 }
 </script>
   <!-- ======================================================
