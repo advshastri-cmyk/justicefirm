@@ -1,4 +1,5 @@
 {
+  "id": "justice-firms-pwa-v1",
   "name": "The Justice Firm | Advocates & Consultants",
   "short_name": "JusticeFirms",
   "description": "Premium Legal Services and Consultancy specializing in Criminal, Family, and Civil Law.",
@@ -21,9 +22,9 @@
   "prefer_related_applications": false,
   "icons": [
     {
-  "src": "/android-icon-36x36.png",
-  "sizes": "1024x1024", 
-  "type": "image/png"
+      "src": "/android-icon-36x36.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
     },
     {
       "src": "/android-icon-48x48.png",
