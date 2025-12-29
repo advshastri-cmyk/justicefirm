@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retainer Plans | The Justice Firm</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#050505',
+                        gold: { 200: '#FDF6E3', 300: '#F0E68C', 400: '#E6C567', 500: '#D4AF37', 600: '#C5A059', 700: '#997B36' }
+                    },
+                    fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] },
+                    boxShadow: { 'gold-glow': '0 0 60px rgba(212,175,55,0.15)' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #050505; color: #cbd5e1; -webkit-font-smoothing: antialiased; }
+        .gold-text-gradient { background: linear-gradient(135deg, #F0E68C 0%, #D4AF37 50%, #C5A059 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-panel { background: rgba(11, 17, 32, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
+        .card-hover { transition: all 0.6s ease; }
+        .card-hover:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(212,175,55,0.12); }
+    </style>
+</head>
+
+<body class="font-sans">
+
+<nav class="fixed top-0 w-full z-50 bg-obsidian/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-4 group">
+            <div class="w-12 h-12 border-2 border-gold-500/40 flex items-center justify-center rounded-lg group-hover:border-gold-400 transition-all duration-500">
+                <span class="font-serif font-bold text-2xl gold-text-gradient">JF</span>
+            </div>
+            <h1 class="text-xl font-serif text-white tracking-wider">The Justice<span class="text-gold-500">Firm</span></h1>
+        </a>
+        <a href="index.html" class="text-xs uppercase tracking-[0.3em] text-slate-400 hover:text-gold-400 transition-all flex items-center gap-2">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+        </a>
+    </div>
+</nav>
+
+<section class="relative pt-32 pb-24 px-6 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-gold-600/5 to-transparent pointer-events-none"></div>
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"></div>
+    
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+        <h2 class="text-6xl md:text-8xl font-serif text-white leading-tight mb-8">
+            The Retainer <span class="gold-text-gradient italic">Circle</span>
+        </h2>
+        <p class="text-slate-300 text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto mb-6">
+            Elevate your legal strategy with uninterrupted, privileged access to The Justice Firm’s elite counsel.
+        </p>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+            Proactive protection, discreet guidance, and unwavering advocacy—ensuring you are always one step ahead.
+        </p>
+    </div>
+</section>
+
+<section class="relative py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Essential Plan -->
+            <div class="glass-panel rounded-2xl p-12 flex flex-col card-hover border border-white/5">
+                <div class="mb-12">
+                    <h3 class="text-white font-serif text-3xl mb-4">Essential</h3>
+                    <p class="text-gold-400 text-xs uppercase tracking-[0.3em] font-semibold">Personal Advisory</p>
+                </div>
+                <div class="mb-12">
+                    <span class="text-gold-300 text-6xl font-serif">₹4,999</span>
+                    <span class="text-slate-500 text-lg tracking-widest ml-3">/ month</span>
+                </div>
+                <ul class="space-y-6 mb-16 flex-grow text-slate-300">
+                    <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-gold-500"></i> Monthly 1-hour Strategy Video Call</li>
+                    <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-gold-500"></i> Unlimited Legal Document Vetting (up to 10 pages/mo)</li>
+                    <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-gold-500"></i> Formal Notice & Demand Letter Drafting</li>
+                    <li class="flex items-start gap-4"><i data-lucide="check-circle" class="w-6 h-6 text-gold-500"></i> Email Support (response within 48 hours)</li>
+                </ul>
+                <button onclick="subscribe('Essential')" class="w-full py-5 border border-gold-500/50 text-gold-300 text-sm font-bold uppercase tracking-[0.3em] hover:bg-gold-500/10 transition-all duration-500">
+                    Enroll Now
+                </button>
+            </div>
+
+            <!-- General Counsel Plan (Popular) -->
+            <div class="glass-panel rounded-2xl p-14 flex flex-col card-hover relative overflow-hidden border-2 border-gold-500/40 shadow-gold-glow transform scale-105">
+                <div class="absolute -top-1 left-0 w-full h-1 bg-gradient-to-r from-gold-400 to-gold-600"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-gold-500/5 to-transparent pointer-events-none"></div>
+                <div class="absolute top-4 right-4 bg-gold-500 text-obsidian text-xs px-4 py-1 rounded-full uppercase tracking-wider font-bold">Most Popular</div>
+                
+                <div class="mb-12">
+                    <h3 class="text-white font-serif text-4xl mb-4">General Counsel</h3>
+                    <p class="text-gold-400 text-xs uppercase tracking-[0.4em] font-bold">Business & Litigation Shield</p>
+                </div>
+                <div class="mb-12">
+                    <span class="text-white text-7xl font-serif">₹14,999</span>
+                    <span class="text-slate-400 text-lg tracking-widest ml-3">/ month</span>
+                </div>
+                <ul class="space-y-7 mb-16 flex-grow text-slate-200">
+                    <li class="flex items-start gap-4"><i data-lucide="shield" class="w-6 h-6 text-gold-400"></i> Priority Direct Phone & WhatsApp Access</li>
+                    <li class="flex items-start gap-4"><i data-lucide="shield" class="w-6 h-6 text-gold-400"></i> Unlimited Complex Contract Drafting & Review</li>
+                    <li class="flex items-start gap-4"><i data-lucide="shield" class="w-6 h-6 text-gold-400"></i> Annual Compliance, HR & Risk Audit</li>
+                    <li class="flex items-start gap-4"><i data-lucide="shield" class="w-6 h-6 text-gold-400"></i> Pre-Litigation Strategy & Negotiation Support</li>
+                    <li class="flex items-start gap-4"><i data-lucide="shield" class="w-6 h-6 text-gold-400"></i> Everything in Essential</li>
+                </ul>
+                <button onclick="subscribe('General Counsel')" class="w-full py-6 bg-gradient-to-r from-gold-600 to-gold-500 text-obsidian text-sm font-bold uppercase tracking-[0.4em] hover:from-gold-500 hover:to-gold-400 transition-all duration-500 shadow-lg">
+                    Secure Your Retainer
+                </button>
+            </div>
+
+            <!-- Private Wealth Plan -->
+            <div class="glass-panel rounded-2xl p-12 flex flex-col card-hover border border-white/5">
+                <div class="mb-12">
+                    <h3 class="text-white font-serif text-3xl mb-4">Private Wealth</h3>
+                    <p class="text-gold-400 text-xs uppercase tracking-[0.3em] font-semibold">HNI & Legacy Protection</p>
+                </div>
+                <div class="mb-12">
+                    <span class="text-gold-300 text-5xl font-serif italic">Bespoke Pricing</span>
+                </div>
+                <ul class="space-y-6 mb-16 flex-grow text-slate-300">
+                    <li class="flex items-start gap-4"><i data-lucide="crown" class="w-6 h-6 text-gold-500"></i> Comprehensive Succession & Will Planning</li>
+                    <li class="flex items-start gap-4"><i data-lucide="crown" class="w-6 h-6 text-gold-500"></i> Real Estate & Investment Portfolio Due Diligence</li>
+                    <li class="flex items-start gap-4"><i data-lucide="crown" class="w-6 h-6 text-gold-500"></i> Direct Access to Managing Partner</li>
+                    <li class="flex items-start gap-4"><i data-lucide="crown" class="w-6 h-6 text-gold-500"></i> Family Office Legal Coordination</li>
+                    <li class="flex items-start gap-4"><i data-lucide="crown" class="w-6 h-6 text-gold-500"></i> Tailored Services as Required</li>
+                </ul>
+                <button onclick="subscribe('Private Wealth')" class="w-full py-5 border border-gold-500/50 text-gold-300 text-sm font-bold uppercase tracking-[0.3em] hover:bg-gold-500/10 transition-all duration-500">
+                    Inquire Privately
+                </button>
+            </div>
+        </div>
+        
+        <div class="mt-20 text-center text-slate-500 text-sm">
+            <p class="mb-4">All plans include attorney-client privilege, utmost confidentiality, and proactive legal updates.</p>
+            <p>Annual billing available with 10% savings • Cancel or upgrade anytime with 30 days notice</p>
+        </div>
+    </div>
+</section>
+
+<footer class="py-16 border-t border-white/5 text-center">
+    <p class="text-slate-500 text-xs uppercase tracking-[0.6em]">Advocacy • Confidentiality • Integrity • Excellence</p>
+    <p class="text-slate-600 text-xs mt-6">© 2025 The Justice Firm. All rights reserved.</p>
+</footer>
+
+<script>
+    lucide.createIcons();
+
+    function subscribe(plan) {
+        const phone = "919454183793";
+        let msg = "";
+        if(plan === 'Private Wealth') {
+            msg = "Hello Advocate Shastri, I am interested in your Bespoke Private Wealth Retainer. Please share details and schedule a confidential discussion.";
+        } else {
+            msg = `Hello, I want to enroll in the ${plan} Retainer Plan at The Justice Firm. Kindly guide me through the next steps.`;
+        }
+        window.open(`https://wa.me/\( {phone}?text= \){encodeURIComponent(msg)}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
