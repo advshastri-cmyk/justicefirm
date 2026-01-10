@@ -1,16 +1,15 @@
 /* =========================================================
-   JusticeFirms.com – Ultra Premium Service Worker
+   JusticeFirms.com – Ultra Premium Service Worker (FINAL)
    Platform: GitHub Pages (Static)
-   Strategy: Network First + Offline Fallback
-   Version: v5
+   Strategy: Network First (Pages) + Cache First (Assets)
+   Offline Rule: ONLY offline.html (No cached pages)
+   Version: v6
 ========================================================= */
 
-const CACHE_NAME = 'justicefirms-ultra-v5';
+const CACHE_NAME = 'justicefirms-ultra-v6';
 
-/* Core assets for offline */
+/* Core assets strictly required offline */
 const CORE_ASSETS = [
-  '/',
-  '/index.html',
   '/offline.html',
   '/manifest.json',
 
@@ -22,12 +21,11 @@ const CORE_ASSETS = [
 ];
 
 /* =========================================================
-   INSTALL – Cache core assets
+   INSTALL – Cache only critical offline assets
 ========================================================= */
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[JusticeFirms] Installing & caching core assets');
       return cache.addAll(CORE_ASSETS);
     })
   );
@@ -35,7 +33,7 @@ self.addEventListener('install', (event) => {
 });
 
 /* =========================================================
-   ACTIVATE – Clean old cache
+   ACTIVATE – Remove old caches
 ========================================================= */
 self.addEventListener('activate', (event) => {
   event.waitUntil(
@@ -43,7 +41,6 @@ self.addEventListener('activate', (event) => {
       Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
-            console.log('[JusticeFirms] Removing old cache:', key);
             return caches.delete(key);
           }
         })
@@ -54,42 +51,42 @@ self.addEventListener('activate', (event) => {
 });
 
 /* =========================================================
-   FETCH – Smart handling
+   FETCH – STRICT PROFESSIONAL LOGIC
 ========================================================= */
 self.addEventListener('fetch', (event) => {
 
-  /* Only GET requests */
+  /* Handle only GET requests */
   if (event.request.method !== 'GET') return;
 
-  /* Ignore cross-origin (analytics, ads, etc.) */
+  /* Ignore third-party requests */
   if (!event.request.url.startsWith(self.location.origin)) return;
 
-  /* NAVIGATION REQUESTS (Pages) */
+  /* ================================
+     PAGE NAVIGATION (HTML)
+     ================================ */
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, clone);
-          });
-          return response;
+          return response; // ONLINE → real site
         })
         .catch(() => {
-          return caches.match('/offline.html');
+          return caches.match('/offline.html'); // OFFLINE → ONLY offline page
         })
     );
     return;
   }
 
-  /* STATIC ASSETS (CSS, JS, Images) */
+  /* ================================
+     STATIC FILES (CSS, JS, Images)
+     ================================ */
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
 
       return fetch(event.request)
         .then((response) => {
-          if (response.status === 200 && response.type === 'basic') {
+          if (response && response.status === 200 && response.type === 'basic') {
             const clone = response.clone();
             caches.open(CACHE_NAME).then((cache) => {
               cache.put(event.request, clone);
@@ -98,7 +95,7 @@ self.addEventListener('fetch', (event) => {
           return response;
         })
         .catch(() => {
-          /* Silent fail for assets */
+          /* Asset fail silently (no UI confusion) */
         });
     })
   );
