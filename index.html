@@ -742,7 +742,7 @@
   }
 </script>  
 <!-- ======================================================
-     TEAM SECTION (AUTO MOVE + AUTO CENTER · FINAL)
+     TEAM SECTION (AUTO MOVE + ARROWS + BIO MODAL)
 ======================================================= -->
 <section id="team" class="py-28 px-6 bg-obsidian">
   <div class="max-w-7xl mx-auto">
@@ -762,31 +762,32 @@
 
     <div class="relative">
 
-      <!-- Left Arrow -->
+      <!-- LEFT ARROW -->
       <button id="scroll-left"
         class="hidden absolute left-0 top-1/2 -translate-y-1/2 z-10
                bg-navy-900/80 border border-gold-500/40
                text-gold-400 w-12 h-12 rounded-full
-               flex items-center justify-center shadow-xl">
+               flex items-center justify-center
+               hover:bg-gold-500 hover:text-black transition-all shadow-xl">
         ‹
       </button>
 
-      <!-- Right Arrow -->
+      <!-- RIGHT ARROW -->
       <button id="scroll-right"
         class="absolute right-0 top-1/2 -translate-y-1/2 z-10
                bg-navy-900/80 border border-gold-500/40
                text-gold-400 w-12 h-12 rounded-full
-               flex items-center justify-center shadow-xl">
+               flex items-center justify-center
+               hover:bg-gold-500 hover:text-black transition-all shadow-xl">
         ›
       </button>
 
-      <!-- Scroll Area -->
+      <!-- SCROLL AREA -->
       <div id="team-scroll"
         class="overflow-x-auto scroll-smooth pb-6 no-scrollbar">
 
         <div id="team-grid"
-          class="flex gap-8 px-6 min-w-max">
-        </div>
+          class="flex gap-8 px-6 min-w-max"></div>
 
       </div>
     </div>
@@ -795,26 +796,87 @@
 </section>
 
 <!-- ======================================================
-     TEAM MODAL
+     TEAM BIO MODAL — ULTRA PREMIUM PROFILE VIEW
 ======================================================= -->
 <div id="team-modal"
-  class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6">
+  class="hidden fixed inset-0 z-50 bg-black/90
+         flex items-center justify-center p-6 backdrop-blur-sm">
 
-  <div class="bg-navy-900 border border-gold-500/20 max-w-lg w-full p-8 rounded relative">
+  <div
+    class="relative w-full max-w-xl
+           bg-gradient-to-b from-navy-900 via-navy-900 to-black
+           border border-gold-500/25
+           rounded-2xl shadow-2xl
+           animate-fade-in">
 
+    <!-- Close -->
     <button onclick="closeTeamModal()"
-      class="absolute top-4 right-4 text-slate-400 hover:text-white">
+      class="absolute top-4 right-4
+             text-slate-400 hover:text-gold-400 transition">
       ✕
     </button>
 
-    <h3 id="modal-name" class="text-2xl font-serif text-gold-400 mb-2"></h3>
-    <p id="modal-role" class="text-xs uppercase tracking-widest text-white mb-6"></p>
-    <p id="modal-bio" class="text-slate-300 text-sm leading-relaxed"></p>
+    <!-- Header -->
+    <div class="px-8 pt-10 pb-6 border-b border-white/5">
+      <h3 id="modal-name"
+        class="text-2xl md:text-3xl font-serif text-gold-400 mb-2">
+      </h3>
+
+      <p id="modal-role"
+        class="text-xs uppercase tracking-[0.25em] text-slate-300">
+      </p>
+    </div>
+
+    <!-- Body -->
+    <div class="px-8 py-6 space-y-6">
+
+      <!-- Bio -->
+      <p id="modal-bio"
+        class="text-slate-300 text-sm leading-relaxed">
+      </p>
+
+      <!-- Divider -->
+      <div class="h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent"></div>
+
+      <!-- Expertise (Optional – feels premium) -->
+      <div id="modal-tags"
+        class="flex flex-wrap gap-2 text-xs uppercase tracking-widest">
+        <!-- injected -->
+      </div>
+
+    </div>
+
+    <!-- Footer (Soft CTA – not salesy) -->
+    <div class="px-8 py-6 border-t border-white/5 bg-navy-900/60 rounded-b-2xl">
+
+      <a href="#contact"
+         onclick="closeTeamModal()"
+         class="inline-flex items-center gap-2
+                text-gold-400 text-xs uppercase tracking-widest
+                hover:text-gold-300 transition">
+        Request a confidential consultation
+        <span class="text-lg">→</span>
+      </a>
+
+    </div>
+
   </div>
 </div>
 
 <!-- ======================================================
-     TEAM SCRIPT (RENDER + AUTO MOVE + AUTO CENTER)
+     MODAL ANIMATION
+======================================================= -->
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.35s ease-out;
+}
+</style>
+<!-- ======================================================
+     TEAM SCRIPT (FINAL & STABLE)
 ======================================================= -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -823,31 +885,31 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       name: "Adv. Ganga Shankar Shastri",
       role: "Managing Partner",
-      bio: "Advocate & Author | 15+ Years Experience | High Court & District Courts.",
+      bio: "Advocate & Author | 15+ years experience before District Courts and High Courts. Specialised in Criminal Defence and Property Litigation. Author of ‘Nirnaya Dhara’.",
       image: "./ganga.jpg"
     },
     {
       name: "Adv. Minakshi Shastri",
       role: "Senior Associate",
-      bio: "LL.M. & PG in Human Rights | Civil & Appellate Practice.",
+      bio: "LL.M. & PG in Human Rights (IIHR). Focused on civil litigation, appellate drafting, and legal research.",
       image: "./minakshi.jpg"
     },
     {
       name: "Adv. Shivani Shastri",
       role: "Consulting Advocate",
-      bio: "Ph.D. Scholar | Constitutional Law & Policy Research.",
+      bio: "Advocate & Ph.D. Scholar. Works in Constitutional Law, policy research, and strategic advisory opinions.",
       image: "./shivani.jpg"
     },
     {
       name: "Adv. Sanjay Kumar",
       role: "Associate Counsel",
-      bio: "Criminal trials, bail matters, defence strategy.",
+      bio: "Handles criminal trials, bail and anticipatory bail matters with pragmatic defence strategy.",
       image: null
     },
     {
       name: "Adv. Kumar Vishal Sinha",
       role: "Lead Counsel – Criminal & Techno-Legal Matters",
-      bio: "B.Tech, LL.B., LL.M. | Narcotics, Customs & Adjudication.",
+      bio: "B.Tech, LL.B., LL.M. Techno-legal specialist in Narcotics, Customs, and complex criminal adjudication.",
       image: "./vishal.jpg"
     }
   ];
@@ -857,57 +919,52 @@ document.addEventListener("DOMContentLoaded", () => {
   const leftBtn = document.getElementById("scroll-left");
   const rightBtn = document.getElementById("scroll-right");
 
+  let autoTimer = null;
+  let direction = 1;
+  let userActive = false;
+
   /* ---------- RENDER CARDS ---------- */
-  teamMembers.forEach((m, index) => {
+  teamMembers.forEach((m, i) => {
     const card = document.createElement("div");
     card.className =
       "min-w-[280px] bg-navy-900/40 border border-white/5 p-6 text-center rounded-xl cursor-pointer hover:border-gold-500/40 transition-all";
 
-    card.onclick = () => openTeamModal(index);
+    card.onclick = () => openTeamModal(i);
 
     card.innerHTML = `
-      <div class="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden bg-slate-800 ring-2 ring-gold-500/20">
+      <div class="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden
+                  bg-slate-800 ring-2 ring-gold-500/20">
         ${
           m.image
             ? `<img src="${m.image}" class="w-full h-full object-cover"
                    style="object-position:center top;" loading="lazy">`
-            : `<div class="w-full h-full flex items-center justify-center text-slate-500">👤</div>`
+            : `<div class="w-full h-full flex items-center justify-center
+                     text-slate-500 text-3xl">👤</div>`
         }
       </div>
       <h3 class="font-serif text-white text-lg">${m.name}</h3>
       <p class="text-gold-400 text-xs uppercase mt-2">${m.role}</p>
     `;
-
     teamGrid.appendChild(card);
   });
 
-  /* ---------- ARROWS ---------- */
+  /* ---------- ARROW VISIBILITY ---------- */
   function updateArrows() {
     const max = scroller.scrollWidth - scroller.clientWidth;
     leftBtn.classList.toggle("hidden", scroller.scrollLeft <= 10);
     rightBtn.classList.toggle("hidden", scroller.scrollLeft >= max - 10);
   }
 
-  leftBtn.onclick = () => scroller.scrollBy({ left: -320, behavior: "smooth" });
-  rightBtn.onclick = () => scroller.scrollBy({ left: 320, behavior: "smooth" });
-
-  scroller.addEventListener("scroll", updateArrows);
-  setTimeout(updateArrows, 200);
-
-  /* ---------- AUTO MOVE + AUTO CENTER ---------- */
-  let dir = 1;
-  let autoTimer = null;
-  let interacting = false;
-
+  /* ---------- AUTO CENTER ---------- */
   function autoCenter() {
     const cards = teamGrid.children;
     const center = scroller.scrollLeft + scroller.clientWidth / 2;
+    let closest = null, min = Infinity;
 
-    let closest, dist = Infinity;
     [...cards].forEach(c => {
       const cCenter = c.offsetLeft + c.offsetWidth / 2;
       const d = Math.abs(center - cCenter);
-      if (d < dist) { dist = d; closest = c; }
+      if (d < min) { min = d; closest = c; }
     });
 
     if (closest) {
@@ -918,63 +975,74 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  /* ---------- AUTO SCROLL ---------- */
   function startAuto() {
     if (autoTimer) return;
     autoTimer = setInterval(() => {
-      if (interacting) return;
-      scroller.scrollLeft += dir * 0.4;
+      if (userActive) return;
+      scroller.scrollLeft += direction * 0.4;
       const max = scroller.scrollWidth - scroller.clientWidth;
-      if (scroller.scrollLeft >= max - 2) dir = -1;
-      if (scroller.scrollLeft <= 2) dir = 1;
+      if (scroller.scrollLeft >= max - 2) direction = -1;
+      if (scroller.scrollLeft <= 2) direction = 1;
     }, 16);
   }
 
   function stopAuto() {
-    interacting = true;
+    userActive = true;
     clearInterval(autoTimer);
     autoTimer = null;
   }
 
-  function resumeAuto() {
-    interacting = false;
-    autoCenter();
-    startAuto();
+  function resumeAuto(delay = 900) {
+    setTimeout(() => {
+      userActive = false;
+      autoCenter();
+      startAuto();
+    }, delay);
   }
 
+  /* ---------- ARROW CLICK (FIXED) ---------- */
+  rightBtn.onclick = () => {
+    stopAuto();
+    scroller.scrollBy({ left: 320, behavior: "smooth" });
+    resumeAuto();
+  };
+
+  leftBtn.onclick = () => {
+    stopAuto();
+    scroller.scrollBy({ left: -320, behavior: "smooth" });
+    resumeAuto();
+  };
+
+  /* ---------- USER INTERACTION ---------- */
   scroller.addEventListener("mouseenter", stopAuto);
-  scroller.addEventListener("mouseleave", () => setTimeout(resumeAuto, 800));
+  scroller.addEventListener("mouseleave", () => resumeAuto());
   scroller.addEventListener("touchstart", stopAuto, { passive: true });
-  scroller.addEventListener("touchend", () => setTimeout(resumeAuto, 800));
+  scroller.addEventListener("touchend", () => resumeAuto());
+  scroller.addEventListener("scroll", updateArrows);
 
-  setTimeout(startAuto, 3000);
+  setTimeout(() => {
+    updateArrows();
+    startAuto();
+  }, 3000);
+
+  /* ---------- MODAL ---------- */
+  window.openTeamModal = function(i) {
+    const m = teamMembers[i];
+    document.getElementById("modal-name").innerText = m.name;
+    document.getElementById("modal-role").innerText = m.role;
+    document.getElementById("modal-bio").innerText = m.bio;
+    document.getElementById("team-modal").classList.remove("hidden");
+    document.body.classList.add("modal-open");
+  };
+
+  window.closeTeamModal = function() {
+    document.getElementById("team-modal").classList.add("hidden");
+    document.body.classList.remove("modal-open");
+  };
 });
-
-/* ---------- MODAL ---------- */
-function openTeamModal(i) {
-  const m = document.querySelectorAll("#team-grid > div")[i];
-  document.getElementById("modal-name").innerText =
-    m.querySelector("h3").innerText;
-  document.getElementById("modal-role").innerText =
-    m.querySelector("p").innerText;
-  document.getElementById("modal-bio").innerText =
-    "Please book a consultation for full profile details.";
-  document.getElementById("team-modal").classList.remove("hidden");
-  document.body.classList.add("modal-open");
-}
-
-function closeTeamModal() {
-  document.getElementById("team-modal").classList.add("hidden");
-  document.body.classList.remove("modal-open");
-}
 </script>
 
-<style>
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
-</style>
-<!-- ======================================================
-     SCROLLBAR HIDE (PREMIUM)
-======================================================= -->
 <style>
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
