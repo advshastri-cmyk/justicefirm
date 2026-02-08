@@ -850,109 +850,122 @@
      TEAM DATA + LOGIC (HEAD-SAFE · FINAL)
 ======================================================= -->
 <script>
-const teamMembers = [
-  {
-    name: "Adv. Ganga Shankar Shastri",
-    role: "Managing Partner",
-    bio: "Advocate & Author | 15+ Years Experience | High Court & District Courts. Specializing in Criminal Defence and Property Litigation. I.T. Graduate & Author of 'Nirnaya Dhara'—an in-depth analysis of landmark High Court & Supreme Court precedents.",
-    image: "./ganga.jpg"
-  },
-  {
-    name: "Adv. Minakshi Shastri",
-    role: "Senior Associate",
-    bio: "Advocate | LL.M. & PG in Human Rights (IIHR) | Specialist in Civil Disputes, Appellate Drafting & Legal Research.",
-    image: "./minakshi.jpg"
-  },
-  {
-    name: "Adv. Shivani Shastri",
-    role: "Consulting Advocate",
-    bio: "Advocate & Ph.D. Scholar | Constitutional Law | Policy Research | Strategic Advisory Opinions.",
-    image: "./shivani.jpg"
-  },
-  {
-    name: "Adv. Sanjay Kumar",
-    role: "Associate Counsel",
-    bio: "Focused on criminal trials, bail matters, and pragmatic defence strategies.",
-    image: null
-  },
-  {
-    name: "Adv. Kumar Vishal Sinha",
-    role: "Techno-Legal Specialist",
-    bio: "Techno-Legal Specialist | B.Tech, LL.B., LL.M. | Expert in Narcotics, Customs, and Adjudication matters.",
-    image: "./vishal.jpg"
-  }
-];
+/* =========================================================
+   AUTO HORIZONTAL SCROLL + AUTO CENTER (ULTRA PREMIUM)
+   - 3s delay after load
+   - pauses on hover / touch / manual scroll
+   - auto-centers nearest card when idle
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const teamGrid = document.getElementById("team-grid");
   const scroller = document.getElementById("team-scroll");
-  const leftBtn = document.getElementById("scroll-left");
-  const rightBtn = document.getElementById("scroll-right");
+  const cards = () => scroller.querySelectorAll("#team-grid > div");
+  if (!scroller) return;
 
-  if (!teamGrid || !scroller) return;
+  let autoScrollTimer = null;
+  let direction = 1;              // 1 = right, -1 = left
+  const speed = 0.35;             // luxury slow speed
+  let userInteracting = false;
+  let idleTimeout = null;
 
-  /* Render Cards */
-  teamMembers.forEach((m, index) => {
-    const card = document.createElement("div");
-    card.className =
-      "group min-w-[280px] snap-start bg-navy-900/40 border border-white/5 p-6 text-center rounded-xl cursor-pointer hover:border-gold-500/40 transition-all";
+  /* ---------------- AUTO SCROLL ---------------- */
 
-    card.onclick = () => openTeamModal(index);
+  function startAutoScroll() {
+    if (autoScrollTimer) return;
 
-    const avatar = m.image
-      ? `<img src="${m.image}"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              style="object-position: center top;"
-              loading="lazy"
-              alt="${m.name}">`
-      : `<i data-lucide="user" class="w-16 h-16 text-slate-500"></i>`;
+    autoScrollTimer = setInterval(() => {
+      if (userInteracting) return;
 
-    card.innerHTML = `
-      <div class="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden
-                  bg-slate-800 ring-2 ring-gold-500/20">
-        ${avatar}
-      </div>
-      <h3 class="font-serif text-white text-lg">${m.name}</h3>
-      <p class="text-gold-400 text-xs uppercase mt-2 tracking-wide">${m.role}</p>
-    `;
+      scroller.scrollLeft += direction * speed;
 
-    teamGrid.appendChild(card);
-  });
+      const maxScroll = scroller.scrollWidth - scroller.clientWidth;
 
-  if (window.lucide) lucide.createIcons();
-
-  /* Arrow Logic */
-  function updateArrows() {
-    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
-    leftBtn.classList.toggle("hidden", scroller.scrollLeft <= 10);
-    rightBtn.classList.toggle("hidden", scroller.scrollLeft >= maxScroll - 10);
+      if (scroller.scrollLeft >= maxScroll - 2) direction = -1;
+      if (scroller.scrollLeft <= 2) direction = 1;
+    }, 16); // ~60fps
   }
 
-  rightBtn.onclick = () =>
-    scroller.scrollBy({ left: 320, behavior: "smooth" });
+  function stopAutoScroll() {
+    userInteracting = true;
+    clearInterval(autoScrollTimer);
+    autoScrollTimer = null;
+    clearTimeout(idleTimeout);
+  }
 
-  leftBtn.onclick = () =>
-    scroller.scrollBy({ left: -320, behavior: "smooth" });
+  function resumeAutoScroll() {
+    userInteracting = false;
+    startAutoScroll();
+  }
 
-  scroller.addEventListener("scroll", updateArrows);
-  window.addEventListener("resize", updateArrows);
-  setTimeout(updateArrows, 150);
+  /* ---------------- AUTO CENTER ---------------- */
+
+  function autoCenterNearestCard() {
+    const containerCenter =
+      scroller.scrollLeft + scroller.clientWidth / 2;
+
+    let closestCard = null;
+    let closestDistance = Infinity;
+
+    cards().forEach(card => {
+      const cardCenter =
+        card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(containerCenter - cardCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    if (!closestCard) return;
+
+    const targetScroll =
+      closestCard.offsetLeft -
+      scroller.clientWidth / 2 +
+      closestCard.offsetWidth / 2;
+
+    scroller.scrollTo({
+      left: targetScroll,
+      behavior: "smooth"
+    });
+  }
+
+  /* ---------------- EVENTS ---------------- */
+
+  // Hover (desktop)
+  scroller.addEventListener("mouseenter", stopAutoScroll);
+  scroller.addEventListener("mouseleave", () => {
+    idleTimeout = setTimeout(() => {
+      autoCenterNearestCard();
+      resumeAutoScroll();
+    }, 600);
+  });
+
+  // Touch (mobile)
+  scroller.addEventListener("touchstart", stopAutoScroll, { passive: true });
+  scroller.addEventListener("touchend", () => {
+    idleTimeout = setTimeout(() => {
+      autoCenterNearestCard();
+      resumeAutoScroll();
+    }, 800);
+  });
+
+  // Manual scroll (mouse / trackpad)
+  scroller.addEventListener("wheel", stopAutoScroll, { passive: true });
+  scroller.addEventListener("scroll", () => {
+    if (!userInteracting) return;
+
+    clearTimeout(idleTimeout);
+    idleTimeout = setTimeout(() => {
+      autoCenterNearestCard();
+      resumeAutoScroll();
+    }, 1200);
+  });
+
+  /* ---------------- START AFTER 3s ---------------- */
+
+  setTimeout(startAutoScroll, 3000);
 });
-
-/* Modal */
-function openTeamModal(index) {
-  const m = teamMembers[index];
-  document.getElementById("modal-name").innerText = m.name;
-  document.getElementById("modal-role").innerText = m.role;
-  document.getElementById("modal-bio").innerText = m.bio;
-  document.getElementById("team-modal").classList.remove("hidden");
-  document.body.classList.add("modal-open");
-}
-
-function closeTeamModal() {
-  document.getElementById("team-modal").classList.add("hidden");
-  document.body.classList.remove("modal-open");
-}
 </script>
 
 <!-- ======================================================
