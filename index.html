@@ -741,9 +741,8 @@
     window.open(`https://wa.me/${contact}?text=${encodeURIComponent(message)}`, '_blank');
   }
 </script>  
-
 <!-- ======================================================
-     TEAM SECTION (Ultra-Premium · Head-Safe Images)
+     TEAM SECTION (AUTO MOVE + AUTO CENTER · FINAL)
 ======================================================= -->
 <section id="team" class="py-28 px-6 bg-obsidian">
   <div class="max-w-7xl mx-auto">
@@ -761,45 +760,32 @@
       </p>
     </div>
 
-    <!-- Horizontal Scroll Wrapper -->
     <div class="relative">
 
-      <!-- Left Gold Arrow -->
-      <button
-        id="scroll-left"
+      <!-- Left Arrow -->
+      <button id="scroll-left"
         class="hidden absolute left-0 top-1/2 -translate-y-1/2 z-10
                bg-navy-900/80 border border-gold-500/40
                text-gold-400 w-12 h-12 rounded-full
-               flex items-center justify-center
-               hover:bg-gold-500 hover:text-black
-               transition-all shadow-xl"
-        aria-label="Scroll left">
+               flex items-center justify-center shadow-xl">
         ‹
       </button>
 
-      <!-- Right Gold Arrow -->
-      <button
-        id="scroll-right"
+      <!-- Right Arrow -->
+      <button id="scroll-right"
         class="absolute right-0 top-1/2 -translate-y-1/2 z-10
                bg-navy-900/80 border border-gold-500/40
                text-gold-400 w-12 h-12 rounded-full
-               flex items-center justify-center
-               hover:bg-gold-500 hover:text-black
-               transition-all shadow-xl"
-        aria-label="Scroll right">
+               flex items-center justify-center shadow-xl">
         ›
       </button>
 
       <!-- Scroll Area -->
-      <div
-        id="team-scroll"
-        class="overflow-x-auto scroll-smooth pb-6
-               snap-x snap-mandatory no-scrollbar">
+      <div id="team-scroll"
+        class="overflow-x-auto scroll-smooth pb-6 no-scrollbar">
 
-        <div
-          id="team-grid"
+        <div id="team-grid"
           class="flex gap-8 px-6 min-w-max">
-          <!-- Cards injected by JS -->
         </div>
 
       </div>
@@ -809,165 +795,183 @@
 </section>
 
 <!-- ======================================================
-     TEAM MODAL (PROFILE VIEW)
+     TEAM MODAL
 ======================================================= -->
 <div id="team-modal"
-     class="hidden fixed inset-0 z-50 bg-black/90
-            flex items-center justify-center p-6"
-     role="dialog"
-     aria-modal="true">
+  class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6">
 
-  <div class="bg-navy-900 border border-gold-500/20
-              max-w-lg w-full p-8 rounded relative">
+  <div class="bg-navy-900 border border-gold-500/20 max-w-lg w-full p-8 rounded relative">
 
     <button onclick="closeTeamModal()"
-            class="absolute top-4 right-4 text-slate-400 hover:text-white">
-      <i data-lucide="x"></i>
+      class="absolute top-4 right-4 text-slate-400 hover:text-white">
+      ✕
     </button>
 
-    <h3 id="modal-name"
-        class="text-2xl font-serif text-gold-400 mb-2"></h3>
-
-    <p id="modal-role"
-       class="text-xs uppercase tracking-widest text-white mb-6"></p>
-
-    <p id="modal-bio"
-       class="text-slate-300 text-sm leading-relaxed"></p>
-
-    <div class="mt-8 pt-6 border-t border-white/5">
-      <a href="#contact"
-         onclick="closeTeamModal()"
-         class="block w-full text-center bg-gold-600
-                hover:bg-gold-500 text-white py-3
-                uppercase tracking-wider text-sm">
-        Book Consultation
-      </a>
-    </div>
+    <h3 id="modal-name" class="text-2xl font-serif text-gold-400 mb-2"></h3>
+    <p id="modal-role" class="text-xs uppercase tracking-widest text-white mb-6"></p>
+    <p id="modal-bio" class="text-slate-300 text-sm leading-relaxed"></p>
   </div>
 </div>
 
 <!-- ======================================================
-     TEAM DATA + LOGIC (HEAD-SAFE · FINAL)
+     TEAM SCRIPT (RENDER + AUTO MOVE + AUTO CENTER)
 ======================================================= -->
 <script>
-/* =========================================================
-   AUTO HORIZONTAL SCROLL + AUTO CENTER (ULTRA PREMIUM)
-   - 3s delay after load
-   - pauses on hover / touch / manual scroll
-   - auto-centers nearest card when idle
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
+
+  const teamMembers = [
+    {
+      name: "Adv. Ganga Shankar Shastri",
+      role: "Managing Partner",
+      bio: "Advocate & Author | 15+ Years Experience | High Court & District Courts.",
+      image: "./ganga.jpg"
+    },
+    {
+      name: "Adv. Minakshi Shastri",
+      role: "Senior Associate",
+      bio: "LL.M. & PG in Human Rights | Civil & Appellate Practice.",
+      image: "./minakshi.jpg"
+    },
+    {
+      name: "Adv. Shivani Shastri",
+      role: "Consulting Advocate",
+      bio: "Ph.D. Scholar | Constitutional Law & Policy Research.",
+      image: "./shivani.jpg"
+    },
+    {
+      name: "Adv. Sanjay Kumar",
+      role: "Associate Counsel",
+      bio: "Criminal trials, bail matters, defence strategy.",
+      image: null
+    },
+    {
+      name: "Adv. Kumar Vishal Sinha",
+      role: "Lead Counsel – Criminal & Techno-Legal Matters",
+      bio: "B.Tech, LL.B., LL.M. | Narcotics, Customs & Adjudication.",
+      image: "./vishal.jpg"
+    }
+  ];
+
+  const teamGrid = document.getElementById("team-grid");
   const scroller = document.getElementById("team-scroll");
-  const cards = () => scroller.querySelectorAll("#team-grid > div");
-  if (!scroller) return;
+  const leftBtn = document.getElementById("scroll-left");
+  const rightBtn = document.getElementById("scroll-right");
 
-  let autoScrollTimer = null;
-  let direction = 1;              // 1 = right, -1 = left
-  const speed = 0.35;             // luxury slow speed
-  let userInteracting = false;
-  let idleTimeout = null;
+  /* ---------- RENDER CARDS ---------- */
+  teamMembers.forEach((m, index) => {
+    const card = document.createElement("div");
+    card.className =
+      "min-w-[280px] bg-navy-900/40 border border-white/5 p-6 text-center rounded-xl cursor-pointer hover:border-gold-500/40 transition-all";
 
-  /* ---------------- AUTO SCROLL ---------------- */
+    card.onclick = () => openTeamModal(index);
 
-  function startAutoScroll() {
-    if (autoScrollTimer) return;
+    card.innerHTML = `
+      <div class="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden bg-slate-800 ring-2 ring-gold-500/20">
+        ${
+          m.image
+            ? `<img src="${m.image}" class="w-full h-full object-cover"
+                   style="object-position:center top;" loading="lazy">`
+            : `<div class="w-full h-full flex items-center justify-center text-slate-500">👤</div>`
+        }
+      </div>
+      <h3 class="font-serif text-white text-lg">${m.name}</h3>
+      <p class="text-gold-400 text-xs uppercase mt-2">${m.role}</p>
+    `;
 
-    autoScrollTimer = setInterval(() => {
-      if (userInteracting) return;
+    teamGrid.appendChild(card);
+  });
 
-      scroller.scrollLeft += direction * speed;
-
-      const maxScroll = scroller.scrollWidth - scroller.clientWidth;
-
-      if (scroller.scrollLeft >= maxScroll - 2) direction = -1;
-      if (scroller.scrollLeft <= 2) direction = 1;
-    }, 16); // ~60fps
+  /* ---------- ARROWS ---------- */
+  function updateArrows() {
+    const max = scroller.scrollWidth - scroller.clientWidth;
+    leftBtn.classList.toggle("hidden", scroller.scrollLeft <= 10);
+    rightBtn.classList.toggle("hidden", scroller.scrollLeft >= max - 10);
   }
 
-  function stopAutoScroll() {
-    userInteracting = true;
-    clearInterval(autoScrollTimer);
-    autoScrollTimer = null;
-    clearTimeout(idleTimeout);
-  }
+  leftBtn.onclick = () => scroller.scrollBy({ left: -320, behavior: "smooth" });
+  rightBtn.onclick = () => scroller.scrollBy({ left: 320, behavior: "smooth" });
 
-  function resumeAutoScroll() {
-    userInteracting = false;
-    startAutoScroll();
-  }
+  scroller.addEventListener("scroll", updateArrows);
+  setTimeout(updateArrows, 200);
 
-  /* ---------------- AUTO CENTER ---------------- */
+  /* ---------- AUTO MOVE + AUTO CENTER ---------- */
+  let dir = 1;
+  let autoTimer = null;
+  let interacting = false;
 
-  function autoCenterNearestCard() {
-    const containerCenter =
-      scroller.scrollLeft + scroller.clientWidth / 2;
+  function autoCenter() {
+    const cards = teamGrid.children;
+    const center = scroller.scrollLeft + scroller.clientWidth / 2;
 
-    let closestCard = null;
-    let closestDistance = Infinity;
-
-    cards().forEach(card => {
-      const cardCenter =
-        card.offsetLeft + card.offsetWidth / 2;
-      const distance = Math.abs(containerCenter - cardCenter);
-
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestCard = card;
-      }
+    let closest, dist = Infinity;
+    [...cards].forEach(c => {
+      const cCenter = c.offsetLeft + c.offsetWidth / 2;
+      const d = Math.abs(center - cCenter);
+      if (d < dist) { dist = d; closest = c; }
     });
 
-    if (!closestCard) return;
-
-    const targetScroll =
-      closestCard.offsetLeft -
-      scroller.clientWidth / 2 +
-      closestCard.offsetWidth / 2;
-
-    scroller.scrollTo({
-      left: targetScroll,
-      behavior: "smooth"
-    });
+    if (closest) {
+      scroller.scrollTo({
+        left: closest.offsetLeft - scroller.clientWidth / 2 + closest.offsetWidth / 2,
+        behavior: "smooth"
+      });
+    }
   }
 
-  /* ---------------- EVENTS ---------------- */
+  function startAuto() {
+    if (autoTimer) return;
+    autoTimer = setInterval(() => {
+      if (interacting) return;
+      scroller.scrollLeft += dir * 0.4;
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      if (scroller.scrollLeft >= max - 2) dir = -1;
+      if (scroller.scrollLeft <= 2) dir = 1;
+    }, 16);
+  }
 
-  // Hover (desktop)
-  scroller.addEventListener("mouseenter", stopAutoScroll);
-  scroller.addEventListener("mouseleave", () => {
-    idleTimeout = setTimeout(() => {
-      autoCenterNearestCard();
-      resumeAutoScroll();
-    }, 600);
-  });
+  function stopAuto() {
+    interacting = true;
+    clearInterval(autoTimer);
+    autoTimer = null;
+  }
 
-  // Touch (mobile)
-  scroller.addEventListener("touchstart", stopAutoScroll, { passive: true });
-  scroller.addEventListener("touchend", () => {
-    idleTimeout = setTimeout(() => {
-      autoCenterNearestCard();
-      resumeAutoScroll();
-    }, 800);
-  });
+  function resumeAuto() {
+    interacting = false;
+    autoCenter();
+    startAuto();
+  }
 
-  // Manual scroll (mouse / trackpad)
-  scroller.addEventListener("wheel", stopAutoScroll, { passive: true });
-  scroller.addEventListener("scroll", () => {
-    if (!userInteracting) return;
+  scroller.addEventListener("mouseenter", stopAuto);
+  scroller.addEventListener("mouseleave", () => setTimeout(resumeAuto, 800));
+  scroller.addEventListener("touchstart", stopAuto, { passive: true });
+  scroller.addEventListener("touchend", () => setTimeout(resumeAuto, 800));
 
-    clearTimeout(idleTimeout);
-    idleTimeout = setTimeout(() => {
-      autoCenterNearestCard();
-      resumeAutoScroll();
-    }, 1200);
-  });
-
-  /* ---------------- START AFTER 3s ---------------- */
-
-  setTimeout(startAutoScroll, 3000);
+  setTimeout(startAuto, 3000);
 });
+
+/* ---------- MODAL ---------- */
+function openTeamModal(i) {
+  const m = document.querySelectorAll("#team-grid > div")[i];
+  document.getElementById("modal-name").innerText =
+    m.querySelector("h3").innerText;
+  document.getElementById("modal-role").innerText =
+    m.querySelector("p").innerText;
+  document.getElementById("modal-bio").innerText =
+    "Please book a consultation for full profile details.";
+  document.getElementById("team-modal").classList.remove("hidden");
+  document.body.classList.add("modal-open");
+}
+
+function closeTeamModal() {
+  document.getElementById("team-modal").classList.add("hidden");
+  document.body.classList.remove("modal-open");
+}
 </script>
 
+<style>
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+</style>
 <!-- ======================================================
      SCROLLBAR HIDE (PREMIUM)
 ======================================================= -->
