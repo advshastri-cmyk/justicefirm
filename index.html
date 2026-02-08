@@ -743,7 +743,7 @@
 </script>  
 
 <!-- ======================================================
-     TEAM SECTION (INTERACTION FIXED)
+     TEAM SECTION (Horizontal Scroll with Gold Arrows)
 ======================================================= -->
 <section id="team" class="py-28 px-6 bg-obsidian">
   <div class="max-w-7xl mx-auto">
@@ -761,47 +761,62 @@
       </p>
     </div>
 
-    <div id="team-grid"
-         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Injected via JS -->
+    <!-- Horizontal Scroll Container with Arrows -->
+    <div class="relative">
+      <!-- Left Arrow -->
+      <button 
+        id="scroll-left"
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-navy-800/80 text-gold-400 w-12 h-12 rounded-full flex items-center justify-center hidden transition-all hover:bg-gold-500/20 shadow-lg"
+        aria-label="Scroll team left"
+      >‹</button>
+
+      <!-- Right Arrow -->
+      <button 
+        id="scroll-right"
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-navy-800/80 text-gold-400 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-gold-500/20 shadow-lg"
+        aria-label="Scroll team right"
+      >›</button>
+
+      <!-- Scrollable Area -->
+      <div 
+        id="team-scroll" 
+        class="overflow-x-auto pb-6 scrollbar-thin scrollbar-thumb-gold-500/40 scrollbar-track-navy-900 snap-x mandatory"
+      >
+        <div 
+          id="team-grid" 
+          class="flex gap-6 px-2 min-w-max"
+        ></div>
+      </div>
     </div>
 
   </div>
 </section>
 
 <!-- ======================================================
-     TEAM MODAL (PROFILE VIEW)
+     TEAM MODAL (PROFILE VIEW) - Same as before
 ======================================================= -->
 <div id="team-modal"
-     class="hidden fixed inset-0 z-50 bg-black/90
-            flex items-center justify-center p-6"
+     class="hidden fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6"
      role="dialog"
      aria-modal="true">
 
-  <div class="bg-navy-900 border border-gold-500/20
-              max-w-lg w-full p-8 rounded relative">
+  <div class="bg-navy-900 border border-gold-500/20 max-w-lg w-full p-8 rounded relative">
 
     <button onclick="closeTeamModal()"
-            class="absolute top-4 right-4 text-slate-400
-                   hover:text-white">
+            class="absolute top-4 right-4 text-slate-400 hover:text-white">
       <i data-lucide="x"></i>
     </button>
 
-    <h3 id="modal-name"
-        class="text-2xl font-serif text-gold-400 mb-2"></h3>
+    <h3 id="modal-name" class="text-2xl font-serif text-gold-400 mb-2"></h3>
 
-    <p id="modal-role"
-       class="text-xs uppercase tracking-widest text-white mb-6"></p>
+    <p id="modal-role" class="text-xs uppercase tracking-widest text-white mb-6"></p>
 
-    <p id="modal-bio"
-       class="text-slate-300 text-sm leading-relaxed"></p>
+    <p id="modal-bio" class="text-slate-300 text-sm leading-relaxed"></p>
 
     <div class="mt-8 pt-6 border-t border-white/5">
       <a href="#contact"
          onclick="closeTeamModal()"
-         class="block w-full text-center bg-gold-600
-                hover:bg-gold-500 text-white py-3
-                uppercase tracking-wider text-sm">
+         class="block w-full text-center bg-gold-600 hover:bg-gold-500 text-white py-3 uppercase tracking-wider text-sm">
         Book Consultation
       </a>
     </div>
@@ -810,10 +825,11 @@
 </div>
 
 <!-- ======================================================
-     TEAM DATA & LOGIC (SCOPE BUG FIXED)
+     TEAM DATA & SCROLL LOGIC (5 Members + Arrows Working)
 ======================================================= -->
 <script>
-/* FIX: teamMembers moved to global scope */
+/* JusticeFirms Team Section - Horizontal Scroll with Arrows */
+
 const teamMembers = [
   {
     name: "Adv. Ganga Shankar Shastri",
@@ -838,39 +854,75 @@ const teamMembers = [
     role: "Associate Counsel",
     bio: "Focused on criminal trials, bail matters, and pragmatic defence strategies.",
     image: null
+  },
+  {
+    name: "Adv. Kumar Vishal Sinha",
+    role: "Lead Counsel – Criminal & Techno-Legal Matters",
+    bio: "Techno-Legal Specialist | B.Tech, LL.B., LL.M. | Expert in navigating complex legal landscapes involving Narcotics, Customs, and Adjudication. A dual-qualified professional blending technical precision with rigorous legal advocacy in Criminal and Family Law matters.",
+    image: "./vishal.jpg"
   }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const teamGrid = document.getElementById("team-grid");
+  const scroller = document.getElementById("team-scroll");
+  const leftBtn = document.getElementById("scroll-left");
+  const rightBtn = document.getElementById("scroll-right");
 
+  if (!teamGrid || !scroller || !leftBtn || !rightBtn) return;
+
+  // Render all team cards
   teamMembers.forEach((m, index) => {
     const card = document.createElement("div");
     card.className =
-      "group bg-navy-900/40 border border-white/5 p-6 text-center hover:border-gold-500/30 transition-all cursor-pointer";
+      "group min-w-[280px] bg-navy-900/40 border border-white/5 p-6 text-center hover:border-gold-500/40 transition-all cursor-pointer rounded-lg snap-start";
 
     card.onclick = () => openTeamModal(index);
 
     const avatar = m.image
-      ? `<img src="${m.image}"
-              class="w-full h-full object-cover"
-              style="object-position:center 20%;"
-              loading="lazy">`
-      : `<i data-lucide="user" class="w-12 h-12 text-slate-500"></i>`;
+      ? `<img src="\( {m.image}" class="w-full h-full object-cover" loading="lazy" alt=" \){m.name}">`
+      : `<i data-lucide="user" class="w-16 h-16 text-slate-500"></i>`;
 
     card.innerHTML = `
-      <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-slate-800 flex items-center justify-center">
+      <div class="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden bg-slate-800 flex items-center justify-center">
         ${avatar}
       </div>
-      <h3 class="font-serif text-white">${m.name}</h3>
-      <p class="text-gold-400 text-xs uppercase mt-2">${m.role}</p>
+      <h3 class="font-serif text-white text-lg">${m.name}</h3>
+      <p class="text-gold-400 text-xs uppercase mt-2 tracking-wide">${m.role}</p>
     `;
 
     teamGrid.appendChild(card);
   });
 
   lucide.createIcons();
+
+  // Arrow visibility logic
+  function updateArrows() {
+    const scrollLeft = scroller.scrollLeft;
+    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+
+    // Left arrow दिखाओ केवल जब scroll किया हुआ हो
+    leftBtn.classList.toggle("hidden", scrollLeft <= 10);
+
+    // Right arrow दिखाओ केवल जब अभी और scroll बाकी हो
+    rightBtn.classList.toggle("hidden", scrollLeft >= maxScroll - 10);
+  }
+
+  // Scroll buttons action
+  rightBtn.addEventListener("click", () => {
+    scroller.scrollBy({ left: 300, behavior: "smooth" });
+  });
+
+  leftBtn.addEventListener("click", () => {
+    scroller.scrollBy({ left: -300, behavior: "smooth" });
+  });
+
+  // Events
+  scroller.addEventListener("scroll", updateArrows);
+  window.addEventListener("resize", updateArrows);
+
+  // Initial check (thoda delay taaki cards load ho jaye)
+  setTimeout(updateArrows, 150);
 });
 
 function openTeamModal(index) {
@@ -887,7 +939,6 @@ function closeTeamModal() {
   document.body.classList.remove("modal-open");
 }
 </script>
-
 <!-- ======================================================
      END PART 2
 ======================================================= -->
