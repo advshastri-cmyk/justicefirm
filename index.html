@@ -743,7 +743,7 @@
 </script>  
 
 <!-- ======================================================
-     TEAM SECTION (Horizontal Scroll with Gold Arrows)
+     TEAM SECTION (Ultra-Premium · Head-Safe Images)
 ======================================================= -->
 <section id="team" class="py-28 px-6 bg-obsidian">
   <div class="max-w-7xl mx-auto">
@@ -761,42 +761,44 @@
       </p>
     </div>
 
-    <!-- Horizontal Scroll Container -->
+    <!-- Horizontal Scroll Wrapper -->
     <div class="relative">
 
-      <!-- Left Arrow -->
+      <!-- Left Gold Arrow -->
       <button
         id="scroll-left"
         class="hidden absolute left-0 top-1/2 -translate-y-1/2 z-10
-               bg-navy-800/80 border border-gold-500/40
+               bg-navy-900/80 border border-gold-500/40
                text-gold-400 w-12 h-12 rounded-full
                flex items-center justify-center
-               hover:bg-gold-500/20 transition-all shadow-lg"
-        aria-label="Scroll team left">
+               hover:bg-gold-500 hover:text-black
+               transition-all shadow-xl"
+        aria-label="Scroll left">
         ‹
       </button>
 
-      <!-- Right Arrow -->
+      <!-- Right Gold Arrow -->
       <button
         id="scroll-right"
         class="absolute right-0 top-1/2 -translate-y-1/2 z-10
-               bg-navy-800/80 border border-gold-500/40
+               bg-navy-900/80 border border-gold-500/40
                text-gold-400 w-12 h-12 rounded-full
                flex items-center justify-center
-               hover:bg-gold-500/20 transition-all shadow-lg"
-        aria-label="Scroll team right">
+               hover:bg-gold-500 hover:text-black
+               transition-all shadow-xl"
+        aria-label="Scroll right">
         ›
       </button>
 
-      <!-- Scrollable Area -->
+      <!-- Scroll Area -->
       <div
         id="team-scroll"
-        class="overflow-x-auto pb-6 scroll-smooth
-               snap-x snap-mandatory">
+        class="overflow-x-auto scroll-smooth pb-6
+               snap-x snap-mandatory no-scrollbar">
 
         <div
           id="team-grid"
-          class="flex gap-6 px-4 min-w-max">
+          class="flex gap-8 px-6 min-w-max">
           <!-- Cards injected by JS -->
         </div>
 
@@ -845,7 +847,7 @@
 </div>
 
 <!-- ======================================================
-     TEAM DATA & SCROLL LOGIC (FINAL FIXED)
+     TEAM DATA + LOGIC (HEAD-SAFE · FINAL)
 ======================================================= -->
 <script>
 const teamMembers = [
@@ -876,7 +878,7 @@ const teamMembers = [
   {
     name: "Adv. Kumar Vishal Sinha",
     role: "Lead Counsel – Criminal & Techno-Legal Matters",
-    bio: "Techno-Legal Specialist | B.Tech, LL.B., LL.M. | Expert in navigating complex legal landscapes involving Narcotics, Customs, and Adjudication. A dual-qualified professional blending technical precision with rigorous legal advocacy in Criminal and Family Law matters.",
+    bio: "Techno-Legal Specialist | B.Tech, LL.B., LL.M. | Expert in Narcotics, Customs, and Adjudication matters.",
     image: "./vishal.jpg"
   }
 ];
@@ -887,25 +889,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const leftBtn = document.getElementById("scroll-left");
   const rightBtn = document.getElementById("scroll-right");
 
-  if (!teamGrid || !scroller || !leftBtn || !rightBtn) return;
+  if (!teamGrid || !scroller) return;
 
-  // Render cards
+  /* Render Cards */
   teamMembers.forEach((m, index) => {
     const card = document.createElement("div");
     card.className =
-      "group min-w-[280px] snap-start bg-navy-900/40 border border-white/5 p-6 text-center rounded-lg cursor-pointer hover:border-gold-500/40 transition-all";
+      "group min-w-[280px] snap-start bg-navy-900/40 border border-white/5 p-6 text-center rounded-xl cursor-pointer hover:border-gold-500/40 transition-all";
 
     card.onclick = () => openTeamModal(index);
 
     const avatar = m.image
       ? `<img src="${m.image}"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="object-position: center top;"
               loading="lazy"
               alt="${m.name}">`
       : `<i data-lucide="user" class="w-16 h-16 text-slate-500"></i>`;
 
     card.innerHTML = `
-      <div class="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden bg-slate-800 flex items-center justify-center">
+      <div class="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden
+                  bg-slate-800 ring-2 ring-gold-500/20">
         ${avatar}
       </div>
       <h3 class="font-serif text-white text-lg">${m.name}</h3>
@@ -917,7 +921,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (window.lucide) lucide.createIcons();
 
-  // Arrow visibility logic
+  /* Arrow Logic */
   function updateArrows() {
     const maxScroll = scroller.scrollWidth - scroller.clientWidth;
     leftBtn.classList.toggle("hidden", scroller.scrollLeft <= 10);
@@ -932,10 +936,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   scroller.addEventListener("scroll", updateArrows);
   window.addEventListener("resize", updateArrows);
-
   setTimeout(updateArrows, 150);
 });
 
+/* Modal */
 function openTeamModal(index) {
   const m = teamMembers[index];
   document.getElementById("modal-name").innerText = m.name;
@@ -950,6 +954,14 @@ function closeTeamModal() {
   document.body.classList.remove("modal-open");
 }
 </script>
+
+<!-- ======================================================
+     SCROLLBAR HIDE (PREMIUM)
+======================================================= -->
+<style>
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+</style>
 <!-- ======================================================
      END PART 2
 ======================================================= -->
